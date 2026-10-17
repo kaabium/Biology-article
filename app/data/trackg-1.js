@@ -142,3 +142,144 @@ Object.assign(window.TRACKG.paras, {
     ],
   },
 });
+
+/* ------------------------------------------------------------------------------------------ RES-PIPELINE */
+Object.assign(window.TRACKG.paras, {
+  'res-pipeline-p1': {
+    plain: `<p>To find lncRNAs that help KRAS+ lung cancer cells, the authors adapted a CRISPR method called DECKO (“dual-excision CRISPR knockout”). It deletes a piece of DNA, which is why it belongs to the “CRISPR-del” (CRISPR deletion) family. They turned it into a high-throughput <b>pooled</b> format: many targets are tested together in one batch of cells. Figure 1A strings the workflow together, from library design on the left to the three hallmark tests on the right.</p>
+<p>The method switches a gene off (a “loss-of-function”, LOF, change) by <b>deleting its transcription start site (TSS)</b>, the spot where copying into RNA begins. The deletion is made with paired guide RNAs (pgRNAs): two guides that make two cuts, so the DNA between the cuts is removed. The paper says this effectively inhibits expression of the gene.</p>
+<p>Why delete only the TSS and not the whole gene? The paper gives two benefits. First, the deletions are all alike and short, and shorter deletions are more efficient. Second, there is a smaller chance of false positives from accidentally deleting overlapping DNA regulatory elements (stretches of DNA that help control genes).</p>`,
+    why: `It states the central design choice of the paper: switch each gene off by deleting its start site with paired guides, in a pooled format. Every screen, and the library described next, is built on it.`,
+    memory: `Like unplugging a lamp instead of smashing it together with the shelf it stands on: the lamp is off and the neighbors are untouched. Where the analogy breaks down: unplugging can be undone, but a deleted TSS is a permanent change to that cell's DNA.`,
+    flags: [
+      `“Knockout” in DECKO is used loosely: the method removes the TSS region, not the whole gene.`,
+      `“Effectively inhibits gene expression” is a claim made here. The test comes in <a href="#/g/res-pipeline/res-pipeline-p5">res-pipeline-p5</a>, and the result is mixed: in a random test of 12 extra pgRNAs the target RNA fell in only 7. The two benefits of deleting only the TSS are stated without data in this paragraph.`,
+    ],
+    prereqs: ['B4', 'D1', 'D3'],
+    checks: [
+      { q: 'According to the paper, why delete only the TSS rather than the entire gene?',
+        options: [
+          { t: 'The deletions are uniform and shorter (so more efficient), with less chance of false positives from deleting overlapping DNA regulatory elements', ok: true, why: 'Right: these are the two benefits the paragraph lists.' },
+          { t: 'A whole-gene deletion would not stop the gene from being expressed', ok: false, why: 'Deleting the whole gene would stop it too. The argument is about efficiency and fewer false positives, not about whether it works.' },
+          { t: 'The TSS is the only place on a gene where a guide RNA can bind', ok: false, why: 'The paragraph gives no such limit. The reasons it lists are efficiency and fewer false positives.' },
+          { t: 'A TSS deletion is temporary, so cells can recover', ok: false, why: 'Nothing like that is said. A CRISPR deletion is a permanent change to that cell’s DNA.' },
+        ], source: ['res-pipeline-p1'] },
+      { q: 'What does using a pair of guide RNAs (pgRNAs) allow?',
+        options: [
+          { t: 'Two cuts, so the DNA between them (the TSS region) is deleted', ok: true, why: 'Right: “paired guide RNAs” delete the TSS region.' },
+          { t: 'Blocking the gene from being copied without cutting the DNA', ok: false, why: 'That describes CRISPRi, a different tool. In CRISPR-del the DNA is cut and a piece removed.' },
+          { t: 'Marking the gene with a glowing tag so it can be found', ok: false, why: 'pgRNAs steer the cutting; they are not dyes or markers.' },
+          { t: 'Destroying the finished RNA after it is made', ok: false, why: 'That is what an ASO does, a different tool. CRISPR-del acts on the DNA.' },
+        ], source: ['res-pipeline-p1'] },
+    ],
+    sources: ['res-pipeline-p5'],
+  },
+
+  'res-pipeline-p2': {
+    plain: `<p>The authors built a screening library (the collection of guides they would use) to examine the lncRNAs made in NSCLC as completely as possible. To avoid false-positive results from unintended off targeting (a guide acting at the wrong place), they left out any target region closer than 2 kb to the nearest protein-coding exon.</p>
+<p>They combined and filtered published and in-house gene annotations (gene catalogs). The result is a final target set of 831 expressed lncRNAs, which correspond to 998 high-confidence TSSs (some lncRNAs have more than one start site). Each target is named “candidate 1” and so on.</p>
+<p><b>Look at Figure 1B</b> (the filtering flow chart): the catalogs are merged; start sites within 2 kb of a protein-coding exon, or expressed below 0.1 FPKM in A549, are dropped; start sites closer than 300 bp are clustered; and the ones backed by evidence (CAGE, ChromHMM, DNase I hypersensitivity) are selected. <b>Figure 1C</b> shows what the library contains. (Figures S1A and S1B are supplementary.)</p>
+<p>lncRNA candidates with bidirectional promoters, or with overlapping TSSs, were merged into a single TSS (counted as one target). Even so, 95.2% of target regions contain one single lncRNA promoter, 4.5% contain two and 0.3% contain three (Figure S1D, supplementary).</p>`,
+    why: `It defines which lncRNAs the screen can test. Regions near protein-coding exons were left out (the stated aim is to avoid false positives from off targeting; presumably an edit there could disturb the neighboring protein-coding gene instead of the lncRNA).`,
+    memory: `Merging four address books into one: drop the risky entries (too close to a protein-coding exon) and the empty ones (barely expressed), and merge the duplicates (bidirectional promoters and overlapping TSSs).`,
+    flags: [
+      `Supplementary: not in your PDF — Figures S1A, S1B and S1D. The 95.2% / 4.5% / 0.3% split is shown only in Figure S1D, so here it is the authors’ statement.`,
+      `Numbers: 831 lncRNAs correspond to 998 TSSs, but the lncRNA bar in Figure 1C prints 1003 (Figure 2F’s n label also says 1003), while Figure 1B says “998 Candidates”. The paper does not explain the small difference.`,
+      `The sentence does not say whether the “candidate” numbers label the 831 lncRNAs or the 998 TSSs. Later paragraphs use them for TSS targets (res-validation-p2 describes “Candidate 205” as overlapping the TSS of two genes).`,
+    ],
+    prereqs: ['B4', 'B7', 'D1', 'D3'],
+    checks: [
+      { q: 'How are the numbers 831 and 998 related in this paragraph?',
+        options: [
+          { t: '831 expressed lncRNAs correspond to 998 high-confidence TSSs, so some lncRNAs have more than one start site', ok: true, why: 'Right: the 998 are start sites of the 831 lncRNAs.' },
+          { t: '831 TSSs correspond to 998 lncRNAs', ok: false, why: 'Reversed. One lncRNA can have several TSSs, so there are more TSSs (998) than lncRNAs (831).' },
+          { t: '998 lncRNAs were screened and 831 of them were hits', ok: false, why: 'Both numbers describe the target set, not hits. Hits are picked out of this set later.' },
+          { t: '831 lncRNAs plus 998 control regions', ok: false, why: 'The 998 are start sites of the same 831 lncRNAs. The controls are added in the next paragraph.' },
+        ], source: ['res-pipeline-p2'] },
+    ],
+    sources: ['fig1B', 'fig1C', 'fig2F', 'res-validation-p2'],
+    derived: ['1003'],
+  },
+
+  'res-pipeline-p3': {
+    plain: `<p>To the lncRNA targets, the authors added two kinds of control pgRNAs (the “Control” bar in Figure 1C splits them into groups):</p>
+<ul><li><b>Neutral control loci</b>: places in the genome that are not expected to influence how the cells look or behave (their phenotype).</li>
+<li><b>Positive control protein-coding genes (PCGs)</b>: genes with known roles in cell growth and in cisplatin resistance.</li></ul>`,
+    why: `Controls make the screen interpretable: neutral ones show what “no effect” looks like, and positive ones show whether real effects are detected. Figure 2F (res-multipheno-p3) uses them for exactly that.`,
+    memory: `A smoke detector is tested twice: with a lit candle (it must go off: the positive control) and in a room with no smoke (it must stay quiet: the neutral control). In the screen, the “alarm” is a change in how common a guide is.`,
+    flags: [`No counts are given here, and the paper’s totals for the controls differ between places: the Control bar in Figure 1C, the Methods (m-library-design-p3), “109 positive controls” in res-multipheno-p6, and the n labels in Figure 2F. The paper does not reconcile them, so learn each control’s role rather than the totals.`],
+    prereqs: ['D3', 'D5'],
+    checks: [
+      { q: 'What do the two kinds of control tell you?',
+        options: [
+          { t: 'Neutral controls show what “no effect” looks like; positive controls show whether the screen can detect a real effect', ok: true, why: 'Right: you need both to judge the lncRNA results.' },
+          { t: 'Neutral controls kill the cells; positive controls leave them alone', ok: false, why: 'Reversed. Neutral loci are not expected to change cell behavior; positive controls are genes with known effects.' },
+          { t: 'Both are lncRNAs that the paper goes on to study in detail', ok: false, why: 'Neutral loci are harmless places in the genome, and positive controls are protein-coding genes.' },
+          { t: 'They make sure each cell receives exactly one guide', ok: false, why: 'Guide delivery per cell depends on the infection conditions, not on controls.' },
+        ], source: ['res-pipeline-p3'] },
+    ],
+    sources: ['res-multipheno-p6'],
+  },
+
+  'res-pipeline-p4': {
+    plain: `<p>These targets (the lncRNAs plus the controls) form the basis of “libDECKO-NSCLC1”: a CRISPR-del library with a depth of 10 unique pgRNAs per target (ten different guide pairs aimed at each target), 12,000 pgRNAs altogether (Figure 1C; Table S1 is supplementary).</p>
+<p>After the library was cloned into the DECKO backbone (the plasmid that carries the guide pairs; Figure S1C is supplementary), sequencing showed high quality in two respects:</p>
+<ul><li><b>Sequence identity</b>: 60.8% perfect match across both spacers (the two guide sequences of each pair).</li>
+<li><b>Coverage</b>, meaning how evenly the guide pairs are represented: the 90th to 10th percentile count ratio was 4.6-fold. Ranked from rare to common, the guide pair at the 90th percentile had 4.6 times the count of the one at the 10th percentile; a ratio of one would be perfectly even (Figure S1F is supplementary).</li></ul>`,
+    why: `It turns the target list into a physical tool and reports, in the authors’ words, that the tool itself is of high quality (the intended sequences are present and fairly evenly represented). That checks the library, not yet whether the guides work in cells; the next paragraph does that.`,
+    memory: `A box of 12,000 different keys: before you try them on doors, check that every key is cut as intended (identity) and that no key is nearly absent while another is in huge supply (coverage).`,
+    flags: [
+      `Number check: the text says 12,000 pgRNAs with 10 per target. Figure 1A says “1,200 targets (Depth: 10 pgRNAs)”, which fits, but Figure 1B says “1200 pgRNAs library including controls”, which looks like a typo for 12,000 (the Methods say 12,000: m-library-design-p5). The paper does not comment.`,
+      `The authors call 60.8% “high quality” but the paragraph does not say what the threshold is, what the rest look like, or what the percentage is a percentage of (reads or distinct pgRNAs).`,
+      `Supplementary: not in your PDF — Table S1 and Figures S1C and S1F, so the two quality numbers cannot be checked in the main figures.`,
+    ],
+    prereqs: ['D1', 'D3', 'D4'],
+    checks: [
+      { q: 'What does “a depth of 10 unique pgRNAs per target” mean, and how big is the whole library?',
+        options: [
+          { t: 'Each target is aimed at by ten different guide pairs; 12,000 pgRNAs altogether', ok: true, why: 'Right: ten pairs per target, 12,000 in the whole library.' },
+          { t: 'Each guide pair is delivered to ten cells; 12,000 cells altogether', ok: false, why: 'Depth is about library design (guide pairs per target). Cells per guide is “coverage”.' },
+          { t: 'Each guide pair cuts its target ten times', ok: false, why: 'Depth counts different guide pairs; it says nothing about how often a pair cuts.' },
+          { t: 'Each guide pair is aimed at ten different targets', ok: false, why: 'Reversed: ten guide pairs per target, not ten targets per guide pair.' },
+        ], source: ['res-pipeline-p4'] },
+    ],
+    sources: ['fig1A', 'fig1B', 'm-library-design-p5'],
+    derived: ['1200'],
+  },
+
+  'res-pipeline-p5': {
+    plain: `<p>To find hits of general relevance to NSCLC, the authors ran parallel experiments in two widely used KRAS+ NSCLC models: the cell lines A549 and H460. They made non-clonal cell lines (mixed populations, not grown from one single cell) that stably express high levels of the Cas9 protein. The evidence is blue fluorescent protein (BFP), a glowing marker. <b>Figure 1D</b> shows cells being sorted by their blue glow; the box marks the Cas9/BFP-positive cells kept for the screens (Figure S1E is supplementary).</p>
+<p>Because the ability of pgRNAs to make the intended deletion efficiently has been called into question, the authors first did extensive validation of the library pgRNAs.</p>
+<p><b>Test 1, one known gene.</b> They targeted DNMBP-AS1 (candidate 331), a known NSCLC-promoting lncRNA. Its promoter region was deleted and its expression was lost, which the authors say supports the CRISPR-del strategy (Figures 1E and 1F; Figure S1G is supplementary). <b>In Figure 1E</b>, the top draws the DNMBP-AS1 locus and the ten library pgRNAs; in the gel below, the control lane has one long “wild-type” band, while the pgRNA lane also has a shorter “deletion” band. <b>In Figure 1F</b>, each bar is the DNMBP-AS1 RNA level with one pgRNA, compared with the control bar. Most bars are lower, but two are marked “ns” (not significant).</p>
+<p><b>Test 2, twelve more guides.</b> To assess the strategy more generally, they randomly cloned another 12 pgRNAs targeting 12 candidates. The expected deletion at the target site was seen in 10 of 12 cases. For the effect on target RNA levels, the expected decrease was seen in 7 of 12; three targets showed no change and two showed an increase (Figure S3A is supplementary). The authors say this is in line with previous observations from Shkumatava’s group.</p>`,
+    why: `It sets up the two cell models and checks that the deletion tool works before the screens are trusted. The answer is “usually, not always”, which fits the design of 10 guide pairs per target and the lower sensitivity admitted in res-multipheno-p3.`,
+    flags: [
+      `Typo: the paragraph prints “A549 and H460, Non-clonal cell lines were generated…”, with a comma and a capital N where a full stop would be expected.`,
+      `Supplementary: not in your PDF — Figures S1E, S1G and S3A. The counts for the 12 extra pgRNAs (10/12, 7/12, three, two) come from Figure S3A, so here they are the authors’ numbers.`,
+      `“Resulted in the deletion of its promoter region and loss of expression” is a summary: the gel shows one guide pair and a weaker wild-type band remains, two of the nine bars in Figure 1F are “ns”, and one of the ten guide pairs drawn in Figure 1E is not plotted (the paper does not say why). Also, the expected deletion was seen in 10 of 12 cases but the expected RNA decrease in only 7 of 12; the paragraph does not explain the difference.`,
+    ],
+    prereqs: ['C4', 'D3', 'D7'],
+    checks: [
+      { q: 'Why did the authors validate the library pgRNAs before relying on the screens?',
+        options: [
+          { t: 'Because it had been questioned whether pgRNAs reliably make the intended genomic event', ok: true, why: 'Right: the paragraph says the ability of pgRNAs to do so “has been called into question”.' },
+          { t: 'Because the screen results looked wrong', ok: false, why: 'The paragraph says the validation came first (“we first performed extensive validation”).' },
+          { t: 'Because Cas9 could not be detected in the cells', ok: false, why: 'The paragraph reports high Cas9 levels, evidenced by BFP.' },
+          { t: 'To decide which of the two cell lines to use', ok: false, why: 'A549 and H460 were used in parallel; validation tests the pgRNAs, not the cell lines.' },
+        ], source: ['res-pipeline-p5'] },
+      { q: 'In the test of 12 randomly cloned pgRNAs, what happened to the target RNA?',
+        options: [
+          { t: 'It fell for 7, did not change for three and rose for two', ok: true, why: 'Right: 7 + 3 + 2 = 12.' },
+          { t: 'It fell for 10 of 12', ok: false, why: '10 of 12 is the number of cases with the expected DNA deletion, not the RNA result.' },
+          { t: 'It fell for all 12', ok: false, why: 'Three targets showed no change and two showed an increase.' },
+          { t: 'It rose for 7 and fell for two', ok: false, why: 'Reversed: the expected decrease was seen for 7.' },
+        ], source: ['res-pipeline-p5'], derived: ['3'] },
+    ],
+  },
+});
+Object.assign(window.TRACKG.units, {
+  'res-pipeline': {
+    intro: `<p>This first Results section explains how the experiment is built: the cutting method (delete each lncRNA’s start site with paired guides), the list of 831 targets and the controls added to it, the library of 12,000 guide pairs, the two cell lines, and the first checks of whether the deletion tool really works.</p><p>The question it answers: <i>can hundreds of lncRNAs be switched off in one experiment, and can we trust the tool?</i></p>`,
+    recap: `<p>The authors adapted DECKO to delete transcription start sites in a pooled format and built a library of 12,000 pgRNAs (10 per target) for 831 lncRNAs (998 TSSs) plus neutral and positive controls. They made Cas9-expressing A549 and H460 cells and tested the tool: it worked for DNMBP-AS1, and in a random test of 12 extra pgRNAs the expected deletion was seen in 10 and the expected RNA decrease in 7. So the method usually works, but some guides fail.</p>`,
+  },
+});
