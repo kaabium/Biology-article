@@ -129,9 +129,9 @@
         `<text x="300" y="150" class="mid s">mini-tumor grown</text><text x="300" y="167" class="mid s">from patient cells</text>` +
         `<text x="420" y="150" class="mid s">tumor piece grown</text><text x="420" y="167" class="mid s">in an NSG mouse</text>` +
         `<text x="6" y="204" class="s b m">In this paper:</text>` +
-        `<rect x="8" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="60" y="236" class="mid s">most experiments</text><text x="60" y="254" class="mid s">(A549, H460 ...)</text>` +
-        `<rect x="128" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="180" y="245" class="mid s b">H441 spheroids</text>` +
-        `<rect x="248" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="300" y="245" class="mid s b">BE874 organoids</text>` +
+        `<rect x="8" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="60" y="236" class="mid s b">A549, H460</text><text x="60" y="254" class="mid s">(most work)</text>` +
+        `<rect x="128" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="180" y="236" class="mid s b">H441</text><text x="180" y="254" class="mid s">spheroids</text>` +
+        `<rect x="248" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="300" y="236" class="mid s b">BE874</text><text x="300" y="254" class="mid s">organoids</text>` +
         `<rect x="368" y="214" width="104" height="52" rx="8" class="f-gray"/><text x="420" y="236" class="mid s">source of BE874</text><text x="420" y="254" class="mid s">(no ASO tests)</text>` +
         `<path d="M20 292 H460" class="arrow both"/>` +
         `<text x="20" y="316" class="s m">easier and cheaper to scale up</text><text x="460" y="316" class="s m end">closer to a real tumor</text></svg>` },
@@ -312,14 +312,14 @@
         `<ellipse cx="280" cy="46" rx="26" ry="18" class="f-purple"/><text x="280" y="51" class="mid s">Cas9</text>` +
         `<path d="M170 64 V104" class="ln thick s-teal"/><path d="M280 64 V104" class="ln thick s-teal"/>` +
         `<text x="160" y="86" class="s t-teal end">guide 1</text><text x="290" y="86" class="s t-teal">guide 2</text>` +
-        `<path d="M10 124 H470" class="ln thick s-blue"/>` +
+        `<path d="M10 124 H170 M280 124 H290 M460 124 H470" class="ln thick s-blue"/>` +
         `<rect x="170" y="110" width="110" height="28" class="f-red"/><text x="225" y="129" class="mid s b">TSS region</text>` +
         `<rect x="290" y="110" width="170" height="28" rx="6" class="f-orange"/><text x="375" y="129" class="mid b">lncRNA gene</text>` +
         `<path d="M170 100 V148" class="ln thick s-red"/><path d="M280 100 V148" class="ln thick s-red"/>` +
         `<path d="M225 154 V196" class="arrow"/><text x="240" y="180" class="s">cell joins the ends</text>` +
         `<rect x="372" y="160" width="88" height="26" rx="6" class="f-red"/><text x="416" y="178" class="mid s">lost piece</text>` +
         `<text x="10" y="208" class="s m b">after</text>` +
-        `<path d="M10 226 H470" class="ln thick s-blue"/>` +
+        `<path d="M10 226 H170 M340 226 H470" class="ln thick s-blue"/>` +
         `<rect x="170" y="212" width="170" height="28" rx="6" class="f-gray"/><text x="255" y="231" class="mid s b">gene without its TSS</text>` +
         `<path d="M170 204 V250" class="ln dash m"/>` +
         `<text x="240" y="282" class="mid b">No TSS left: the gene is not copied into RNA</text></svg>` },
@@ -333,13 +333,13 @@
     { k: 'svg', caption: 'Three ways to switch off a lncRNA. This paper uses the first; the other two appear only in comparisons.',
       svg: `<svg viewBox="0 0 480 346" role="img" aria-label="Three ways to switch off a lncRNA: CRISPR-del cuts the DNA twice and removes the TSS region; CRISPRi parks a dead Cas9 on the start site without cutting; Cas13 cuts the RNA itself">` +
         `<text x="6" y="20" class="b">1 · CRISPR-del: two cuts remove the TSS region</text>` +
-        `<path d="M10 64 H470" class="ln thick s-blue"/>` +
+        `<path d="M10 64 H170 M250 64 H260 M460 64 H470" class="ln thick s-blue"/>` +
         `<rect x="170" y="50" width="80" height="28" class="f-red"/><text x="210" y="69" class="mid s">TSS region</text>` +
         `<rect x="260" y="50" width="200" height="28" rx="6" class="f-orange"/><text x="360" y="69" class="mid b">gene</text>` +
         `<path d="M170 40 V88" class="ln thick s-red"/><path d="M250 40 V88" class="ln thick s-red"/>` +
         `<text x="6" y="108" class="s m">The DNA is cut and changed for good.</text>` +
         `<text x="6" y="140" class="b">2 · CRISPRi: a "dead" Cas9 blocks the start</text>` +
-        `<path d="M10 196 H470" class="ln thick s-blue"/>` +
+        `<path d="M10 196 H170 M250 196 H260 M460 196 H470" class="ln thick s-blue"/>` +
         `<rect x="170" y="182" width="80" height="28" class="f-gray"/>` +
         `<rect x="260" y="182" width="200" height="28" rx="6" class="f-orange"/><text x="360" y="201" class="mid b">gene</text>` +
         `<ellipse cx="210" cy="170" rx="42" ry="18" class="f-purple"/><text x="210" y="175" class="mid s">dead Cas9</text>` +
