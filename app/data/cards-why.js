@@ -67,7 +67,7 @@
     back: "It is the most common NSCLC subtype, yet it is mostly treated with cytotoxic platinum chemotherapy, and newly approved targeted therapies only extend life by a few months, so new therapeutic targets are needed." },
   { id: 'w-lncrna-targets', deck: 'why', kind: 'paper', lesson: 'G-intro', source: ['intro-p2'],
     front: "Why look for new therapeutic targets among <b>lncRNAs</b>?",
-    back: "They are a large, mostly unexplored source: likely over 100,000 lncRNAs, of which over 98% are uncharacterized. Some (SAMMSON, lncGRS-1) are drug targets because tumor cells are sensitive to their inhibition by ASOs." },
+    back: "They are a large, mostly unexplored source: likely over 100,000 lncRNAs, of which over 98% are uncharacterized. Some (SAMMSON, lncGRS-1) have attracted attention as drug targets because tumor cells are very sensitive to their inhibition by ASOs." },
   { id: 'w-hallmarks', deck: 'why', kind: 'paper', lesson: 'G-intro', source: ['intro-p5'],
     front: "Why screen <b>several hallmarks</b> and two backgrounds, rather than one proliferation screen in one cell line?",
     back: "Single-hallmark, single-background screens find hits that may not generalize. An ideal screen prioritizes targets that are pleiotropic (several hallmarks) and background independent (effective in any cell model)." },

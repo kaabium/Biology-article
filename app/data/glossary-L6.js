@@ -221,7 +221,7 @@
 },
 {
   id: 'cell-cycle-assay',
-  short: 'A flow cytometry test that sorts cells by DNA amount to estimate what share are in G1, S and G2/M.',
+  short: 'A flow cytometry test that reads the DNA amount of each cell to estimate what share are in G1, S and G2/M.',
   long: '<p>Cells are fixed, stained with a DNA dye such as DAPI and run through a flow cytometer. The histogram of DNA amount has a peak for G1 cells (1× DNA), a peak for G2/M cells (2×) and a low plateau for S-phase cells in between. Software then estimates the share of cells in each phase. A treatment that stalls cells at a checkpoint makes the matching phase grow. DNA amount cannot tell G2 from mitosis, so the peak is often called G2/M.</p>',
   analogy: 'A traffic count at checkpoints on a ring road: a pile-up at one checkpoint shows where the cars are stuck.',
   see: ['djf-model', 'dapi', 'cell-cycle'],
