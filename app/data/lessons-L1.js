@@ -88,11 +88,11 @@
     { k: 'h', text: 'Step by step: what each filter asked' },
     { k: 'plain', source: ['res-pipeline-p2', 'res-integration-p1', 'res-integration-p2', 'fig4D'], html:
       `<p><b>831 → 80.</b> The library covers 831 lncRNAs (998 spots where the scissors can cut, because some lncRNAs have more than one). The screens asked whether cancer cells lose out when a lncRNA’s starting spot is removed. The paper merges all the screens into one <b>pan-hallmark</b> ranking: “pan” means “all”, so the ranking uses every screen at once. (The merging software is the target prioritization pipeline, <b>TPP</b>.) A cutoff called <b>FDR</b> below 0.2, a statistical filter against false alarms that is stricter when lower, decides what counts as a hit. The result is <b>80</b> hits, about 8% of those screened. Of these, 73 had not been linked to NSCLC before.</p>` },
-    { k: 'plain', source: ['res-aso-p1'], html:
+    { k: 'plain', source: ['res-aso-p1', 'res-integration-p2'], html:
       `<p><b>80 → 9 (Tier 1).</b> From the top-ranked hits, the authors picked nine by hand. They looked for lncRNAs that were new to science and showed no evidence of carrying a protein recipe. These nine are <b>Tier 1</b>. For each of them, the team found at least two different ASOs that lowered the lncRNA’s amount by at least 40%.</p>` },
-    { k: 'plain', source: ['res-aso-p2'], html:
+    { k: 'plain', source: ['res-aso-p2', 'res-aso-p1'], html:
       `<p><b>9 → 5 (Tier 2).</b> Next, the ASOs were tested on cancer cells. For five of the nine, two different ASO sequences both caused a reproducible loss of cell proliferation. When two different ASOs agree, the effect is probably caused by the target lncRNA and not by a quirk of one ASO. These five are <b>Tier 2</b>. The result held in two other lung cancer cell types, and the Tier 2 lncRNAs were also more active in tumors than in normal samples, although the authors had not used that to choose them.</p>` },
-    { k: 'plain', source: ['res-aso-p3'], html:
+    { k: 'plain', source: ['res-aso-p3', 'res-aso-p2'], html:
       `<p><b>5 → 2 (Tier 3).</b> The ASOs were then tried on normal lung cells, as a first check for harm to healthy cells. The response was weaker or absent, especially for two of the five: candidate 42, renamed <b>CHiLL1</b>, and candidate 240, called <b>GCAWKR</b>. These two are <b>Tier 3</b>. The authors add that both look unlikely to carry a protein recipe.</p>` },
 
     { k: 'h', text: 'Why the labels matter later' },
@@ -113,10 +113,10 @@
   checks: [
     { q: 'In the funnel 831 → 80 → 9 → 5 → 2, what does the number 9 stand for?',
       options: [
-        { t: 'The Tier 1 lncRNAs: top-ranked hits the authors picked by hand for ASO tests', ok: true, why: 'Right: nine lncRNAs, chosen for novelty and lack of protein-coding evidence, form Tier 1.' },
+        { t: 'The Tier 1 lncRNAs: top-ranked hits the authors picked by hand for ASO tests', ok: true, why: 'Right: nine lncRNAs, chosen because they were new and showed no evidence of carrying a protein recipe, form Tier 1.' },
         { t: 'The hits that passed the FDR cutoff in the combined ranking', ok: false, why: 'Those are the 80 hits. The nine come after them, as a hand-picked subset of the top-ranked hits.' },
         { t: 'The lncRNAs that normal lung cells tolerate best', ok: false, why: 'That is the last filter, which leaves two lncRNAs (Tier 3), not nine.' },
-      ], source: ['res-aso-p1', 'res-integration-p2'] },
+      ], source: ['summary-p1', 'res-aso-p1', 'res-aso-p2', 'res-integration-p2'] },
     { q: 'What separates Tier 2 (five lncRNAs) from Tier 1 (nine)?',
       options: [
         { t: 'For the five, two different ASO sequences both caused a reproducible loss of cancer-cell proliferation', ok: true, why: 'Right: agreement between two independent ASOs is the Tier 2 filter and points to an effect caused by the target lncRNA.' },
@@ -125,7 +125,7 @@
       ], source: ['res-aso-p1', 'res-aso-p2'] },
     { q: 'Why did the authors narrow the five Tier 2 lncRNAs down to CHiLL1 and GCAWKR?',
       options: [
-        { t: 'Normal lung cells responded weakly or not at all to ASOs against these two, a hint of fewer side effects', ok: true, why: 'Right: “diminished or absent response” in normal cells, particularly for these two, led to Tier 3.' },
+        { t: 'Normal lung cells responded weakly or not at all to ASOs against these two, a hint of less harm to healthy cells', ok: true, why: 'Right: “diminished or absent response” in normal cells, particularly for these two, led to Tier 3.' },
         { t: 'They were the only Tier 2 lncRNAs whose ASOs slowed cancer-cell growth', ok: false, why: 'All five slowed growth with two ASOs; that is how they became Tier 2.' },
         { t: 'They were the only two that are more active in tumors than in normal samples', ok: false, why: 'The paper says Tier 2 lncRNAs in general are more active in tumors, and that this was not used to choose them.' },
       ], source: ['res-aso-p2', 'res-aso-p3'] },

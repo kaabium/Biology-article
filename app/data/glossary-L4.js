@@ -159,7 +159,7 @@
 
 { id: 'organoid',
   short: 'A tiny 3D structure grown from tissue or tumor cells that organizes itself and copies some features of the original organ or tumor.',
-  long: `<p>An <b>organoid</b> is grown from cells taken from a tissue or tumor and embedded in a gel. With the right medium, the cells organize themselves into a mini-structure that resembles part of the original organ or tumor. Organoids made from a patient's tumor keep many of that patient's features, so they are used to ask how an individual patient's tumor might respond to a treatment.</p>`,
+  long: `<p>An <b>organoid</b> is usually grown from cells taken from a tissue or tumor and embedded in a gel. With the right medium, the cells organize themselves into a mini-structure that resembles part of the original organ or tumor. Organoids made from a patient's tumor keep many of that patient's features, so they are used to ask how an individual patient's tumor might respond to a treatment.</p>`,
   analogy: 'A bonsai tree: a small living copy of the real thing with the same basic shape.',
   see: ['spheroid', 'pdx', 'matrigel'],
   paperUse: { ref: 'res-aso-p7', quote: 'Organoids derived from patient-derived xenografts (PDXs) recapitulate the therapy response of individual patients.' } },
@@ -194,7 +194,7 @@
 
 { id: 'immunodeficient-mouse', full: 'NOD scid gamma',
   short: 'A mouse bred without a working immune system (NSG is a common strain), so it does not reject human tissue.',
-  long: `<p>The immune system normally attacks foreign cells, including human tumor cells. <b>Immunodeficient mice</b> are bred to lack key immune cells so that human tissue can grow in them. NSG (NOD scid gamma) mice are among the most immunodeficient: they lack the main immune-attacker cells (T, B and natural killer cells). They must live in very clean, "specific pathogen-free" housing because ordinary germs can harm them.</p>`,
+  long: `<p>The immune system normally attacks foreign cells, including human tumor cells. <b>Immunodeficient mice</b> are bred to lack key immune cells so that human tissue can grow in them. NSG (NOD scid gamma) mice are among the most immunodeficient: they lack key immune cells (T, B and natural killer cells). They must live in very clean, "specific pathogen-free" housing because ordinary germs can harm them.</p>`,
   analogy: 'A house with no security guards: strangers can move in without being thrown out.',
   see: ['xenograft', 'pdx', 'be874'],
   paperUse: { ref: 'm-pdx-p2', quote: 'NSG mice were housed under specific pathogen-free conditions' } },
