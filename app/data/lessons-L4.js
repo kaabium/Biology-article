@@ -287,3 +287,125 @@
       ], source: ['m-data-p1', 'm-data-p2'] },
   ],
 });
+
+/* ============================================================================================== D1 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'D1',
+  defines: ['aso', 'false-positive'],
+  body: [
+    { k: 'h', text: 'The problem: how do you switch off one lncRNA?' },
+    { k: 'bgnd', html: `<p>To learn what a gene or lncRNA does, you switch it off and watch what changes. This is a <b>loss-of-function (LOF)</b> experiment: if cells grow more slowly or die more easily, the lost function mattered. With thousands of lncRNAs to test, you need a tool you can re-aim at any DNA address just by changing a short piece of text. That tool is <b>CRISPR</b>.</p>` },
+
+    { k: 'h', text: 'CRISPR-Cas9: scissors with an address label' },
+    { k: 'bgnd', html: `<p>CRISPR began as a bacterial defense against viruses. Scientists turned it into an editing tool with two parts. <b>Cas9</b> is the scissors: an enzyme that cuts both strands of DNA. The <b>guide RNA</b> (gRNA, or sgRNA) is the address label: a short RNA whose roughly 20 letters match one place in the genome by complementary base pairing. Cas9 follows the guide, finds the matching DNA and cuts there. Change the guide's letters and the cut moves.</p>` +
+      `<p>The cell then repairs the cut, and the repair is often a little sloppy. For a protein-coding gene, one cut inside the reading frame (ORF) can scramble the recipe and leave a <b>knockout (KO)</b>: a gene permanently disabled in the DNA. A lncRNA has no recipe to scramble, so the small errors from one cut usually do not silence it.</p>` },
+
+    { k: 'h', text: 'Two cuts, one deletion: CRISPR-del, pgRNA and DECKO' },
+    { k: 'bgnd', html: `<p>The answer is to delete a piece that the lncRNA cannot work without. In <b>CRISPR-del</b> (CRISPR deletion), two guides make two cuts on either side of a region; the cell joins the outer ends and the piece in between is lost. The two guides together are a <b>paired guide RNA (pgRNA)</b>. <b>DECKO</b> (dual-excision CRISPR knockout) is a ready-made design that delivers both guides of a pair into the same cell, made for noncoding targets such as lncRNAs.</p>` +
+      `<p>A common choice is to delete the region around the <b>TSS</b>: without its start site, the gene cannot be copied into RNA. Why not the whole gene? Shorter deletions are generally more efficient (both cuts must happen and the ends must rejoin), and a smaller deletion is less likely to remove other DNA regulatory elements that overlap the gene.</p>` },
+    { k: 'memory', html: `<p><b>Analogy:</b> cutting a paragraph out of a recipe with two snips and taping the page back together. If the paragraph was the "Step 1: start here" line, the recipe cannot be followed. Likewise, a gene without its TSS cannot be started.</p>` },
+    { k: 'svg', caption: 'Paired guides: two Cas9 cuts at the edges of the TSS region; the cell joins the ends and the middle piece is lost.',
+      svg: `<svg viewBox="0 0 480 300" role="img" aria-label="Two guide RNAs lead two Cas9 enzymes to the two edges of the TSS region on the DNA; the cell joins the cut ends, the TSS region is lost, and the gene can no longer be copied into RNA">` +
+        `<text x="240" y="16" class="mid b">Two guides, two cuts, one deletion</text>` +
+        `<text x="10" y="106" class="s m b">before</text>` +
+        `<ellipse cx="170" cy="46" rx="26" ry="18" class="f-purple"/><text x="170" y="51" class="mid s">Cas9</text>` +
+        `<ellipse cx="280" cy="46" rx="26" ry="18" class="f-purple"/><text x="280" y="51" class="mid s">Cas9</text>` +
+        `<path d="M170 64 V104" class="ln thick s-teal"/><path d="M280 64 V104" class="ln thick s-teal"/>` +
+        `<text x="160" y="86" class="s t-teal end">guide 1</text><text x="290" y="86" class="s t-teal">guide 2</text>` +
+        `<path d="M10 124 H470" class="ln thick s-blue"/>` +
+        `<rect x="170" y="110" width="110" height="28" class="f-red"/><text x="225" y="129" class="mid s b">TSS region</text>` +
+        `<rect x="290" y="110" width="170" height="28" rx="6" class="f-orange"/><text x="375" y="129" class="mid b">lncRNA gene</text>` +
+        `<path d="M170 100 V148" class="ln thick s-red"/><path d="M280 100 V148" class="ln thick s-red"/>` +
+        `<path d="M225 154 V196" class="arrow"/><text x="240" y="180" class="s">cell joins the ends</text>` +
+        `<rect x="372" y="160" width="88" height="26" rx="6" class="f-red"/><text x="416" y="178" class="mid s">lost piece</text>` +
+        `<text x="10" y="208" class="s m b">after</text>` +
+        `<path d="M10 226 H470" class="ln thick s-blue"/>` +
+        `<rect x="170" y="212" width="170" height="28" rx="6" class="f-gray"/><text x="255" y="231" class="mid s b">gene without its TSS</text>` +
+        `<path d="M170 204 V250" class="ln dash m"/>` +
+        `<text x="240" y="282" class="mid b">No TSS left: the gene is not copied into RNA</text></svg>` },
+
+    { k: 'h', text: 'Not every guide works, and some hit the wrong place' },
+    { k: 'bgnd', html: `<p>Guides differ in how well they cut. A <b>guide efficiency score</b> (Rule Set 2 is a well-known one) predicts, from a guide's letters, how well it will work. For a deletion both cuts must happen, so the real <b>deletion efficiency</b> is lower than for a single cut and harder to predict.</p>` +
+      `<p>Another problem is the <b>off-target effect</b>: a guide that resembles a second DNA place may cut there too, or a deletion may damage something it was not meant to touch. Defenses: careful guide design with software filters, several independent guide pairs per target, and a second, independent method to confirm a result (such as ASOs, short strands that silence an RNA directly, taught later).</p>` },
+
+    { k: 'h', text: 'Other CRISPR tools: CRISPRi and Cas13' },
+    { k: 'bgnd', html: `<p><b>CRISPRi</b> (CRISPR interference) uses a "dead" Cas9 that cannot cut. A guide parks it on a gene's start site, where it blocks copying; the DNA stays unchanged and the effect is reversible. <b>Cas13</b> is a different enzyme that cuts RNA instead of DNA: a guide RNA leads it to a matching RNA, which it cuts. Tools that act on a DNA region (CRISPR-del, CRISPRi) can also disturb other DNA elements in that region; Cas13 acts on the RNA and avoids this.</p>` },
+    { k: 'svg', caption: 'Three ways to switch off a lncRNA. This paper uses the first; the other two appear only in comparisons.',
+      svg: `<svg viewBox="0 0 480 346" role="img" aria-label="Three ways to switch off a lncRNA: CRISPR-del cuts the DNA twice and removes the TSS region; CRISPRi parks a dead Cas9 on the start site without cutting; Cas13 cuts the RNA itself">` +
+        `<text x="6" y="20" class="b">1 · CRISPR-del: two cuts remove the TSS region</text>` +
+        `<path d="M10 64 H470" class="ln thick s-blue"/>` +
+        `<rect x="170" y="50" width="80" height="28" class="f-red"/><text x="210" y="69" class="mid s">TSS region</text>` +
+        `<rect x="260" y="50" width="200" height="28" rx="6" class="f-orange"/><text x="360" y="69" class="mid b">gene</text>` +
+        `<path d="M170 40 V88" class="ln thick s-red"/><path d="M250 40 V88" class="ln thick s-red"/>` +
+        `<text x="6" y="108" class="s m">The DNA is cut and changed for good.</text>` +
+        `<text x="6" y="140" class="b">2 · CRISPRi: a "dead" Cas9 blocks the start</text>` +
+        `<path d="M10 196 H470" class="ln thick s-blue"/>` +
+        `<rect x="170" y="182" width="80" height="28" class="f-gray"/>` +
+        `<rect x="260" y="182" width="200" height="28" rx="6" class="f-orange"/><text x="360" y="201" class="mid b">gene</text>` +
+        `<ellipse cx="210" cy="170" rx="42" ry="18" class="f-purple"/><text x="210" y="175" class="mid s">dead Cas9</text>` +
+        `<text x="6" y="232" class="s m">No cut: the DNA is unchanged, copying is blocked.</text>` +
+        `<text x="6" y="264" class="b">3 · Cas13: cut the RNA instead of the DNA</text>` +
+        `<path d="M110 312 C130 296 150 328 170 312 S210 296 230 312 S270 328 290 312 S330 296 350 312 S390 328 410 312" class="ln thick s-orange"/>` +
+        `<text x="90" y="316" class="s end t-orange b">RNA</text>` +
+        `<ellipse cx="270" cy="288" rx="34" ry="16" class="f-purple"/><text x="270" y="293" class="mid s">Cas13</text>` +
+        `<path d="M270 304 V324" class="ln thick s-red"/>` +
+        `<text x="6" y="342" class="s m">The RNA is cut; the DNA is not touched.</text></svg>` },
+
+    { k: 'h', text: 'How this paper uses it' },
+    { k: 'paper', ref: 'res-pipeline-p1', quote: 'This approach achieves loss-of-function (LOF) perturbations by deleting target genes’ transcription start sites (TSS) via paired guide RNAs (pgRNAs) and effectively inhibits gene expression.' },
+    { k: 'plain', source: ['res-pipeline-p1'], html:
+      `<p>The authors adapted the DECKO CRISPR-del system to a high-throughput format in which thousands of targets are tested together, to find lncRNAs that promote KRAS+ NSCLC. They switch each lncRNA off by deleting its TSS with a pgRNA, which stops the gene from being expressed.</p>` },
+    { k: 'paper', ref: 'res-pipeline-p1', quote: 'This perturbation strategy based on the deletion of TSSs rather than entire genes offers several benefits, including uniform and shorter deletions (which are more efficient) and a reduced chance of false positives arising from deleting overlapping DNA regulatory elements.' },
+    { k: 'plain', source: ['res-pipeline-p1'], html:
+      `<p>Why the TSS and not the whole gene? Two benefits: the deletions are uniform and shorter, so they are more efficient, and there is a smaller chance of <b>false positives</b> (results that look real but are not) caused by deleting DNA regulatory elements that overlap the target.</p>` },
+    { k: 'panel', id: 'fig1E', html: `<p>Top: the gene map for the lncRNA DNMBP-AS1. The black part of the green bar is the TSS target region, and each thin red line is one pgRNA: as drawn, it runs from the cut site of one guide to the cut site of the other, so the DNA between them is cut out. There are ten pgRNAs for this target.</p>` },
+    { k: 'paper', ref: 'res-pipeline-p5', quote: 'We observed expected deletion at the target site for 10/12 cases. In terms of impact on target RNA levels, we observed expected downregulations for 7/12' },
+    { k: 'plain', source: ['res-pipeline-p5', 'res-pipeline-p4'], html:
+      `<p>Does it work? For the known lncRNA DNMBP-AS1, the pgRNAs deleted its promoter region and its expression was lost. In a broader test of 12 pgRNAs aimed at 12 candidates, the expected deletion appeared in 10 of 12 cases. The target RNA went down in 7 of 12, did not change in three and went up in two. So the method often works, but not always. A sensible reading is that this is why each target gets 10 different pgRNAs in the real experiment.</p>` },
+    { k: 'plain', source: ['res-multipheno-p5'], html:
+      `<p>The factors that influence how well a pgRNA deletes are poorly understood. Using growth effect as a stand-in for deletion efficiency, the authors saw the expected link between the observed effect and the predicted sgRNA efficiency (the RuleSet2 score). They saw no link with pgRNA orientation, and only a weak tendency for larger deletions to give stronger effects.</p>` },
+    { k: 'flag', source: ['res-pipeline-p2', 'm-library-design-p4'], html:
+      `<p>Heads-up: the paper uses "off targeting" in two senses. In the main text it leaves out any target region closer than 2 kb to the nearest protein-coding exon, to avoid false results from "unintended off targeting" (presumably because a deletion that close could disturb the protein-coding gene instead). In the Methods, the guide-design software's "off-targeting filters" are about guides that match unintended DNA places.</p>` },
+    { k: 'paper', ref: 'limitations-p1', quote: 'One important caveat of CRISPR-del, in common with CRISPRi, is the risk of false-positive hits arising from unintentional targeting of overlapping cis- or trans-acting elements, such as DNA regulatory regions or opposite-strand lncRNA genes.' },
+    { k: 'plain', source: ['limitations-p1'], html:
+      `<p>CRISPR-del and CRISPRi both act on a DNA region, so both can mislead if that region also holds other regulatory DNA or a lncRNA gene on the opposite strand. The authors say that ASO validation can resolve this: they validated 8 of 12 (67%) lncRNAs that way, which suggests that around one-third of the lncRNAs found in the big experiments may act through DNA-dependent mechanisms.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: 'This may be overcome in the future by employing complementary direct RNA-targeting CRISPR perturbations, such as Cas13.' },
+    { k: 'plain', source: ['limitations-p2'], html:
+      `<p>The authors add that CRISPR-del is relatively inefficient compared with mutating a protein-coding gene's reading frame, and that known lncRNAs such as MALAT1 and MIAT were missed (the reason is unclear; one idea is alternative TSSs). They suggest direct RNA-targeting tools such as Cas13 as a future complement.</p>` },
+  ],
+  appears: [
+    { ref: 'res-pipeline-p1', note: 'DECKO CRISPR-del, LOF by deleting the TSS with pgRNAs, and the two benefits of deleting only the TSS.' },
+    { ref: 'res-pipeline-p2', note: 'Target regions closer than 2 kb to a protein-coding exon were left out to avoid unintended off targeting.' },
+    { ref: 'res-pipeline-p5', note: 'Validation: the DNMBP-AS1 deletion, 10/12 expected deletions, 7/12 expected RNA decreases.' },
+    { ref: 'res-multipheno-p5', note: 'RuleSet2 predicted guide efficiency versus observed effects; no link with pgRNA orientation.' },
+    { ref: 'limitations-p1', note: 'The caveat shared by CRISPR-del and CRISPRi, and how ASO validation addresses it.' },
+    { ref: 'limitations-p2', note: 'CRISPR-del is relatively inefficient; Cas13 is suggested as a complement.' },
+    { ref: 'fig1E', note: 'The TSS target region and the ten pgRNAs drawn on the DNMBP-AS1 gene map.' },
+  ],
+  checks: [
+    { q: 'What does the guide RNA do in CRISPR-Cas9?',
+      options: [
+        { t: 'It matches one DNA address and steers Cas9 there; Cas9 does the cutting', ok: true, why: 'Right: the guide is the address label and Cas9 is the scissors.' },
+        { t: 'It cuts the DNA itself', ok: false, why: 'The cutting is done by the Cas9 enzyme. The guide only supplies the address.' },
+        { t: 'It repairs the cut afterwards', ok: false, why: 'Repair is done by the cell\'s own machinery, often imperfectly, which is why cuts can disable genes.' },
+      ], bg: true },
+    { q: 'Why does the paper use a PAIR of guides to delete the TSS region, instead of one guide?',
+      options: [
+        { t: 'Two cuts on either side of the region let the piece between them be removed, while one cut mostly causes tiny errors that rarely silence a lncRNA', ok: true, why: 'Right: the paper deletes TSSs "via paired guide RNAs"; a lncRNA has no reading frame for a single cut to scramble.' },
+        { t: 'One guide cannot find its DNA address, so a second one is needed to help it', ok: false, why: 'A single guide finds its address fine. The second guide marks the other end of the piece to remove.' },
+        { t: 'Two guides double the amount of Cas9 in the cell', ok: false, why: 'Guides do not change the amount of Cas9; they only give it two addresses.' },
+      ], source: ['res-pipeline-p1'] },
+    { q: 'Which benefit of deleting only the TSS rather than the whole gene does the paper give?',
+      options: [
+        { t: 'The deletions are uniform and shorter (more efficient) and less likely to remove overlapping DNA regulatory elements', ok: true, why: 'Right: these are the two benefits listed in the paper.' },
+        { t: 'It guarantees that no off-target effects can happen', ok: false, why: 'Nothing guarantees that: the paper still lists false leads from overlapping DNA elements as a caveat of CRISPR-del.' },
+        { t: 'It leaves the lncRNA intact so it can still be measured', ok: false, why: 'The aim is the opposite: removing the TSS stops the lncRNA from being expressed.' },
+      ], source: ['res-pipeline-p1', 'limitations-p1'] },
+    { q: 'According to the paper, which caveat do CRISPR-del and CRISPRi share?',
+      options: [
+        { t: 'Both act on a DNA region, so they can disturb overlapping regulatory DNA or an opposite-strand lncRNA gene and give false-positive results', ok: true, why: 'Right (limitations-p1): this is why the authors validated hits with ASOs, which act on the RNA.' },
+        { t: 'Both destroy the RNA directly and therefore miss effects at the DNA level', ok: false, why: 'This describes RNA-targeting tools such as Cas13. CRISPR-del and CRISPRi act on DNA.' },
+        { t: 'Both need an immunodeficient mouse to work', ok: false, why: 'Both work in cells in a dish; mice are unrelated to this caveat.' },
+      ], source: ['limitations-p1'] },
+  ],
+});
