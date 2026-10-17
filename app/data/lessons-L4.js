@@ -37,7 +37,7 @@
         `<rect x="6" y="298" width="468" height="56" rx="10" class="f-gray"/>` +
         `<text x="240" y="318" class="mid b">HEK293T · DMEM</text><text x="240" y="338" class="mid s">kidney-derived "factory" cells that make virus particles</text></svg>` },
     { k: 'plain', source: ['m-expmodel-p1', 'res-pipeline-p5', 'res-aso-p2', 'res-aso-p3', 'm-lentivirus-p1'], html:
-      `<p>The Methods list <b>seven</b> human cell lines. <b>A549</b> and <b>H460</b> are called two widely used KRAS+ lung cancer models, and they carry the main experiments. <b>H441</b> is a third KRAS+ line, derived from a pericardial effusion metastasis (cancer that had spread into the fluid around the heart). Three <b>non-transformed lung-derived</b> lines serve as the comparison: <b>HBEC3-KT</b> (bronchial epithelial cells) and <b>MRC-5</b>, both called immortalized, and <b>CCD-16Lu</b>, called primary. <b>HEK293T</b> is the odd one out: it is the line that makes the virus particles (harmless, modified viruses used as delivery vehicles; lesson D2) that carry DNA tools into the lung cells.</p>` },
+      `<p>The Methods list <b>seven</b> cell lines. <b>A549</b> and <b>H460</b> are called two widely used KRAS+ lung cancer models, and the main experiments run in them. <b>H441</b> is a third KRAS+ line, derived from a pericardial effusion metastasis (cancer that had spread into the fluid around the heart). Three <b>non-transformed lung-derived</b> lines serve as the comparison: <b>HBEC3-KT</b> (bronchial epithelial cells) and <b>MRC-5</b>, both called immortalized, and <b>CCD-16Lu</b>, called primary. <b>HEK293T</b> is the odd one out: it is the line that makes the virus particles (harmless, modified viruses used as delivery vehicles; lesson D2) that carry DNA tools into the lung cells.</p>` },
     { k: 'paper', ref: 'm-expmodel-p1', quote: 'All the cell lines were authenticated using Short Tandem Repeat (STR) profiling (Microsynth Cell Line Typing) and tested negative for mycoplasma contamination.' },
     { k: 'plain', source: ['m-expmodel-p1', 'm-expmodel-p2', 'm-expmodel-p3'], html:
       `<p>Every line was identity-checked by STR profiling and tested negative for mycoplasma. A549 and HEK293T grow in DMEM, MRC-5 in EMEM, and H460, H441 and CCD-16Lu in RPMI-1640, each with 10% fetal bovine serum plus L-glutamine (a nutrient) and the antibiotics penicillin and streptomycin; HBEC3-KT needs a special airway-cell medium. Cells were split every 2–3 days and kept at 37°C in a humid atmosphere with 5% CO2.</p>` },
@@ -48,7 +48,7 @@
       `<p>Heads-up on doses: the Methods give the ASOs at a final 25 nM for A549, H460, NCI-H441 and MRC5-CV1, but 10 nM for HBEC3-KT and CCD-16LU. The paper does not comment on this difference, so keep it in mind when you compare cancer and normal cells.</p>` },
     { k: 'paper', ref: 'res-integration-p3', quote: 'revealed a low degree of concordance—lncRNAs tend to only display activity in the cell type where they were discovered' },
     { k: 'plain', source: ['res-integration-p3'], html:
-      `<p>Comparing the lncRNAs that mattered for growth in A549 and in H460 separately, the two lists barely overlapped: most lncRNAs were active only in the cell type where they were found. The lncRNAs that mattered in several tests (the "pan-hallmark" ones) were more <b>background-independent</b>: active in both cell types. That is why the authors use two cancer lines and prefer lncRNAs that work in both.</p>` },
+      `<p>Comparing the lncRNAs that mattered for growth in A549 and in H460 separately, the two lists agreed only to a low degree: most lncRNAs were active only in the cell type where they were found. The lncRNAs that mattered in several tests (the "pan-hallmark" ones) were more <b>background-independent</b>: active in both cell types. That is why the authors use two cancer lines and prefer lncRNAs that work in both.</p>` },
     { k: 'why', source: ['intro-p5'], html:
       `<p>The authors worry that a search in a single cell line may find lncRNAs whose effects are cell-line-specific and "do not generalize to the disease in question". They want lncRNAs that are both pleiotropic (affect several cancer hallmarks) and background independent (effective regardless of cell model).</p>` },
     { k: 'flag', source: ['m-expmodel-p1', 'res-aso-p3', 'm-aso-p1', 'm-viability-2d-p1'], html:
@@ -60,6 +60,7 @@
     { ref: 'res-aso-p3', note: 'The panel of non-transformed lung-derived cells (immortalized HBEC3-KT and MRC5-CV1, primary CCD-12Lu).' },
     { ref: 'res-integration-p3', note: 'Cell-type-specific versus background-independent activity in A549 and H460.' },
     { ref: 'intro-p5', note: 'Why a single cell line can mislead: the generalizability problem.' },
+    { ref: 'm-aso-p1', note: 'The ASO doses used in the cancer lines and in the normal lines.' },
   ],
   checks: [
     { q: 'Why did the authors test their possible treatments on HBEC3-KT, MRC-5 and CCD-16Lu cells?',
@@ -106,10 +107,10 @@
       `<p>3D cultures usually sit in <b>Matrigel</b>, a jelly-like protein mixture (extracted from mouse tumor cells) that works like the scaffold between cells in tissue. The price of realism: 3D models are slower, costlier and harder to scale up.</p>` },
 
     { k: 'h', text: 'In vitro, in vivo, ex vivo' },
-    { k: 'bgnd', html: `<p><i>In vitro</i> (Latin "in glass") means in a dish or tube. <i>In vivo</i> means inside a living animal or person. <i>Ex vivo</i> means living tissue taken from a body and studied outside it with little change, such as a fresh patient sample. Everything in the last lesson was in vitro.</p>` },
+    { k: 'bgnd', html: `<p><i>In vitro</i> (Latin "in glass") means in a dish or tube. <i>In vivo</i> means inside a living animal or person. <i>Ex vivo</i> means living tissue taken from a body and studied outside it with little change, such as a fresh patient sample. Everything in lesson C4 (cell lines) was in vitro.</p>` },
 
     { k: 'h', text: 'Mouse models: xenografts and PDX' },
-    { k: 'bgnd', html: `<p>A <b>xenograft</b> is tissue grafted from one species into another ("xeno" means foreign), usually human tumor cells growing in a mouse. In a <b>patient-derived xenograft (PDX)</b> the graft is a piece of a patient's own tumor. For human tissue to grow, the mouse must be <b>immunodeficient</b>: with no working immune system it cannot reject the foreign cells. <b>NSG</b> mice, a common strain, lack the main immune-attacker cells (T, B and natural killer cells).</p>` +
+    { k: 'bgnd', html: `<p>A <b>xenograft</b> is tissue grafted from one species into another ("xeno" means foreign), usually human tumor cells growing in a mouse. In a <b>patient-derived xenograft (PDX)</b> the graft is a piece of a patient's own tumor. For human tissue to grow, the mouse must be <b>immunodeficient</b>: with no working immune system it cannot reject the foreign cells. <b>NSG</b> mice, a common strain, lack key immune cells (T, B and natural killer cells).</p>` +
       `<p>A PDX tumor can also be taken out of the mouse and its cells grown as organoids: a dish model that began in a patient.</p>` },
     { k: 'memory', html: `<p><b>Analogy:</b> a 2D dish is a street map: cheap, quick, lots of detail, but flat. A spheroid or organoid is a scale model of the city: you see height and crowding. A PDX mouse is a small pilot town with real traffic: the most realistic, but slow and costly.</p>` },
     { k: 'svg', caption: 'The ladder of lab models. The paper uses the first three for its ASO tests; the mouse is used only to grow the tumor that became BE874.',
@@ -239,6 +240,8 @@
     { k: 'paper', ref: 'm-public-rnaseq-p1', quote: 'Another independent cohort of LUAD RNA-seq ex vivo data, containing 87 tumor and 77 adjacent normal tissue samples, was obtained from the TANRIC.' },
     { k: 'plain', source: ['m-public-rnaseq-p1', 'res-integration-p4'], html:
       `<p>To see whether the lncRNAs that mattered in the lab also look relevant in patients, the authors used two cohorts of lung adenocarcinoma RNA data. From TCGA they took 101 untreated, KRAS-mutated samples. From TANRIC they took an independent cohort of 87 tumors and 77 adjacent normal samples. Their logic: cancer-promoting lncRNAs are expected to be upregulated in tumors. They report that the lncRNAs that mattered in several tests are higher than the other lncRNAs in KRAS+ tumors, and higher in tumors than in adjacent tissue.</p>` },
+    { k: 'plain', source: ['res-aso-p2', 'res-aso-p9'], html:
+      `<p>TCGA also helps to ask how many patients a treatment might reach. The authors report that the Tier 2 lncRNAs are overexpressed in NSCLC tumors, although this was not a selection criterion, and that in TCGA tumors 78% express at least one of CHiLL1 and GCAWKR, a share that rises to 92% for Tier 2.</p>` },
     { k: 'panel', id: 'fig4G', html: `<p>The left pair of shapes shows non-tumor samples (n = 77) and the right pair tumor samples (n = 87). Each shape shows how the RNA levels spread across the samples.</p>` },
     { k: 'flag', source: ['m-public-rnaseq-p1', 'res-integration-p4', 'fig4G'], html: `<p>Heads-up: the paper names the comparison tissue in several ways: "adjacent normal tissue" (Methods), "adjacent tissue" (main text), "healthy tissues" and "normal" (Figure 4G legend) and "Non-tumour" (printed on the figure). The sample numbers (77) match, so they appear to be the same samples.</p>` },
     { k: 'plain', source: ['res-integration-p4', 'fig4H', 'm-cnv-p1', 'm-cnv-p3'], html:
@@ -252,6 +255,8 @@
   ],
   appears: [
     { ref: 'm-public-rnaseq-p1', note: 'The TCGA cohort (101 KRAS+ samples) and the TANRIC cohort (87 tumor, 77 adjacent normal).' },
+    { ref: 'fig4F', note: 'Expression of the lncRNAs that mattered versus all others in the 101 KRAS+ TCGA tumors.' },
+    { ref: 'res-aso-p9', note: 'In TCGA tumors, 78% express at least one of CHiLL1 and GCAWKR (92% for Tier 2).' },
     { ref: 'res-integration-p4', note: 'Hit lncRNAs are higher in KRAS+ tumors, higher in tumors than adjacent tissue, and tend to be amplified.' },
     { ref: 'fig4H', note: 'PCAWG copy-number comparison of the lncRNAs that mattered versus all others.' },
     { ref: 'm-cnv-p1', note: 'CCLE supplies the copy number of A549 and H460.' },

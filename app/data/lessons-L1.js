@@ -51,8 +51,8 @@
   checks: [
     { q: 'Two tools appear in the story: CRISPR guides and ASOs. Which description is right?',
       options: [
-        { t: 'CRISPR cuts out the start of each lncRNA’s gene in the screens; ASOs lower a chosen RNA in the follow-up tests', ok: true, why: 'Right: CRISPR guides are used in the big screens (stage 1), ASOs in the later tests of the best hits (stage 5).' },
-        { t: 'ASOs cut out the start of the gene in the screens; CRISPR lowers the RNA afterward', ok: false, why: 'This swaps the two tools. ASOs do not cut DNA; they stick to an RNA and lower its amount.' },
+        { t: 'CRISPR cuts out the start of each lncRNA’s gene in the screens; ASOs lower a chosen RNA in the follow-up tests', ok: true, why: 'Right: CRISPR guides are used in the big screens, ASOs in the later tests of the best hits.' },
+        { t: 'ASOs cut out the start of the gene in the screens; CRISPR lowers the RNA afterward', ok: false, why: 'This swaps the two tools. ASOs do not cut out the start of a gene; they stick to an RNA and lower its amount.' },
         { t: 'Both are medicines that kill cancer cells directly', ok: false, why: 'Neither is a cell-killing drug here. Both are research tools to switch one lncRNA off and see what happens (the cell-killing drug in the story is cisplatin).' },
       ], source: ['res-pipeline-p1', 'res-aso-p1'] },
     { q: 'Why did the authors run three different screens (growth, cisplatin and migration) instead of one?',
@@ -63,7 +63,7 @@
       ], source: ['intro-p5', 'res-multipheno-p2'] },
     { q: 'How do the two finalists, CHiLL1 and GCAWKR, differ?',
       options: [
-        { t: 'CHiLL1 sits mainly in the cytoplasm and GCAWKR in the nucleus, and they change largely different sets of genes', ok: true, why: 'Right: the paper stresses their contrasting locations and non-overlapping downstream gene networks.' },
+        { t: 'CHiLL1 sits mainly in the cytoplasm and GCAWKR in the nucleus, and they change largely different sets of genes', ok: true, why: 'Right: the paper stresses their contrasting locations and non-overlapping gene networks.' },
         { t: 'Both sit in the nucleus and change the same genes', ok: false, why: 'The authors call it surprising that, despite similar roles in cancer, the two sit in different places and act through different gene networks.' },
         { t: 'CHiLL1 sits in the nucleus and GCAWKR in the cytoplasm', ok: false, why: 'This reverses the paper: CHiLL1 is found mainly in the cytoplasm, GCAWKR in the nucleus.' },
       ], source: ['res-mechanism-p1', 'res-mechanism-p8'] },
@@ -71,3 +71,69 @@
 }
 
 );
+
+/* ============================================================================================== A2 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'A2',
+  defines: ['tpp', 'fdr', 'aso-cocktail'],
+  body: [
+    { k: 'h', text: 'The funnel at a glance' },
+    { k: 'plain', source: ['summary-p1', 'res-aso-p1', 'res-aso-p2', 'res-aso-p3'], html:
+      `<p>The whole study can be read as five numbers: <b>831 → 80 → 9 → 5 → 2</b>. Each arrow is one filter, and each filter asks a different question. The authors shortened their list from 831 lncRNAs to 80 hits, then to nine, five and finally two lncRNAs: <b>CHiLL1</b> and <b>GCAWKR</b>.</p>` },
+    { k: 'svg', caption: 'The funnel, not to scale. Each level keeps only the lncRNAs that pass one more question.',
+      svg: `<svg viewBox="0 0 480 360" role="img" aria-label="A funnel with five levels, from 831 lncRNAs at the top to 80 hits, 9, 5 and finally 2 at the bottom, each with the question that level asked"><path d="M15 8 H169 L158 72 H26 Z" class="f-blue"/><text x="92" y="48" class="mid b xl">831</text><text x="186" y="28" class="b">831 lncRNAs in the library</text><text x="186" y="46" class="s m">Q: Which do the cancer cells need</text><text x="186" y="62" class="s m">for growth, drug survival or movement?</text><path d="M28 78 H156 L145 142 H39 Z" class="f-teal"/><text x="92" y="118" class="mid b xl">80</text><text x="186" y="98" class="b">80 hits (pan-hallmark)</text><text x="186" y="116" class="s m">Q: Which score best when all the</text><text x="186" y="132" class="s m">screens are combined?</text><path d="M41 148 H143 L132 212 H52 Z" class="f-green"/><text x="92" y="188" class="mid b xl">9</text><text x="186" y="168" class="b">9 picked by hand (Tier 1)</text><text x="186" y="186" class="s m">Q: Which top hits are new and show</text><text x="186" y="202" class="s m">no sign of a protein recipe?</text><path d="M54 218 H130 L119 282 H65 Z" class="f-orange"/><text x="92" y="258" class="mid b xl">5</text><text x="186" y="238" class="b">5 reproducible (Tier 2)</text><text x="186" y="256" class="s m">Q: Do two different ASOs both slow</text><text x="186" y="272" class="s m">the cancer cells’ growth?</text><path d="M67 288 H117 L106 352 H78 Z" class="f-red"/><text x="92" y="328" class="mid b xl">2</text><text x="186" y="308" class="b">2 finalists (Tier 3)</text><text x="186" y="326" class="s m">Q: Is the effect weaker in normal</text><text x="186" y="342" class="s m">lung cells? CHiLL1 and GCAWKR</text></svg>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a talent show. 831 contestants audition and the scores from every round are added up (the 80 who go through). The organizers hand-pick nine for the callbacks (Tier 1). Five survive a second audition in front of two different judges (Tier 2). Two reach the final because the home audience, the normal cells, hardly reacts to them (Tier 3).</p>` },
+
+    { k: 'h', text: 'Step by step: what each filter asked' },
+    { k: 'plain', source: ['res-pipeline-p2', 'res-integration-p1', 'res-integration-p2', 'fig4D'], html:
+      `<p><b>831 → 80.</b> The library covers 831 lncRNAs (998 spots where the scissors can cut, because some lncRNAs have more than one). The screens asked whether cancer cells lose out when a lncRNA’s starting spot is removed. The paper merges all the screens into one <b>pan-hallmark</b> ranking: “pan” means “all”, so the ranking uses every screen at once. (The merging software is the target prioritization pipeline, <b>TPP</b>.) A cutoff called <b>FDR</b> below 0.2, a statistical filter against false alarms that is stricter when lower, decides what counts as a hit. The result is <b>80</b> hits, about 8% of those screened. Of these, 73 had not been linked to NSCLC before.</p>` },
+    { k: 'plain', source: ['res-aso-p1'], html:
+      `<p><b>80 → 9 (Tier 1).</b> From the top-ranked hits, the authors picked nine by hand. They looked for lncRNAs that were new to science and showed no evidence of carrying a protein recipe. These nine are <b>Tier 1</b>. For each of them, the team found at least two different ASOs that lowered the lncRNA’s amount by at least 40%.</p>` },
+    { k: 'plain', source: ['res-aso-p2'], html:
+      `<p><b>9 → 5 (Tier 2).</b> Next, the ASOs were tested on cancer cells. For five of the nine, two different ASO sequences both caused a reproducible loss of cell proliferation. When two different ASOs agree, the effect is probably caused by the target lncRNA and not by a quirk of one ASO. These five are <b>Tier 2</b>. The result held in two other lung cancer cell types, and the Tier 2 lncRNAs were also more active in tumors than in normal samples, although the authors had not used that to choose them.</p>` },
+    { k: 'plain', source: ['res-aso-p3'], html:
+      `<p><b>5 → 2 (Tier 3).</b> The ASOs were then tried on normal lung cells, as a first check for harm to healthy cells. The response was weaker or absent, especially for two of the five: candidate 42, renamed <b>CHiLL1</b>, and candidate 240, called <b>GCAWKR</b>. These two are <b>Tier 3</b>. The authors add that both look unlikely to carry a protein recipe.</p>` },
+
+    { k: 'h', text: 'Why the labels matter later' },
+    { k: 'plain', source: ['res-aso-p8', 'res-aso-p9'], html:
+      `<p>The paper keeps using these labels. A <b>cocktail</b> is a mix of ASOs used at the same total dose as a single ASO. The “Tier 3 cocktail” is a 50:50 mix of the CHiLL1 and GCAWKR ASOs, and the “Tier 2 cocktail” mixes five ASOs, one for each Tier 2 lncRNA. Both mixes worked better than a single ASO at an equal dose. In a public dataset of patients’ tumors, 78% of the tumors make at least one of CHiLL1 and GCAWKR, and 92% make at least one of the Tier 2 lncRNAs.</p>` },
+    { k: 'flag', source: ['summary-p1', 'res-aso-p3'], html:
+      `<p>CHiLL1 is spelled out as “Cancer Hallmark in Lung LncRNA 1” in the Results but “Cancer Hallmarks in Lung LncRNA 1” in the Summary. Both mean the same lncRNA. The paper gives no long form for GCAWKR.</p>` },
+    { k: 'flag', source: ['res-integration-p2', 'res-pipeline-p2'], derived: ['9.6', '13.4'], html:
+      `<p>The paper says the 80 hits are “∼8% of those screened”. Dividing 80 by the 998 cutting spots gives 8.0%, whereas 80 out of the 831 lncRNAs would be about 9.6% (my own arithmetic). So the paper’s percentage seems to count cutting spots, not lncRNAs, although it does not say so. Its other percentage fits the same way: 134 hits as ∼13%, and 134 out of 998 is 13.4%.</p>` },
+  ],
+  appears: [
+    { ref: 'summary-p1', note: 'The summary names the start (831 lncRNAs), the 80 high-confidence hits and the final two.' },
+    { ref: 'res-integration-p2', note: 'The 80 pan-hallmark hits (FDR < 0.2, about 8% of those screened).' },
+    { ref: 'res-aso-p1', note: 'Tier 1: nine lncRNAs picked by hand from the top-ranked hits.' },
+    { ref: 'res-aso-p3', note: 'Tier 3: CHiLL1 (candidate 42) and GCAWKR (candidate 240) after the normal-cell check.' },
+    { ref: 'res-aso-p9', note: 'The Tier 3 and Tier 2 cocktails reach 78% and 92% of the tumors in the patient dataset.' },
+  ],
+  checks: [
+    { q: 'In the funnel 831 → 80 → 9 → 5 → 2, what does the number 9 stand for?',
+      options: [
+        { t: 'The Tier 1 lncRNAs: top-ranked hits the authors picked by hand for ASO tests', ok: true, why: 'Right: nine lncRNAs, chosen for novelty and lack of protein-coding evidence, form Tier 1.' },
+        { t: 'The hits that passed the FDR cutoff in the combined ranking', ok: false, why: 'Those are the 80 hits. The nine come after them, as a hand-picked subset of the top-ranked hits.' },
+        { t: 'The lncRNAs that normal lung cells tolerate best', ok: false, why: 'That is the last filter, which leaves two lncRNAs (Tier 3), not nine.' },
+      ], source: ['res-aso-p1', 'res-integration-p2'] },
+    { q: 'What separates Tier 2 (five lncRNAs) from Tier 1 (nine)?',
+      options: [
+        { t: 'For the five, two different ASO sequences both caused a reproducible loss of cancer-cell proliferation', ok: true, why: 'Right: agreement between two independent ASOs is the Tier 2 filter and points to an effect caused by the target lncRNA.' },
+        { t: 'The five were the lncRNAs found in the most patients’ tumors', ok: false, why: 'The paper notes that Tier 2 lncRNAs are more active in tumors, but says this was not a selection criterion.' },
+        { t: 'Only the five had ASOs that lowered the lncRNA by at least 40%', ok: false, why: 'All nine Tier 1 lncRNAs already had at least two independent ASOs with at least 40% knockdown.' },
+      ], source: ['res-aso-p1', 'res-aso-p2'] },
+    { q: 'Why did the authors narrow the five Tier 2 lncRNAs down to CHiLL1 and GCAWKR?',
+      options: [
+        { t: 'Normal lung cells responded weakly or not at all to ASOs against these two, a hint of fewer side effects', ok: true, why: 'Right: “diminished or absent response” in normal cells, particularly for these two, led to Tier 3.' },
+        { t: 'They were the only Tier 2 lncRNAs whose ASOs slowed cancer-cell growth', ok: false, why: 'All five slowed growth with two ASOs; that is how they became Tier 2.' },
+        { t: 'They were the only two that are more active in tumors than in normal samples', ok: false, why: 'The paper says Tier 2 lncRNAs in general are more active in tumors, and that this was not used to choose them.' },
+      ], source: ['res-aso-p2', 'res-aso-p3'] },
+    { q: 'What does “pan-hallmark” mean in this paper?',
+      options: [
+        { t: 'One ranking that combines the evidence of all the screens', ok: true, why: 'Right: the paper runs its merging method on all screens for a pan-hallmark ranking, or on one hallmark at a time for hallmark-specific ones.' },
+        { t: 'Hits that scored in all three hallmarks', ok: false, why: 'Among the paper’s hallmark-specific hits, 19 were found in two hallmarks and none in three. The pan-hallmark ranking does not require a hit in every hallmark; it combines everything.' },
+        { t: 'A ranking from the growth screen alone', ok: false, why: 'A single screen is a one-hallmark view. “Pan” means all, so the ranking uses every screen.' },
+      ], source: ['res-integration-p1', 'res-integration-p2'] },
+  ],
+});

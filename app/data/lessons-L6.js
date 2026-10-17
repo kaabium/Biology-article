@@ -335,3 +335,94 @@
   ],
 },
 );
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+
+/* ============================================================================================== D10 */
+{
+  id: 'D10',
+  defines: ['signaling-pathway'],
+  body: [
+    { k: 'h', text: 'RNA-seq: reading all the RNAs at once' },
+    { k: 'bgnd', html: `<p>qRT-PCR (lesson D7) measures one RNA at a time. <b>RNA-seq</b> (RNA sequencing) measures nearly all of them in one go. RNA is extracted, turned into cDNA, and a sequencing machine (lesson D4) reads millions of short pieces called reads. Each read is matched to the gene or transcript it came from, and the reads are counted: a gene with many reads was making a lot of RNA. The result is a table with one number per gene per sample, a snapshot of the transcriptome.</p>
+<p>The matching and counting is done by <b>quantification</b> software. <b>Kallisto</b> estimates how many reads came from each transcript (isoform) of a reference list such as GENCODE, and repeats the estimate on resampled reads (<b>bootstraps</b>) to show how uncertain it is; <b>Sleuth</b> then compares two conditions. <b>RSEM</b> is another widely used program of this kind.</p>` },
+    { k: 'h', text: 'Counting fairly: normalization, CPM, TPM, FPKM' },
+    { k: 'bgnd', html: `<p>Raw read counts mislead. A sample sequenced more deeply gives more reads for every gene, and a longer gene gives more reads than a shorter one with the same number of RNA molecules. <b>Normalization</b> means adjusting the numbers so that comparisons are fair. Three common units:</p>
+<ul>
+<li><b>CPM</b> (counts per million): a gene's reads ÷ all reads in the sample × 1 million. It fixes sequencing depth only, so it suits comparing one gene between samples, or items of equal length such as CRISPR guides.</li>
+<li><b>FPKM</b> (fragments per kilobase of transcript per million reads): also divides by the transcript's length, so it fixes depth and length.</li>
+<li><b>TPM</b> (transcripts per million): fixes the same two things in the other order (length first, then scaling), so every sample's TPM values add up to 1 million. A TPM is a share: out of every million RNA molecules, this many are this transcript. That makes it easy to compare between samples.</li>
+</ul>` },
+    { k: 'worked', html: `<p><b>Worked example (made-up numbers).</b> Gene A is 1 kb long and gene B is 4 kb, and both are present as 100 molecules. B gives about four times more reads, so raw counts wrongly say B is four times as abundant; dividing by length (per kb) removes that. If sample 2 is sequenced twice as deeply as sample 1, every count doubles although nothing changed; dividing by total reads (per million) removes that.</p>` },
+    { k: 'h', text: 'Differentially expressed genes (DEGs)' },
+    { k: 'bgnd', html: `<p>A <b>differentially expressed gene (DEG)</b> is a gene whose RNA level differs between two conditions (here: ASO-treated versus control cells) by more than chance would explain. For each gene the software reports a fold change (lesson E1) and a p-value corrected for testing thousands of genes at once, the q-value (lesson E4). Where to draw the line is the analyst's choice. A DEG list says what changed, not why, and it includes indirect effects.</p>` },
+    { k: 'h', text: 'Pathway enrichment: what do the DEGs have in common?' },
+    { k: 'bgnd', html: `<p>A list of 2,000 DEGs is hard to read. <b>Pathway enrichment</b> asks: do the DEGs contain more genes from a known group than chance would give? (A pathway is a chain of molecules that pass a message or do a job together.) Suppose 10% of all genes are DEGs. A group of 100 genes should then hold about 10 DEGs by chance; if it holds 35, the group is <i>enriched</i>. The usual test is a hypergeometric or Fisher's exact test (lesson E3), followed by a correction for the many groups tested (lesson E4).</p>
+<p>The groups come from databases. <b>KEGG</b> (Kyoto Encyclopedia of Genes and Genomes) holds hand-drawn maps of pathways and diseases, such as "Apoptosis" or "Non-small cell lung cancer". <b>MSigDB</b> (Molecular Signatures Database) is a large collection of gene sets, including 50 "Hallmark" sets with names like "G2-M Checkpoint" (a different list from the hallmarks of cancer, lesson C1). <b>Enrichr</b>, with its R package <b>enrichR</b>, tests a gene list against dozens of such databases at once. <b>GSEA</b> (gene set enrichment analysis) does not cut the list: it ranks all genes, for example by fold change, and checks whether a set's members cluster at the top or bottom. Enrichment is a hint, not proof: it gives you ideas to test.</p>` },
+    { k: 'svg', caption: 'From cells to ideas: the RNA-seq pipeline in this lesson (teal = computer steps).',
+      svg: '<svg viewBox="0 0 480 362" role="img" aria-label="Flow of six boxes: control and ASO-treated cells, reads counted per transcript, counts made comparable, differentially expressed genes, enriched gene groups, and a testable idea that goes back to the lab">' +
+        '<rect x="10" y="10" width="270" height="40" rx="8" class="f-blue"/><text x="145" y="35" class="mid s b">Control vs ASO-treated cells</text>' +
+        '<text x="294" y="27" class="s m">RNA to cDNA to sequencer:</text><text x="294" y="44" class="s m">millions of short reads</text>' +
+        '<path d="M145 50 V68" class="arrow"/>' +
+        '<rect x="10" y="70" width="270" height="40" rx="8" class="f-teal"/><text x="145" y="95" class="mid s b">Reads counted per transcript</text>' +
+        '<text x="294" y="87" class="s m">quantification:</text><text x="294" y="104" class="s m">Kallisto, RSEM</text>' +
+        '<path d="M145 110 V128" class="arrow"/>' +
+        '<rect x="10" y="130" width="270" height="40" rx="8" class="f-teal"/><text x="145" y="155" class="mid s b">Counts made comparable</text>' +
+        '<text x="294" y="147" class="s m">normalization:</text><text x="294" y="164" class="s m">CPM, FPKM, TPM</text>' +
+        '<path d="M145 170 V188" class="arrow"/>' +
+        '<rect x="10" y="190" width="270" height="40" rx="8" class="f-teal"/><text x="145" y="215" class="mid s b">DEGs: genes that go up or down</text>' +
+        '<text x="294" y="207" class="s m">a statistical test (Sleuth)</text><text x="294" y="224" class="s m">with a q-value cutoff</text>' +
+        '<path d="M145 230 V248" class="arrow"/>' +
+        '<rect x="10" y="250" width="270" height="40" rx="8" class="f-teal"/><text x="145" y="275" class="mid s b">Enriched gene groups (pathways)</text>' +
+        '<text x="294" y="267" class="s m">KEGG, MSigDB gene sets;</text><text x="294" y="284" class="s m">enrichR, GSEA</text>' +
+        '<path d="M145 290 V308" class="arrow"/>' +
+        '<rect x="10" y="310" width="270" height="40" rx="8" class="f-orange"/><text x="145" y="335" class="mid s b">A testable idea, back to the lab</text>' +
+        '<text x="294" y="327" class="s m">e.g. apoptosis genes lead</text><text x="294" y="344" class="s m">to an Annexin V assay</text></svg>' },
+    { k: 'memory', html: `<p><b>Analogy:</b> RNA-seq is a census that counts the inhabitants of every town at once. Normalization adjusts for the size of the sample (sequencing depth) and the size of the town (gene length). Enrichment asks which districts show a surprisingly large share of the people who moved.</p>` },
+    { k: 'h', text: 'How this paper uses them' },
+    { k: 'paper', ref: 'm-rnaseq-p2', quote: 'Transcript quantification was performed using Kallisto v0.46.0 against GENCODE v36. … Genes with a q-value <0.2 were considered significant.' },
+    { k: 'plain', source: ['m-rnaseq-p1', 'm-rnaseq-p2', 'fig6F'], html: `<p>A549 and H460 cells were harvested 24 h after ASO transfection; the RNA-seq libraries were paired-end 150 and sequenced to a depth of 30 million reads per sample. Kallisto quantified the transcripts, isoforms were added up to gene level, and Sleuth tested for DEGs (q-value below 0.2). For CHiLL1 they kept the genes that changed with both ASOs. Figure 6F lists 2006 DEGs for A549 and 3015 for H460 (the panel prints "H450").</p>` },
+    { k: 'paper', ref: 'res-mechanism-p2', quote: 'CHiLL1 expression in control cells was 8.3 transcripts per million (TPM)' },
+    { k: 'plain', source: ['res-mechanism-p2', 'res-mechanism-p6', 'fig6E'], html: `<p>CHiLL1 is at 8.3 TPM in control cells, which the authors translate as about 4 molecules per cell, "consistent with FISH"; GCAWKR is at 2.5 TPM, about 1 copy per cell. RNA-seq also confirmed the knockdown by the ASOs, and the gene changes caused by the two CHiLL1 ASOs agree: R = 0.75 in Figure 6E, where 874 genes rise with both ASOs, 808 fall with both, and 171 and 153 move in opposite directions. The authors conclude that most effects arise on-target.</p>` },
+    { k: 'paper', ref: 'res-mechanism-p3', quote: `we identified enriched KEGG terms (Figures 6F and S6D). These underscored disease relevance (e.g., "non-small cell lung cancer") and also implicated potential mechanistic pathways (MAPK, PI3K-Akt)` },
+    { k: 'paper', ref: 'res-mechanism-p4', quote: 'A similar analysis of the Molecular Signatures Database (MSigDB) implicated p53 and mTORC1 signaling' },
+    { k: 'plain', source: ['res-mechanism-p3', 'res-mechanism-p6', 'm-rnaseq-p3', 'm-hits-p5', 'fig6F'], html: `<p>The enrichR package ran the enrichment. The CHiLL1 DEGs shared by both ASOs were checked against KEGG; the nine green dots of Figure 6F are cancer-relevant terms that are significant in both cell lines (R = 0.48), among them "non-small cell lung cancer", "apoptosis" and the two named pathways quoted above. The MSigDB analysis added two more, and for GCAWKR it gave terms such as "G2-M checkpoint" (Figure 6J). Lesson D11 explains what these pathways do. GSEA turns up in the screen analysis: enrichment scores (n = 10,000 simulations) checked how well positive and neutral control genes were ranked.</p>` },
+    { k: 'panel', id: 'fig6F', html: `<p>Each dot is one KEGG term; the green dots are the cancer-relevant terms. The printed DEG counts are 2006 (A549) and 3015 (H460, printed "H450").</p>` },
+    { k: 'why', source: ['res-mechanism-p5', 'res-mechanism-p6', 'discussion-p6'], html: `<p>Enrichment gave ideas that the authors then tested: "apoptosis" for CHiLL1 and the Annexin V assay (more early-apoptotic cells, Figure 6G); "G2-M checkpoint" for GCAWKR and the cell-cycle assay (more cells in G2, Figure 6K); migration genes and the crystal violet assay (impaired migration, Figure 6L).</p>` },
+    { k: 'plain', source: ['m-hits-p1', 'm-library-design-p2', 'fig5H', 'res-mechanism-p2', 'res-mechanism-p6'], html: `<p><b>Which unit where?</b> CPM: guide counts in the screens (filtered with "3 > cpm>666"). FPKM: RSEM expression in the library design (transcripts below 0.1 removed) and "expressed" meaning above 0.5 in Figure 5H. TPM: CHiLL1 (8.3) and GCAWKR (2.5).</p>` },
+    { k: 'flag', source: ['m-hits-p1', 'fig6F', 'res-mechanism-p2'], html: `<p>Heads-up: the CPM filter is printed "3 > cpm>666", probably meant as "below 3 or above 666" (the paper does not say). Figure 6F prints "H450" for H460. And the paper does not say how 8.3 TPM was converted to "about 4 molecules per cell".</p>` },
+  ],
+  appears: [
+    { ref: 'res-mechanism-p2', note: 'RNA-seq of ASO-treated A549 cells: CHiLL1 at 8.3 TPM; the two ASOs give agreeing changes (R = 0.75, Figure 6E).' },
+    { ref: 'm-rnaseq-p2', note: 'Kallisto quantification, Sleuth testing, q-value below 0.2 for DEGs.' },
+    { ref: 'res-mechanism-p3', note: 'KEGG enrichment of the CHiLL1 DEGs (Figure 6F).' },
+    { ref: 'm-library-design-p2', note: 'RSEM expression with an FPKM cutoff used when designing the library.' },
+  ],
+  checks: [
+    { q: 'Which statement about CPM, FPKM and TPM is correct?',
+      options: [
+        { t: 'CPM corrects for sequencing depth only; FPKM and TPM correct for depth and transcript length', ok: true, why: 'Right: CPM has no length term, while FPKM and TPM divide by length as well (and TPM then rescales so each sample sums to 1 million).' },
+        { t: 'All three correct for transcript length only', ok: false, why: 'All three correct for sequencing depth ("per million"); CPM does not correct for length.' },
+        { t: 'TPM corrects for depth only and FPKM for length only', ok: false, why: 'Both TPM and FPKM correct for depth and length; they differ in the order of the steps and in the totals.' },
+      ], bg: true },
+    { q: 'How were DEGs called in the paper\'s RNA-seq analysis?',
+      options: [
+        { t: 'Sleuth tested each gene, and genes with a q-value below 0.2 counted as significant', ok: true, why: 'Right (m-rnaseq-p2). For CHiLL1 the paper kept genes that changed with both ASOs.' },
+        { t: 'Any gene above 0.5 FPKM in the control cells', ok: false, why: 'That is the cutoff the paper uses to call a gene "expressed" in tumors (Figure 5H), not the rule for DEGs.' },
+        { t: 'Any gene that changed with only one of the two ASOs', ok: false, why: 'For CHiLL1 the paper kept genes changed by both ASOs, to avoid the quirks of a single ASO.' },
+      ], source: ['m-rnaseq-p2', 'fig5H'] },
+    { q: 'In Figure 6E the gene changes caused by two CHiLL1 ASOs agree (R = 0.75). What do the authors conclude?',
+      options: [
+        { t: 'Most effects arise from lowering CHiLL1 itself (on-target), not from the quirks of one ASO', ok: true, why: 'Right: two different ASOs producing the same changes points to the shared target.' },
+        { t: 'Both ASOs bind exactly the same spot on CHiLL1', ok: false, why: 'The ASOs are independent sequences. Agreement of their effects says nothing about identical binding spots.' },
+        { t: 'CHiLL1 controls every gene in the cell', ok: false, why: 'The figure shows changes in some genes; it does not say every gene depends on CHiLL1.' },
+      ], source: ['res-mechanism-p2', 'fig6E'] },
+    { q: 'What does pathway enrichment tell you about a list of DEGs?',
+      options: [
+        { t: 'Whether a known group of genes appears in the list more often than chance would give, which suggests ideas to test', ok: true, why: 'Right: it finds over-represented groups; the biology still has to be tested.' },
+        { t: 'That the enriched pathway causes the changes in the DEGs', ok: false, why: 'Enrichment shows an association. The pathway may be a cause, a consequence or only a neighbor.' },
+        { t: 'How many genes each pathway contains', ok: false, why: 'The size of a gene set is known beforehand; enrichment asks about overlap with your list.' },
+      ], bg: true },
+  ],
+},
+);

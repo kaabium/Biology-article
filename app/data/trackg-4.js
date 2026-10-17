@@ -533,3 +533,225 @@ Object.assign(window.TRACKG.paras, {
     ],
   },
 });
+
+Object.assign(window.TRACKG.paras, {
+
+  /* ------------------------------------------------------------------ Genomic DNA preparation and sequencing */
+  'm-gdna-p1': {
+    plain: `<p>Genomic DNA (gDNA) was extracted from the collected cells with commercial kits: the Midi kit for samples of 5e6–3e07 cells (that is, 5,000,000 to 30,000,000 cells) and the Mini kit for samples of fewer than 5 × 10<sup>6</sup> cells (catalog details omitted — see the PAPER box), following the manufacturer's instructions. The DNA concentrations were then measured with a Nanodrop (an instrument that reads how much DNA is in a small drop of liquid).</p>`,
+    why: `The guide sequences each cell carries are part of its DNA, so to count the guides you first have to purify the cells' genomic DNA. In general, the kit size is matched to the number of cells, and measuring the DNA concentration lets you use known amounts in the next step (the PCR in the next paragraph).`,
+    flags: [
+      `Screen samples ranged up to 144M cells at plating (m-screen-cisplatin-p1), above the Midi kit's stated range of 3e07 cells; the paragraph does not say whether larger samples were split over several preparations.`,
+      `The cell ranges are printed in two styles ("5e6–3e07" and "5 × 106", the latter with its superscript lost).`,
+    ],
+    sources: ['m-screen-cisplatin-p1'],
+    prereqs: ['D4'],
+    checks: [
+      { q: `Why does the workflow start by isolating genomic DNA (gDNA) from the collected cells?`,
+        options: [
+          { t: `The pgRNA sequences carried by each cell are part of its DNA, so the DNA is the starting material for counting the guides by PCR and sequencing`, ok: true, why: `Right: the screen's read-out is how often each pgRNA sequence is present, and the next paragraph amplifies and sequences it starting from the gDNA.` },
+          { t: `To measure how much RNA each lncRNA makes`, ok: false, why: `RNA is not isolated here. A pooled screen counts guide sequences in DNA; it does not measure RNA levels.` },
+          { t: `To check that the cells still express Cas9`, ok: false, why: `The gDNA is used to count guide sequences, not to test Cas9 expression.` },
+        ],
+        source: ['m-gdna-p1'] },
+    ],
+  },
+
+  'm-gdna-p2': {
+    plain: `<p>For the PCR, the gDNA was divided into 100 µL reactions, so that each well held at most 4 µg of gDNA. Each reaction contained the gDNA (plus water), a PCR master mix, 5 µL of the forward universal primer and 5 µL of a uniquely barcoded P7 primer (both from 10 µM stocks). The PCR ran for 22 cycles, with an initial 2 min at 95 °C and a final 5 min extension at 72 °C (the per-cycle temperatures and times are printed in the paragraph). The forward and reverse oligos for the PCR and NGS of the library are listed in Table S3 (not in your PDF).</p><p>The PCR products were purified with AMPure XP SPRI beads and quantified with a Qubit kit (catalog details omitted — see the PAPER box). The samples were sequenced on an Illumina HiSeq2000 with paired-end 150 bp reads, at a coverage of 40M reads per sample.</p>`,
+    why: `This step turns "which guides are in the cells" into countable DNA. In general: primers that match the constant parts of the guide cassette copy it out of the whole genomic DNA; each sample gets its own barcode, so many samples can be sequenced together and sorted apart afterwards; the DNA is spread over many reactions with a cap of 4 µg each, because too much DNA in one tube hurts a PCR and because spreading it keeps the DNA of all the cells represented (a cell holds only a few picograms of DNA, so millions of cells need many reactions); and a modest 22 cycles limits PCR bias. Sequencing 40M reads per sample gives, by my arithmetic, about 3,300 reads per library sequence on average (40M divided by 12,000), enough to count each guide.`,
+    memory: `A name tag on every sample: one mixed sequencing run can be sorted back into samples afterwards.`,
+    flags: [
+      `The paragraph does not say whether all the gDNA of a sample was amplified, or how many reactions each sample needed.`,
+      `"Coverage" is used here for sequencing depth (40M reads per sample). Elsewhere in the same Methods it means colonies per library sequence (66.7X) or cells per library sequence (more than 1,000x).`,
+      `NGS primers are said to be in Table S3; the key resources table says "NGS sequencing primers (see Table S2 for sequences)". The supplement is not in your PDF.`,
+    ],
+    sources: ['m-library-design-p5', 'm-library-cloning-p2', 'm-screens-p1', 'krt-39'],
+    derived: ['3300'],
+    prereqs: ['D4'],
+    checks: [
+      { q: `Why was a "uniquely barcoded P7 primer" used for each sample?`,
+        options: [
+          { t: `The barcode tags every read with its sample, so many samples can be pooled in one sequencing run and sorted apart afterwards`, ok: true, why: `Right: a unique barcode per sample lets the reads be assigned back to the sample they came from.` },
+          { t: `The barcode switches on the guide inside the cell`, ok: false, why: `The barcode is added to the DNA copies in a test tube, after the cells have been collected; it has no effect on the cells.` },
+          { t: `The barcode counts how many cells were in the sample`, ok: false, why: `The barcode only labels the sample. Counts come from how many reads each pgRNA gets.` },
+        ],
+        source: ['m-gdna-p2'] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ Screen hit identification and prioritization */
+  'm-hits-p1': {
+    plain: `<p>The raw sequencing reads of each individual screen were analyzed with CASPR (an analysis pipeline). CASPR was also used to monitor the quality of all the NGS experiments with several metrics. Overall, 36% of the reads were usable, and recombination events affected only a low rate of reads (typically below 3%).</p><p>After the mapping step (matching each read to its pgRNA), the counts per million (cpm) of each pgRNA were filtered with the rule printed as "3 &gt; cpm&gt;666" (see the flags). Low-scoring guides were removed with GuideScan, and a batch-effect correction was applied with MageckFlute. After all these corrections, the count table went back to CASPR, which calculated the log2 fold change and the FDR-corrected p-values at the level of the target (not of each single guide).</p>`,
+    why: `This paragraph turns raw reads into a table of effects per target. In general, each step guards against a specific problem: quality monitoring shows whether the sequencing can be trusted; the count filter drops guides whose counts are too unreliable to use; removing low-scoring guides (GuideScan; the paragraph does not say what the score measures) drops guides judged unreliable; batch-effect correction removes differences caused only by how or when samples were processed; and calculating results "at a target level" combines all the guides aimed at one target into a single answer with an FDR-corrected p-value, which is what the hit lists need.`,
+    memory: `Like marking exam scripts: discard unreadable pages, correct for the scanner's quirks, then give each student one mark rather than one mark per page.`,
+    flags: [
+      `The filter is printed as "3 &gt; cpm&gt;666". As written, no number can satisfy both conditions (it cannot be below 3 and above 666 at once). The authors probably meant that guides with very low (below 3) or very high (above 666) counts per million were removed, but the paragraph does not say so.`,
+      `Several terms are left undefined: "usable" reads (only 36% of the reads were usable, and the paragraph does not say why the others were not), "recombination events" (typically below 3% of reads) and the score cutoff used by GuideScan. CASPR itself is not spelled out either.`,
+    ],
+    prereqs: ['D4', 'E1', 'E4'],
+    checks: [
+      { q: `At what level are the log2 fold changes and FDR-corrected p-values calculated at the end of this paragraph?`,
+        options: [
+          { t: `At the level of the target: the guides aimed at the same target are combined`, ok: true, why: `Right: the paragraph says CASPR calculated them "at a target level".` },
+          { t: `For each single guide only`, ok: false, why: `Guide-level values exist (they are used in the replicate correlations), but the final values are at the target level.` },
+          { t: `Once per screen, giving one number for the whole screen`, ok: false, why: `Each target gets its own values in each screen; that is what allows individual hits to be picked out.` },
+        ],
+        source: ['m-hits-p1'] },
+    ],
+  },
+
+  'm-hits-p2': {
+    plain: `<p>To check that replicates agree, the authors used CASPR's intermediate files, which give normalized read counts for each replicate of each sample. They calculated the Pearson correlation between replicates at three levels:</p><ul><li>the log2-transformed read counts of all pgRNAs that target lncRNA regions (guide level), leaving out the controls;</li><li>the log2-transformed fold change (log2FC) of each guide, as treatment sample ("trt") divided by control sample ("ctr");</li><li>the log2-transformed fold change at gene level.</li></ul><p>The gene-level log2FC (calculated separately for each replicate) was taken as the median of the log2FC values of all the pgRNAs (filtered as described) that target the same genomic region, following CASPR and MAGeCK's method, or alternatively as the average of the top 3 guides, as in previous studies. The log2FC values were also Z-score scaled, using the mean and SD of the neutral control pgRNAs.</p>`,
+    why: `Replicate agreement is the basic quality check of a screen: if two independent replicates do not agree, the "hits" would be noise. In general, checking at three levels shows where agreement is lost: raw counts (does the library behave the same way?), guide-level fold changes (is each guide's effect reproducible?) and target-level fold changes (is each target's effect reproducible?). Leaving out the controls shows that the agreement is not driven only by the obvious control genes; the Results say the same (the correlations hold "even when considering lncRNA candidates alone"). The median of several guides is a robust summary, because one odd guide cannot pull it far; the top-3 average is an alternative that concentrates on the strongest guides. Z-scores express each effect in units of the spread (SD) of the neutral controls, i.e. how unusual it is compared with cutting a place that should do nothing.`,
+    flags: [
+      `The paragraph gives two ways to get the gene-level log2FC (the median of the guides, or the average of the top 3 guides) but does not say which was used for which analysis.`,
+      `No correlation values or acceptance threshold are given here; the Results say only that the replicate correlations were high (res-multipheno-p3), and the supplementary figures are not in your PDF.`,
+    ],
+    prereqs: ['E1', 'D4', 'E2'],
+    checks: [
+      { q: `Why does the replicate-correlation analysis leave out the control pgRNAs?`,
+        options: [
+          { t: `So that the agreement shown is not driven only by the strong, expected effects of the controls and also holds for the lncRNA targets themselves`, ok: true, why: `Right: the Results say the correlations are observed "even when considering lncRNA candidates alone and omitting positive-control targets".` },
+          { t: `Because the control pgRNAs were not sequenced`, ok: false, why: `The controls are in the same pool and are sequenced with everything else; the neutral controls are even used later to scale the fold changes (Z scores).` },
+          { t: `Because controls have no replicates`, ok: false, why: `They are present in every replicate. The point is that strong controls could inflate the correlation, so the lncRNA targets are checked on their own.` },
+        ],
+        source: ['m-hits-p2', 'res-multipheno-p3'] },
+    ],
+  },
+
+  'm-hits-p3': {
+    plain: `<p>For each screen on its own, hits were chosen with two rules. In the positive screens (CFSE, death and migration), a hit needs FDR &lt; 0.2 and LFC &gt; 0 (a log2 fold change above zero). In the dropout and cisplatin screens, a hit needs FDR &lt; 0.2 and LFC &lt; 0 (below zero).</p>`,
+    why: `Two conditions together define a hit. FDR &lt; 0.2 says the change is unlikely to be just chance (in general, about one in five of the hits in such a list is expected to be false, a permissive cutoff that suits a first candidate list that is validated afterwards). The sign of the LFC says the change goes in the direction that marks the target as promoting the phenotype. In general, in a dropout or survival screen the guides of a helpful gene become rarer, so the LFC is negative; in the positive screens the guides are enriched in the collected cells (slow-growing, dead or migration-impaired cells, according to the Figure 2 legends), so the LFC is positive. Without the sign condition, a target whose guides rise in a dropout screen would also pass the FDR rule although it points the opposite way.`,
+    memory: `Two keys open the "hit" door: a small enough FDR and the right sign.`,
+    flags: [
+      `The paragraph does not say why FDR &lt; 0.2 was chosen. For comparison, the Methods say p ≤ 0.05 is the general significance level "unless otherwise specified" (m-quant-p3); the hit rule is a looser, specified threshold.`,
+      `The paragraph uses "cisplatin screens" for the survival screen; the death screen is listed among the positive screens. It also does not state which populations are compared in each screen (for example which cells count as "treatment" and which as "control" for CFSE or migration), which is what gives the LFC its sign.`,
+    ],
+    sources: ['m-quant-p3', 'fig2A', 'fig2B', 'fig2C'],
+    prereqs: ['D4', 'D5', 'E4'],
+    checks: [
+      { q: `In the migration screen a hit needs LFC &gt; 0 rather than LFC &lt; 0. Why?`,
+        options: [
+          { t: `Because migration is a positive screen: guides against migration-promoting lncRNAs become more common (enriched) in the collected migration-impaired cells`, ok: true, why: `Right: the paragraph lists migration with the positive screens, and the Figure 2C legend says migration-promoting lncRNAs are identified through pgRNA enrichment in migration-impaired cells.` },
+          { t: `Because migration-promoting lncRNAs are depleted in the screen`, ok: false, why: `Depletion (a negative LFC) is the signature of dropout and survival screens, not of the positive screens.` },
+          { t: `Because FDR &lt; 0.2 already fixes the direction of the change`, ok: false, why: `The FDR says how likely a change is to be chance, not in which direction it goes; the sign of the LFC is a separate condition.` },
+        ],
+        source: ['m-hits-p3', 'fig2C'] },
+    ],
+  },
+
+  'm-hits-p4': {
+    plain: `<p>To combine several screens, the authors designed an integrative target prioritization pipeline (TPP). It uses two approaches in parallel. The first is Robust Rank Aggregation (RRA), which computes a ranking based on effect size (the CASPR log2FC) across the screens. The second is an empirical adaptation of Brown's method (EBM), which combines the significance values (the CASPR p-values) of each candidate across the screens.</p><p>The RRA scores were converted to exact p-values with the rho-score correction from the same R package. The harmonic mean p-value (HMP) was then calculated from the two significance scores, one from RRA and one from EBM. These p-values were corrected for multiple hypothesis testing with the Benjamini &amp; Hochberg method, and a cutoff of FDR &lt; 0.2 was used to define hits. The code is available at https://doi.org/10.5281/zenodo.6912510.</p>`,
+    why: `One screen gives one list of effects, but the paper has several screens (dropout, CFSE, cisplatin survival and death, migration) and wants one ranking of targets. The Results say the TPP was built "to combine diverse screen results while balancing effect size and significance". In general, a target that is strong in several screens and statistically solid is more convincing than one that is strong in a single screen or only barely significant. So RRA ranks targets by effect size (log2FC) and EBM combines the p-values. The titles of the cited papers speak of combining dependent p-values (ref-103) and of the harmonic mean p-value for combining dependent tests (ref-104), which would fit screens run on the same cells and library (my reading; this paragraph does not state why these methods were chosen). The HMP merges the two scores into one p-value per target, and the Benjamini &amp; Hochberg method controls the false discovery rate across all targets.`,
+    memory: `Two judges (how big, how sure), one verdict (the HMP), then a strictness check across all targets (Benjamini &amp; Hochberg).`,
+    flags: [
+      `The code address printed here is "zenodo.6912510" (the key resources table gives the same), but the data-availability paragraph (m-data-p2) says "Zenodo: 6912511". The paper does not say which is right.`,
+      `"The same R package" is not named: the paragraph does not say which package it means. No citation numbers are printed in this paragraph either; the reference list contains papers with matching titles for RRA (ref-102), EBM (ref-103) and HMP (ref-104).`,
+      `The paragraph does not say how screens whose hits point in opposite directions (negative LFC in the dropout and cisplatin screens, positive LFC in the CFSE, death and migration screens; see m-hits-p3) are put on a common footing before the effect-size ranking.`,
+      `The Results say the TPP can be run on all screens ("pan-hallmark") or per hallmark ("hallmark-specific") and refer to the STAR Methods (res-integration-p1), but this paragraph does not describe the two versions separately, nor how the two scores are weighted in the HMP.`,
+    ],
+    sources: ['m-data-p2', 'krt-45'],
+    prereqs: ['E1', 'E4', 'E5'],
+    checks: [
+      { q: `Why does the TPP run RRA (on effect size) and EBM (on p-values) in parallel and then combine them?`,
+        options: [
+          { t: `To balance how big an effect is (RRA, based on log2FC) with how statistically reliable it is (EBM, based on p-values) in one ranking of targets`, ok: true, why: `Right: the paragraph says RRA ranks by effect size and EBM combines significance values; the HMP then merges the two scores.` },
+          { t: `Because RRA is used for dropout screens and EBM for positive screens`, ok: false, why: `Both are applied across screens; the paragraph does not split them by screen type.` },
+          { t: `So that the same data are analyzed twice to double the number of hits`, ok: false, why: `The two scores are merged into one (the harmonic mean p-value) and then corrected for multiple testing; the aim is a balanced ranking, not more hits.` },
+        ],
+        source: ['m-hits-p4', 'res-integration-p1'] },
+    ],
+  },
+
+  'm-hits-p5': {
+    plain: `<p>To judge how good the final ranking was, the authors used the enrichment scores and nominal p-values (from a GSEA simulation, n = 10,000) of the positive-control and neutral-control genes, and also the fraction of detected genes that had previously been linked to lung cancer.</p><p>The positive-control and neutral-control genes were also used as "true positives/false negatives" and "false positives/true negatives", respectively, to calculate Receiver Operating Characteristics (ROC) curves and related statistics.</p>`,
+    why: `A ranking is only useful if it puts known "real" things near the top and known "nothing" things away from the top, and the controls were built into the library for this purpose. In general, a GSEA-type enrichment score asks whether the positive controls pile up at the top of the ranked list more than chance would allow (the nominal p-value is estimated by repeated random shuffling; here the paper gives n = 10,000), while neutral controls should not pile up there. Using controls as an answer key turns the ranking into a classification test: positives that the ranking finds are true positives, positives it misses are false negatives, neutral controls it wrongly calls are false positives, and neutral controls it leaves alone are true negatives. The ROC curve and its AUC summarize that trade-off. The Results use this to claim that the pan-hallmark ranking "outperforms common integration methods and individual screens in correctly classifying positive and neutral controls".`,
+    flags: [
+      `"GSEA simulation, n = 10,000" is not explained: the paragraph does not say what n counts (in general, the number of random permutations used to estimate the p-value).`,
+      `The paragraph names "the fraction of detected genes previously linked to lung cancer" as a quality indicator but gives no value or source for that gene list here.`,
+      `Only positive and neutral controls are used here. The negative protein-coding gene controls (genes that oppose growth; m-library-design-p3) are not mentioned.`,
+    ],
+    prereqs: ['D5', 'E4', 'D10'],
+    checks: [
+      { q: `Why are the neutral control genes used as "false positives/true negatives" when ROC curves are drawn?`,
+        options: [
+          { t: `Because they are not expected to affect the phenotype, so calling one of them a hit counts as an error (a false positive) and not calling it is correct (a true negative)`, ok: true, why: `Right: neutral controls are the "nothing should happen here" set, which is what a ranking is tested against.` },
+          { t: `Because they are the genes known to promote lung cancer`, ok: false, why: `That describes positive controls, which are treated as the "true positives/false negatives".` },
+          { t: `Because their guides cut the DNA more efficiently than other guides`, ok: false, why: `Cutting efficiency has nothing to do with this role. Neutral controls are chosen for being expected to have no effect on the phenotype.` },
+        ],
+        source: ['m-hits-p5'] },
+    ],
+  },
+
+  'm-hits-p6': {
+    plain: `<p>Statistics and figures were made with R software, version 4.1.2, and these add-on R packages (the paragraph gives a version number for each): ggplot2, ggpubr, ggtern, ggrepel, ggbeeswarm, GGally, Gmedian, GSEABase, clusterProfiler, harmonicmeanp, metap, Hmisc, precrec, MASS, car, eulerr, SuperExactTest, UpSetR and metaRNASeq.</p>`,
+    why: `This is a reproducibility statement: with the exact R and package versions, another person can rerun the analysis and get the same numbers. In general, the package names hint at what was done: ggplot2, ggpubr, ggbeeswarm and ggrepel for plots, ggtern for ternary plots, UpSetR for UpSet plots, eulerr and SuperExactTest for set overlaps, precrec for ROC curves, clusterProfiler and GSEABase for enrichment, and harmonicmeanp and metap for combining p-values (these purposes are general knowledge about the packages, not stated in the paragraph).`,
+    flags: [
+      `The Methods mention more software elsewhere: m-quant-p1 lists three R versions (3.5.3, 4.0.0 and 4.1.2) and extra packages, and the library-cloning paragraph names R version 3.5.3. This paragraph gives only 4.1.2, and the paper does not say which analysis used which version or package.`,
+    ],
+    sources: ['m-quant-p1'],
+    prereqs: ['E1', 'F2'],
+    checks: [
+      { q: `What does this paragraph mainly tell you?`,
+        options: [
+          { t: `Which software produced the statistics and figures, so that the analysis can be reproduced`, ok: true, why: `Right: it names R and the packages with version numbers.` },
+          { t: `Which statistical test was used for each figure panel`, ok: false, why: `The paragraph names software, not tests. The Methods say that the tests for individual experiments are given in the figure legends (m-quant-p3).` },
+          { t: `Which screen hits were selected`, ok: false, why: `Hit selection is described in the earlier paragraphs of this section; this paragraph only lists tools.` },
+        ],
+        source: ['m-hits-p6', 'm-quant-p3'] },
+    ],
+  },
+});
+
+/* ---------------------------------------------------------------------- unit intros and recaps */
+Object.assign(window.TRACKG.units, {
+  'm-lead-contact': {
+    intro: `<p>A one-sentence statement of who to contact about the study. It is not science, but journals that use the STAR Methods format ask for it.</p>`,
+    recap: `<p>One named person, Dr. Rory Johnson, handles questions and requests for resources and reagents.</p>`,
+  },
+  'm-materials': {
+    intro: `<p>A short statement on whether the authors' own plasmids and cell lines can be shared, and how to ask for them.</p>`,
+    recap: `<p>Plasmids and cell lines made in the study can be requested from the corresponding author, R.J. The same paragraph says the study made no new unique reagents; read the two sentences together.</p>`,
+  },
+  'm-data': {
+    intro: `<p>Where the data and code behind the paper are stored so that others can check and reuse them: data in GEO, the TPP code in Zenodo, and anything else from the lead contact.</p>`,
+    recap: `<p>Data are in GEO (GSE207229); the code of the target prioritization pipeline is at Zenodo (6912511 here, while the hit-identification paragraph prints a different last digit). Anything else needed to re-analyze the data is available from the lead contact.</p>`,
+  },
+  'm-expmodel': {
+    intro: `<p>The "who and what" of the experiments: which human cell lines were used and where they came from, how they were grown and kept, and the ethics approvals for the mouse and patient work.</p>`,
+    recap: `<p>Seven human cell lines (lung cancer lines, normal lung cells and HEK293T for making virus) were authenticated and tested for mycoplasma, grown in their own media at 37 °C with 5% CO2, and passed every 2-3 days. The mouse and patient work was approved by Bern committees, with written informed consent from patients.</p>`,
+  },
+  'm-lentivirus': {
+    intro: `<p>How lentivirus is made in HEK293T cells and used to build A549 and H460 cell lines that permanently carry Cas9. Cas9 has to be in the cells before the guides arrive.</p>`,
+    recap: `<p>HEK293T cells made Cas9 virus from three plasmids; the virus was concentrated 100-fold and frozen. A549 and H460 cells were infected, selected with blasticidin and sorted twice for BFP, giving at least 60% BFP-positive Cas9 cells.</p>`,
+  },
+  'm-decko': {
+    intro: `<p>Three short statements about the DECKO plasmids that carry the paired guides: where the protocol is described, where the validation guides are listed, and how the virus and the selection work.</p>`,
+    recap: `<p>The paper points to an earlier protocol for DECKO design and cloning, lists the validation pgRNAs in Data S4 (not in your PDF), and selects infected cells with puromycin (2 µg/mL) for at least three days.</p>`,
+  },
+  'm-library-design': {
+    intro: `<p>How the library of 12,000 sequences was designed: a complete list of lncRNAs is built and filtered down to expressed lncRNAs with well-supported start sites, control targets are added, and 10 pgRNAs are designed per target.</p>`,
+    recap: `<p>Four annotations were merged and filtered (no TSS near protein-coding exons, FPKM of at least 0.1, TSSs within 300 bp clustered, ranking by evidence). Neutral and gene controls were added, 10 pgRNAs per target were designed by relaxing the off-target rules step by step, and the final design had 12,000 sequences.</p>`,
+  },
+  'm-library-cloning': {
+    intro: `<p>How the synthesized pool of 12,000 sequences became a plasmid library: copy it, insert it into the pDECKO plasmid in two steps, and check that it is complete and even.</p>`,
+    recap: `<p>The oligo pool was amplified by PCR, cloned in two steps and grown in bacteria (coverage 66.7X). The finished library was checked by colony PCR, Sanger sequencing and NGS, with a Lorenz curve and a Gini coefficient summarizing how even the pool is.</p>`,
+  },
+  'm-titer': {
+    intro: `<p>How the authors made sure that only a minority of cells received a virus: they titrated the virus to reach an MOI of 0.3, then infected a large batch of cells and selected it with puromycin.</p>`,
+    recap: `<p>A titration in A549 and H460 cells set the amount of virus for an MOI of 0.3 (cells surviving puromycin divided by cells without puromycin). For the screens, 120M cells were infected and kept in puromycin for six days.</p>`,
+  },
+  'm-screens': {
+    intro: `<p>How the cells were grown and collected in each screen: the T0 reference, the dropout and CFSE proliferation screens, the cisplatin survival and death screens, and the migration screen.</p>`,
+    recap: `<p>All screens start from a T0 reference (16M cells, coverage above 1,000x). Proliferation was read as dropout at 14 and 21 days and by CFSE sorting; cisplatin as survival (IC30, IC80) and death (IC20) screens; migration as cells that did or did not cross a membrane in 48 h.</p>`,
+  },
+  'm-gdna': {
+    intro: `<p>How the guide sequences are read out from the collected cells: purify the genomic DNA, copy the guide region by PCR with a barcode for each sample, and sequence it.</p>`,
+    recap: `<p>gDNA was extracted with Midi or Mini kits, amplified in 100 µL PCR reactions of at most 4 µg each (22 cycles, barcoded primers), cleaned, quantified and sequenced on an Illumina HiSeq2000 at 40M reads per sample.</p>`,
+  },
+  'm-hits': {
+    intro: `<p>How counts become a list of hits: quality control and filtering with CASPR, replicate correlation, the rule for hits in each single screen, the TPP that combines screens, and the checks on the quality of the ranking.</p>`,
+    recap: `<p>Reads were mapped and filtered, and fold changes and FDRs were computed per target. Single-screen hits need FDR below 0.2 and the right sign of the LFC. The TPP combined effect size (RRA) and significance (EBM) into one harmonic mean p-value, adjusted with Benjamini &amp; Hochberg (FDR below 0.2 defines hits). Controls were used to judge the ranking (GSEA, ROC). Several details are left vague; see the flags.</p>`,
+  },
+});

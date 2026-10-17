@@ -173,7 +173,7 @@ Object.assign(window.TRACKG.paras, {
       `This paragraph says p &lt; 0.05, while the general statement at the end of the Methods says p ≤ 0.05. The two only differ for a p-value of exactly 0.05.`,
       `The paragraph does not say whether the t test was one- or two-tailed or how many independent experiments were run. The figure legends differ: the Figure 5C legend says "two-tailed" and the Figure 5E legend says "one-tailed" (n = 4 biological replicates in both). The triplicate wells are repeats within one experiment, not independent experiments.`,
       `"And/or" means that not every cell line was read at every time point; the paragraph does not say which was which.`,
-      `Five of the lines here (H1975, H157, WVU-Ma-0005A, H820, H1650) are not listed in the Experimental model section. The Results only mention "additional KRAS+ and EGFR-mutant cell lines" without naming them. "Mrc5-SV1" is yet another spelling of the MRC-5 line.`,
+      `Five of the lines here (H1975, H157, WVU-Ma-0005A, H820, H1650) are not listed in the Experimental model section. The Results only mention "additional KRAS+ and EGFR-mutant cell lines" without naming them. "Mrc5-SV1" is yet another spelling of the MRC fibroblast line (see the ASO paragraph).`,
     ],
     prereqs: ['D8', 'E3'],
     sources: ['m-quant-p3', 'fig5C', 'fig5E', 'res-aso-p3'],
@@ -297,7 +297,7 @@ Object.assign(window.TRACKG.paras, {
       { q: `Why are two stains (Annexin V and a viability dye) used in the same tube?`,
         options: [
           { t: `Annexin V flags cells that have just started to die and the viability dye flags cells that are already dead, so one run separates early apoptotic from dead cells`, ok: true, why: `Right. The paragraph says Annexin V and the viability dye detect "early apoptotic and dead cells, respectively".` },
-          { t: `Annexin V measures how many cells are in each cell-cycle phase, and the viability dye counts all cells`, ok: false, why: `Cell-cycle phases are read from DNA content (DAPI) and Ki-67 in a different assay. Annexin V reports early apoptosis, and the viability dye marks dead cells.` },
+          { t: `Annexin V measures how many cells are in each cell-cycle phase, and the viability dye counts all cells`, ok: false, why: `Cell-cycle phases are read from DNA content (with the stain DAPI) in a different assay. Annexin V reports early apoptosis, and the viability dye marks dead cells.` },
           { t: `The viability dye corrects for the fluorescence of Annexin V, like a normalization gene`, ok: false, why: `The dye has its own job: marking dead cells. Correcting for loading differences is what a housekeeping gene does in RT-qPCR.` },
         ],
         source: ['m-apoptosis-p1'] },
@@ -684,6 +684,96 @@ Object.assign(window.TRACKG.paras, {
         ],
         source: ['m-quant-p3', 'm-hits-p3', 'm-rnaseq-p2'] },
     ],
+  },
+
+});
+
+/* ===== unit intros and recaps ===== */
+Object.assign(window.TRACKG.units, {
+
+  'm-public-rnaseq': {
+    intro: `<p>This short section says which public patient RNA-seq data sets the authors used to ask whether their lncRNA candidates are also active in real lung tumors. It names the two collections (TCGA and TANRIC) and how many samples each one has.</p>`,
+    recap: `<p>Two patient data sets were used: 101 KRAS+ untreated lung adenocarcinoma samples from TCGA (expression estimated with HTSeq), and an independent cohort from TANRIC with 87 tumor and 77 adjacent normal tissue samples. They are the patient evidence behind Figures 4F, 4G and 5H.</p>`,
+  },
+
+  'm-pcr-gdna': {
+    intro: `<p>Before you trust a CRISPR deletion screen, you want proof that the deletion really happens in the DNA. This one-paragraph section describes the PCR-and-gel test used for that proof.</p>`,
+    recap: `<p>Genomic DNA from Cas9-expressing A549 cells that received the guide pairs was copied by PCR with primers placed on both sides of the target region, and the product was run on a 1% agarose gel. The size of the band shows whether the region was deleted (Figure 1E).</p>`,
+  },
+
+  'm-competition': {
+    intro: `<p>A competition assay tests whether switching off a gene puts cells at a growth disadvantage when they share a dish with control cells. This section explains how the two groups were labeled with fluorescent proteins and mixed.</p>`,
+    recap: `<p>Control cells (AAVS1 pgRNAs, GFP) and test cells (candidate pgRNAs, mCherry) were selected with puromycin for seven days, mixed 1:1 and followed by flow cytometry. A shrinking mCherry share over time means that the deletion hurts growth, as seen for the validated candidates and for the essential-gene control RPS5 (Figure 3C).</p>`,
+  },
+
+  'm-pdx': {
+    intro: `<p>One of the models in the paper is a patient-derived organoid called BE874. These two paragraphs describe where it came from (a patient's lung tumor grown first in immunodeficient mice) and how the mice were housed and approved.</p>`,
+    recap: `<p>BE874 organoids were made from a surgically removed KRAS+ lung tumor that was first grown under the skin of NSG mice, and the KRAS G12C change was confirmed in both the organoids and the original cancer. The patient and mouse work had ethics approval.</p>`,
+  },
+
+  'm-aso': {
+    intro: `<p>ASOs are the tool the paper uses to switch off a lncRNA's RNA product directly. This section says how the ASOs were designed, which doses were used for which cell lines, and how cocktails and cell uptake were handled.</p>`,
+    recap: `<p>Three to five LNA ASOs were designed per target and delivered with a transfection reagent at 25 nM (10 nM for two normal lung cell lines). Cocktails kept the same total dose, the medium was refreshed after 24 h, and a fluorescent control ASO was used to check that ASOs get into cells.</p>`,
+  },
+
+  'm-viability-2d': {
+    intro: `<p>This is the main growth test for ASO-treated cells grown flat in dishes. CellTiter-Glo measures how many cells are alive, so a slower-growing population shows up as less light.</p>`,
+    recap: `<p>Eleven cell lines were seeded in triplicate in 96-well plates 24 h after transfection, and viable cells were read by luminescence at time points between 24 h and 144 h. Significance was judged with the Student's t test at p &lt; 0.05.</p>`,
+  },
+
+  'm-viability-3d': {
+    intro: `<p>Cells in a dish are flat, but tumors are three-dimensional. These three paragraphs describe the 3D versions of the viability test: spheroids of H441 cells and organoids from a patient-derived xenograft (BE874).</p>`,
+    recap: `<p>In both 3D models the ASOs were delivered first, the cells were then embedded in Matrigel domes (20,000 cells per dome), and CellTiter-Glo 3D was read at a starting time point (T0) and again after one week. The organoids needed their own special medium and extra feeding steps to keep the wells from drying out.</p>`,
+  },
+
+  'm-rescue': {
+    intro: `<p>A rescue experiment asks whether putting a lncRNA back can undo the effect of knocking it down. This paragraph describes how CHiLL1 and GCAWKR were overexpressed in A549 cells.</p>`,
+    recap: `<p>The full-length sequences of CHiLL1 and GCAWKR were cloned into the pcDNA3.1 plasmid, with the empty plasmid as the control, and transfected into A549 cells. The cells were selected with puromycin for 96 h and the transfection was confirmed by RT-qPCR. The Results report that neither lncRNA rescued the ASO phenotypes.</p>`,
+  },
+
+  'm-apoptosis': {
+    intro: `<p>Apoptosis is a tidy form of cell suicide. This paragraph describes the two-stain flow-cytometry test used to ask whether knocking down CHiLL1 or GCAWKR pushes cells into early apoptosis.</p>`,
+    recap: `<p>Cells were stained with Annexin V (early apoptotic cells) and a viability dye (dead cells) 24 h after transfection and measured by flow cytometry, with unstained cells as a control. In the Results, CHiLL1 knockdown, but not GCAWKR knockdown, raised the share of early apoptotic cells.</p>`,
+  },
+
+  'm-cellcycle': {
+    intro: `<p>This paragraph describes the flow-cytometry test that sorts cells into cell-cycle phases by their DNA content (DAPI), with a second stain (Ki-67) for whether they are cycling at all.</p>`,
+    recap: `<p>Cells were fixed 24 h after ASO transfection, stained with a Ki-67 antibody and DAPI, measured by flow cytometry and analyzed with FlowJo and the Dean-Jett Fox model. In the Results, GCAWKR knockdown, but not CHiLL1 knockdown, led to more cells in the G2 phase.</p>`,
+  },
+
+  'm-migration-assay': {
+    intro: `<p>The migration screen was pooled. This section describes the small, one-ASO-at-a-time version used to check individual lncRNAs: cells crawl through a porous membrane toward serum, and the stain left on the underside is measured.</p>`,
+    recap: `<p>A549 cells were seeded 24 h after ASO transfection in serum-free medium above a porous membrane, with 10% FBS below as the lure. After 24 h the cells that had crossed were stained with crystal violet, the cells on top were wiped off, and the dissolved stain was read at 595 nm.</p>`,
+  },
+
+  'm-qpcr': {
+    intro: `<p>qRT-PCR is the paper's standard way to measure how much of a particular RNA is in cells, for example to confirm that an ASO lowered its target. This paragraph lists the steps and names the normalizing gene.</p>`,
+    recap: `<p>RNA was purified, converted to cDNA by reverse transcription and measured by qPCR, with HPRT1 as the internal control for normalization. The primer sequences are in Data S4 (not in your PDF).</p>`,
+  },
+
+  'm-rnaseq': {
+    intro: `<p>RNA-seq reads out the whole transcriptome, so it shows which genes change when CHiLL1 or GCAWKR is knocked down. These three paragraphs cover making and sequencing the libraries, the Kallisto and Sleuth analysis with its q-value cut-off, and the plotting and enrichment tools.</p>`,
+    recap: `<p>RNA from ASO-treated A549 and H460 cells was sequenced to a depth of 30M reads per sample, quantified with Kallisto and tested with Sleuth, calling genes significant at q &lt; 0.2. For CHiLL1 the genes changed by both ASOs were kept, for GCAWKR the genes changed in both cell lines, and pathways were then found with enrichR.</p>`,
+  },
+
+  'm-fish': {
+    intro: `<p>Where an RNA sits in the cell is a clue to what it does. These two paragraphs describe the two ways the paper looked at this: RNA-FISH under the microscope (single cells), and nuclear/cytoplasmic fractionation (cells split into parts).</p>`,
+    recap: `<p>CHiLL1 and GCAWKR were detected in A549 cells with pools of 25 and 48 fluorescent probes, a DAPI counterstain and a DeltaVision microscope. The nuclear/cytoplasmic split was also measured by fractionation, and the data were analyzed with a CellProfiler-based pipeline named SpeckleCounting.</p>`,
+  },
+
+  'm-eztracks': {
+    intro: `<p>Figure 6A shows which functional-looking features sit under the exons of GCAWKR. These paragraphs say where the feature tracks came from and how the lncRNA gene models were prepared for drawing with the ezTracks program.</p>`,
+    recap: `<p>Feature tracks (RIDLs, conserved RNA structures, ENCODE regulatory elements, CpG islands, phastCons conservation and RepeatMasker repeats) were collected for hg38. The exons of each lncRNA locus were merged into one meta-transcript with BEDTools and drawn next to those tracks.</p>`,
+  },
+
+  'm-cnv': {
+    intro: `<p>Cancer genomes often gain or lose pieces of DNA. These three paragraphs describe how the authors checked whether their screen hits sit in regions that are amplified or deleted: in cell lines (CCLE), in lung tumors (TCGA-LUAD) and across many cancer types (PCAWG data from the ICGC portal).</p>`,
+    recap: `<p>Copy-number data from three sources were matched to the candidates' genomic positions in hg19: CCLE for A549 and H460, TCGA-LUAD segment means averaged across samples, and pan-cancer recurrent regions. Fisher's exact tests compared the proportions of amplified, deleted or unaltered hits with those of non-hits.</p>`,
+  },
+
+  'm-quant': {
+    intro: `<p>This last Methods section lists the software behind the numbers and gives the paper's general rule for statistical significance. It is the place to check which cut-off the paper uses by default, and where to look for the test used in a particular figure.</p>`,
+    recap: `<p>The analyses used GraphPad Prism, R (three versions) with many R packages, and further tools such as StringTie, RSEM, CRISPETa, CASPR, GuideScan, MageckFlute, Kallisto, Sleuth and bedtools. The default significance cut-off is p ≤ 0.05 unless otherwise specified (the screens and the RNA-seq analysis use FDR or q &lt; 0.2), and the test, n and error bars for each experiment are in its figure legend.</p>`,
   },
 
 });

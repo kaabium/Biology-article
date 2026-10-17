@@ -199,7 +199,7 @@
   long: `<p>After a screen, every target gets a score for how much its guides changed the trait and how confident we can be. Targets beyond a chosen cutoff are called hits. Hits are leads, not proof: they still have to be validated by independent experiments, because a screen can contain both false alarms and missed targets.</p>`,
   analogy: `The candidates who make the shortlist after the first round of interviews: promising, but not yet hired.`,
   see: ['candidate', 'screen', 'pooled-screen'],
-  paperUse: { ref: 'm-hits-p3', quote: 'we selected the hits with FDR<0.2' },
+  paperUse: { ref: 'res-integration-p2', quote: 'Pan-hallmark analysis alone identified altogether 80 lncRNA hits' },
 },
 {
   id: 'candidate',
@@ -324,6 +324,7 @@
   analogy: `A bookkeeper who takes the raw sales receipts, throws out the damaged ones, and produces the monthly totals.`,
   see: ['mageck', 'guidescan', 'sequencing-read'],
   source: ['m-hits-p1'],
+  derived: ['3'],
   paperUse: { ref: 'm-hits-p1', quote: 'The raw sequencing reads from individual screens were analyzed by using CASPR.' },
 },
 {
@@ -367,7 +368,8 @@
   analogy: `A copy-and-paste glitch that stitches the first half of one sentence to the second half of another.`,
   see: ['caspr', 'pcr', 'sequencing-read'],
   source: ['m-hits-p1'],
-  paperUse: { ref: 'm-hits-p1', quote: 'recombination events affected a low rate (typically <3%) of reads' },
+  derived: ['3'],
+  paperUse: { ref: 'm-hits-p1', quote: 'while recombination events affected a low rate' },
 },
 {
   id: 'dropout-screen',
