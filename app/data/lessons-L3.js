@@ -212,7 +212,7 @@
         { t: 'The removed DNA might also contain a regulatory element, such as an enhancer, so the effect could be DNA-dependent', ok: true, why: 'Right (res-validation-p4): deleting DNA cannot tell RNA-dependent from DNA-dependent mechanisms.' },
         { t: 'Because missing DNA can never be detected', ok: false, why: 'A cut-out region can be checked for. The problem is interpreting the effect, not seeing the missing DNA.' },
         { t: 'Because enhancers are made of RNA', ok: false, why: 'Enhancers are stretches of DNA, not RNA molecules.' },
-        { t: 'Because deleting DNA always kills the cell', ok: false, why: 'Many deletions leave cells alive. The point is about which part (DNA or RNA) causes the effect.' },
+        { t: 'Because deleting DNA always kills the cell', ok: false, why: 'Many cells survive losing a piece of DNA. The point is about which part (DNA or RNA) causes the effect.' },
       ], source: ['res-validation-p4'] },
   ],
 });

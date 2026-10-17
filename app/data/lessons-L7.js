@@ -36,8 +36,11 @@
     { k: 'bgnd', html: `<p>A <b>percentile</b> is a position in the ordered list: 10% of the values lie below the 10th percentile, 90% below the 90th, and the 50th percentile is the median. The ratio of the 90th to the 10th percentile is a quick, outlier-proof way to say how spread out a set of values is.</p><p>Two tools you will often see named in a statistics section are <b>GraphPad Prism</b> (a point-and-click program) and <b>R</b> (a programming language; add-on packages such as ggplot2 draw the plots). Heads-up: a capital R printed on a plot next to a number (as in "R = 0.5") is not this software. It is a statistic you will meet in lesson E2.</p>` },
 
     { k: 'h', text: 'How this paper uses these ideas' },
+    { k: 'paper', ref: 'res-validation-p1', quote: 'A549: log2 fold change [FC] = −1.81' },
+    { k: 'plain', source: ['res-validation-p1'], html: `<p>For candidate 205 in A549 cells the paper reports a log2 fold change of −1.81. (The same bracket also holds a second statistic, which lessons E2 and E4 explain.)</p>` },
+    { k: 'worked', html: `<p><b>Reading that number (my arithmetic, not the paper's).</b> FC = 2<sup>−1.81</sup> = 0.29. So the counts for that target ended up at about 29% of their starting level, roughly 3.5 times lower. It is a little less than two halvings (−2 would be a quarter).</p>` },
     { k: 'paper', ref: 'm-hits-p2', quote: 'Gene level (replicate specific) log2FC was derived as the median of log2FC values from all pgRNAs (filtered as described) targeting the same genomic region' },
-    { k: 'plain', source: ['m-hits-p2', 'res-pipeline-p4'], html: `<p>Every target is targeted by ten guide pairs (pgRNAs). Each guide pair gets its own log2 fold change (treatment sample ÷ control sample, on the log2 scale). To get one number per target, the authors took the <b>median</b> of the guide-level values. The paragraph also mentions an alternative, the average of the top 3 guides.</p>` },
+    { k: 'plain', source: ['m-hits-p2', 'res-pipeline-p4'], html: `<p>Each target has ten different guide pairs (pgRNAs) aimed at it. Each guide pair gets its own log2 fold change (treatment sample ÷ control sample, on the log2 scale). To get one number per target, the authors took the <b>median</b> of the guide-level values. The paragraph also mentions an alternative, the average of the top 3 guides.</p>` },
     { k: 'bgnd', html: `<p>Why a median? The paragraph gives no reason, but one is natural: if one of the ten guide pairs works badly, a median is hardly affected, while a mean would be dragged toward it.</p>` },
     { k: 'paper', ref: 'fig5F', quote: 'The error bars represent the variability of technical replicates, while the biological replicates are indicated on the bottom (n = 4 biological replicates; n > 3 technical replicates; error bars: SD …' },
     { k: 'plain', source: ['fig5F', 'fig5C', 'fig3F'], html: `<p>Legends are where a paper tells you what its error bars are. Figure 5F (organoids grown from one patient-derived xenograft) separates the two kinds of replicate: n = 4 biological replicates and n > 3 technical replicates, with bars showing the spread (SD) of the technical ones. Figure 5C says "n = 4 biological replicates; error bars: SD", and Figure 3F says "mean ± SD from three independent biological replicates".</p>` },
@@ -48,6 +51,7 @@
     { k: 'plain', source: ['m-quant-p1'], html: `<p>The statistics methods name GraphPad Prism and R, plus a long list of R packages (ggplot2 among them), as the tools for the statistics and the plots.</p>` },
   ],
   appears: [
+    { ref: 'res-validation-p1', note: 'A log2 fold change quoted in the text: −1.81 for candidate 205 in A549 cells.' },
     { ref: 'm-hits-p2', note: 'Gene-level log2 fold change is the median of the guide-level values; Z-scaling is described here too.' },
     { ref: 'fig5F', note: 'The legend separates biological from technical replicates and says the error bars are SD.' },
     { ref: 'fig5C', note: '"n = 4 biological replicates; error bars: SD": the kind of legend you want.' },
@@ -337,7 +341,7 @@
       ], source: ['fig5E', 'res-aso-p6'] },
     { q: `Which statement about GCAWKR follows the paper's main text?`,
       options: [
-        { t: `The "G2-M checkpoint" term was singled out, and knockdown increased the share of cells in the G2 phase (not so for CHiLL1)`, ok: true, why: `Right: res-mechanism-p6 links the term to the G2-phase result in Figure 6K.` },
+        { t: `The "G2-M checkpoint" term was singled out, and knockdown increased the share of cells in the G2 phase (not so for CHiLL1)`, ok: true, why: `Right: the main text singles out the "G2-M checkpoint" term and links it to the G2-phase result in Figure 6K.` },
         { t: `The "apoptosis" term was enriched, and knockdown increased early apoptotic cells`, ok: false, why: `Figure 6J does list Apoptosis, but the assay shows more early apoptotic cells after CHiLL1 knockdown, "but not GCAWKR". A label is not a result.` },
         { t: `The p53 pathway was enriched only for CHiLL1`, ok: false, why: `The text says the p53 pathway is among the terms partly shared by the two lncRNAs.` },
         { t: `GCAWKR knockdown made cells migrate faster`, ok: false, why: `The paper reports impaired migration after GCAWKR knockdown (Figure 6L).` },

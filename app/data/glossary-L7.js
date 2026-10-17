@@ -45,7 +45,6 @@
 },
 {
   id: 'standard-deviation',
-  full: 'standard deviation',
   short: `A number that says how spread out values are around their mean: roughly how far a typical value sits from the mean.`,
   long: `<p>To get the SD, find the mean, measure how far each value is from it, square those distances, average them (dividing by n − 1 for a small sample), then take the square root. For 2, 4 and 6 the distances are −2, 0 and +2, the squares add to 8, 8 ÷ 2 = 4, and the square root is 2. A small SD means the replicates agree; a large SD means they scatter. Measuring more replicates does not make the SD shrink; it only makes it better estimated.</p>`,
   analogy: `How far, on average, darts land from the center of their cluster: a tight cluster is a small SD.`,
@@ -154,7 +153,6 @@
 },
 {
   id: 'ns',
-  full: 'not significant',
   short: `A label meaning the p-value was above the significance cutoff, so the difference was not statistically significant.`,
   long: `<p>"ns" is printed on a graph where a comparison did not pass the cutoff (usually p above 0.05). It does <b>not</b> mean there is no difference; it means the data do not rule out chance. With few replicates, real but modest differences often come out ns, so read ns together with the size of the difference and with n.</p>`,
   analogy: `A jury saying "not guilty": the evidence did not reach the bar, which is not the same as proving innocence.`,

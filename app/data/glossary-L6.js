@@ -171,8 +171,8 @@
 {
   id: 'competition-assay',
   short: 'An assay that mixes two kinds of cells in one dish and follows which one takes over, to detect small growth differences.',
-  long: '<p>Cells of two types, each marked with a different fluorescent colour, are mixed (often 1:1) and grown together. A flow cytometer counts the share of each colour over time. Because both types share the same dish, any change in the ratio comes from their difference, not from the dish. A neutral pair stays near 50:50; a cell type that grows worse loses share and is said to be "out-competed". It can detect smaller growth differences than separate dishes can.</p>',
-  analogy: 'Two runners in different coloured shirts on one track: same conditions, so only the runners differ.',
+  long: '<p>Cells of two types, each marked with a different fluorescent color, are mixed (often 1:1) and grown together. A flow cytometer counts the share of each color over time. Because both types share the same dish, any change in the ratio comes from their difference, not from the dish. A neutral pair stays near 50:50; a cell type that grows worse loses share and is said to be "out-competed". It can detect smaller growth differences than separate dishes can.</p>',
+  analogy: 'Two runners in different colored shirts on one track: same conditions, so only the runners differ.',
   see: ['flow-cytometry', 'gfp', 'mcherry'],
   paperUse: { ref: 'res-validation-p3', quote: 'mCherry+ cells expressing pgRNAs were out-competed by control cells' },
 },
@@ -239,7 +239,7 @@
 {
   id: 'crystal-violet',
   short: 'A purple dye that sticks to cells; once dissolved, how dark the solution is tells how many cells were stained.',
-  long: '<p>Crystal violet binds to cells and colours them deep purple. In a migration assay, the cells that crossed the pores of a transwell are stained and the cells left on top are wiped off. The dye on the underside is dissolved, and the colour of the solution is read as optical density: darker means more cells crossed. Because it counts cells, a low result can also reflect fewer cells overall, not only slower movement.</p>',
+  long: '<p>Crystal violet binds to cells and colors them deep purple. In a migration assay, the cells that crossed the pores of a transwell are stained and the cells left on top are wiped off. The dye on the underside is dissolved, and the color of the solution is read as optical density: darker means more cells crossed. Because it counts cells, a low result can also reflect fewer cells overall, not only slower movement.</p>',
   analogy: 'Counting a crowd by the ink their stamped hands leave on a towel.',
   see: ['optical-density', 'transwell-assay', 'migration'],
   paperUse: { ref: 'fig6L', quote: 'The crystal violet quantification is normalized to non-targeting ASO' },
@@ -247,7 +247,7 @@
 {
   id: 'optical-density',
   full: 'optical density (absorbance)',
-  short: 'A measure of how much light of one colour a sample absorbs; darker, more concentrated solutions give higher values.',
+  short: 'A measure of how much light of one color a sample absorbs; darker, more concentrated solutions give higher values.',
   long: '<p>A plate reader shines light of a chosen wavelength through a liquid and measures how much gets through. OD, also called absorbance, is higher when more light is absorbed. Over a working range it rises in step with the amount of dye in the liquid, so OD can stand in for a count. Crystal violet is read near 590 nm, where the purple dye absorbs strongly.</p>',
   analogy: 'Looking through sunglasses: the darker the lens, the less light reaches your eye.',
   see: ['crystal-violet', 'transwell-assay', 'cell-viability'],
@@ -267,7 +267,7 @@
 {
   id: 'probe',
   full: 'probe (probe set)',
-  short: 'A short, labelled strand of DNA designed to base-pair with one target RNA, so the target can be seen or detected.',
+  short: 'A short, labeled strand of DNA designed to base-pair with one target RNA, so the target can be seen or detected.',
   long: '<p>A probe finds its target by complementary base pairing, just as an ASO does, but instead of destroying the RNA it carries a label, here a fluorescent dye. In RNA-FISH a whole set of probes (a probe set) tiles along the same RNA, so one molecule carries many dyes and gives a bright dot, while a lone probe stuck in the wrong place gives only a dim glow.</p>',
   analogy: 'Many small flashlights taped along one rope so the rope is easy to spot in the dark.',
   see: ['fish', 'aso', 'complementary-base-pairing'],
