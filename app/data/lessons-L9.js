@@ -152,3 +152,234 @@
   ],
 }
 );
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+/* ============================================================================================== H2 */
+{
+  id: 'H2',
+  body: [
+    { k: 'h', text: 'Two ways a good result can fool you' },
+    { k: 'bgnd', html: `
+      <p>An experiment can "work" and still mislead you. Either it hit <b>something other than the RNA you meant</b> (the DNA around it, or a different RNA), or it works <b>only in the one cell line</b> you tried. This lesson takes each worry in turn.</p>` },
+    { k: 'h', text: 'DNA effect or RNA effect? Why ASOs followed CRISPR' },
+    { k: 'bgnd', html: `
+      <p>CRISPR-del cuts a stretch of <b>DNA</b> out at a gene's start. That piece may hold more than the start site: a DNA regulatory element such as an enhancer, or the start of a gene on the opposite strand. So a growth defect after deletion can be a <b>DNA-dependent</b> effect (a lost DNA element) or an <b>RNA-dependent</b> one (the RNA product is gone).</p>
+      <p>An <b>ASO</b> works later. It grabs the finished RNA and gets it destroyed, and it leaves the DNA alone. If the ASO gives the same phenotype, the RNA (or its production) matters. An ASO is built to match one RNA, so it can also tell apart two genes that share a start site.</p>` },
+    { k: 'svg', caption: 'Deletion removes DNA, so it cannot separate a DNA effect from an RNA effect. An ASO leaves the DNA intact and destroys only the RNA.',
+      svg: `<svg viewBox="0 0 480 304" role="img" aria-label="Two panels. Left: CRISPR deletion cuts a piece of DNA out at the gene start, which may also remove an enhancer or an opposite-strand gene. Right: an ASO leaves the DNA intact and destroys only the RNA. Below: the same phenotype with both methods points to an RNA-dependent effect.">
+        <text x="120" y="20" class="mid b">CRISPR-del: cut the DNA</text>
+        <text x="360" y="20" class="mid b">ASO: destroy the RNA</text>
+        <path d="M12 70 H92" class="ln thick s-blue"/><path d="M148 70 H228" class="ln thick s-blue"/>
+        <text x="120" y="50" class="mid s b">TSS region</text>
+        <path d="M92 58 V84" class="ln dash s-red"/><path d="M148 58 V84" class="ln dash s-red"/>
+        <path d="M120 76 V95" class="arrow s-red"/>
+        <rect x="92" y="98" width="56" height="26" rx="5" class="f-red"/><text x="120" y="116" class="mid s">deleted</text>
+        <text x="120" y="144" class="mid s m">no start site, no RNA</text>
+        <path d="M252 70 H468" class="ln thick s-blue"/>
+        <text x="360" y="50" class="mid s m">DNA stays intact</text>
+        <path d="M290 76 V108" class="arrow s-orange"/>
+        <path d="M284 112 H436" class="ln thick s-orange"/>
+        <rect x="322" y="100" width="64" height="24" rx="5" class="f-purple"/><text x="354" y="117" class="mid s b">ASO</text>
+        <path d="M404 102 L424 122 M424 102 L404 122" class="ln thick s-red"/>
+        <text x="360" y="144" class="mid s m">only the RNA is destroyed</text>
+        <rect x="6" y="158" width="228" height="70" rx="8" class="f-orange"/>
+        <text x="120" y="178" class="mid s">The deleted piece may also</text><text x="120" y="196" class="mid s">hold an enhancer, or the start</text><text x="120" y="214" class="mid s">of a gene on the other strand</text>
+        <rect x="246" y="158" width="228" height="70" rx="8" class="f-green"/>
+        <text x="360" y="178" class="mid s">Only the RNA is targeted:</text><text x="360" y="196" class="mid s">if growth still drops, the RNA</text><text x="360" y="214" class="mid s">(or making it) is what matters</text>
+        <rect x="6" y="240" width="468" height="56" rx="8" class="f-yellow"/>
+        <text x="240" y="262" class="mid b">Same phenotype with both methods → RNA-dependent</text>
+        <text x="240" y="282" class="mid s">Deletion only → maybe DNA-dependent (or a weak ASO)</text>
+      </svg>` },
+    { k: 'paper', ref: 'res-validation-p4', quote: `genomic deletion cannot distinguish between DNA-dependent (e.g., enhancer) or RNA-dependent mechanisms (e.g., mature lncRNA, or its transcription)` },
+    { k: 'plain', source: ['res-validation-p2', 'res-validation-p4', 'fig3A', 'fig3D'], html: `
+      <p>Candidate 205 sits where two genes on opposite strands, LINC00115 and RP11-206L10.11, share a start region (fig3A). The authors used two ASOs per gene in A549 cells. Both LINC00115 ASOs slowed growth (P=0.034 and P=0.018 at 72 h), but the RP11-206L10.11 ASOs had no significant effect (ns). Each growth curve has a qPCR panel beside it showing the RNA level at 72 h (fig3D). The authors conclude that LINC00115, not RP11-206L10.11, drives proliferation, through an RNA-dependent mechanism.</p>` },
+    { k: 'bgnd', html: `
+      <p>A "no effect" result only counts if the ASO really lowered its RNA. That is why the qPCR panel matters: it shows each ASO did its job, so the silence of the other gene is a real answer.</p>` },
+    { k: 'plain', source: ['limitations-p1'], html: `
+      <p>Across their ASO tests the authors report that 8/12 (67%) of the hits they tested were confirmed, and they say this suggests that around one-third of screen hits may act via DNA-dependent mechanisms. Lesson <a href="#/lesson/H3">H3</a> reads that sentence closely.</p>` },
+    { k: 'h', text: 'Off-target effects: what they are, and how the paper guards against them' },
+    { k: 'bgnd', html: `
+      <p>An ASO is a short strand built to match one RNA. A short match can turn up by chance in other RNAs, so an ASO can lower an unintended RNA, or stress the cell for reasons unrelated to its target. That is an <b>off-target effect</b>, and one ASO cannot rule it out. The usual defenses: (1) several different ASO sequences for the same target, because different sequences have different off-targets but share the on-target effect; (2) a non-targeting control ASO; (3) a second, independent method; (4) a rescue.</p>` },
+    { k: 'plain', source: ['res-aso-p1', 'res-aso-p2', 'res-aso-p3', 'res-mechanism-p2', 'res-mechanism-p3', 'res-mechanism-p6', 'fig6E', 'fig6I', 'fig5A'], html: `
+      <p><b>What the paper did:</b></p>
+      <ul>
+        <li>Each of the nine Tier 1 lncRNAs got at least two independent ASOs with ≥40% knockdown. A phenotype counted as on-target when two distinct ASO sequences reproduced it.</li>
+        <li>For CHiLL1 and GCAWKR, the same phenotype also appeared with CRISPR-del using multiple pgRNAs, and with two independent ASOs per gene.</li>
+        <li>For CHiLL1 RNA-seq, two ASOs gave highly correlated gene changes (R=0.75), read as most effects being on-target. The pathway analysis used only genes changed by both ASOs.</li>
+        <li>For GCAWKR, RNA-seq used a single ASO, compared across A549 and H460 (R=0.8).</li>
+        <li>ASO results are normalized to a non-targeting control ASO.</li>
+      </ul>` },
+    { k: 'paper', ref: 'res-aso-p3', quote: `overexpression of neither CHiLL1 nor GCAWKR could rescue ASO-induced phenotypes` },
+    { k: 'plain', source: ['res-aso-p3', 'm-rescue-p1'], html: `
+      <p>The classic extra test, putting the RNA back, did not work here. The authors offer two possible reasons: a cis-regulatory mechanism (although they saw no such effect on CHiLL1's nearest neighbor, TNFRSF10B), or unannotated transcript isoforms that the overexpressed copy did not include. They do not say which is right.</p>` },
+    { k: 'paper', ref: 'discussion-p5', quote: `strongly suggested that observed phenotypic and molecular effects occur on target (via the intended lncRNA)` },
+    { k: 'bgnd', html: `
+      <p><b>What this does and does not prove (my evaluation).</b> Several independent lines agree, so a purely off-target explanation would need the same accident to happen with different ASO sequences and with a DNA deletion. That is unlikely. But no single experiment excludes it, and the missing rescue is a real gap (see <a href="#/lesson/H4">H4</a>). Notice the authors' own verb: "strongly suggested", not "proved". Copy that caution in exam answers.</p>` },
+    { k: 'h', text: 'Cell-line-specific effects and "background independence"' },
+    { k: 'bgnd', html: `
+      <p>Each cell line is a different cancer with its own mutations and quirks, its <b>cell background</b>. A gene that matters in one line may matter only because of that line's quirks. A hit that works in <b>different backgrounds</b> is more likely to be a general weak spot. That is what "background independent" means: the same effect in more than one background. It is a step toward generality, not proof of it.</p>` },
+    { k: 'paper', ref: 'intro-p5', quote: `Highly focused single background/single hallmark screen designs, including those above, are vulnerable to discovering lncRNAs promoting cell-line-specific phenotypes that do not generalize to the disease in question.` },
+    { k: 'plain', source: ['res-integration-p3', 'res-multipheno-p6', 'fig4E'], html: `
+      <p>The authors tested this worry on their own data. Hits from ordinary dropout screens agree poorly between A549 (n=72) and H460 (n=58); only n=5 are shared (fig4E, left). The pan-hallmark hits (n=80) are active in both cell types (fig4E, right). Even the positive controls overlapped only partly: of the 109 in the library, 37 scored in A549 and 16 in H460, and 10 in both (p=0.011, hypergeometric test).</p>` },
+    { k: 'flag', source: ['res-multipheno-p6', 'res-integration-p3'], html: `
+      <p>The paper words the A549 vs H460 comparison in two ways: "a significant concordance among identified targets" (res-multipheno-p6) and "a low degree of concordance" (res-integration-p3). They probably measure different things (the scores of all targets, and the lists of called hits). A significant correlation can still be weak, so read "low" as "weak overlap of hits", not "none".</p>` },
+    { k: 'plain', source: ['res-aso-p2', 'res-aso-p3', 'res-aso-p6', 'res-aso-p7', 'res-mechanism-p2', 'fig6I'], html: `
+      <p>They then went beyond A549 and H460. ASOs were retested in H460 and H441 with similar results, and were active in additional KRAS+ and EGFR-mutant cell lines, in H441 spheroids and in a patient-derived organoid. The gene changes after CHiLL1 knockdown correlated between A549 and H460, and so did those after GCAWKR knockdown (R=0.8). In normal lung cells the response was diminished or absent.</p>` },
+    { k: 'flag', source: ['res-aso-p3', 'fig5A', 'm-expmodel-p1'], html: `
+      <p>One of the normal lines is printed "CCD-12Lu" in the text of res-aso-p3, but CCD-16Lu in Figure 5A and in the Methods. It is probably one cell line with a typo in one place.</p>` },
+    { k: 'plain', source: ['limitations-p2'], html: `
+      <p>The authors themselves say that they screened in two monolayer cell backgrounds, and that future screens should be run in parallel across the widest panel of mutationally matched 2D and 3D models.</p>` },
+    { k: 'memory', html: `
+      <p><b>Analogy: a recipe page in a cookbook.</b> CRISPR-del <i>tears the page out</i>. The recipe is gone, but so is anything else printed on that page: a margin note (an enhancer) or the start of another recipe on the back (the opposite-strand gene). An ASO <i>shreds only the photocopy</i> the cook is holding. If the dish still fails without the photocopy, the recipe matters, not the page.</p>
+      <p>For cell lines: a recipe that works only in one oven may just suit that oven. A recipe that works in two different ovens is a better bet.</p>
+      <p>Where the analogy breaks: a cell keeps making new photocopies from the page, so an ASO has to keep up with the supply.</p>` },
+  ],
+  appears: [
+    { ref: 'limitations-p1', note: 'False positives from DNA effects; ASO validation resolves them; 8/12 confirmed.' },
+    { ref: 'res-validation-p4', note: 'Deletion cannot tell DNA from RNA effects; two ASOs per gene pick LINC00115 at candidate 205.' },
+    { ref: 'res-aso-p3', note: 'Two independent ASOs, CRISPR-del replication, and overexpression that could not rescue.' },
+    { ref: 'res-mechanism-p2', note: 'Two CHiLL1 ASOs give highly correlated RNA-seq changes, read as on-target.' },
+    { ref: 'res-integration-p3', note: 'Single-screen hits are cell-line specific; pan-hallmark hits are active in both cell types.' },
+    { ref: 'fig4E', note: 'The cell-line-specific effects plot: dropout hits vs pan-hallmark hits in A549 and H460.' },
+  ],
+  checks: [
+    { q: 'At candidate 205 two genes share one start region. Which result let the authors point to LINC00115 rather than RP11-206L10.11?',
+      options: [
+        { t: 'ASOs against LINC00115 slowed A549 growth, while ASOs against RP11-206L10.11 did not', ok: true, why: 'Right (fig3D): gene-specific ASOs can separate two genes that a deletion hits together.' },
+        { t: 'The CRISPR deletion removed the start of LINC00115 only', ok: false, why: 'The two genes share the start region, so one deletion removes both. That is exactly why ASOs were needed.' },
+        { t: 'A gel showed a deletion band only with LINC00115 guides', ok: false, why: 'A gel shows that DNA was cut, not which of two overlapping genes matters. The paper used gene-specific ASOs for that.' },
+        { t: 'RNA-seq showed that only LINC00115 is expressed in A549', ok: false, why: 'The paper does not use expression levels to decide. It used gene-specific ASOs.' },
+      ], source: ['res-validation-p4', 'fig3D'] },
+    { q: 'Why does reproducing a CRISPR-del phenotype with ASOs point to an RNA-dependent mechanism?',
+      options: [
+        { t: 'An ASO leaves the DNA intact and destroys only the RNA, so a lost DNA element cannot explain the phenotype', ok: true, why: 'Right: deletion alone cannot separate DNA-dependent from RNA-dependent mechanisms (res-validation-p4), but an ASO can.' },
+        { t: 'An ASO deletes DNA more precisely than CRISPR does', ok: false, why: 'ASOs do not touch DNA at all. They act on the RNA.' },
+        { t: 'An ASO raises RNA levels, which compensates for the deletion', ok: false, why: 'The opposite: ASOs lower the amount of their target RNA.' },
+        { t: 'The ASO experiment is done in a second cell line', ok: false, why: 'The cell line is not the point. The point is that ASOs act on RNA and not on DNA.' },
+      ], source: ['res-validation-p4'] },
+    { q: 'Which observation shows that ordinary dropout hits are more cell-line-specific than the pan-hallmark hits?',
+      options: [
+        { t: 'A549 and H460 dropout hits (n=72 and n=58) shared only n=5, while the 80 pan-hallmark hits were active in both cell types', ok: true, why: 'Right (res-integration-p3, fig4E): single-screen hits tend to work only where they were found.' },
+        { t: 'Most dropout hits were shared by A549 and H460', ok: false, why: 'Reversed: only n=5 were shared.' },
+        { t: 'The pan-hallmark hits were found only in A549', ok: false, why: 'They were active in both cell types (fig4E, right).' },
+        { t: 'All 109 positive controls scored in both cell lines', ok: false, why: 'No: 37 scored in A549 and 16 in H460, and only 10 in both (res-multipheno-p6).' },
+      ], source: ['res-integration-p3', 'fig4E', 'res-multipheno-p6'] },
+  ],
+}
+);
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+/* ============================================================================================== H3 */
+{
+  id: 'H3',
+  body: [
+    { k: 'h', text: 'Why read the limitations first?' },
+    { k: 'bgnd', html: `
+      <p>Authors know their own work best. The <b>Limitations</b> section is where they say, in their own words, what the study cannot show. For an exam it is gold: a good critique can be built from it. Below, each sentence is quoted and then translated into plain words. My own notes on <b>why it matters</b> sit in separate amber boxes, so you can tell the paper's words from my reasoning.</p>` },
+    { k: 'svg', caption: 'Three places where a hit list can be wrong, as the authors describe them: lncRNAs never screened, known lncRNAs missed, and hits that are not really RNA effects.',
+      svg: `<svg viewBox="0 0 480 252" role="img" aria-label="A four-step pipeline from catalog to screen to hit list to ASO check, with red notes showing where the list can be wrong: lncRNAs never screened or with the wrong start site, known lncRNAs missed as false negatives, and DNA-dependent false positives getting into the hit list.">
+        <rect x="190" y="8" width="284" height="44" rx="8" class="f-blue"/>
+        <text x="332" y="28" class="mid b">Catalog: 831 lncRNAs</text><text x="332" y="45" class="mid s">expressed in A549 cells</text>
+        <path d="M332 52 V71" class="arrow"/>
+        <rect x="190" y="72" width="284" height="44" rx="8" class="f-green"/>
+        <text x="332" y="92" class="mid b">Screen: CRISPR-del</text><text x="332" y="109" class="mid s">two monolayer cell lines</text>
+        <path d="M332 116 V135" class="arrow"/>
+        <rect x="190" y="136" width="284" height="44" rx="8" class="f-orange"/>
+        <text x="332" y="156" class="mid b">Hit list</text><text x="332" y="173" class="mid s">what the screen calls a hit</text>
+        <path d="M332 180 V199" class="arrow"/>
+        <rect x="190" y="200" width="284" height="44" rx="8" class="f-teal"/>
+        <text x="332" y="220" class="mid b">ASO check</text><text x="332" y="237" class="mid s">8 of 12 hits confirmed</text>
+        <path d="M188 30 H162" class="arrow s-red"/>
+        <text x="156" y="25" class="end s t-red">never screened,</text><text x="156" y="41" class="end s t-red">wrong start site</text>
+        <path d="M188 90 H162" class="arrow s-red"/>
+        <text x="156" y="78" class="end s t-red">missed hits:</text><text x="156" y="94" class="end s t-red">MALAT1, MIAT</text><text x="156" y="110" class="end s t-red">(false negatives)</text>
+        <path d="M162 154 H188" class="arrow s-red"/>
+        <text x="156" y="142" class="end s t-red">false positives:</text><text x="156" y="158" class="end s t-red">DNA-dependent,</text><text x="156" y="174" class="end s t-red">e.g. 408, 316</text>
+      </svg>` },
+
+    { k: 'h', text: 'Paragraph 1: the risk of false positives' },
+    { k: 'paper', ref: 'limitations-p1', quote: `One important caveat of CRISPR-del, in common with CRISPRi, is the risk of false-positive hits arising from unintentional targeting of overlapping cis- or trans-acting elements, such as DNA regulatory regions or opposite-strand lncRNA genes.` },
+    { k: 'plain', source: ['limitations-p1'], html: `<p>The main caveat of the deletion method (CRISPRi shares it) is false positives. The cut may disturb other DNA that overlaps the target, such as a regulatory region or a gene on the opposite strand, so a growth defect may not come from the lncRNA at all.</p>` },
+    { k: 'paper', ref: 'limitations-p1', quote: `Fortunately, these cases can be resolved by ASO validation, which can assign correct-strand RNA-mediated mechanisms for observed phenotypes.` },
+    { k: 'plain', source: ['limitations-p1'], html: `<p>The cure is to test hits with ASOs. An ASO acts on the RNA from one strand, so it shows whether the RNA is responsible, and which strand's gene it is.</p>` },
+    { k: 'bgnd', html: `<p><b>Why the first two sentences matter.</b> A screen hit says "cutting here hurt the cells", not "the RNA made here does something". That gap is why the ASO follow-up exists. Treat the hit list as strong leads, not as proven RNA-dependent genes. See <a href="#/lesson/H2">H2</a>.</p>` },
+    { k: 'paper', ref: 'limitations-p1', quote: `Our careful ASO validation indicated that while the majority of screen hits arise via the intended lncRNA-dependent mechanism, there were instances of likely false positives, i.e., candidates 408/316 (Figure 5A).` },
+    { k: 'plain', source: ['limitations-p1'], html: `<p>Their ASO tests suggest that most tested hits work through the intended lncRNA, but a few are probably false positives. They name candidates 408 and 316 (rows in fig5A).</p>` },
+    { k: 'paper', ref: 'limitations-p1', quote: `A similar strategy could also narrow down LINC00115 as the functional lncRNA in the bidirectional locus candidate 205 (Figure 3A).` },
+    { k: 'plain', source: ['limitations-p1', 'res-validation-p4', 'fig3D'], html: `<p>The same ASO strategy can pick LINC00115 as the working gene at candidate 205, where two genes share one start region. (The Results already do this with two ASOs per gene: fig3D.)</p>` },
+    { k: 'paper', ref: 'limitations-p1', quote: `Overall, we could validate 8/12 (67%) lncRNA hits using ASOs (9 for proliferation/cisplatin, 3 for migration), suggesting that around one-third of screen hits may act via DNA-dependent mechanisms.` },
+    { k: 'plain', source: ['limitations-p1', 'res-aso-p1'], html: `<p>Overall, ASOs confirmed 8 of 12 hits (67%): 9 were tested for proliferation/cisplatin and 3 for migration. The authors read this as: around one-third of screen hits may act through DNA rather than RNA. The nine proliferation/cisplatin hits were chosen manually from top-ranked hits for novelty and lack of protein-coding evidence.</p>` },
+    { k: 'flag', source: ['limitations-p1', 'fig5B', 'res-validation-p5', 'res-aso-p2'], html: `<p><b>Counting note (my reading).</b> Candidate 215 is named among the five Tier 2 lncRNAs (the legend of fig5B lists the other four and says data were not available for 215) and also among the three migration validations. So "12" probably counts 215 once for each phenotype. The paper does not explain its counting: quote its numbers as printed.</p>` },
+    { k: 'bgnd', html: `<p><b>Why the last three sentences matter.</b> Reporting your own failures is a mark of honest work. But 8/12 comes from a small set that the authors chose, so "one-third" is a rough estimate, not a measured rate for all hits. An ASO can also fail for technical reasons, so "not confirmed" does not prove a DNA-dependent mechanism.</p>` },
+
+    { k: 'h', text: 'Paragraph 2: what remains to be done' },
+    { k: 'paper', ref: 'limitations-p2', quote: `Nonetheless, several issues remain to be addressed in the future. This study identified known and new lncRNAs promoting NSCLC but is clearly not comprehensive in terms of excluding that other lncRNAs play important disease roles.` },
+    { k: 'plain', source: ['limitations-p2'], html: `<p>Several issues remain. The study found known and new lncRNAs that promote NSCLC, but it cannot rule out that other lncRNAs matter too. The hit list is not a complete census.</p>` },
+    { k: 'bgnd', html: `<p><b>Why it matters.</b> A hit list is a floor, not a ceiling. "Not a hit" does not mean "no role". In an exam, never write that the paper showed other lncRNAs are unimportant.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: `Despite targeting an extensive catalog comprising 831 lncRNAs detected at a permissive expression cutoff in A549 cells, it is likely that we overlooked many valuable targets due to the relative inefficiency of CRISPR-del as a perturbation compared with ORF mutation and also due to ongoing annotation incompleteness, resulting in lncRNAs that were either not screened or whose TSS was incorrectly targeted.` },
+    { k: 'plain', source: ['limitations-p2', 'res-multipheno-p3', 'fig2F'], html: `<p>Even with 831 lncRNAs detected in A549 cells (at a permissive, low cutoff), many valuable targets were probably missed, for two reasons. Deleting a start site is less efficient than breaking the protein-coding sequence directly (ORF mutation). And the catalogs are still incomplete, so some lncRNAs were never screened, or the wrong start site was cut. (The Results show the first gap: promoter-deleting guides had a detectable but lower impact than ORF-targeting guides, fig2F.)</p>` },
+    { k: 'bgnd', html: `<p><b>Why it matters.</b> Three gaps hide in this sentence: which lncRNAs were in the library at all (the catalog was built from A549 cells), how well the tool switches genes off, and whether the start site is where the catalog says it is. Each gap lowers the number of true hits you can find.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: `For example, we could correctly identify some lncRNAs known to be involved in lung cancer pathogenesis like PVT1, LINC00680, and PCAT7 (Figure 2H) but, surprisingly, not MALAT1 or MIAT.` },
+    { k: 'plain', source: ['limitations-p2'], html: `<p>As a check, the screen did find known lung-cancer lncRNAs (PVT1, LINC00680, PCAT7) but, surprisingly, missed MALAT1 and MIAT.</p>` },
+    { k: 'flag', source: ['limitations-p2', 'fig2G', 'fig2H'], html: `<p>The sentence cites Figure 2H, but PVT1, LINC00680 and PCAT7 are labelled in fig2G (the A549 dropout plot), not in fig2H. It is probably a panel-letter slip: look in fig2G.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: `The reason for the latter false negatives is unclear, although it may reflect their unusually high expression and/or else the presence of alternative TSSs that compensate for the loss of the targeted promoter.` },
+    { k: 'plain', source: ['limitations-p2'], html: `<p>The authors do not know why those two were missed. Two possible reasons: unusually high expression, and/or alternative start sites that keep the gene on when the targeted promoter is deleted.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: `This may be overcome in the future by employing complementary direct RNA-targeting CRISPR perturbations, such as Cas13.` },
+    { k: 'plain', source: ['limitations-p2'], html: `<p>A fix for the future: add CRISPR tools that attack the RNA directly, such as Cas13.</p>` },
+    { k: 'bgnd', html: `<p><b>Why the last three sentences matter.</b> Known genes work as a built-in sensitivity test: finding some shows the screen can see real ones, and missing two shows it cannot see all. The two reasons are hypotheses; the sentence itself calls the cause "unclear". In an exam write "may reflect", not "was caused by". A tool that works on the RNA would not care which start site made it.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: `We screened in two monolayer cell backgrounds; however, future screens should be performed in parallel across the widest panel of mutationally matched 2D and 3D models.` },
+    { k: 'plain', source: ['limitations-p2'], html: `<p>The screens used only two cell backgrounds, both grown flat (monolayer). Future screens should run in parallel across the widest panel of 2D and 3D models that match in their mutations.</p>` },
+    { k: 'paper', ref: 'limitations-p2', quote: `Finally, our screens discovered scores of lncRNAs that could not be followed up here and hopefully will provide a fertile source of new targets in the future.` },
+    { k: 'plain', source: ['limitations-p2'], html: `<p>Many lncRNAs found in the screens were not followed up. The authors hope they will be a source of new targets.</p>` },
+    { k: 'bgnd', html: `<p><b>Why the last two sentences matter.</b> Everything the screens themselves found rests on two cell lines. Matching mutations matters because, if models differ in several ways at once, you cannot tell which difference explains a result. And the unexplored hits are both a selling point (a resource) and a limit: they have screen-level evidence only.</p>` },
+
+    { k: 'h', text: 'The declared patent and conflict of interest' },
+    { k: 'paper', ref: 'decl-p1', quote: `T.P., R.E., and R.J. have filed a patent application (21202363.4) relating to the therapeutic targeting of lncRNAs identified here. Applicant: University of Bern. R.J. is a paid consultant for NextRNA (USA).` },
+    { k: 'plain', source: ['decl-p1', 'contrib-p1'], html: `
+      <ul>
+        <li>Three of the authors, named by initials, have <b>filed</b> a patent application (number 21202363.4) about the therapeutic targeting of the lncRNAs identified in this paper. The applicant is the University of Bern.</li>
+        <li>One of them, R.J., is a paid consultant for NextRNA (USA).</li>
+        <li>The author contributions (contrib-p1) list the same three as the people who conceived and designed the experiment procedure, did data analysis and interpretation, and wrote the manuscript.</li>
+        <li>The declaration does not say what the patent covers beyond that one sentence, whether it has been granted, or what NextRNA does.</li>
+      </ul>` },
+    { k: 'plain', source: ['ack-p1'], html: `<p>The acknowledgments name these funders: the Swiss National Science Foundation, the Medical Faculty and University Hospital of Bern, the Helmut Horten Stiftung, the Swiss Cancer Research Foundation and Science Foundation Ireland. NextRNA is not named there.</p>` },
+    { k: 'bgnd', html: `
+      <p><b>Patent application.</b> A <b>patent</b> is a legal right, granted by a state patent office, to stop others from making or selling an invention for a limited time. A <b>patent application</b> is only the request. It can be granted, narrowed or refused. Universities often file as the "applicant" while the researchers who made the invention are named as inventors.</p>
+      <p><b>Conflict of interest.</b> A <b>conflict of interest</b> is a situation where something outside the research, such as money, a job or a patent, could influence (or could look as if it influences) a person's judgment. Journals ask authors to declare such "competing interests" so that readers can take them into account. A declaration is not an accusation and does not show that the results are wrong. It is a transparency step. In medical research it is common for the people who do the work to also be the inventors.</p>` },
+    { k: 'bgnd', html: `<p><b>How a fair critic uses this.</b> State what is declared, neutrally. Then ask whether the claims that matter commercially, here that these lncRNAs are promising drug targets, are backed by controls and by evidence that other people could repeat. Do <i>not</i> argue "they have a patent, so the data are unreliable": that is not evidence about the data. Independent replication by other labs, and tests in animals, would be the cleanest way to settle any doubt (see <a href="#/lesson/H4">H4</a>).</p>` },
+    { k: 'memory', html: `
+      <p><b>Analogy: a food label.</b> The limitations are the "may contain traces of…" line: honest, specific, and useful to the person who has to decide. The declaration of interests is like a note that the chef also owns the farm. It is not a reason to throw the food away, but you want to know it when you judge the taste test.</p>
+      <p>Where the analogy breaks: a regulator checks a food label, but the authors write both the limitations and the declaration themselves.</p>` },
+  ],
+  appears: [
+    { ref: 'limitations-p1', note: 'Sentence by sentence: false positives, ASO validation, candidates 408/316, 8/12 (67%).' },
+    { ref: 'limitations-p2', note: 'Not comprehensive, false negatives (MALAT1, MIAT), Cas13 as a fix, two monolayer cell lines.' },
+    { ref: 'decl-p1', note: 'The declared patent application and the paid consultancy.' },
+    { ref: 'contrib-p1', note: 'Who conceived and designed the experiments and wrote the manuscript.' },
+    { ref: 'res-validation-p4', note: 'The candidate 205 example: two ASOs per gene pick LINC00115.' },
+  ],
+  checks: [
+    { q: 'According to the Limitations, how can the false-positive risk of CRISPR-del (a hit that is really a DNA effect) be resolved?',
+      options: [
+        { t: 'By ASO validation, which can assign correct-strand RNA-mediated mechanisms to the phenotype', ok: true, why: 'Right (limitations-p1): ASOs act on the RNA of one strand, so they separate RNA effects from DNA effects.' },
+        { t: 'By repeating the screen in a third cell line', ok: false, why: 'A third line would test generality. It would not separate a DNA effect from an RNA effect.' },
+        { t: 'By Cas13 screens, which the paper uses to settle DNA vs RNA effects', ok: false, why: 'Cas13 appears in limitations-p2 as a future fix for missed hits (false negatives), not as the tool used here for DNA vs RNA.' },
+        { t: 'By checking whether the hit is amplified in tumors', ok: false, why: 'Amplification in tumors is supporting evidence of relevance (fig4H). It says nothing about whether the effect works through DNA or RNA.' },
+      ], source: ['limitations-p1'] },
+    { q: 'MALAT1 and MIAT, both known lung-cancer lncRNAs, were not found as hits. Which explanation do the authors offer as possible?',
+      options: [
+        { t: 'Unusually high expression, and/or alternative start sites that compensate for the deleted promoter', ok: true, why: 'Right (limitations-p2): they call the reason "unclear" and give these two possibilities.' },
+        { t: 'ASOs against them were toxic to normal cells', ok: false, why: 'ASOs are not part of this explanation. The misses are false negatives of the deletion screen.' },
+        { t: 'They were left out of the library because they lie close to a protein-coding exon', ok: false, why: 'The paper does not give this reason. It says the cause is unclear and offers only the two possibilities above.' },
+        { t: 'The authors showed that they have no role in lung cancer', ok: false, why: 'The paper calls them lncRNAs known to be involved in lung cancer pathogenesis. It does not say they are unimportant.' },
+      ], source: ['limitations-p2'] },
+    { q: 'A reader wants to weigh the declared patent application and consultancy fairly. Which response is most reasonable?',
+      options: [
+        { t: 'Note it as a declared interest, then check whether the key claims are backed by controls and by evidence others could repeat', ok: true, why: 'Right: a declaration is transparency, not an accusation. It tells you where to look carefully (decl-p1).' },
+        { t: 'Reject the paper, because authors who file a patent cannot be trusted', ok: false, why: 'A declared interest does not by itself show that the data are wrong. It is a reason for extra care, not for rejection.' },
+        { t: 'Ignore it: declarations are only required when fraud is suspected', ok: false, why: 'Journals ask for declarations so that readers can weigh possible influence. Fraud is a separate matter.' },
+        { t: 'Conclude that the patent proves the targets work', ok: false, why: 'The paragraph says a patent application was filed. That is a request, not a result, and it is not evidence that the targets work.' },
+      ], source: ['decl-p1'] },
+  ],
+}
+);

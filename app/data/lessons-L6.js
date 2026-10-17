@@ -87,3 +87,91 @@
   ],
 },
 );
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+
+/* ============================================================================================== D7 */
+{
+  id: 'D7',
+  defines: ['normalization'],
+  body: [
+    { k: 'h', text: '1. Did the DNA change? PCR and a gel' },
+    { k: 'bgnd', html: `<p>After a deletion, the first question is simple: <b>is the piece really gone?</b> Run a PCR (lesson D4) with one primer on each side of the region. The piece that PCR copies, from one primer to the other, is the <b>amplicon</b>. If the region is intact the amplicon is long; if it was deleted the primers sit closer and the amplicon is shorter.</p>
+<p>To see the length, the copies are run through a gel. In <b>gel electrophoresis</b> the DNA is loaded into a slab of agarose jelly and an electric field is switched on. DNA is negatively charged, so it moves toward the positive end; small pieces slip through the jelly faster than big ones, so the pieces end up sorted by size, and a dye shows them as <b>bands</b>. A <b>ladder</b> lane (pieces of known sizes) is the ruler. A lane with water instead of DNA should stay empty: it shows the reagents were clean.</p>
+<p>Two cautions. A mixed population of cells gives both bands (some copies edited, some not), so a gel shows whether the short product exists, not exactly how many cells carry it; PCR also copies short pieces more easily than long ones. And a gel with more agarose (2%) separates small pieces better than one with less (1%).</p>` },
+    { k: 'svg', caption: 'Same primers, shorter amplicon after a deletion; on the gel the short piece runs farther.',
+      svg: '<svg viewBox="0 0 480 350" role="img" aria-label="Top: the same two primers give a long amplicon on intact DNA and a short amplicon when the target region is deleted. Bottom: a gel with a ladder lane, a control lane with a strong 2.5 kb band, an edited lane with a 500 bp band and a faint 2.5 kb band, and an empty water lane">' +
+        '<text x="8" y="20" class="b">Same primers, different amplicon length</text>' +
+        '<text x="8" y="58" class="s">intact DNA</text>' +
+        '<path d="M110 52 H470" class="ln thick"/><rect x="190" y="44" width="200" height="16" rx="3" class="f-orange"/><text x="290" y="57" class="mid s">target region</text>' +
+        '<path d="M116 38 H146" class="arrow s-blue"/><text x="108" y="34" class="s t-blue b">F</text><path d="M464 38 H434" class="arrow s-blue"/><text x="458" y="34" class="s t-blue b">R</text>' +
+        '<path d="M110 74 H470" class="ln thin"/><text x="290" y="92" class="mid s">long amplicon: 2.5 kb</text>' +
+        '<text x="8" y="132" class="s">region deleted</text>' +
+        '<path d="M110 126 H182" class="ln thick"/>' +
+        '<path d="M114 112 H138" class="arrow s-blue"/><text x="106" y="108" class="s t-blue b">F</text><path d="M178 112 H154" class="arrow s-blue"/><text x="172" y="108" class="s t-blue b">R</text>' +
+        '<path d="M110 146 H182" class="ln thin"/><text x="194" y="150" class="s">short amplicon: 500 bp</text>' +
+        '<rect x="20" y="186" width="330" height="140" rx="8" class="f-gray"/>' +
+        '<text x="76" y="178" class="mid s">ladder</text><text x="156" y="178" class="mid s">control</text><text x="236" y="178" class="mid s">edited</text><text x="316" y="178" class="mid s">water</text>' +
+        '<rect x="58" y="190" width="36" height="5" class="f-none"/><rect x="138" y="190" width="36" height="5" class="f-none"/><rect x="218" y="190" width="36" height="5" class="f-none"/><rect x="298" y="190" width="36" height="5" class="f-none"/>' +
+        '<rect x="58" y="206" width="36" height="4" class="solid-gray"/><rect x="58" y="232" width="36" height="4" class="solid-gray"/><rect x="58" y="272" width="36" height="4" class="solid-gray"/><rect x="58" y="306" width="36" height="4" class="solid-gray"/>' +
+        '<text x="52" y="211" class="s end">10 kb</text><text x="52" y="237" class="s end">3 kb</text><text x="52" y="277" class="s end">1 kb</text><text x="52" y="311" class="s end">250 bp</text>' +
+        '<rect x="136" y="234" width="40" height="9" rx="2" class="solid-text"/>' +
+        '<rect x="216" y="236" width="40" height="5" rx="2" class="solid-gray"/><rect x="216" y="285" width="40" height="9" rx="2" class="solid-text"/>' +
+        '<path d="M372 196 V310" class="arrow"/><text x="384" y="244" class="s">short pieces</text><text x="384" y="262" class="s">run farther</text>' +
+        '<text x="240" y="344" class="mid s">upper band: region intact (2.5 kb); lower band: deleted (500 bp)</text></svg>' },
+    { k: 'h', text: '2. Did the RNA go down? qRT-PCR' },
+    { k: 'bgnd', html: `<p>PCR copies DNA, not RNA. So to measure an RNA you first turn it into DNA: the enzyme <b>reverse transcriptase</b> reads each RNA and writes a matching DNA copy, called <b>cDNA</b> (complementary DNA). Then a PCR is run on the cDNA while a fluorescent dye reports how much DNA there is after every cycle. This is <b>qRT-PCR</b> (quantitative reverse-transcription PCR, also written RT-qPCR). The more RNA you start with, the earlier the glow appears: very roughly, one cycle later means half as much starting RNA.</p>
+<p>Tubes never hold exactly the same amount of material, so every sample is also measured for a <b>housekeeping gene</b>: a gene every cell needs all the time, whose RNA level is expected to stay steady whatever you do, such as <b>GAPDH</b> or <b>HPRT1</b>. Dividing the target's signal by the housekeeping signal removes the tube-to-tube differences. This kind of adjustment is called <b>normalization</b> (lesson D10 returns to it). Then the treated sample is compared with the control, which is set to 1.0. No gene is perfectly constant, so the reference should be one that the treatment does not change.</p>` },
+    { k: 'worked', html: `<p><b>Worked example (made-up numbers).</b> Target signal ÷ housekeeping signal: control cells 1.00, ASO-treated cells 0.35. The RNA fell to 35% of the control, a knockdown of 65%.</p>` },
+    { k: 'h', text: '3. Do the edited cells really grow worse? The competition assay' },
+    { k: 'bgnd', html: `<p>Instead of growing edited and control cells in separate dishes, a <b>competition assay</b> mixes them in one dish, usually 1:1, and lets them compete. Each type carries a different fluorescent colour (green GFP, red mCherry; lesson D2), and flow cytometry (lesson D3) counts the share of each colour over time. Both types share the same medium, crowding and drugs, so a change in the ratio can only come from the difference between them. Even a small growth difference adds up as the cells keep dividing. An edit that harms growth makes its colour fall below 50%.</p>
+<p>Controls make it readable: a <b>neutral control</b> (cells edited at AAVS1) should stay near 50:50, and a <b>positive control</b> (a gene cells cannot live without, such as RPS5) should lose share quickly.</p>` },
+    { k: 'svg', caption: 'Competition assay: with a neutral edit the colours stay 50:50; an edit that harms growth loses share.',
+      svg: '<svg viewBox="0 0 480 230" role="img" aria-label="Two small charts of the percentage of each colour of cell over seven days. Left: neutral control, both colours stay near 50 percent. Right: an edit that harms growth, the red edited cells fall while the green control cells rise">' +
+        '<text x="126" y="22" class="mid s b">Neutral control (both AAVS1)</text><text x="366" y="22" class="mid s b">Edit that harms growth</text>' +
+        '<path d="M44 36 V170 H216" class="ln thin"/><path d="M284 36 V170 H456" class="ln thin"/>' +
+        '<path d="M44 104 H216" class="ln thin dash m"/><path d="M284 104 H456" class="ln thin dash m"/>' +
+        '<text x="38" y="108" class="s end">50%</text>' +
+        '<path d="M44 102 L130 100 L216 98" class="ln thick s-green"/><path d="M44 106 L130 108 L216 110" class="ln thick s-red"/>' +
+        '<path d="M284 104 L370 88 L456 72" class="ln thick s-green"/><path d="M284 104 L370 120 L456 136" class="ln thick s-red"/>' +
+        '<text x="44" y="190" class="s">day 0</text><text x="216" y="190" class="s end">day 7</text><text x="284" y="190" class="s">day 0</text><text x="456" y="190" class="s end">day 7</text>' +
+        '<circle cx="40" cy="214" r="5" class="solid-green"/><text x="52" y="219" class="s">control cells (GFP)</text><circle cx="236" cy="214" r="5" class="solid-red"/><text x="248" y="219" class="s">edited cells (mCherry)</text></svg>' },
+    { k: 'memory', html: `<p><b>Analogy:</b> the gel is a ruler (shorter piece, farther run). qRT-PCR is a bathroom scale that you check against a standard weight every time (the housekeeping gene), so a drifting scale does not fool you. The competition assay is two runners in different coloured shirts on one track: the track is identical, so the shirt (the edit) is the only difference.</p>` },
+    { k: 'h', text: 'How this paper uses these checks' },
+    { k: 'paper', ref: 'm-pcr-gdna-p1', quote: 'The PCR was done with genomic primers flanking the deleted region' },
+    { k: 'plain', source: ['fig1E', 'm-pcr-gdna-p1', 'm-library-cloning-p1'], html: `<p>In Figure 1E the primers (F and R) sit on both sides of the TSS target region of DNMBP-AS1. The expected lengths are labelled: 2.5 kb for wild type (WT) and 500 bp for the deletion (KO). Control cells give one strong 2.5 kb band; cells with the deleting guide pair pgRNA_9 give a 500 bp band plus a fainter band at the WT position; the water lane is empty. The genotyping gel was 1% agarose; a 2% gel checked the size of the library's PCR product.</p>` },
+    { k: 'panel', id: 'fig1E', html: `<p>Find the ladder, the Control lane, the pgRNA_9 lane and the water (H2O) lane, then the two labelled sizes, 2.5kb (WT) and 500bp (KO).</p>` },
+    { k: 'paper', ref: 'm-qpcr-p1', quote: 'The expression of HPRT1 was used as an internal control for normalization.' },
+    { k: 'plain', source: ['m-qpcr-p1', 'fig1F', 'fig3D'], html: `<p>The Methods name HPRT1 as the reference gene for RT-qPCR. Figure 1F (DNMBP-AS1 RNA after the deletion, n = 3) is labelled "Normalised to GAPDH", and the RNA panels of Figure 3D "Normalised to HPRT1". So the paper uses both reference genes, in different experiments.</p>` },
+    { k: 'paper', ref: 'res-validation-p3', quote: 'mCherry+ cells expressing pgRNAs were out-competed by control cells (GFP+, expressing pgRNA for AAVS1), with an effect comparable to inactivation of essential ribosomal gene RPS5' },
+    { k: 'plain', source: ['res-validation-p3', 'm-competition-p1', 'fig3C'], html: `<p>For the two validated hits, candidates 205 and 509, the red cells carrying their pgRNAs lost share to the green AAVS1 control cells, about as much as cells lacking the essential gene RPS5 (the positive control). After seven days of puromycin selection the cells were mixed 1:1 (150,000 cells in a six-well plate) and followed for 7 days by flow cytometry. Figure 3C prints P = 3.8e-4 for RPS5, 0.005 for candidate 205 and 0.004 for candidate 509 (lesson E2 explains what P means). The pgRNA for candidate 509 also sensitized cells to cisplatin (P = 0.031).</p>` },
+    { k: 'flag', source: ['fig1E', 'm-qpcr-p1', 'fig1F', 'm-competition-p1'], html: `<p>Heads-up: the legend does not explain the fainter upper band in the pgRNA_9 lane. The Methods name only HPRT1, yet Figure 1F uses GAPDH. And the Methods print the control as "pgRNAs-AASV1-GFP+" (a typo for AAVS1).</p>` },
+  ],
+  appears: [
+    { ref: 'fig1E', note: 'The genotyping gel: expected WT amplicon 2.5 kb and deletion (KO) amplicon 500 bp.' },
+    { ref: 'm-qpcr-p1', note: 'RNA is reverse transcribed to cDNA; HPRT1 is the internal control.' },
+    { ref: 'fig1F', note: 'qRT-PCR of DNMBP-AS1 after deletion, divided by GAPDH.' },
+    { ref: 'res-validation-p3', note: 'Competition assay: edited mCherry+ cells are out-competed by AAVS1 GFP+ control cells, like the RPS5 positive control.' },
+  ],
+  checks: [
+    { q: 'In Figure 1E the pgRNA_9 lane has a band at the 500 bp mark. What does it tell you?',
+      options: [
+        { t: 'Some copies of the DNA lost the region between the primers, so the PCR product is shorter', ok: true, why: 'Right: with the same two primers, a deletion brings them closer, so the amplicon is shorter (500 bp instead of 2.5 kb) and runs farther down the gel.' },
+        { t: 'That DNA is longer and heavier, so it sank to the bottom', ok: false, why: 'It is the other way round: in a gel, shorter pieces slip through faster and run farther.' },
+        { t: 'The RNA level of the gene has dropped', ok: false, why: 'This PCR was done on genomic DNA, so it reports DNA length, not RNA amount. RNA is measured by qRT-PCR.' },
+      ], source: ['fig1E', 'm-pcr-gdna-p1'] },
+    { q: 'Why is a housekeeping gene measured in every qRT-PCR sample?',
+      options: [
+        { t: 'To correct for different amounts of RNA or cDNA in each tube, so samples can be compared fairly', ok: true, why: 'Right: dividing by a steady reference removes tube-to-tube differences.' },
+        { t: 'To prove the knockdown worked, because the housekeeping gene should fall too', ok: false, why: 'A good housekeeping gene should <i>not</i> change with the treatment. If it fell, it would be a poor reference.' },
+        { t: 'Because housekeeping genes are easier to turn into cDNA', ok: false, why: 'Ease of copying is not the reason. The point is a steady yardstick.' },
+      ], bg: true },
+    { q: 'In a competition assay, which result shows that an edit harms cell growth?',
+      options: [
+        { t: 'The edited (mCherry) cells fall below half of the mixture while the control (GFP) cells rise', ok: true, why: 'Right (res-validation-p3): the edited cells were "out-competed" by the AAVS1 control cells, as with the RPS5 positive control.' },
+        { t: 'Both colours stay at about 50% in the mixture', ok: false, why: 'That is what the neutral control does: no growth difference.' },
+        { t: 'The mCherry cells glow brighter than the GFP cells', ok: false, why: 'Brightness is just the label. What counts is the share of each colour over time.' },
+      ], source: ['res-validation-p3'] },
+  ],
+},
+);

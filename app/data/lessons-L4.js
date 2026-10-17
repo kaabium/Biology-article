@@ -3,10 +3,10 @@
 /* ============================================================================================== C4 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'C4',
-  defines: ['aso'],
+  defines: ['aso', 'lentivirus'],
   body: [
     { k: 'h', text: 'The problem: you cannot test a cancer idea on a patient first' },
-    { k: 'bgnd', html: `<p>Before an idea goes anywhere near a patient, scientists try it on <b>models</b>: stand-ins that are easier and safer to handle. The most common stand-in is a dish of living cells. The big question is always: <i>how much does the stand-in behave like the real disease?</i></p>` },
+    { k: 'bgnd', html: `<p>Before an idea goes near a patient, scientists try it on <b>models</b>: stand-ins that are easier and safer to handle, most often a dish of living cells. The big question is always: <i>how much does the stand-in behave like the real disease?</i></p>` },
 
     { k: 'h', text: 'Cell lines, primary cells and "immortal" cells' },
     { k: 'bgnd', html: `<p>A <b>cell line</b> is a population of cells, all descended from one original sample, that can be grown in the lab for months or years. Labs share them, so results can be compared. Most cancer cell lines began as a piece of a patient's tumor whose cells never stopped dividing.</p>` +
@@ -37,20 +37,20 @@
         `<rect x="6" y="298" width="468" height="56" rx="10" class="f-gray"/>` +
         `<text x="240" y="318" class="mid b">HEK293T · DMEM</text><text x="240" y="338" class="mid s">kidney-derived "factory" cells that make virus particles</text></svg>` },
     { k: 'plain', source: ['m-expmodel-p1', 'res-pipeline-p5', 'res-aso-p2', 'res-aso-p3', 'm-lentivirus-p1'], html:
-      `<p>The Methods list <b>seven</b> human cell lines. <b>A549</b> and <b>H460</b> are called two widely used KRAS+ lung cancer models, and they carry the main experiments. <b>H441</b> is a third KRAS+ line, derived from a pericardial effusion metastasis (cancer that had spread into the fluid around the heart). Three <b>non-transformed lung-derived</b> lines serve as the comparison: <b>HBEC3-KT</b> (bronchial epithelial cells) and <b>MRC-5</b>, both called immortalized, and <b>CCD-16Lu</b>, called primary. <b>HEK293T</b> is the odd one out: it is the line that makes the virus particles used to deliver DNA tools into the lung cells (lesson D2).</p>` },
+      `<p>The Methods list <b>seven</b> human cell lines. <b>A549</b> and <b>H460</b> are called two widely used KRAS+ lung cancer models, and they carry the main experiments. <b>H441</b> is a third KRAS+ line, derived from a pericardial effusion metastasis (cancer that had spread into the fluid around the heart). Three <b>non-transformed lung-derived</b> lines serve as the comparison: <b>HBEC3-KT</b> (bronchial epithelial cells) and <b>MRC-5</b>, both called immortalized, and <b>CCD-16Lu</b>, called primary. <b>HEK293T</b> is the odd one out: it is the line that makes the virus particles (harmless, modified viruses used as delivery vehicles; lesson D2) that carry DNA tools into the lung cells.</p>` },
     { k: 'paper', ref: 'm-expmodel-p1', quote: 'All the cell lines were authenticated using Short Tandem Repeat (STR) profiling (Microsynth Cell Line Typing) and tested negative for mycoplasma contamination.' },
     { k: 'plain', source: ['m-expmodel-p1', 'm-expmodel-p2', 'm-expmodel-p3'], html:
       `<p>Every line was identity-checked by STR profiling and tested negative for mycoplasma. A549 and HEK293T grow in DMEM, MRC-5 in EMEM, and H460, H441 and CCD-16Lu in RPMI-1640, each with 10% fetal bovine serum plus L-glutamine (a nutrient) and the antibiotics penicillin and streptomycin; HBEC3-KT needs a special airway-cell medium. Cells were split every 2–3 days and kept at 37°C in a humid atmosphere with 5% CO2.</p>` },
     { k: 'paper', ref: 'res-aso-p3', quote: 'We evaluated Tier 2 ASOs’ effects on a panel of non-transformed lung-derived cells: HBEC3-KT, MRC5-CV1 (both immortalized), and CCD-12Lu (primary).' },
     { k: 'plain', source: ['res-aso-p3'], html:
-      `<p>The authors note that targeting lncRNAs <i>could</i> cause lower side effects in healthy tissue, but few studies have tested this. So they tried their candidate treatments, called <b>ASOs</b> (short strands that silence one chosen RNA; you will study them later), on three non-transformed lung-derived lines. These cells showed a diminished or absent response. That is the hoped-for result: a treatment that spares normal cells should cause fewer side effects.</p>` },
+      `<p>The authors note that targeting lncRNAs <i>could</i> harm healthy tissue less, but few studies have tested this. So they tried their possible treatments, called <b>ASOs</b> (short strands that silence one chosen RNA; you will study them later), on three non-transformed lung-derived lines. These cells showed a diminished or absent response. That is the hoped-for result: a treatment that spares normal cells should do less harm to a patient.</p>` },
     { k: 'flag', source: ['m-aso-p1', 'res-aso-p3'], html:
       `<p>Heads-up on doses: the Methods give the ASOs at a final 25 nM for A549, H460, NCI-H441 and MRC5-CV1, but 10 nM for HBEC3-KT and CCD-16LU. The paper does not comment on this difference, so keep it in mind when you compare cancer and normal cells.</p>` },
     { k: 'paper', ref: 'res-integration-p3', quote: 'revealed a low degree of concordance—lncRNAs tend to only display activity in the cell type where they were discovered' },
     { k: 'plain', source: ['res-integration-p3'], html:
       `<p>Comparing the lncRNAs that mattered for growth in A549 and in H460 separately, the two lists barely overlapped: most lncRNAs were active only in the cell type where they were found. The lncRNAs that mattered in several tests (the "pan-hallmark" ones) were more <b>background-independent</b>: active in both cell types. That is why the authors use two cancer lines and prefer lncRNAs that work in both.</p>` },
     { k: 'why', source: ['intro-p5'], html:
-      `<p>The authors' worry is that a search done in a single cell line may find lncRNAs with cell-line-specific effects that "do not generalize to the disease in question". An ideal search should favor lncRNAs that are both pleiotropic (affect several cancer hallmarks) and background independent (effective regardless of cell model).</p>` },
+      `<p>The authors worry that a search in a single cell line may find lncRNAs whose effects are cell-line-specific and "do not generalize to the disease in question". They want lncRNAs that are both pleiotropic (affect several cancer hallmarks) and background independent (effective regardless of cell model).</p>` },
     { k: 'flag', source: ['m-expmodel-p1', 'res-aso-p3', 'm-aso-p1', 'm-viability-2d-p1'], html:
       `<p>Heads-up on names: the Methods list MRC-5 and CCD-16Lu, but the text and other Methods paragraphs also write MRC5-CV1, Mrc5-SV1, CCD-12Lu and CCD-16LU. They most likely refer to the same two lines, but the paper never says so. Do not let the different spellings throw you in the exam.</p>` },
   ],
@@ -62,10 +62,10 @@
     { ref: 'intro-p5', note: 'Why a single cell line can mislead: the generalizability problem.' },
   ],
   checks: [
-    { q: 'Why did the authors test their candidate treatments on HBEC3-KT, MRC-5 and CCD-16Lu cells?',
+    { q: 'Why did the authors test their possible treatments on HBEC3-KT, MRC-5 and CCD-16Lu cells?',
       options: [
-        { t: 'To see whether normal-type lung cells respond less than cancer cells, a hint of fewer side effects', ok: true, why: 'Right: the paper reports a diminished or absent response in these non-transformed lung-derived cells.' },
-        { t: 'To make the virus particles that deliver the DNA tools', ok: false, why: 'That is the job of HEK293T, not of these three lines.' },
+        { t: 'To see whether normal-type lung cells respond less than cancer cells, a hint of less harm to a patient', ok: true, why: 'Right: the paper reports a diminished or absent response in these non-transformed lung-derived cells.' },
+        { t: 'To make the delivery particles that carry the DNA tools', ok: false, why: 'That is the job of HEK293T, not of these three lines.' },
         { t: 'Because they carry a KRAS mutation just like A549', ok: false, why: 'They are described as non-transformed (normal-type) cells; the KRAS+ lines are A549, H460 and H441.' },
         { t: 'To provide extra cancer cells for the main experiments', ok: false, why: 'They are not cancer cells. Their role is the healthy comparison.' },
       ], source: ['res-aso-p3', 'discussion-p5'] },
@@ -84,7 +84,7 @@
     { q: 'A lab wants to be sure the cells in its freezer really are the cell line on the label. Which routine check is for that?',
       options: [
         { t: 'STR profiling, a DNA fingerprint compared with the known fingerprint of the line', ok: true, why: 'Right: it catches mix-ups and contamination with another line.' },
-        { t: 'A mycoplasma test', ok: false, why: 'That checks for a bacterial infection of the culture, not for the identity of the cells.' },
+        { t: 'A mycoplasma test', ok: false, why: 'That checks for bacterial contamination of the culture, not for the identity of the cells.' },
         { t: 'Trypsinization', ok: false, why: 'Trypsin only loosens cells from the dish so they can be counted or split.' },
       ], bg: true },
   ],
@@ -93,7 +93,7 @@
 /* ============================================================================================== C5 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'C5',
-  defines: ['aso'],
+  defines: ['aso', 'statistical-significance'],
   body: [
     { k: 'h', text: 'The problem: a dish is flat, a tumor is a lump' },
     { k: 'bgnd', html: `<p>Inside the body a tumor is a crowded, three-dimensional lump, with cells packed against each other, far from the blood supply in the middle. A dish of cells looks nothing like that. So scientists climb a ladder of models: simple and scalable at the bottom, realistic but slow at the top.</p>` },
@@ -139,15 +139,15 @@
     { k: 'h', text: 'How this paper uses it' },
     { k: 'paper', ref: 'res-aso-p6', quote: '3D in vitro models represent a more faithful tumor model compared with monolayer cultures.' },
     { k: 'plain', source: ['res-aso-p6', 'm-viability-3d-p1'], html:
-      `<p>The authors say 3D lab models are a more faithful stand-in for a tumor than monolayer (2D) cultures. They delivered the CHiLL1 and GCAWKR ASOs (short strands that silence one chosen RNA; you will study them later) to spheroids of H441 cells and saw a drop in viability, the number of living cells, approaching that of the paper's control gene, mTOR. In the Methods the spheroids grow in small domes of Matrigel mixed 1:1 with growth medium, with 20,000 cells per dome, and living cells are measured at the start and again after one week.</p>` },
+      `<p>The authors say 3D lab models are a more faithful stand-in for a tumor than monolayer (2D) cultures. They delivered the CHiLL1 and GCAWKR ASOs (short strands that silence one chosen RNA; you will study them later) to spheroids of H441 cells and saw a drop in the number of living cells that approached the drop caused by the paper's growth-gene control. In the Methods the spheroids grow in small domes of Matrigel mixed 1:1 with growth medium, with 20,000 cells per dome, and living cells are measured at the start and again after one week.</p>` },
     { k: 'paper', ref: 'res-aso-p7', quote: 'Organoids derived from patient-derived xenografts (PDXs) recapitulate the therapy response of individual patients. Delivery of CHiLL1 ASOs resulted in a significant reduction in cell viability of KRAS+ human NSCLC BE874 organoids (Figure 5F).' },
     { k: 'plain', source: ['m-pdx-p1', 'res-aso-p7', 'm-viability-3d-p3'], html:
-      `<p><b>BE874</b> is a patient-derived organoid line from a KRAS+ lung cancer. Its history, from the Methods: pieces of a surgically removed lung tumor were implanted under the skin of the flanks of 6-week-old NSG mice. After the tumor grew, it was removed, its cells were separated, and they were grown as organoids. The KRAS G12C change (the paper writes c.34G&gt;T, p.Gly12Cys) was found in both the organoids and the original cancer. CHiLL1 ASOs then significantly reduced the number of living cells in BE874 organoids, which were also grown in Matrigel domes with 20,000 cells per dome.</p>` },
-    { k: 'panel', id: 'fig5F', html: `<p>Each pair of bars is one independent set of BE874 organoids: gray is the control ASO and green is the CHiLL1 ASO. The legend says there are n = 4 biological replicates, so the whole experiment was repeated four times on independent organoids.</p>` },
-    { k: 'flag', source: ['m-viability-3d-p3', 'fig5F'], html: `<p>Heads-up: for BE874 the Methods say the measurement was repeated "after one week", while the x axis of Figure 5F labels its time points in days. Check the axis when you reach that panel.</p>` },
+      `<p><b>BE874</b> is a patient-derived organoid line from a KRAS+ lung cancer. Its history, from the Methods: pieces of a surgically removed lung tumor were implanted under the skin of the flanks of 6-week-old NSG mice. After the tumor grew, it was removed, its cells were separated, and they were grown as organoids. The KRAS G12C change (the paper writes c.34G&gt;T, p.Gly12Cys) was found in both the organoids and the original cancer. CHiLL1 ASOs then caused a significant reduction (unlikely to be a chance result) in the number of living cells in BE874 organoids, which were also grown in Matrigel domes with 20,000 cells per dome.</p>` },
+    { k: 'panel', id: 'fig5F', html: `<p>Each pair of bars is one independent set of BE874 organoids: gray bars are the control and green bars are the CHiLL1 ASO. The legend says n = 4, so the experiment was done on four independent sets of organoids.</p>` },
+    { k: 'flag', source: ['m-viability-3d-p3', 'fig5F'], html: `<p>Heads-up: for BE874 the Methods say the measurement was repeated "after one week", while the x axis of Figure 5F labels the measurement times in days. Check the axis when you reach that panel.</p>` },
     { k: 'paper', ref: 'discussion-p5', quote: 'Future efforts will be required to further refine ASO sequences and chemistry and to effectively deliver them in vivo.' },
     { k: 'plain', source: ['discussion-p5', 'limitations-p2', 'm-pdx-p1'], html:
-      `<p>The paper describes its ASO tests only in dishes: 2D cells, spheroids and organoids. The mice were used to grow the BE874 tumor, not to test the ASOs; delivering the ASOs in a living animal (in vivo) is listed as future work. The authors also screened in two monolayer cell backgrounds and say that future screens should run across the widest panel of mutationally matched 2D and 3D models.</p>` },
+      `<p>The paper describes its ASO tests only in dishes: 2D cells, spheroids and organoids. The mice were used to grow the BE874 tumor, not to test the ASOs; delivering the ASOs in a living animal (in vivo) is listed as future work. The authors also say that their big experiments used two monolayer cell backgrounds and that future work should run in parallel across the widest panel of mutationally matched 2D and 3D models.</p>` },
   ],
   appears: [
     { ref: 'res-aso-p6', note: '3D spheroid cultures of H441 cells as a "more faithful tumor model".' },
@@ -190,7 +190,7 @@
   id: 'C6',
   body: [
     { k: 'h', text: 'The problem: do lab results hold in real patients?' },
-    { k: 'bgnd', html: `<p>Cell lines are convenient, but a skeptic asks: does this also happen in real patients? Scientists can answer without recruiting anyone, by reusing data that others have already collected from thousands of tumors and cell lines. You do not need to know how those projects were run, only what each collection holds.</p>` },
+    { k: 'bgnd', html: `<p>Cell lines are convenient, but a skeptic asks: does this also happen in real patients? Scientists can answer without recruiting anyone, by reusing data that others have already collected. You only need to know what each collection holds.</p>` },
 
     { k: 'h', text: 'Public data collections' },
     { k: 'bgnd', html: `<ul>` +
@@ -217,7 +217,7 @@
       `<p><b>Survival analysis.</b> <i>Overall survival</i> is the time from diagnosis until death from any cause. Split patients by how much of a gene their tumors make and compare the groups. If the high group does worse, the gene goes with a <b>poor prognosis</b> (a worse expected outcome). That is an association, not proof of cause.</p>` +
       `<p><b>Tumor subtype.</b> Tumors of one cancer type are not all alike. A <b>tumor subtype</b> is a recognized sub-group, defined by a shared driver mutation (KRAS+ lung cancer is one) or by an overall RNA pattern. Lung adenocarcinoma has three RNA-based subtypes: terminal respiratory unit (TRU), proximal-inflammatory (PI) and proximal-proliferative (PP).</p>` },
     { k: 'worked', html: `<p><b>Made-up numbers.</b> 100 patients: 50 with high levels of a gene and 50 with low levels. After three years 20 of the 50 high patients are alive, but 35 of the 50 low patients. High goes with worse survival. It does not prove the gene causes it: high-gene tumors may simply be more advanced.</p>` },
-    { k: 'memory', html: `<p><b>Analogy:</b> a public data collection is a library: you borrow what others collected. A cohort is a class of students graded together. And tumor vs adjacent normal tissue is like comparing the bruised part of an apple with the healthy flesh right next to it: same fruit, so the difference points to the bruise.</p>` },
+    { k: 'memory', html: `<p><b>Analogy:</b> a public data collection is a free community bookshelf: you take what others put there. A cohort is a class of students graded together. And tumor vs adjacent normal tissue is like comparing the bruised part of an apple with the healthy flesh right next to it: same fruit, so the difference points to the bruise.</p>` },
     { k: 'svg', caption: 'Schematic (made-up bars and curves): the three comparisons you can make with patient data.',
       svg: `<svg viewBox="0 0 480 246" role="img" aria-label="Three schematic panels: a tumor bar higher than a normal bar; survival curves where the high-expression group falls faster; and bars for three subtypes with the PI subtype highest">` +
         `<text x="80" y="18" class="mid b">Tumor vs normal</text><text x="80" y="38" class="mid s m">RNA level</text>` +
@@ -291,13 +291,13 @@
 /* ============================================================================================== D1 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'D1',
-  defines: ['aso', 'false-positive'],
+  defines: ['aso', 'false-positive', 'lentivirus'],
   body: [
     { k: 'h', text: 'The problem: how do you switch off one lncRNA?' },
-    { k: 'bgnd', html: `<p>To learn what a gene or lncRNA does, you switch it off and watch what changes. This is a <b>loss-of-function (LOF)</b> experiment: if cells grow more slowly or die more easily, the lost function mattered. With thousands of lncRNAs to test, you need a tool you can re-aim at any DNA address just by changing a short piece of text. That tool is <b>CRISPR</b>.</p>` },
+    { k: 'bgnd', html: `<p>To learn what a lncRNA does, switch it off and watch what changes: a <b>loss-of-function (LOF)</b> experiment. With thousands of lncRNAs to test, you need a tool you can re-aim at any DNA address just by changing a short piece of text. That tool is <b>CRISPR</b>.</p>` },
 
     { k: 'h', text: 'CRISPR-Cas9: scissors with an address label' },
-    { k: 'bgnd', html: `<p>CRISPR began as a bacterial defense against viruses. Scientists turned it into an editing tool with two parts. <b>Cas9</b> is the scissors: an enzyme that cuts both strands of DNA. The <b>guide RNA</b> (gRNA, or sgRNA) is the address label: a short RNA whose roughly 20 letters match one place in the genome by complementary base pairing. Cas9 follows the guide, finds the matching DNA and cuts there. Change the guide's letters and the cut moves.</p>` +
+    { k: 'bgnd', html: `<p>CRISPR began as a bacterial defense against invaders such as viruses (tiny parasites that take over cells). Scientists turned it into an editing tool with two parts. <b>Cas9</b> is the scissors: an enzyme that cuts both strands of DNA. The <b>guide RNA</b> (gRNA, or sgRNA) is the address label: a short RNA whose roughly 20 letters match one place in the genome by complementary base pairing. Cas9 follows the guide, finds the matching DNA and cuts there. Change the guide's letters and the cut moves.</p>` +
       `<p>The cell then repairs the cut, and the repair is often a little sloppy. For a protein-coding gene, one cut inside the reading frame (ORF) can scramble the recipe and leave a <b>knockout (KO)</b>: a gene permanently disabled in the DNA. A lncRNA has no recipe to scramble, so the small errors from one cut usually do not silence it.</p>` },
 
     { k: 'h', text: 'Two cuts, one deletion: CRISPR-del, pgRNA and DECKO' },
@@ -354,24 +354,24 @@
     { k: 'h', text: 'How this paper uses it' },
     { k: 'paper', ref: 'res-pipeline-p1', quote: 'This approach achieves loss-of-function (LOF) perturbations by deleting target genes’ transcription start sites (TSS) via paired guide RNAs (pgRNAs) and effectively inhibits gene expression.' },
     { k: 'plain', source: ['res-pipeline-p1'], html:
-      `<p>The authors adapted the DECKO CRISPR-del system to a high-throughput format in which thousands of targets are tested together, to find lncRNAs that promote KRAS+ NSCLC. They switch each lncRNA off by deleting its TSS with a pgRNA, which stops the gene from being expressed.</p>` },
+      `<p>To find lncRNAs that promote KRAS+ NSCLC, the authors adapted the DECKO CRISPR-del system to a format that tests thousands of targets together. They switch each lncRNA off by deleting its TSS with a pgRNA.</p>` },
     { k: 'paper', ref: 'res-pipeline-p1', quote: 'This perturbation strategy based on the deletion of TSSs rather than entire genes offers several benefits, including uniform and shorter deletions (which are more efficient) and a reduced chance of false positives arising from deleting overlapping DNA regulatory elements.' },
     { k: 'plain', source: ['res-pipeline-p1'], html:
-      `<p>Why the TSS and not the whole gene? Two benefits: the deletions are uniform and shorter, so they are more efficient, and there is a smaller chance of <b>false positives</b> (results that look real but are not) caused by deleting DNA regulatory elements that overlap the target.</p>` },
-    { k: 'panel', id: 'fig1E', html: `<p>Top: the gene map for the lncRNA DNMBP-AS1. The black part of the green bar is the TSS target region, and each thin red line is one pgRNA: as drawn, it runs from the cut site of one guide to the cut site of the other, so the DNA between them is cut out. There are ten pgRNAs for this target.</p>` },
+      `<p>Why the TSS and not the whole gene? The deletions are uniform and shorter (more efficient), and there is a smaller chance of <b>false positives</b> (results that look real but are not) from deleting overlapping DNA regulatory elements.</p>` },
+    { k: 'panel', id: 'fig1E', html: `<p>Top: the gene map of the lncRNA DNMBP-AS1. The black part of the green bar is the TSS target region. Each thin red line is one pgRNA: as drawn, it runs from the cut site of one guide to the other, so the DNA between them is cut out. This target has ten pgRNAs.</p>` },
     { k: 'paper', ref: 'res-pipeline-p5', quote: 'We observed expected deletion at the target site for 10/12 cases. In terms of impact on target RNA levels, we observed expected downregulations for 7/12' },
     { k: 'plain', source: ['res-pipeline-p5', 'res-pipeline-p4'], html:
-      `<p>Does it work? For the known lncRNA DNMBP-AS1, the pgRNAs deleted its promoter region and its expression was lost. In a broader test of 12 pgRNAs aimed at 12 candidates, the expected deletion appeared in 10 of 12 cases. The target RNA went down in 7 of 12, did not change in three and went up in two. So the method often works, but not always. A sensible reading is that this is why each target gets 10 different pgRNAs in the real experiment.</p>` },
+      `<p>Does it work? For the known lncRNA DNMBP-AS1, the pgRNAs deleted its promoter region and its expression was lost. In a broader test of 12 pgRNAs aimed at 12 different lncRNA targets, the expected deletion appeared in 10 of 12 cases. The target RNA went down in 7 of 12, did not change in three and went up in two. So the method often works, but not always. A sensible reading: this is why each target gets 10 different pgRNAs.</p>` },
     { k: 'plain', source: ['res-multipheno-p5'], html:
-      `<p>The factors that influence how well a pgRNA deletes are poorly understood. Using growth effect as a stand-in for deletion efficiency, the authors saw the expected link between the observed effect and the predicted sgRNA efficiency (the RuleSet2 score). They saw no link with pgRNA orientation, and only a weak tendency for larger deletions to give stronger effects.</p>` },
+      `<p>What makes a pgRNA delete well is poorly understood. Using growth effect as a stand-in for deletion efficiency, the authors saw the expected link with the predicted sgRNA efficiency (the RuleSet2 score), no link with pgRNA orientation, and only a weak tendency for larger deletions to give stronger effects.</p>` },
     { k: 'flag', source: ['res-pipeline-p2', 'm-library-design-p4'], html:
-      `<p>Heads-up: the paper uses "off targeting" in two senses. In the main text it leaves out any target region closer than 2 kb to the nearest protein-coding exon, to avoid false results from "unintended off targeting" (presumably because a deletion that close could disturb the protein-coding gene instead). In the Methods, the guide-design software's "off-targeting filters" are about guides that match unintended DNA places.</p>` },
+      `<p>Heads-up: the paper uses "off targeting" in two senses. The main text leaves out target regions closer than 2 kb to a protein-coding exon, to avoid false results from "unintended off targeting" (presumably because a deletion that close could disturb that gene instead). The Methods' "off-targeting filters" of the guide-design software are about guides that match unintended DNA places.</p>` },
     { k: 'paper', ref: 'limitations-p1', quote: 'One important caveat of CRISPR-del, in common with CRISPRi, is the risk of false-positive hits arising from unintentional targeting of overlapping cis- or trans-acting elements, such as DNA regulatory regions or opposite-strand lncRNA genes.' },
     { k: 'plain', source: ['limitations-p1'], html:
-      `<p>CRISPR-del and CRISPRi both act on a DNA region, so both can mislead if that region also holds other regulatory DNA or a lncRNA gene on the opposite strand. The authors say that ASO validation can resolve this: they validated 8 of 12 (67%) lncRNAs that way, which suggests that around one-third of the lncRNAs found in the big experiments may act through DNA-dependent mechanisms.</p>` },
+      `<p>Both tools act on a DNA region, so both can mislead if it also holds other regulatory DNA or an opposite-strand lncRNA gene. ASO validation can resolve this: 8 of 12 (67%) lncRNAs were validated that way, suggesting that around one-third of the lncRNAs found in the big experiments may act through DNA-dependent mechanisms.</p>` },
     { k: 'paper', ref: 'limitations-p2', quote: 'This may be overcome in the future by employing complementary direct RNA-targeting CRISPR perturbations, such as Cas13.' },
     { k: 'plain', source: ['limitations-p2'], html:
-      `<p>The authors add that CRISPR-del is relatively inefficient compared with mutating a protein-coding gene's reading frame, and that known lncRNAs such as MALAT1 and MIAT were missed (the reason is unclear; one idea is alternative TSSs). They suggest direct RNA-targeting tools such as Cas13 as a future complement.</p>` },
+      `<p>The authors add that CRISPR-del is relatively inefficient compared with mutating a protein-coding gene's reading frame, and that known lncRNAs such as MALAT1 and MIAT were missed (reason unclear). They suggest direct RNA-targeting tools such as Cas13 as a future complement.</p>` },
   ],
   appears: [
     { ref: 'res-pipeline-p1', note: 'DECKO CRISPR-del, LOF by deleting the TSS with pgRNAs, and the two benefits of deleting only the TSS.' },
@@ -403,7 +403,7 @@
       ], source: ['res-pipeline-p1', 'limitations-p1'] },
     { q: 'According to the paper, which caveat do CRISPR-del and CRISPRi share?',
       options: [
-        { t: 'Both act on a DNA region, so they can disturb overlapping regulatory DNA or an opposite-strand lncRNA gene and give false-positive results', ok: true, why: 'Right (limitations-p1): this is why the authors validated hits with ASOs, which act on the RNA.' },
+        { t: 'Both act on a DNA region, so they can disturb overlapping regulatory DNA or an opposite-strand lncRNA gene and give false-positive results', ok: true, why: 'Right (limitations-p1): this is why the authors validated lncRNAs with ASOs, which act on the RNA.' },
         { t: 'Both destroy the RNA directly and therefore miss effects at the DNA level', ok: false, why: 'This describes RNA-targeting tools such as Cas13. CRISPR-del and CRISPRi act on DNA.' },
         { t: 'Both need an immunodeficient mouse to work', ok: false, why: 'Both work in cells in a dish; mice are unrelated to this caveat.' },
       ], source: ['limitations-p1'] },

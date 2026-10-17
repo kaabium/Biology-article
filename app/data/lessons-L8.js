@@ -148,3 +148,115 @@
       ], source: ['m-hits-p5', 'fig4B'] },
   ],
 });
+
+/* ============================================================================================== E5 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'E5',
+  body: [
+    { k: 'h', text: 'The problem: many screens, one ranking wanted' },
+    { k: 'bgnd', html:
+      `<p>A screen gives every target two kinds of number. The <b>effect size</b> says how big the change is (for example the log2 fold change from lesson E1). The p-value says how surprising the change would be if nothing were going on. A target can look great on one and weak on the other.</p>` },
+    { k: 'svg', caption: 'Effect size is how far from zero; significance is how sure you are the value is not zero.',
+      svg: `<svg viewBox="0 0 480 232" role="img" aria-label="Two genes on a log2 fold change axis: Gene A has a big effect but a very wide uncertainty bar (p = 0.20); Gene B has a tiny effect with a very narrow uncertainty bar (p = 0.0001)">` +
+        `<path d="M358 30 V184" class="ln thin dash m"/><text x="358" y="22" class="mid s m">0 = no change</text>` +
+        `<text x="70" y="46" class="s b">Gene A: big effect, very uncertain (p = 0.20)</text>` +
+        `<path d="M48 70 H380" class="ln s-orange"/><path d="M48 62 V78" class="ln s-orange"/><path d="M380 62 V78" class="ln s-orange"/><circle cx="214" cy="70" r="5" class="solid-orange"/>` +
+        `<path d="M214 94 H358" class="arrow both s-orange"/><text x="286" y="114" class="mid s">effect size</text>` +
+        `<text x="70" y="140" class="s b">Gene B: tiny effect, very certain (p = 0.0001)</text>` +
+        `<path d="M336 160 H351" class="ln s-blue"/><path d="M336 152 V168" class="ln s-blue"/><path d="M351 152 V168" class="ln s-blue"/><circle cx="343" cy="160" r="4" class="solid-blue"/>` +
+        `<path d="M70 184 H430" class="ln"/>` +
+        `<path d="M70 180 V188 M142 180 V188 M214 180 V188 M286 180 V188 M358 180 V188 M430 180 V188" class="ln thin"/>` +
+        `<text x="70" y="204" class="mid s">−4</text><text x="142" y="204" class="mid s">−3</text><text x="214" y="204" class="mid s">−2</text><text x="286" y="204" class="mid s">−1</text><text x="358" y="204" class="mid s">0</text><text x="430" y="204" class="mid s">+1</text>` +
+        `<text x="250" y="224" class="mid s m">log2 fold change (bars = uncertainty)</text></svg>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up).</b> Gene A: log2 fold change −2.0 (a fourfold drop) but noisy, p = 0.20. Gene B: log2 fold change −0.2 (a drop of about 13%) but measured very precisely, p = 0.0001. A has the bigger <b>effect size</b>; B has the stronger <b>significance</b>. Which should rank higher? Neither number settles it, so a good ranking must use both.</p>` },
+    { k: 'plain', source: ['res-integration-p1', 'fig4A'], html:
+      `<p>That is the authors' problem too. Each lncRNA has results from several screens, and they wanted to "combine diverse screen results while balancing effect size and significance". Their answer is the <b>target prioritization pipeline</b> (TPP).</p>` },
+
+    { k: 'h', text: 'TPP: two routes, then one answer' },
+    { k: 'paper', ref: 'm-hits-p4', quote: 'the Robust Rank Aggregation (RRA) to compute a ranking based on the effect size (CASPR log2FC) across screens, and an empirical adaptation of Brown’s method (EBM) to combine the significance values (CASPR p-value) of each candidate across screens. … Subsequently, the harmonic mean p-value (HMP) was calculated using the two significance scores from RRA and EBM.' },
+    { k: 'plain', source: ['m-hits-p4', 'fig4A', 'res-integration-p1'], html:
+      `<p>TPP runs two analyses side by side. One (RRA) ranks the targets by effect size, using the log2 fold changes of all screens. The other (EBM) combines each target's p-values across the screens. RRA's scores are turned into p-values, then the HMP merges the two significance scores into one p-value. That p-value is corrected with Benjamini–Hochberg and hits are called at FDR &lt; 0.2 (lesson E4). TPP can be run on all screens ("TPP Pan", the pan-hallmark ranking) or on the screens of one phenotype ("TPP pheno").</p>` },
+    { k: 'svg', caption: 'The TPP as the Methods describe it (same steps as the flow chart in Figure 4A).',
+      svg: `<svg viewBox="0 0 480 316" role="img" aria-label="Flow chart of the target prioritization pipeline: several screens split into two routes, RRA using log2 fold changes and EBM using p-values; both feed the harmonic mean p-value, which goes to Benjamini-Hochberg correction and the FDR below 0.2 hit list">` +
+        `<rect x="100" y="6" width="280" height="48" rx="10" class="f-blue"/><text x="240" y="26" class="mid b">Several screens</text><text x="240" y="45" class="mid s">per target: log2 fold change + p-value</text>` +
+        `<path d="M125 54 V84" class="arrow"/><text x="134" y="74" class="s">log2FC</text><path d="M355 54 V84" class="arrow"/><text x="364" y="74" class="s">p-value</text>` +
+        `<rect x="16" y="84" width="214" height="64" rx="10" class="f-green"/><text x="123" y="106" class="mid b">RRA · rank aggregation</text><text x="123" y="126" class="mid s">uses effect size (log2FC)</text><text x="123" y="142" class="mid s">→ score → exact p-value</text>` +
+        `<rect x="250" y="84" width="214" height="64" rx="10" class="f-orange"/><text x="357" y="106" class="mid b">EBM · Brown's method</text><text x="357" y="126" class="mid s">uses the p-values</text><text x="357" y="142" class="mid s">→ one combined p-value</text>` +
+        `<path d="M125 148 V162 H170 V178" class="arrow"/><path d="M355 148 V162 H310 V178" class="arrow"/>` +
+        `<rect x="100" y="178" width="280" height="48" rx="10" class="f-purple"/><text x="240" y="198" class="mid b">HMP · harmonic mean p-value</text><text x="240" y="216" class="mid s">merges the two scores (small p dominates)</text>` +
+        `<path d="M240 226 V256" class="arrow"/>` +
+        `<rect x="100" y="256" width="280" height="48" rx="10" class="f-red"/><text x="240" y="276" class="mid b">Benjamini–Hochberg correction</text><text x="240" y="294" class="mid s">hit = FDR &lt; 0.2 → ranked hit list</text></svg>` },
+    { k: 'h', text: 'The three tools, one idea each' },
+    { k: 'bgnd', html:
+      `<p><b>Robust Rank Aggregation (RRA)</b> works on ranks, not raw values. Each screen ranks the targets from strongest to weakest effect. RRA asks: how unlikely is it that a target would sit this high in so many lists by chance? A target near the top of every list is convincing; one that tops a single list and is average elsewhere is not. "Robust" means one noisy list cannot ruin a target that does well in the others.</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up).</b> Three screens each rank 100 genes. By chance, a given gene lands in the top 5 of one list with probability 5/100 = 5%, and in the top 5 of all three with probability 0.05<sup>3</sup> ≈ 1 in 8,000. Gene W has ranks 1, 2 and 4: very unlikely by luck. Gene X has ranks 1, 40 and 77: being top in at least one of three lists happens to about 1 gene in 7 by chance. RRA turns this kind of reasoning into a score.</p>` },
+    { k: 'bgnd', html:
+      `<p><b>Empirical Brown's method (EBM)</b> merges several p-values for the same target into one. The simplest merging treats the tests as independent witnesses. Brown's method allows the tests to be related, and "empirical" means the relationship is estimated from the data itself.</p>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> three witnesses who never spoke are strong evidence. Three witnesses who compared stories first are worth less, even though all three agree. Brown's method discounts the evidence when the "witnesses" (the tests) are related. The analogy breaks down in one way: the discount is a smooth number, not all-or-nothing.</p>` },
+    { k: 'bgnd', html:
+      `<p>The <b>harmonic mean p-value (HMP)</b> of two p-values is 2 ÷ (1/p1 + 1/p2). Small p-values make 1/p huge, so the result stays close to the smallest p-value: one strong signal is not watered down by a weak one. (The Methods list an R package called harmonicmeanp, version 3.0.)</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up).</b> Merge p = 0.001 and p = 0.5. The ordinary average is 0.25, but the harmonic mean is 2 ÷ (1000 + 2) ≈ 0.002. Merge two equal p-values of 0.04 and you get 0.04 back.</p>` },
+    { k: 'plain', source: ['res-integration-p1', 'discussion-p3'], html:
+      `<p>The authors judged TPP on their controls: the pan-hallmark ranking "outperforms common integration methods and individual screens in correctly classifying positive and neutral controls" (Figure 4B, the ROC curves of lesson E4). In the Discussion they call it a "simple yet robust" pipeline that balances effect size and significance.</p>` },
+    { k: 'flag', source: ['m-hits-p4', 'm-data-p2'], html:
+      `<p>Heads-up: the Methods give the TPP code as "https://doi.org/10.5281/zenodo.6912510", while the Data availability section says "Zenodo: 6912511". Two different record numbers are printed for the same code.</p>` },
+
+    { k: 'h', text: 'Decoding real legends' },
+    { k: 'bgnd', html:
+      `<p>A legend is a compressed statistics report. Here are six real ones. For each: what it says in plain words, and what it leaves unsaid. (Lesson F4 turns this into a checklist.)</p>` },
+    { k: 'paper', ref: 'fig4F', quote: 'in the KRAS+ samples from The Cancer Genome Atlas (TCGA) LUAD cohort (n = 101). Statistical significance was estimated by one-tailed Welch’s t test.' },
+    { k: 'plain', source: ['fig4F'], html:
+      `<p><b>Decoded:</b> screen hits are compared with all other screened lncRNAs on how much RNA they make in lung tumors; 101 is the size of the tumor cohort. Welch's t test compares two averages without assuming equal spread; one-tailed means only "hits higher" counts. <b>Left unsaid:</b> what one data point is (an lncRNA? an lncRNA in one tumor?), so you cannot tell how many values entered the test; and why one-tailed.</p>` },
+    { k: 'paper', ref: 'fig2F', quote: 'Statistical significance: Wilcoxon test (pairwise comparisons) and Kruskal-Wallis (global differences).' },
+    { k: 'plain', source: ['fig2F'], html:
+      `<p><b>Decoded:</b> rank-based tests (lesson E3). Kruskal–Wallis asks one question about all groups together ("are they all alike?"); the Wilcoxon test compares chosen pairs. <b>Left unsaid:</b> which pairs, one- or two-sided, and whether the pairwise P values were corrected for making several comparisons.</p>` },
+    { k: 'paper', ref: 'fig3C', quote: 'n = 3, error bars indicate SD statistical significance was estimated by Student’s t test at the last time point.' },
+    { k: 'plain', source: ['fig3C'], html:
+      `<p><b>Decoded:</b> three repeats; error bars show the standard deviation (the spread of the three values); the t test uses only the last time point of the curve. <b>Left unsaid:</b> which two lines are compared, one- or two-tailed, and what "n = 3" counts (separate experiments, or three wells of one).</p>` },
+    { k: 'paper', ref: 'fig5F', quote: 'The error bars represent the variability of technical replicates, while the biological replicates are indicated on the bottom (n = 4 biological replicates; n > 3 technical replicates; error bars: SD; one-tailed Student’s t test).' },
+    { k: 'plain', source: ['fig5F'], html:
+      `<p><b>Decoded:</b> the paper separates technical repeats (the same sample measured again) from biological ones (independent samples, lesson E1). Here the error bars show the technical variation, and there are four independent biological replicates. <b>Left unsaid:</b> whether the P values come from the technical or the biological replicates. Technical repeats are not independent evidence, so it matters.</p>` },
+    { k: 'paper', ref: 'fig6I', quote: '(p = 2.2 × 10−16; R = 0.8; statistical significance: Pearson correlation coefficient)' },
+    { k: 'plain', source: ['fig6I', 'm-quant-p1'], html:
+      `<p><b>Decoded:</b> R = 0.8 is a strong positive correlation (lesson E2). The paper used R software (m-quant-p1), which prints "2.2e-16" for any p-value too small to show, so read it as "smaller than that", not as an exact value. <b>Left unsaid:</b> how many points were correlated. With thousands of points even a weak correlation gets a tiny p; R, not p, tells you the strength.</p>` },
+    { k: 'paper', ref: 'm-quant-p3', quote: 'For all analyses, p ≤ 0.05 is considered statistically significant unless otherwise specified. Specific details concerning statistical tests for individual experiments are noted in the relevant Figure legends.' },
+    { k: 'plain', source: ['m-quant-p3', 'm-hits-p4'], html:
+      `<p><b>Decoded:</b> the default bar is p ≤ 0.05; the screens specify FDR &lt; 0.2 instead (lesson E4); test details are promised in each legend. <b>Left unsaid:</b> I found no mention, in the legends or the Methods, of a correction for the many separate comparisons (apart from Benjamini–Hochberg for the screens), and some legends give no statistics at all (Figure 1F, lesson F4).</p>` },
+  ],
+  appears: [
+    { ref: 'm-hits-p4', note: 'The TPP step by step: RRA, EBM, HMP, Benjamini–Hochberg, FDR < 0.2.' },
+    { ref: 'fig4A', note: 'The paper\'s own flow chart of the TPP, with the TPP Pan and TPP pheno variants.' },
+    { ref: 'res-integration-p1', note: 'Why TPP was built: balancing effect size and significance.' },
+    { ref: 'discussion-p3', note: 'The authors\' verdict on TPP: simple yet robust, better than conventional approaches.' },
+  ],
+  checks: [
+    { q: 'In the paper\'s TPP, what are RRA and EBM each used for?',
+      options: [
+        { t: 'RRA ranks targets by effect size (log2 fold change) across screens; EBM combines each target\'s p-values across screens', ok: true, why: 'Right (m-hits-p4): one route works on effect size, the other on significance, and the harmonic mean p-value then merges the two.' },
+        { t: 'RRA combines p-values; EBM ranks targets by log2 fold change', ok: false, why: 'Reversed. RRA is the effect-size (ranking) route; EBM is the p-value route.' },
+        { t: 'RRA corrects for multiple testing; EBM draws the ROC curves', ok: false, why: 'Neither does that. The Benjamini–Hochberg method does the correction, and the controls are used for the ROC curves.' },
+      ], source: ['m-hits-p4'] },
+    { q: 'You merge two p-values, 0.001 and 0.5, with the harmonic mean. Where does the result land?',
+      options: [
+        { t: 'Near the smaller p-value (about 0.002)', ok: true, why: 'Right: 2 ÷ (1/0.001 + 1/0.5) = 2 ÷ 1002 ≈ 0.002. Small p-values dominate the harmonic mean.' },
+        { t: 'At the ordinary average (about 0.25)', ok: false, why: 'That is the arithmetic mean. The harmonic mean is much closer to the smallest value.' },
+        { t: 'Near the larger p-value (about 0.5)', ok: false, why: 'The opposite happens: the larger p-value has little pull on a harmonic mean.' },
+      ], bg: true },
+    { q: 'Gene A: log2 fold change −2.0, p = 0.20. Gene B: log2 fold change −0.2, p = 0.0001. Which statement is correct?',
+      options: [
+        { t: 'A has the bigger effect size; B has the stronger significance', ok: true, why: 'Right: effect size is how big the change is, significance is how sure you are it is not chance. Different questions.' },
+        { t: 'B has the bigger effect size because its p-value is smaller', ok: false, why: 'A p-value is not an effect size. A tiny p can go with a tiny effect when the measurement is precise.' },
+        { t: 'A is more significant because its change is larger', ok: false, why: 'Significance depends on noise as well as size. A\'s large change is very uncertain, hence p = 0.20.' },
+      ], bg: true },
+    { q: 'A legend says "n = 4 biological replicates; n > 3 technical replicates; error bars: SD; one-tailed Student\'s t test". What does it leave unsaid?',
+      options: [
+        { t: 'Whether the P values were computed from the biological or the technical replicates', ok: true, why: 'Right (fig5F): technical replicates are repeat measurements of the same sample, so they should not be counted as independent evidence; the legend does not say which were used.' },
+        { t: 'What the error bars show', ok: false, why: 'The legend says: SD (standard deviation).' },
+        { t: 'Whether the t test was one-tailed or two-tailed', ok: false, why: 'It says one-tailed. What it does not say is why.' },
+      ], source: ['fig5F'] },
+  ],
+});

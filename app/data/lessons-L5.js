@@ -137,7 +137,7 @@
     { k: 'bgnd', html: `<p>A <b>CRISPR library</b> is the mixture of guide constructs used in a pooled screen. Its <b>depth</b> is the number of guides per target: single guides differ in how well they work, so you aim several at each target. Building a library has two steps. Software (here <b>CRISPETa</b>) designs the guide pairs and filters out those likely to cut elsewhere. Then the DNA pieces are inserted into the plasmid backbone, called <b>cloning</b>, and bacteria copy the plasmids so you have plenty of every one.</p>` },
     { k: 'paper', ref: 'res-pipeline-p4', quote: 'a CRISPR-del library with a depth of 10 unique pgRNAs per target, comprising altogether 12,000 pgRNAs' },
     { k: 'plain', source: ['res-pipeline-p4', 'm-library-design-p4'], html: `<p>The authors' library, <b>libDECKO-NSCLC1</b>, has a depth of 10 unique pgRNAs per target and 12,000 pgRNAs in total. CRISPETa designed them with its off-target filters on. It began with the strictest setting and relaxed the rules step by step until 10 pgRNAs were found for every target.</p>` },
-    { k: 'why', source: ['res-pipeline-p5', 'fig1F'], html: `<p><b>Why 10 and not 1?</b> The paper's own tests show single guides often fail. Of 12 randomly chosen pgRNAs, deletion worked for 10 and the target RNA went down for 7. In Figure 1F, two of nine guide pairs for one lncRNA gave no significant drop. With several guides per target, a call rests on the group, not on one guide's luck.</p>` },
+    { k: 'why', source: ['res-pipeline-p5', 'fig1F'], html: `<p><b>Why 10 and not 1?</b> The paper's own tests show single guides often fail. Of 12 randomly chosen pgRNAs, deletion worked for 10 and the target RNA went down for 7. In Figure 1F, two of nine guide pairs for one lncRNA gave no clear drop. With several guides per target, a call rests on the group, not on one guide's luck.</p>` },
 
     { k: 'h', text: 'Is the library any good? Evenness and the Gini coefficient' },
     { k: 'bgnd', html: `<p>A pooled experiment assumes every guide pair starts at a similar level. If some were rare from the start, you could not tell "rare because it dropped out" from "rare because it was never common". So after cloning, the mixture is checked by reading its DNA and counting each guide pair.</p>` +
@@ -187,5 +187,96 @@
         { t: 'To raise the MOI above 1', ok: false, why: 'Coverage and MOI are different things: MOI is viruses per cell, coverage is cells per guide pair.' },
         { t: 'To make cells grow faster by crowding the dish', ok: false, why: 'Coverage is a count of cells per guide pair; it does not speed up growth.' },
       ], source: ['m-screen-prolif-p1'] },
+  ],
+});
+
+/* ============================================================================================== D4 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'D4',
+  defines: ['fdr', 'auc'],
+  body: [
+    { k: 'h', text: 'From a dish of cells to a table of counts' },
+    { k: 'bgnd', html: `<p>At the end of a screen you have a dish of cells and no way to read their guides by eye. So each guide is turned into a <i>count</i>. Every cell carries its guide pair written into its own DNA: collect the cells, extract their DNA, copy only the guide part, read it, and count how often each pair shows up.</p>` },
+    { k: 'svg', caption: 'The lab path from collected cells to a count for every guide pair.',
+      svg: `<svg viewBox="0 0 480 262" role="img" aria-label="Five steps: collect cells, extract genomic DNA, copy the guide part by PCR, read it by next-generation sequencing, count the reads per guide pair">` +
+        `<rect x="6" y="8" width="124" height="36" rx="8" class="f-blue"/><text x="68" y="31" class="mid b">1 Collect cells</text><text x="140" y="31" class="s">T0 and later time points</text>` +
+        `<path d="M68 44 V58" class="arrow"/>` +
+        `<rect x="6" y="60" width="124" height="36" rx="8" class="f-teal"/><text x="68" y="83" class="mid b">2 Extract gDNA</text><text x="140" y="83" class="s">all the DNA of the cells</text>` +
+        `<path d="M68 96 V110" class="arrow"/>` +
+        `<rect x="6" y="112" width="124" height="36" rx="8" class="f-green"/><text x="68" y="135" class="mid b">3 PCR</text><text x="140" y="135" class="s">copy the guide part; primers label each sample</text>` +
+        `<path d="M68 148 V162" class="arrow"/>` +
+        `<rect x="6" y="164" width="124" height="36" rx="8" class="f-orange"/><text x="68" y="187" class="mid b">4 NGS</text><text x="140" y="187" class="s">millions of sequencing reads</text>` +
+        `<path d="M68 200 V214" class="arrow"/>` +
+        `<rect x="6" y="216" width="124" height="36" rx="8" class="f-purple"/><text x="68" y="239" class="mid b">5 Count reads</text><text x="140" y="239" class="s">per guide pair, then compare with T0</text></svg>` },
+
+    { k: 'h', text: 'gDNA, PCR, primers, NGS and reads' },
+    { k: 'bgnd', html: `<p><b>Genomic DNA (gDNA)</b> is all the DNA of the cells, purified from the collected pellet; the guide cassette is hidden in it among a whole genome. <b>PCR</b> (polymerase chain reaction) copies one chosen stretch of DNA again and again, doubling it each cycle, so that stretch becomes abundant. <b>Primers</b> are short DNA pieces matching the two ends of that stretch: they tell PCR what to copy, and can carry a barcode that labels the sample.</p>` +
+      `<p><b>Next-generation sequencing (NGS)</b> reads millions of short DNA pieces at once. Each piece read is a <b>sequencing read</b>. Barcoded samples can share one run and be separated afterwards. The reads are matched to the list of designed guide pairs and counted: a pair's <b>read count</b> is roughly how many cells carried it.</p>` },
+    { k: 'plain', source: ['m-gdna-p2'], html: `<p>In the paper, gDNA was copied by PCR with a universal forward primer and a uniquely barcoded P7 primer for each sample (22 cycles). The products were read on an Illumina HiSeq2000 with paired-end 150 bp reads, 40M reads per sample.</p>` },
+
+    { k: 'h', text: 'Time points' },
+    { k: 'bgnd', html: `<p>A <b>time point</b> is a labelled moment when cells are collected. <b>T0</b> is the starting reference sample; later points are named after the time passed. Comparing them with T0 shows which guide pairs gained or lost cells in between.</p>` },
+    { k: 'plain', source: ['m-screens-p1', 'm-screen-prolif-p1', 'fig3B'], html: `<p>One week after infection the authors counted the cells and took the reference sample T0 (16M cells, coverage above 1,000×). In the dropout screens, cells were harvested after 14 and 21 days; the paper calls these T2 (2 weeks) and T3 (3 weeks).</p>` },
+
+    { k: 'h', text: 'Cleaning the counts' },
+    { k: 'bgnd', html: `<p>Raw counts need cleaning. A <b>batch effect</b> is a difference between samples caused by <i>when or how</i> they were handled (another day, reagent lot or run), not by biology. If every T0 sample ran on Monday and every T3 sample on Friday, you could mistake that gap for a real effect, so a correction removes the shared offset.</p>` +
+      `<p>In a library where each construct holds two guides, pieces of different constructs can get shuffled during copying, giving reads whose guides were never paired by design: <b>recombination events</b> (the paper does not define the term; this is the usual meaning). <b>Sanger sequencing</b> is the older method that reads one fragment at a time very accurately, ideal for checking a single bacterial colony; NGS reads the whole pool.</p>` },
+    { k: 'plain', source: ['m-hits-p1'], html: `<p>The raw reads were analyzed with <b>CASPR</b>, a pipeline that also monitored quality: overall 36% of the reads were usable, and recombination events affected typically less than 3% of reads. Low-scoring guides were removed with <b>GuideScan</b>, a batch effect correction was applied with MageckFlute (a companion of the <b>MAGeCK</b> toolkit for CRISPR screens), and CASPR then calculated log2 fold changes and significance scores for each target.</p>` },
+    { k: 'plain', source: ['m-pcr-gdna-p1', 'fig1E', 'm-library-cloning-p3'], html: `<p>PCR is also used to check a deletion. Primers flanking the deleted region copy a long fragment from intact DNA and a short one if the region is gone: in Figure 1E the control shows a 2.5kb band (WT) and the pgRNA_9 sample a 500bp band (KO). Single clones of the library were checked by colony PCR and Sanger sequencing, the whole pool by NGS.</p>` },
+
+    { k: 'h', text: 'Dropout versus positive selection' },
+    { k: 'bgnd', html: `<p>In a <b>dropout screen</b> (negative selection) you compare cells at a later time point with T0. A guide whose target the cells need becomes rarer: it is <b>depleted</b>. Delete a growth-promoting gene and those cells fall behind, so the guide's read count falls from, say, 1,000 to 250 (four-fold lower, a log2 fold change of −2). Dropout reads "who is missing".</p>` +
+      `<p>In a <b>positive selection screen</b> you instead <i>collect</i> the cells that show the trait (the slowest-growing, say) and ask which guide pairs are enriched there compared with a reference. It reads "who is over-represented". Why run both? Dropout is a loss of signal, which can be noisy when counts are small; positive selection is a gain of signal.</p>` },
+    { k: 'svg', caption: 'One guide pair, two ways to see an effect (made-up read counts).',
+      svg: `<svg viewBox="0 0 480 204" role="img" aria-label="Left: in a dropout screen a guide's read count is high at T0 and low at T3, so it is depleted. Right: in positive selection a guide has a low count in the reference and a high count in the collected cells, so it is enriched">` +
+        `<text x="120" y="22" class="mid b">Dropout screen</text><text x="360" y="22" class="mid b">Positive selection</text>` +
+        `<path d="M30 150 H230" class="ln thin m"/><path d="M270 150 H470" class="ln thin m"/>` +
+        `<rect x="50" y="60" width="44" height="90" class="f-blue"/><text x="72" y="54" class="mid s">1,000</text><text x="72" y="168" class="mid s">T0</text>` +
+        `<rect x="150" y="126" width="44" height="24" class="f-red"/><text x="172" y="120" class="mid s">250</text><text x="172" y="168" class="mid s">T3</text>` +
+        `<path d="M104 84 L142 118" class="arrow"/>` +
+        `<rect x="290" y="126" width="44" height="24" class="f-blue"/><text x="312" y="120" class="mid s">250</text><text x="312" y="168" class="mid s">reference</text>` +
+        `<rect x="390" y="60" width="44" height="90" class="f-green"/><text x="412" y="54" class="mid s">1,000</text><text x="412" y="168" class="mid s">collected cells</text>` +
+        `<path d="M344 120 L384 84" class="arrow"/>` +
+        `<text x="120" y="192" class="mid s">depleted = fewer reads later</text><text x="360" y="192" class="mid s">enriched = more reads in the group</text></svg>` },
+    { k: 'paper', ref: 'res-multipheno-p2', quote: 'To boost sensitivity, we implemented complementary “positive” screens, where pgRNAs of interest are enriched.' },
+    { k: 'plain', source: ['res-multipheno-p1', 'res-multipheno-p2', 'discussion-p3'], html: `<p>Earlier CRISPR screens were mostly negative "dropout" screens. Adding complementary positive screens gave a modest but consistent gain in accuracy (A549 proliferation 0.7 versus 0.67; A549 cisplatin 0.77 versus 0.73; these are AUC scores, lesson E4). The Discussion adds that the gain is marginal and costs extra resources.</p>` },
+    { k: 'plain', source: ['m-hits-p3'], html: `<p>A single screen's hit rule: FDR<0.2 together with LFC>0 (guide enriched) in the positive screens, and FDR<0.2 with LFC<0 (guide depleted) in the dropout and cisplatin screens. FDR is a significance cutoff (lesson E4); LFC is the log2 fold change. The screens themselves are the subject of the next lesson.</p>` },
+    { k: 'memory', html: `<p><b>Analogy:</b> name tags in a crowd. You cannot read tags in a dish, but you can count them from the DNA. <b>Dropout</b>: count the tags at the start of a long hike and again at the end; missing tags belong to people who dropped out. <b>Positive selection</b>: stand at the "slow lane" gate and count whose tags are over-represented there.</p>` },
+  ],
+  appears: [
+    { ref: 'm-hits-p1', note: 'CASPR pipeline, GuideScan filtering, batch effect correction; 36% of reads usable; recombination events typically <3%.' },
+    { ref: 'm-gdna-p2', note: 'gDNA, PCR with barcoded primers, Illumina sequencing at 40M reads per sample.' },
+    { ref: 'm-screens-p1', note: 'T0, the reference sample: 16M cells at more than 1,000x coverage.' },
+    { ref: 'm-pcr-gdna-p1', note: 'PCR on gDNA with primers flanking the deleted region, to check a deletion.' },
+    { ref: 'fig1E', note: 'Gel of a deletion check: 2.5kb (WT) versus 500bp (KO).' },
+  ],
+  checks: [
+    { q: 'Why is PCR needed between extracting the DNA and sequencing it?',
+      options: [
+        { t: 'The guide part is a tiny fraction of the genomic DNA, so PCR copies just that part until there is enough to read', ok: true, why: 'Right. Primers mark the stretch to copy, so the guide cassette becomes abundant while the rest of the genome is left alone.' },
+        { t: 'PCR kills the cells that did not receive a guide', ok: false, why: 'That is antibiotic selection, done on living cells earlier. PCR works on extracted DNA.' },
+        { t: 'PCR reads the DNA letters', ok: false, why: 'PCR only copies DNA. Reading the letters is the job of sequencing (NGS).' },
+        { t: 'PCR adds Cas9 to the DNA', ok: false, why: 'PCR makes copies of a stretch of DNA; it does not add Cas9.' },
+      ], bg: true },
+    { q: 'At T3, one guide pair has far fewer reads than at T0. What does this most likely mean?',
+      options: [
+        { t: 'Cells carrying it grew worse or died, so its target probably helps growth or survival (the guide is depleted)', ok: true, why: 'Right. That is what a dropout screen detects.' },
+        { t: 'Its target holds growth back, like a brake', ok: false, why: 'Removing a brake would make cells grow faster, and the guide would become <b>enriched</b>, the opposite of what is seen.' },
+        { t: 'The guide was never delivered into any cell', ok: false, why: 'The pair was present at T0 (it had more reads then), so the fall points to the cells carrying it doing worse. (Individual guides can fail technically, which is why several guides per target are used.)' },
+        { t: 'The sequencing machine misread that one guide', ok: false, why: 'Counts come from millions of reads; a misreading would not make one guide steadily fall between time points.' },
+      ], bg: true },
+    { q: 'In the positive screens, the paper counts a target as a hit when its guides are …',
+      options: [
+        { t: 'enriched: LFC above 0, together with FDR below 0.2', ok: true, why: 'Right (m-hits-p3): FDR<0.2 and LFC>0 for the positive screens.' },
+        { t: 'depleted: LFC below 0, together with FDR below 0.2', ok: false, why: 'That is the rule for the dropout and cisplatin screens, not for the positive screens.' },
+        { t: 'unchanged: LFC of exactly 0', ok: false, why: 'A guide with no change is not a hit in any of the screens.' },
+      ], source: ['m-hits-p3'] },
+    { q: 'Why did the authors add positive selection screens on top of the dropout screens?',
+      options: [
+        { t: 'To boost sensitivity: complementary positive screens gave a modest but consistent accuracy gain over dropout alone', ok: true, why: 'Right (res-multipheno-p2). The Discussion adds that the gain is marginal given the extra resources required.' },
+        { t: 'Because dropout screens cannot be run in A549 cells', ok: false, why: 'The paper runs dropout screens in A549 and H460 cells; positive screens were added as a complement.' },
+        { t: 'Because positive screens are cheaper and faster', ok: false, why: 'The Discussion says the benefit should be weighed against the extra resources required, so they are not cheaper.' },
+        { t: 'Because positive screens are the only way to measure cisplatin resistance', ok: false, why: 'Cisplatin resistance was also measured in a dropout-type (survival) format; the positive format was added as a complement.' },
+      ], source: ['res-multipheno-p2', 'discussion-p3', 'res-multipheno-p7'] },
   ],
 });
