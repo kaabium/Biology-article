@@ -374,3 +374,137 @@
       ], source: ['fig2E', 'res-multipheno-p3'] },
   ],
 });
+
+/* ============================================================================================== F2 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'F2',
+  body: [
+    { k: 'h', text: 'Seven plots, seven tricks' },
+    { k: 'bgnd', html:
+      `<p>These plots pack many numbers into one picture. Each has one trick; once you know it, the plot is easy. Think of maps: a contour plot is a hiking map where height lines become crowd lines, a ternary plot is a compass with three directions at once, and a heatmap is a weather map in which colour replaces numbers.</p>` },
+    { k: 'memory', html:
+      `<p><b>Memory aid:</b> for every unusual plot ask "what does <i>position</i> mean here, and what do <i>colour</i> and <i>size</i> add?" Position, colour and size almost always carry three different pieces of information.</p>` },
+
+    { k: 'h', text: 'Contour, volcano and heatmap' },
+    { k: 'bgnd', html:
+      `<p><b>Contour plot (density).</b> When thousands of dots overlap, rings are drawn around the crowded places, like height lines on a hiking map. Inner rings mark the busiest spots. Read where the peak sits and on which side of zero. Trap: rings show where points are dense, not how big any one value is.</p>` +
+      `<p><b>Volcano plot.</b> The effect goes on the x-axis (log2 fold change) and significance on the y-axis as −log10 of the FDR or p-value, so <i>higher means more significant</i>. Targets with a big change and a small FDR fly out to the top left or top right, like lava. A horizontal line marks the cut-off. Trap: each step up is a ten times smaller FDR.</p>` +
+      `<p><b>Heatmap.</b> A table in which colour replaces numbers: rows and columns are the things compared, and each cell's colour is its value. Everything depends on the colour key (which colour is zero, which way is up). Trap: two heatmaps may use different colour scales, and rows are often ordered to put similar rows together.</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example.</b> −log10(0.2) ≈ 0.7, so an FDR cut-off of 0.2 is a line at height 0.7 on the y-axis. An FDR of 0.001 sits at height 3.</p>` },
+    { k: 'svg', caption: 'Made-up data. Contour: rings around a crowded cloud. Volcano: effect across, significance up. Heatmap: colour is the value.',
+      svg: `<svg viewBox="0 0 480 232" role="img" aria-label="Three plot anatomies with made-up data: a contour plot with rings around a crowded cloud of dots, a volcano plot with a red cut-off line and blue hits at the top left and right, and a heatmap grid with a blue, grey and orange colour key">` +
+        `<text x="82" y="20" class="mid b">Contour</text><text x="240" y="20" class="mid b">Volcano</text><text x="398" y="20" class="mid b">Heatmap</text>` +
+        `<rect x="8" y="30" width="148" height="154" class="ln thin"/><rect x="166" y="30" width="148" height="154" class="ln thin"/><rect x="324" y="30" width="148" height="154" class="ln thin"/>` +
+        `<path d="M108 30 V184 M8 80 H156" class="ln thin dash m"/>` +
+        `<ellipse cx="66" cy="126" rx="48" ry="34" class="ln thin s-teal"/><ellipse cx="66" cy="126" rx="32" ry="23" class="ln thin s-teal"/><ellipse cx="66" cy="126" rx="15" ry="11" class="ln thin s-teal"/>` +
+        `<circle cx="52" cy="128" r="2.5" class="solid-gray"/><circle cx="60" cy="118" r="2.5" class="solid-gray"/><circle cx="68" cy="124" r="2.5" class="solid-gray"/><circle cx="74" cy="114" r="2.5" class="solid-gray"/>` +
+        `<circle cx="80" cy="128" r="2.5" class="solid-gray"/><circle cx="64" cy="134" r="2.5" class="solid-gray"/><circle cx="58" cy="108" r="2.5" class="solid-gray"/><circle cx="90" cy="122" r="2.5" class="solid-gray"/>` +
+        `<circle cx="44" cy="140" r="2.5" class="solid-gray"/><circle cx="76" cy="142" r="2.5" class="solid-gray"/><circle cx="98" cy="130" r="2.5" class="solid-gray"/><circle cx="50" cy="104" r="2.5" class="solid-gray"/>` +
+        `<circle cx="84" cy="106" r="2.5" class="solid-gray"/><circle cx="66" cy="126" r="2.5" class="solid-gray"/><circle cx="40" cy="122" r="2.5" class="solid-gray"/><circle cx="72" cy="120" r="2.5" class="solid-gray"/>` +
+        `<path d="M240 30 V184" class="ln thin dash m"/><path d="M166 146 H314" class="ln dash s-red"/><text x="310" y="141" class="s end t-red">cut-off</text>` +
+        `<text transform="rotate(-90 178 108)" x="178" y="108" class="mid s">−log10 FDR</text>` +
+        `<circle cx="232" cy="174" r="2.5" class="solid-gray"/><circle cx="240" cy="170" r="2.5" class="solid-gray"/><circle cx="248" cy="176" r="2.5" class="solid-gray"/><circle cx="236" cy="164" r="2.5" class="solid-gray"/>` +
+        `<circle cx="244" cy="160" r="2.5" class="solid-gray"/><circle cx="228" cy="168" r="2.5" class="solid-gray"/><circle cx="252" cy="166" r="2.5" class="solid-gray"/><circle cx="240" cy="178" r="2.5" class="solid-gray"/>` +
+        `<circle cx="222" cy="172" r="2.5" class="solid-gray"/><circle cx="258" cy="174" r="2.5" class="solid-gray"/><circle cx="214" cy="158" r="2.5" class="solid-gray"/><circle cx="268" cy="158" r="2.5" class="solid-gray"/>` +
+        `<circle cx="246" cy="152" r="2.5" class="solid-gray"/><circle cx="234" cy="154" r="2.5" class="solid-gray"/>` +
+        `<circle cx="220" cy="134" r="3.5" class="solid-blue"/><circle cx="212" cy="124" r="3.5" class="solid-blue"/><circle cx="206" cy="112" r="3.5" class="solid-blue"/><circle cx="200" cy="98" r="3.5" class="solid-blue"/>` +
+        `<circle cx="194" cy="84" r="3.5" class="solid-blue"/><circle cx="190" cy="68" r="3.5" class="solid-blue"/><circle cx="260" cy="134" r="3.5" class="solid-blue"/><circle cx="268" cy="124" r="3.5" class="solid-blue"/>` +
+        `<circle cx="274" cy="112" r="3.5" class="solid-blue"/><circle cx="280" cy="98" r="3.5" class="solid-blue"/><circle cx="286" cy="84" r="3.5" class="solid-blue"/><circle cx="292" cy="68" r="3.5" class="solid-blue"/>` +
+        `<text x="362" y="46" class="mid s">1</text><text x="388" y="46" class="mid s">2</text><text x="414" y="46" class="mid s">3</text><text x="440" y="46" class="mid s">4</text>` +
+        `<text x="344" y="69" class="s end">A</text><text x="344" y="95" class="s end">B</text><text x="344" y="121" class="s end">C</text><text x="344" y="147" class="s end">D</text>` +
+        `<rect x="350" y="52" width="24" height="24" class="solid-blue" opacity="0.85"/><rect x="376" y="52" width="24" height="24" class="solid-blue" opacity="0.55"/><rect x="402" y="52" width="24" height="24" class="solid-blue" opacity="0.25"/><rect x="428" y="52" width="24" height="24" class="f-gray"/>` +
+        `<rect x="350" y="78" width="24" height="24" class="solid-blue" opacity="0.6"/><rect x="376" y="78" width="24" height="24" class="solid-blue" opacity="0.3"/><rect x="402" y="78" width="24" height="24" class="f-gray"/><rect x="428" y="78" width="24" height="24" class="solid-orange" opacity="0.3"/>` +
+        `<rect x="350" y="104" width="24" height="24" class="f-gray"/><rect x="376" y="104" width="24" height="24" class="f-gray"/><rect x="402" y="104" width="24" height="24" class="solid-orange" opacity="0.3"/><rect x="428" y="104" width="24" height="24" class="solid-orange" opacity="0.6"/>` +
+        `<rect x="350" y="130" width="24" height="24" class="solid-blue" opacity="0.2"/><rect x="376" y="130" width="24" height="24" class="f-gray"/><rect x="402" y="130" width="24" height="24" class="solid-orange" opacity="0.5"/><rect x="428" y="130" width="24" height="24" class="solid-orange" opacity="0.85"/>` +
+        `<text x="82" y="204" class="mid s m">rings = how crowded;</text><text x="82" y="220" class="mid s m">inner ring = busiest</text>` +
+        `<text x="240" y="204" class="mid s m">up = more significant;</text><text x="240" y="220" class="mid s m">sides = bigger change</text>` +
+        `<text x="398" y="204" class="mid s m">colour = value; key:</text>` +
+        `<rect x="350" y="210" width="12" height="12" class="solid-blue" opacity="0.85"/><text x="366" y="221" class="s">−</text><rect x="382" y="210" width="12" height="12" class="f-gray"/><text x="398" y="221" class="s">0</text><rect x="414" y="210" width="12" height="12" class="solid-orange" opacity="0.85"/><text x="430" y="221" class="s">+</text></svg>` },
+
+    { k: 'h', text: 'ROC, ternary and petal plots' },
+    { k: 'bgnd', html:
+      `<p><b>ROC curve (recap of lesson E4).</b> The closer a curve hugs the top-left corner, the better the ranking; the AUC is the area under it; the diagonal is random guessing. Compare curves by their AUC. See it in <a href="#/panel/fig4B">Figure 4B</a>.</p>` +
+      `<p><b>Ternary plot.</b> Each item sits inside a triangle according to the <i>shares</i> of three parts that add up to 100%. A dot in a corner is all one part; a dot in the middle is an even mix. It shows balance, not size: two dots in the same spot can have very different totals.</p>` +
+      `<p><b>Petal plot.</b> A flower-shaped chart: each petal points to one category and its length shows that category's value. It lets you compare a few categories for one item at a glance.</p>` },
+
+    { k: 'h', text: 'UpSet plots and stacked bars' },
+    { k: 'bgnd', html:
+      `<p><b>UpSet plot.</b> A Venn diagram for many sets. The bars on the left give the size of each set. In the dot matrix, one dot means "only this set" and joined dots mean "exactly these sets together". The bar above each column counts the items with exactly that combination. Trap: each item is counted once on top but in every set it belongs to on the left, so the left bars add up to more than the number of different items.</p>` +
+      `<p><b>Stacked bar chart.</b> Each bar is split into segments that add up to the whole. It is good for composition ("what share is each part?") and poor for comparing a middle segment between bars, because those segments do not start from the same line. Check whether a bar means percent (all bars reach 100) or counts.</p>` },
+    { k: 'svg', caption: 'Made-up data. Ternary: shares of three parts. Stacked bars: parts of a whole. UpSet: items in exactly one combination of sets.',
+      svg: `<svg viewBox="0 0 480 232" role="img" aria-label="Three plot anatomies with made-up data: a ternary triangle with a dot near corner A and a dot in the middle, two stacked bars with segments that add to 100 percent, and a small UpSet plot with set-size bars on the left, a dot matrix and intersection bars on top">` +
+        `<text x="82" y="20" class="mid b">Ternary</text><text x="240" y="20" class="mid b">Stacked bars</text><text x="398" y="20" class="mid b">UpSet</text>` +
+        `<rect x="8" y="30" width="148" height="154" class="ln thin"/><rect x="166" y="30" width="148" height="154" class="ln thin"/><rect x="324" y="30" width="148" height="154" class="ln thin"/>` +
+        `<path d="M82 50 L16 164 H148 Z" class="f-gray"/>` +
+        `<text x="82" y="44" class="mid b">A</text><text x="14" y="179" class="mid b">B</text><text x="150" y="179" class="mid b">C</text>` +
+        `<circle cx="80" cy="76" r="5" class="solid-orange"/><text x="104" y="80" class="s">mostly A</text>` +
+        `<circle cx="82" cy="126" r="5" class="solid-blue"/><text x="82" y="146" class="mid s">even mix</text>` +
+        `<text x="240" y="54" class="mid s m">= 100%</text><path d="M176 172 H304" class="ln"/>` +
+        `<rect x="186" y="117" width="40" height="55" class="f-blue"/><rect x="186" y="84" width="40" height="33" class="f-orange"/><rect x="186" y="62" width="40" height="22" class="f-green"/>` +
+        `<rect x="254" y="139" width="40" height="33" class="f-blue"/><rect x="254" y="106" width="40" height="33" class="f-orange"/><rect x="254" y="62" width="40" height="44" class="f-green"/>` +
+        `<path d="M226 117 L254 139 M226 84 L254 106" class="ln thin dash m"/>` +
+        `<text x="206" y="149" class="mid s">50</text><text x="206" y="105" class="mid s">30</text><text x="206" y="77" class="mid s">20</text>` +
+        `<text x="274" y="160" class="mid s">30</text><text x="274" y="127" class="mid s">30</text><text x="274" y="89" class="mid s">40</text>` +
+        `<rect x="394" y="52" width="12" height="56" class="f-blue"/><rect x="414" y="80" width="12" height="28" class="f-blue"/><rect x="434" y="84" width="12" height="24" class="f-blue"/><rect x="454" y="96" width="12" height="12" class="f-blue"/>` +
+        `<text x="400" y="48" class="mid s">14</text><text x="420" y="76" class="mid s">7</text><text x="440" y="80" class="mid s">6</text><text x="460" y="92" class="mid s">3</text>` +
+        `<path d="M334 121 H368 V131 H334 Z" class="f-gray"/><path d="M354 141 H368 V151 H354 Z" class="f-gray"/><path d="M353 161 H368 V171 H353 Z" class="f-gray"/>` +
+        `<text x="382" y="131" class="mid s">S1</text><text x="382" y="151" class="mid s">S2</text><text x="382" y="171" class="mid s">S3</text>` +
+        `<circle cx="400" cy="126" r="4" class="solid-gray" opacity="0.35"/><circle cx="400" cy="146" r="4" class="solid-gray" opacity="0.35"/><circle cx="400" cy="166" r="4" class="solid-gray" opacity="0.35"/>` +
+        `<circle cx="420" cy="126" r="4" class="solid-gray" opacity="0.35"/><circle cx="420" cy="146" r="4" class="solid-gray" opacity="0.35"/>` +
+        `<circle cx="440" cy="166" r="4" class="solid-gray" opacity="0.35"/><circle cx="460" cy="126" r="0" class="solid-gray"/>` +
+        `<path d="M440 126 V146 M460 126 V166" class="ln thick"/>` +
+        `<circle cx="400" cy="126" r="5" class="solid-text"/><circle cx="420" cy="166" r="5" class="solid-text"/><circle cx="440" cy="126" r="5" class="solid-text"/><circle cx="440" cy="146" r="5" class="solid-text"/>` +
+        `<circle cx="460" cy="126" r="5" class="solid-text"/><circle cx="460" cy="146" r="5" class="solid-text"/><circle cx="460" cy="166" r="5" class="solid-text"/>` +
+        `<text x="82" y="204" class="mid s m">closer to a corner =</text><text x="82" y="220" class="mid s m">a bigger share of it</text>` +
+        `<text x="240" y="204" class="mid s m">segments add up to</text><text x="240" y="220" class="mid s m">the whole (100%)</text>` +
+        `<text x="398" y="204" class="mid s m">top bar = items with</text><text x="398" y="220" class="mid s m">exactly that combination</text></svg>` },
+
+    { k: 'h', text: 'Practise on the real panels' },
+    { k: 'panel', id: 'fig4E', html:
+      `<p>A <b>contour plot</b> drawn over dots. Each dot is a hit; x is its effect in A549 cells and y its effect in H460 cells. Left: hits from the dropout screens, with a separate cloud for each cell line. Right: the pan-hallmark hits. The arrows point to the geometric median of each group (the legend's words), a robust "centre" of the cloud. The text says dropout hits tend to be active in only one cell type, while pan-hallmark hits are active in both.</p>` },
+    { k: 'panel', id: 'fig2G', html:
+      `<p>A <b>volcano-style plot</b> of the A549 dropout screen: log2 fold change across, −log10 FDR up, so higher means more significant. The horizontal dashed line is the cut-off for hits at FDR &lt; 0.2. Red dots are positive controls; labelled lncRNAs were published before in NSCLC (green) or other cancers (blue). In a dropout screen the hits are above the line and on the negative side, where guides were depleted.</p>` },
+    { k: 'panel', id: 'fig5A', html:
+      `<p>A <b>heatmap</b>: rows are lncRNAs, columns are ASOs in different cell lines, and colour is the mean log2 fold change in viability relative to the control ASO. Blue means lower viability; the key at the top gives the scale. MALAT1 is the positive control. Look for rows that stay blue in the cancer cell lines but fade in the "Normal" columns on the right.</p>` },
+    { k: 'panel', id: 'fig4C', html:
+      `<p>Two plot types in one panel. The <b>ternary plot</b> places each significant hit (FDR &lt; 0.2) by the balance of three hallmark significances, one per corner; the legend says closeness to a corner is driven by the TPP significance for that hallmark. Dot colour says which screens flagged the hit, red rings mark positive controls, grey rings neutral controls, and bigger dots have smaller FDR. The three <b>petal plots</b> at the edges zoom in on selected lncRNAs; the key box on the left explains the petals.</p>` },
+    { k: 'panel', id: 'fig2I', html:
+      `<p>An <b>UpSet plot</b> of the hits (FDR &lt; 0.2) in the individual screens. Left bars: hits per screen. Matrix: a single dot means hits found in that screen only; joined dots mean hits shared by exactly those screens. Top bars count each combination; the light-blue part (the legend's "bat" is a typo for bar) is the share of previously known cancer lncRNAs. The tallest bars sit above single dots: most hits come from one screen only.</p>` },
+    { k: 'bgnd', html:
+      `<p>Two more to find yourself: the <b>stacked bars</b> of <a href="#/panel/fig4D">Figure 4D</a> (what the hit lists are made of), and the ROC curves of <a href="#/panel/fig4B">Figure 4B</a>.</p>` },
+  ],
+  appears: [
+    { ref: 'fig4C', note: 'Ternary plot and petal plots of the pan-hallmark hits.' },
+    { ref: 'fig2G', note: 'Volcano-style plot of the A549 dropout screen with the FDR < 0.2 line.' },
+    { ref: 'fig2I', note: 'UpSet plot of hits across the individual screens.' },
+    { ref: 'm-hits-p6', note: 'The R packages behind these plots (ggtern, UpSetR, precrec, Gmedian …).' },
+  ],
+  checks: [
+    { q: 'In the volcano-style plot of Figure 2G (a dropout screen), which dots are the most convincing hits?',
+      options: [
+        { t: 'Dots far above the horizontal line and on the left (guides depleted)', ok: true, why: 'Right: higher means a smaller FDR, and for a dropout screen hits need a negative log2 fold change (m-hits-p3). The dashed line marks the FDR < 0.2 cut-off.' },
+        { t: 'Dots at the very bottom, close to the centre', ok: false, why: 'Low on the plot means a large FDR, i.e. no evidence of an effect.' },
+        { t: 'Dots on the far right', ok: false, why: 'A positive log2 fold change means the guides became more common. Hits in a dropout screen are depleted, so they lie on the left.' },
+        { t: 'Red dots, because red always marks significance', ok: false, why: 'In this panel red marks the positive-control genes, not significance. Position shows significance.' },
+      ], source: ['fig2G', 'm-hits-p3'] },
+    { q: 'In an UpSet plot like Figure 2I, what does a top bar with a single dot underneath count?',
+      options: [
+        { t: 'Hits found in that one screen only', ok: true, why: 'Right: a single dot means "only this set". Joined dots mean hits shared by exactly those screens.' },
+        { t: 'Hits found in every screen', ok: false, why: 'A hit found in every screen would sit under a column with all dots joined.' },
+        { t: 'All hits of that screen, including shared ones', ok: false, why: 'That total is the bar on the left side of the plot, not the bar above a column.' },
+      ], source: ['fig2I'] },
+    { q: 'In the ternary plot of Figure 4C, what does a dot lying very close to one corner mean?',
+      options: [
+        { t: 'That hallmark gives most of the dot\'s combined significance, relative to the other two', ok: true, why: 'Right: the legend says proximity to a corner is driven by the TPP significance calculated for each hallmark. The plot shows balance, not total size.' },
+        { t: 'It is a hit in that one screen only', ok: false, why: 'Which screens flagged a hit is shown by the dot colour ("Hit in:"), not by position.' },
+        { t: 'It has the smallest FDR of all dots', ok: false, why: 'FDR is shown by dot size. A dot in a corner can be small or large.' },
+      ], source: ['fig4C'] },
+    { q: 'The text says the pan-hallmark analysis gave 80 lncRNA hits, 73 not previously linked to NSCLC. In the Pan bar of Figure 4D, which segments make up the 80?',
+      options: [
+        { t: 'The novel lncRNAs (73) plus the lung cancer lncRNAs (7)', ok: true, why: 'Right (res-integration-p2): 73 + 7 = 80. The other two segments of the bar are control genes that also appear in the hit list.' },
+        { t: 'Only the novel lncRNAs (73)', ok: false, why: 'The 73 are the hits not previously linked to NSCLC; the 80 also includes the previously known ones.' },
+        { t: 'The positive and neutral controls', ok: false, why: 'Controls are not lncRNA hits; they are control genes that also passed the cut-off.' },
+      ], source: ['res-integration-p2', 'fig4D'], derived: ['7'] },
+  ],
+});

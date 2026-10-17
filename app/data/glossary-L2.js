@@ -5,7 +5,7 @@
 {
   id: 'genome-assembly',
   short: `One released version of the human reference genome sequence; each new version fixes errors and shifts some positions.`,
-  long: `<p>The reference genome is a standard sequence that scientists agree to use as a common map. When gaps are filled and mistakes are fixed, a new complete release is published: a new <b>genome assembly</b> (also called a genome version or build). Two human versions are in common use: GRCh37 (called hg19 by the UCSC Genome Browser) and the newer GRCh38 (hg38).</p><p>A position in the genome only makes sense together with the version it belongs to.</p>`,
+  long: `<p>The reference genome is a standard sequence that scientists agree to use as a common map. When gaps are filled and mistakes are fixed, a new complete release is published: a new <b>genome assembly</b> (also called a genome version or build). Two human versions are in common use: GRCh37 (called hg19 by UCSC, the University of California, Santa Cruz) and the newer GRCh38 (hg38).</p><p>A position in the genome only makes sense together with the version it belongs to.</p>`,
   analogy: `Editions of a city map: the streets are the same, but some house numbers changed between editions.`,
   see: ['hg19', 'hg38', 'liftover'],
   paperUse: { ref: 'm-library-design-p1', quote: 'GENCODE annotation release 19 (GRCh37)' },
@@ -13,7 +13,7 @@
 {
   id: 'hg19',
   short: `The older of two common human genome versions (the same as GRCh37); its positions differ from those in hg38.`,
-  long: `<p><b>hg19</b> is the UCSC Genome Browser's name for the human reference version that the Genome Reference Consortium calls GRCh37. For the main chromosomes the two names mean the same coordinates. hg19 was the standard for years, so many older datasets and tools still use it. Its positions do not match those of hg38, so data from the two must be converted (with liftOver) before they are compared.</p>`,
+  long: `<p><b>hg19</b> is UCSC's name for the human reference version that the Genome Reference Consortium calls GRCh37. For the main chromosomes the two names mean the same coordinates. hg19 was the standard for years, so many older datasets and tools still use it. Its positions do not match those of hg38, so data from the two must be converted (with liftOver) before they are compared.</p>`,
   analogy: `The older edition of the city map, still printed in many guidebooks.`,
   see: ['hg38', 'genome-assembly', 'liftover'],
   paperUse: { ref: 'm-cnv-p1', quote: 'we intersected the hg19 coordinates of the pgRNA with the hg19 coordinates of the CCLE copy number data' },
@@ -70,7 +70,7 @@
 {
   id: 'liftover',
   short: `A software tool that converts genome positions from one genome version (say hg38) to another (say hg19).`,
-  long: `<p><b>liftOver</b> is a free tool from the UCSC Genome Browser that converts coordinates between genome versions, using a table of how the older and newer sequences line up. Most positions convert cleanly; a few regions that changed a lot cannot be converted or get split. Use it before comparing positions that come from different versions.</p>`,
+  long: `<p><b>liftOver</b> is a free tool from the UCSC genome group that converts coordinates between genome versions, using a table of how the older and newer sequences line up. Most positions convert cleanly; a few regions that changed a lot cannot be converted or get split. Use it before comparing positions that come from different versions.</p>`,
   analogy: `The conversion table for a city that renumbered its streets: old address in, new address out.`,
   see: ['hg19', 'hg38', 'genome-coordinates'],
   paperUse: { ref: 'm-cnv-p2', quote: 'converted to hg19 coordinates using liftOver' },
@@ -97,7 +97,7 @@
 {
   id: 'rna-polymerase',
   short: `The molecular machine that reads DNA and builds the RNA copy of a gene.`,
-  long: `<p>RNA polymerase is the enzyme that performs transcription. It lands on the DNA at a promoter, opens the double helix a little, and slides along one strand, adding RNA letters one after another until it reaches the end of the gene. It does not need a primer or a second copy of the gene: the DNA strand it reads is the template.</p>`,
+  long: `<p>RNA polymerase is the enzyme that performs transcription. It lands on the DNA at a promoter, opens the double helix a little, and slides along one strand, adding RNA letters one after another until it reaches the end of the gene. The DNA strand it reads serves as the template.</p>`,
   analogy: `A scribe who reads one page of the cookbook and writes out a copy as he goes.`,
   see: ['transcription', 'promoter', 'tss'],
 },
@@ -323,7 +323,7 @@
 {
   id: 'known-cancer-lncrnas',
   short: `Previously published lncRNAs the paper names: SAMMSON, lncGRS-1, SBF2-AS1, SNHG6, SNHG12, PCAT7, MIAT and MIR219-2.`,
-  long: `<p>The paper names several lncRNAs already linked to cancer. SAMMSON (melanoma) and lncGRS-1 (glioma) are drug-target examples in the introduction, not lung-cancer ones. SBF2-AS1 is called a known lung-cancer lncRNA found in the growth experiment. SNHG6 and SNHG12 are examples of ten lncRNAs from the cell-movement test that were already linked to cell movement and spread. PCAT7 was correctly identified, MIAT was not, and MIR219-2 is a labeled dot in Figure 2G. Known lung-cancer lncRNAs are enriched among the hits.</p>`,
+  long: `<p>The paper names several lncRNAs already linked to cancer. SAMMSON (melanoma) and lncGRS-1 (glioma) are drug-target examples in the introduction, not lung-cancer ones. SBF2-AS1 is called a known lung-cancer lncRNA found in the growth experiment. SNHG6 and SNHG12 are examples of ten lncRNAs from the cell-movement test that were already linked to cell movement and spread. PCAT7 was correctly identified, MIAT was not, and MIR219-2 is a labeled dot in Figure 2G. As expected, known lung-cancer lncRNAs turn up more often than chance among the top results.</p>`,
   analogy: `The "usual suspects" file: names already known, used to check that the new investigation works.`,
   see: ['pvt1', 'malat1', 'lncrna'],
   source: ['intro-p2', 'res-multipheno-p4', 'res-multipheno-p7', 'limitations-p2', 'fig2G', 'res-integration-p2'],
