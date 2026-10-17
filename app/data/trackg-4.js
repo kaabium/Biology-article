@@ -458,7 +458,7 @@ Object.assign(window.TRACKG.paras, {
     memory: `The "before" photo in a before-and-after comparison.`,
     flags: [],
     sources: ['m-library-design-p5'],
-    derived: ['1300'],
+    derived: ['1300', '1000'],
     prereqs: ['D3', 'D4'],
     checks: [
       { q: `What does a "library coverage of more than 1,000x" mean for the 16M cells collected at T0?`,
@@ -467,7 +467,7 @@ Object.assign(window.TRACKG.paras, {
           { t: `Each cell carries more than 1,000 different guides`, ok: false, why: `Most infected cells carry a single pgRNA (that is what the low MOI is for). Coverage counts cells per sequence, not guides per cell.` },
           { t: `The T0 sample was sequenced more than 1,000 times`, ok: false, why: `That would describe sequencing depth (reads). Coverage here counts cells per library sequence.` },
         ],
-        source: ['m-screens-p1', 'm-screen-prolif-p1'] },
+        source: ['m-screens-p1', 'm-screen-prolif-p1'], derived: ['1000'] },
     ],
   },
 
@@ -589,6 +589,7 @@ Object.assign(window.TRACKG.paras, {
       `The filter is printed as "3 &gt; cpm&gt;666". As written, no number can satisfy both conditions (it cannot be below 3 and above 666 at once). The authors probably meant that guides with very low (below 3) or very high (above 666) counts per million were removed, but the paragraph does not say so.`,
       `Several terms are left undefined: "usable" reads (only 36% of the reads were usable, and the paragraph does not say why the others were not), "recombination events" (typically below 3% of reads) and the score cutoff used by GuideScan. CASPR itself is not spelled out either.`,
     ],
+    derived: ['3'],
     prereqs: ['D4', 'E1', 'E4'],
     checks: [
       { q: `At what level are the log2 fold changes and FDR-corrected p-values calculated at the end of this paragraph?`,

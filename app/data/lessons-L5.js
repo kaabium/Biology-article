@@ -16,8 +16,8 @@
       svg: `<svg viewBox="0 0 480 262" role="img" aria-label="Delivery path: HEK293T cells make lentivirus particles from plasmids; the virus inserts its cargo DNA into a target cell's chromosome; a drug then kills the cells without the resistance gene">` +
         `<rect x="6" y="28" width="140" height="124" rx="12" class="f-blue"/>` +
         `<text x="76" y="50" class="mid b">HEK293T cells</text><text x="76" y="68" class="mid s m">virus factory</text>` +
-        `<circle cx="38" cy="100" r="11" class="f-orange"/><circle cx="76" cy="100" r="11" class="f-gray"/><circle cx="114" cy="100" r="11" class="f-gray"/>` +
-        `<text x="76" y="136" class="mid s">cargo + helper plasmids</text>` +
+        `<circle cx="38" cy="96" r="11" class="f-orange"/><circle cx="76" cy="96" r="11" class="f-gray"/><circle cx="114" cy="96" r="11" class="f-gray"/>` +
+        `<text x="76" y="126" class="mid s">cargo plasmid</text><text x="76" y="142" class="mid s">+ helper plasmids</text>` +
         `<path d="M150 90 H188" class="arrow"/>` +
         `<rect x="192" y="28" width="112" height="124" rx="12" class="f-purple"/>` +
         `<text x="248" y="50" class="mid b">Lentivirus</text><text x="248" y="68" class="mid s m">particles</text>` +
@@ -198,16 +198,16 @@
     { k: 'h', text: 'From a dish of cells to a table of counts' },
     { k: 'bgnd', html: `<p>At the end of a screen you have a dish of cells and no way to read their guides by eye. So each guide is turned into a <i>count</i>. Every cell carries its guide pair written into its own DNA: collect the cells, extract their DNA, copy only the guide part, read it, and count how often each pair shows up.</p>` },
     { k: 'svg', caption: 'The lab path from collected cells to a count for every guide pair.',
-      svg: `<svg viewBox="0 0 480 262" role="img" aria-label="Five steps: collect cells, extract genomic DNA, copy the guide part by PCR, read it by next-generation sequencing, count the reads per guide pair">` +
-        `<rect x="6" y="8" width="124" height="36" rx="8" class="f-blue"/><text x="68" y="31" class="mid b">1 Collect cells</text><text x="140" y="31" class="s">T0 and later time points</text>` +
-        `<path d="M68 44 V58" class="arrow"/>` +
-        `<rect x="6" y="60" width="124" height="36" rx="8" class="f-teal"/><text x="68" y="83" class="mid b">2 Extract gDNA</text><text x="140" y="83" class="s">all the DNA of the cells</text>` +
-        `<path d="M68 96 V110" class="arrow"/>` +
-        `<rect x="6" y="112" width="124" height="36" rx="8" class="f-green"/><text x="68" y="135" class="mid b">3 PCR</text><text x="140" y="135" class="s">copy the guide part; primers label each sample</text>` +
-        `<path d="M68 148 V162" class="arrow"/>` +
-        `<rect x="6" y="164" width="124" height="36" rx="8" class="f-orange"/><text x="68" y="187" class="mid b">4 NGS</text><text x="140" y="187" class="s">millions of sequencing reads</text>` +
-        `<path d="M68 200 V214" class="arrow"/>` +
-        `<rect x="6" y="216" width="124" height="36" rx="8" class="f-purple"/><text x="68" y="239" class="mid b">5 Count reads</text><text x="140" y="239" class="s">per guide pair, then compare with T0</text></svg>` },
+      svg: `<svg viewBox="0 0 480 266" role="img" aria-label="Five steps: collect cells, extract genomic DNA, copy the guide part by PCR, read it by next-generation sequencing, count the reads per guide pair">` +
+        `<rect x="6" y="8" width="124" height="32" rx="8" class="f-blue"/><text x="68" y="29" class="mid b">1 Collect cells</text><text x="140" y="29" class="s">T0 and later time points</text>` +
+        `<path d="M68 40 V60" class="arrow"/>` +
+        `<rect x="6" y="62" width="124" height="32" rx="8" class="f-teal"/><text x="68" y="83" class="mid b">2 Extract gDNA</text><text x="140" y="83" class="s">all the DNA of the cells</text>` +
+        `<path d="M68 94 V114" class="arrow"/>` +
+        `<rect x="6" y="116" width="124" height="32" rx="8" class="f-green"/><text x="68" y="137" class="mid b">3 PCR</text><text x="140" y="137" class="s">copy the guide part; primers label each sample</text>` +
+        `<path d="M68 148 V168" class="arrow"/>` +
+        `<rect x="6" y="170" width="124" height="32" rx="8" class="f-orange"/><text x="68" y="191" class="mid b">4 NGS</text><text x="140" y="191" class="s">millions of sequencing reads</text>` +
+        `<path d="M68 202 V222" class="arrow"/>` +
+        `<rect x="6" y="224" width="124" height="32" rx="8" class="f-purple"/><text x="68" y="245" class="mid b">5 Count reads</text><text x="140" y="245" class="s">per guide pair, then compare with T0</text></svg>` },
 
     { k: 'h', text: 'gDNA, PCR, primers, NGS and reads' },
     { k: 'bgnd', html: `<p><b>Genomic DNA (gDNA)</b> is all the DNA of the cells, purified from the collected pellet; the guide cassette is hidden in it among a whole genome. <b>PCR</b> (polymerase chain reaction) copies one chosen stretch of DNA again and again, doubling it each cycle, so that stretch becomes abundant. <b>Primers</b> are short DNA pieces matching the two ends of that stretch: they tell PCR what to copy, and can carry a barcode that labels the sample.</p>` +
@@ -290,7 +290,7 @@
     { k: 'plain', source: ['intro-p6', 'res-multipheno-p2', 'res-multipheno-p7'], html: `<p>The paper runs 8 CRISPR screens for three hallmarks (proliferation, chemoresistance and invasion, the last tested as migration) in two lung cancer cell lines. Each is a different way of reading guide counts, always asking: which guides are depleted, which enriched?</p>` },
     { k: 'svg', caption: 'The five kinds of screen at a glance: which cells are read out, and which way a hit\'s guides move.',
       svg: `<svg viewBox="0 0 480 272" role="img" aria-label="Table of five screens: proliferation dropout, proliferation CFSE, cisplatin survival, cisplatin death and migration transwell, with the cells read out and whether a hit's guides are depleted or enriched">` +
-        `<text x="14" y="20" class="b">Screen</text><text x="172" y="20" class="b">Cells read out</text><text x="356" y="20" class="b">A hit's guides are</text>` +
+        `<text x="14" y="20" class="b s">Screen</text><text x="172" y="20" class="b s">Cells read out</text><text x="356" y="20" class="b s">A hit's guides are</text>` +
         `<rect x="6" y="32" width="468" height="38" rx="8" class="f-yellow"/><text x="14" y="56" class="s b">Proliferation · dropout</text><text x="172" y="56" class="s">all cells, 14 and 21 days</text><rect x="356" y="39" width="108" height="24" rx="6" class="f-red"/><text x="410" y="56" class="mid s">depleted</text>` +
         `<rect x="6" y="76" width="468" height="38" rx="8" class="f-yellow"/><text x="14" y="100" class="s b">Proliferation · CFSE</text><text x="172" y="100" class="s">slowest 20% (dye-bright)</text><rect x="356" y="83" width="108" height="24" rx="6" class="f-green"/><text x="410" y="100" class="mid s">enriched</text>` +
         `<rect x="6" y="120" width="468" height="38" rx="8" class="f-teal"/><text x="14" y="144" class="s b">Cisplatin · survival</text><text x="172" y="144" class="s">survivors of IC30 and IC80</text><rect x="356" y="127" width="108" height="24" rx="6" class="f-red"/><text x="410" y="144" class="mid s">depleted</text>` +
