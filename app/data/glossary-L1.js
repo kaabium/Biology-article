@@ -43,7 +43,7 @@
 /* ====================================================================== A3 */
 {
   id: 'candidate-number',
-  short: 'The ID the paper gives each screened target: “candidate 1”, “candidate 2” and so on.',
+  short: 'The ID the paper gives each screened target: “candidate 1”, “candidate 205” and so on.',
   long: `<p>Every target in the screening library has a number, and the paper refers to the targets as “candidate 1” and so on. Think of it as a label for a target spot where the guides cut. Some candidates also have a gene name (candidate 331 is DNMBP-AS1), and one candidate can cover two lncRNAs that start from the same spot (candidate 205 covers LINC00115 and RP11-206L10.11).</p>`,
   analogy: 'A jersey number: it identifies the player in the lineup, and the player may also have a name.',
   see: ['dnmbp-as1', 'linc00115', 'chill1'],
@@ -89,7 +89,7 @@
 {
   id: 'cecr7',
   short: 'Candidate 448: a hit from the migration tests; ASOs against it caused a dramatic impairment of A549 cell migration.',
-  long: `<p>CECR7 (candidate 448) is one of the three migration hits, with AC104024.3 and MIR23AHG, whose ASOs the authors tested in A549 cells. For each candidate they used two different ASOs, checked how far each one lowered the lncRNA, and measured how many cells crossed a membrane. The main text mentions CECR7 only in this validation step.</p>`,
+  long: `<p>CECR7 (candidate 448) is one of the three migration hits, with AC104024.3 and MIR23AHG, whose ASOs the authors tested in A549 cells. For each one they used two different ASOs, checked how far each lowered the lncRNA, and measured how many cells crossed a membrane. The main text mentions CECR7 only in this validation step.</p>`,
   analogy: 'A turnstile stuck halfway: with this lncRNA lowered, far fewer cells squeeze through.',
   see: ['ac104024-3', 'mir23ahg', 'migration'],
   source: ['res-validation-p5', 'fig3E', 'fig3F'],
@@ -291,7 +291,7 @@
 {
   id: 'gene',
   short: 'A stretch of DNA that holds the instructions for making one RNA and, for many genes, a protein.',
-  long: `<p>A gene is a section of DNA that the cell can copy into RNA. In protein-coding genes the RNA carries a recipe for a protein. In other genes, such as lncRNA genes, the RNA itself is the finished product and does its job directly. Humans have tens of thousands of genes. Each gene has a start and an end on its chromosome.</p>`,
+  long: `<p>A gene is a section of DNA that the cell can copy into RNA. In many genes the RNA carries a recipe for a protein. In others, such as lncRNA genes, the RNA itself is the finished product and does its job directly. Humans have tens of thousands of genes. Each gene has a start and an end on its chromosome.</p>`,
   analogy: 'One recipe in a giant cookbook.',
   see: ['dna', 'genome', 'lncrna'],
   paperUse: { ref: 'res-validation-p6', quote: 'to identify lncRNA genes that promote cancer hallmarks via RNA-dependent mechanisms' },
