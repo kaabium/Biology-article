@@ -108,3 +108,36 @@ Object.assign((window.PANELS = window.PANELS || {}), {
     },
   },
 });
+
+/* ------------------------------------------------------------------------------------------ 4D */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig4D: {
+    short: 'What the hit lists contain',
+    question: `What kinds of targets (controls, known lncRNAs, novel lncRNAs) make up the hit lists of the pan-hallmark and hallmark-specific analyses, compared with the library as a whole?`,
+    howToRead: `<p>These are <b>stacked bars</b>: each bar is one list of targets, split into colored segments. The y axis is percent, so every bar has the same height, and the number printed inside a segment is its count. <b>Red</b> = positive controls (genes that should score), <b>gray</b> = neutral controls (should not score), <b>light green</b> = "lung cancer lncRNAs" (lncRNAs already published and functionally validated in lung cancer) and <b>blue</b> = "novel cancer lncRNAs" (all the other lncRNAs). "cand hits" counts the lncRNA candidates in a bar: light green plus blue.</p>
+<p><b>Left chart.</b> The hits of the pan-hallmark analysis ("Pan", all screens together) and of the three hallmark-specific analyses (proliferation, cisplatin, migration). A vertical black line separates the pan-hallmark bar from the hallmark-specific ones. <b>Right chart.</b> The same colors for the whole library, as a baseline: if the hit lists were random draws from the library, every hit bar would look like this one. The controls work as an answer key. A good hit list holds many positive controls and very few neutral ones.</p>`,
+    shows: `<p>The pan-hallmark list holds 80 lncRNA hits (7 known lung cancer lncRNAs and 73 novel ones; the text says 73 of the 80 were not previously linked to NSCLC), plus 46 positive controls and 3 neutral controls. Positive controls are far more common among the hits than in the library: 46 of the 129 items in the Pan bar (46 + 3 + 7 + 73, about 36%) against 109 of the 1147 items in the library bar (about 9.5%). Neutral controls are not enriched: 3 of 129 against 35 of 1147. That is the pattern a working ranking should give.</p>
+<p>The hallmark-specific lists have 50 (proliferation), 38 (cisplatin) and 65 (migration) lncRNA hits. These add up to 153, more than the 134 distinct hits in the text, because the 19 lncRNAs that are hits in two hallmarks are counted twice (153 − 19 = 134). The text puts the pan-hallmark hits at ∼8% and the hallmark-specific hits at ∼13% of the lncRNAs screened.</p>`,
+    keyNumbers: [
+      { value: '80 = 7 + 73', meaning: 'pan-hallmark lncRNA hits: 7 known lung cancer lncRNAs and 73 novel ones', source: ['fig4D', 'res-integration-p2'] },
+      { value: '46 and 3', meaning: 'positive and neutral controls among the pan-hallmark hits', source: ['fig4D'] },
+      { value: '109 · 35 · 90 · 913', meaning: 'the library: positive controls, neutral controls, known lung cancer lncRNAs, novel lncRNAs', source: ['fig4D'] },
+      { value: '50 · 38 · 65', meaning: 'lncRNA hits ("cand hits") of the proliferation, cisplatin and migration analyses', source: ['fig4D'] },
+      { value: '134 (19)', meaning: 'distinct hallmark-specific lncRNA hits; 19 of them are hits in two hallmarks and none in three', source: ['res-integration-p2'] },
+      { value: '1003', meaning: 'lncRNA targets in the library bar (913 + 90)', source: ['fig4D'] },
+    ],
+    memory: `A crate of mixed fruit is the library bar. You pick fruit with a ripeness test (the ranking) and look at what you picked (a hit bar). If the test works, your pick holds far more of the fruit you know is ripe (positive controls) than the crate does, and hardly any of the plastic fruit you slipped in as a check (neutral controls).`,
+    flags: [
+      `The library bar says "cand hits: 1003", but those are all the lncRNA candidates in the library (913 + 90), not hits. The Results give a different count, 831 lncRNAs (res-pipeline-p2), and do not explain the gap. The text's "∼8%" for 80 hits fits 1003 (80 of 1003 is about 8%); 80 of 831 would be about 10%.`,
+      `The text says known lung cancer lncRNAs are "enriched among hits" (res-integration-p2). In this panel they are 7 of the 80 lncRNA hits (about 9%) and 90 of the 1003 library lncRNAs (also about 9%), so no enrichment shows here. The text points to a separate enrichment-score analysis (Figure S3C), which is not in the PDF.`,
+      `The y axis says "% of Hits", but each bar contains controls as well as lncRNAs, while the paper's headline counts (80 and 134) are lncRNAs only. Always check which part of the bar a number refers to.`,
+      `The control numbers (109 positive, 35 neutral) agree with panel B and, for the positive controls, with the Results (res-multipheno-p6). They do not agree with the control counts listed in the Methods (m-library-design-p3), and the paper does not reconcile them.`,
+    ],
+    derived: ['129', '1147', '36', '9.5', '153', '831', '10', '9'],
+    chartTypes: ['F2'],
+    examQ: {
+      q: `In Figure 4D, why is a "Library" bar shown beside the hit bars, and what does the comparison tell you about the pan-hallmark hit list?`,
+      a: `The library bar is the baseline: the mix of everything that was screened (109 positive controls, 35 neutral controls, 90 known lung cancer lncRNAs, 913 novel lncRNAs). Random picks would give hit bars with the same mix. Instead, positive controls are strongly enriched among the pan-hallmark hits (46 of 129 items, about 36%, against about 9.5% in the library) while neutral controls are not (3 of 129). So the ranking picks out genes that really matter for growth. The 80 lncRNA hits (7 known and 73 novel) are the paper's pan-hallmark hit list.`,
+    },
+  },
+});
