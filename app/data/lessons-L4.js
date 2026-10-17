@@ -132,7 +132,7 @@
         `<rect x="8" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="60" y="236" class="mid s b">A549, H460</text><text x="60" y="254" class="mid s">(most work)</text>` +
         `<rect x="128" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="180" y="236" class="mid s b">H441</text><text x="180" y="254" class="mid s">spheroids</text>` +
         `<rect x="248" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="300" y="236" class="mid s b">BE874</text><text x="300" y="254" class="mid s">organoids</text>` +
-        `<rect x="368" y="214" width="104" height="52" rx="8" class="f-gray"/><text x="420" y="236" class="mid s">source of BE874</text><text x="420" y="254" class="mid s">(no ASO tests)</text>` +
+        `<rect x="368" y="214" width="104" height="52" rx="8" class="f-gray"/><text x="420" y="236" class="mid s">grows BE874</text><text x="420" y="254" class="mid s">(no ASO tests)</text>` +
         `<path d="M20 292 H460" class="arrow both"/>` +
         `<text x="20" y="316" class="s m">easier and cheaper to scale up</text><text x="460" y="316" class="s m end">closer to a real tumor</text></svg>` },
 

@@ -110,3 +110,82 @@
   paperUse: { ref: 'res-mechanism-p2', quote: 'we used molecular phenotyping by RNA-seq to quantify the transcriptome of A549 cells perturbed by CHiLL1 ASOs' },
 }
 );
+
+/* ---------------------------------------------------------------- B8: switches on the DNA and finding where a gene starts */
+(window.GLOSSARY_CONTENT = window.GLOSSARY_CONTENT || []).push(
+{
+  id: 'enhancer',
+  short: `A stretch of regulatory DNA that boosts how strongly a gene is copied into RNA, often from far away.`,
+  long: `<p>Enhancers are switches written in DNA. Proteins called transcription factors bind to them, and the DNA then bends so that the enhancer touches the gene's promoter and helps RNA polymerase get started. An enhancer can sit thousands of letters away, on either side of the gene or even inside another gene, and it is usually active only in certain cell types. One gene can have several enhancers.</p>`,
+  analogy: `A dimmer switch in another room, wired to the lamp; the lamp's own switch is the promoter.`,
+  see: ['promoter', 'transcription-factor', 'cis-regulatory-element'],
+  paperUse: { ref: 'res-validation-p4', quote: 'DNA-dependent (e.g., enhancer) or RNA-dependent mechanisms' },
+},
+{
+  id: 'transcription-factor',
+  short: `A protein that recognizes a particular short DNA sequence, binds to it and switches nearby genes up or down.`,
+  long: `<p>Transcription factors (TFs) read the DNA from the outside. Each TF fits one particular short DNA pattern and sticks to it wherever that pattern appears. Some TFs help RNA polymerase start copying (activators); others block it (repressors). Which TFs are active in a cell largely decides which genes are on, and a single gene can be controlled by many TFs at once.</p>`,
+  analogy: `A key that fits only one kind of lock: the DNA pattern is the lock, and turning the key flips a gene's switch.`,
+  see: ['tfbs', 'enhancer', 'promoter'],
+  paperUse: { ref: 'res-mechanism-p4', quote: 'Numerous transcription factor binding sites (TFBS) are enriched in changing genes' },
+},
+{
+  id: 'tfbs',
+  full: 'transcription factor binding site',
+  short: `A short DNA sequence that a particular transcription factor recognizes and sticks to.`,
+  long: `<p>A TFBS is the "address" on the DNA where a transcription factor lands. Binding sites are short (often around 6 to 12 letters) and a little flexible, so one TF can match many places in the genome, and only some of them are used in a given cell. Promoters and enhancers are rich in TFBS. If many genes that change together all carry the binding site for the same TF, that TF is a good suspect for controlling them.</p>`,
+  analogy: `The keyhole on a door: the key (the factor) only works where there is a matching keyhole.`,
+  see: ['transcription-factor', 'promoter', 'enhancer'],
+  paperUse: { ref: 'res-mechanism-p4', quote: 'Numerous transcription factor binding sites (TFBS) are enriched in changing genes' },
+},
+{
+  id: 'chromatin',
+  short: `DNA together with the proteins it is wound around and folded with; tightly packed chromatin is hard to read, open chromatin is reachable.`,
+  long: `<p>Inside the nucleus, DNA is not bare. It is wound around spool-like proteins called histones and folded into a compact package, the chromatin. Packing is uneven: tightly packed regions hide DNA from transcription factors and are usually silent, while open regions are reachable and are where regulatory elements are often active. Chemical tags on the histones help set the packing and are read as clues to what a region is doing.</p>`,
+  analogy: `Thread wound onto spools and stored in a drawer: you can only grab the thread where the winding is loose.`,
+  see: ['dnase-i-hypersensitivity', 'chromhmm', 'ezh2'],
+  paperUse: { ref: 'intro-p3', quote: 'chromatin-modifying enzyme EZH2' },
+},
+{
+  id: 'cis-regulatory-element',
+  short: `A stretch of DNA that controls when and how strongly a nearby gene is used, rather than being copied into a product itself.`,
+  long: `<p>Regulatory elements are the control panel of the genome. Promoters and enhancers are the best-known kinds; others silence genes or shield them from their neighbors. "Cis" means they act on genes on the same DNA molecule, usually nearby (lesson B6). Because they are ordinary DNA, deleting a stretch of DNA can accidentally remove one. ENCODE publishes maps of candidate regulatory elements, abbreviated cCREs.</p>`,
+  analogy: `The switches, dials and wiring on a control panel: they do no work themselves but decide which machines run.`,
+  see: ['enhancer', 'promoter', 'transcription-factor'],
+  paperUse: { ref: 'res-pipeline-p1', quote: 'a reduced chance of false positives arising from deleting overlapping DNA regulatory elements' },
+},
+{
+  id: 'encode',
+  full: 'Encyclopedia of DNA Elements',
+  short: `A large public project that mapped, in many human cell types, which parts of the genome are transcribed, open, bound by proteins or marked.`,
+  long: `<p>ENCODE is an international research consortium that set out to find the functional parts of the human genome. Its labs measured, in many cell types, where RNA starts, which DNA is open, which proteins bind where, and which chemical marks sit on chromatin, and they release all of the data publicly. Other scientists can reuse it instead of repeating the measurements. GENCODE began as its gene-annotation part.</p>`,
+  analogy: `A public library of genome measurements that anyone can borrow instead of redoing the experiments.`,
+  see: ['cage', 'dnase-i-hypersensitivity', 'chromhmm'],
+  paperUse: { ref: 'm-library-design-p2', quote: 'TSS clusters were intersected with ENCODE evidence source specific to A549 cells' },
+},
+{
+  id: 'cage',
+  full: 'Cap Analysis of Gene Expression',
+  short: `A method that reads the very first end of RNA molecules, pinpointing where transcription starts and how active each start site is.`,
+  long: `<p>Most RNAs made by RNA polymerase get a special chemical "cap" on their first end. CAGE catches molecules that carry a cap, sequences a short tag from that first end and places the tag on the genome. Where many tags pile up, RNAs really begin, so CAGE shows a TSS to almost single-letter accuracy, and the number of tags shows how active that start site is.</p>`,
+  analogy: `Marking the exact spot where each runner crossed the starting line, then counting the marks.`,
+  see: ['tss', 'dnase-i-hypersensitivity', 'encode'],
+  paperUse: { ref: 'm-library-design-p2', quote: 'Cap Analysis of Gene Expression (CAGE)' },
+},
+{
+  id: 'dnase-i-hypersensitivity',
+  short: `Places where DNA is unusually easy for the enzyme DNase I to cut, because it is open and not tightly packed.`,
+  long: `<p>DNase I is an enzyme that cuts DNA, but it can only cut where the DNA is exposed; tightly packed chromatin protects it. When researchers treat nuclei with a little DNase I and map where the cuts pile up, they find hypersensitive sites: regions of open chromatin. Many are promoters and enhancers with transcription factors bound. So the map shows where regulatory DNA probably is, but not what it does.</p>`,
+  analogy: `Scissors that can only snip a ball of yarn where the thread is loose and sticking out.`,
+  see: ['chromatin', 'cis-regulatory-element', 'cage'],
+  paperUse: { ref: 'm-library-design-p2', quote: 'DNAse I hypersensitivity sites' },
+},
+{
+  id: 'chromhmm',
+  short: `A computer program that labels each stretch of the genome with a "state", such as active start site or enhancer, from patterns of chromatin marks.`,
+  long: `<p>Researchers measure many kinds of chemical marks on chromatin along the whole genome. ChromHMM, which uses a statistical method called a hidden Markov model, looks for recurring combinations of marks and gives each stretch a state with a readable name, for example Active TSS, Flanking TSS, Active Enhancer or Bivalent-Poised TSS. The states are predictions inferred from marks, not direct measurements of what the DNA does.</p>`,
+  analogy: `A map-colouring program that reads many soil measurements and shades each patch as forest, farmland or marsh.`,
+  see: ['chromatin', 'enhancer', 'tss'],
+  paperUse: { ref: 'm-library-design-p2', quote: 'ChromHMM marks: Active TSS, Flanking TSS' },
+}
+);

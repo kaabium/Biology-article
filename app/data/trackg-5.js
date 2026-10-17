@@ -530,3 +530,160 @@ Object.assign(window.TRACKG.paras, {
   },
 
 });
+
+/* ----- copy number, software and statistics ----- */
+Object.assign(window.TRACKG.paras, {
+
+  'm-cnv-p1': {
+    plain: `<p>The copy number status of A549 and H460 cells (how many copies of each stretch of DNA the cells carry) was taken from CCLE, the Cancer Cell Line Encyclopedia. Then the authors intersected (overlapped) the hg19 coordinates of the pgRNAs with the hg19 coordinates of the CCLE copy number data.</p>`,
+    why: `<p>In general, cancer cells often carry extra or missing copies of stretches of DNA, and the position of a pgRNA decides which copy-number value applies to it. Overlapping the pgRNA positions with the copy-number segments gives each candidate a copy-number value in A549 and H460. The paper's own reason for looking is that "screen hits tend to be amplified, but not depleted, in DNA from tumors ... and cell lines", which it counts as support for oncogenic roles. In general, copy number can also bias CRISPR cutting screens (more copies mean more cuts), which is another reason to check it. Both lists must use the same genome version (hg19), or the positions would not line up.</p>`,
+    memory: `Copy number is how many photocopies of a page exist. CCLE is the catalog that lists the copy count for each page, and hg19 coordinates are the page numbers. Both lists must use the same edition (hg19) before you can match them.`,
+    flags: [
+      `This paragraph and the next two use hg19 coordinates, whereas the tracks and annotations in the ezTracks section use hg38. The paragraphs do not say why different genome versions were used.`,
+      `The paragraph gives no definition of "amplified", "deleted" or "unaltered" for the cell lines (no threshold). The cell-line result is cited to a supplementary figure that is not in your PDF.`,
+    ],
+    prereqs: ['C2', 'C6', 'B3'],
+    sources: ['res-integration-p4'],
+    checks: [
+      { q: `Why does the analysis intersect the pgRNA positions with the copy-number data using the same genome version (hg19) for both?`,
+        options: [
+          { t: `Positions only line up if both lists use the same genome version; otherwise the same coordinate points to different DNA`, ok: true, why: `Right. A genome version is a coordinate system, and two lists must share it to be overlapped.` },
+          { t: `Because pgRNAs can only cut in the hg19 version of the genome`, ok: false, why: `A genome version is only a coordinate system. It does not change where a guide can cut. It just has to match the other list.` },
+          { t: `Because the intersection converts copy number into RNA expression`, ok: false, why: `Copy number is a property of DNA. The intersection only looks up the copy-number value at each pgRNA's position.` },
+        ],
+        source: ['m-cnv-p1'] },
+    ],
+  },
+
+  'm-cnv-p2': {
+    plain: `<p>Copy number data for the TCGA lung adenocarcinoma samples (TCGA-LUAD) were downloaded as "log2 ratio segment means" (an average log2 ratio for each segment, or stretch, of DNA) using the R package TCGAbiolinks. They were converted to hg19 coordinates with liftOver (a tool that translates positions from one genome version to another). The values of each candidate were averaged across all TCGA-LUAD samples.</p>`,
+    why: `<p>In general, a log2 ratio of about zero means "same as normal", positive values mean extra copies (a gain) and negative values mean lost copies. That is why the values can be averaged across patients to give one number per candidate lncRNA locus: a positive average means that the locus is, on average, gained in lung adenocarcinoma. liftOver is needed when data come in a different genome version from the one used for the pgRNA positions (the paragraph says the data were converted to hg19). The paper reports that screen hits tend to be amplified, but not depleted, in tumor DNA (see the Results on screen integration).</p>`,
+    flags: [
+      `Averaging across all samples gives one number per candidate but hides how many individual tumors carry a gain or a loss. The paragraph gives no threshold for calling a gain or a loss.`,
+      `The paragraph says "all TCGA-LUAD samples" without giving their number. It is not stated whether this is the same set as the 101 KRAS+ samples used for expression.`,
+    ],
+    prereqs: ['C2', 'E1', 'B3'],
+    sources: ['m-public-rnaseq-p1'],
+    checks: [
+      { q: `A candidate locus has a clearly positive average "log2 ratio segment mean" across the TCGA-LUAD samples. What does this suggest?`,
+        options: [
+          { t: `On average, the locus is present in extra copies (gained) in these tumors`, ok: true, why: `Right. A log2 ratio near zero means a normal copy number, so positive values mean gains.` },
+          { t: `The lncRNA is more highly expressed in tumors than in normal tissue`, ok: false, why: `Copy number is a property of DNA, and expression is an RNA measurement. They often go together but are not the same thing.` },
+          { t: `The locus is usually deleted in these tumors`, ok: false, why: `A deletion would give negative values. Positive log2 ratios mean more copies than normal.` },
+        ],
+        source: ['m-cnv-p2'] },
+    ],
+  },
+
+  'm-cnv-p3': {
+    plain: `<p>The authors downloaded pan-cancer genomic regions that are recurrently amplified or deleted from the ICGC Data Portal (a file from the GISTIC analysis; the file name is printed in the PAPER box). Then they searched for overlaps between each candidate and these recurrent copy-number-altered regions (the "Wide Peak Limits").</p>` +
+      `<p>They tested the differences in the proportions of amplified, deleted, or non-copy-number-altered hits versus non-hits using Fisher's exact tests.</p>`,
+    why: `<p>In general, the question here is: do the screen hits fall into recurrently amplified or deleted regions more or less often than the non-hits (the other lncRNAs in the library)? A Fisher's exact test compares two proportions using a table of counts with two rows (hit, non-hit) and two columns (in an altered region or not), and it works even when the counts are small. The non-hits are the control: without them, "a quarter of the hits are amplified" says little, because many genes lie in amplified regions anyway. The paper reports that screen hits tend to be amplified but not depleted, and the Figure 4H legend says the test was Fisher's exact test (one-sided).</p>`,
+    memory: `Two jars of marbles, "hits" and "non-hits": the question is whether red marbles (amplified regions) make up a different share of one jar than of the other.`,
+    flags: [
+      `The paragraph does not say whether the Fisher tests were one- or two-sided. The Figure 4H legend says one-sided, which means that only one direction was tested.`,
+      `The plural "Fisher's exact tests" suggests separate tests for amplified, deleted and non-altered hits, but the paragraph does not say whether the p-values were corrected for multiple testing, or which hits (for example, the pan-hallmark hits) were compared.`,
+    ],
+    prereqs: ['E3', 'C2'],
+    sources: ['res-integration-p4', 'fig4H'],
+    checks: [
+      { q: `Which test fits comparing the proportion of amplified regions among hits with the proportion among non-hits?`,
+        options: [
+          { t: `Fisher's exact test, because it compares proportions between two groups using counts`, ok: true, why: `Right. The paragraph says the proportions of amplified, deleted or unaltered hits versus non-hits were tested with Fisher's exact tests.` },
+          { t: `Pearson correlation, because it compares two groups`, ok: false, why: `Pearson correlation measures how two numeric measurements vary together. It is not a test of proportions in two groups.` },
+          { t: `Welch's t test, because it compares two groups`, ok: false, why: `A t test compares the means of a continuous measurement. Here the data are counts in categories (amplified or not).` },
+          { t: `Kruskal–Wallis test, because it compares groups`, ok: false, why: `Kruskal–Wallis compares ranks of continuous values across groups. It is not a test for proportions in a table of counts.` },
+        ],
+        source: ['m-cnv-p3'] },
+    ],
+  },
+
+  'm-quant-p1': {
+    plain: `<p>The statistical analysis, quantification and visualization were done with GraphPad Prism (a statistics and graphing program) and with R (a statistical programming language; versions 3.5.3, 4.0.0 and 4.1.2).</p>` +
+      `<p>The R packages used were: ggplot2, ggpubr, ggtern, ggrepel, ggbeeswarm, GGally, Gmedian, GSEABase, clusterProfiler, harmonicmeanp, metap, Hmisc, TCGAbiolinks, liftOver, precrec, MASS, car, eulerr, SuperExactTest, UpSetR, metaRNASeq and enrichR. Version numbers are printed in the PAPER box (two versions of ggplot2 are listed, 3.3.2 and 3.3.5; TCGAbiolinks and liftOver have none).</p>`,
+    why: `<p>In general, a software list lets other people repeat the analysis, and version numbers matter because different versions can give slightly different numbers. Different parts of the work used different R versions (for example, R 4.0.0 for the RNA-seq plots and R 4.1.2 for the screen analysis, see those paragraphs). What the packages are for, in general:</p>` +
+      `<ul>` +
+      `<li><b>Plots:</b> ggplot2 draws the plots; ggpubr, ggrepel (non-overlapping labels), ggbeeswarm (dot plots) and GGally add extras; ggtern draws three-corner (ternary) plots such as Figure 4C; UpSetR and eulerr draw overlaps between sets.</li>` +
+      `<li><b>Pathways and gene sets:</b> GSEABase, clusterProfiler and enrichR (enrichment analysis).</li>` +
+      `<li><b>Combining and testing p-values:</b> harmonicmeanp (the harmonic mean p-value), metap and metaRNASeq (combining significance values), SuperExactTest (tests of overlaps between sets).</li>` +
+      `<li><b>Curves and summaries:</b> precrec draws ROC curves; Gmedian computes the geometric median (mentioned in the Figure 4E legend); Hmisc, MASS and car are general statistics toolboxes.</li>` +
+      `<li><b>Data handling:</b> TCGAbiolinks downloads TCGA data; liftOver converts coordinates between genome versions.</li>` +
+      `</ul>` +
+      `<p>This paragraph lists software only. It does not say which test was used for which figure.</p>`,
+    memory: `A workshop with labeled drawers: one for plotting tools, one for pathway tools, one for p-value tools, one for coordinates. The paragraph is just the inventory list.`,
+    flags: [
+      `Version numbers are missing for GraphPad Prism, TCGAbiolinks and liftOver. The paragraph does not say which analyses were done in Prism and which in R.`,
+      `Two versions of ggplot2 and three versions of R are listed, so different figures may come from different versions. The same package list (with R 4.1.2) is printed again in the hit-identification section.`,
+      `The list contains no tests or thresholds. Those are in the next paragraph and in the figure legends.`,
+    ],
+    prereqs: ['E1', 'E5'],
+    sources: ['m-hits-p4', 'fig4C', 'fig4E'],
+    checks: [
+      { q: `The software list includes "harmonicmeanp". Which analysis in the paper does this package point to?`,
+        options: [
+          { t: `The harmonic mean p-value (HMP) that combined the two significance scores (from RRA and EBM) in the target prioritization pipeline`, ok: true, why: `Right, judging by the package name and purpose. The hit-identification paragraph says the HMP was calculated from the RRA and EBM scores. The paper does not link each package to each step line by line.` },
+          { t: `The Benjamini–Hochberg correction used to set the FDR cut-off`, ok: false, why: `Benjamini–Hochberg is applied after the HMP is calculated, to correct the p-values for multiple testing. The harmonic mean p-value package is for the HMP itself.` },
+          { t: `The empirical Brown's method (EBM) that combined the effect sizes across screens`, ok: false, why: `EBM combined significance values (p-values). Effect sizes were ranked with Robust Rank Aggregation (RRA), and the HMP then merged the two significance scores.` },
+          { t: `The Fisher's exact tests on copy-number overlaps`, ok: false, why: `Those compare proportions of hits and non-hits in amplified or deleted regions (copy-number section). They do not involve the HMP.` },
+        ],
+        source: ['m-quant-p1', 'm-hits-p4'] },
+    ],
+  },
+
+  'm-quant-p2': {
+    plain: `<p>Further software used for quantification and statistical analysis was: StringTie (1.3), RSEM (1.3), CRISPETa, CASPR, GuideScan, MageckFlute, Kallisto (0.46.0), Sleuth (0.30), bedtools, and Excel (Microsoft).</p>`,
+    why: `<p>In general, listing tools and versions lets others repeat the analysis. Most of these tools are explained where they were used in the paper:</p>` +
+      `<ul>` +
+      `<li>StringTie assembled a novel A549 transcriptome, and RSEM estimated expression for the library design.</li>` +
+      `<li>CRISPETa designed the pgRNAs.</li>` +
+      `<li>CASPR processed the screen reads and calculated log2 fold changes and FDR-corrected p-values; GuideScan removed low-scoring guides; MageckFlute corrected the batch effect.</li>` +
+      `<li>Kallisto and Sleuth quantified the RNA-seq data and tested for differential expression.</li>` +
+      `<li>bedtools (BEDTools) merged the exons of each lncRNA locus.</li>` +
+      `<li>Excel is listed without saying what was calculated in it.</li>` +
+      `</ul>`,
+    flags: [
+      `StringTie and RSEM carry the same printed reference mark (see the PAPER box). That mark leads to the RSEM paper, and StringTie has no entry of its own in the reference list.`,
+      `The reference marks for Kallisto and Sleuth here differ from the ones printed next to them in the RNA-seq paragraph. The marks here lead to the Kallisto and Sleuth papers.`,
+    ],
+    prereqs: ['D4', 'D10'],
+    sources: ['m-library-design-p1', 'm-library-design-p2', 'm-library-design-p4', 'm-hits-p1', 'm-rnaseq-p2', 'm-eztracks-p2'],
+    checks: [
+      { q: `In the screen analysis, which tool from this list removed low-scoring guides before the final log2 fold changes were calculated?`,
+        options: [
+          { t: `GuideScan`, ok: true, why: `Right. The hit-identification paragraph says "Low scoring guides were removed by GuideScan".` },
+          { t: `MageckFlute`, ok: false, why: `MageckFlute was used for the batch effect correction, a different step.` },
+          { t: `CRISPETa`, ok: false, why: `CRISPETa designed the pgRNAs for the library. It was not used on the screen read counts.` },
+          { t: `Sleuth`, ok: false, why: `Sleuth tests for differential expression in the RNA-seq data, which is a separate analysis.` },
+        ],
+        source: ['m-quant-p2', 'm-hits-p1'] },
+    ],
+  },
+
+  'm-quant-p3': {
+    plain: `<p>For all analyses, a result with p ≤ 0.05 (p smaller than or equal to 0.05) is called statistically significant, unless a different cut-off is specified.</p>` +
+      `<p>The specific details about the statistical tests used for individual experiments are given in the relevant figure legends. For the detailed statistics of the computational analyses, the reader is sent to the "Method Details" section.</p>`,
+    why: `<p>In general, a p-value is the chance of seeing a difference at least this large if there were really no effect, and p ≤ 0.05 is the common convention for calling a result "significant". Here it is only the default: the paper often specifies another cut-off. The screens and the RNA-seq analysis use FDR &lt; 0.2 or q &lt; 0.2, because when thousands of genes are tested at once the cut-off is applied to p-values corrected for multiple testing, and a lenient 0.2 accepts about one in five false hits among the candidates (20%, computed from 0.2) in return for missing fewer real ones. Because the tests differ from figure to figure, the paragraph sends you to the legends for the test, n and error bars. The flags below list what the legends print.</p>`,
+    memory: `A default setting on a camera: it works for most shots, but the screens and the RNA-seq analysis switch to another mode (0.2) on purpose.`,
+    flags: [
+      `The cut-off is written p ≤ 0.05 here but p &lt; 0.05 in the 2D viability paragraph. The two only differ for a p-value of exactly 0.05.`,
+      `"Unless otherwise specified" matters: the screen hits use FDR &lt; 0.2, and the RNA-seq analysis uses a q-value below 0.2. These are not p ≤ 0.05 rules.`,
+      `Tests named in the legends: Student's t test (one-tailed in Figures 3D, 3F, 5E, 5F and 6L; two-tailed in Figures 4G, 5C and 6K; the Figure 3C and 5B legends say only "Student's t test"), a one-tailed Welch's t test (Figure 4F), a one-tailed Mann-Whitney test (Figure 5G), Wilcoxon and Kruskal-Wallis tests (Figure 2F), Fisher's exact test, one-sided (Figure 4H), and Pearson correlation (Figures 2D, 2E, 2H, 6E and 6I).`,
+      `What n counts differs. Most ASO panels say "biological replicates" (n = 4 in Figures 5C, 5E, 5G and 6L; n = 2 in Figure 6K). Figure 3F says "three independent biological replicates". Figures 3C and 3D give n = 3 and n = 4 without saying which kind. Figure 4F counts patients (n = 101). Figure 5F has n = 4 biological and n > 3 technical replicates, and its error bars "represent the variability of technical replicates". Where error bars are described they are SD. Several legends (for example Figures 3E, 6C and 6G) give no n, no error bars and no test.`,
+      `One-tailed tests (used in many ASO panels) look for a change in one chosen direction only, which makes p ≤ 0.05 easier to reach than with a two-tailed test. The legends do not say that the direction was fixed in advance, or whether p-values were corrected when several ASOs were compared with the same control.`,
+    ],
+    prereqs: ['E2', 'E4', 'F4'],
+    sources: ['m-viability-2d-p1', 'm-hits-p3', 'm-rnaseq-p2', 'fig2F', 'fig3C', 'fig3D', 'fig3F', 'fig4F', 'fig4G', 'fig4H', 'fig5B', 'fig5C', 'fig5E', 'fig5F', 'fig5G', 'fig6K', 'fig6L'],
+    derived: ['20'],
+    checks: [
+      { q: `The paragraph says p ≤ 0.05 counts as significant "unless otherwise specified". Which statement is correct for this paper?`,
+        options: [
+          { t: `It is the default cut-off; some analyses state another one, for example FDR &lt; 0.2 for screen hits and q &lt; 0.2 for the RNA-seq genes`, ok: true, why: `Right. The screen hits and the RNA-seq analysis are the "otherwise specified" cases.` },
+          { t: `It applies to every analysis, including how the screen hits were selected`, ok: false, why: `The screen hits were selected with FDR &lt; 0.2, not with p ≤ 0.05.` },
+          { t: `It means that 95 out of 100 reported effects are real`, ok: false, why: `A p-value is not the probability that an effect is real. It is the chance of a difference at least this large if there were no effect.` },
+          { t: `It means that every significant effect is large and biologically important`, ok: false, why: `Significance says an effect is unlikely to be chance. It does not say how big or important the effect is (that is the effect size).` },
+        ],
+        source: ['m-quant-p3', 'm-hits-p3', 'm-rnaseq-p2'] },
+    ],
+  },
+
+});
