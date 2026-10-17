@@ -34,7 +34,7 @@
     { k: 'h', text: 'Two strands, antisense, and "upstream"' },
     { k: 'bgnd', html:
       `<p>DNA has two strands that run in opposite directions (lesson B2). By convention the strand written out in the reference, with numbers growing left to right, is the <b>plus (+) strand</b>; its partner is the <b>minus (−) strand</b>. To use a gene, the cell makes a working copy of it called an <b>RNA</b> (lesson B4), reading along one strand. The gene is "on" that strand and points in its 5′→3′ direction: left to right for a plus-strand gene, right to left for a minus-strand gene. About half of all genes are on each strand.</p>` +
-      `<p>The two strands share the same stretch of DNA, so two genes can sit in the same place, one on each strand. A gene that overlaps another but lies on the opposite strand is <b>antisense</b> to it. (Names ending in <b>-AS1</b>, like DNMBP-AS1, usually mean "antisense to the gene named before the dash".)</p>` +
+      `<p>The two strands share the same stretch of DNA, so two genes can sit in the same place, one on each strand. A gene that overlaps another but lies on the opposite strand is <b>antisense</b> to it. (Gene names ending in <b>-AS1</b> usually mean "antisense to the gene named before the dash".)</p>` +
       `<p>Genes have a direction, so the DNA around them is described by it. <b>Downstream</b> is further along the direction the gene points; <b>upstream</b> is back the way you came. For a plus-strand gene, upstream means smaller numbers. For a minus-strand gene it is <i>the other way round</i>: upstream means larger numbers.</p>` },
     { k: 'svg', caption: 'Gene A is on the plus strand and gene B on the minus strand. Up- and downstream flip for B. Overlapping genes on opposite strands are antisense.',
       svg: `<svg viewBox="0 0 480 215" role="img" aria-label="Two DNA strands: gene A on the plus strand points right and an overlapping gene B on the minus strand points left, with upstream and downstream reversed for gene B">` +
@@ -292,7 +292,7 @@
         { t: 'Clues in their sequences suggest they are unlikely to be translated into a protein; it is an estimate, not a proof', ok: true, why: '"Potential" is a prediction from clues such as a short ORF. The sentence does not claim proof.' },
         { t: 'Experiments proved that they never make any protein', ok: false, why: 'The text says "low potential", which is a prediction, not a proof that no protein is ever made.' },
         { t: 'They are protein-coding genes that are translated only weakly', ok: false, why: 'Low coding potential means unlikely to be translated at all, not "translated a little".' },
-        { t: 'They are microRNAs', ok: false, why: 'MicroRNAs are tiny, about 22 letters. The paper calls these two lncRNAs: long noncoding RNAs.' },
+        { t: 'They are microRNAs', ok: false, why: 'MicroRNAs are tiny RNAs, far shorter than lncRNAs. The paper calls these two lncRNAs: long noncoding RNAs.' },
       ], source: ['res-aso-p3', 'discussion-p5'] },
   ],
 });
