@@ -112,6 +112,8 @@
     { ref: 'm-hits-p4', note: 'Benjamini–Hochberg correction and the FDR < 0.2 cut-off for the integrated ranking.' },
     { ref: 'm-hits-p3', note: 'The same cut-off for each single screen, plus the direction of the fold change.' },
     { ref: 'm-hits-p5', note: 'Positive and neutral controls used as the answer key for ROC curves.' },
+    { ref: 'res-multipheno-p2', note: 'AUC values 0.7 versus 0.67 and 0.77 versus 0.73: complementary screens against dropout screens alone.' },
+    { ref: 'res-validation-p1', note: 'FDR values (1.2 × 10−7 and 9.78 × 10−7) of the two hits chosen for follow-up, far below 0.2.' },
     { ref: 'fig4B', note: 'ROC curves and their AUC for the integrated ranking and for single screens.' },
   ],
   checks: [
@@ -227,6 +229,7 @@
     { ref: 'fig4A', note: 'The paper\'s own flow chart of the TPP, with the TPP Pan and TPP pheno variants.' },
     { ref: 'res-integration-p1', note: 'Why TPP was built: balancing effect size and significance.' },
     { ref: 'discussion-p3', note: 'The authors\' verdict on TPP: simple yet robust, better than conventional approaches.' },
+    { ref: 'm-data-p2', note: 'The TPP code is deposited at Zenodo (its record number differs from the one printed in m-hits-p4).' },
   ],
   checks: [
     { q: 'In the paper\'s TPP, what are RRA and EBM each used for?',
@@ -461,6 +464,8 @@
         `<text x="398" y="204" class="mid s m">top bar = items with</text><text x="398" y="220" class="mid s m">exactly that combination</text></svg>` },
 
     { k: 'h', text: 'Practise on the real panels' },
+    { k: 'bgnd', html:
+      `<p>Two more to find yourself: the <b>stacked bars</b> of <a href="#/panel/fig4D">Figure 4D</a> (what the hit lists are made of), and the ROC curves of <a href="#/panel/fig4B">Figure 4B</a>.</p>` },
     { k: 'panel', id: 'fig4E', html:
       `<p>A <b>contour plot</b> drawn over dots. Each dot is a hit; x is its effect in A549 cells and y its effect in H460 cells. Left: hits from the dropout screens, with a separate cloud for each cell line. Right: the pan-hallmark hits. The arrows point to the geometric median of each group (the legend's words), a robust "centre" of the cloud. The text says dropout hits tend to be active in only one cell type, while pan-hallmark hits are active in both.</p>` },
     { k: 'panel', id: 'fig2G', html:
@@ -471,8 +476,6 @@
       `<p>Two plot types in one panel. The <b>ternary plot</b> places each significant hit (FDR &lt; 0.2) by the balance of three hallmark significances, one per corner; the legend says closeness to a corner is driven by the TPP significance for that hallmark. Dot colour says which screens flagged the hit, red rings mark positive controls, grey rings neutral controls, and bigger dots have smaller FDR. The three <b>petal plots</b> at the edges zoom in on selected lncRNAs; the key box on the left explains the petals.</p>` },
     { k: 'panel', id: 'fig2I', html:
       `<p>An <b>UpSet plot</b> of the hits (FDR &lt; 0.2) in the individual screens. Left bars: hits per screen. Matrix: a single dot means hits found in that screen only; joined dots mean hits shared by exactly those screens. Top bars count each combination; the light-blue part (the legend's "bat" is a typo for bar) is the share of previously known cancer lncRNAs. The tallest bars sit above single dots: most hits come from one screen only.</p>` },
-    { k: 'bgnd', html:
-      `<p>Two more to find yourself: the <b>stacked bars</b> of <a href="#/panel/fig4D">Figure 4D</a> (what the hit lists are made of), and the ROC curves of <a href="#/panel/fig4B">Figure 4B</a>.</p>` },
   ],
   appears: [
     { ref: 'fig4C', note: 'Ternary plot and petal plots of the pan-hallmark hits.' },
@@ -580,6 +583,7 @@
         `<circle cx="420" cy="110" r="3" class="solid-blue"/><circle cx="458" cy="128" r="3" class="solid-blue"/><circle cx="446" cy="94" r="3" class="solid-blue"/><circle cx="430" cy="134" r="3" class="solid-blue"/>` +
         `<rect x="410" y="84" width="62" height="62" class="ln s-red"/><text x="441" y="78" class="mid s t-red b">gate: 70%</text>` +
         `<text x="380" y="238" class="mid s m">each dot = one cell;</text><text x="380" y="254" class="mid s m">% = share of cells in the gate</text></svg>` },
+    { k: 'h', text: 'A gel and a flow plot in the paper' },
     { k: 'panel', id: 'fig1E', html:
       `<p>Top: a genome-browser view of DNMBP-AS1 with the PCR primers (F and R), the TSS target region and the ten library pgRNAs (red bars). Bottom: the gel. The legend says the PCR used DNA from cells given a non-targeting pgRNA (control) or pgRNA_9 (KO), and that the expected lengths of the wild-type and deletion products are marked. Read it: the control lane has one long band (wild type); the pgRNA_9 lane has a shorter band (the deletion) plus a faint long one (copies that were not cut); the water lane is empty.</p>` },
     { k: 'panel', id: 'fig1D', html:
@@ -593,6 +597,7 @@
   ],
   appears: [
     { ref: 'm-eztracks-p1', note: 'The feature tracks behind Figure 6A: RIDLs, CRSs, phastCons, repeats, CpG islands, ENCODE elements.' },
+    { ref: 'm-eztracks-p2', note: 'Exons of each locus merged into a meta-transcript (BEDTools) and drawn beside the tracks.' },
     { ref: 'fig1E', note: 'A genome-browser view and a DNA gel proving the TSS deletion.' },
     { ref: 'fig1D', note: 'A flow plot (FSC-A against a blue channel) with a gate around BFP-positive cells.' },
     { ref: 'res-mechanism-p1', note: 'FISH shows CHiLL1 mainly in the cytoplasm and GCAWKR in the nucleus; GCAWKR has conserved sequences and structures.' },
@@ -673,20 +678,20 @@
     { k: 'h', text: 'The paper promises the details' },
     { k: 'paper', ref: 'm-quant-p3', quote: 'Specific details concerning statistical tests for individual experiments are noted in the relevant Figure legends.' },
     { k: 'plain', source: ['m-quant-p3', 'm-hits-p4'], html:
-      `<p>The Methods set the default bar at p ≤ 0.05 (the screens use FDR &lt; 0.2 instead) and promise that each legend holds its test details. Here is that promise checked on three real panels.</p>` },
-    { k: 'panel', id: 'fig1F', html:
-      `<p>The legend is one sentence about what was measured. It gives no n, no definition of the error bars and no test. The picture itself prints an n and P labels, with "ns" over two of the guides; the error bars stay undefined. Everything else has to be read off the picture.</p>` },
-    { k: 'panel', id: 'fig3D', html:
-      `<p>The legend gives "n = 4; error bars indicate SD" and a one-tailed Student's t test for the whole panel. But each small plot prints its own n, and the bar charts on the right print a smaller n than the curves on the left. P labels appear only on the curves. Which n applies where? The legend does not say.</p>` },
-    { k: 'panel', id: 'fig6K', html:
-      `<p>The legend says "n = 2 biological replicates, error bars: SD" with a two-tailed Student's t test. An SD computed from two numbers is very rough, and a t test with two repeats per group has little power. The plot shows P labels for some pairs and "ns" for others, but not the two values behind each bar.</p>` },
-
+      `<p>The Methods set the default bar at p ≤ 0.05 (the screens use FDR &lt; 0.2 instead) and promise that each legend holds its test details. Below: what the legends leave unsaid, then three real panels to check for yourself.</p>` },
     { k: 'h', text: 'What the legends leave unsaid' },
     { k: 'plain', source: ['fig3D', 'fig3F', 'fig5E', 'fig5F', 'fig5G', 'fig6L', 'fig4H', 'fig5C', 'fig3C', 'fig5B', 'm-hits-p4'], html:
       `<ul><li><b>Why one-tailed?</b> Many legends name a one-tailed test (Figures 3D, 3F, 5E, 5F, 6L; a one-tailed Mann–Whitney test in 5G; a one-sided Fisher test in 4H). None says why.</li>` +
       `<li><b>Many comparisons.</b> Several bars are tested against one control (Figures 3F and 5E, for example). I found no mention of a correction for this in the legends or the Methods; the only correction named is Benjamini–Hochberg, for the screens.</li>` +
       `<li><b>Which n.</b> The legend of Figure 3F says the data come from "three independent biological replicates", but its qRT-PCR plot prints a smaller n than its migration plot.</li>` +
       `<li><b>Which time point, which stars.</b> Figure 5C prints asterisks and coloured P values on its curves, but its legend does not say which time point was tested; Figure 3C's legend does ("the last time point"). Only Figure 5B defines its asterisks ("****p &lt; 0.0001").</li></ul>` },
+    { k: 'h', text: 'Check three real panels' },
+    { k: 'panel', id: 'fig1F', html:
+      `<p>The legend is one sentence about what was measured. It gives no n, no definition of the error bars and no test. The picture itself prints an n and P labels, with "ns" over two of the guides; the error bars stay undefined. Everything else has to be read off the picture.</p>` },
+    { k: 'panel', id: 'fig3D', html:
+      `<p>The legend gives "n = 4; error bars indicate SD" and a one-tailed Student's t test for the whole panel. But each small plot prints its own n, and the bar charts on the right print a smaller n than the curves on the left. P labels appear only on the curves. Which n applies where? The legend does not say.</p>` },
+    { k: 'panel', id: 'fig6K', html:
+      `<p>The legend says "n = 2 biological replicates, error bars: SD" with a two-tailed Student's t test. An SD computed from two numbers is very rough, and a t test with two repeats per group has little power. The plot shows P labels for some pairs and "ns" for others, but not the two values behind each bar.</p>` },
   ],
   appears: [
     { ref: 'm-quant-p3', note: 'The default threshold (p ≤ 0.05) and the promise that legends give the test details.' },

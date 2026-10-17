@@ -46,7 +46,7 @@
 {
   id: 'q-value',
   short: `A p-value adjusted for testing many items: the smallest FDR at which an item would still count as a hit.`,
-  long: `<p>An adjusted p-value answers: "if I accept an FDR this big, does this item make my hit list?" A q-value of 0.15 means it makes the list at an FDR cut-off of 0.15 or looser. Strictly, "q-value" is also the name of one specific method, but many papers use the word loosely for any FDR-adjusted p-value. An adjusted value is never smaller than the raw p-value it came from.</p>`,
+  long: `<p>An adjusted p-value answers: "if I accept an FDR this big, does this item make my hit list?" A q-value of 0.15 means it makes the list at an FDR cut-off of 0.15 or looser. Strictly, "q-value" is also the name of one specific method, but many papers use the word loosely for any FDR-adjusted p-value. A BH-adjusted value is never smaller than the raw p-value it came from.</p>`,
   analogy: `A grade "on the curve": the same raw score earns a different grade depending on how many others sat the exam.`,
   see: ['fdr', 'benjamini-hochberg', 'p-value'],
   paperUse: { ref: 'fig6J', quote: 'adjusted p value (q value)' },
