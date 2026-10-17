@@ -89,3 +89,201 @@
       ], bg: true },
   ],
 });
+
+/* ============================================================================================== C5 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'C5',
+  defines: ['aso'],
+  body: [
+    { k: 'h', text: 'The problem: a dish is flat, a tumor is a lump' },
+    { k: 'bgnd', html: `<p>Inside the body a tumor is a crowded, three-dimensional lump, with cells packed against each other, far from the blood supply in the middle. A dish of cells looks nothing like that. So scientists climb a ladder of models: simple and scalable at the bottom, realistic but slow at the top.</p>` },
+
+    { k: 'h', text: '2D culture: flat, cheap and fast' },
+    { k: 'bgnd', html: `<p>In <b>2D culture</b> cells sink to the bottom of a dish, stick to the plastic and spread out in one layer, a <b>monolayer</b>. It is cheap, fast and easy to count and treat, and every cell gets the same food, oxygen and drug at the same moment. That makes it the workhorse for big experiments. But a real tumor is not like that.</p>` },
+
+    { k: 'h', text: '3D culture: spheroids, organoids and Matrigel' },
+    { k: 'bgnd', html: `<p>In <b>3D culture</b> cells grow as clumps. They touch neighbors on all sides, and cells in the middle get less oxygen, food and drug, much as inside a tumor. A <b>spheroid</b> is a simple ball of cells, often made from a cell line. An <b>organoid</b> is a more elaborate mini-structure grown from cells of a real tissue or tumor: it organizes itself and copies some features of the original.</p>` +
+      `<p>3D cultures usually sit in <b>Matrigel</b>, a jelly-like protein mixture (extracted from mouse tumor cells) that works like the scaffold between cells in tissue. The price of realism: 3D models are slower, costlier and harder to scale up.</p>` },
+
+    { k: 'h', text: 'In vitro, in vivo, ex vivo' },
+    { k: 'bgnd', html: `<p><i>In vitro</i> (Latin "in glass") means in a dish or tube. <i>In vivo</i> means inside a living animal or person. <i>Ex vivo</i> means living tissue taken from a body and studied outside it with little change, such as a fresh patient sample. Everything in the last lesson was in vitro.</p>` },
+
+    { k: 'h', text: 'Mouse models: xenografts and PDX' },
+    { k: 'bgnd', html: `<p>A <b>xenograft</b> is tissue grafted from one species into another ("xeno" means foreign), usually human tumor cells growing in a mouse. In a <b>patient-derived xenograft (PDX)</b> the graft is a piece of a patient's own tumor. For human tissue to grow, the mouse must be <b>immunodeficient</b>: with no working immune system it cannot reject the foreign cells. <b>NSG</b> mice, a common strain, lack the main immune-attacker cells (T, B and natural killer cells).</p>` +
+      `<p>A PDX tumor can also be taken out of the mouse and its cells grown as organoids: a dish model that began in a patient.</p>` },
+    { k: 'memory', html: `<p><b>Analogy:</b> a 2D dish is a street map: cheap, quick, lots of detail, but flat. A spheroid or organoid is a scale model of the city: you see height and crowding. A PDX mouse is a small pilot town with real traffic: the most realistic, but slow and costly.</p>` },
+    { k: 'svg', caption: 'The ladder of lab models. The paper uses the first three for its ASO tests; the mouse is used only to grow the tumor that became BE874.',
+      svg: `<svg viewBox="0 0 480 338" role="img" aria-label="Four lab models side by side: 2D culture as a flat row of cells, a spheroid as a ball of cells, an organoid as a cell cluster inside a Matrigel dome, and a PDX as a human tumor on an immunodeficient mouse; below, which paper experiment uses each, and an arrow from easier to scale up to closer to a real tumor">` +
+        `<path d="M14 92 H106" class="ln thick"/>` +
+        `<circle cx="24" cy="82" r="9" class="f-blue"/><circle cx="42" cy="82" r="9" class="f-blue"/><circle cx="60" cy="82" r="9" class="f-blue"/><circle cx="78" cy="82" r="9" class="f-blue"/><circle cx="96" cy="82" r="9" class="f-blue"/>` +
+        `<circle cx="180" cy="70" r="10" class="f-blue"/><circle cx="180" cy="50" r="10" class="f-blue"/><circle cx="197" cy="60" r="10" class="f-blue"/><circle cx="197" cy="80" r="10" class="f-blue"/><circle cx="180" cy="90" r="10" class="f-blue"/><circle cx="163" cy="80" r="10" class="f-blue"/><circle cx="163" cy="60" r="10" class="f-blue"/>` +
+        `<text x="300" y="36" class="mid s t-orange b">Matrigel dome</text>` +
+        `<path d="M250 100 A50 50 0 0 1 350 100 Z" class="f-orange"/>` +
+        `<circle cx="284" cy="88" r="8" class="f-blue"/><circle cx="300" cy="88" r="8" class="f-blue"/><circle cx="316" cy="88" r="8" class="f-blue"/><circle cx="292" cy="74" r="8" class="f-blue"/><circle cx="308" cy="74" r="8" class="f-blue"/>` +
+        `<text x="430" y="32" class="mid s t-red b">human tumor</text>` +
+        `<ellipse cx="420" cy="78" rx="40" ry="22" class="f-gray"/><ellipse cx="380" cy="72" rx="14" ry="12" class="f-gray"/><path d="M458 82 Q476 72 470 58" class="ln"/>` +
+        `<circle cx="430" cy="54" r="12" class="f-red"/>` +
+        `<text x="60" y="130" class="mid b">2D culture</text><text x="180" y="130" class="mid b">Spheroid</text><text x="300" y="130" class="mid b">Organoid</text><text x="420" y="130" class="mid b">PDX in a mouse</text>` +
+        `<text x="60" y="150" class="mid s">one flat layer</text><text x="60" y="167" class="mid s">on plastic</text>` +
+        `<text x="180" y="150" class="mid s">ball of cells</text><text x="180" y="167" class="mid s">stuck together</text>` +
+        `<text x="300" y="150" class="mid s">mini-tumor grown</text><text x="300" y="167" class="mid s">from patient cells</text>` +
+        `<text x="420" y="150" class="mid s">tumor piece grown</text><text x="420" y="167" class="mid s">in an NSG mouse</text>` +
+        `<text x="6" y="204" class="s b m">In this paper:</text>` +
+        `<rect x="8" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="60" y="236" class="mid s">most experiments</text><text x="60" y="254" class="mid s">(A549, H460 ...)</text>` +
+        `<rect x="128" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="180" y="245" class="mid s b">H441 spheroids</text>` +
+        `<rect x="248" y="214" width="104" height="52" rx="8" class="f-teal"/><text x="300" y="245" class="mid s b">BE874 organoids</text>` +
+        `<rect x="368" y="214" width="104" height="52" rx="8" class="f-gray"/><text x="420" y="236" class="mid s">source of BE874</text><text x="420" y="254" class="mid s">(no ASO tests)</text>` +
+        `<path d="M20 292 H460" class="arrow both"/>` +
+        `<text x="20" y="316" class="s m">easier and cheaper to scale up</text><text x="460" y="316" class="s m end">closer to a real tumor</text></svg>` },
+
+    { k: 'h', text: 'How this paper uses it' },
+    { k: 'paper', ref: 'res-aso-p6', quote: '3D in vitro models represent a more faithful tumor model compared with monolayer cultures.' },
+    { k: 'plain', source: ['res-aso-p6', 'm-viability-3d-p1'], html:
+      `<p>The authors say 3D lab models are a more faithful stand-in for a tumor than monolayer (2D) cultures. They delivered the CHiLL1 and GCAWKR ASOs (short strands that silence one chosen RNA; you will study them later) to spheroids of H441 cells and saw a drop in viability, the number of living cells, approaching that of the paper's control gene, mTOR. In the Methods the spheroids grow in small domes of Matrigel mixed 1:1 with growth medium, with 20,000 cells per dome, and living cells are measured at the start and again after one week.</p>` },
+    { k: 'paper', ref: 'res-aso-p7', quote: 'Organoids derived from patient-derived xenografts (PDXs) recapitulate the therapy response of individual patients. Delivery of CHiLL1 ASOs resulted in a significant reduction in cell viability of KRAS+ human NSCLC BE874 organoids (Figure 5F).' },
+    { k: 'plain', source: ['m-pdx-p1', 'res-aso-p7', 'm-viability-3d-p3'], html:
+      `<p><b>BE874</b> is a patient-derived organoid line from a KRAS+ lung cancer. Its history, from the Methods: pieces of a surgically removed lung tumor were implanted under the skin of the flanks of 6-week-old NSG mice. After the tumor grew, it was removed, its cells were separated, and they were grown as organoids. The KRAS G12C change (the paper writes c.34G&gt;T, p.Gly12Cys) was found in both the organoids and the original cancer. CHiLL1 ASOs then significantly reduced the number of living cells in BE874 organoids, which were also grown in Matrigel domes with 20,000 cells per dome.</p>` },
+    { k: 'panel', id: 'fig5F', html: `<p>Each pair of bars is one independent set of BE874 organoids: gray is the control ASO and green is the CHiLL1 ASO. The legend says there are n = 4 biological replicates, so the whole experiment was repeated four times on independent organoids.</p>` },
+    { k: 'flag', source: ['m-viability-3d-p3', 'fig5F'], html: `<p>Heads-up: for BE874 the Methods say the measurement was repeated "after one week", while the x axis of Figure 5F labels its time points in days. Check the axis when you reach that panel.</p>` },
+    { k: 'paper', ref: 'discussion-p5', quote: 'Future efforts will be required to further refine ASO sequences and chemistry and to effectively deliver them in vivo.' },
+    { k: 'plain', source: ['discussion-p5', 'limitations-p2', 'm-pdx-p1'], html:
+      `<p>The paper describes its ASO tests only in dishes: 2D cells, spheroids and organoids. The mice were used to grow the BE874 tumor, not to test the ASOs; delivering the ASOs in a living animal (in vivo) is listed as future work. The authors also screened in two monolayer cell backgrounds and say that future screens should run across the widest panel of mutationally matched 2D and 3D models.</p>` },
+  ],
+  appears: [
+    { ref: 'res-aso-p6', note: '3D spheroid cultures of H441 cells as a "more faithful tumor model".' },
+    { ref: 'res-aso-p7', note: 'PDX-derived BE874 organoids and the effect of CHiLL1 ASOs.' },
+    { ref: 'm-pdx-p1', note: 'How BE874 was made: patient tumor, NSG mice, organoids, KRAS G12C check.' },
+    { ref: 'm-viability-3d-p1', note: 'Spheroids in Matrigel domes (H441).' },
+    { ref: 'fig5F', note: 'BE874 organoid viability after CHiLL1 ASOs.' },
+    { ref: 'discussion-p5', note: 'ASOs worked in monolayer and 3D models; delivery in vivo is future work.' },
+  ],
+  checks: [
+    { q: 'Why does the paper call 3D models "a more faithful tumor model" than monolayer cultures?',
+      options: [
+        { t: 'Cells in a 3D clump touch neighbors on all sides and the inner ones get less oxygen and drug, as inside a real tumor', ok: true, why: 'Right: that is the realism 3D adds over a flat single layer.' },
+        { t: 'Every cell in a 3D culture gets exactly the same food and drug at the same time', ok: false, why: 'That describes a flat monolayer. In 3D, cells in the middle are reached less easily.' },
+        { t: 'They are cheaper and easier to scale up than flat dishes', ok: false, why: 'The opposite: 3D models cost more and scale up worse, which is why the big experiments were done in 2D.' },
+      ], source: ['res-aso-p6'] },
+    { q: 'Why were NSG mice used to produce the BE874 organoids?',
+      options: [
+        { t: 'They have no working immune system, so the piece of human tumor is not rejected and can grow', ok: true, why: 'Right: an immunodeficient host lets the foreign human tissue engraft.' },
+        { t: 'They carry the same KRAS mutation as the patient', ok: false, why: 'The KRAS G12C change was found in the patient\'s cancer and in the organoids, not as a feature of the mice.' },
+        { t: 'They were the animals in which the ASOs were tested', ok: false, why: 'The paper lists delivering ASOs in vivo as future work; the mice only grew the tumor.' },
+      ], source: ['m-pdx-p1', 'discussion-p5'] },
+    { q: 'Where were the CHiLL1 ASOs tested on BE874?',
+      options: [
+        { t: 'On organoids in a dish (in vitro); the mouse was only the source of the tumor', ok: true, why: 'Right: BE874 organoids were seeded in Matrigel domes and measured in plates.' },
+        { t: 'Directly in living NSG mice (in vivo)', ok: false, why: 'The Discussion says effective delivery in vivo still needs future work.' },
+        { t: 'In the patient, after the surgery', ok: false, why: 'No patient was treated; the study is lab work in cells and organoids.' },
+      ], source: ['m-pdx-p1', 'm-viability-3d-p3', 'discussion-p5'] },
+    { q: 'What is Matrigel used for in 3D cultures?',
+      options: [
+        { t: 'A jelly-like scaffold in which cells are embedded so they can grow in 3D', ok: true, why: 'Right: it mimics the scaffold between cells in real tissue.' },
+        { t: 'A drug that kills the cells', ok: false, why: 'It is not a treatment; it is a support gel for the cells.' },
+        { t: 'A salt solution used to rinse cells', ok: false, why: 'That is PBS. Matrigel is a gel, not a rinse.' },
+      ], bg: true },
+  ],
+});
+
+/* ============================================================================================== C6 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'C6',
+  body: [
+    { k: 'h', text: 'The problem: do lab results hold in real patients?' },
+    { k: 'bgnd', html: `<p>Cell lines are convenient, but a skeptic asks: does this also happen in real patients? Scientists can answer without recruiting anyone, by reusing data that others have already collected from thousands of tumors and cell lines. You do not need to know how those projects were run, only what each collection holds.</p>` },
+
+    { k: 'h', text: 'Public data collections' },
+    { k: 'bgnd', html: `<ul>` +
+      `<li><b>TCGA</b> (The Cancer Genome Atlas): a large US project that profiled thousands of patient tumors across more than 30 cancer types: DNA changes, RNA levels and clinical details such as survival. <i>TCGA-LUAD</i> is its lung adenocarcinoma part.</li>` +
+      `<li><b>TANRIC</b> (Atlas of Noncoding RNAs in Cancer): a web resource with RNA measurements in tumors, made for looking up lncRNAs.</li>` +
+      `<li><b>PCAWG</b> (Pan-Cancer Analysis of Whole Genomes): an international project that read the complete DNA of thousands of tumors of many types, so it shows which DNA regions are often gained or lost.</li>` +
+      `<li><b>CCLE</b> (Cancer Cell Line Encyclopedia): a catalog of DNA and RNA data for about a thousand cancer cell lines.</li>` +
+      `<li><b>GEO</b> (Gene Expression Omnibus): a public archive where scientists <i>deposit</i> their own genomics data for others to download.</li>` +
+      `<li><b>Zenodo</b>: a general open archive for research files such as software code, each with a permanent identifier.</li></ul>` +
+      `<p>Patient data come as a <b>cohort</b>: a defined group of patients or samples analyzed together, such as all lung adenocarcinomas with a given mutation.</p>` },
+    { k: 'svg', caption: 'Which collection answers which question (left to right), and where the paper\'s own results went (bottom).',
+      svg: `<svg viewBox="0 0 480 340" role="img" aria-label="The lncRNAs that mattered in the lab tests are checked against four public collections: TCGA and TANRIC for RNA levels in tumors, PCAWG and CCLE for DNA copy number. At the bottom, the paper's own data go to GEO and its code to Zenodo">` +
+        `<rect x="6" y="96" width="122" height="100" rx="12" class="f-orange"/>` +
+        `<text x="67" y="128" class="mid b">lncRNAs</text><text x="67" y="148" class="mid s">that mattered</text><text x="67" y="166" class="mid s">in the lab tests</text>` +
+        `<rect x="176" y="8" width="298" height="56" rx="10" class="f-blue"/><text x="325" y="30" class="mid b">TCGA</text><text x="325" y="50" class="mid s">101 KRAS+ lung tumors: RNA level</text>` +
+        `<rect x="176" y="76" width="298" height="56" rx="10" class="f-blue"/><text x="325" y="98" class="mid b">TANRIC</text><text x="325" y="118" class="mid s">87 tumors vs 77 adjacent normal: RNA level</text>` +
+        `<rect x="176" y="144" width="298" height="56" rx="10" class="f-purple"/><text x="325" y="166" class="mid b">PCAWG</text><text x="325" y="186" class="mid s">many cancer genomes: DNA gained or lost?</text>` +
+        `<rect x="176" y="212" width="298" height="56" rx="10" class="f-purple"/><text x="325" y="234" class="mid b">CCLE</text><text x="325" y="254" class="mid s">copy number of A549 and H460 cells</text>` +
+        `<path d="M130 130 C152 130 152 36 172 36" class="arrow"/><path d="M130 142 C152 142 152 104 172 104" class="arrow"/><path d="M130 154 C152 154 152 172 172 172" class="arrow"/><path d="M130 166 C152 166 152 240 172 240" class="arrow"/>` +
+        `<rect x="6" y="284" width="468" height="50" rx="10" class="f-gray"/><text x="240" y="305" class="mid b">Going out: the paper's own results</text><text x="240" y="324" class="mid s">sequencing data go to GEO · analysis code goes to Zenodo</text></svg>` },
+
+    { k: 'h', text: 'Three comparisons you can make with patient data' },
+    { k: 'bgnd', html: `<p><b>Tumor vs adjacent normal tissue.</b> When a surgeon removes a tumor, a bit of healthy-looking tissue next to it is often collected too. This <b>adjacent normal tissue</b> comes from the same organ, often the same patient, so it is a fair comparison. A gene that is higher in the tumor is a clue (not proof) that tumors use it. Caution: tissue next to a tumor is not always perfectly normal.</p>` +
+      `<p><b>Survival analysis.</b> <i>Overall survival</i> is the time from diagnosis until death from any cause. Split patients by how much of a gene their tumors make and compare the groups. If the high group does worse, the gene goes with a <b>poor prognosis</b> (a worse expected outcome). That is an association, not proof of cause.</p>` +
+      `<p><b>Tumor subtype.</b> Tumors of one cancer type are not all alike. A <b>tumor subtype</b> is a recognized sub-group, defined by a shared driver mutation (KRAS+ lung cancer is one) or by an overall RNA pattern. Lung adenocarcinoma has three RNA-based subtypes: terminal respiratory unit (TRU), proximal-inflammatory (PI) and proximal-proliferative (PP).</p>` },
+    { k: 'worked', html: `<p><b>Made-up numbers.</b> 100 patients: 50 with high levels of a gene and 50 with low levels. After three years 20 of the 50 high patients are alive, but 35 of the 50 low patients. High goes with worse survival. It does not prove the gene causes it: high-gene tumors may simply be more advanced.</p>` },
+    { k: 'memory', html: `<p><b>Analogy:</b> a public data collection is a library: you borrow what others collected. A cohort is a class of students graded together. And tumor vs adjacent normal tissue is like comparing the bruised part of an apple with the healthy flesh right next to it: same fruit, so the difference points to the bruise.</p>` },
+    { k: 'svg', caption: 'Schematic (made-up bars and curves): the three comparisons you can make with patient data.',
+      svg: `<svg viewBox="0 0 480 246" role="img" aria-label="Three schematic panels: a tumor bar higher than a normal bar; survival curves where the high-expression group falls faster; and bars for three subtypes with the PI subtype highest">` +
+        `<text x="80" y="18" class="mid b">Tumor vs normal</text><text x="80" y="38" class="mid s m">RNA level</text>` +
+        `<path d="M24 170 H140" class="ln"/><rect x="36" y="130" width="36" height="40" class="f-green"/><rect x="88" y="70" width="36" height="100" class="f-red"/>` +
+        `<text x="54" y="190" class="mid s">normal</text><text x="106" y="190" class="mid s">tumor</text>` +
+        `<text x="80" y="216" class="mid s">Higher in the</text><text x="80" y="234" class="mid s">tumor?</text>` +
+        `<text x="236" y="18" class="mid b">Survival</text><text x="236" y="38" class="mid s m">share of patients alive</text>` +
+        `<path d="M178 50 V170 H290" class="ln thin"/>` +
+        `<path d="M178 56 H205 V64 H235 V76 H265 V86 H290" class="ln thick s-blue"/><path d="M178 56 H196 V84 H220 V108 H248 V132 H290" class="ln thick s-red"/>` +
+        `<text x="294" y="90" class="s t-blue">low</text><text x="294" y="136" class="s t-red">high</text>` +
+        `<text x="234" y="190" class="mid s">time</text>` +
+        `<text x="236" y="216" class="mid s">Do patients with high</text><text x="236" y="234" class="mid s">levels live less long?</text>` +
+        `<text x="405" y="18" class="mid b">Subtypes</text><text x="405" y="38" class="mid s m">RNA level</text>` +
+        `<path d="M344 170 H470" class="ln"/><rect x="348" y="140" width="30" height="30" class="f-green"/><rect x="388" y="120" width="30" height="50" class="f-orange"/><rect x="428" y="70" width="30" height="100" class="f-red"/>` +
+        `<text x="363" y="190" class="mid s">TRU</text><text x="403" y="190" class="mid s">PP</text><text x="443" y="190" class="mid s">PI</text>` +
+        `<text x="405" y="216" class="mid s">Higher in one</text><text x="405" y="234" class="mid s">subtype?</text></svg>` },
+
+    { k: 'h', text: 'How this paper uses it' },
+    { k: 'paper', ref: 'm-public-rnaseq-p1', quote: 'Another independent cohort of LUAD RNA-seq ex vivo data, containing 87 tumor and 77 adjacent normal tissue samples, was obtained from the TANRIC.' },
+    { k: 'plain', source: ['m-public-rnaseq-p1', 'res-integration-p4'], html:
+      `<p>To see whether the lncRNAs that mattered in the lab also look relevant in patients, the authors used two cohorts of lung adenocarcinoma RNA data. From TCGA they took 101 untreated, KRAS-mutated samples. From TANRIC they took an independent cohort of 87 tumors and 77 adjacent normal samples. Their logic: cancer-promoting lncRNAs are expected to be upregulated in tumors. They report that the lncRNAs that mattered in several tests are higher than the other lncRNAs in KRAS+ tumors, and higher in tumors than in adjacent tissue.</p>` },
+    { k: 'panel', id: 'fig4G', html: `<p>The left pair of shapes shows non-tumor samples (n = 77) and the right pair tumor samples (n = 87). Each shape shows how the RNA levels spread across the samples.</p>` },
+    { k: 'flag', source: ['m-public-rnaseq-p1', 'res-integration-p4', 'fig4G'], html: `<p>Heads-up: the paper names the comparison tissue in several ways: "adjacent normal tissue" (Methods), "adjacent tissue" (main text), "healthy tissues" and "normal" (Figure 4G legend) and "Non-tumour" (printed on the figure). The sample numbers (77) match, so they appear to be the same samples.</p>` },
+    { k: 'plain', source: ['res-integration-p4', 'fig4H', 'm-cnv-p1', 'm-cnv-p3'], html:
+      `<p>For DNA, the authors used PCAWG's list of regions that are recurrently amplified or deleted across cancers (extra or missing copies of DNA), and CCLE for the copy number of A549 and H460. They report that the lncRNAs that mattered tend to be amplified, but not deleted, in tumor DNA: 13 of the 80 lie in amplified regions versus 52 of 923 others (P = 0.0011); for deletions the difference is not clear (P = 0.14).</p>` },
+    { k: 'paper', ref: 'res-aso-p5', quote: 'In TCGA samples, GCAWKR expression is upregulated in the proximal inflammatory (PI) tumor subtype, which is associated with poorer prognosis' },
+    { k: 'plain', source: ['res-aso-p5', 'res-aso-p4'], html:
+      `<p>In TCGA, GCAWKR is higher in the PI subtype, which goes with poorer prognosis (the paper compares PI with PP and with TRU). For CHiLL1 the main text says that high expression correlates with poor overall survival. Both are associations: they support, but do not prove, a role in the disease.</p>` },
+    { k: 'paper', ref: 'm-data-p1', quote: 'The data discussed in this publication have been deposited in NCBI’s Gene Expression Omnibus (GEO) and are publicly available as of the date of publication at GEO: GSE207229.' },
+    { k: 'plain', source: ['m-data-p1', 'm-data-p2'], html:
+      `<p>Data also go the other way: the authors' own sequencing data are deposited in GEO (accession GSE207229), and the code of their ranking pipeline is in Zenodo (record 6912511), so others can check and reuse them.</p>` },
+  ],
+  appears: [
+    { ref: 'm-public-rnaseq-p1', note: 'The TCGA cohort (101 KRAS+ samples) and the TANRIC cohort (87 tumor, 77 adjacent normal).' },
+    { ref: 'res-integration-p4', note: 'Hit lncRNAs are higher in KRAS+ tumors, higher in tumors than adjacent tissue, and tend to be amplified.' },
+    { ref: 'fig4H', note: 'PCAWG copy-number comparison of the lncRNAs that mattered versus all others.' },
+    { ref: 'm-cnv-p1', note: 'CCLE supplies the copy number of A549 and H460.' },
+    { ref: 'res-aso-p4', note: 'High CHiLL1 expression goes with poor overall survival.' },
+    { ref: 'res-aso-p5', note: 'GCAWKR is higher in the PI tumor subtype, linked to poorer prognosis.' },
+    { ref: 'm-data-p1', note: 'The authors\' sequencing data are in GEO.' },
+    { ref: 'm-data-p2', note: 'The authors\' pipeline code is in Zenodo.' },
+  ],
+  checks: [
+    { q: 'What was the TANRIC cohort used for in the paper?',
+      options: [
+        { t: 'To compare lncRNA levels in 87 tumors with 77 adjacent normal samples', ok: true, why: 'Right: the Methods describe an independent cohort of 87 tumor and 77 adjacent normal tissue samples from TANRIC, used for the tumor-versus-adjacent comparison.' },
+        { t: 'To read the copy number of A549 and H460 cells', ok: false, why: 'That came from CCLE (the paper retrieved the copy number status of A549 and H460 from it).' },
+        { t: 'To store the authors\' own sequencing data', ok: false, why: 'The authors\' data are in GEO; TANRIC supplied data that were downloaded, not deposited.' },
+      ], source: ['m-public-rnaseq-p1', 'm-cnv-p1', 'm-data-p1'] },
+    { q: 'Why is adjacent normal tissue a good comparison for a tumor?',
+      options: [
+        { t: 'It comes from the same organ, often the same patient, so many other differences are matched', ok: true, why: 'Right. That is what makes a tumor-versus-adjacent difference more meaningful than a comparison across unrelated people.' },
+        { t: 'It is guaranteed to be perfectly healthy', ok: false, why: 'No: tissue next to a tumor is not always perfectly normal; it is only the fairest simple comparison.' },
+        { t: 'It is a slower-growing kind of cancer', ok: false, why: 'Adjacent normal tissue is non-tumor tissue, not a cancer.' },
+      ], bg: true },
+    { q: 'The main text says high expression of CHiLL1 correlates with poor overall survival. What does that tell you?',
+      options: [
+        { t: 'High CHiLL1 goes with poorer outcome, which supports but does not prove that it helps drive the cancer', ok: true, why: 'Right: survival analysis shows an association; other differences between the groups could explain it.' },
+        { t: 'CHiLL1 has been proven to make patients die sooner', ok: false, why: 'An association cannot prove cause. The paper uses it as supporting evidence only.' },
+        { t: 'CHiLL1 plays no role in lung cancer', ok: false, why: 'The opposite: poor survival with high expression is consistent with a cancer-promoting role.' },
+      ], source: ['res-aso-p4'] },
+    { q: 'Where did the authors deposit their own sequencing data and their analysis code?',
+      options: [
+        { t: 'The data in GEO and the code in Zenodo', ok: true, why: 'Right (m-data-p1 and m-data-p2): GEO holds the data (GSE207229); Zenodo holds the pipeline code.' },
+        { t: 'The data in Zenodo and the code in GEO', ok: false, why: 'Reversed. GEO is the genomics-data archive; the code is at Zenodo.' },
+        { t: 'Both in TCGA', ok: false, why: 'TCGA is a collection of patient-tumor data that the authors downloaded; they did not deposit their data there.' },
+      ], source: ['m-data-p1', 'm-data-p2'] },
+  ],
+});
