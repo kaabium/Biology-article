@@ -1,1 +1,110 @@
-window.PANELS = window.PANELS || {};
+/* Figure 4 (A-H) panel guides: Functional landscape of lncRNAs in NSCLC. */
+
+/* ------------------------------------------------------------------------------------------ 4A */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig4A: {
+    short: 'How TPP combines the screens',
+    question: `How do the authors turn the results of many separate screens into one ranked list of hits?`,
+    howToRead: `<p>This is a flow chart, not a data plot. Read it from left to right. Each box is one calculation step; each arrow carries a result to the next step.</p>
+<p><b>Start.</b> The stack of boxes called "Multiple screens" stands for the paper's screens: the proliferation, cisplatin and migration screens. Every screen gives each target two numbers: a <b>log2 fold change</b> (how strongly the target's guides were lost or gained: the <i>effect size</i>) and a <b>P-value</b> (how surprising a change that big would be if the target had no real effect: the <i>significance</i>). The red labels show which number goes where.</p>
+<p><b>Two parallel routes.</b> The P-values go to the <b>empirical Brown's method</b>, which merges the P-values of all the screens into one. The log2FC values go to <b>robust rank aggregation (RRA)</b>, which looks for targets that rank high in many screens when each screen is ordered by effect size. Two routes are used because each kind of evidence can mislead on its own: a big change can be noisy, and a tiny change can be very consistent.</p>
+<p><b>Finish.</b> The <b>harmonic mean P-value</b> joins the two routes into one score per target. <b>FDR correction</b> then adjusts for testing thousands of targets at once. The red <b>FDR &lt; 0.2</b> is the cutoff: targets below it are the hits, collected in the last box as the "unified target ranking".</p>`,
+    shows: `<p>The chart shows the logic of the <b>target prioritization pipeline (TPP)</b>. Run on all screens together, it gives the <b>pan-hallmark</b> ranking (called "TPP Pan" in panel B). Run on the screens of one phenotype only, for example proliferation or cisplatin response, it gives a hallmark-specific ranking ("TPP pheno"). The legend defines both names; the chart itself draws only the steps they share.</p>
+<p>Everything else in Figure 4 builds on this ranking: panel B tests how good it is, panels C and D show the hits it calls at FDR &lt; 0.2, and panels E to H ask whether those hits behave like real cancer genes.</p>`,
+    keyNumbers: [
+      { value: 'FDR &lt; 0.2', meaning: 'the cutoff that turns the ranking into a list of hits (red text beside the last arrow)', source: ['fig4A', 'm-hits-p4'] },
+      { value: 'Log2FC → RRA', meaning: 'the effect-size route: robust rank aggregation ranks targets by fold change across screens', source: ['fig4A', 'm-hits-p4'] },
+      { value: `P-value → empirical Brown's method`, meaning: 'the significance route: the P-values of the screens are combined into one', source: ['fig4A', 'm-hits-p4'] },
+      { value: 'Harmonic mean P-value', meaning: 'joins both routes into one score before the FDR correction', source: ['fig4A', 'm-hits-p4'] },
+    ],
+    background: `<p>Brown's method combines several P-values into one while allowing for the P-values being related to each other. That is useful here because the screens are not fully independent: they use the same guide library and some use the same cells. A <i>harmonic mean</i> is an average that is pulled towards the smaller numbers, so a target that is very convincing on one route is not watered down by a weaker score on the other. "FDR &lt; 0.2" means that, on average, up to about one in five of the targets called hits may be false alarms. That is a lenient cutoff, which suits a search where hits are only candidates to be checked by further experiments.</p>`,
+    memory: `Choosing a squad from several try-outs. Each try-out tells you how many points a player scored (effect size) and how sure you can be that it was not luck (significance). The pipeline ranks players using both numbers from all try-outs, then draws a line (the FDR cutoff) to decide who makes the squad.`,
+    flags: [
+      `The chart does not say which screens sit inside "Multiple screens", and "TPP Pan" and "TPP pheno" are defined in the legend but not drawn. The Methods add two details the chart leaves out: the RRA scores are converted to exact P-values before they are combined, and the FDR correction is the Benjamini–Hochberg method (m-hits-p4).`,
+      `Hits are called from FDR alone, with one lenient cutoff. A hit is therefore a candidate, not a proven cancer gene: after follow-up with ASOs the authors themselves report some likely false positives among the screen hits (limitations-p1).`,
+    ],
+    chartTypes: [],
+    examQ: {
+      q: `In Figure 4A, which two kinds of information from each screen enter the target prioritization pipeline, how are they processed, and what defines a hit?`,
+      a: `Effect size (log2 fold change) goes to robust rank aggregation (RRA), and significance (P-values) goes to the empirical Brown's method. The two results are joined into a harmonic mean P-value and corrected for multiple testing (FDR correction). Targets with FDR &lt; 0.2 are the hits of the unified ranking. Using both kinds of evidence balances effect size against significance.`,
+    },
+  },
+});
+
+/* ------------------------------------------------------------------------------------------ 4B */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig4B: {
+    short: 'Which ranking finds the controls?',
+    question: `Does the combined pan-hallmark ranking recognize the known positive controls and reject the neutral controls better than other integration methods or any single screen?`,
+    howToRead: `<p>This is a <b>ROC curve</b> chart. It scores how well each method <i>ranks</i> the targets, using controls whose true answer is known: 109 <b>positive controls</b> (genes that should come out as hits) and 35 <b>neutral controls</b> (places that should not). The lncRNAs themselves are not in the curve, because nobody knows their true answer yet.</p>
+<p><b>Axes.</b> Imagine walking down a method's ranked list, starting with the most convincing target. The y axis (true positive rate) is the share of positive controls you have met so far. The x axis (false positive rate) is the share of neutral controls you have wrongly met. Meeting a positive control moves the line up; meeting a neutral control moves it right. That is why the lines are staircases.</p>
+<p><b>What good looks like.</b> A line that shoots up the left side and runs along the top: positive controls come first and neutral ones come late. The grey dotted diagonal is what a random ranking gives. The <b>AUC</b> (area under the curve), printed in the box, turns each line into one number: 0.5 is random, 1.0 is perfect.</p>
+<p><b>Colours.</b> Dark blue: TPP Pan (all screens combined by TPP). Green: RRA Pan (robust rank aggregation used alone on all screens). Light blue: TPP Pheno (TPP run on the screens of one phenotype); it has a pale band around it and a "±" value. Orange and red: single dropout screens in H460 and A549 cells.</p>`,
+    shows: `<p>TPP on all screens ("TPP Pan") has the highest AUC, 0.82. Robust rank aggregation alone ("RRA Pan") comes close at 0.80, so adding the significance route gives only a small gain. TPP on one phenotype's screens ("TPP Pheno") scores 0.73±0.01, the same as the best single screen shown, the A549 dropout screen (0.73). The H460 dropout screen alone scores 0.54, barely above random, and for part of its length its line runs below the diagonal.</p>
+<p>The authors' reading: the pan-hallmark ranking "outperforms common integration methods and individual screens in correctly classifying positive and neutral controls" (res-integration-p1). Combining all the screens did better than combining one phenotype's screens, or than using one screen alone.</p>`,
+    keyNumbers: [
+      { value: '0.82', meaning: 'AUC of TPP Pan (all screens, effect size and significance): the highest', source: ['fig4B'] },
+      { value: '0.80', meaning: 'AUC of RRA Pan (robust rank aggregation alone): a close second', source: ['fig4B'] },
+      { value: '0.73±0.01', meaning: 'AUC of TPP Pheno (TPP on the screens of one phenotype)', source: ['fig4B'] },
+      { value: '0.73 and 0.54', meaning: 'AUCs of the single A549 and H460 dropout screens; 0.54 is barely above random', source: ['fig4B'] },
+      { value: '109 and 35', meaning: 'positive and neutral controls used as the answer key', source: ['fig4B', 'res-multipheno-p6'] },
+    ],
+    background: `<p>Why an ROC chart? Every cutoff on a ranked list trades finding more real hits (up) against letting in more false alarms (right). The ROC curve shows every possible cutoff at once, so nobody has to choose one. The AUC can also be read as a chance: pick one positive control and one neutral control at random, and the AUC is the chance that the method ranks the positive one higher.</p>`,
+    memory: `A metal-detector sweep. You dig where it beeps loudest first. Each coin you find moves the line up; each bottle cap moves it right. A good detector finds coins before bottle caps.`,
+    flags: [
+      `The legend does not say what the pale band around the light blue curve, or the "±0.01" after TPP Pheno, show (for example spread between runs). No other AUC has an uncertainty and no test compares the AUCs, so a small gap such as 0.82 versus 0.80 cannot be judged from the panel.`,
+      `Only two single screens are drawn: the A549 and H460 dropout screens. The text says TPP beats "individual screens" (res-integration-p1), but the CFSE, cisplatin and migration screens do not appear as separate curves here.`,
+      `The AUCs use only controls, which are protein-coding genes and neutral regions. The paper notes that deleting a promoter has a weaker effect than mutating a gene's coding sequence (res-multipheno-p3), so how well a method does on the controls may not carry over exactly to the lncRNAs (a general caution, not stated in the paper).`,
+      `The control counts differ between places in the paper. This panel and the Results say 109 positive controls (res-multipheno-p6), but the Methods describe the control sets with other counts (m-library-design-p3) and Figure 1C shows other numbers again. The paper does not reconcile them.`,
+      `The Figure 2 text quotes AUC pairs for A549 screens: 0.7 versus 0.67 for proliferation and 0.77 versus 0.73 for cisplatin (res-multipheno-p2). The 0.73 for "A549 Drop-out" here matches one of those numbers, but the panel does not say which A549 screen or which set of controls it comes from.`,
+    ],
+    derived: ['0.7', '0.67', '0.77'],
+    chartTypes: ['F2'],
+    examQ: {
+      q: `What does Figure 4B measure, and what do the AUC values 0.82, 0.80 and 0.54 tell you?`,
+      a: `It tests how well each ranking puts known positive controls (109) ahead of neutral controls (35); the lncRNAs are not part of the curve. AUC is the area under the ROC curve: 0.5 means a random ranking and 1.0 a perfect one. TPP Pan (0.82) is best, RRA Pan (0.80) is close behind, and the H460 dropout screen (0.54) is barely better than random. So combining all screens with TPP recognizes the controls better than the common alternatives and better than single screens.`,
+    },
+  },
+});
+
+/* ------------------------------------------------------------------------------------------ 4C */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig4C: {
+    short: 'Hit map across three hallmarks',
+    question: `Which of the three hallmarks (proliferation, cisplatin response, migration) does each pan-hallmark hit act in, and how confident is each hit overall?`,
+    howToRead: `<p>This panel combines a <b>triangle map</b> (a ternary plot) with three <b>petal plots</b>. The panel prints a key for each.</p>
+<p><b>The triangle.</b> Each dot is one target that passed FDR &lt; 0.2 in the pan-hallmark analysis. The three corners stand for the three hallmarks and are drawn as symbols. A ternary plot shows a balance of three shares: the closer a dot sits to a corner, the more of its evidence comes from that hallmark (the legend says the position is driven by the TPP significance calculated for each hallmark). Near a corner means mostly one hallmark, on an edge means two, in the middle means all three about equally.</p>
+<p><b>Which corner is which?</b> The legend does not name the symbols, but the colour key does. Teal dots (Pan+Cis) lie towards the top, yellow dots (Pan+Pro) towards the bottom left and pink dots (Pan+Mig) towards the bottom right. So the top corner (circle with a slash) is cisplatin response, the bottom-left corner (infinity sign) is proliferation and the bottom-right corner (crown) is migration. As a check, SNHG6, which the text links to migration (res-multipheno-p7), sits near the migration corner.</p>
+<ul>
+<li><b>Colour</b> ("Hit in:") says which analyses called the target a hit. "Pan" alone (dark brown) means only the all-screens analysis did. "Pan+Pro" means the all-screens analysis and the proliferation analysis did, and so on. "Pan+Pro+Cis+Mig" means all three hallmark analyses did.</li>
+<li><b>Size</b> shows the FDR: the bigger the dot, the smaller (better) the FDR. The size key shows 0.2 for the smallest dot, then 1e−16 and 1e−32. This is the "overall confidence defined by pan-hallmark ranking" (res-integration-p2).</li>
+<li><b>Outline</b> marks the controls. A red ring is a positive control (a protein-coding gene with a known role in growth or cisplatin response). A grey ring is a neutral control, which should not score at all. No ring means a lncRNA candidate.</li>
+<li><b>Labels.</b> Black gene names are protein-coding controls. Black numbers are the candidate numbers of lncRNAs picked for follow-up experiments. Blue names are lncRNAs that earlier studies had linked to lung adenocarcinoma.</li>
+</ul>
+<p><b>The petal plots.</b> The box on the left is their key. Each petal is one hallmark, with the same colours and directions as the triangle: teal at the top, yellow at the lower left, pink at the lower right. Reading the key by eye, a petal's <i>length</i> shows significance on a log scale (the centre is 10⁰ and the rim 10⁻³) and its <i>width</i> shows effect size (the key's scale runs from 0 to 0.05). The grey disc behind the petals shows the pan-hallmark significance, and the small red circle marked 0.2 is the cutoff. A long, wide petal therefore means a strong, significant effect in that hallmark. Thin grey arrows join three examples to their dots: AC104024.3 (candidate 215), LINC00910 (candidate 507) and CECR7 (candidate 448).</p>`,
+    shows: `<p>The map gives every hit a signature in three functional dimensions, set in the context of its overall confidence (res-integration-p2). The dots are the lncRNA hits plus the control genes that also passed FDR &lt; 0.2 (panel D counts 80 lncRNA hits, dozens of positive controls and only 3 neutral controls in the pan-hallmark list). They are spread over the whole triangle, so different lncRNAs lean on different hallmarks: some on one, some on two, some on all three about equally.</p>
+<p>The three example petal plots show three different signatures. <b>LINC00910</b> has one long, wide teal petal (cisplatin response) and a short yellow one (proliferation). <b>AC104024.3</b> has a long yellow petal and a shorter pink one (proliferation and migration) and no teal petal. <b>CECR7</b> has long yellow and pink petals and only a thin spike for cisplatin.</p>
+<p>The controls behave as they should. The biggest dots are mostly red-ringed positive controls, and only a few grey-ringed neutral controls appear. Known lung cancer lncRNAs (the blue labels PCAT7, PVT1, LINC00511 and SNHG6) are among the hits. GCAWKR, one of the paper's two final lncRNAs, is candidate 240 (res-aso-p3): it is the small dark-brown "Pan" dot under the label 240, near the middle.</p>`,
+    keyNumbers: [
+      { value: 'FDR &lt; 0.2', meaning: 'every dot passed this cutoff in the pan-hallmark analysis', source: ['fig4C'] },
+      { value: '80 (73 novel)', meaning: 'lncRNA hits in the pan-hallmark analysis (∼8% of those screened); 73 were not previously linked to NSCLC', source: ['res-integration-p2', 'fig4D'] },
+      { value: '134, 19, none', meaning: 'hallmark-specific analyses: 134 hits in at least one hallmark, 19 in two hallmarks, none in three', source: ['res-integration-p2'] },
+      { value: '0.2 · 1e−16 · 1e−32', meaning: 'the dot-size key: the bigger the dot, the smaller the FDR', source: ['fig4C'] },
+      { value: '10⁻³ to 10⁰; 0 to 0.05', meaning: 'the scales in the petal key: petal length (significance) and petal width (effect)', source: ['fig4C'] },
+      { value: '215 · 507 · 448', meaning: 'candidate numbers of the three example petal plots: AC104024.3, LINC00910 and CECR7', source: ['fig4C', 'res-validation-p2', 'res-validation-p5'] },
+    ],
+    background: `<p>A ternary plot is built from three numbers that are first rescaled so that they add up to 100%. The position therefore shows the <i>balance</i> between the three, not how large they are. That is why this panel adds a second cue, the dot size, for overall confidence. A petal plot is a bar chart bent around a circle: each bar is a petal that points in its own direction.</p>`,
+    memory: `A paint-mixing triangle. A point near the red corner is mostly red; a point in the middle is an even mix of all three paints. Here the three "paints" are the hallmarks (proliferation, cisplatin response, migration), and the size of the dot says how sure we are.`,
+    flags: [
+      `The legend says the corners are "indicated by symbols" but does not say which symbol is which hallmark. Top = cisplatin, bottom left = proliferation and bottom right = migration is my reading of the colour key and of where the dots sit.`,
+      `The petal key shows a significance scale (10⁰ to 10⁻³) and an effect scale (0 to 0.05), but the legend does not say which quantities these are (a P-value or an FDR; which effect measure) or how three significance values become one position in the triangle. The three example petal plots have rings but no numbers, and different numbers of rings, so compare shapes within one plot, not between plots.`,
+      `The colour key includes Pan+Pro+Cis+Mig (a hit in all three hallmark analyses), but the text says no lncRNA was a hit in all three (res-integration-p2). Every brown dot of that colour that I checked has a red ring, so they are positive-control genes. Neither the legend nor the text says this.`,
+      `CHiLL1 is not labelled in this panel, although GCAWKR is. From the panel alone you cannot tell where CHiLL1 sits.`,
+    ],
+    chartTypes: ['F2'],
+    examQ: {
+      q: `How do you read a dot in the triangle of Figure 4C (position, colour, size and outline), and what profile does the LINC00910 petal plot show?`,
+      a: `Position: the balance of the TPP significance across the three hallmarks (near a corner means mostly that hallmark). Colour: which analyses called the target a hit (Pan alone, or Pan plus proliferation, cisplatin and/or migration). Size: the FDR in the pan-hallmark analysis (bigger dot, smaller FDR, more confident). Outline: a red ring is a positive control, a grey ring a neutral control, no ring a lncRNA candidate. LINC00910 (candidate 507) has one long, wide teal petal, so most of its evidence comes from cisplatin response, plus a short yellow petal for proliferation and no migration petal.`,
+    },
+  },
+});

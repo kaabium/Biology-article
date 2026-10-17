@@ -307,7 +307,7 @@ const checkTermOrder = (text, pos, file, where, ownTerms) => {
     if (seen.has(term.id)) return;
     seen.add(term.id);
     if (ownTerms && ownTerms.has(term.id)) return;
-    if (!termAvailableAt(term, pos)) err(file, where, `uses "${term.term}" before it is taught (home lesson ${term.taughtIn}); rephrase in plain words or list "${term.id}" in \`defines\` and explain it inline — context: …${c}…`);
+    if (!termAvailableAt(term, pos)) (FLAG('strict') ? err : warn)(file, where, `uses "${term.term}" before it is taught (home lesson ${term.taughtIn}); rephrase in plain words or list "${term.id}" in \`defines\` and explain it inline — context: …${c}…`);
   });
 };
 

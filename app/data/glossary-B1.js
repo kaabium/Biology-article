@@ -1,1 +1,0 @@
-(window.GLOSSARY_CONTENT = window.GLOSSARY_CONTENT || []);

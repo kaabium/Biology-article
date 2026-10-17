@@ -16,3 +16,5 @@ Shape: `{id, title, kind:'figure'|'section'|'mixed', ref, desc, questions:[ {q, 
   and never contradict them; the image and legend always win).
 * Use `lesson:'G-<unit>'` (or a lesson id) so wrong answers feed the "weakest topics" list. Terms: only those taught by then (all of A–F for `G-` units).
 * Cover the whole material; do not ask the same fact twice in one quiz.
+
+**LEAN MODE:** write ONLY the six figure quizzes (one per figure, `id:'qz-fig1'` … `'qz-fig6'`, `kind:'figure'`, `ref:'fig1'` …, ≥ 8 questions each, every question with `img` of a panel of that figure — cover every panel of the figure at least once) in `app/data/quizzes-figures.js`. No section quizzes (lessons and paragraphs already have check questions). Write quickly; validator at most 3 runs, fix errors only.

@@ -45,35 +45,23 @@
   {
    "id": "A1",
    "track": "A",
-   "title": "The whole study as a simple story",
-   "minutes": 5,
+   "title": "The whole study as a story, and its map",
+   "minutes": 8,
    "prereqs": [],
-   "goal": "Follow the whole paper from question to answer in plain words: what the authors wanted to know, what they did, what they found, and what they did next.",
-   "notes": "Plain words only. Every word that is a technical term in the glossary must either be avoided or explained in one plain sentence right where it is first used (list those in `defines`).",
+   "goal": "Follow the whole paper from question to answer in plain words, and see the pipeline as one picture.",
+   "notes": "[A1] Plain words only. Every word that is a technical term in the glossary must either be avoided or explained in one plain sentence right where it is first used (list those in `defines`). (Merged from the fine-grained lessons A1, A2.)",
    "teaches": []
   },
   {
    "id": "A2",
    "track": "A",
-   "title": "One-page map of the pipeline",
+   "title": "The funnel: 831 → 80 → 9 → 5 → 2",
    "minutes": 6,
    "prereqs": [
     "A1"
    ],
-   "goal": "See the whole pipeline as one picture: library of snips → three screens → combine the evidence → test with ASOs → find out how the two winners work.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "A3",
-   "track": "A",
-   "title": "The funnel: 831 → 80 → 9 → 5 → 2",
-   "minutes": 6,
-   "prereqs": [
-    "A2"
-   ],
-   "goal": "Understand how 831 lncRNAs were narrowed to 80 hits, nine candidates, five reproducible ones, and the final two (CHiLL1 and GCAWKR), and what each narrowing step asked.",
-   "notes": "",
+   "goal": "Understand how 831 lncRNAs were narrowed to 80 hits, nine candidates, five reproducible ones and the final two (CHiLL1 and GCAWKR).",
+   "notes": "(Merged from the fine-grained lessons A3.)",
    "teaches": [
     "tier",
     "pan-hallmark",
@@ -82,27 +70,16 @@
    ]
   },
   {
-   "id": "A4",
+   "id": "A3",
    "track": "A",
-   "title": "Why it matters",
-   "minutes": 5,
-   "prereqs": [
-    "A1"
-   ],
-   "goal": "Say in your own words why lung cancer, long noncoding RNAs and ASO medicines make this a worthwhile study, and what it does and does not prove.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "A5",
-   "track": "A",
-   "title": "Cast of characters: the names you will see",
+   "title": "Why it matters, and the cast of names",
    "minutes": 8,
    "prereqs": [
-    "A3"
+    "A1",
+    "A2"
    ],
-   "goal": "Meet the named lncRNAs and genes that keep reappearing (LINC00115, DNMBP-AS1, candidate numbers…) so no name is a surprise later.",
-   "notes": "",
+   "goal": "Say why lung cancer, long noncoding RNAs and ASO medicines make this study worthwhile, and meet the names that keep reappearing.",
+   "notes": "(Merged from the fine-grained lessons A4, A5.)",
    "teaches": [
     "candidate-number",
     "linc00115",
@@ -119,29 +96,16 @@
   {
    "id": "B1",
    "track": "B",
-   "title": "Cells: the tiny rooms of life (nucleus vs cytoplasm)",
-   "minutes": 6,
+   "title": "Cells, the cell cycle and cell death",
+   "minutes": 10,
    "prereqs": [],
-   "goal": "Know what a cell is, what the nucleus and cytoplasm are, and why \"where in the cell\" matters later in the paper.",
-   "notes": "",
+   "goal": "Know what a cell is, how it grows and divides in a cycle, and how it dies (apoptosis vs necrosis).",
+   "notes": "(Merged from the fine-grained lessons B1, B2, B3.)",
    "teaches": [
     "cell",
     "nucleus",
     "cytoplasm",
-    "tissue"
-   ]
-  },
-  {
-   "id": "B2",
-   "track": "B",
-   "title": "How cells grow and divide: the cell cycle",
-   "minutes": 8,
-   "prereqs": [
-    "B1"
-   ],
-   "goal": "Describe the four phases G1, S, G2 and M, what a checkpoint is, and what \"proliferation\" means.",
-   "notes": "",
-   "teaches": [
+    "tissue",
     "proliferation",
     "cell-cycle",
     "g1-phase",
@@ -149,53 +113,27 @@
     "g2-phase",
     "mitosis",
     "cell-cycle-checkpoint",
-    "doubling-time"
-   ]
-  },
-  {
-   "id": "B3",
-   "track": "B",
-   "title": "How cells die: apoptosis (and necrosis)",
-   "minutes": 6,
-   "prereqs": [
-    "B2"
-   ],
-   "goal": "Explain apoptosis as an orderly cell suicide, contrast it with necrosis, and name the early/late stages the paper counts.",
-   "notes": "",
-   "teaches": [
+    "doubling-time",
     "apoptosis",
     "necrosis"
    ]
   },
   {
-   "id": "B4",
+   "id": "B2",
    "track": "B",
-   "title": "DNA: the instruction book",
-   "minutes": 8,
+   "title": "DNA, chromosomes, genes and the genome",
+   "minutes": 9,
    "prereqs": [
     "B1"
    ],
-   "goal": "Describe DNA as a double-stranded chain of four letters, explain base pairing, and read \"5′ end / 3′ end\" and \"bp\".",
-   "notes": "",
+   "goal": "Explain DNA, bases and base pairing, and how genes sit on chromosomes inside a genome.",
+   "notes": "(Merged from the fine-grained lessons B4, B5.)",
    "teaches": [
     "dna",
     "nucleotide",
     "base-pair",
     "complementary-base-pairing",
-    "five-prime-three-prime"
-   ]
-  },
-  {
-   "id": "B5",
-   "track": "B",
-   "title": "Chromosomes, genes and the genome",
-   "minutes": 7,
-   "prereqs": [
-    "B4"
-   ],
-   "goal": "Explain chromosomes, genes, \"locus\" and the genome, and why a gene is a stretch of DNA you can point to.",
-   "notes": "",
-   "teaches": [
+    "five-prime-three-prime",
     "chromosome",
     "gene",
     "genome",
@@ -203,15 +141,15 @@
    ]
   },
   {
-   "id": "B6",
+   "id": "B3",
    "track": "B",
-   "title": "Genome coordinates, genome versions (hg19/hg38) and strands",
+   "title": "Genome coordinates, genome versions and strands",
    "minutes": 8,
    "prereqs": [
-    "B5"
+    "B2"
    ],
-   "goal": "Read an address like \"Chr1: 765,000\", know why genome versions (hg19, hg38) exist, and understand the two DNA strands, \"same strand\", \"opposite strand\" and \"antisense\".",
-   "notes": "",
+   "goal": "Read a genome address (chromosome, position, strand), and know why genome versions (hg19 vs hg38) matter.",
+   "notes": "(Merged from the fine-grained lessons B6.)",
    "teaches": [
     "genome-assembly",
     "hg19",
@@ -225,15 +163,15 @@
    ]
   },
   {
-   "id": "B7",
+   "id": "B4",
    "track": "B",
-   "title": "From DNA to RNA: transcription, promoters and the TSS",
-   "minutes": 8,
+   "title": "From DNA to RNA: transcription, the TSS, exons and splicing",
+   "minutes": 10,
    "prereqs": [
-    "B5"
+    "B2"
    ],
-   "goal": "Explain transcription, RNA, the promoter and the transcription start site (TSS), and why \"bidirectional promoters\" matter.",
-   "notes": "",
+   "goal": "Follow a gene being copied into RNA: promoter, transcription start site (TSS), exons, introns, splicing and isoforms.",
+   "notes": "(Merged from the fine-grained lessons B7, B8.)",
    "teaches": [
     "transcription",
     "rna",
@@ -241,20 +179,7 @@
     "transcript",
     "promoter",
     "tss",
-    "bidirectional-promoter"
-   ]
-  },
-  {
-   "id": "B8",
-   "track": "B",
-   "title": "Exons, introns, splicing and isoforms",
-   "minutes": 8,
-   "prereqs": [
-    "B7"
-   ],
-   "goal": "Describe how a transcript is cut and rejoined (splicing), what exons and introns are, and why one gene can have several isoforms.",
-   "notes": "",
-   "teaches": [
+    "bidirectional-promoter",
     "exon",
     "intron",
     "splicing",
@@ -263,15 +188,15 @@
    ]
   },
   {
-   "id": "B9",
+   "id": "B5",
    "track": "B",
-   "title": "Proteins, ORFs and protein-coding genes",
-   "minutes": 8,
+   "title": "Proteins, and coding vs noncoding RNA",
+   "minutes": 9,
    "prereqs": [
-    "B8"
+    "B4"
    ],
-   "goal": "Explain how a protein-coding gene is read to make a protein, what an ORF is, and what \"protein-coding potential\" means.",
-   "notes": "",
+   "goal": "Explain how mRNA becomes protein, what an open reading frame is, and what makes an RNA \"noncoding\".",
+   "notes": "(Merged from the fine-grained lessons B9, B10.)",
    "teaches": [
     "protein",
     "mrna",
@@ -279,34 +204,22 @@
     "ribosome",
     "orf",
     "protein-coding-gene",
-    "protein-coding-potential"
-   ]
-  },
-  {
-   "id": "B10",
-   "track": "B",
-   "title": "Coding vs noncoding RNA",
-   "minutes": 6,
-   "prereqs": [
-    "B9"
-   ],
-   "goal": "Sort RNAs into \"makes a protein\" and \"does something else\", and meet the main noncoding kinds (ribosomal, microRNA, long noncoding).",
-   "notes": "",
-   "teaches": [
+    "protein-coding-potential",
     "noncoding-rna",
     "mirna"
    ]
   },
   {
-   "id": "B11",
+   "id": "B6",
    "track": "B",
-   "title": "Long noncoding RNAs (lncRNAs): what they are and how they might work",
-   "minutes": 9,
+   "title": "Long noncoding RNAs, and where RNAs live",
+   "minutes": 10,
    "prereqs": [
-    "B10"
+    "B5",
+    "B1"
    ],
-   "goal": "Define lncRNAs, explain the three big ideas for how they might act (guide, scaffold, decoy), cis vs trans, and meet the lung-cancer lncRNAs named in the Introduction.",
-   "notes": "",
+   "goal": "Say what lncRNAs are, how they might work, and why nucleus vs cytoplasm location is a clue to function.",
+   "notes": "(Merged from the fine-grained lessons B11, B12.)",
    "teaches": [
     "lncrna",
     "cis-trans",
@@ -316,34 +229,21 @@
     "linc00511",
     "ezh2",
     "gata6-lats2-p57",
-    "known-cancer-lncrnas"
-   ]
-  },
-  {
-   "id": "B12",
-   "track": "B",
-   "title": "Where RNAs live: nuclear vs cytoplasmic",
-   "minutes": 6,
-   "prereqs": [
-    "B11",
-    "B1"
-   ],
-   "goal": "Explain why an RNA's position in the cell (nucleus or cytoplasm) is a clue to its job.",
-   "notes": "",
-   "teaches": [
+    "known-cancer-lncrnas",
     "subcellular-localization"
    ]
   },
   {
-   "id": "B13",
+   "id": "B7",
    "track": "B",
-   "title": "Gene catalogs: GENCODE, FANTOM CAT and BIGTranscriptome",
-   "minutes": 7,
+   "title": "Gene catalogs and gene expression",
+   "minutes": 10,
    "prereqs": [
-    "B11"
+    "B6",
+    "B4"
    ],
-   "goal": "Explain what an annotation (a gene catalog) is, why different catalogs disagree on lncRNAs, and how the authors merged four of them.",
-   "notes": "",
+   "goal": "Understand gene annotations (GENCODE, FANTOM CAT, BIGTranscriptome) and what \"expressed\", \"up\" and \"down\" mean.",
+   "notes": "(Merged from the fine-grained lessons B13, B14.)",
    "teaches": [
     "gene-annotation",
     "gencode",
@@ -353,20 +253,7 @@
     "ensembl-id",
     "gtf",
     "est",
-    "ortholog"
-   ]
-  },
-  {
-   "id": "B14",
-   "track": "B",
-   "title": "Gene expression: genes turned up and down",
-   "minutes": 7,
-   "prereqs": [
-    "B7"
-   ],
-   "goal": "Explain \"expression\", \"upregulated\" and \"downregulated\", and the idea that every cell has the same DNA but uses different genes.",
-   "notes": "",
-   "teaches": [
+    "ortholog",
     "gene-expression",
     "upregulation",
     "downregulation",
@@ -374,36 +261,22 @@
    ]
   },
   {
-   "id": "B15",
+   "id": "B8",
    "track": "B",
-   "title": "Switches on the DNA: enhancers, transcription factors and chromatin",
-   "minutes": 8,
+   "title": "Switches on the DNA and finding where a gene starts",
+   "minutes": 9,
    "prereqs": [
-    "B14"
+    "B7"
    ],
-   "goal": "Explain enhancers, transcription factors and TFBS, chromatin, and the paper's phrase \"DNA regulatory elements\".",
-   "notes": "",
+   "goal": "Know enhancers, transcription factors and chromatin, and the CAGE / DNase I / ChromHMM evidence used to locate a start site.",
+   "notes": "(Merged from the fine-grained lessons B15, B16.)",
    "teaches": [
     "enhancer",
     "transcription-factor",
     "tfbs",
     "chromatin",
     "cis-regulatory-element",
-    "encode"
-   ]
-  },
-  {
-   "id": "B16",
-   "track": "B",
-   "title": "How to tell where a gene starts: CAGE, DNase I and ChromHMM",
-   "minutes": 8,
-   "prereqs": [
-    "B15",
-    "B13"
-   ],
-   "goal": "Explain the three kinds of evidence the authors used to pick real lncRNA start sites: CAGE, DNase I hypersensitivity and ChromHMM marks.",
-   "notes": "",
-   "teaches": [
+    "encode",
     "cage",
     "dnase-i-hypersensitivity",
     "chromhmm"
@@ -412,100 +285,46 @@
   {
    "id": "C1",
    "track": "C",
-   "title": "What is cancer?",
-   "minutes": 6,
+   "title": "What is cancer? Hallmarks, oncogenes and tumor suppressors",
+   "minutes": 10,
    "prereqs": [
+    "B1",
     "B2"
    ],
-   "goal": "Explain cancer as cells that keep dividing when they should not, what a tumor is, and why it is dangerous.",
-   "notes": "",
+   "goal": "Explain cancer, its hallmarks, and the accelerator/brake idea of oncogenes and tumor suppressors.",
+   "notes": "(Merged from the fine-grained lessons C1, C2, C3.)",
    "teaches": [
     "cancer",
-    "tumor"
-   ]
-  },
-  {
-   "id": "C2",
-   "track": "C",
-   "title": "The hallmarks of cancer",
-   "minutes": 7,
-   "prereqs": [
-    "C1"
-   ],
-   "goal": "Describe the idea of \"hallmarks\" (abilities cancers acquire), meet the three the paper tests, and explain \"phenotype\" and \"pleiotropic\".",
-   "notes": "",
-   "teaches": [
+    "tumor",
     "hallmark",
     "phenotype",
-    "pleiotropic"
-   ]
-  },
-  {
-   "id": "C3",
-   "track": "C",
-   "title": "Oncogenes and tumor suppressors",
-   "minutes": 7,
-   "prereqs": [
-    "C2",
-    "B5"
-   ],
-   "goal": "Use the gas-pedal and brake picture for oncogenes and tumor suppressors, and say what an \"oncogenic lncRNA\" is.",
-   "notes": "",
-   "teaches": [
+    "pleiotropic",
     "oncogene",
     "tumor-suppressor"
    ]
   },
   {
-   "id": "C4",
+   "id": "C2",
    "track": "C",
-   "title": "Mutations, copy-number gains (amplification) and losses (deletion)",
-   "minutes": 8,
+   "title": "Mutations, copy number, lung cancer, KRAS and EGFR",
+   "minutes": 10,
    "prereqs": [
-    "C3",
-    "B4"
+    "C1",
+    "B2"
    ],
-   "goal": "Explain point mutations, extra copies of DNA (amplification) and lost DNA (deletion), and what \"recurrently amplified\" means.",
-   "notes": "",
+   "goal": "Know mutations and copy-number changes, the main kinds of lung cancer (NSCLC), and KRAS / EGFR.",
+   "notes": "(Merged from the fine-grained lessons C4, C5, C6.)",
    "teaches": [
     "mutation",
     "copy-number-alteration",
     "amplification",
-    "deletion"
-   ]
-  },
-  {
-   "id": "C5",
-   "track": "C",
-   "title": "Lung cancer: NSCLC, adenocarcinoma, large cell carcinoma and metastasis",
-   "minutes": 8,
-   "prereqs": [
-    "C1"
-   ],
-   "goal": "Know the lung-cancer subtypes in the paper, what \"metastasis\", \"invasion\" and \"migration\" mean, and why NSCLC is a problem.",
-   "notes": "",
-   "teaches": [
+    "deletion",
     "nsclc",
     "lung-adenocarcinoma",
     "large-cell-carcinoma",
     "metastasis",
     "invasion",
-    "migration"
-   ]
-  },
-  {
-   "id": "C6",
-   "track": "C",
-   "title": "KRAS and EGFR mutations",
-   "minutes": 7,
-   "prereqs": [
-    "C3",
-    "C4",
-    "C5"
-   ],
-   "goal": "Explain what KRAS and EGFR do, what \"KRAS+\" means in the paper, and what targeted therapy is.",
-   "notes": "",
-   "teaches": [
+    "migration",
     "kras",
     "egfr",
     "activating-mutation",
@@ -514,15 +333,15 @@
    ]
   },
   {
-   "id": "C7",
+   "id": "C3",
    "track": "C",
-   "title": "Chemotherapy, cisplatin, drug resistance and IC20 / IC30 / IC80",
-   "minutes": 9,
+   "title": "Chemotherapy, cisplatin and drug resistance",
+   "minutes": 8,
    "prereqs": [
-    "C5"
+    "C2"
    ],
-   "goal": "Explain what cisplatin does, why cancers become resistant, and how IC20, IC30 and IC80 describe doses by their effect.",
-   "notes": "",
+   "goal": "Explain cisplatin, drug resistance, dose-response and IC20 / IC30 / IC80.",
+   "notes": "(Merged from the fine-grained lessons C7.)",
    "teaches": [
     "chemotherapy",
     "cisplatin",
@@ -533,15 +352,15 @@
    ]
   },
   {
-   "id": "C8",
+   "id": "C4",
    "track": "C",
-   "title": "Cell lines vs normal lung cells (A549, H460, H441 and others)",
+   "title": "Cell lines vs normal lung cells",
    "minutes": 9,
    "prereqs": [
-    "C5"
+    "C2"
    ],
-   "goal": "Explain what a cell line is, meet the lines used (A549, H460, H441, HEK293T) and the normal-cell controls (HBEC3-KT, MRC-5, CCD-16Lu), and the idea of \"cell background\".",
-   "notes": "",
+   "goal": "Know the cell lines in the paper (A549, H460, H441 ...) and the normal cells used as comparison, and why models matter.",
+   "notes": "(Merged from the fine-grained lessons C8.)",
    "teaches": [
     "cell-line",
     "a549",
@@ -565,35 +384,22 @@
    ]
   },
   {
-   "id": "C9",
+   "id": "C5",
    "track": "C",
-   "title": "Growing cells in 2D, 3D spheroids and organoids",
-   "minutes": 7,
+   "title": "2D, 3D, organoids and mouse models (PDX)",
+   "minutes": 9,
    "prereqs": [
-    "C8"
+    "C4"
    ],
-   "goal": "Contrast flat 2D cultures, 3D spheroids and organoids, and explain why 3D models are considered more faithful.",
-   "notes": "",
+   "goal": "Compare growing cells flat (2D), as spheroids/organoids (3D) and as patient-derived xenografts in mice.",
+   "notes": "(Merged from the fine-grained lessons C9, C10.)",
    "teaches": [
     "monolayer-culture",
     "three-d-culture",
     "spheroid",
     "organoid",
     "matrigel",
-    "in-vitro-in-vivo"
-   ]
-  },
-  {
-   "id": "C10",
-   "track": "C",
-   "title": "Patient-derived xenografts and immunodeficient mice",
-   "minutes": 7,
-   "prereqs": [
-    "C9"
-   ],
-   "goal": "Explain what a PDX is, why \"immunodeficient\" mice are needed, and how the BE874 organoids were made.",
-   "notes": "",
-   "teaches": [
+    "in-vitro-in-vivo",
     "pdx",
     "xenograft",
     "immunodeficient-mouse",
@@ -601,16 +407,16 @@
    ]
   },
   {
-   "id": "C11",
+   "id": "C6",
    "track": "C",
-   "title": "Patient data collections: TCGA, TANRIC, PCAWG, CCLE and GEO",
-   "minutes": 8,
+   "title": "Patient data collections, and tumor vs normal",
+   "minutes": 9,
    "prereqs": [
-    "C5",
-    "B14"
+    "C2",
+    "B7"
    ],
-   "goal": "Explain what each public data collection contains and which question the paper asks of each one.",
-   "notes": "",
+   "goal": "Know TCGA, TANRIC, PCAWG, CCLE and GEO, and what \"tumor vs normal\", survival and subtype comparisons mean.",
+   "notes": "(Merged from the fine-grained lessons C11, C12.)",
    "teaches": [
     "tcga",
     "tanric",
@@ -618,20 +424,7 @@
     "ccle",
     "cohort",
     "geo",
-    "zenodo"
-   ]
-  },
-  {
-   "id": "C12",
-   "track": "C",
-   "title": "Tumor vs normal tissue, survival and tumor subtypes",
-   "minutes": 7,
-   "prereqs": [
-    "C11"
-   ],
-   "goal": "Explain \"tumor versus adjacent normal\", \"survival analysis\" and \"tumor subtype\", including the PI / PP / TRU labels.",
-   "notes": "",
-   "teaches": [
+    "zenodo",
     "adjacent-normal-tissue",
     "survival-analysis",
     "tumor-subtype"
@@ -640,86 +433,46 @@
   {
    "id": "D1",
    "track": "D",
-   "title": "CRISPR-Cas9 and guide RNAs",
-   "minutes": 8,
+   "title": "CRISPR and paired-guide deletion (DECKO)",
+   "minutes": 10,
    "prereqs": [
+    "B2",
     "B4",
-    "B5"
+    "C2",
+    "B7"
    ],
-   "goal": "Explain CRISPR-Cas9 as scissors steered by a guide RNA, and \"loss of function\".",
-   "notes": "",
+   "goal": "Explain CRISPR-Cas9, guide RNAs, why the paper deletes the TSS with paired guides (DECKO), and how CRISPRi / Cas13 differ.",
+   "notes": "(Merged from the fine-grained lessons D1, D2, D3.)",
    "teaches": [
     "crispr",
     "cas9",
     "guide-rna",
     "loss-of-function",
-    "knockout"
-   ]
-  },
-  {
-   "id": "D2",
-   "track": "D",
-   "title": "CRISPR deletion with paired guides (DECKO): why delete the TSS?",
-   "minutes": 9,
-   "prereqs": [
-    "D1",
-    "B7",
-    "C4"
-   ],
-   "goal": "Explain CRISPR-del, paired guides (pgRNAs), DECKO, and the paper's reasons for deleting the TSS instead of the whole gene.",
-   "notes": "",
-   "teaches": [
+    "knockout",
     "crispr-del",
     "paired-guide-rna",
     "decko",
     "guide-efficiency",
-    "off-target-effect"
-   ]
-  },
-  {
-   "id": "D3",
-   "track": "D",
-   "title": "CRISPRi and Cas13 (only as far as the paper needs them)",
-   "minutes": 6,
-   "prereqs": [
-    "D1",
-    "B14"
-   ],
-   "goal": "Say what CRISPRi and Cas13 are in one sentence each and why the paper mentions them.",
-   "notes": "",
-   "teaches": [
+    "off-target-effect",
     "crispri",
     "cas13"
    ]
   },
   {
-   "id": "D4",
+   "id": "D2",
    "track": "D",
-   "title": "Plasmids and lentivirus: delivering instructions into cells",
-   "minutes": 8,
+   "title": "Delivering CRISPR: plasmids, lentivirus, MOI and selection",
+   "minutes": 10,
    "prereqs": [
-    "B4",
-    "C8"
+    "B2",
+    "C4"
    ],
-   "goal": "Explain plasmids and lentivirus as delivery trucks, and how HEK293T cells are used to make the virus (conceptually).",
-   "notes": "",
+   "goal": "Explain how guides get into cells with lentivirus, why MOI 0.3, antibiotic selection, and fluorescent proteins.",
+   "notes": "(Merged from the fine-grained lessons D4, D5, D6.)",
    "teaches": [
     "plasmid",
     "lentivirus",
-    "viral-titer"
-   ]
-  },
-  {
-   "id": "D5",
-   "track": "D",
-   "title": "Transduction, MOI and antibiotic selection",
-   "minutes": 8,
-   "prereqs": [
-    "D4"
-   ],
-   "goal": "Explain transduction vs transfection, why a low MOI (0.3) means mostly one guide per cell, and how puromycin / blasticidin select cells.",
-   "notes": "",
-   "teaches": [
+    "viral-titer",
     "transduction",
     "transfection",
     "moi",
@@ -727,20 +480,7 @@
     "puromycin",
     "blasticidin",
     "polybrene",
-    "stable-cell-line"
-   ]
-  },
-  {
-   "id": "D6",
-   "track": "D",
-   "title": "Fluorescent proteins: GFP, mCherry and BFP",
-   "minutes": 6,
-   "prereqs": [
-    "D5"
-   ],
-   "goal": "Explain fluorescent proteins as glowing name-tags and how GFP, mCherry and BFP are used here.",
-   "notes": "",
-   "teaches": [
+    "stable-cell-line",
     "fluorescent-protein",
     "gfp",
     "mcherry",
@@ -748,56 +488,52 @@
    ]
   },
   {
-   "id": "D7",
-   "track": "D",
-   "title": "Flow cytometry and FACS: counting and sorting cells one by one",
-   "minutes": 8,
+   "id": "E1",
+   "track": "E",
+   "title": "Fold change, log2, replicates and error bars",
+   "minutes": 10,
    "prereqs": [
-    "D6",
-    "B1"
+    "A1"
    ],
-   "goal": "Explain how a flow cytometer reads each cell's light signal and how FACS sorts cells into tubes.",
-   "notes": "",
+   "goal": "Compute and read fold change and log2; know replicates, mean, median, SD, error bars and sample size n.",
+   "notes": "(Merged from the fine-grained lessons E2, E3.)",
+   "teaches": [
+    "fold-change",
+    "log2",
+    "replicate",
+    "mean",
+    "median",
+    "standard-deviation",
+    "error-bars",
+    "sample-size",
+    "percentile",
+    "graphpad-prism"
+   ]
+  },
+  {
+   "id": "D3",
+   "track": "D",
+   "title": "Flow cytometry, pooled screens and libraries",
+   "minutes": 10,
+   "prereqs": [
+    "D2",
+    "B1",
+    "D1",
+    "E1"
+   ],
+   "goal": "Understand flow cytometry/FACS, what a pooled screen is, and library size, guides per target and coverage.",
+   "notes": "(Merged from the fine-grained lessons D7, D8, D9.)",
    "teaches": [
     "flow-cytometry",
     "facs",
     "gating",
-    "flowjo"
-   ]
-  },
-  {
-   "id": "D8",
-   "track": "D",
-   "title": "Pooled screens: testing thousands of suspects in one dish",
-   "minutes": 9,
-   "prereqs": [
-    "D2",
-    "D5",
-    "D7",
-    "E3"
-   ],
-   "goal": "Explain the logic of a pooled CRISPR screen: a library, one perturbation per cell, a selection, and counting.",
-   "notes": "",
-   "teaches": [
+    "flowjo",
     "pooled-screen",
     "arrayed-screen",
     "crispr-library",
     "screen",
     "hit",
-    "candidate"
-   ]
-  },
-  {
-   "id": "D9",
-   "track": "D",
-   "title": "Libraries, guides per target and coverage",
-   "minutes": 8,
-   "prereqs": [
-    "D8"
-   ],
-   "goal": "Explain \"depth\" (10 guides per target), \"coverage\" (cells per guide), and how libDECKO-NSCLC1 was designed and cloned (conceptually).",
-   "notes": "",
-   "teaches": [
+    "candidate",
     "libdecko-nsclc1",
     "library-depth",
     "coverage",
@@ -807,16 +543,17 @@
    ]
   },
   {
-   "id": "D10",
+   "id": "D4",
    "track": "D",
-   "title": "From cells to counts: PCR, sequencing and read counts",
-   "minutes": 9,
+   "title": "From cells to counts, dropout and positive selection",
+   "minutes": 10,
    "prereqs": [
-    "D9",
-    "B4"
+    "D3",
+    "B2",
+    "E1"
    ],
-   "goal": "Follow a screen sample from cells to a table of guide counts: DNA, PCR, sequencing reads, time points.",
-   "notes": "",
+   "goal": "Follow DNA from screened cells to read counts, and tell dropout from positive selection.",
+   "notes": "(Merged from the fine-grained lessons D10, D11.)",
    "teaches": [
     "genomic-dna",
     "pcr",
@@ -829,86 +566,33 @@
     "guidescan",
     "sanger-sequencing",
     "batch-effect",
-    "recombination-events"
-   ]
-  },
-  {
-   "id": "D11",
-   "track": "D",
-   "title": "Dropout vs positive selection screens",
-   "minutes": 8,
-   "prereqs": [
-    "D8",
-    "E2"
-   ],
-   "goal": "Explain how a \"dropout\" screen and a \"positive selection\" screen are read, and what \"depleted\" and \"enriched\" mean for guides.",
-   "notes": "",
-   "teaches": [
+    "recombination-events",
     "dropout-screen",
     "positive-selection-screen",
     "depletion"
    ]
   },
   {
-   "id": "D12",
+   "id": "D5",
    "track": "D",
-   "title": "The proliferation screens: dropout and CFSE",
-   "minutes": 8,
+   "title": "The three screens and their controls",
+   "minutes": 10,
    "prereqs": [
-    "D11",
-    "D7",
-    "B2"
+    "D4",
+    "D3",
+    "B1",
+    "C3",
+    "C2",
+    "D1"
    ],
-   "goal": "Explain how dropout and CFSE screens both measure growth, and what \"fast-growing\" and \"slow-growing\" cells look like under CFSE.",
-   "notes": "",
+   "goal": "Know the proliferation, cisplatin and migration screens, and the neutral / positive controls and ORF vs TSS guides.",
+   "notes": "(Merged from the fine-grained lessons D12, D13, D14, D15.)",
    "teaches": [
-    "cfse"
-   ]
-  },
-  {
-   "id": "D13",
-   "track": "D",
-   "title": "The cisplatin screens: survival and death",
-   "minutes": 8,
-   "prereqs": [
-    "D11",
-    "C7"
-   ],
-   "goal": "Explain the two complementary cisplatin screens: \"survival\" at IC30 / IC80 and \"death\" at IC20.",
-   "notes": "",
-   "teaches": [
+    "cfse",
     "cisplatin-survival-screen",
-    "cisplatin-death-screen"
-   ]
-  },
-  {
-   "id": "D14",
-   "track": "D",
-   "title": "The migration screen and the transwell assay",
-   "minutes": 7,
-   "prereqs": [
-    "D11",
-    "C5"
-   ],
-   "goal": "Explain how a transwell (Boyden chamber) separates fast and slow migrators, and how that becomes a screen.",
-   "notes": "",
-   "teaches": [
+    "cisplatin-death-screen",
     "transwell-assay",
-    "migration-screen"
-   ]
-  },
-  {
-   "id": "D15",
-   "track": "D",
-   "title": "Controls in the screen: neutral, positive, and ORF vs TSS targeting",
-   "minutes": 9,
-   "prereqs": [
-    "D8",
-    "D2"
-   ],
-   "goal": "Explain neutral and positive controls, why AAVS1 and RPS5 were used, and why controls were targeted two ways (ORF and promoter).",
-   "notes": "",
-   "teaches": [
+    "migration-screen",
     "neutral-control",
     "positive-control",
     "negative-control",
@@ -921,37 +605,24 @@
    ]
   },
   {
-   "id": "D16",
+   "id": "D6",
    "track": "D",
-   "title": "ASOs: how a short strand can switch a gene off",
-   "minutes": 9,
+   "title": "ASOs: switching off an RNA, and using them well",
+   "minutes": 10,
    "prereqs": [
+    "B2",
     "B4",
-    "B7"
+    "D2"
    ],
-   "goal": "Explain how an ASO pairs with an RNA and gets it destroyed, what LNA chemistry adds, and what \"knockdown\" means.",
-   "notes": "",
+   "goal": "Explain how ASOs lower an RNA, and why two ASOs per target, a non-targeting control and knockdown % matter.",
+   "notes": "(Merged from the fine-grained lessons D16, D17.)",
    "teaches": [
     "aso",
     "knockdown",
     "rnase-h",
     "lna",
     "rna-therapeutics",
-    "shrna"
-   ]
-  },
-  {
-   "id": "D17",
-   "track": "D",
-   "title": "Using ASOs well: two ASOs per target, controls, knockdown % and cocktails",
-   "minutes": 9,
-   "prereqs": [
-    "D16",
-    "D5"
-   ],
-   "goal": "Explain why each lncRNA needs two ASOs, the non-targeting control, \"knockdown %\", on-target vs off-target, and ASO cocktails.",
-   "notes": "",
-   "teaches": [
+    "shrna",
     "non-targeting-control",
     "knockdown-efficiency",
     "aso-cocktail",
@@ -961,202 +632,194 @@
    ]
   },
   {
-   "id": "D18",
+   "id": "D7",
    "track": "D",
-   "title": "DNA gels and genotyping PCR: did the deletion happen?",
-   "minutes": 7,
-   "prereqs": [
-    "D10",
-    "D2"
-   ],
-   "goal": "Read a DNA gel: bands, ladder, wild-type vs deleted bands, and what the genotyping PCR in Figure 1E shows.",
-   "notes": "",
-   "teaches": [
-    "gel-electrophoresis",
-    "amplicon"
-   ]
-  },
-  {
-   "id": "D19",
-   "track": "D",
-   "title": "qRT-PCR: measuring how much RNA is left",
+   "title": "Checking the work: gels, qRT-PCR and the competition assay",
    "minutes": 9,
    "prereqs": [
-    "D18",
-    "B14",
-    "E2"
+    "D4",
+    "D1",
+    "B7",
+    "E1",
+    "D2",
+    "D3"
    ],
-   "goal": "Explain reverse transcription, qPCR, normalisation to a housekeeping gene, and \"relative expression\".",
-   "notes": "",
+   "goal": "Read a genotyping gel, understand qRT-PCR with a housekeeping gene, and the competition assay.",
+   "notes": "(Merged from the fine-grained lessons D18, D19, D20.)",
    "teaches": [
+    "gel-electrophoresis",
+    "amplicon",
     "rt-qpcr",
     "cdna",
     "housekeeping-gene",
     "gapdh",
-    "hprt1"
-   ]
-  },
-  {
-   "id": "D20",
-   "track": "D",
-   "title": "The competition assay",
-   "minutes": 7,
-   "prereqs": [
-    "D6",
-    "D7",
-    "D11"
-   ],
-   "goal": "Explain how mixing green and red cells 1:1 and tracking the ratio over days measures fitness.",
-   "notes": "",
-   "teaches": [
+    "hprt1",
     "competition-assay"
    ]
   },
   {
-   "id": "D21",
+   "id": "D8",
    "track": "D",
-   "title": "Luminescence viability assays (CellTiter-Glo)",
-   "minutes": 7,
+   "title": "Cell assays: viability, Annexin V, cell cycle, migration",
+   "minutes": 10,
    "prereqs": [
-    "C8",
-    "B3"
+    "C4",
+    "B1",
+    "D3",
+    "D5"
    ],
-   "goal": "Explain how an ATP-based glow reading estimates living cells and how \"relative growth\" is built from it.",
-   "notes": "",
+   "goal": "Know what CellTiter-Glo, Annexin V, DAPI / Ki-67 and crystal violet each measure.",
+   "notes": "(Merged from the fine-grained lessons D21, D22, D23, D24.)",
    "teaches": [
     "cell-viability",
-    "celltiter-glo"
-   ]
-  },
-  {
-   "id": "D22",
-   "track": "D",
-   "title": "Annexin V: catching cells in the act of dying",
-   "minutes": 6,
-   "prereqs": [
-    "B3",
-    "D7"
-   ],
-   "goal": "Explain how Annexin V plus a viability dye separate alive, early-apoptotic, late-apoptotic and necrotic cells by flow cytometry.",
-   "notes": "",
-   "teaches": [
-    "annexin-v"
-   ]
-  },
-  {
-   "id": "D23",
-   "track": "D",
-   "title": "Cell-cycle staining: DAPI and Ki-67",
-   "minutes": 7,
-   "prereqs": [
-    "B2",
-    "D7"
-   ],
-   "goal": "Explain how DNA content (DAPI) and Ki-67 sort cells into G1, S and G2/M.",
-   "notes": "",
-   "teaches": [
+    "celltiter-glo",
+    "annexin-v",
     "dapi",
     "ki-67",
     "cell-cycle-assay",
-    "djf-model"
-   ]
-  },
-  {
-   "id": "D24",
-   "track": "D",
-   "title": "Crystal violet migration assay",
-   "minutes": 6,
-   "prereqs": [
-    "D14"
-   ],
-   "goal": "Explain the low-throughput migration assay: stain the cells that crossed, dissolve the dye, read absorbance.",
-   "notes": "",
-   "teaches": [
+    "djf-model",
     "crystal-violet",
     "optical-density"
    ]
   },
   {
-   "id": "D25",
+   "id": "D9",
    "track": "D",
-   "title": "RNA-FISH and microscopy",
-   "minutes": 7,
+   "title": "Where is it, and does it matter? FISH, fractionation, rescue",
+   "minutes": 9,
    "prereqs": [
-    "B12",
-    "D6"
+    "B6",
+    "D2",
+    "D7",
+    "D6",
+    "B7"
    ],
-   "goal": "Explain how fluorescent probes make single RNA molecules visible in a cell and how a cytoplasmic/nuclear ratio is derived.",
-   "notes": "",
+   "goal": "Understand RNA-FISH, nuclear vs cytoplasmic fractionation, and overexpression / rescue experiments.",
+   "notes": "(Merged from the fine-grained lessons D25, D26, D27.)",
    "teaches": [
     "fish",
     "probe",
     "confocal-microscopy",
-    "cellprofiler"
-   ]
-  },
-  {
-   "id": "D26",
-   "track": "D",
-   "title": "Cell fractionation: nuclear vs cytoplasmic RNA",
-   "minutes": 6,
-   "prereqs": [
-    "B12",
-    "D19"
-   ],
-   "goal": "Explain how cells are split into nucleus and cytoplasm and how MALAT1 and GAPDH serve as markers.",
-   "notes": "",
-   "teaches": [
-    "cell-fractionation"
-   ]
-  },
-  {
-   "id": "D27",
-   "track": "D",
-   "title": "Overexpression and rescue experiments",
-   "minutes": 7,
-   "prereqs": [
-    "D17",
-    "B14"
-   ],
-   "goal": "Explain what a rescue experiment tests, why it can fail even when the biology is real, and the paper's possible explanations.",
-   "notes": "",
-   "teaches": [
+    "cellprofiler",
+    "cell-fractionation",
     "overexpression-experiment",
     "rescue-experiment"
    ]
   },
   {
-   "id": "D28",
-   "track": "D",
-   "title": "RNA-seq and differentially expressed genes (DEGs)",
-   "minutes": 9,
+   "id": "E2",
+   "track": "E",
+   "title": "Correlation, z-scores and p-values",
+   "minutes": 10,
    "prereqs": [
-    "E1",
-    "B14",
-    "D10"
+    "E1"
    ],
-   "goal": "Explain RNA-seq as counting every RNA at once, what a DEG is, and what the two ASOs agreeing means.",
-   "notes": "",
+   "goal": "Read a correlation line, a z-score, and a p-value (what \"significant\" and \"ns\" mean, scientific notation).",
+   "notes": "(Merged from the fine-grained lessons E4, E5, E6.)",
+   "teaches": [
+    "correlation",
+    "pearson-correlation",
+    "regression-line",
+    "anti-correlation",
+    "z-score",
+    "p-value",
+    "null-hypothesis",
+    "statistical-significance",
+    "ns",
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "E3",
+   "track": "E",
+   "title": "Choosing a test: t-tests, rank tests, overlap tests",
+   "minutes": 10,
+   "prereqs": [
+    "E2"
+   ],
+   "goal": "Tell one- from two-tailed tests, Student vs Welch t tests, Wilcoxon / Mann-Whitney / Kruskal-Wallis, and Fisher / hypergeometric overlap tests.",
+   "notes": "(Merged from the fine-grained lessons E7, E8, E9.)",
+   "teaches": [
+    "one-tailed-test",
+    "two-tailed-test",
+    "t-test",
+    "welch-t-test",
+    "non-parametric-test",
+    "wilcoxon-test",
+    "mann-whitney-test",
+    "kruskal-wallis-test",
+    "fishers-exact-test",
+    "hypergeometric-test"
+   ]
+  },
+  {
+   "id": "E4",
+   "track": "E",
+   "title": "Many tests at once (FDR), and ROC / AUC",
+   "minutes": 10,
+   "prereqs": [
+    "E2",
+    "E3"
+   ],
+   "goal": "Understand multiple testing and FDR (why FDR < 0.2), and ROC curves with AUC.",
+   "notes": "(Merged from the fine-grained lessons E10, E11.)",
+   "teaches": [
+    "multiple-testing",
+    "fdr",
+    "benjamini-hochberg",
+    "false-positive",
+    "false-negative",
+    "q-value",
+    "roc-curve",
+    "auc",
+    "true-positive-rate",
+    "false-positive-rate"
+   ]
+  },
+  {
+   "id": "E5",
+   "track": "E",
+   "title": "Combining screens, and decoding the legends",
+   "minutes": 10,
+   "prereqs": [
+    "E4",
+    "D4",
+    "E1",
+    "E2",
+    "E3"
+   ],
+   "goal": "Understand rank aggregation, Brown's method and the harmonic-mean p-value (TPP), and decode real legend statistics.",
+   "notes": "(Merged from the fine-grained lessons E12, E13.)",
+   "teaches": [
+    "tpp",
+    "robust-rank-aggregation",
+    "empirical-browns-method",
+    "harmonic-mean-p-value",
+    "effect-size"
+   ]
+  },
+  {
+   "id": "D10",
+   "track": "D",
+   "title": "RNA-seq, counting fairly and pathway enrichment",
+   "minutes": 10,
+   "prereqs": [
+    "B7",
+    "D4",
+    "E4",
+    "E3"
+   ],
+   "goal": "Understand RNA-seq and differentially expressed genes, CPM / TPM / FPKM, and how enrichment analysis finds pathways.",
+   "notes": "(Merged from the fine-grained lessons D28, E1, D29.)",
    "teaches": [
     "rna-seq",
     "deg",
     "transcript-quantification",
-    "rsem"
-   ]
-  },
-  {
-   "id": "D29",
-   "track": "D",
-   "title": "Pathway enrichment: KEGG, MSigDB and transcription-factor sites",
-   "minutes": 9,
-   "prereqs": [
-    "D28",
-    "E10",
-    "E9"
-   ],
-   "goal": "Explain how a list of changed genes is tested against \"pathway\" lists (KEGG, MSigDB, TFBS) and how to read the result.",
-   "notes": "",
-   "teaches": [
+    "rsem",
+    "normalization",
+    "cpm",
+    "tpm",
+    "fpkm",
     "pathway-enrichment",
     "kegg",
     "msigdb",
@@ -1165,18 +828,17 @@
    ]
   },
   {
-   "id": "D30",
+   "id": "D11",
    "track": "D",
-   "title": "What the named pathways roughly do (p53, MAPK, PI3K–Akt, mTORC1 …)",
-   "minutes": 10,
+   "title": "What the named pathways do",
+   "minutes": 8,
    "prereqs": [
-    "D29",
-    "C3",
-    "B3",
-    "B2"
+    "D10",
+    "C1",
+    "B1"
    ],
-   "goal": "Give a one-line job description for every pathway the paper names (p53, MAPK, PI3K–Akt, VEGF, mTORC1, glycolysis, EMT, G2-M checkpoint …).",
-   "notes": "",
+   "goal": "Say in one or two sentences what each pathway named in the paper (p53, MAPK, PI3K-Akt, mTORC1 ...) is about.",
+   "notes": "(Merged from the fine-grained lessons D30.)",
    "teaches": [
     "signaling-pathway",
     "p53-pathway",
@@ -1197,407 +859,68 @@
    ]
   },
   {
-   "id": "E1",
-   "track": "E",
-   "title": "Counting RNA fairly: CPM, TPM and FPKM",
-   "minutes": 8,
-   "prereqs": [
-    "D10",
-    "B14"
-   ],
-   "goal": "Explain why raw counts must be normalised and what CPM, TPM and FPKM each correct for.",
-   "notes": "",
-   "teaches": [
-    "normalization",
-    "cpm",
-    "tpm",
-    "fpkm"
-   ]
-  },
-  {
-   "id": "E2",
-   "track": "E",
-   "title": "Fold change and log2",
-   "minutes": 8,
-   "prereqs": [
-    "A1"
-   ],
-   "goal": "Compute and interpret fold change and log2 fold change, and see why log2 makes up and down changes symmetrical.",
-   "notes": "",
-   "teaches": [
-    "fold-change",
-    "log2"
-   ]
-  },
-  {
-   "id": "E3",
-   "track": "E",
-   "title": "Replicates, mean, SD and error bars",
-   "minutes": 8,
-   "prereqs": [
-    "E2"
-   ],
-   "goal": "Distinguish biological from technical replicates, read mean ± SD error bars, understand n, medians and percentiles.",
-   "notes": "",
-   "teaches": [
-    "replicate",
-    "mean",
-    "median",
-    "standard-deviation",
-    "error-bars",
-    "sample-size",
-    "percentile",
-    "graphpad-prism"
-   ]
-  },
-  {
-   "id": "E4",
-   "track": "E",
-   "title": "Correlation and regression lines",
-   "minutes": 8,
-   "prereqs": [
-    "E2",
-    "E3"
-   ],
-   "goal": "Read Pearson R, the trendline, and what \"R = 0.66\" says (and does not say).",
-   "notes": "",
-   "teaches": [
-    "correlation",
-    "pearson-correlation",
-    "regression-line",
-    "anti-correlation"
-   ]
-  },
-  {
-   "id": "E5",
-   "track": "E",
-   "title": "Z-scores",
-   "minutes": 6,
-   "prereqs": [
-    "E3"
-   ],
-   "goal": "Explain a Z-score as \"how many SDs from typical\" and how the paper scales screen results against neutral controls.",
-   "notes": "",
-   "teaches": [
-    "z-score"
-   ]
-  },
-  {
-   "id": "E6",
-   "track": "E",
-   "title": "p-values, \"significant\", \"ns\" and scientific notation",
-   "minutes": 9,
-   "prereqs": [
-    "E3"
-   ],
-   "goal": "Say what a p-value is (and is not), what \"ns\" and asterisks mean, and read numbers like 2.2e-16.",
-   "notes": "",
-   "teaches": [
-    "p-value",
-    "null-hypothesis",
-    "statistical-significance",
-    "ns",
-    "scientific-notation"
-   ]
-  },
-  {
-   "id": "E7",
-   "track": "E",
-   "title": "One- vs two-tailed tests and t-tests (including Welch's)",
-   "minutes": 8,
-   "prereqs": [
-    "E6"
-   ],
-   "goal": "Explain one-tailed vs two-tailed, what a t-test compares, and when Welch's version is used.",
-   "notes": "",
-   "teaches": [
-    "one-tailed-test",
-    "two-tailed-test",
-    "t-test",
-    "welch-t-test"
-   ]
-  },
-  {
-   "id": "E8",
-   "track": "E",
-   "title": "Rank-based tests: Wilcoxon, Mann–Whitney and Kruskal–Wallis",
-   "minutes": 7,
-   "prereqs": [
-    "E7"
-   ],
-   "goal": "Explain why rank-based (non-parametric) tests are used and what Wilcoxon, Mann–Whitney and Kruskal–Wallis compare.",
-   "notes": "",
-   "teaches": [
-    "non-parametric-test",
-    "wilcoxon-test",
-    "mann-whitney-test",
-    "kruskal-wallis-test"
-   ]
-  },
-  {
-   "id": "E9",
-   "track": "E",
-   "title": "Overlap and enrichment tests: Fisher's exact and hypergeometric",
-   "minutes": 8,
-   "prereqs": [
-    "E6"
-   ],
-   "goal": "Explain the \"overlap by chance\" question and how Fisher's exact and the hypergeometric test answer it.",
-   "notes": "",
-   "teaches": [
-    "fishers-exact-test",
-    "hypergeometric-test"
-   ]
-  },
-  {
-   "id": "E10",
-   "track": "E",
-   "title": "Many tests at once: multiple testing and FDR (why FDR < 0.2)",
-   "minutes": 9,
-   "prereqs": [
-    "E6",
-    "E9"
-   ],
-   "goal": "Explain the multiple-testing problem, the false discovery rate, Benjamini–Hochberg, q-values, and the reasoning for a lenient FDR < 0.2 cutoff.",
-   "notes": "",
-   "teaches": [
-    "multiple-testing",
-    "fdr",
-    "benjamini-hochberg",
-    "false-positive",
-    "false-negative",
-    "q-value"
-   ]
-  },
-  {
-   "id": "E11",
-   "track": "E",
-   "title": "ROC curves and AUC",
-   "minutes": 8,
-   "prereqs": [
-    "E10"
-   ],
-   "goal": "Read a ROC curve and AUC: true-positive rate, false-positive rate, and what AUC 0.82 vs 0.54 mean.",
-   "notes": "",
-   "teaches": [
-    "roc-curve",
-    "auc",
-    "true-positive-rate",
-    "false-positive-rate"
-   ]
-  },
-  {
-   "id": "E12",
-   "track": "E",
-   "title": "Combining screens: rank aggregation, Brown's method and the harmonic-mean p-value (TPP)",
-   "minutes": 10,
-   "prereqs": [
-    "E10",
-    "E11",
-    "D11"
-   ],
-   "goal": "Explain, with minimal math, how TPP combines effect size and significance across screens into one FDR-controlled ranking.",
-   "notes": "",
-   "teaches": [
-    "tpp",
-    "robust-rank-aggregation",
-    "empirical-browns-method",
-    "harmonic-mean-p-value",
-    "effect-size"
-   ]
-  },
-  {
-   "id": "E13",
-   "track": "E",
-   "title": "Practice: decoding the statistics in the figure legends",
-   "minutes": 9,
-   "prereqs": [
-    "E3",
-    "E4",
-    "E5",
-    "E6",
-    "E7",
-    "E8",
-    "E9",
-    "E10",
-    "E11",
-    "E12"
-   ],
-   "goal": "Apply everything: decode five real legends (what test, what n, what the error bars are, what the stars mean).",
-   "notes": "",
-   "teaches": []
-  },
-  {
    "id": "F1",
    "track": "F",
-   "title": "Bar charts with error bars",
-   "minutes": 6,
+   "title": "Bars, boxes, scatter plots and time courses",
+   "minutes": 9,
    "prereqs": [
-    "E3"
+    "E1",
+    "E3",
+    "E2",
+    "D6"
    ],
-   "goal": "Read bars, error bars, labels and the control bar; practised on Figures 1F, 3F and 5E.",
-   "notes": "",
+   "goal": "Read bar charts with error bars, box and violin plots, scatter plots with a regression line, and time courses.",
+   "notes": "(Merged from the fine-grained lessons F1, F2, F3, F7.)",
    "teaches": [
-    "bar-chart"
+    "bar-chart",
+    "box-plot",
+    "violin-plot",
+    "scatter-plot",
+    "time-course"
    ]
   },
   {
    "id": "F2",
    "track": "F",
-   "title": "Box plots and violin plots",
-   "minutes": 7,
+   "title": "Contour, volcano, heatmap, ROC, ternary, UpSet and stacked plots",
+   "minutes": 10,
    "prereqs": [
-    "E3",
-    "E8"
+    "F1",
+    "E4",
+    "E1",
+    "E2",
+    "E5",
+    "D4"
    ],
-   "goal": "Read median, box, whiskers and the violin outline; practised on Figures 2F and 4F.",
-   "notes": "",
+   "goal": "Read the less common plots in the paper, each practised on a real panel.",
+   "notes": "(Merged from the fine-grained lessons F4, F5, F6, F8, F9, F10, F11.)",
    "teaches": [
-    "box-plot",
-    "violin-plot"
+    "contour-plot",
+    "volcano-plot",
+    "heatmap",
+    "ternary-plot",
+    "petal-plot",
+    "upset-plot",
+    "stacked-bar"
    ]
   },
   {
    "id": "F3",
    "track": "F",
-   "title": "Scatter plots with a regression line",
-   "minutes": 7,
+   "title": "Genome tracks, gels, flow plots and microscopy",
+   "minutes": 10,
    "prereqs": [
-    "E4"
-   ],
-   "goal": "Read axes, points, the trendline and R; practised on Figures 2E, 2H and 6E.",
-   "notes": "",
-   "teaches": [
-    "scatter-plot"
-   ]
-  },
-  {
-   "id": "F4",
-   "track": "F",
-   "title": "Contour (density) plots",
-   "minutes": 6,
-   "prereqs": [
-    "F3"
-   ],
-   "goal": "Read contour lines as \"crowding\" of points; practised on Figure 4E.",
-   "notes": "",
-   "teaches": [
-    "contour-plot"
-   ]
-  },
-  {
-   "id": "F5",
-   "track": "F",
-   "title": "Volcano-style plots",
-   "minutes": 7,
-   "prereqs": [
-    "E10",
-    "E2",
-    "F3"
-   ],
-   "goal": "Read the two axes (fold change on x, significance on y) and the cutoff line; practised on Figure 2G.",
-   "notes": "",
-   "teaches": [
-    "volcano-plot"
-   ]
-  },
-  {
-   "id": "F6",
-   "track": "F",
-   "title": "Heatmaps",
-   "minutes": 7,
-   "prereqs": [
-    "E2",
-    "E5"
-   ],
-   "goal": "Read color scales, rows and columns, and patterns; practised on Figures 5A and 5H.",
-   "notes": "",
-   "teaches": [
-    "heatmap"
-   ]
-  },
-  {
-   "id": "F7",
-   "track": "F",
-   "title": "Time courses and line plots",
-   "minutes": 7,
-   "prereqs": [
-    "E3",
-    "D17"
-   ],
-   "goal": "Read growth curves, error bars and p-labels over time; practised on Figures 3B, 3D, 5C and 5G.",
-   "notes": "",
-   "teaches": [
-    "time-course"
-   ]
-  },
-  {
-   "id": "F8",
-   "track": "F",
-   "title": "ROC curves in a figure",
-   "minutes": 6,
-   "prereqs": [
-    "E11"
-   ],
-   "goal": "Read the curve, the diagonal and the AUC table; practised on Figure 4B.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "F9",
-   "track": "F",
-   "title": "Ternary and petal plots",
-   "minutes": 8,
-   "prereqs": [
-    "E12"
-   ],
-   "goal": "Read a triangle plot (three hallmarks at three corners) and a petal plot; practised on Figure 4C.",
-   "notes": "",
-   "teaches": [
-    "ternary-plot",
-    "petal-plot"
-   ]
-  },
-  {
-   "id": "F10",
-   "track": "F",
-   "title": "UpSet plots",
-   "minutes": 6,
-   "prereqs": [
-    "D11"
-   ],
-   "goal": "Read a UpSet plot (overlaps of many sets); practised on Figure 2I.",
-   "notes": "",
-   "teaches": [
-    "upset-plot"
-   ]
-  },
-  {
-   "id": "F11",
-   "track": "F",
-   "title": "Stacked bars and composition charts",
-   "minutes": 6,
-   "prereqs": [
-    "F1"
-   ],
-   "goal": "Read stacked percentage bars and counts; practised on Figures 1C, 4D, 4H and 6G.",
-   "notes": "",
-   "teaches": [
-    "stacked-bar"
-   ]
-  },
-  {
-   "id": "F12",
-   "track": "F",
-   "title": "Genome-browser tracks",
-   "minutes": 9,
-   "prereqs": [
+    "B4",
+    "B3",
     "B8",
-    "B6",
-    "B16"
+    "D7",
+    "D3",
+    "D9",
+    "D5",
+    "C5"
    ],
-   "goal": "Read a gene-locus picture: scale, strands, exons, TSS arrow, primers, ASOs and guides; practised on Figures 1E, 3A, 5D and 6A.",
-   "notes": "",
+   "goal": "Read genome-browser tracks, DNA gels, flow-cytometry plots and microscopy / FISH images.",
+   "notes": "(Merged from the fine-grained lessons F12, F13, F14, F15.)",
    "teaches": [
     "genome-browser-track",
     "conservation-track",
@@ -1605,181 +928,74 @@
     "conserved-rna-structure",
     "repeat-element",
     "cpg-island",
-    "eztracks"
-   ]
-  },
-  {
-   "id": "F13",
-   "track": "F",
-   "title": "DNA gels in a figure",
-   "minutes": 5,
-   "prereqs": [
-    "D18"
-   ],
-   "goal": "Read the ladder, the wild-type and deletion bands in Figure 1E.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "F14",
-   "track": "F",
-   "title": "Flow cytometry plots",
-   "minutes": 6,
-   "prereqs": [
-    "D7"
-   ],
-   "goal": "Read a dot plot with a sorting gate; practised on Figure 1D.",
-   "notes": "",
-   "teaches": [
+    "eztracks",
     "fsc-a"
    ]
   },
   {
-   "id": "F15",
+   "id": "F4",
    "track": "F",
-   "title": "Microscopy and FISH images",
+   "title": "The small print: n, error bars, P labels and \"ns\"",
    "minutes": 7,
    "prereqs": [
-    "D25",
-    "D14",
-    "C9"
+    "E2",
+    "E3"
    ],
-   "goal": "Read scale bars, arrows and labels in cell images; practised on Figures 6B, 3E, 5E and 6L.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "F16",
-   "track": "F",
-   "title": "The small print: n, error bars, P labels, asterisks and \"ns\"",
-   "minutes": 7,
-   "prereqs": [
-    "E6",
-    "E7"
-   ],
-   "goal": "Read the details that decide how much a figure proves.",
-   "notes": "",
+   "goal": "Know what to check in every legend, and what the paper's legends leave unsaid.",
+   "notes": "(Merged from the fine-grained lessons F16.)",
    "teaches": []
   },
   {
    "id": "H1",
    "track": "H",
-   "title": "The paper's logic as a chain: claim → evidence → figure panel",
-   "minutes": 9,
+   "title": "The paper's logic chain, and every control",
+   "minutes": 10,
    "prereqs": [
-    "F16"
+    "F4"
    ],
-   "goal": "Lay out the paper's main claims, the evidence for each, and the exact panel that supports it.",
-   "notes": "",
+   "goal": "Chain each claim to its evidence and figure panel, and say what every control rules out.",
+   "notes": "(Merged from the fine-grained lessons H1, H2.)",
    "teaches": []
   },
   {
    "id": "H2",
    "track": "H",
-   "title": "Every control and why it exists",
-   "minutes": 9,
+   "title": "DNA vs RNA effects, off-targets and cell-line effects",
+   "minutes": 10,
    "prereqs": [
     "H1"
    ],
-   "goal": "List every control in the paper (neutral, positive, non-targeting, normal cells, markers, vectors) and say what mistake each one rules out.",
-   "notes": "",
+   "goal": "Explain why ASOs were needed after CRISPR, how off-target effects are handled, and what cell-line specificity means.",
+   "notes": "(Merged from the fine-grained lessons H3, H4, H5.)",
    "teaches": []
   },
   {
    "id": "H3",
    "track": "H",
-   "title": "DNA vs RNA effects: why ASOs were needed",
-   "minutes": 8,
+   "title": "The limitations, the patent and the conflict of interest",
+   "minutes": 9,
    "prereqs": [
     "H1"
    ],
-   "goal": "Explain how the authors separated a DNA effect from an RNA effect and the LINC00115 vs RP11-206L10.11 example.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "H4",
-   "track": "H",
-   "title": "ASO off-target effects and how the paper handles them",
-   "minutes": 8,
-   "prereqs": [
-    "H1"
-   ],
-   "goal": "Explain the on-target evidence (two ASOs, several cell lines, correlated RNA-seq) and what is not tested (rescue failed).",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "H5",
-   "track": "H",
-   "title": "Cell-line-specific effects and background independence",
-   "minutes": 8,
-   "prereqs": [
-    "H1"
-   ],
-   "goal": "Explain why the authors screened two lines, integrated across hallmarks, and added more lines and 3D models.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "H6",
-   "track": "H",
-   "title": "The limitations section, line by line",
-   "minutes": 8,
-   "prereqs": [
-    "H1"
-   ],
-   "goal": "List the limitations the authors state and add the ones a skeptical reader would add.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "H7",
-   "track": "H",
-   "title": "The declared patent and conflict of interest",
-   "minutes": 6,
-   "prereqs": [
-    "H1"
-   ],
-   "goal": "Read the declaration of interests, explain what a patent application and a conflict of interest are, and how to treat them fairly.",
-   "notes": "",
+   "goal": "Read the limitations line by line, and know what the declared patent and conflict of interest mean.",
+   "notes": "(Merged from the fine-grained lessons H6, H7.)",
    "teaches": [
     "conflict-of-interest",
     "patent-application"
    ]
   },
   {
-   "id": "H8",
+   "id": "H4",
    "track": "H",
-   "title": "Experiments that would strengthen the work",
-   "minutes": 8,
-   "prereqs": [
-    "H3",
-    "H4",
-    "H5",
-    "H6"
-   ],
-   "goal": "Propose concrete follow-up experiments and say which weakness each would fix.",
-   "notes": "",
-   "teaches": []
-  },
-  {
-   "id": "H9",
-   "track": "H",
-   "title": "Strengths vs weaknesses: essay-ready summary",
+   "title": "Strengthening experiments, strengths vs weaknesses",
    "minutes": 9,
    "prereqs": [
-    "H1",
     "H2",
     "H3",
-    "H4",
-    "H5",
-    "H6",
-    "H7",
-    "H8"
+    "H1"
    ],
-   "goal": "Write and judge a balanced strengths-versus-weaknesses essay using evidence from the paper.",
-   "notes": "",
+   "goal": "Suggest experiments that would strengthen the work and give a balanced strengths-vs-weaknesses answer.",
+   "notes": "(Merged from the fine-grained lessons H8, H9.)",
    "teaches": []
   }
  ],
@@ -1798,7 +1014,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A3"
+   "taughtIn": "A2"
   },
   {
    "id": "pan-hallmark",
@@ -1811,7 +1027,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A3"
+   "taughtIn": "A2"
   },
   {
    "id": "chill1",
@@ -1827,7 +1043,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A3"
+   "taughtIn": "A2"
   },
   {
    "id": "gcawkr",
@@ -1841,7 +1057,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A3"
+   "taughtIn": "A2"
   },
   {
    "id": "candidate-number",
@@ -1859,7 +1075,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "linc00115",
@@ -1871,7 +1087,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "rp11-206l10-11",
@@ -1882,7 +1098,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "dnmbp-as1",
@@ -1895,7 +1111,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "ac104024-3",
@@ -1907,7 +1123,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "cecr7",
@@ -1919,7 +1135,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "mir23ahg",
@@ -1931,7 +1147,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "linc00910",
@@ -1943,7 +1159,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "tnfrsf10b",
@@ -1954,7 +1170,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "zbtb7a",
@@ -1965,7 +1181,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "A5"
+   "taughtIn": "A3"
   },
   {
    "id": "cell",
@@ -2030,7 +1246,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "cell-cycle",
@@ -2043,7 +1259,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "g1-phase",
@@ -2055,7 +1271,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "s-phase",
@@ -2066,7 +1282,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "g2-phase",
@@ -2078,7 +1294,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "mitosis",
@@ -2090,7 +1306,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "cell-cycle-checkpoint",
@@ -2103,7 +1319,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "doubling-time",
@@ -2115,7 +1331,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B2"
+   "taughtIn": "B1"
   },
   {
    "id": "apoptosis",
@@ -2131,7 +1347,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B3"
+   "taughtIn": "B1"
   },
   {
    "id": "necrosis",
@@ -2143,7 +1359,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B3"
+   "taughtIn": "B1"
   },
   {
    "id": "dna",
@@ -2154,7 +1370,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B4"
+   "taughtIn": "B2"
   },
   {
    "id": "nucleotide",
@@ -2167,7 +1383,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B4"
+   "taughtIn": "B2"
   },
   {
    "id": "base-pair",
@@ -2181,7 +1397,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B4"
+   "taughtIn": "B2"
   },
   {
    "id": "complementary-base-pairing",
@@ -2197,7 +1413,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B4"
+   "taughtIn": "B2"
   },
   {
    "id": "five-prime-three-prime",
@@ -2213,7 +1429,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B4"
+   "taughtIn": "B2"
   },
   {
    "id": "chromosome",
@@ -2230,7 +1446,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B5"
+   "taughtIn": "B2"
   },
   {
    "id": "gene",
@@ -2243,7 +1459,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B5"
+   "taughtIn": "B2"
   },
   {
    "id": "genome",
@@ -2257,7 +1473,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B5"
+   "taughtIn": "B2"
   },
   {
    "id": "locus",
@@ -2270,7 +1486,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B5"
+   "taughtIn": "B2"
   },
   {
    "id": "genome-assembly",
@@ -2287,7 +1503,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "hg19",
@@ -2298,7 +1514,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "hg38",
@@ -2309,7 +1525,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "genome-coordinates",
@@ -2322,7 +1538,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "kilobase",
@@ -2336,7 +1552,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "strand",
@@ -2354,7 +1570,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "antisense",
@@ -2366,7 +1582,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "upstream-downstream",
@@ -2379,7 +1595,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "liftover",
@@ -2390,7 +1606,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B6"
+   "taughtIn": "B3"
   },
   {
    "id": "transcription",
@@ -2404,7 +1620,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "rna",
@@ -2416,7 +1632,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "rna-polymerase",
@@ -2427,7 +1643,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "transcript",
@@ -2439,7 +1655,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "promoter",
@@ -2452,7 +1668,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "tss",
@@ -2467,7 +1683,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "bidirectional-promoter",
@@ -2480,7 +1696,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B7"
+   "taughtIn": "B4"
   },
   {
    "id": "exon",
@@ -2493,7 +1709,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B8"
+   "taughtIn": "B4"
   },
   {
    "id": "intron",
@@ -2506,7 +1722,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B8"
+   "taughtIn": "B4"
   },
   {
    "id": "splicing",
@@ -2519,7 +1735,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B8"
+   "taughtIn": "B4"
   },
   {
    "id": "isoform",
@@ -2532,7 +1748,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B8"
+   "taughtIn": "B4"
   },
   {
    "id": "readthrough-transcription",
@@ -2545,7 +1761,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B8"
+   "taughtIn": "B4"
   },
   {
    "id": "protein",
@@ -2557,7 +1773,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "mrna",
@@ -2570,7 +1786,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "translation",
@@ -2582,7 +1798,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "ribosome",
@@ -2595,7 +1811,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "orf",
@@ -2608,7 +1824,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "protein-coding-gene",
@@ -2623,7 +1839,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "protein-coding-potential",
@@ -2636,7 +1852,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B9"
+   "taughtIn": "B5"
   },
   {
    "id": "noncoding-rna",
@@ -2651,7 +1867,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B10"
+   "taughtIn": "B5"
   },
   {
    "id": "mirna",
@@ -2665,7 +1881,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B10"
+   "taughtIn": "B5"
   },
   {
    "id": "lncrna",
@@ -2681,7 +1897,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "cis-trans",
@@ -2697,7 +1913,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "malat1",
@@ -2708,7 +1924,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "pvt1",
@@ -2719,7 +1935,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "linc00680",
@@ -2730,7 +1946,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "linc00511",
@@ -2741,7 +1957,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "ezh2",
@@ -2752,7 +1968,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "gata6-lats2-p57",
@@ -2766,7 +1982,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "known-cancer-lncrnas",
@@ -2785,7 +2001,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "B11"
+   "taughtIn": "B6"
   },
   {
    "id": "subcellular-localization",
@@ -2800,7 +2016,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B12"
+   "taughtIn": "B6"
   },
   {
    "id": "gene-annotation",
@@ -2814,7 +2030,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "gencode",
@@ -2825,7 +2041,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "fantom-cat",
@@ -2838,7 +2054,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "bigtranscriptome",
@@ -2849,7 +2065,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "transcriptome-assembly",
@@ -2863,7 +2079,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "ensembl-id",
@@ -2877,7 +2093,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "gtf",
@@ -2890,7 +2106,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "est",
@@ -2904,7 +2120,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "ortholog",
@@ -2918,7 +2134,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B13"
+   "taughtIn": "B7"
   },
   {
    "id": "gene-expression",
@@ -2935,7 +2151,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B14"
+   "taughtIn": "B7"
   },
   {
    "id": "upregulation",
@@ -2949,7 +2165,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B14"
+   "taughtIn": "B7"
   },
   {
    "id": "downregulation",
@@ -2962,7 +2178,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B14"
+   "taughtIn": "B7"
   },
   {
    "id": "transcriptome",
@@ -2975,7 +2191,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B14"
+   "taughtIn": "B7"
   },
   {
    "id": "enhancer",
@@ -2988,7 +2204,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B15"
+   "taughtIn": "B8"
   },
   {
    "id": "transcription-factor",
@@ -3000,7 +2216,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B15"
+   "taughtIn": "B8"
   },
   {
    "id": "tfbs",
@@ -3013,7 +2229,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B15"
+   "taughtIn": "B8"
   },
   {
    "id": "chromatin",
@@ -3024,7 +2240,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B15"
+   "taughtIn": "B8"
   },
   {
    "id": "cis-regulatory-element",
@@ -3042,7 +2258,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B15"
+   "taughtIn": "B8"
   },
   {
    "id": "encode",
@@ -3053,7 +2269,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B15"
+   "taughtIn": "B8"
   },
   {
    "id": "cage",
@@ -3065,7 +2281,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": true,
-   "taughtIn": "B16"
+   "taughtIn": "B8"
   },
   {
    "id": "dnase-i-hypersensitivity",
@@ -3082,7 +2298,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B16"
+   "taughtIn": "B8"
   },
   {
    "id": "chromhmm",
@@ -3093,7 +2309,7 @@
    "cat": "biology",
    "kind": "background",
    "cs": false,
-   "taughtIn": "B16"
+   "taughtIn": "B8"
   },
   {
    "id": "cancer",
@@ -3136,7 +2352,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C2"
+   "taughtIn": "C1"
   },
   {
    "id": "phenotype",
@@ -3149,7 +2365,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C2"
+   "taughtIn": "C1"
   },
   {
    "id": "pleiotropic",
@@ -3162,7 +2378,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C2"
+   "taughtIn": "C1"
   },
   {
    "id": "oncogene",
@@ -3175,7 +2391,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C3"
+   "taughtIn": "C1"
   },
   {
    "id": "tumor-suppressor",
@@ -3189,7 +2405,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C3"
+   "taughtIn": "C1"
   },
   {
    "id": "mutation",
@@ -3204,7 +2420,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C4"
+   "taughtIn": "C2"
   },
   {
    "id": "copy-number-alteration",
@@ -3219,7 +2435,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C4"
+   "taughtIn": "C2"
   },
   {
    "id": "amplification",
@@ -3234,7 +2450,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C4"
+   "taughtIn": "C2"
   },
   {
    "id": "deletion",
@@ -3249,7 +2465,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C4"
+   "taughtIn": "C2"
   },
   {
    "id": "nsclc",
@@ -3262,7 +2478,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C5"
+   "taughtIn": "C2"
   },
   {
    "id": "lung-adenocarcinoma",
@@ -3275,7 +2491,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C5"
+   "taughtIn": "C2"
   },
   {
    "id": "large-cell-carcinoma",
@@ -3288,7 +2504,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C5"
+   "taughtIn": "C2"
   },
   {
    "id": "metastasis",
@@ -3302,7 +2518,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C5"
+   "taughtIn": "C2"
   },
   {
    "id": "invasion",
@@ -3316,7 +2532,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C5"
+   "taughtIn": "C2"
   },
   {
    "id": "migration",
@@ -3332,7 +2548,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C5"
+   "taughtIn": "C2"
   },
   {
    "id": "kras",
@@ -3348,7 +2564,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C6"
+   "taughtIn": "C2"
   },
   {
    "id": "egfr",
@@ -3360,7 +2576,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C6"
+   "taughtIn": "C2"
   },
   {
    "id": "activating-mutation",
@@ -3373,7 +2589,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C6"
+   "taughtIn": "C2"
   },
   {
    "id": "targeted-therapy",
@@ -3386,7 +2602,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C6"
+   "taughtIn": "C2"
   },
   {
    "id": "kras-g12c",
@@ -3400,7 +2616,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C6"
+   "taughtIn": "C2"
   },
   {
    "id": "chemotherapy",
@@ -3416,7 +2632,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C7"
+   "taughtIn": "C3"
   },
   {
    "id": "cisplatin",
@@ -3428,7 +2644,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C7"
+   "taughtIn": "C3"
   },
   {
    "id": "chemoresistance",
@@ -3443,7 +2659,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C7"
+   "taughtIn": "C3"
   },
   {
    "id": "inhibitory-concentration",
@@ -3458,7 +2674,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C7"
+   "taughtIn": "C3"
   },
   {
    "id": "dose-response",
@@ -3471,7 +2687,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C7"
+   "taughtIn": "C3"
   },
   {
    "id": "combination-therapy",
@@ -3483,7 +2699,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C7"
+   "taughtIn": "C3"
   },
   {
    "id": "cell-line",
@@ -3498,7 +2714,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "a549",
@@ -3509,7 +2725,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "h460",
@@ -3522,7 +2738,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "h441",
@@ -3534,7 +2750,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "hek293t",
@@ -3545,7 +2761,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "hbec3-kt",
@@ -3556,7 +2772,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "mrc5",
@@ -3570,7 +2786,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "ccd-16lu",
@@ -3583,7 +2799,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "immortalized-cells",
@@ -3596,7 +2812,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "primary-cells",
@@ -3608,7 +2824,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "non-transformed-cells",
@@ -3622,7 +2838,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "cell-background",
@@ -3640,7 +2856,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "str-profiling",
@@ -3653,7 +2869,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "mycoplasma",
@@ -3664,7 +2880,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "generalizability",
@@ -3679,7 +2895,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "fbs",
@@ -3692,7 +2908,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "culture-medium",
@@ -3710,7 +2926,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "pbs",
@@ -3722,7 +2938,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "trypsinization",
@@ -3735,7 +2951,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C8"
+   "taughtIn": "C4"
   },
   {
    "id": "monolayer-culture",
@@ -3752,7 +2968,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C9"
+   "taughtIn": "C5"
   },
   {
    "id": "three-d-culture",
@@ -3768,7 +2984,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C9"
+   "taughtIn": "C5"
   },
   {
    "id": "spheroid",
@@ -3781,7 +2997,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C9"
+   "taughtIn": "C5"
   },
   {
    "id": "organoid",
@@ -3795,7 +3011,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C9"
+   "taughtIn": "C5"
   },
   {
    "id": "matrigel",
@@ -3807,7 +3023,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C9"
+   "taughtIn": "C5"
   },
   {
    "id": "in-vitro-in-vivo",
@@ -3821,7 +3037,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C9"
+   "taughtIn": "C5"
   },
   {
    "id": "pdx",
@@ -3836,7 +3052,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C10"
+   "taughtIn": "C5"
   },
   {
    "id": "xenograft",
@@ -3848,7 +3064,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C10"
+   "taughtIn": "C5"
   },
   {
    "id": "immunodeficient-mouse",
@@ -3862,7 +3078,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C10"
+   "taughtIn": "C5"
   },
   {
    "id": "be874",
@@ -3873,7 +3089,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "C10"
+   "taughtIn": "C5"
   },
   {
    "id": "tcga",
@@ -3886,7 +3102,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "tanric",
@@ -3897,7 +3113,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "pcawg",
@@ -3909,7 +3125,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "ccle",
@@ -3920,7 +3136,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "cohort",
@@ -3932,7 +3148,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "geo",
@@ -3944,7 +3160,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": true,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "zenodo",
@@ -3955,7 +3171,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C11"
+   "taughtIn": "C6"
   },
   {
    "id": "adjacent-normal-tissue",
@@ -3970,7 +3186,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C12"
+   "taughtIn": "C6"
   },
   {
    "id": "survival-analysis",
@@ -3985,7 +3201,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C12"
+   "taughtIn": "C6"
   },
   {
    "id": "tumor-subtype",
@@ -4001,7 +3217,7 @@
    "cat": "cancer",
    "kind": "background",
    "cs": false,
-   "taughtIn": "C12"
+   "taughtIn": "C6"
   },
   {
    "id": "crispr",
@@ -4086,7 +3302,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D2"
+   "taughtIn": "D1"
   },
   {
    "id": "paired-guide-rna",
@@ -4101,7 +3317,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D2"
+   "taughtIn": "D1"
   },
   {
    "id": "decko",
@@ -4115,7 +3331,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D2"
+   "taughtIn": "D1"
   },
   {
    "id": "guide-efficiency",
@@ -4131,7 +3347,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D2"
+   "taughtIn": "D1"
   },
   {
    "id": "off-target-effect",
@@ -4147,7 +3363,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D2"
+   "taughtIn": "D1"
   },
   {
    "id": "crispri",
@@ -4160,7 +3376,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D3"
+   "taughtIn": "D1"
   },
   {
    "id": "cas13",
@@ -4171,7 +3387,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D3"
+   "taughtIn": "D1"
   },
   {
    "id": "plasmid",
@@ -4183,7 +3399,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D4"
+   "taughtIn": "D2"
   },
   {
    "id": "lentivirus",
@@ -4199,7 +3415,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D4"
+   "taughtIn": "D2"
   },
   {
    "id": "viral-titer",
@@ -4214,7 +3430,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D4"
+   "taughtIn": "D2"
   },
   {
    "id": "transduction",
@@ -4231,7 +3447,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "transfection",
@@ -4249,7 +3465,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "moi",
@@ -4261,7 +3477,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "antibiotic-selection",
@@ -4275,7 +3491,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "puromycin",
@@ -4286,7 +3502,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "blasticidin",
@@ -4297,7 +3513,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "polybrene",
@@ -4308,7 +3524,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "stable-cell-line",
@@ -4323,7 +3539,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D5"
+   "taughtIn": "D2"
   },
   {
    "id": "fluorescent-protein",
@@ -4337,7 +3553,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D6"
+   "taughtIn": "D2"
   },
   {
    "id": "gfp",
@@ -4349,7 +3565,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D6"
+   "taughtIn": "D2"
   },
   {
    "id": "mcherry",
@@ -4360,7 +3576,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D6"
+   "taughtIn": "D2"
   },
   {
    "id": "bfp",
@@ -4372,7 +3588,156 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D6"
+   "taughtIn": "D2"
+  },
+  {
+   "id": "fold-change",
+   "term": "fold change (FC, log2FC)",
+   "aliases": [
+    "fold change",
+    "fold-change",
+    "FC",
+    "log2FC",
+    "LFC",
+    "log2 fold change",
+    "log2-fold change",
+    "log2 fold-change",
+    "log2-transformed fold change",
+    "log2-Fold Change",
+    "log2 fold changes"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "log2",
+   "term": "logarithm (log2, log10)",
+   "aliases": [
+    "log2",
+    "log10",
+    "log2-transformed",
+    "log-scale",
+    "logarithmic",
+    "logarithm"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "replicate",
+   "term": "replicate (biological vs technical)",
+   "aliases": [
+    "replicate",
+    "replicates",
+    "biological replicate",
+    "biological replicates",
+    "technical replicates",
+    "biologically independent replicates",
+    "independent replicates",
+    "independent biological replicates"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "mean",
+   "term": "mean (average)",
+   "aliases": [
+    "arithmetic mean",
+    "mean ± SD",
+    "mean expression",
+    "mean log2 fold change",
+    "geometric median"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "median",
+   "term": "median",
+   "aliases": [
+    "median",
+    "medians"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "standard-deviation",
+   "term": "standard deviation (SD)",
+   "aliases": [
+    "SD",
+    "standard deviation"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "error-bars",
+   "term": "error bars",
+   "aliases": [
+    "error bar",
+    "error bars"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "sample-size",
+   "term": "sample size (n)",
+   "aliases": [
+    "sample size",
+    "n = 3",
+    "n=3"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "percentile",
+   "term": "percentile",
+   "aliases": [
+    "percentile",
+    "percentiles",
+    "90th to 10th percentile"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "graphpad-prism",
+   "term": "GraphPad Prism and R",
+   "aliases": [
+    "Graphpad Prism",
+    "GraphPad Prism",
+    "R Statistical Software",
+    "ggplot2",
+    "R package",
+    "R packages",
+    "GraphPad Prism and R"
+   ],
+   "cat": "stats",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "E1"
   },
   {
    "id": "flow-cytometry",
@@ -4386,7 +3751,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D7"
+   "taughtIn": "D3"
   },
   {
    "id": "facs",
@@ -4401,7 +3766,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D7"
+   "taughtIn": "D3"
   },
   {
    "id": "gating",
@@ -4414,7 +3779,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D7"
+   "taughtIn": "D3"
   },
   {
    "id": "flowjo",
@@ -4425,7 +3790,7 @@
    "cat": "lab",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D7"
+   "taughtIn": "D3"
   },
   {
    "id": "pooled-screen",
@@ -4440,7 +3805,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D8"
+   "taughtIn": "D3"
   },
   {
    "id": "arrayed-screen",
@@ -4454,7 +3819,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D8"
+   "taughtIn": "D3"
   },
   {
    "id": "crispr-library",
@@ -4469,7 +3834,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D8"
+   "taughtIn": "D3"
   },
   {
    "id": "screen",
@@ -4483,7 +3848,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D8"
+   "taughtIn": "D3"
   },
   {
    "id": "hit",
@@ -4497,7 +3862,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D8"
+   "taughtIn": "D3"
   },
   {
    "id": "candidate",
@@ -4511,7 +3876,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D8"
+   "taughtIn": "D3"
   },
   {
    "id": "libdecko-nsclc1",
@@ -4523,7 +3888,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D9"
+   "taughtIn": "D3"
   },
   {
    "id": "library-depth",
@@ -4538,7 +3903,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D9"
+   "taughtIn": "D3"
   },
   {
    "id": "coverage",
@@ -4550,7 +3915,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D9"
+   "taughtIn": "D3"
   },
   {
    "id": "cloning",
@@ -4565,7 +3930,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D9"
+   "taughtIn": "D3"
   },
   {
    "id": "crispeta",
@@ -4576,7 +3941,7 @@
    "cat": "screen",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D9"
+   "taughtIn": "D3"
   },
   {
    "id": "gini-coefficient",
@@ -4592,7 +3957,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D9"
+   "taughtIn": "D3"
   },
   {
    "id": "genomic-dna",
@@ -4604,7 +3969,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "pcr",
@@ -4618,7 +3983,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "primer",
@@ -4630,7 +3995,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "ngs",
@@ -4644,7 +4009,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "sequencing-read",
@@ -4660,7 +4025,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "time-point",
@@ -4675,7 +4040,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "caspr",
@@ -4686,7 +4051,7 @@
    "cat": "seq",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "mageck",
@@ -4698,7 +4063,7 @@
    "cat": "seq",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "guidescan",
@@ -4709,7 +4074,7 @@
    "cat": "seq",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "sanger-sequencing",
@@ -4722,7 +4087,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "batch-effect",
@@ -4735,7 +4100,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "recombination-events",
@@ -4748,7 +4113,7 @@
    "cat": "seq",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D10"
+   "taughtIn": "D4"
   },
   {
    "id": "dropout-screen",
@@ -4765,7 +4130,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D11"
+   "taughtIn": "D4"
   },
   {
    "id": "positive-selection-screen",
@@ -4781,7 +4146,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D11"
+   "taughtIn": "D4"
   },
   {
    "id": "depletion",
@@ -4795,7 +4160,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D11"
+   "taughtIn": "D4"
   },
   {
    "id": "cfse",
@@ -4808,7 +4173,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D12"
+   "taughtIn": "D5"
   },
   {
    "id": "cisplatin-survival-screen",
@@ -4821,7 +4186,7 @@
    "cat": "screen",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D13"
+   "taughtIn": "D5"
   },
   {
    "id": "cisplatin-death-screen",
@@ -4835,7 +4200,7 @@
    "cat": "screen",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D13"
+   "taughtIn": "D5"
   },
   {
    "id": "transwell-assay",
@@ -4853,7 +4218,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D14"
+   "taughtIn": "D5"
   },
   {
    "id": "migration-screen",
@@ -4866,7 +4231,7 @@
    "cat": "screen",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D14"
+   "taughtIn": "D5"
   },
   {
    "id": "neutral-control",
@@ -4880,7 +4245,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "positive-control",
@@ -4894,7 +4259,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "negative-control",
@@ -4907,7 +4272,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "aavs1",
@@ -4921,7 +4286,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "rps5",
@@ -4932,7 +4297,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "named-control-genes",
@@ -4960,7 +4325,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "essential-gene",
@@ -4974,7 +4339,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "intergenic-region",
@@ -4988,7 +4353,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "orf-targeting",
@@ -5002,7 +4367,7 @@
    "cat": "screen",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D15"
+   "taughtIn": "D5"
   },
   {
    "id": "aso",
@@ -5016,7 +4381,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D16"
+   "taughtIn": "D6"
   },
   {
    "id": "knockdown",
@@ -5029,7 +4394,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D16"
+   "taughtIn": "D6"
   },
   {
    "id": "rnase-h",
@@ -5042,7 +4407,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D16"
+   "taughtIn": "D6"
   },
   {
    "id": "lna",
@@ -5055,7 +4420,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D16"
+   "taughtIn": "D6"
   },
   {
    "id": "rna-therapeutics",
@@ -5068,7 +4433,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D16"
+   "taughtIn": "D6"
   },
   {
    "id": "shrna",
@@ -5080,7 +4445,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D16"
+   "taughtIn": "D6"
   },
   {
    "id": "non-targeting-control",
@@ -5097,7 +4462,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D17"
+   "taughtIn": "D6"
   },
   {
    "id": "knockdown-efficiency",
@@ -5110,7 +4475,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D17"
+   "taughtIn": "D6"
   },
   {
    "id": "aso-cocktail",
@@ -5126,7 +4491,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D17"
+   "taughtIn": "D6"
   },
   {
    "id": "orthogonal-validation",
@@ -5140,7 +4505,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D17"
+   "taughtIn": "D6"
   },
   {
    "id": "on-target-effect",
@@ -5155,7 +4520,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D17"
+   "taughtIn": "D6"
   },
   {
    "id": "toxicity",
@@ -5169,7 +4534,7 @@
    "cat": "aso",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D17"
+   "taughtIn": "D6"
   },
   {
    "id": "gel-electrophoresis",
@@ -5182,7 +4547,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D18"
+   "taughtIn": "D7"
   },
   {
    "id": "amplicon",
@@ -5195,7 +4560,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D18"
+   "taughtIn": "D7"
   },
   {
    "id": "rt-qpcr",
@@ -5211,7 +4576,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D19"
+   "taughtIn": "D7"
   },
   {
    "id": "cdna",
@@ -5223,7 +4588,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D19"
+   "taughtIn": "D7"
   },
   {
    "id": "housekeeping-gene",
@@ -5238,7 +4603,7 @@
    "cat": "seq",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D19"
+   "taughtIn": "D7"
   },
   {
    "id": "gapdh",
@@ -5249,7 +4614,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D19"
+   "taughtIn": "D7"
   },
   {
    "id": "hprt1",
@@ -5260,7 +4625,7 @@
    "cat": "paper",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D19"
+   "taughtIn": "D7"
   },
   {
    "id": "competition-assay",
@@ -5274,7 +4639,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D20"
+   "taughtIn": "D7"
   },
   {
    "id": "cell-viability",
@@ -5288,7 +4653,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D21"
+   "taughtIn": "D8"
   },
   {
    "id": "celltiter-glo",
@@ -5303,7 +4668,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D21"
+   "taughtIn": "D8"
   },
   {
    "id": "annexin-v",
@@ -5318,7 +4683,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D22"
+   "taughtIn": "D8"
   },
   {
    "id": "dapi",
@@ -5329,7 +4694,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D23"
+   "taughtIn": "D8"
   },
   {
    "id": "ki-67",
@@ -5340,7 +4705,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D23"
+   "taughtIn": "D8"
   },
   {
    "id": "cell-cycle-assay",
@@ -5353,7 +4718,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D23"
+   "taughtIn": "D8"
   },
   {
    "id": "djf-model",
@@ -5367,7 +4732,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D23"
+   "taughtIn": "D8"
   },
   {
    "id": "crystal-violet",
@@ -5379,7 +4744,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D24"
+   "taughtIn": "D8"
   },
   {
    "id": "optical-density",
@@ -5392,7 +4757,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D24"
+   "taughtIn": "D8"
   },
   {
    "id": "fish",
@@ -5407,7 +4772,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": true,
-   "taughtIn": "D25"
+   "taughtIn": "D9"
   },
   {
    "id": "probe",
@@ -5421,7 +4786,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D25"
+   "taughtIn": "D9"
   },
   {
    "id": "confocal-microscopy",
@@ -5433,7 +4798,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D25"
+   "taughtIn": "D9"
   },
   {
    "id": "cellprofiler",
@@ -5446,7 +4811,7 @@
    "cat": "lab",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "D25"
+   "taughtIn": "D9"
   },
   {
    "id": "cell-fractionation",
@@ -5460,7 +4825,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D26"
+   "taughtIn": "D9"
   },
   {
    "id": "overexpression-experiment",
@@ -5476,7 +4841,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D27"
+   "taughtIn": "D9"
   },
   {
    "id": "rescue-experiment",
@@ -5491,536 +4856,7 @@
    "cat": "lab",
    "kind": "background",
    "cs": false,
-   "taughtIn": "D27"
-  },
-  {
-   "id": "rna-seq",
-   "term": "RNA-seq",
-   "aliases": [
-    "RNA-seq",
-    "RNA-sequencing",
-    "RNA sequencing",
-    "RNA-Seq",
-    "RNAseq"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D28"
-  },
-  {
-   "id": "deg",
-   "term": "differentially expressed gene (DEG)",
-   "aliases": [
-    "DEG",
-    "DEGs",
-    "differentially expressed genes",
-    "differential expression",
-    "differentially expressed",
-    "differentially expressed gene"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "D28"
-  },
-  {
-   "id": "transcript-quantification",
-   "term": "transcript quantification (Kallisto, Sleuth)",
-   "aliases": [
-    "quantification",
-    "transcript quantification",
-    "Kallisto",
-    "Sleuth",
-    "bootstraps"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D28"
-  },
-  {
-   "id": "rsem",
-   "term": "RSEM",
-   "aliases": [
-    "RSEM"
-   ],
-   "cat": "seq",
-   "kind": "paper",
-   "cs": false,
-   "taughtIn": "D28"
-  },
-  {
-   "id": "pathway-enrichment",
-   "term": "pathway enrichment",
-   "aliases": [
-    "enrichment analysis",
-    "enrichment",
-    "enriched KEGG terms",
-    "gene enrichment analysis",
-    "enriched terms",
-    "pathway enrichment"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D29"
-  },
-  {
-   "id": "kegg",
-   "term": "KEGG",
-   "aliases": [
-    "KEGG",
-    "KEGG pathways",
-    "KEGG terms"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "D29"
-  },
-  {
-   "id": "msigdb",
-   "term": "MSigDB",
-   "aliases": [
-    "MSigDB",
-    "Molecular Signatures Database"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "D29"
-  },
-  {
-   "id": "gsea",
-   "term": "GSEA",
-   "aliases": [
-    "GSEA",
-    "gene set enrichment analysis",
-    "enrichment score",
-    "enrichment scores"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "D29"
-  },
-  {
-   "id": "enrichr",
-   "term": "Enrichr (enrichR)",
-   "aliases": [
-    "enrichR",
-    "Enrichr"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D29"
-  },
-  {
-   "id": "signaling-pathway",
-   "term": "signaling pathway",
-   "aliases": [
-    "pathway",
-    "pathways",
-    "signaling",
-    "signalling",
-    "signaling pathway"
-   ],
-   "cat": "seq",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "p53-pathway",
-   "term": "p53 pathway",
-   "aliases": [
-    "p53",
-    "p53 pathway",
-    "p53 signaling pathway",
-    "p53 Pathway"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "mapk-pathway",
-   "term": "MAPK pathway",
-   "aliases": [
-    "MAPK",
-    "MAPK signaling pathway",
-    "MAPK pathway"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "pi3k-akt-pathway",
-   "term": "PI3K–Akt pathway",
-   "aliases": [
-    "PI3K-Akt",
-    "PI3K-Akt signaling pathway",
-    "PI3K/AKT/mTOR",
-    "PI3K–Akt pathway"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "mtorc1",
-   "term": "mTORC1 / mTOR",
-   "aliases": [
-    "mTORC1",
-    "mTORC1 Signaling",
-    "mTOR",
-    "mTORC1 / mTOR"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "vegf-pathway",
-   "term": "VEGF signaling",
-   "aliases": [
-    "VEGF",
-    "VEGF signaling pathway",
-    "VEGF signaling"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "glycolysis",
-   "term": "glycolysis",
-   "aliases": [
-    "glycolysis",
-    "Glycolysis"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "emt",
-   "term": "epithelial–mesenchymal transition (EMT)",
-   "aliases": [
-    "EMT",
-    "epithelial to mesenchymal transition",
-    "Epithelial Mesenchymal Transition",
-    "epithelial–mesenchymal transition"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "nfkb-tnf",
-   "term": "TNF-alpha signaling via NF-kB",
-   "aliases": [
-    "TNF-alpha",
-    "TNF-alpha Signaling via NF-kB",
-    "NF-kB"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "interferon-response",
-   "term": "interferon alpha response",
-   "aliases": [
-    "Interferon Alpha Response"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "hypoxia",
-   "term": "hypoxia",
-   "aliases": [
-    "hypoxia",
-    "Hypoxia"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "estrogen-response",
-   "term": "estrogen response",
-   "aliases": [
-    "Estrogen Response Early",
-    "Estrogen Response Late",
-    "estrogen response"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "cholesterol-homeostasis",
-   "term": "cholesterol homeostasis",
-   "aliases": [
-    "Cholesterol Homeostasis",
-    "cholesterol homeostasis"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "mitotic-spindle",
-   "term": "mitotic spindle",
-   "aliases": [
-    "Mitotic Spindle"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "apical-junction",
-   "term": "apical junction",
-   "aliases": [
-    "Apical Junction"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "proteoglycans-in-cancer",
-   "term": "proteoglycans in cancer",
-   "aliases": [
-    "Proteoglycans in cancer"
-   ],
-   "cat": "cancer",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "D30"
-  },
-  {
-   "id": "normalization",
-   "term": "normalization",
-   "aliases": [
-    "normalised",
-    "normalized",
-    "normalizing",
-    "normalization",
-    "normalisation"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E1"
-  },
-  {
-   "id": "cpm",
-   "term": "CPM (counts per million)",
-   "aliases": [
-    "CPM",
-    "cpm",
-    "counts per million"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "E1"
-  },
-  {
-   "id": "tpm",
-   "term": "TPM (transcripts per million)",
-   "aliases": [
-    "TPM",
-    "transcripts per million"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "E1"
-  },
-  {
-   "id": "fpkm",
-   "term": "FPKM",
-   "aliases": [
-    "FPKM",
-    "log10(FPKM)",
-    "Log2 (FPKM + 1)"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "E1"
-  },
-  {
-   "id": "fold-change",
-   "term": "fold change (FC, log2FC)",
-   "aliases": [
-    "fold change",
-    "fold-change",
-    "FC",
-    "log2FC",
-    "LFC",
-    "log2 fold change",
-    "log2-fold change",
-    "log2 fold-change",
-    "log2-transformed fold change",
-    "log2-Fold Change",
-    "log2 fold changes"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E2"
-  },
-  {
-   "id": "log2",
-   "term": "logarithm (log2, log10)",
-   "aliases": [
-    "log2",
-    "log10",
-    "log2-transformed",
-    "log-scale",
-    "logarithmic",
-    "logarithm"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E2"
-  },
-  {
-   "id": "replicate",
-   "term": "replicate (biological vs technical)",
-   "aliases": [
-    "replicate",
-    "replicates",
-    "biological replicate",
-    "biological replicates",
-    "technical replicates",
-    "biologically independent replicates",
-    "independent replicates",
-    "independent biological replicates"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "mean",
-   "term": "mean (average)",
-   "aliases": [
-    "arithmetic mean",
-    "mean ± SD",
-    "mean expression",
-    "mean log2 fold change",
-    "geometric median"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "median",
-   "term": "median",
-   "aliases": [
-    "median",
-    "medians"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "standard-deviation",
-   "term": "standard deviation (SD)",
-   "aliases": [
-    "SD",
-    "standard deviation"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": true,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "error-bars",
-   "term": "error bars",
-   "aliases": [
-    "error bar",
-    "error bars"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "sample-size",
-   "term": "sample size (n)",
-   "aliases": [
-    "sample size",
-    "n = 3",
-    "n=3"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "percentile",
-   "term": "percentile",
-   "aliases": [
-    "percentile",
-    "percentiles",
-    "90th to 10th percentile"
-   ],
-   "cat": "stats",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "E3"
-  },
-  {
-   "id": "graphpad-prism",
-   "term": "GraphPad Prism and R",
-   "aliases": [
-    "Graphpad Prism",
-    "GraphPad Prism",
-    "R Statistical Software",
-    "ggplot2",
-    "R package",
-    "R packages",
-    "GraphPad Prism and R"
-   ],
-   "cat": "stats",
-   "kind": "paper",
-   "cs": false,
-   "taughtIn": "E3"
+   "taughtIn": "D9"
   },
   {
    "id": "correlation",
@@ -6033,7 +4869,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E4"
+   "taughtIn": "E2"
   },
   {
    "id": "pearson-correlation",
@@ -6046,7 +4882,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E4"
+   "taughtIn": "E2"
   },
   {
    "id": "regression-line",
@@ -6060,7 +4896,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E4"
+   "taughtIn": "E2"
   },
   {
    "id": "anti-correlation",
@@ -6073,7 +4909,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E4"
+   "taughtIn": "E2"
   },
   {
    "id": "z-score",
@@ -6089,7 +4925,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E5"
+   "taughtIn": "E2"
   },
   {
    "id": "p-value",
@@ -6107,7 +4943,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E6"
+   "taughtIn": "E2"
   },
   {
    "id": "null-hypothesis",
@@ -6118,7 +4954,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E6"
+   "taughtIn": "E2"
   },
   {
    "id": "statistical-significance",
@@ -6133,7 +4969,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E6"
+   "taughtIn": "E2"
   },
   {
    "id": "ns",
@@ -6145,7 +4981,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": true,
-   "taughtIn": "E6"
+   "taughtIn": "E2"
   },
   {
    "id": "scientific-notation",
@@ -6159,7 +4995,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E6"
+   "taughtIn": "E2"
   },
   {
    "id": "one-tailed-test",
@@ -6173,7 +5009,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E7"
+   "taughtIn": "E3"
   },
   {
    "id": "two-tailed-test",
@@ -6187,7 +5023,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E7"
+   "taughtIn": "E3"
   },
   {
    "id": "t-test",
@@ -6203,7 +5039,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E7"
+   "taughtIn": "E3"
   },
   {
    "id": "welch-t-test",
@@ -6218,7 +5054,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E7"
+   "taughtIn": "E3"
   },
   {
    "id": "non-parametric-test",
@@ -6232,7 +5068,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E8"
+   "taughtIn": "E3"
   },
   {
    "id": "wilcoxon-test",
@@ -6245,7 +5081,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E8"
+   "taughtIn": "E3"
   },
   {
    "id": "mann-whitney-test",
@@ -6259,7 +5095,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E8"
+   "taughtIn": "E3"
   },
   {
    "id": "kruskal-wallis-test",
@@ -6273,7 +5109,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E8"
+   "taughtIn": "E3"
   },
   {
    "id": "fishers-exact-test",
@@ -6288,7 +5124,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E9"
+   "taughtIn": "E3"
   },
   {
    "id": "hypergeometric-test",
@@ -6300,7 +5136,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E9"
+   "taughtIn": "E3"
   },
   {
    "id": "multiple-testing",
@@ -6313,7 +5149,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E10"
+   "taughtIn": "E4"
   },
   {
    "id": "fdr",
@@ -6329,7 +5165,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": true,
-   "taughtIn": "E10"
+   "taughtIn": "E4"
   },
   {
    "id": "benjamini-hochberg",
@@ -6343,7 +5179,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E10"
+   "taughtIn": "E4"
   },
   {
    "id": "false-positive",
@@ -6358,7 +5194,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E10"
+   "taughtIn": "E4"
   },
   {
    "id": "false-negative",
@@ -6371,7 +5207,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E10"
+   "taughtIn": "E4"
   },
   {
    "id": "q-value",
@@ -6388,7 +5224,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E10"
+   "taughtIn": "E4"
   },
   {
    "id": "roc-curve",
@@ -6404,7 +5240,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": true,
-   "taughtIn": "E11"
+   "taughtIn": "E4"
   },
   {
    "id": "auc",
@@ -6417,7 +5253,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": true,
-   "taughtIn": "E11"
+   "taughtIn": "E4"
   },
   {
    "id": "true-positive-rate",
@@ -6432,7 +5268,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E11"
+   "taughtIn": "E4"
   },
   {
    "id": "false-positive-rate",
@@ -6447,7 +5283,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E11"
+   "taughtIn": "E4"
   },
   {
    "id": "tpp",
@@ -6463,7 +5299,7 @@
    "cat": "stats",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "E12"
+   "taughtIn": "E5"
   },
   {
    "id": "robust-rank-aggregation",
@@ -6477,7 +5313,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E12"
+   "taughtIn": "E5"
   },
   {
    "id": "empirical-browns-method",
@@ -6492,7 +5328,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E12"
+   "taughtIn": "E5"
   },
   {
    "id": "harmonic-mean-p-value",
@@ -6506,7 +5342,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E12"
+   "taughtIn": "E5"
   },
   {
    "id": "effect-size",
@@ -6518,7 +5354,387 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "E12"
+   "taughtIn": "E5"
+  },
+  {
+   "id": "rna-seq",
+   "term": "RNA-seq",
+   "aliases": [
+    "RNA-seq",
+    "RNA-sequencing",
+    "RNA sequencing",
+    "RNA-Seq",
+    "RNAseq"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "deg",
+   "term": "differentially expressed gene (DEG)",
+   "aliases": [
+    "DEG",
+    "DEGs",
+    "differentially expressed genes",
+    "differential expression",
+    "differentially expressed",
+    "differentially expressed gene"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "transcript-quantification",
+   "term": "transcript quantification (Kallisto, Sleuth)",
+   "aliases": [
+    "quantification",
+    "transcript quantification",
+    "Kallisto",
+    "Sleuth",
+    "bootstraps"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "rsem",
+   "term": "RSEM",
+   "aliases": [
+    "RSEM"
+   ],
+   "cat": "seq",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "normalization",
+   "term": "normalization",
+   "aliases": [
+    "normalised",
+    "normalized",
+    "normalizing",
+    "normalization",
+    "normalisation"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "cpm",
+   "term": "CPM (counts per million)",
+   "aliases": [
+    "CPM",
+    "cpm",
+    "counts per million"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "tpm",
+   "term": "TPM (transcripts per million)",
+   "aliases": [
+    "TPM",
+    "transcripts per million"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "fpkm",
+   "term": "FPKM",
+   "aliases": [
+    "FPKM",
+    "log10(FPKM)",
+    "Log2 (FPKM + 1)"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "pathway-enrichment",
+   "term": "pathway enrichment",
+   "aliases": [
+    "enrichment analysis",
+    "enrichment",
+    "enriched KEGG terms",
+    "gene enrichment analysis",
+    "enriched terms",
+    "pathway enrichment"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "kegg",
+   "term": "KEGG",
+   "aliases": [
+    "KEGG",
+    "KEGG pathways",
+    "KEGG terms"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "msigdb",
+   "term": "MSigDB",
+   "aliases": [
+    "MSigDB",
+    "Molecular Signatures Database"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "gsea",
+   "term": "GSEA",
+   "aliases": [
+    "GSEA",
+    "gene set enrichment analysis",
+    "enrichment score",
+    "enrichment scores"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "enrichr",
+   "term": "Enrichr (enrichR)",
+   "aliases": [
+    "enrichR",
+    "Enrichr"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "signaling-pathway",
+   "term": "signaling pathway",
+   "aliases": [
+    "pathway",
+    "pathways",
+    "signaling",
+    "signalling",
+    "signaling pathway"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "p53-pathway",
+   "term": "p53 pathway",
+   "aliases": [
+    "p53",
+    "p53 pathway",
+    "p53 signaling pathway",
+    "p53 Pathway"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "mapk-pathway",
+   "term": "MAPK pathway",
+   "aliases": [
+    "MAPK",
+    "MAPK signaling pathway",
+    "MAPK pathway"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "pi3k-akt-pathway",
+   "term": "PI3K–Akt pathway",
+   "aliases": [
+    "PI3K-Akt",
+    "PI3K-Akt signaling pathway",
+    "PI3K/AKT/mTOR",
+    "PI3K–Akt pathway"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "mtorc1",
+   "term": "mTORC1 / mTOR",
+   "aliases": [
+    "mTORC1",
+    "mTORC1 Signaling",
+    "mTOR",
+    "mTORC1 / mTOR"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "vegf-pathway",
+   "term": "VEGF signaling",
+   "aliases": [
+    "VEGF",
+    "VEGF signaling pathway",
+    "VEGF signaling"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "glycolysis",
+   "term": "glycolysis",
+   "aliases": [
+    "glycolysis",
+    "Glycolysis"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "emt",
+   "term": "epithelial–mesenchymal transition (EMT)",
+   "aliases": [
+    "EMT",
+    "epithelial to mesenchymal transition",
+    "Epithelial Mesenchymal Transition",
+    "epithelial–mesenchymal transition"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "nfkb-tnf",
+   "term": "TNF-alpha signaling via NF-kB",
+   "aliases": [
+    "TNF-alpha",
+    "TNF-alpha Signaling via NF-kB",
+    "NF-kB"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "interferon-response",
+   "term": "interferon alpha response",
+   "aliases": [
+    "Interferon Alpha Response"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "hypoxia",
+   "term": "hypoxia",
+   "aliases": [
+    "hypoxia",
+    "Hypoxia"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "estrogen-response",
+   "term": "estrogen response",
+   "aliases": [
+    "Estrogen Response Early",
+    "Estrogen Response Late",
+    "estrogen response"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "cholesterol-homeostasis",
+   "term": "cholesterol homeostasis",
+   "aliases": [
+    "Cholesterol Homeostasis",
+    "cholesterol homeostasis"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "mitotic-spindle",
+   "term": "mitotic spindle",
+   "aliases": [
+    "Mitotic Spindle"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "apical-junction",
+   "term": "apical junction",
+   "aliases": [
+    "Apical Junction"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "proteoglycans-in-cancer",
+   "term": "proteoglycans in cancer",
+   "aliases": [
+    "Proteoglycans in cancer"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
   },
   {
    "id": "bar-chart",
@@ -6546,7 +5762,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F2"
+   "taughtIn": "F1"
   },
   {
    "id": "violin-plot",
@@ -6560,7 +5776,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F2"
+   "taughtIn": "F1"
   },
   {
    "id": "scatter-plot",
@@ -6573,48 +5789,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F3"
-  },
-  {
-   "id": "contour-plot",
-   "term": "contour plot",
-   "aliases": [
-    "contour",
-    "contours",
-    "contour plot",
-    "density plot"
-   ],
-   "cat": "figures",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "F4"
-  },
-  {
-   "id": "volcano-plot",
-   "term": "volcano plot",
-   "aliases": [
-    "volcano",
-    "volcano plot",
-    "volcano-style",
-    "-Log10 FDR"
-   ],
-   "cat": "figures",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "F5"
-  },
-  {
-   "id": "heatmap",
-   "term": "heatmap",
-   "aliases": [
-    "heatmap",
-    "heat map",
-    "heatmaps"
-   ],
-   "cat": "figures",
-   "kind": "background",
-   "cs": false,
-   "taughtIn": "F6"
+   "taughtIn": "F1"
   },
   {
    "id": "time-course",
@@ -6628,7 +5803,48 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F7"
+   "taughtIn": "F1"
+  },
+  {
+   "id": "contour-plot",
+   "term": "contour plot",
+   "aliases": [
+    "contour",
+    "contours",
+    "contour plot",
+    "density plot"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F2"
+  },
+  {
+   "id": "volcano-plot",
+   "term": "volcano plot",
+   "aliases": [
+    "volcano",
+    "volcano plot",
+    "volcano-style",
+    "-Log10 FDR"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F2"
+  },
+  {
+   "id": "heatmap",
+   "term": "heatmap",
+   "aliases": [
+    "heatmap",
+    "heat map",
+    "heatmaps"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F2"
   },
   {
    "id": "ternary-plot",
@@ -6640,7 +5856,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F9"
+   "taughtIn": "F2"
   },
   {
    "id": "petal-plot",
@@ -6653,7 +5869,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F9"
+   "taughtIn": "F2"
   },
   {
    "id": "upset-plot",
@@ -6666,7 +5882,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F10"
+   "taughtIn": "F2"
   },
   {
    "id": "stacked-bar",
@@ -6679,7 +5895,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F11"
+   "taughtIn": "F2"
   },
   {
    "id": "genome-browser-track",
@@ -6694,7 +5910,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "conservation-track",
@@ -6708,7 +5924,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "ridl",
@@ -6721,7 +5937,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": true,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "conserved-rna-structure",
@@ -6736,7 +5952,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "repeat-element",
@@ -6753,7 +5969,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "cpg-island",
@@ -6766,7 +5982,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": false,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "eztracks",
@@ -6780,7 +5996,7 @@
    "cat": "figures",
    "kind": "paper",
    "cs": false,
-   "taughtIn": "F12"
+   "taughtIn": "F3"
   },
   {
    "id": "fsc-a",
@@ -6793,7 +6009,7 @@
    "cat": "figures",
    "kind": "background",
    "cs": true,
-   "taughtIn": "F14"
+   "taughtIn": "F3"
   },
   {
    "id": "conflict-of-interest",
@@ -6807,7 +6023,7 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "H7"
+   "taughtIn": "H3"
   },
   {
    "id": "patent-application",
@@ -6820,15 +6036,13 @@
    "cat": "stats",
    "kind": "background",
    "cs": false,
-   "taughtIn": "H7"
+   "taughtIn": "H3"
   }
  ],
  "path": [
   "A1",
   "A2",
   "A3",
-  "A4",
-  "A5",
   "B1",
   "B2",
   "B3",
@@ -6837,97 +6051,39 @@
   "B6",
   "B7",
   "B8",
-  "B9",
-  "B10",
-  "B11",
-  "B12",
-  "B13",
-  "B14",
-  "B15",
-  "B16",
   "C1",
   "C2",
   "C3",
   "C4",
   "C5",
   "C6",
-  "C7",
-  "C8",
-  "C9",
-  "C10",
-  "C11",
-  "C12",
   "D1",
   "D2",
+  "E1",
   "D3",
   "D4",
   "D5",
   "D6",
   "D7",
-  "E2",
-  "E3",
   "D8",
   "D9",
-  "D10",
-  "E1",
-  "D11",
-  "D12",
-  "D13",
-  "D14",
-  "D15",
-  "D16",
-  "D17",
+  "E2",
+  "E3",
   "E4",
   "E5",
-  "D18",
-  "D19",
-  "D20",
-  "D21",
-  "D22",
-  "D23",
-  "D24",
-  "D25",
-  "D26",
-  "D27",
-  "D28",
-  "E6",
-  "E7",
-  "E8",
-  "E9",
-  "E10",
-  "E11",
-  "E12",
-  "E13",
-  "D29",
-  "D30",
+  "D10",
+  "D11",
   "F1",
   "F2",
   "F3",
   "F4",
-  "F5",
-  "F6",
-  "F7",
-  "F8",
-  "F9",
-  "F10",
-  "F11",
-  "F12",
-  "F13",
-  "F14",
-  "F15",
-  "F16",
   "G-main",
   "G-back",
   "G-methods",
   "H1",
   "H2",
   "H3",
-  "H4",
-  "H5",
-  "H6",
-  "H7",
-  "H8",
-  "H9"
+  "H4"
  ],
  "g": {
   "main": [

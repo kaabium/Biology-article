@@ -6,9 +6,12 @@ ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 import track_a, track_b, track_c, track_d, track_efh
 
-LESSONS = track_a.LESSONS + track_b.LESSONS + track_c.LESSONS + track_d.LESSONS + track_efh.LESSONS
+OLD_LESSONS = track_a.LESSONS + track_b.LESSONS + track_c.LESSONS + track_d.LESSONS + track_efh.LESSONS
+assert len({l['id'] for l in OLD_LESSONS}) == len(OLD_LESSONS), 'duplicate lesson id'
+import merge  # lean curriculum: the fine-grained lessons are merged into ~41 lessons (see merge.py)
+LESSONS, OLD2NEW = merge.apply(OLD_LESSONS)
 BYID = {l['id']: l for l in LESSONS}
-assert len(BYID) == len(LESSONS), 'duplicate lesson id'
+json.dump(OLD2NEW, open(os.path.join(HERE, 'merge_map.json'), 'w'), indent=1)
 
 TRACKS = [
  {'id': 'A', 'title': 'The paper in 5 minutes', 'desc': 'The whole study as a simple story, in plain words only, with a one-page map and the 831 → 80 → 9 → 5 → 2 funnel.'},
@@ -22,10 +25,7 @@ TRACKS = [
 ]
 
 # ---- recommended path (prerequisite order, tracks interleaved only where a later track is needed)
-PATH = (['A1', 'A2', 'A3', 'A4', 'A5'] + [f'B{i}' for i in range(1, 17)] + [f'C{i}' for i in range(1, 13)] +
-        [f'D{i}' for i in range(1, 8)] + ['E2', 'E3'] + ['D8', 'D9', 'D10', 'E1'] + [f'D{i}' for i in range(11, 18)] + ['E4', 'E5'] +
-        [f'D{i}' for i in range(18, 29)] + [f'E{i}' for i in range(6, 14)] + ['D29', 'D30'] +
-        [f'F{i}' for i in range(1, 17)] + ['G-main', 'G-back', 'G-methods'] + [f'H{i}' for i in range(1, 10)])
+PATH = merge.PATH
 assert sorted(x for x in PATH if x[0] != 'G') == sorted(BYID), set(BYID) ^ set(x for x in PATH if x[0] != 'G')
 
 # G units (Track G) — IDs must match the reading units of the app (see extraction/paper.json sections)

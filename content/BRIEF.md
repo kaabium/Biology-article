@@ -1,3 +1,19 @@
+# LEAN MODE (read first — this overrides anything heavier below and in AUTHORING.md)
+
+The person who commissioned the app said: *"This is a simple article for an exam. Don't over-engineer it. Finish it faster."* So:
+
+* **Time-box: about 15–20 minutes of work.** Write directly and concisely. Do not polish, re-read endlessly or "improve" finished items.
+* **Validator: run it at most 3 times** (`node tools/validate.mjs <your scope flag>`), fix every **error** once, **ignore warnings** (term-order notes are only warnings now; a few are fine). Do not chase 0 warnings.
+* **No screenshot loops.** At most one `tools/preview.mjs` look at one of your pages if you drew an SVG; otherwise skip previews.
+* Lessons are **compact**: 450–800 words of teaching text, 3–5 short headed sections, 1 (max 2) simple SVG, 1 memory aid, `appears` 2–4 links, **3 check questions** (4 options each is fine, 3 allowed; every option still needs a `why`). Each lesson **merges several small topics** (its plan entry lists what it teaches): cover each topic briefly, one clear example/analogy per topic.
+* Glossary entries: `short` (1 line), `long` (40–90 words), `analogy` (1 sentence), `see` (2–3 ids), `source` for paper terms, `paperUse` only when there is an obvious verbatim sentence. Keep them tight.
+* Track G study layers: `plain` + `why` + **1** check per paragraph (2 only for a key Results paragraph); `flags`/`memory`/`prereqs` only when useful (prereqs: use the NEW lesson ids from `node tools/q.mjs path`).
+* Panel guides: all fields, but short; FIGTEXT only the main labels/numbers (use `[?]` when unsure).
+* Accuracy still comes first: never invent a paper fact or number; every paper fact has a `source`. Everything else in this file still applies.
+* The lesson ids are the NEW merged ids from `content/plan.json` (41 lessons: A1–A3, B1–B8, C1–C6, D1–D11, E1–E5, F1–F4, H1–H4). Use `node tools/q.mjs lesson <id>` — the lessons listed in any older text (e.g. "B7", "D28") may no longer exist.
+
+---
+
 # Brief for every content-authoring agent (read this first, then AUTHORING.md)
 
 You are one of several authors writing **in parallel** for an offline study app. The app takes a complete beginner to mastery of

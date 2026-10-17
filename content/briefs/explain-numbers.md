@@ -15,3 +15,5 @@ Screen design · Phenotypes & assays · Hit calling & statistics · ASO experime
 scientific notation); `meaning` says what it counts/measures in plain English. **If the paper gives different numbers for the same thing (text vs figure vs legend vs methods), show both
 in `value`, set `conflict:true` and explain in `note` — but only for conflicts you have verified in the text/legends/figure text; never guess.** Read the Results, the legends
 and STAR Methods carefully (and `FIGTEXT` / figure images when numbers sit only inside figures) — sweep for numbers systematically unit by unit (`node tools/q.mjs unit <unit>`).
+
+**LEAN MODE:** exactly one author writes both files: explain.js with 14 prompts, numbers.js with ≥ 60 entries. Write quickly; validator at most 3 runs, fix errors only.

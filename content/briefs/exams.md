@@ -11,3 +11,5 @@ Exam 1 = "**Results and figures**" emphasis (the story, funnel and key numbers, 
 * `minutes`: 75–90. `intro`: instructions and marks. Mark every question with `points`.
 * Written questions need rich, correct model answers — these are what the learner will compare their own answers with. Opinions and evaluation must be marked as such in the model answer ("In my assessment …"); paper facts need `source`.
 * Terms: only those in Tracks A–F + the paper (all taught before the exams). `lesson` fields feed the "weakest topics" list: use the lesson or `G-<unit>` that teaches the item.
+
+**LEAN MODE:** two exams, each 33 questions: 18 mcq, 7 short, 5 figure, 3 critique. One author per exam file. Write quickly; validator at most 3 runs, fix errors only. Lesson ids are the NEW merged ones (`node tools/q.mjs path`).
