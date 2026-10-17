@@ -13,7 +13,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph says "adjacent normal tissue", while the Figure 4G legend calls the same cohort "healthy tissues". Adjacent normal tissue comes from the patient's own lung next to the tumor, which is not the same as tissue from a healthy donor.`,
       `The paragraph calls the TANRIC cohort "independent" but does not say where its samples were first collected. The citations printed next to it (see the PAPER box) are a 2012 lung adenocarcinoma study and the TANRIC platform paper.`,
     ],
-    prereqs: ['C6', 'C2', 'D10'],
+    prereqs: ['C2', 'C6', 'D10'],
     sources: ['res-integration-p4', 'ref-61', 'ref-106', 'fig4G'],
     checks: [
       { q: `Why does the paper use a second, independent LUAD cohort that includes adjacent normal tissue, in addition to the 101 TCGA KRAS+ tumors?`,
@@ -36,7 +36,7 @@ Object.assign(window.TRACKG.paras, {
       `The Figure 1E legend says the cells were "transfected" with the pgRNA, while this paragraph says "pDECKO-transduced" cells. The paragraph does not explain the difference in wording.`,
       `The paragraph does not give the expected band sizes or mention the non-targeting control that was run next to the deletion sample. Both are in the Figure 1E legend.`,
     ],
-    prereqs: ['D7', 'D4'],
+    prereqs: ['D4', 'D7'],
     sources: ['fig1E'],
     checks: [
       { q: `Why were the PCR primers placed on both sides of the region that was meant to be deleted?`,
@@ -58,7 +58,7 @@ Object.assign(window.TRACKG.paras, {
       `The label "pgRNAs-AASV1-GFP+" is printed with two letters swapped. The control target is written correctly as AAVS1 earlier in the same paragraph.`,
       `This paragraph gives no n, error bars or test. The Figure 3C legend says n = 3, error bars indicate SD, and significance was estimated by Student's t test at the last time point. Neither place says how many days the mixed cells were followed (the legend only says "over time (days)").`,
     ],
-    prereqs: ['D7', 'D3'],
+    prereqs: ['D3', 'D7'],
     sources: ['res-validation-p3', 'fig3C'],
     checks: [
       { q: `Why were the control cells labeled with GFP and mixed 1:1 with mCherry cells carrying a candidate pgRNA?`,
@@ -81,7 +81,7 @@ Object.assign(window.TRACKG.paras, {
     flags: [
       `The paragraph does not say how many mice or tumors were used, or how long the tumor grew before it was removed. The Figure 5F legend says the BE874 organoids were grown from a single patient-derived xenograft.`,
     ],
-    prereqs: ['C5', 'C2', 'D4'],
+    prereqs: ['C2', 'C5', 'D4'],
     sources: ['res-aso-p7', 'fig5F'],
     checks: [
       { q: `Why does the paragraph report KRAS sequencing of both the BE874 organoids and the corresponding primary cancer?`,
@@ -129,7 +129,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph does not say why HBEC3-KT and CCD-16LU got 10 nM instead of 25 nM. The Results spell the second line "CCD-12Lu".`,
       `The paragraph says "LNA ASOs" but not their exact design (for example, whether they are built to recruit RNase H). How ASOs lower an RNA is background knowledge, not stated here.`,
     ],
-    prereqs: ['D6', 'D2'],
+    prereqs: ['D2', 'D6'],
     sources: ['res-aso-p1', 'res-aso-p2', 'res-aso-p3'],
     checks: [
       { q: `Why did the authors design 3 to 5 different ASOs for each target?`,
@@ -150,7 +150,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph points to Table S2 for the ASO sequences, but the key resources table says "Table S1" for the same sequences.`,
       `The paragraph says that penetration was checked but gives no result; the cited figure is a supplementary item that is not in your PDF.`,
     ],
-    prereqs: ['D6', 'D2'],
+    prereqs: ['D2', 'D6'],
     sources: ['res-aso-p8', 'fig5G', 'krt-38'],
     checks: [
       { q: `In the cocktail experiments the final concentration of the ASO mix was kept at 25 nM. Why?`,
@@ -218,7 +218,7 @@ Object.assign(window.TRACKG.paras, {
     flags: [
       `The recipe is not in the main text: the paragraph points to Data S4, which is not in your PDF.`,
     ],
-    prereqs: ['C5', 'C4'],
+    prereqs: ['C4', 'C5'],
     checks: [
       { q: `What does this paragraph say about the medium used for the BE874 organoids?`,
         options: [
@@ -269,7 +269,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph does not say which antibiotic-resistance gene the plasmid carries. Puromycin selection only works if the plasmid provides puromycin resistance.`,
       `Which phenotype was measured to judge the rescue is not described here. The Results cite a supplementary figure (Figure S5C) that is not in your PDF.`,
     ],
-    prereqs: ['D9', 'D6', 'D2'],
+    prereqs: ['D2', 'D6', 'D9'],
     sources: ['res-aso-p3', 'res-aso-p4', 'res-aso-p5'],
     checks: [
       { q: `Why was an empty pcDNA3.1 vector used as a control in the rescue experiment?`,
@@ -291,7 +291,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph does not say how many replicates were run or which test was used. The Figure 6G legend gives only the timing ("24 h after transfection") and the ASO targets, with no n, error bars or test.`,
       `The paragraph does not describe how the gates (the boxes that define "early apoptotic" and "dead") were set, apart from using unstained cells as a control.`,
     ],
-    prereqs: ['D8', 'B1', 'D3'],
+    prereqs: ['B1', 'D3', 'D8'],
     sources: ['res-mechanism-p5', 'fig6G'],
     checks: [
       { q: `Why are two stains (Annexin V and a viability dye) used in the same tube?`,
@@ -313,7 +313,7 @@ Object.assign(window.TRACKG.paras, {
       `The Figure 6K legend says this assay was run with n = 2 biological replicates, error bars SD, and a two-tailed Student's t test. With only two replicates, each error bar rests on just two values.`,
       `The paragraph does not say how Ki-67 and DAPI were combined to assign cells to phases. It only says that the phases were determined with the DJF model.`,
     ],
-    prereqs: ['D8', 'B1'],
+    prereqs: ['B1', 'D8'],
     sources: ['res-mechanism-p6', 'fig6K'],
     checks: [
       { q: `Which pairing correctly describes what the two stains in this cell-cycle assay report?`,
@@ -336,7 +336,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph gives no pore size and no number of repeats. The Figure 6L legend says n = 4 biological replicates, error bars SD, one-tailed Student's t test, with the crystal violet reading normalized to the non-targeting ASO.`,
       `In Figure 3F the axis label is printed "Cristal violet OD" (a typo for crystal violet).`,
     ],
-    prereqs: ['D8', 'D5'],
+    prereqs: ['D5', 'D8'],
     sources: ['res-mechanism-p6', 'res-validation-p5', 'fig6L', 'ref-108'],
     checks: [
       { q: `Why does the lower compartment contain medium with 10% FBS while the upper compartment contains none?`,
@@ -357,7 +357,7 @@ Object.assign(window.TRACKG.paras, {
       `The Methods name HPRT1 as the internal control, but the y-axis of Figure 1F reads "Normalised to GAPDH" (printed in the image), and GAPDH is used as the cytosolic marker in Figure 6C (a different purpose). The paragraph does not say whether HPRT1 was used in every experiment.`,
       `The paragraph does not say how relative expression was calculated or how many technical replicates were run per sample.`,
     ],
-    prereqs: ['D7', 'D6'],
+    prereqs: ['D6', 'D7'],
     sources: ['fig1F', 'fig6C'],
     checks: [
       { q: `Why was HPRT1 measured in every RT-qPCR sample?`,
@@ -382,7 +382,7 @@ Object.assign(window.TRACKG.paras, {
     flags: [
       `The paragraph does not say how many replicates were sequenced. The Figure 6D legend mentions "three RNA-seq replicates" from A549 RNA, and the Results say that CHiLL1 was perturbed with two ASOs and GCAWKR with a single ASO.`,
     ],
-    prereqs: ['D10', 'D4', 'B7'],
+    prereqs: ['B7', 'D4', 'D10'],
     sources: ['res-mechanism-p2', 'res-mechanism-p3', 'res-mechanism-p6', 'm-gdna-p2', 'fig6D'],
     checks: [
       { q: `What does "30M reads/sample" describe in this paragraph?`,
@@ -408,7 +408,7 @@ Object.assign(window.TRACKG.paras, {
       `The reference marks printed here for Kallisto and Sleuth (see the PAPER box) differ from the ones in the software list at the end of the Methods. In the reference list, the entries behind the marks printed here are CellProfiler and a paper on conserved RNA structures, while the marks in the software list lead to the Kallisto and Sleuth papers.`,
       `For GCAWKR only a single ASO is described in the Results, so its gene set rests on the overlap of two cell lines rather than of two ASOs.`,
     ],
-    prereqs: ['D10', 'E4', 'D6'],
+    prereqs: ['D6', 'E4', 'D10'],
     sources: ['res-mechanism-p2', 'res-mechanism-p3', 'res-mechanism-p6', 'm-quant-p3', 'm-hits-p3'],
     derived: ['20'],
     checks: [
@@ -454,7 +454,7 @@ Object.assign(window.TRACKG.paras, {
       `The Figure 6B legend calls the images "confocal microscopy", while this paragraph names a "DeltaVision microscope". The paragraph does not say whether it was used in a confocal mode.`,
       `The paragraph does not say how many cells were imaged or how the nuclear/cytoplasmic ratio was computed. Figure 6B shows an N/C quantification, and the analysis pipeline is named in the next paragraph.`,
     ],
-    prereqs: ['D9', 'B6'],
+    prereqs: ['B6', 'D9'],
     sources: ['res-mechanism-p1'],
     checks: [
       { q: `Why are pools of many probes (25 for CHiLL1, 48 for GCAWKR) used for each RNA in FISH?`,
@@ -474,7 +474,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph says "the data" without saying which data (fractionation measurements or microscope images). CellProfiler is image-analysis software and the pipeline name suggests counting spots, so it was probably used on the FISH images, but the paragraph does not say so.`,
       `"As described previously" is followed by a reference mark (see the PAPER box). In the reference list, that entry is a paper about the ZBTB7A gene in lung cancer, not an obvious fractionation protocol.`,
     ],
-    prereqs: ['D9', 'B6'],
+    prereqs: ['B6', 'D9'],
     sources: ['res-mechanism-p1', 'fig6C', 'ref-80'],
     checks: [
       { q: `Why does the paper add nuclear/cytoplasmic fractionation to the FISH experiment?`,
@@ -495,7 +495,7 @@ Object.assign(window.TRACKG.paras, {
     flags: [
       `The paragraph lists where the tracks came from, not what they show. The findings are in the mechanism Results and in Figure 6A (and in a supplementary figure for CHiLL1 that is not in your PDF).`,
     ],
-    prereqs: ['F3', 'B3'],
+    prereqs: ['B3', 'F3'],
     sources: ['res-mechanism-p1'],
     checks: [
       { q: `Why are conservation (phastCons) and conserved RNA structure tracks drawn alongside a lncRNA's exons?`,
@@ -516,7 +516,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph lists two Ensembl IDs for GCAWKR, but the Results give only one ("ENSG00000272808; GCAWKR"). The paragraph does not say why a second ID was included.`,
       `The steps are labeled "Then" and "Third" (there is no "Second"), and the last sentence says "using the program" without naming it. The unit title and the reference mark identify it as ezTracks.`,
     ],
-    prereqs: ['F3', 'B7'],
+    prereqs: ['B7', 'F3'],
     sources: ['res-aso-p3', 'res-aso-p4', 'res-aso-p5', 'fig6A'],
     checks: [
       { q: `What is the "meta-transcript" made in this paragraph?`,
@@ -542,7 +542,7 @@ Object.assign(window.TRACKG.paras, {
       `This paragraph and the next one use hg19 coordinates, whereas the tracks and annotations in the ezTracks section use hg38. The paragraphs do not say why different genome versions were used.`,
       `The paragraph gives no definition of "amplified", "deleted" or "unaltered" for the cell lines (no threshold). The cell-line result is cited to a supplementary figure that is not in your PDF.`,
     ],
-    prereqs: ['C2', 'C6', 'B3'],
+    prereqs: ['B3', 'C2', 'C6'],
     sources: ['res-integration-p4'],
     checks: [
       { q: `Why does the analysis intersect the pgRNA positions with the copy-number data using the same genome version (hg19) for both?`,
@@ -562,7 +562,7 @@ Object.assign(window.TRACKG.paras, {
       `Averaging across all samples gives one number per candidate but hides how many individual tumors carry a gain or a loss. The paragraph gives no threshold for calling a gain or a loss.`,
       `The paragraph says "all TCGA-LUAD samples" without giving their number. It is not stated whether this is the same set as the 101 KRAS+ samples used for expression.`,
     ],
-    prereqs: ['C2', 'E1', 'B3'],
+    prereqs: ['B3', 'C2', 'E1'],
     sources: ['m-public-rnaseq-p1'],
     checks: [
       { q: `A candidate locus has a clearly positive average "log2 ratio segment mean" across the TCGA-LUAD samples. What does this suggest?`,
@@ -584,7 +584,7 @@ Object.assign(window.TRACKG.paras, {
       `The paragraph does not say whether the Fisher tests were one- or two-sided. The Figure 4H legend says one-sided, which means that only one direction was tested.`,
       `The plural "Fisher's exact tests" suggests separate tests for amplified, deleted and non-altered hits, but the paragraph does not say whether the p-values were corrected for multiple testing, or which hits (for example, the pan-hallmark hits) were compared.`,
     ],
-    prereqs: ['E3', 'C2'],
+    prereqs: ['C2', 'E3'],
     sources: ['res-integration-p4', 'fig4H'],
     checks: [
       { q: `Which test fits comparing the proportion of amplified regions among hits with the proportion among non-hits?`,
@@ -664,7 +664,7 @@ Object.assign(window.TRACKG.paras, {
       `The cut-off is written p ≤ 0.05 here but p &lt; 0.05 in the 2D viability paragraph. The two only differ for a p-value of exactly 0.05.`,
       `"Unless otherwise specified" matters: the screen hits use FDR &lt; 0.2, and the RNA-seq analysis uses a q-value below 0.2. These are not p ≤ 0.05 rules.`,
       `Tests named in the legends: Student's t test (one-tailed in Figures 3D, 3F, 5E, 5F and 6L; two-tailed in Figures 4G, 5C and 6K; the Figure 3C and 5B legends say only "Student's t test"), a one-tailed Welch's t test (Figure 4F), a one-tailed Mann-Whitney test (Figure 5G), Wilcoxon and Kruskal-Wallis tests (Figure 2F), Fisher's exact test, one-sided (Figure 4H), and Pearson correlation (Figures 2D, 2E, 2H, 6E and 6I).`,
-      `What n counts differs. Most ASO panels say "biological replicates" (n = 4 in Figures 5C, 5E, 5G and 6L; n = 2 in Figure 6K). Figure 3F says "three independent biological replicates". Figures 3C and 3D give n = 3 and n = 4 without saying which kind. Figure 4F counts patients (n = 101). Figure 5F has n = 4 biological and n > 3 technical replicates, and its error bars "represent the variability of technical replicates". Where error bars are described they are SD. Several legends (for example Figures 3E, 6C and 6G) give no n, no error bars and no test.`,
+      `What n counts differs. Most ASO panels say "biological replicates" (n = 4 in Figures 5C, 5E, 5G and 6L; n = 2 in Figure 6K). Figure 3F says "three independent biological replicates". Figures 3C and 3D give n = 3 and n = 4 without saying which kind. Figure 4F counts tumor samples (n = 101). Figure 5F has n = 4 biological and n > 3 technical replicates, and its error bars "represent the variability of technical replicates". Where error bars are described they are SD. Several legends (for example Figures 3E, 6C and 6G) give no n, no error bars and no test.`,
       `One-tailed tests (used in many ASO panels) look for a change in one chosen direction only, which makes p ≤ 0.05 easier to reach than with a two-tailed test. The legends do not say that the direction was fixed in advance, or whether p-values were corrected when several ASOs were compared with the same control.`,
     ],
     prereqs: ['E2', 'E4', 'F4'],

@@ -452,7 +452,7 @@
         `<text x="382" y="131" class="mid s">S1</text><text x="382" y="151" class="mid s">S2</text><text x="382" y="171" class="mid s">S3</text>` +
         `<circle cx="400" cy="126" r="4" class="solid-gray" opacity="0.35"/><circle cx="400" cy="146" r="4" class="solid-gray" opacity="0.35"/><circle cx="400" cy="166" r="4" class="solid-gray" opacity="0.35"/>` +
         `<circle cx="420" cy="126" r="4" class="solid-gray" opacity="0.35"/><circle cx="420" cy="146" r="4" class="solid-gray" opacity="0.35"/>` +
-        `<circle cx="440" cy="166" r="4" class="solid-gray" opacity="0.35"/><circle cx="460" cy="126" r="0" class="solid-gray"/>` +
+        `<circle cx="440" cy="166" r="4" class="solid-gray" opacity="0.35"/>` +
         `<path d="M440 126 V146 M460 126 V166" class="ln thick"/>` +
         `<circle cx="400" cy="126" r="5" class="solid-text"/><circle cx="420" cy="166" r="5" class="solid-text"/><circle cx="440" cy="126" r="5" class="solid-text"/><circle cx="440" cy="146" r="5" class="solid-text"/>` +
         `<circle cx="460" cy="126" r="5" class="solid-text"/><circle cx="460" cy="146" r="5" class="solid-text"/><circle cx="460" cy="166" r="5" class="solid-text"/>` +

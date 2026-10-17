@@ -373,13 +373,13 @@
       `<p>The paper studies a genetic family of lung cancer that it calls KRAS+: tumors whose KRAS gene carries an activating mutation. It names this the most common NSCLC subtype (a subtype is a sub-group of a cancer type). Current treatment, it says, faces three challenges: undruggable mutations, toxicity (harm to healthy cells) and therapy resistance, and newly approved targeted therapies add only a few months of life.</p>` },
     { k: 'paper', ref: 'm-pdx-p1',
       quote: 'KRAS c.34G>T (p.Gly12Cys) mutation was detected in both BE874 organoids and the corresponding primary cancer' },
-    { k: 'plain', source: ['m-pdx-p1'], html:
+    { k: 'plain', source: ['m-pdx-p1'], derived: ['12', '34'], html:
       `<p>In one patient-derived model of lung cancer (named BE874; lesson C5) the authors found the KRAS G12C change, and also in the patient’s original tumor. Two notations appear: <b>c.34G>T</b> is the DNA change (the letter G at position 34 of the gene’s coding DNA is now T), and <b>p.Gly12Cys</b> is the protein change (the 12th amino acid, glycine, is now cysteine). They describe the same event.</p>` },
     { k: 'paper', ref: 'res-aso-p5', quote: 'the locus of GCAWKR is frequently amplified in cancer genomes' },
     { k: 'plain', source: ['res-aso-p5', 'res-integration-p4', 'm-cnv-p3'], html:
-      `<p>Tumors often carry extra copies of the DNA region that contains GCAWKR, unlike CHiLL1. More broadly, the authors report that their screen hits tend to be amplified, “but not depleted”, in tumor DNA. The Methods speak of regions that are “amplified or deleted”, so “depleted” appears to mean lost here (the paper does not say so explicitly).</p>` },
+      `<p>Tumors often carry extra copies of the DNA region that contains GCAWKR, unlike CHiLL1. More broadly, the authors report that their screen hits tend to be amplified, “but not depleted”, in tumor DNA. The Methods speak of regions that are “amplified or deleted”, so “depleted” (reduced or lost) appears to mean deleted here; the paper does not say so explicitly.</p>` },
     { k: 'plain', source: ['fig5A', 'res-aso-p2', 'res-aso-p3', 'm-public-rnaseq-p1'], html:
-      `<p><b>Lung cancer types in the paper.</b> Figure 5A labels the lab-grown cell type A549 as lung adenocarcinoma, H460 as large cell lung cancer and H441 as metastatic adenocarcinoma. The text says H441 comes from a pericardial effusion metastasis (spread cells in the fluid around the heart). H460 and H441 are names of lung cancer cell types that you meet in lesson C4. For human tumor data the authors picked 101 samples that are both adenocarcinoma and KRAS-mutated, and they report that their RNA-targeting agents also worked in EGFR-mutant cells: two genetic subtypes, one result.</p>` },
+      `<p><b>Lung cancer types in the paper.</b> Figure 5A labels the lab-grown cell type A549 as lung adenocarcinoma, H460 as large cell lung cancer and H441 as metastatic adenocarcinoma (the text says H441 comes from a pericardial effusion metastasis). H460 and H441 are lung cancer cell types that you meet in lesson C4. For human tumor data the authors picked 101 samples that are both adenocarcinoma and KRAS-mutated, and they report that their RNA-targeting agents also worked in EGFR-mutant cells: two genetic subtypes, one result.</p>` },
   ],
   appears: [
     { ref: 'intro-p1', note: 'NSCLC, the KRAS+ subtype with activating KRAS mutations, and the limits of targeted therapies.' },
@@ -410,7 +410,7 @@
         { t: 'The DNA letter at position 12 changes from G to C', ok: false, why: 'G and C here are amino acids, not DNA letters. The paper writes the DNA change separately as c.34G>T.' },
         { t: 'The KRAS gene is present in 12 copies', ok: false, why: 'That would be an amplification. G12C names a single amino-acid swap.' },
         { t: 'A piece of chromosome 12 is deleted', ok: false, why: 'The 12 is a position in the protein, not a chromosome number, and nothing is deleted.' },
-      ], source: ['m-pdx-p1'] },
+      ], source: ['m-pdx-p1'], derived: ['12', '34'] },
     { q: 'In the paper, what does "KRAS+" mean?',
       options: [
         { t: 'The tumor or cells carry an activating KRAS mutation', ok: true, why: 'Right (intro-p1): “carrying activating KRAS mutations (KRAS+)”.' },
@@ -431,7 +431,7 @@
 /* ============================================================================================== C3 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'C3',
-  defines: ['toxicity', 'screen', 'aso', 'aso-cocktail'],
+  defines: ['toxicity', 'screen', 'aso', 'aso-cocktail', 'cell-viability'],
   body: [
     { k: 'h', text: 'Chemotherapy and cisplatin' },
     { k: 'bgnd', html:
@@ -471,23 +471,23 @@
       quote: 'a mild concentration (IC30) treatment decreases cell proliferation by about 30%. On the other hand, high concentration treatments induce proliferative arrest or cell death.' },
     { k: 'plain', source: ['m-screen-cisplatin-p1', 'fig2B'], html:
       `<p><b>Step 1, the dose–response.</b> To choose doses, the authors exposed lung cancer cells to cisplatin at a range of concentrations from 0.5 to 50 µM and, after 72 hours, measured how many cells were alive.</p>` +
-      `<p><b>Step 2, two higher doses.</b> In the “survival” experiment (one of their large pooled experiments, called screens; lesson D3) they treated A549 cells with 6.5 and 25 µM, which correspond to IC30 and IC80. Their stated reason for two doses: to increase the dynamic range (a wider spread of effects to detect) and to account for the different effects of different doses. A mild dose (IC30) lowers growth by about 30%; high doses cause growth arrest or cell death.</p>` +
-      `<p><b>Step 3, one low dose.</b> In the “death” experiment they used a low dose, IC20 (the Methods list 2 and 1 µM for A549 cells), and collected the floating, dead cells every 24 h for five days. The Figure 2B legend describes this as collecting “cells that die in response to low cisplatin concentration (IC20)”.</p>` },
+      `<p><b>Step 2, two higher doses.</b> In the “survival” experiment (one of their large pooled experiments, called screens; lesson D3) they treated A549 cells with 6.5 and 25 µM, which correspond to IC30 and IC80. Their stated reason for two doses: to increase the dynamic range (a wider spread of effects to detect) and to account for the different effects of different doses. </p>` +
+      `<p><b>Step 3, one low dose.</b> In the “death” experiment they used IC20 (the Methods list 2 and 1 µM for A549 cells) and collected the floating, dead cells every 24 h for five days. The Figure 2B legend calls this a “low cisplatin concentration (IC20)”.</p>` },
     { k: 'bgnd', html:
       `<p><b>Why a low dose for the death experiment?</b> The paper does not explain the choice, so this is general reasoning, not a paper claim. At a high dose nearly every cell dies, so the dead cells are a random sample of everybody. At a low dose only some die, so the dead cells are a <i>selected</i> group, the ones that coped worst. A lncRNA that protects against cisplatin should then be missing more often than expected among the dead.</p>` },
     { k: 'flag', source: ['m-screen-cisplatin-p1', 'fig2B'], html:
-      `<p>Two wrinkles. (1) The Figure 2B legend lists IC30 and IC80 together as “high cisplatin doses”, while the Methods call IC30 “a mild concentration”. “Mild” and “high” are relative words, so trust the IC number. (2) The Methods give the death-experiment doses as “2 and 1 µM (IC20)”, so it is not clear which of the two numbers is the IC20.</p>` },
+      `<p>Two wrinkles. (1) The Figure 2B legend lists IC30 and IC80 together as “high cisplatin doses”, while the Methods call IC30 “a mild concentration”: “mild” and “high” are relative, so trust the IC number. (2) The Methods give the death-experiment doses as “2 and 1 µM (IC20)”, so it is unclear which number is the IC20.</p>` },
     { k: 'h', text: 'Combination therapy' },
     { k: 'bgnd', html:
-      `<p><b>Combination therapy</b> means giving two or more treatments together. The usual reasons: a cell that escapes one drug is less likely to escape two that attack in different ways; the mix may work better than either alone; and sometimes each drug can be used at a lower dose. A simple benchmark is to add the single effects. If drug A alone cuts growth by 20% and drug B by 30%, adding predicts 50%. A result of 70% would be <i>synergy</i> (more than the sum). The catch is that harm can add up too, so combinations work best when the drugs spare healthy cells.</p>` },
+      `<p><b>Combination therapy</b> means giving two or more treatments together. The usual reasons: a cell that escapes one drug is less likely to escape two that attack in different ways; the mix may work better than either alone; and sometimes each drug can be used at a lower dose. Adding the single effects is a simple benchmark: 20% plus 30% predicts 50%, and a result of 70% would be <i>synergy</i> (more than the sum). The catch is that harm can add up too, so combinations work best when the drugs spare healthy cells.</p>` },
     { k: 'paper', ref: 'res-aso-p8',
       quote: 'a 50:50 cocktail of CHiLL1/GCAWKR ASOs (Tier 3 cocktail) displayed a greater effect on cell viability compared with an equal dose of either ASO alone' },
     { k: 'plain', source: ['res-aso-p8', 'discussion-p5'], html:
       `<p>The paper’s own combination is a mix of two RNA-targeting agents (ASOs, short strands that destroy one chosen RNA; lesson D6), called a cocktail. An equal-sized 50:50 mix of the CHiLL1 and GCAWKR ASOs had a greater effect on cell viability than an equal dose of either one alone. The authors also hope that low toxicity in healthy cells would allow “not only higher doses but also combination therapies to suppress therapy resistance”.</p>` },
     { k: 'flag', source: ['res-aso-p8', 'res-mechanism-p7', 'discussion-p6'], html:
-      `<p>How to describe the cocktail effect varies. Results call it a “greater effect” and a possible “synergistic” benefit (res-aso-p8), a later paragraph calls it “the additive effect” (res-mechanism-p7), and the Discussion says mixing the ASOs “yielded greater than additive effects” (discussion-p6). Additive and greater-than-additive are different claims, so read the figure rather than the adjective.</p>` },
+      `<p>The wording varies: the Results speak of a “greater effect” and a possible “synergistic” benefit (res-aso-p8), a later paragraph of “the additive effect” (res-mechanism-p7), the Discussion of “greater than additive effects” (discussion-p6). These are different claims, so read the figure, not the adjective.</p>` },
     { k: 'memory', html:
-      `<p><b>Analogy:</b> volume knob and two locks. A dose–response curve is a volume knob: tiny turns do nothing, middle turns change a lot, and past a point it is simply "loud". IC20 to IC80 are marks on the dial. Combination therapy is two different locks on one door: a thief who can pick one still has to beat the other. <i>Where it breaks:</i> cells are not thieves; resistance often builds up through many small changes, and the second "lock" can fail for different reasons than the first.</p>` },
+      `<p><b>Analogy:</b> a volume knob and two locks. A dose–response curve is a volume knob: tiny turns do nothing, middle turns change a lot, past a point it is simply "loud". Combination therapy is two different locks on one door. <i>Where it breaks:</i> cells are not thieves; resistance often builds through many small changes, and the second "lock" can fail for different reasons than the first.</p>` },
   ],
   appears: [
     { ref: 'intro-p1', note: 'Platinum chemotherapy is routine for KRAS+ NSCLC; therapy resistance is one of three challenges.' },
@@ -524,7 +524,7 @@
         { t: 'A greater effect than an equal dose of either ASO alone', ok: true, why: 'Right (res-aso-p8): a 50:50 cocktail beat an equal dose of either one alone.' },
         { t: 'The same effect as one ASO alone', ok: false, why: 'The point of the experiment is that the cocktail did better than either ASO alone.' },
         { t: 'A weaker effect, because the ASOs got in each other’s way', ok: false, why: 'The paper reports a greater effect, not interference between the ASOs.' },
-        { t: 'Extra harm to non-cancerous cells', ok: false, why: 'The authors report no additional toxicity for non-cancerous cells (res-aso-p8).' },
+        { t: 'Extra harm to non-cancer cells', ok: false, why: 'The authors report no additional toxicity for non-cancer cells (res-aso-p8).' },
       ], source: ['res-aso-p8'] },
   ],
 });
