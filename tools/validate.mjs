@@ -710,6 +710,10 @@ function unitOfSec(sec) {
     const file = keyOrigin.get(`SUMMARY:${k}`);
     if (!inScope(file)) return;
     checkHtmlField(S[k], file, `summary ${k}`);
+    // every number must exist somewhere in the paper (computed ones go in SUMMARY.derived)
+    const allSrc = [...Object.keys(paraText), ...Object.keys(figById), 'ga'];
+    const missS = missingNumbers(S[k], allSrc, S.derived || []);
+    if (missS.length) err(file, `summary ${k}`, `number(s) ${missS.join(', ')} not found anywhere in the paper text/legends/figure text (put computed ones in SUMMARY.derived)`);
     const w = wordsOf(S[k]);
     if (k === 'onePage' && (w < 250 || w > 800)) err(file, 'summary onePage', `one-page summary should be ~300–700 words (is ${w})`);
     if (k === 'cheat' && w < 350) err(file, 'summary cheat', `cheat sheet too short (${w} words)`);

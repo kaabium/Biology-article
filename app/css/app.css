@@ -467,3 +467,16 @@ mark { background: color-mix(in srgb, #ffd54f 70%, transparent); color: inherit;
 .diagram svg .s-blue { stroke: var(--c-blue); } .diagram svg .s-green { stroke: var(--c-green); } .diagram svg .s-orange { stroke: var(--c-orange); }
 .diagram svg .s-purple { stroke: var(--c-purple); } .diagram svg .s-red { stroke: var(--c-red); } .diagram svg .s-teal { stroke: var(--c-teal); }
 .kind.k-bgnd + .kind.k-bgnd, .kind.k-plain + .kind.k-plain, .kind.k-memory + .kind.k-memory { margin-top: -.35rem; }
+
+/* ---------- cheat sheet / one-page summary building blocks (used by app/data/summary.js) ---------- */
+.cs-box { border: 1px solid var(--border); border-radius: 10px; padding: .6rem .85rem; margin: 0 0 .8rem; background: var(--surface); break-inside: avoid; }
+.cs-box h3 { margin: 0 0 .35rem; font-size: 1rem; }
+.cs-box ul, .cs-box ol { margin: .2rem 0 .2rem 1.1rem; padding: 0; }
+.cs-box li { margin: .15rem 0; }
+table.cs { width: 100%; border-collapse: collapse; font-size: .88rem; }
+table.cs th, table.cs td { text-align: left; padding: .3rem .4rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+table.cs th { color: var(--muted); font-weight: 600; font-size: .8rem; }
+.cs-flow { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem; margin: .3rem 0; }
+.cs-flow span { border: 1px solid var(--border); border-radius: 8px; padding: .15rem .5rem; background: var(--surface-2); }
+.cs-flow i { font-style: normal; color: var(--muted); }
+@media (min-width: 900px) { .print-cols { columns: 2; column-gap: 1.2rem; } }
