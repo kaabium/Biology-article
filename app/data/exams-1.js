@@ -28,14 +28,14 @@
         { t: `8 screens in three KRAS+ lines (A549, H460 and H441), one line per hallmark`, ok: false, why: `H441 was not screened. It was used later, together with H460, to retest the ASOs. The screens used A549 and H460.` },
       ] },
 
-    { type: 'mcq', lesson: 'G-res-pipeline', points: 1,
-      source: ['res-pipeline-p5'],
-      q: `To test their pgRNA strategy more generally, the authors cloned 12 further pgRNAs targeting 12 different candidates. What did they observe?`,
+    { type: 'mcq', lesson: 'A3', points: 1,
+      source: ['res-aso-p3', 'res-validation-p5'],
+      q: `In the figures, lncRNAs are often shown by candidate number. Which pairing of candidate numbers and names is correct?`,
       options: [
-        { t: `Deletion at the target site in 12 of 12 cases and a lower target RNA level in 12 of 12`, ok: false, why: `If every pgRNA had worked there would be no failures. The text reports misses at both levels.` },
-        { t: `Deletion in 7 of 12 cases and a lower target RNA level in 10 of 12`, ok: false, why: `The numbers are swapped: the expected deletion was seen in 10 of 12 cases and the expected RNA decrease in 7 of 12.` },
-        { t: `Deletion in 10 of 12 cases, with a lower target RNA level in all 10`, ok: false, why: `Deletion did not guarantee less RNA: for three targets the RNA did not change, and for two it went up.` },
-        { t: `Expected deletion in 10 of 12 cases; the target RNA went down for 7 of 12, was unchanged for three and went up for two`, ok: true, why: `Right. Deletion usually worked (10 of 12) but the expected loss of RNA was less reliable (7 of 12), so an individual pgRNA does not always work.` },
+        { t: `42 = GCAWKR, 240 = CHiLL1, 215 = AC104024.3, 448 = CECR7`, ok: false, why: `The first two are swapped: candidate 42 is CHiLL1 and candidate 240 is GCAWKR.` },
+        { t: `42 = CHiLL1, 240 = GCAWKR, 215 = CECR7, 448 = AC104024.3`, ok: false, why: `The last two are swapped: candidate 215 is AC104024.3 and candidate 448 is CECR7.` },
+        { t: `42 = CHiLL1, 240 = GCAWKR, 215 = MIR23AHG, 448 = CECR7`, ok: false, why: `MIR23AHG is candidate 489, not 215.` },
+        { t: `42 = CHiLL1, 240 = GCAWKR, 215 = AC104024.3, 448 = CECR7`, ok: true, why: `Right. CHiLL1 and GCAWKR are candidates 42 and 240. AC104024.3, CECR7 and MIR23AHG are the migration-screen hits 215, 448 and 489 that were tested with ASOs.` },
       ] },
 
     { type: 'mcq', lesson: 'D5', points: 1,
@@ -68,24 +68,14 @@
         { t: `77 for proliferation and 10 for migration`, ok: false, why: `Ten is the number among the 65 migration hits that were already associated with migration and invasion, not the total.` },
       ] },
 
-    { type: 'mcq', lesson: 'G-res-multipheno', points: 1,
-      source: ['res-multipheno-p3', 'limitations-p2', 'res-pipeline-p1'],
-      q: `For positive-control protein-coding genes, the authors compared pgRNAs that mutate the open reading frame with pgRNAs that delete the promoter (as is done for lncRNAs). Promoter deletion had a detectable but lower effect. What do they conclude?`,
+    { type: 'mcq', lesson: 'G-res-validation', points: 1,
+      source: ['res-validation-p1', 'res-validation-p3', 'res-validation-p5', 'res-integration-p2'],
+      q: `Which lncRNA start sites did the authors pick for detailed validation of proliferation and cisplatin hits in Figure 3, and on what basis?`,
       options: [
-        { t: `Promoter deletion is more efficient than ORF mutation because the deletions are shorter`, ok: false, why: `The measured effect was lower for promoter deletion, not higher. Short, uniform deletions are an advantage of the design, but this control comparison shows a lower impact.` },
-        { t: `The positive controls failed, so the screens cannot be trusted`, ok: false, why: `The positive controls behaved as expected: their pgRNAs were significantly depleted in the dropout screens while neutral controls were not.` },
-        { t: `Promoter deletion has no effect, so lncRNA hits are unreliable`, ok: false, why: `The effect was detectable, only smaller. It means that some real lncRNA hits can be missed, not that the hits are invalid.` },
-        { t: `CRISPR-del screens for lncRNAs have intrinsically lower sensitivity than ORF-targeting screens for protein-coding genes, so real lncRNA hits can be missed`, ok: true, why: `Right. The Limitations section adds that the relative inefficiency of CRISPR-del compared with ORF mutation probably means that many valuable targets were overlooked.` },
-      ] },
-
-    { type: 'mcq', lesson: 'H2', points: 1,
-      source: ['limitations-p1'],
-      q: `How many of the screen hits tested with ASOs were validated, and what does the remainder suggest?`,
-      options: [
-        { t: `12 of 12; every hit works through its RNA product`, ok: false, why: `Not all were validated. Candidates 408 and 316 were judged likely false positives.` },
-        { t: `8 of 12 (67%); around one-third of screen hits may act through DNA-dependent mechanisms`, ok: true, why: `Right. Deleting DNA can also remove regulatory DNA or an opposite-strand gene, so a hit may work through the DNA rather than through its RNA. ASOs, which target only the RNA, help to separate the two.` },
-        { t: `9 of 12 (75%); all the proliferation/cisplatin hits validated and the migration hits did not`, ok: false, why: `9 and 3 are the numbers of hits tested for proliferation/cisplatin and for migration (9 + 3 = 12), not the numbers that validated.` },
-        { t: `3 of 12 (25%); only the migration hits validated`, ok: false, why: `Three is the number of migration hits tested. In total 8 of the 12 tested hits were validated.` },
+        { t: `Candidates 205 and 509, picked at random from the 80 pan-hallmark hits`, ok: false, why: `The candidates were chosen for their top ranking and their consistency between the two cell lines. What was random was the choice of one high-scoring pgRNA for each candidate.` },
+        { t: `Candidates 205 and 509, chosen for their top ranking and consistency between the two cell lines`, ok: true, why: `Right. Candidate 205 was a top hit in the dropout screens and candidate 509 a hit in both proliferation and cisplatin. A randomly selected high-scoring pgRNA was then cloned for each.` },
+        { t: `CHiLL1 and GCAWKR, because they were the only hits in all three hallmarks`, ok: false, why: `CHiLL1 and GCAWKR emerged later, as Tier 3 after the ASO tests. In the hallmark-specific analysis no lncRNA was a hit in all three hallmarks.` },
+        { t: `Candidates 215, 448 and 489, because they were the top hits of the proliferation screen`, ok: false, why: `Those three are migration-screen hits (AC104024.3, CECR7 and MIR23AHG) that were tested with ASOs.` },
       ] },
 
     { type: 'mcq', lesson: 'G-res-integration', points: 1,
@@ -96,16 +86,6 @@
         { t: `19 are hits in all three hallmarks`, ok: false, why: `None were found in three hallmarks; the 19 were found in two.` },
         { t: `Most of the 134 are hits in two or three hallmarks`, ok: false, why: `Only 19 of the 134 are found in two hallmarks and none in three, so most hits are specific to a single hallmark.` },
         { t: `The 19 two-hallmark hits are the 80 pan-hallmark hits`, ok: false, why: `These are different analyses with different numbers. The pan-hallmark ranking integrates all the screens together and gave 80 hits at FDR < 0.2.` },
-      ] },
-
-    { type: 'mcq', lesson: 'E5', points: 1,
-      source: ['fig4A', 'res-integration-p1', 'res-integration-p2', 'm-hits-p4'],
-      q: `How does the target prioritization pipeline (TPP) turn the individual screens into one pan-hallmark ranking?`,
-      options: [
-        { t: `It adds up the raw read counts of all screens and calls the 80 lncRNAs with the highest totals`, ok: false, why: `TPP works with fold changes and P values from each screen, not with summed raw counts, and the 80 hits come from an FDR cutoff, not from a fixed top-80 list.` },
-        { t: `It keeps, for each lncRNA, only the P value of its strongest single screen`, ok: false, why: `TPP integrates all the screens, which is the point. The integrated ranking performed better than individual screens (Figure 4B).` },
-        { t: `It ranks lncRNAs by their expression and survival association in TCGA tumors`, ok: false, why: `Tumor expression and copy number were checked afterwards as independent support (Figures 4F to 4H). They are not inputs to the ranking.` },
-        { t: `It combines effect size (robust rank aggregation of log2 fold changes) with significance (empirical Brown's method on P values), merges the two with a harmonic-mean P value and applies FDR correction (hits at FDR < 0.2)`, ok: true, why: `Right (Figure 4A and Methods). Using both effect size and significance balances how big an effect is with how confident the result is.` },
       ] },
 
     { type: 'mcq', lesson: 'G-res-integration', points: 1,
@@ -122,10 +102,20 @@
       source: ['fig4H', 'res-integration-p4'],
       q: `Figure 4H compares pan-hallmark hits with non-hits for copy-number changes in tumors (PCAWG). Which result supports the statement that hits "tend to be amplified, but not depleted"?`,
       options: [
-        { t: `Amplification is enriched among hits (P = 0.0011) but deletion is not (P = 0.14)`, ok: true, why: `Right. A small P for amplification and a large one for deletion (Fisher's exact test, one-sided) match "amplified, but not depleted".` },
         { t: `Both amplification (P = 0.0011) and deletion (P = 0.14) are significantly enriched among hits`, ok: false, why: `P = 0.14 is not a significant result, so deletion is not enriched among the hits.` },
         { t: `Deletion is enriched (P = 0.0011) and amplification is not (P = 0.14)`, ok: false, why: `The P values are swapped: amplification carries P = 0.0011 and deletion P = 0.14.` },
         { t: `Neither is enriched, because hits and non-hits have the same copy-number profile`, ok: false, why: `Amplification is clearly enriched among the hits (P = 0.0011).` },
+        { t: `Amplification is enriched among hits (P = 0.0011) but deletion is not (P = 0.14)`, ok: true, why: `Right. A small P for amplification and a large one for deletion (Fisher's exact test, one-sided) match "amplified, but not depleted".` },
+      ] },
+
+    { type: 'mcq', lesson: 'G-discussion', points: 1,
+      source: ['discussion-p4', 'res-integration-p2', 'intro-p2', 'res-pipeline-p2'],
+      q: `In the Discussion, the authors say their data implicate roughly what share of lncRNAs with cell-level functions, and how does that compare with earlier estimates?`,
+      options: [
+        { t: `About 8%, comparable to the estimates of Liu and of Zhu`, ok: true, why: `Right. The Discussion says the data implicate approximately 8% of lncRNAs with cell-level functions, comparable to Liu's and Zhu's estimates. It matches the 80 pan-hallmark hits, about 8% of those screened.` },
+        { t: `About 13%, the share of hallmark-specific hits, far above earlier estimates`, ok: false, why: `About 13% is the share of hallmark-specific hits (134 hits). The Discussion quotes approximately 8% and calls it comparable to earlier estimates.` },
+        { t: `More than 98%, because almost all lncRNAs remain uncharacterized`, ok: false, why: `More than 98% is the share of lncRNAs that remain uncharacterized in general (Introduction), not the share with cell-level functions found here.` },
+        { t: `About 0.3%, the share of targets with three lncRNA promoters`, ok: false, why: `0.3% is the share of target regions that contain three lncRNA promoters (Results). It has nothing to do with function.` },
       ] },
 
     { type: 'mcq', lesson: 'G-res-aso', points: 1,
@@ -136,6 +126,16 @@
         { t: `Reproducible loss of cell proliferation with two distinct ASO sequences`, ok: true, why: `Right. Two different ASOs giving the same effect indicates on-target activity.` },
         { t: `A weaker response in normal lung-derived cells`, ok: false, why: `That test came next and defined Tier 3 (CHiLL1 and GCAWKR), not Tier 2.` },
         { t: `At least 40% knockdown by a single ASO`, ok: false, why: `At least two independent ASOs with ≥ 40% knockdown potency had already been identified for every Tier 1 candidate, so this does not separate Tier 2 from Tier 1.` },
+      ] },
+
+    { type: 'mcq', lesson: 'G-res-aso', points: 1,
+      source: ['res-aso-p2', 'fig5B'],
+      q: `Tier 2 lncRNAs are overexpressed in TCGA lung adenocarcinoma tumors compared with normal tissue (Figure 5B; 513 tumor and 59 normal samples). Why do the authors add "despite this not being a selection criterion"?`,
+      options: [
+        { t: `Because the TCGA data were collected after the screens were finished`, ok: false, why: `The timing of data collection is not the point. The point is that tumor expression played no part in choosing the lncRNAs.` },
+        { t: `Because overexpression in tumors proves that the lncRNAs cause cancer`, ok: false, why: `Overexpression is consistent with an oncogenic role but does not prove it. The evidence for function comes from the knockdown experiments.` },
+        { t: `Because it makes the overexpression independent support, not something built into how the lncRNAs were chosen`, ok: true, why: `Right. Tier 2 was defined by the ASO results (loss of proliferation with two ASOs), so finding the lncRNAs overexpressed in tumors is an extra, independent line of evidence rather than a circular one.` },
+        { t: `Because Tier 2 lncRNAs were chosen for being absent from normal tissue`, ok: false, why: `Tier 2 was defined by the ASO result, a reproducible loss of proliferation with two distinct ASOs, not by expression in normal tissue.` },
       ] },
 
     { type: 'mcq', lesson: 'G-res-aso', points: 1, derived: ['26', '104', '11'],
@@ -164,8 +164,8 @@
       options: [
         { t: `8.3 and 2.5 molecules per cell, because TPM counts molecules per cell`, ok: false, why: `TPM is a relative measure (transcripts per million transcripts), not a count per cell. The paper gives the estimated molecules per cell separately.` },
         { t: `About 83 for CHiLL1 and about 25 for GCAWKR`, ok: false, why: `These values are an order of magnitude too high. The paper gives about 4 and about 1.` },
-        { t: `About 4 for CHiLL1 and about 1 for GCAWKR`, ok: true, why: `Right. The paper equates 8.3 TPM with about 4 molecules per cell for CHiLL1 and 2.5 TPM with about 1 copy per cell for GCAWKR. Both are low-abundance RNAs.` },
         { t: `About 1 for CHiLL1 and about 4 for GCAWKR`, ok: false, why: `The values are swapped: CHiLL1 is the more abundant of the two.` },
+        { t: `About 4 for CHiLL1 and about 1 for GCAWKR`, ok: true, why: `Right. The paper equates 8.3 TPM with about 4 molecules per cell for CHiLL1 and 2.5 TPM with about 1 copy per cell for GCAWKR. Both are low-abundance RNAs.` },
       ] },
 
     { type: 'mcq', lesson: 'G-res-mechanism', points: 1,
@@ -266,6 +266,30 @@
 
     /* ======================= PART C: figure interpretation (marks = checklist points) ======================= */
 
+    { type: 'figure', img: 'fig3F', lesson: 'G-res-validation', points: 5,
+      source: ['fig3F', 'fig3E', 'res-validation-p5'],
+      q: `Figure 3F tests ASOs against three migration-screen hits (candidates 215, 448 and 489) in A549 cells. Explain (a) what the two bar charts measure and what the reference bar is, (b) which ASO results are significant and which one is not, (c) what the qRT-PCR bars add, and (d) what you can conclude and what you cannot.`,
+      model: `The left chart (qRT-PCR, n = 2) shows how far each ASO lowered its target RNA at 24 h, relative to HPRT1, with the non-targeting "ASO control" as the reference bar (about 1.0). The right chart shows the fraction of migrated cells (crystal violet staining relative to the control, n = 3) for two ASOs against each of candidates 215, 448 and 489. Five of the six ASOs lowered migration significantly (P = 0.029, 0.005, 0.006, 0.006 and 0.031), but ASO2 against candidate 489 (MIR23AHG) did not (P = 0.144). The qRT-PCR bars show that each ASO lowered its target RNA, which ties the effect to loss of the RNA. So, with most ASOs, knocking down these lncRNAs lowers the migration of A549 cells, in line with the screen. In my assessment one cannot conclude that migration itself is impaired, because the assay does not show whether the ASOs simply reduce cell growth or viability (fewer cells would then reach the membrane); a parallel viability measurement or a second cell line would address this. The text's "dramatic impairment" is also stronger than the P = 0.144 for that one ASO.`,
+      checklist: [
+        `Left chart: qRT-PCR of the target RNA at 24 h relative to HPRT1 (n = 2); right chart: crystal violet signal of migrated cells relative to control (n = 3); reference = non-targeting ASO control`,
+        `Two ASOs for each of candidates 215, 448 and 489, so the effect is not tied to one sequence`,
+        `Five ASOs significant (P = 0.029, 0.005, 0.006, 0.006, 0.031)`,
+        `Exception: ASO2 for candidate 489 (MIR23AHG) is not significant (P = 0.144), so "dramatic impairment" overstates it`,
+        `Cannot conclude (own assessment): that migration itself is impaired, since fewer cells could reflect lower growth or viability; measure viability in parallel or add a second cell line`,
+      ] },
+
+    { type: 'figure', img: 'fig4D', lesson: 'G-res-integration', points: 5, derived: ['42', '9', '153'],
+      source: ['fig4D', 'res-integration-p2'],
+      q: `Figure 4D shows stacked bars of the hits from the pan-hallmark integration (Pan) and from the integration within each hallmark (Pro, Cis, Mig), next to the composition of the library. Explain (a) what the four colors mean and what the Pan bar contains, (b) what the control counts say about the quality of the ranking, and (c) how the numbers 50, 38 and 65 of the hallmark bars fit the 134 hallmark-specific hits in the text.`,
+      model: `Red segments are positive controls, grey neutral controls, light green previously published lung cancer lncRNAs and blue novel cancer lncRNAs; the printed numbers are counts and the bars are scaled to 100% of the hits. The Pan bar holds 46 positive controls, 3 neutral controls, 7 known lung cancer lncRNAs and 73 novel lncRNAs; "cand hits: 80" counts only the lncRNA candidates (7 + 73), and 73 of them had not been linked to NSCLC before. For comparison the library bar holds 109 positive controls, 35 neutral controls, 90 known and 913 novel lncRNAs (1003 candidates). The controls work as a quality check: 46 of the 109 positive controls (about 42%, my calculation) were called as hits but only 3 of the 35 neutral controls (about 9%), so the ranking favors true growth genes and mostly rejects neutral targets. The hallmark bars list 50 (Pro), 38 (Cis) and 65 (Mig) lncRNA hits, which add up to 153. The text reports 134 different lncRNAs that are hits in at least one hallmark, 19 of them in two hallmarks and none in three; those 19 are counted twice in the bars, so 153 − 19 = 134 (my calculation), which matches.`,
+      checklist: [
+        `Colors: red = positive controls, grey = neutral controls, light green = known lung cancer lncRNAs, blue = novel cancer lncRNAs; counts are printed in the segments`,
+        `Pan bar: 46 positive controls, 3 neutral controls, 7 known and 73 novel lncRNAs; "cand hits: 80" counts the 7 + 73 lncRNAs (73 not previously linked to NSCLC)`,
+        `Library bar for comparison: 109 positive controls, 35 neutral controls, 90 known and 913 novel lncRNAs (1003 candidates)`,
+        `Quality check (own calculation): 46 of 109 positive controls (about 42%) but only 3 of 35 neutral controls (about 9%) were called as hits`,
+        `Reconciliation: 50 + 38 + 65 = 153 hallmark hits; the 19 hits shared by two hallmarks are counted twice, so 153 − 19 = 134 different lncRNAs, none in all three`,
+      ] },
+
     { type: 'figure', img: 'fig4C', lesson: 'F2', points: 5,
       source: ['fig4C', 'res-integration-p2', 'fig2A', 'fig2B', 'fig2C'],
       q: `Figure 4C is a ternary plot of the significant pan-hallmark hits. (In Figure 2 the hallmarks are marked by icons: an infinity loop for proliferation, a circle with a bar for cisplatin, a crown for migration.) Explain (a) what the corners, a dot's position, color and size, and the petal plots represent, (b) what the petal plots of candidate 507 (LINC00910) and candidate 215 (AC104024.3) tell you, and (c) what the plot adds to the list of 80 hits.`,
@@ -276,30 +300,6 @@
         `Color = which individual screens also call it a hit (for example Pan+Cis); size = FDR (bigger = smaller FDR); red ring = positive control`,
         `Petal plots show each hallmark's contribution: 507 (LINC00910) has one long cisplatin (teal) petal; 215 (AC104024.3) has proliferation (yellow) and migration (pink) petals and no teal petal`,
         `Added value: a hallmark-specific signature in three dimensions within the overall confidence of the pan-hallmark ranking`,
-      ] },
-
-    { type: 'figure', img: 'fig4B', lesson: 'E4', points: 5,
-      source: ['fig4B', 'fig4A', 'res-integration-p1', 'm-hits-p5', 'res-pipeline-p3'],
-      q: `Figure 4B compares ways of ranking the screen results. Explain (a) what the axes, the dotted diagonal and the AUC values mean, (b) which methods perform best and worst, and (c) the conclusion and one limit of this comparison.`,
-      model: `Each curve is a ROC curve. The positive-control genes (109) count as true positives and the neutral controls (35) as false positives: the y axis is the fraction of positive controls recovered and the x axis the fraction of neutral controls wrongly called. The dotted diagonal is chance performance (AUC 0.5); a higher AUC means a better ranking. The pan-hallmark TPP has the highest AUC (0.82), slightly above the common RRA integration (0.80) and clearly above the single screens (A549 dropout 0.73; H460 dropout 0.54, barely better than chance). TPP applied within one phenotype (TPP Pheno) scores 0.73 ± 0.01. So integrating all the screens recovers the controls better than any single screen. In my assessment, a limit is that performance is judged only on control genes: the positive controls are protein-coding genes and there are only 35 neutral controls, so the result may not carry over exactly to lncRNAs.`,
-      checklist: [
-        `Axes: true positive rate (positive controls recovered) against false positive rate (neutral controls called); 109 positive and 35 neutral controls`,
-        `Dotted diagonal = chance (AUC 0.5); a higher AUC means a better ranking`,
-        `Best: TPP Pan 0.82, then RRA Pan 0.80; TPP Pheno 0.73 ± 0.01 and A549 dropout 0.73; worst: H460 dropout 0.54 (near chance)`,
-        `Conclusion: pan-hallmark integration outperforms the single screens and the common integration method`,
-        `Limit (own assessment): judged only on control genes (protein-coding positives, 35 neutral controls), which may not represent lncRNAs`,
-      ] },
-
-    { type: 'figure', img: 'fig3D', lesson: 'G-res-validation', points: 5,
-      source: ['fig3D', 'res-validation-p4'],
-      q: `Figure 3D tests the two genes that share the start site deleted at candidate 205. Explain (a) why ASOs were used here, (b) what the "ASO control" is, (c) what the growth curves and the qRT-PCR bars show for LINC00115 versus RP11-206L10.11, and (d) the conclusion.`,
-      model: `Deleting the shared start site cannot show which of the two overlapping genes matters, or whether the effect comes from the DNA (for example an enhancer) or from the RNA. ASOs were therefore used to knock down each RNA separately, with two different ASOs per gene. The "ASO control" is a non-targeting ASO that serves as the reference (set to 1.0). For LINC00115, both ASOs slowed the growth of A549 cells over 72 h (P = 0.034 and P = 0.018; n = 4). For RP11-206L10.11 the growth curves were not significantly different from the control ("ns"), although the qRT-PCR bars (n = 2, no P values printed) suggest that its ASOs did lower its RNA, so the lack of effect is probably not because the ASOs failed. The conclusion is that LINC00115, not RP11-206L10.11, drives proliferation, through an RNA-dependent mechanism.`,
-      checklist: [
-        `Why ASOs: deletion cannot tell which of two overlapping genes matters, nor DNA-dependent from RNA-dependent effects`,
-        `Controls and design: a non-targeting ASO control (the reference) and two different ASOs per gene`,
-        `LINC00115: both ASOs reduce growth over 72 h in A549 (P = 0.034; P = 0.018)`,
-        `RP11-206L10.11: growth not significantly changed (ns) even though the qRT-PCR bars suggest its RNA was lowered (n = 2, no P values)`,
-        `Conclusion: LINC00115 acts through an RNA-dependent mechanism; RP11-206L10.11 is not needed for proliferation`,
       ] },
 
     { type: 'figure', img: 'fig5A', lesson: 'G-res-aso', points: 5,
@@ -314,30 +314,42 @@
         `Normal lung-derived cells (CCD-16Lu, MRC5-CV1, HBEC3-KT): diminished or absent response, especially for CHiLL1 and GCAWKR, hence Tier 3 (cancer-selective)`,
       ] },
 
-    { type: 'figure', img: 'fig6C', lesson: 'D9', points: 5,
-      source: ['fig6C', 'fig6B', 'res-mechanism-p1'],
-      q: `Figure 6C shows nuclear/cytoplasmic fractionation of A549 cells. Explain (a) what MALAT1 and GAPDH are for, (b) how to read the x axis, (c) what the bars say about CHiLL1 and GCAWKR and how this fits Figure 6B, and (d) why location matters for the mechanism.`,
-      model: `MALAT1 and GAPDH are control RNAs: MALAT1 marks the nucleus and GAPDH the cytosol, so they show that the fractionation separated the two compartments. The x axis is the log2 of the nuclear/cytoplasmic ratio and it is drawn backwards: positive values on the left (arrow N) mean more RNA in the nucleus and negative values on the right (arrow C) more in the cytoplasm. The MALAT1 and GCAWKR bars point to the nuclear side, while the GAPDH and CHiLL1 bars point to the cytoplasmic side. This agrees with the FISH images and the cytoplasmic/nuclear ratio in Figure 6B, where CHiLL1 is found mainly in the cytoplasm and GCAWKR in the nucleus, so two methods give the same answer. Location is a key clue to mechanism: despite their similar oncogenic roles, the two RNAs probably act in different ways. The panel prints n = 2 but no P values, and the legend does not say what the error bars show.`,
+    { type: 'figure', img: 'fig6F', lesson: 'D10', points: 5,
+      source: ['fig6F', 'res-mechanism-p3'],
+      q: `Figure 6F shows KEGG pathway enrichment for the genes changed by CHiLL1 knockdown in A549 and H460 cells. Explain (a) what each dot is and what the two axes show, (b) what the green labels mean and name four of them, (c) what "DEGs, A549 = 2006" and "DEGs, H450 = 3015" refer to, and (d) what the authors conclude and what the plot cannot prove.`,
+      model: `Each dot is one KEGG pathway. Its position shows how significant the enrichment of the CHiLL1-regulated genes is in A549 cells (x axis) and in H460 cells (y axis); both axes are labelled "Adjusted P-value" and the legend does not explain the scale, so I read dots farther from the origin as more significant. The green dots are cancer-relevant pathways that are significant in both cell lines, for example non-small cell lung cancer, MAPK signaling, PI3K-Akt signaling, p53 signaling, apoptosis, pathways in cancer, small cell lung cancer, proteoglycans in cancer and VEGF signaling. The numbers are the differentially expressed genes (DEGs) used for each cell line, 2006 in A549 and 3015 in H460 (the label prints "H450"), taken from the genes significantly affected in common by ASO1 and ASO2. The pathway results of the two cell lines correlate (R = 0.48, P < 2.2e-16). The authors conclude that the changes underline disease relevance (non-small cell lung cancer), point to possible mechanistic pathways (MAPK, PI3K-Akt) and, because the two backgrounds agree, support the generality of the CHiLL1 effects across KRAS+ NSCLC cells. In my assessment enrichment shows association only; it does not prove that CHiLL1 acts directly on these pathways.`,
       checklist: [
-        `MALAT1 = nuclear marker, GAPDH = cytosolic marker (they check that the fractionation worked)`,
-        `Axis = log2 nuclear/cytoplasmic ratio, drawn backwards: left (N) = nuclear, right (C) = cytoplasmic`,
-        `GCAWKR bar on the nuclear side (like MALAT1); CHiLL1 bar on the cytoplasmic side (like GAPDH)`,
-        `Agrees with FISH in Figure 6B (CHiLL1 mainly cytoplasmic, GCAWKR nuclear): two independent methods`,
-        `Location suggests distinct modes of action despite similar oncogenic roles; small print: n = 2, no P values, error bars not defined`,
+        `Each dot = one KEGG pathway; x = adjusted P-value (enrichment) in A549, y = in H460 (the legend does not explain the scale)`,
+        `Green dots = cancer-relevant pathways significant in both cell lines (for example non-small cell lung cancer, MAPK, PI3K-Akt, p53, apoptosis)`,
+        `DEGs: 2006 genes (A549) and 3015 genes (H460, printed "H450"), the genes affected in common by ASO1 and ASO2 in each cell line`,
+        `R = 0.48 (P < 2.2e-16): pathway significance agrees between the cell lines, supporting generality across KRAS+ NSCLC cells`,
+        `Conclusion and limit: disease relevance and candidate pathways; enrichment is association, not proof of direct action (own assessment)`,
       ] },
 
     /* ======================= PART D: explain or critique (marks = checklist points) ======================= */
 
-    { type: 'critique', lesson: 'H2', points: 5,
-      source: ['res-aso-p3', 'res-mechanism-p2', 'fig6E', 'discussion-p5', 'discussion-p6', 'm-rescue-p1'],
-      q: `ASOs can have off-target effects. (a) Give three pieces of evidence in the paper that the CHiLL1 and GCAWKR effects are on-target. (b) Overexpressing CHiLL1 or GCAWKR did not rescue the ASO-induced phenotypes. Explain what a rescue experiment is meant to show, give the explanations the authors offer for the failure, and suggest one experiment that would strengthen the on-target claim.`,
-      model: `On-target evidence: two independent ASO sequences per gene gave knockdown and the same phenotypes; CRISPR-del with several pgRNAs gave concordant phenotypes; for CHiLL1 the transcriptome changes after the two ASOs were highly correlated (R = 0.75), suggesting that most effects arise from CHiLL1 itself; and the ASOs were also active in other KRAS+ and EGFR-mutant cell lines. A rescue experiment re-expresses the RNA from a plasmid (here the full-length sequence of one annotated transcript per gene): if the phenotype is reversed, the ASO was acting through that RNA. Here neither lncRNA rescued. The authors suggest cis-regulatory mechanisms (although they saw no such effect for the nearest neighbor of CHiLL1, TNFRSF10B) or functional transcript isoforms that are unannotated and were not tested. In my assessment, a failed rescue neither proves nor disproves on-target action, but it leaves the argument resting on indirect evidence (agreement between independent tools). The text also does not say whether the added RNA could still be targeted by the ASO, which would also prevent a rescue. A stronger test would be a rescue with all transcript isoforms and an ASO-resistant construct, or additional ASOs with a different design that give the same phenotype.`,
+    { type: 'critique', lesson: 'G-res-integration', points: 5,
+      source: ['res-integration-p3', 'fig4E', 'fig4B', 'res-multipheno-p6', 'res-aso-p2'],
+      q: `The authors argue that hits from conventional dropout screens are cell-line specific (Figure 4E), which motivates combining screens and cell lines. Use the AUC values in Figure 4B and the control counts in the Results to argue that the low overlap between A549 and H460 dropout hits could also have a technical cause, and say what experiment would separate the two explanations.`,
+      model: `The paper's reading is biological: only 5 dropout hits are shared by A549 and H460, so lncRNAs "tend to only display activity in the cell type where they were discovered". An alternative is that the H460 dropout screen is simply less sensitive. In Figure 4B the A549 dropout screen has an AUC of 0.73 but the H460 dropout screen only 0.54, barely better than chance at recovering positive controls and rejecting neutral ones, and of the 109 positive controls in the library only 16 scored in the H460 dropout screen against 37 in A549 (10 in both). In my assessment a less sensitive H460 screen would find fewer true hits and so lower the overlap even if many lncRNAs were active in both lines. To separate the explanations one could repeat the H460 screen with more replicates or coverage until its AUC matches that of A549, or test A549-only and H460-only hits directly in both cell lines with ASOs or individual pgRNAs. The authors partly did the second: the Tier 2 ASOs gave similar results in H460 and H441, and the pan-hallmark hits are active in both cell types.`,
       checklist: [
-        `On-target evidence: two independent ASOs per gene gave the same knockdown and phenotypes; CRISPR-del with several pgRNAs agreed`,
-        `Further evidence: correlated transcriptome changes between the two CHiLL1 ASOs (R = 0.75) and activity in other KRAS+ and EGFR-mutant cell lines`,
-        `Rescue logic: re-express the RNA from a plasmid (one full-length transcript per gene); reversal of the phenotype would show the ASO acted through that RNA; here neither lncRNA rescued`,
-        `Authors' explanations: cis-regulatory mechanisms (not seen for the neighbor TNFRSF10B) or unannotated functional isoforms that were not tested`,
-        `Own assessment plus a strengthening experiment (for example rescue with all isoforms and an ASO-resistant construct, or extra ASO designs): the failed rescue leaves the on-target claim resting on indirect evidence`,
+        `The paper's reading: only 5 dropout hits are shared between A549 and H460, so hits are cell-line specific (Figure 4E)`,
+        `Evidence for a technical difference: H460 dropout AUC 0.54 (near chance) against 0.73 for A549, and only 16 of 109 positive controls scored in H460 against 37 in A549 (10 in both)`,
+        `Own assessment: a less sensitive H460 screen finds fewer true hits and lowers the overlap even if many lncRNAs are active in both lines`,
+        `Experiment (own assessment): improve or repeat the H460 screen (more replicates, coverage) until its AUC matches A549, or test A549-only and H460-only hits in both lines with ASOs or single pgRNAs`,
+        `What the paper already offers: Tier 2 ASOs gave similar results in H460 and H441, and pan-hallmark hits are active in both cell types`,
+      ] },
+
+    { type: 'critique', img: 'fig5F', lesson: 'C5', points: 5,
+      source: ['fig5F', 'fig5E', 'res-aso-p6', 'res-aso-p7', 'discussion-p5'],
+      q: `The Results say that CHiLL1 ASOs "resulted in a significant reduction in cell viability" of BE874 organoids (Figure 5F), and the Discussion says that the ASOs were effective in monolayer and 3D KRAS+ NSCLC backgrounds. Look at Figure 5F and at what the paper tested in 3D. How strongly do the data support this, and what would strengthen it?`,
+      model: `Support: in Figure 5F the CHiLL1 ASO lowered the luminescence (viability) of BE874 organoids compared with the ASO control in all four independent replicates, significantly in three of them (P = 0.008, P < 1.0e-04 and P = 0.026), on a log scale with n = 4. Limits: replicate 1 is "ns", so the effect is not seen every time; the replicates were read after 6 or 9 days; the tests are one-tailed; the error bars show variability between technical replicates; and the organoids come from a single KRAS+ patient-derived xenograft. Only the CHiLL1 ASO was tested in organoids, while GCAWKR was tested only in H441 spheroids (P = 0.028). In my assessment "effective in 3D" is encouraging but narrow: one organoid model for CHiLL1 and one spheroid model for both lncRNAs, with no normal-organoid comparison and no in vivo test. It would be stronger with GCAWKR ASOs and the cocktail in organoids, organoids from several patients and from normal lung (to test selectivity), and in vivo studies of efficacy and toxicity.`,
+      checklist: [
+        `Support: the CHiLL1 ASO lowered the viability of BE874 organoids relative to the ASO control; 3 of 4 independent replicates significant (P = 0.008, P < 1.0e-04, P = 0.026)`,
+        `Caveats in the figure: replicate 1 is ns; readings at 6 or 9 days; one-tailed tests; error bars show technical variability`,
+        `Scope: organoids from a single KRAS+ patient-derived xenograft; only the CHiLL1 ASO tested in organoids (GCAWKR only in H441 spheroids, P = 0.028)`,
+        `Own assessment: "effective in 3D" is encouraging but narrow; no normal-organoid comparison and no in vivo test`,
+        `Strengthening: GCAWKR ASO and the cocktail in organoids, organoids from several patients and from normal lung, then in vivo efficacy and toxicity`,
       ] },
 
     { type: 'critique', lesson: 'H4', points: 5,
@@ -352,28 +364,16 @@
         `Strengthening: dose-matched tests with measured knockdown, more normal cell types, and in vivo toxicity studies`,
       ] },
 
-    { type: 'critique', lesson: 'D6', points: 5,
-      source: ['res-aso-p8', 'res-mechanism-p7', 'discussion-p6', 'fig5G'],
-      q: `The Results say the CHiLL1/GCAWKR cocktail has an "additive" effect, while the Discussion says that mixing the ASOs gave "greater than additive" effects. (a) Describe the cocktail experiment in Figure 5G and why the total ASO amount was kept constant. (b) Give the explanation the authors offer. (c) What would be needed to claim real synergy?`,
-      model: `In Figure 5G, the A549 cells received a single ASO (CHiLL1 ASO1 or GCAWKR ASO1), a Tier 3 cocktail of the two in equal proportions, or a non-targeting control, always at the same total ASO amount (25 nM), so that any extra effect cannot simply be due to a higher dose. The cocktail reduced growth more than either single ASO (P = 0.021 and P = 0.030; one-tailed Mann-Whitney test, n = 4). The authors explain this by their finding that GCAWKR knockdown raises CHiLL1 but not vice versa; in the Discussion they also take the greater-than-additive effect as one sign that the two RNAs act through very different mechanisms. In my assessment, the equal-total-dose design fairly shows that the mixture is more potent than a single ASO at the same total dose, but "greater than additive" is a stronger claim: it needs single-ASO arms at the half dose that each ASO contributes to the cocktail, plus a formal model of the expected additive effect (for example Bliss independence), which the legend does not describe. One-tailed tests with four replicates are also only modest evidence.`,
+    { type: 'critique', lesson: 'G-res-mechanism', points: 5,
+      source: ['res-mechanism-p1', 'res-mechanism-p5', 'res-mechanism-p6', 'res-mechanism-p7', 'res-mechanism-p8', 'discussion-p6'],
+      q: `The Results say that CHiLL1 and GCAWKR act through "non-overlapping" downstream gene networks, yet Figure 6 is titled "distinct but overlapping oncogenic pathways" and both lncRNAs show p53-pathway enrichment. (a) Explain how both statements can be true. (b) Give the evidence that the two lncRNAs work differently. (c) What would you want to see to support "non-overlapping" more strongly?`,
+      model: `A pathway is a list of many genes, so two lncRNAs can change different genes that belong to the same pathways. Enrichment analysis asks which pathways are over-represented among the changed genes. For CHiLL1 and GCAWKR some terms are shared (p53 pathway, cholesterol homeostasis, epithelial to mesenchymal transition) while the gene networks themselves are described as non-overlapping, and the Discussion says that hundreds of target genes converge on shared oncogenic pathways. Evidence that the two work differently: CHiLL1 is mainly cytoplasmic and GCAWKR nuclear; CHiLL1 knockdown, but not GCAWKR knockdown, raises early apoptosis, whereas GCAWKR knockdown, but not CHiLL1 knockdown, raises cells in G2 and impairs migration; the G2-M checkpoint is a GCAWKR-specific term; and GCAWKR knockdown raises CHiLL1 but not the reverse. In my assessment the main text gives no number for the overlap between the two gene lists, so "non-overlapping" would be better supported by the count of shared genes and a test of whether it is lower than expected by chance. The GCAWKR analysis also rests on a single ASO, so a second ASO would show that its gene list is on-target.`,
       checklist: [
-        `Design: single ASOs vs a Tier 3 cocktail (equal proportions) vs a non-targeting control, all at the same total ASO amount (25 nM), so dose does not explain the extra effect`,
-        `Result: the cocktail reduced growth more than either single ASO (P = 0.021 and P = 0.030; one-tailed Mann-Whitney, n = 4)`,
-        `Authors' explanation: GCAWKR knockdown upregulates CHiLL1 but not vice versa; the Discussion also reads the effect as a sign of very different mechanisms`,
-        `Own assessment: "greater than additive" (Discussion) versus "additive" (Results); true synergy needs half-dose single-ASO arms and a formal additivity model (for example Bliss)`,
-        `Own assessment: one-tailed tests with n = 4 give modest evidence; test more doses and cell lines and check toxicity in normal cells (the paper reports no additional toxicity)`,
-      ] },
-
-    { type: 'critique', img: 'fig3F', lesson: 'G-res-validation', points: 5,
-      source: ['res-validation-p5', 'fig3F', 'fig3E'],
-      q: `The text says that ASO knockdown of three migration-screen hits "resulted in dramatic impairment of A549 migration" (Figures 3E and 3F). Look at the P values printed in Figure 3F. How well supported is the statement? Give one alternative explanation for fewer cells in a migration assay, and say what control or experiment would address it.`,
-      model: `Support: for the three candidates (215, 448 and 489) two ASOs each were used, and in the crystal violet readout of migrated cells five of the six ASOs lowered migration (P between 0.005 and 0.031); the qRT-PCR bars show that the ASOs lowered the target RNAs. Caveats: the sixth ASO, ASO2 for candidate 489 (MIR23AHG), has P = 0.144, which is not significant, so "dramatic impairment" overstates that result; the tests are one-tailed Student's t tests with n = 3 for migration (n = 2 on the qRT-PCR bars); and only A549 was tested. An alternative explanation is that the ASOs reduce cell growth or viability, so that fewer cells end up on the lower side of the membrane without any change in migration itself. In my assessment, the authors should measure cell number or viability in parallel (or normalize to it), and a second cell line or a rescue would add confidence.`,
-      checklist: [
-        `Notes the support: both ASOs for most candidates (215, 448, 489) reduce migration (P = 0.029, 0.005, 0.006, 0.006, 0.031) and the target RNAs are lowered`,
-        `Spots the exception: ASO2 for candidate 489 (MIR23AHG) has P = 0.144, not significant, so the text overstates it`,
-        `Small print: one-tailed Student's t tests, n = 3 for migration and n = 2 for qRT-PCR; only A549 tested`,
-        `Alternative explanation (own assessment): the ASOs reduce growth or viability, so fewer cells reach the membrane without a real change in migration`,
-        `Control (own assessment): measure viability or cell number in parallel (or normalize), and add a second cell line or a rescue`,
+        `Reconciliation: a pathway contains many genes, so different target genes of the two lncRNAs can fall in the same pathways (hundreds of genes converge on shared oncogenic pathways)`,
+        `Shared terms: p53 pathway, cholesterol homeostasis, epithelial to mesenchymal transition; the gene networks themselves are described as non-overlapping`,
+        `Evidence for different modes of action: location (CHiLL1 cytoplasmic, GCAWKR nuclear); CHiLL1-only apoptosis; GCAWKR-only G2 increase and impaired migration; GCAWKR-specific G2-M checkpoint term`,
+        `Interaction: GCAWKR knockdown raises CHiLL1 but not the reverse`,
+        `Own assessment: the main text gives no overlap count or test for "non-overlapping", and the GCAWKR analysis used a single ASO; report the shared-gene number and add a second ASO`,
       ] },
 
   ],
