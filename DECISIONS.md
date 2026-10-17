@@ -61,3 +61,37 @@ for each. Newest decisions are added at the end of each section.
 - **"Ask Claude"** copies a tutor prompt (the exact text + "I'm a complete beginner studying this
   paper…") using the Clipboard API, falling back to `execCommand('copy')`, and finally to a text
   box you can copy by hand.
+
+## Curriculum and content (Phase 2–3)
+
+- **Curriculum first, enforced by a program.** `CURRICULUM.md` (generated from `content/plan/*.py` →
+  `content/plan.json`) fixes 101 lessons in 8 tracks, 370 glossary terms, and for each term exactly one *home
+  lesson*. `tools/validate.mjs` fails if a lesson, glossary entry, card, panel guide or study layer uses a term
+  before its home lesson (unless the text explains it inline and lists it in `defines`). This is how "never use a
+  term before teaching it" is checked mechanically instead of by hope.
+- **Recommended path ≠ track order.** The path interleaves tracks only where a later track is needed (fold change and
+  replicates before the screens; p-values/FDR before pathway enrichment). Skipping is always allowed.
+- **Track G is "the paper itself", written paragraph by paragraph.** Every paragraph of the main text and of STAR
+  Methods gets PAPER (verbatim) → PLAIN ENGLISH → Why it matters → prerequisite links → 1–2 check questions. Pure
+  administrative paragraphs (affiliations, reference list, contents list, key-resources rows) are exempt.
+- **Lab methods are explained conceptually.** Every wet-lab technique is taught as a textbook does — what is done
+  and why, what a good result looks like — never as a step-by-step protocol, reagent quantities or troubleshooting.
+  (This also keeps the app focused on understanding rather than bench work, which an exam on the paper needs.)
+- **Sources everywhere.** Every paper-specific statement carries a `source` (paragraph / figure-panel / reference /
+  key-resources-row ID). The validator also checks that every number in a card, answer, plain-English paragraph or
+  guide appears (as a value) in the cited source. Numbers that I computed myself (e.g. 80/831 ≈ 10%) must be
+  declared in `derived` and are described as computed.
+- **Figure text.** Numbers that exist only inside a figure image are transcribed by eye into `FIGTEXT` (panel by
+  panel, with `[?]` for anything unreadable) so they can serve as a checked source. Supplementary items (Figures S1–S6,
+  Tables S1–S3, Data S1–S4) are **not in the PDF**; the app says so each time one is cited and never describes what
+  a supplementary panel "shows".
+- **Opinion is labelled.** Evaluation, critique and "experiments that would strengthen the work" (Track H) are
+  BACKGROUND/reasoning blocks (amber), never PLAIN ENGLISH; everything the paper did or found in Track H is a
+  sourced PLAIN ENGLISH block.
+- **Authors' typos stay.** Inconsistencies are shown as ⚠️ Heads-up notes, not corrected.
+- **Parallel authoring, one validator.** Lessons, glossary, panel guides, study layers, cards, quizzes and exams were
+  written by separate authors working on separate files against one authoring guide (`content/AUTHORING.md`) and the
+  gold-standard examples (`content/examples/`), then validated together and reviewed by independent reviewers.
+- **"Ask Claude" is a prompt generator, not an API call.** The app has no network access; it copies a tutor prompt
+  (exact text + "I'm a complete beginner…") to the clipboard so you can paste it into the Claude app. It appears on
+  every paragraph, figure and panel, lesson, flashcard, quiz question and exam question.

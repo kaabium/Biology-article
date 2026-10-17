@@ -262,12 +262,13 @@
             if (ok) mcq += 1;
             return `<div class="card q"><div class="small muted">Q${i + 1} · ${ok ? '<span class="badge good">correct</span>' : pick == null ? '<span class="badge warn">not answered</span>' : '<span class="badge bad">wrong</span>'}</div><div class="qtext">${q.q}</div>${imgFor(q)}
               <div class="opts">${q.options.map((o, k) => `<div class="opt ${o.ok ? 'correct' : k === pick ? 'wrong' : ''}">${o.t}<span class="why">${o.ok ? '✔ ' : '✘ '}${o.why || ''}</span></div>`).join('')}</div>
-              ${q.source ? `<div class="srcline">Source: ${U.srcLinks(q.source)}</div>` : ''}</div>`;
+              <div class="row" style="margin-top:.5rem"><button class="btn small ghost" data-askx="${i}">🤖 Ask Claude about this question</button>${q.source ? `<span class="srcline">Source: ${U.srcLinks(q.source)}</span>` : ''}</div></div>`;
           }
           return `<div class="card q"><div class="small muted">Q${i + 1} · self-graded</div><div class="qtext">${q.q}</div>${imgFor(q)}
             ${U.kind('paper', U.esc(answers[i] || '(no answer)'), { label: '✍️ Your answer' }).replace('k-paper', 'k-paper no-terms')}
             ${U.kind('plain', q.model || '', { label: '💬 Model answer', source: q.source })}
-            ${q.checklist ? `<div class="checklist"><b>Checklist — tick what your answer covered:</b>${q.checklist.map((c) => `<label><input type="checkbox" class="ck"> ${c}</label>`).join('')}</div>` : ''}</div>`;
+            ${q.checklist ? `<div class="checklist"><b>Checklist — tick what your answer covered:</b>${q.checklist.map((c) => `<label><input type="checkbox" class="ck"> ${c}</label>`).join('')}</div>` : ''}
+            <div class="row" style="margin-top:.5rem"><button class="btn small ghost" data-askx="${i}">🤖 Ask Claude to grade my answer</button></div></div>`;
         }).join('')}
         <div class="row"><button class="btn primary" id="save">Save this attempt</button><a class="btn" href="#/exams">Back to exams</a></div>`;
       PP.mountZooms(root);
@@ -277,6 +278,28 @@
         return ticks;
       };
       root.addEventListener('change', upd);
+      root.addEventListener('click', (e) => {
+        const b = e.target.closest('[data-askx]');
+        if (!b) return;
+        const i = +b.dataset.askx;
+        const q = ex.questions[i];
+        if (q.options) {
+          const pick = answers[i];
+          U.askClaude({
+            what: 'exam question (please explain why each option is right or wrong, and why the correct answer is correct)',
+            where: ex.title,
+            text: `${U.strip(q.q)}\nOptions:\n${q.options.map((o, k) => `${String.fromCharCode(65 + k)}) ${U.strip(o.t)}`).join('\n')}`,
+            extra: `My answer: ${pick != null ? String.fromCharCode(65 + pick) : '(none)'}. The correct answer is ${String.fromCharCode(65 + q.options.findIndex((o) => o.ok))}.`,
+          });
+        } else {
+          U.askClaude({
+            what: 'my answer to an exam question. Please grade it kindly against the key points and tell me what I missed',
+            where: ex.title,
+            text: `Question: ${U.strip(q.q)}\n\nMy answer: ${answers[i] || '(no answer)'}`,
+            extra: `Key points to check:\n${(q.checklist || []).map((c) => '- ' + U.strip(c)).join('\n')}\n\nModel answer: ${U.strip(q.model || '')}`,
+          });
+        }
+      });
       upd();
       U.$('#save', root).addEventListener('click', () => {
         const ticks = upd();
