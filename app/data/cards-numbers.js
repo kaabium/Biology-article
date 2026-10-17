@@ -286,7 +286,7 @@
   /* ---- the paper disagrees with itself (both versions shown) ---- */
   { id: 'n-conflict-library', deck: 'numbers', kind: 'paper', lesson: 'G-res-pipeline', source: ['res-pipeline-p4', 'm-library-design-p5', 'fig1A', 'fig1B'],
     front: "How many pgRNAs are in the library? Why do the text and Figure 1 seem to disagree?",
-    back: "Text (Results, Methods): <b>12,000</b> pgRNAs, 10 per target. Fig 1A: “1,200 targets (Depth: 10 pgRNAs)”, which fits 12,000 ÷ 10. Fig 1B: “1200 pgRNAs library including controls”, which does not; probably a typo." },
+    back: "Text (Results, Methods): <b>12,000</b> pgRNAs, 10 per target. Fig 1A: “1,200 targets (Depth: 10 pgRNAs)”, which fits 12,000 ÷ 10. Fig 1B: “1200 pgRNAs library including controls”, which does not match; probably a typo." },
   { id: 'n-conflict-targets', deck: 'numbers', kind: 'paper', lesson: 'G-res-integration', source: ['res-pipeline-p2', 'fig1B', 'fig1C', 'fig2F', 'fig4D', 'ga'],
     front: "How many lncRNA targets are in the library? Text and Fig 1B give one number, Figs 1C, 2F and 4D another.",
     back: "Text and Fig 1B: <b>831</b> lncRNAs = <b>998</b> TSSs (“998 Candidates”). Fig 1C, Fig 2F (n = 1003) and Fig 4D (“cand hits: 1003”): <b>1003</b>. The graphical abstract says “&gt;1000 lncRNAs”; the gap is not explained." },
@@ -299,7 +299,7 @@
   { id: 'n-conflict-accession', deck: 'numbers', kind: 'paper', lesson: 'G-m-data', source: ['m-data-p1', 'm-data-p2', 'm-hits-p4', 'krt-28', 'krt-29', 'krt-45'],
     front: "Which GEO and Zenodo accession numbers does the paper print for its data and TPP code, and where do they differ?",
     back: "GEO: GSE207229 (Data availability) but GSE207228 (screens) and GSE207227 (ASO RNA-seq) in the key resources table. TPP code: Zenodo: 6912511 (Data availability) vs zenodo.6912510 (Methods, key resources)." },
-  { id: 'n-ccd-name', deck: 'numbers', kind: 'paper', lesson: 'G-res-aso', source: ['res-aso-p3', 'm-expmodel-p1', 'fig5A'],
+  { id: 'n-ccd-name', deck: 'numbers', kind: 'paper', lesson: 'G-res-aso', source: ['res-aso-p3', 'm-expmodel-p1', 'fig5A', 'krt-31'],
     front: "The Results name the primary normal lung line “CCD-12Lu”. What do the Methods and Fig 5A call it?",
     back: "<b>CCD-16Lu</b> (also in the key resources). The Results' “CCD-12Lu” differs by one digit, apparently a typo." }
 );
