@@ -95,3 +95,25 @@ for each. Newest decisions are added at the end of each section.
 - **"Ask Claude" is a prompt generator, not an API call.** The app has no network access; it copies a tutor prompt
   (exact text + "I'm a complete beginner…") to the clipboard so you can paste it into the Claude app. It appears on
   every paragraph, figure and panel, lesson, flashcard, quiz question and exam question.
+
+## Scope cut ("it is a simple article for an exam — finish faster")
+
+- **101 lessons → 41.** The fine-grained plan was merged into 8–10-minute lessons (`content/plan/merge.py`; old → new ids in
+  `content/plan/merge_map.json`). All 370 glossary terms were kept, each with one home lesson. Statistics (E) sit before the
+  lessons that need them; the chart-reading lessons (F) come last before the paper.
+- **No review wave, no repeated test rounds.** Authors ran the validator at most a few times; term-order notes became warnings
+  (`--strict` makes them errors). The checks that stay errors are the ones that protect the exam facts: every paper fact has a
+  valid source, every number appears in its cited source (or is declared as `derived`), verbatim quotes are exact, every panel
+  has an image, legend, transcription and guide, files exist, nothing loads from the internet.
+- **Section quizzes dropped.** Every lesson and every paper paragraph already has check questions; there is one quiz per figure
+  (6, with 10–12 questions each) and two mock exams (33 and 34 questions).
+- **One smoke run.** `node tools/smoke.mjs` (index.html and dist/study-app.html, phone and desktop, ~45 routes) passed with no console errors.
+
+## Known quirks (not fixed on purpose)
+
+- The validator's HTML-tag stripping removes text between a `<` and the next `>` in source paragraphs, so a printed "<3%" loses its
+  number; authors worked around it with `derived`.
+- Several inconsistencies in the paper itself are surfaced as ⚠️ Heads-up boxes and "conflict" rows in Key numbers rather than
+  "fixed": library size (12,000 pgRNAs vs "1,200"), 831 / 998 / 1003 targets, control counts, "CCD-12Lu" vs "CCD-16Lu",
+  n in legends vs n on plots, GEO / Zenodo accession numbers.
+- Model answers in the mock exams use the blue Plain-English box; where they contain opinion it is labelled "In my assessment".
