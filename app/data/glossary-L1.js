@@ -5,7 +5,7 @@
 {
   id: 'tier',
   short: 'The paper’s label for successive ASO shortlists: Tier 1 is nine lncRNAs, Tier 2 is five, Tier 3 is two (CHiLL1 and GCAWKR).',
-  long: `<p>After the screens, the authors chose lncRNAs for ASO tests in three rounds, each stricter than the last. <b>Tier 1</b> is nine top-ranked hits picked by hand because they were new and showed no evidence of carrying a protein recipe. <b>Tier 2</b> is the five of those for which two different ASO sequences gave a reproducible loss of cell proliferation. <b>Tier 3</b> is the two, CHiLL1 and GCAWKR, that normal lung cells responded to weakly. The paper also speaks of a “Tier 3 cocktail” and a “Tier 2 cocktail”: mixes of their ASOs.</p>`,
+  long: `<p>After the screens, the authors chose lncRNAs for ASO tests in three rounds, each stricter than the last. <b>Tier 1</b> is nine top-ranked hits picked by hand for novelty and for lack of evidence that they carry a protein recipe. <b>Tier 2</b> is the five of those for which two different ASO sequences gave a reproducible loss of cell proliferation. <b>Tier 3</b> is the two, CHiLL1 and GCAWKR, that normal lung cells responded to weakly. The paper also speaks of a “Tier 3 cocktail” and a “Tier 2 cocktail”: mixes of their ASOs.</p>`,
   analogy: 'Rounds of a talent show: everyone auditions, a few get callbacks, fewer reach the semifinal, and two make the final.',
   see: ['chill1', 'gcawkr', 'aso-cocktail'],
   source: ['res-aso-p1', 'res-aso-p2', 'res-aso-p3', 'res-aso-p8'],
@@ -275,7 +275,7 @@
 {
   id: 'five-prime-three-prime',
   short: 'The two different ends of a DNA or RNA strand; a strand has a direction, from its 5′ end to its 3′ end.',
-  long: `<p>Each strand of DNA or RNA is built from nucleotides joined in one fixed direction. The two ends are chemically different and are named 5′ (“five prime”) and 3′ (“three prime”), after numbered carbon atoms in the sugar. Cells read and build strands in the 5′ to 3′ direction. In a double helix the two strands run in opposite directions: one goes 5′ to 3′, its partner 3′ to 5′.</p>`,
+  long: `<p>Each strand of DNA or RNA is built from nucleotides joined in one fixed direction. The two ends are chemically different and are named 5′ (“five prime”) and 3′ (“three prime”), after numbered carbon atoms in the sugar. Cells build new strands in the 5′ to 3′ direction, and sequences are written that way by convention. In a double helix the two strands run in opposite directions: one goes 5′ to 3′, its partner 3′ to 5′.</p>`,
   analogy: 'A one-way street: traffic moves from the 5′ end to the 3′ end, and the road beside it runs the opposite way.',
   see: ['dna', 'complementary-base-pairing', 'strand'],
   paperUse: { ref: 'm-aso-p2', quote: 'the 5′-FAM-labelled control ASO A' },
