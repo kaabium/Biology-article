@@ -12,24 +12,24 @@
 </ul>`,
   questions: [
     /* 1 */
-    { type: 'mcq', lesson: 'G-intro', points: 1, source: ['intro-p5'],
-      q: `According to the Introduction, what is the main weakness of a CRISPR screen that uses one cell line and one cancer hallmark?`,
+    { type: 'mcq', lesson: 'D1', points: 1, source: ['intro-p4', 'intro-p5', 'limitations-p2', 'res-pipeline-p1'],
+      q: `The paper mentions three CRISPR-based ways of perturbing a lncRNA. Which description is correct?`,
       options: [
-        { t: `It can pick up lncRNAs whose effect is specific to that cell line and does not generalize to the disease, so many hits may fail later.`, ok: true, why: `Right. The Introduction says such designs are “vulnerable to discovering lncRNAs promoting cell-line-specific phenotypes that do not generalize to the disease in question”. That is why the authors aim for lncRNAs that are pleiotropic (several hallmarks) and background independent (several cell models).` },
-        { t: `It cannot use CRISPR deletion, so it has to rely on CRISPRi, which does not work for lncRNAs.`, ok: false, why: `Not stated. The Introduction describes both deletion and CRISPRi screens, and it was CRISPRi screens that showed highly specific effects for lncRNAs in cell lines from six cancer types.` },
-        { t: `It always finds fewer hits than a multi-hallmark screen.`, ok: false, why: `The concern is the quality and the generality of the hits, not how many there are.` },
-        { t: `It cannot find lncRNAs that are overexpressed in tumors.`, ok: false, why: `Nothing in the Introduction says this. Expression in tumors is checked separately, with patient data, after the screens.` },
+        { t: `CRISPR deletion (used here) cuts the TSS region out of the DNA with paired guides; CRISPR inhibition (CRISPRi) turns transcription down without cutting the DNA; Cas13 would attack the RNA itself.`, ok: true, why: `Right. The Introduction lists “targeted genomic deletions or transcriptional inhibition” as two ways of silencing expression, and the Limitations suggest “direct RNA-targeting CRISPR perturbations, such as Cas13” as a complementary approach. (How CRISPRi works inside the cell is background.)` },
+        { t: `CRISPRi deletes the TSS with paired guides, CRISPR deletion turns transcription down, and Cas13 cuts the DNA.`, ok: false, why: `The methods are mixed up. The paper’s CRISPR deletion is the one that uses paired guide RNAs (pgRNAs) to delete the TSS.` },
+        { t: `All three remove the lncRNA gene from the genome and differ only in how the guides are designed.`, ok: false, why: `Only CRISPR deletion removes DNA. CRISPRi leaves the DNA in place, and Cas13 acts on RNA.` },
+        { t: `CRISPR deletion and CRISPRi act on the RNA, whereas Cas13 acts on the DNA.`, ok: false, why: `This is reversed. CRISPR deletion changes the DNA, CRISPRi acts on the gene’s transcription, and Cas13 is the “direct RNA-targeting” tool.` },
       ] },
     /* 2 */
-    { type: 'short', lesson: 'D1', points: 5, source: ['res-pipeline-p1', 'res-multipheno-p3'],
-      q: `Explain how the authors switch off a lncRNA gene with CRISPR deletion (DECKO). Why do they delete the transcription start site (TSS) rather than the whole gene, and what did the protein-coding positive controls show about how well this works?`,
-      model: `A pair of guide RNAs (a pgRNA) steers Cas9 to cut on both sides of the gene’s TSS, so the DNA between the cuts is lost and the gene is no longer expressed (loss of function). Deleting only the TSS gives uniform, shorter deletions, which are more efficient, and it lowers the chance of false positives caused by deleting overlapping DNA regulatory elements. Background: a lncRNA has no protein-coding open reading frame (ORF) to disrupt, so removing its promoter region is the practical way to silence it. For protein-coding positive controls the authors compared ORF mutation (expected to give the maximal loss of function) with promoter deletion: promoter-deletion pgRNAs had a detectable but lower effect, so CRISPR-del screens for lncRNAs are intrinsically less sensitive than ORF-targeting screens (Figure 2F).`,
+    { type: 'short', lesson: 'D1', points: 5, source: ['res-pipeline-p1'],
+      q: `Explain how the authors switch off a lncRNA gene with CRISPR deletion (DECKO). Why do they delete the transcription start site (TSS) rather than the whole gene, and why does the method need a pair of guides?`,
+      model: `A pair of guide RNAs (a pgRNA) steers Cas9 to cut on both sides of the gene’s TSS, so the DNA between the cuts is lost and the gene is no longer expressed (loss of function). Background: one cut alone only makes small random changes, whereas two cuts remove a defined segment, and a lncRNA has no protein-coding open reading frame (ORF) that could simply be disrupted, so cutting out the TSS region is the practical route. Deleting only the TSS rather than the whole gene gives uniform, shorter deletions, which are more efficient. It also lowers the chance of false positives caused by deleting overlapping DNA regulatory elements.`,
       checklist: [
         `A pair of guide RNAs (pgRNA) directs Cas9 to cut either side of the TSS, so the DNA between the cuts is deleted (loss of function)`,
         `Without its TSS, where copying into RNA starts, the gene is not expressed`,
         `Benefit: the deletions are uniform and shorter, which makes them more efficient`,
         `Benefit: less chance of false positives from deleting overlapping DNA regulatory elements`,
-        `Evidence from the controls: promoter-deletion pgRNAs had a detectable but lower effect than ORF mutation, so CRISPR-del is less sensitive for lncRNAs`,
+        `Why a pair (background): one cut gives only small random changes, two cuts remove a defined segment that contains the TSS`,
       ] },
     /* 3 */
     { type: 'mcq', lesson: 'G-res-pipeline', points: 1, source: ['res-pipeline-p2', 'm-library-design-p2', 'm-library-design-p4'],
@@ -68,6 +68,15 @@
         { t: `They selected the cells with puromycin, which only Cas9-expressing cells survive.`, ok: false, why: `The Cas9 lines were selected with blasticidin (8 µg/mL). Puromycin was used later, after the pgRNA library had been introduced.` },
       ] },
     /* 7 */
+    { type: 'mcq', lesson: 'C4', points: 1, source: ['m-expmodel-p1', 'm-library-cloning-p3', 'm-lentivirus-p2'],
+      q: `All the cell lines in the paper were authenticated by STR profiling and tested for mycoplasma. Why does this matter for the conclusions?`,
+      options: [
+        { t: `STR profiling confirms that each line really is the line it is said to be (not mislabeled or cross-contaminated), and a negative mycoplasma test shows that a common contamination, which can change cell behavior, did not distort the results.`, ok: true, why: `Right. The Methods state that all lines were “authenticated using Short Tandem Repeat (STR) profiling” and “tested negative for mycoplasma contamination”. A result obtained in the wrong cell line, or in contaminated cells, could not be trusted. (Why mycoplasma matters is background.)` },
+        { t: `STR profiling reads out the KRAS mutation of each line, and the mycoplasma test measures how fast the cells grow.`, ok: false, why: `STR profiling reads short repeated DNA sequences that act like a genetic fingerprint of a cell line; it does not report mutations such as KRAS. The mycoplasma test looks for a bacterial contamination and does not measure growth.` },
+        { t: `Both tests were run on the ASO-treated cells to show that the ASOs were not toxic.`, ok: false, why: `They were run on the cell lines themselves, to authenticate them and to check the cultures. Toxicity of the ASOs was assessed with normal lung cells and viability assays.` },
+        { t: `STR profiling shows that Cas9 is expressed, and the mycoplasma test shows that the pgRNA library is evenly distributed.`, ok: false, why: `Cas9 expression was followed with BFP, and the evenness of the library was checked by sequencing the plasmid library. Neither test is related to STR profiling or mycoplasma.` },
+      ] },
+    /* 8 */
     { type: 'mcq', lesson: 'D2', points: 1, source: ['m-titer-p1', 'fig1A'],
       q: `The pgRNA library was delivered at a multiplicity of infection (MOI) of 0.3 and the cells were then kept in puromycin. What is the logic of this design?`,
       options: [
@@ -76,7 +85,7 @@
         { t: `A low MOI gives every cell many different pgRNAs, which makes deletion more likely.`, ok: false, why: `It is the other way round: a low MOI means most cells get at most one virus. Many guides in one cell would make it impossible to tell which one caused a phenotype.` },
         { t: `Puromycin kills the cells in which the TSS was deleted, so only unedited cells remain to be screened.`, ok: false, why: `Puromycin resistance comes from the vector, so puromycin only selects cells that were infected. It says nothing about whether a deletion happened.` },
       ] },
-    /* 8 */
+    /* 9 */
     { type: 'mcq', lesson: 'D3', points: 1, source: ['m-library-cloning-p2', 'm-library-cloning-p3', 'm-screens-p1', 'm-screen-prolif-p1', 'm-gdna-p2', 'res-pipeline-p4', 'm-titer-p1'],
       q: `The Methods mention a library coverage of 66.7X at the cloning step and a coverage of more than 1,000x in the screens. Which statement is correct?`,
       options: [
@@ -85,7 +94,7 @@
         { t: `Both values count cells per library sequence, measured before and after puromycin selection.`, ok: false, why: `Only the screen coverage counts cells. The 66.7X value counts bacterial colonies at the cloning step.` },
         { t: `66.7X is the percentage of pgRNAs that match perfectly, and more than 1,000x is the infection rate.`, ok: false, why: `The perfect-match figure is a different number (60.8% perfect match across both spacers), and infection is described by the MOI (0.3), not by coverage.` },
       ] },
-    /* 9 */
+    /* 10 */
     { type: 'short', lesson: 'D3', points: 5, source: ['fig1F', 'res-pipeline-p5', 'm-hits-p2', 'res-multipheno-p3', 'fig2E', 'res-multipheno-p4'],
       q: `The library has ten pgRNAs per target, and every screen was done in biological replicate. Explain what problem each choice solves, using evidence from the paper.`,
       model: `Individual pgRNAs differ in efficiency. For DNMBP-AS1 (Figure 1F) seven of the nine pgRNAs shown lowered the RNA significantly, but pgRNA 1 and 7 did not; in a random test of 12 pgRNAs the expected deletion was seen for 10/12 but the RNA fell for only 7/12 (no change for three, up for two). Ten pgRNAs per target let the target-level effect be summarized as the median of its guides (or the average of the top 3), so a few failed guides do not decide the result. Biological replicates show that an effect is reproducible rather than chance: the replicate screens correlated at the level of read counts, pgRNA fold changes and target-level fold changes (for example R=0.66 for the lncRNA candidates in Figure 2E), even when the positive controls were left out. Hits were called from biologically replicated screens, for example 77 lncRNAs needed for proliferation of A549 cells.`,
@@ -96,44 +105,53 @@
         `The correlation holds when the positive controls are left out (lncRNA candidates alone), so it is not driven by a few strong controls`,
         `Hits come from biologically replicated screens (for example 77 lncRNAs needed for proliferation of A549 cells)`,
       ] },
-    /* 10 */
-    { type: 'figure', img: 'fig2F', lesson: 'D5', points: 4, source: ['fig2F', 'res-multipheno-p3'],
-      q: `Look at Figure 2F (A549 dropout screen). (a) What do the four groups of dots represent? (b) What does the figure show about deleting a gene’s promoter (TSS) compared with mutating its open reading frame (ORF)? (c) Which statistical tests are shown, and what does each compare?`,
-      model: `The dots are P values from the A549 dropout screen for 1003 lncRNA candidates, 35 neutral controls, 51 positive-control protein-coding genes targeted in the ORF and 58 positive-control genes targeted at the TSS (promoter). Neutral controls are not depleted (high P values); both positive-control groups are depleted, but ORF targeting gives the lowest P values (neutral vs ORF, 4.95e-05) while TSS deletion is detectable but weaker (neutral vs TSS, 0.004). The authors conclude that CRISPR-del screens for lncRNAs have intrinsically lower sensitivity than ORF-targeting screens, so some true lncRNA hits will be missed. The Kruskal-Wallis test (P=4.2e-12) asks whether the groups differ overall, and the Wilcoxon tests compare pairs of groups; both are rank-based tests (background).`,
-      checklist: [
-        `Identifies the groups: lncRNA candidates (n=1003), neutral controls (n=35), positive-control genes targeted in the ORF (n=51) and at the TSS (n=58), shown as P values from the A549 dropout screen`,
-        `Neutral controls are not depleted, while the positive controls are significantly depleted`,
-        `ORF targeting has the strongest effect (4.95e-05 against neutral) and TSS deletion a detectable but lower one (0.004), so CRISPR-del is intrinsically less sensitive for lncRNAs`,
-        `Names the tests: Kruskal-Wallis for global differences (P=4.2e-12) and Wilcoxon for pairwise comparisons`,
-      ] },
     /* 11 */
-    { type: 'mcq', lesson: 'D4', points: 1, source: ['res-multipheno-p2', 'm-screen-prolif-p1'],
-      q: `In the CFSE proliferation screen, in which sorted population should the pgRNAs of a growth-promoting lncRNA be enriched, and why?`,
+    { type: 'mcq', lesson: 'G-res-multipheno', points: 1, source: ['res-multipheno-p5', 'res-pipeline-p1'],
+      q: `Which result did the authors report about factors that influence how well a pgRNA deletes its target?`,
       options: [
-        { t: `In the brightest 20% of cells (slow-growing): the dye is shared out at each division, so slowly dividing cells keep more dye, and losing a growth-promoting lncRNA slows growth.`, ok: true, why: `Right. The Results say growth-promoting lncRNAs are found “by their pgRNAs’ enrichment in slow-growing cells”, and the Methods sorted the 20% brightest (slow-growing) and the 20% least bright (fast-growing) cells. That the dye halves at each division is background.` },
-        { t: `In the least bright 20% of cells (fast-growing), because losing the lncRNA makes cells divide faster.`, ok: false, why: `Reversed. Losing a growth-promoting lncRNA slows division, so its pgRNAs pile up in the slow-growing, brightest cells.` },
-        { t: `In the dead cells that float in the medium, because dead cells keep the most dye.`, ok: false, why: `Collecting floating dead cells is the logic of the cisplatin death screen, not of CFSE. In the CFSE screen the sorted cells are alive and are separated by how much dye they still carry.` },
-        { t: `Equally in both populations, because the dye only labels cells and does not change their growth.`, ok: false, why: `The dye does not change growth, but it lets the cells be sorted by how often they divided. The sort is what creates the enrichment that the screen reads out.` },
+        { t: `Predicted guide efficiency (the RuleSet2 algorithm) matched the observed growth phenotype, pgRNA orientation made no difference, and larger deletions tended weakly to give stronger phenotypes.`, ok: true, why: `Right. The Results report “the expected correlation” with predicted sgRNA efficiency, “no relationship with pgRNA orientation” and “a weak tendency for larger deletions to produce stronger phenotypes”. Note the assumption behind this analysis: the growth phenotype is used as a proxy for deletion efficiency.` },
+        { t: `pgRNA orientation was the strongest predictor of success, and predicted efficiency did not matter.`, ok: false, why: `The Results report no relationship with orientation and the expected correlation with predicted efficiency.` },
+        { t: `Deletion size was the only factor that mattered, and shorter deletions were clearly worse.`, ok: false, why: `The tendency was weak, not clear, and predicted efficiency mattered too. The statement that shorter deletions are more efficient compares deleting the TSS with deleting the whole gene, a much bigger difference in size.` },
+        { t: `No factor could be examined, because deletion efficiency was never measured in the screens.`, ok: false, why: `It was not measured directly, but the authors used the growth phenotype as a proxy for deletion efficiency and compared it with predicted efficiency, orientation and deletion size.` },
       ] },
     /* 12 */
-    { type: 'mcq', lesson: 'D5', points: 1, source: ['m-screen-cisplatin-p1', 'fig2B'],
-      q: `In the cisplatin survival screen, A549 cells were treated at two doses, IC30 and IC80. Why were two doses used?`,
-      options: [
-        { t: `To widen the dynamic range and cover different dose effects: a mild dose (IC30) slows proliferation by about 30%, while a high dose (IC80) causes proliferative arrest or cell death.`, ok: true, why: `Right. The Methods give exactly this reason. For A549 the survival-screen doses were 6.5 and 25 µM, corresponding to IC30 and IC80.` },
-        { t: `The lower dose is the untreated control and the higher dose is the treatment.`, ok: false, why: `Both doses are treatments. Neither is a control.` },
-        { t: `The death screen needed 25 µM and the survival screen needed 6.5 µM.`, ok: false, why: `This is mixed up. The survival screen used 6.5 and 25 µM (IC30 and IC80). The death screen used lower doses (2 and 1 µM, IC20) because it collects the cells that die at a mild dose.` },
-        { t: `Two doses were needed so that two independent replicates could be compared.`, ok: false, why: `The Methods give a different reason: to increase the dynamic range of the screens, not to create replicates.` },
+    { type: 'figure', img: 'fig2D', lesson: 'E2', points: 4, source: ['fig2D', 'fig2E', 'res-multipheno-p3', 'res-pipeline-p4'],
+      q: `Figure 2D compares the read counts of two biological replicates of the A549 dropout screen at the start (T0) and after 3 weeks (T3). (a) What do the numbers in the upper-right tiles show, and how were they calculated? (b) Compare the replicate pairs at T0 and T3 and say what you conclude about reproducibility. (c) Why is a high correlation of raw read counts a fairly easy test, and what stricter test did the authors add?`,
+      model: `Each tile gives the Pearson correlation coefficient (R) between two samples, calculated on Z score-transformed log2 read counts, and all are marked as significant (***). The two T0 replicates agree most closely (R=0.959), the two T3 replicates agree well (R=0.869), and T0 against T3 is somewhat lower (0.808 to 0.917), as expected when some pgRNAs have dropped out over the 3 weeks; all values are high, so the biological replicates are reproducible. In my assessment raw counts correlate partly because pgRNAs already differ in abundance in the starting library (the 90th to 10th percentile count ratio was 4.6-fold), so the counts would correlate even if the screen added no signal. The authors therefore also correlated the fold changes (T3/T0) of the lncRNA candidates alone, without positive controls, which is the stricter test (R=0.66 in Figure 2E).`,
+      checklist: [
+        `Each tile is a Pearson correlation (R) between two samples, calculated on Z score-transformed log2 read counts; all are significant`,
+        `The T0 replicates agree most (R=0.959), the T3 replicates also agree well (R=0.869), and T0 versus T3 is lower (0.808 to 0.917) because some pgRNAs dropped out; conclusion: the replicates are reproducible`,
+        `Own assessment: raw counts correlate partly because pgRNAs differ in abundance from the start (the starting library has a 4.6-fold 90th to 10th percentile ratio), so this is an easy test`,
+        `The stricter test: correlating the fold changes (T3/T0) of the lncRNA candidates alone, without positive controls (R=0.66 in Figure 2E)`,
       ] },
     /* 13 */
-    { type: 'mcq', lesson: 'D4', points: 1, source: ['m-hits-p3', 'fig2A', 'fig2B', 'fig2C'],
-      q: `For a single screen, a target was called a hit if its FDR was below 0.2 and its log2 fold change (LFC) had the right sign. Which sign was required?`,
+    { type: 'mcq', lesson: 'D4', points: 1, source: ['m-gdna-p1', 'm-gdna-p2', 'm-library-design-p5', 'm-screen-prolif-p1'],
+      q: `How was the abundance of each pgRNA in a screen sample measured?`,
       options: [
-        { t: `Positive LFC in the CFSE, death and migration screens (pgRNAs enriched); negative LFC in the dropout and cisplatin survival screens (pgRNAs depleted).`, ok: true, why: `Right. In the positive screens the pgRNAs of interest are enriched in the collected cells (slow-growing, dead or migration-impaired cells), so LFC is above 0. In the dropout and survival screens they are depleted, so LFC is below 0.` },
-        { t: `Negative LFC in every screen, because deleting a cancer-promoting lncRNA always lowers the pgRNA count.`, ok: false, why: `In a positive-selection screen the collected population is the one in which the pgRNAs of interest are enriched, so the LFC of a real hit is positive there.` },
-        { t: `Positive LFC in the dropout and cisplatin screens, and negative LFC in the CFSE, death and migration screens.`, ok: false, why: `This is the reverse of what the Methods state.` },
-        { t: `No sign was needed: FDR below 0.2 alone defines a hit.`, ok: false, why: `The Methods require both FDR below 0.2 and the correct sign of LFC, so that a target depleted when it should be enriched is not called a hit.` },
+        { t: `Genomic DNA was extracted from the harvested cells, the pgRNA region was amplified by PCR with a uniquely barcoded primer for each sample, and the products were sequenced; the reads per pgRNA give its abundance.`, ok: true, why: `Right. The Methods describe gDNA isolation, PCR in 100 µL reactions (at most 4 µg of gDNA each, 22 cycles) with a uniquely barcoded primer per sample, and sequencing at about 40M reads per sample. The pgRNAs sit in the cells’ DNA, so a pgRNA’s count follows how many cells carry it.` },
+        { t: `RNA was extracted from the cells and the guide RNAs were measured by RNA-seq.`, ok: false, why: `The pgRNAs were read from genomic DNA, which is what the Methods describe (gDNA extraction and PCR). RNA-seq was used elsewhere, to study how ASO knockdown changes the transcriptome.` },
+        { t: `The pgRNAs were counted under the microscope by following the fluorescent proteins.`, ok: false, why: `Fluorescent proteins (BFP, mCherry, GFP) mark cells; they cannot tell the 12,000 different pgRNAs apart. Telling them apart needs sequencing.` },
+        { t: `Cells were sorted one pgRNA at a time by FACS and each sorted group was counted.`, ok: false, why: `FACS was used to sort cells by phenotype (for example the 20% brightest and the 20% least bright cells in the CFSE screen), not by which pgRNA they carry. The pgRNA is read afterwards by sequencing.` },
       ] },
     /* 14 */
+    { type: 'mcq', lesson: 'D5', points: 1, source: ['m-screen-cisplatin-p1'],
+      q: `How did the authors choose the cisplatin concentrations for the screens (IC30, IC80 and IC20)?`,
+      options: [
+        { t: `They treated A549 and H460 cells with a range of cisplatin concentrations, measured viability after 72 h with CellTiter-Glo, followed cell doubling times, and picked the concentrations that reduce viability by the wanted amounts.`, ok: true, why: `Right. The Methods describe a dose-response (3,000 cells per well in 96-well plates, ten concentrations from 0.5 to 50 µM, luminescence after 72 h) and doubling-time experiments (living cells counted every 2 to 3 days for up to 14 days). A mild dose (IC30) slows proliferation by about 30%, while high doses cause arrest or death.` },
+        { t: `They used the IC values of earlier publications for every cell line.`, ok: false, why: `The Methods describe the authors’ own dose-response and doubling-time experiments in A549 and H460 cells.` },
+        { t: `They used a dose high enough to kill every cell, because only dead cells carry information.`, ok: false, why: `The IC doses reduce viability by a chosen share and do not kill everything. A screen needs living cells to read out pgRNA changes. Only the death screen collects dying cells, and it uses a low dose (IC20).` },
+        { t: `They chose the doses after sequencing, so that as many pgRNAs as possible changed.`, ok: false, why: `The doses were established before the screens, from the dose-response and doubling-time experiments, not from the sequencing results.` },
+      ] },
+    /* 15 */
+    { type: 'mcq', lesson: 'D4', points: 1, source: ['m-hits-p3'], derived: ['1.2', '0.05', '0.5'],
+      q: `Apply the hit rule: FDR below 0.2 and the right sign of the log2 fold change (LFC). Using these hypothetical results, which one would be called a single-screen hit?`,
+      options: [
+        { t: `Dropout screen: LFC = −1.2, FDR = 0.05.`, ok: true, why: `Right. The FDR is below 0.2 and the sign is negative, as required for a dropout screen, in which the pgRNAs of a real hit are depleted.` },
+        { t: `Dropout screen: LFC = +1.2, FDR = 0.05.`, ok: false, why: `The FDR passes, but a positive LFC in a dropout screen means the pgRNAs became more common, not depleted, so it is not a hit.` },
+        { t: `CFSE screen: LFC = +1.2, FDR = 0.5.`, ok: false, why: `The sign is right for a positive screen, but an FDR of 0.5 is far above the cutoff of 0.2.` },
+        { t: `Migration screen: LFC = −1.2, FDR = 0.05.`, ok: false, why: `The FDR passes, but migration is a positive screen, so a hit needs a positive LFC (pgRNAs enriched).` },
+      ] },
+    /* 16 */
     { type: 'short', lesson: 'G-m-hits', points: 6, source: ['m-hits-p1', 'm-hits-p2', 'm-hits-p3', 'm-hits-p4', 'm-hits-p5'],
       q: `Describe, in order, how the raw sequencing reads of a screen were turned into hits (for one screen and for the combined analysis), and how the authors judged the quality of the ranking.`,
       model: `Reads were analyzed with the CASPR pipeline: counts per million were filtered (the printed cutoffs, “3 > cpm>666”, look like a typo), low-scoring guides were removed by GuideScan and a batch-effect correction was applied with MageckFlute. CASPR then gave log2 fold changes and FDR-corrected p-values per target; the target-level log2FC is the median of its pgRNAs (as in MAGeCK’s method) or the average of the top 3, and fold changes can be z-scored using the mean and SD of the neutral controls. In a single screen a hit needs FDR &lt; 0.2 with LFC &gt; 0 for the positive screens (CFSE, death, migration) or LFC &lt; 0 for the dropout and cisplatin screens. To combine screens, the target prioritization pipeline (TPP) runs Robust Rank Aggregation on the effect sizes and an empirical Brown’s method on the p-values in parallel, merges the two with a harmonic mean p-value, corrects with Benjamini-Hochberg and calls hits at FDR &lt; 0.2. Ranking quality was checked with enrichment scores of positive and neutral controls (GSEA simulation, n = 10,000) and with ROC curves that treat positive controls as true positives and neutral controls as true negatives.`,
@@ -145,16 +163,16 @@
         `The two scores are merged by a harmonic mean p-value, corrected with Benjamini-Hochberg, and hits are called at FDR &lt; 0.2`,
         `Quality check with controls: enrichment scores (GSEA, 10,000 simulations) and ROC curves with positive controls as true positives and neutral controls as true negatives`,
       ] },
-    /* 15 */
-    { type: 'mcq', lesson: 'E5', points: 1, source: ['m-hits-p4', 'fig4A', 'res-integration-p2'],
-      q: `How does the target prioritization pipeline (TPP) combine the screens?`,
+    /* 17 */
+    { type: 'mcq', lesson: 'E1', points: 1, source: ['m-hits-p2', 'fig1F'],
+      q: `The target-level log2FC was the median of the log2FC values of the target’s pgRNAs (or the average of the top 3 guides). Suppose that for one target three of its ten pgRNAs are strongly depleted and the other seven have no effect. What happens?`,
       options: [
-        { t: `Robust Rank Aggregation (RRA) ranks targets by effect size (log2FC) across screens, an empirical Brown’s method (EBM) combines their p-values, a harmonic mean p-value merges the two, and Benjamini-Hochberg correction with FDR &lt; 0.2 defines the hits.`, ok: true, why: `Right. The paper applies “two different approaches in parallel”: RRA for effect size and EBM for significance. The RRA score is converted to a p-value so that the two can be merged.` },
-        { t: `RRA combines the p-values and EBM ranks the effect sizes, and the harmonic mean then averages the fold changes.`, ok: false, why: `The roles are swapped. RRA works on effect size (log2FC) and EBM on p-values, and the harmonic mean is taken of significance scores (p-values), not fold changes.` },
-        { t: `A target is a hit only if it passes FDR &lt; 0.05 in every single screen, and TPP simply counts them.`, ok: false, why: `TPP combines evidence across screens and does not require a hit in each one. In fact the hallmark-specific integration found 19 hits in two hallmarks and none in three.` },
-        { t: `EBM first removes weak targets, and RRA then ranks only the survivors.`, ok: false, why: `The two approaches run side by side. They are not sequential steps. Their scores are merged afterwards by the harmonic mean p-value.` },
+        { t: `The average of the top 3 guides shows a strong effect, but the median of all ten stays close to zero.`, ok: true, why: `Right. The median is the middle value, and seven of the ten values are near zero, so it ignores the three strong guides. The top-3 average is built from exactly those guides. The median is robust to a few unusual guides but can miss a target that only some guides hit; the top-3 average catches such a target but is easier to inflate by chance (background).` },
+        { t: `Both summaries show a strong effect.`, ok: false, why: `Only the top-3 average does. The median ignores the three strong guides because seven of the ten values are near zero.` },
+        { t: `The median shows a strong effect and the top-3 average stays near zero.`, ok: false, why: `This is reversed. The top-3 average uses the three strongest guides, whereas the median uses the middle of all ten.` },
+        { t: `Neither can be calculated, because a target needs all ten pgRNAs to be depleted.`, ok: false, why: `Nothing requires every guide to work. Individual guides often fail (for example pgRNA 1 and 7 in Figure 1F), which is why several guides are summarized.` },
       ] },
-    /* 16 */
+    /* 18 */
     { type: 'mcq', lesson: 'E4', points: 1, source: ['m-hits-p4', 'res-integration-p2'], derived: ['16', '20'],
       q: `The pan-hallmark analysis called 80 lncRNAs as hits at FDR &lt; 0.2. What does that threshold mean?`,
       options: [
@@ -163,17 +181,7 @@
         { t: `Every hit had an uncorrected p-value below 0.2.`, ok: false, why: `FDR values are corrected values (Benjamini-Hochberg), not raw p-values. The correction is needed because many targets were tested together.` },
         { t: `About 20% of all targets in the library are false positives.`, ok: false, why: `The FDR describes the share of false discoveries among the called hits, not among all targets in the library.` },
       ] },
-    /* 17 */
-    { type: 'figure', img: 'fig4B', lesson: 'E4', points: 4, source: ['fig4B', 'res-integration-p1', 'm-hits-p5', 'res-pipeline-p3'],
-      q: `Figure 4B compares ways of ranking the screen results. (a) How is “performance” measured, and what serves as the truth? (b) Which approaches do best and worst? (c) Name one reason to be careful when reading this figure.`,
-      model: `Each ranking is scored with a ROC curve and its area under the curve (AUC): the 109 positive controls count as true positives and the 35 neutral controls as true negatives, so the AUC shows how well a ranking puts positives above neutrals (0.5 would be chance, 1.0 perfect). TPP Pan, which integrates all screens, does best (AUC 0.82), followed by RRA Pan (0.80); TPP Pheno (0.73±0.01) and the A549 dropout screen alone (0.73) are lower, and the H460 dropout screen alone is close to chance (0.54). In my assessment the main cautions are that the controls are not lncRNAs, so the ranking is judged on a stand-in truth, and that the gap between TPP Pan and RRA Pan is small and shown without a statistical test.`,
-      checklist: [
-        `AUC from ROC curves (true positive rate against false positive rate): 0.5 is chance, 1.0 is perfect`,
-        `The truth set is the library controls: 109 positive controls (true positives) and 35 neutral controls (true negatives)`,
-        `Best is TPP Pan (0.82), then RRA Pan (0.80); lower are TPP Pheno (0.73±0.01) and A549 dropout (0.73); worst is H460 dropout (0.54, close to chance), so integration beats single screens`,
-        `A sensible caution, labeled as opinion: the controls are not lncRNAs, or the TPP Pan versus RRA Pan gap is small, or no test or interval is shown for the AUC differences`,
-      ] },
-    /* 18 */
+    /* 19 */
     { type: 'mcq', lesson: 'E1', points: 1, source: ['res-validation-p1'], derived: ['2', '3.5', '0.29'],
       q: `Candidate 205 was a top dropout hit in A549 (log2 fold change = −1.81, FDR = 1.2 × 10<sup>−7</sup>). How should you read these two numbers?`,
       options: [
@@ -182,7 +190,7 @@
         { t: `Its pgRNAs fell by 1.81%.`, ok: false, why: `Log2 fold changes are not percentages. Each whole unit is a doubling or a halving, so −1.81 is a much bigger drop than 1.81%.` },
         { t: `The RNA of candidate 205 fell 3.5-fold after the deletion.`, ok: false, why: `The log2 fold change comes from pgRNA read counts in the screen, which reflect how well cells carrying that pgRNA grew. It is not a measurement of RNA. RNA levels were checked by separate experiments such as qRT-PCR.` },
       ] },
-    /* 19 */
+    /* 20 */
     { type: 'figure', img: 'fig3C', lesson: 'D7', points: 5, source: ['fig3C', 'm-competition-p1', 'res-validation-p3'],
       q: `Figure 3C shows a competition assay in A549 cells. (a) Explain how the assay works and name the neutral control and the positive control. (b) What do the results show for candidates 205 and 509? (c) State one thing this experiment cannot show.`,
       model: `GFP-labeled cells carrying an AAVS1 (neutral) pgRNA are mixed 1:1 with mCherry-labeled cells carrying the pgRNA of interest, and the share of each color is followed by flow cytometry for 7 days; if deleting the target lowers fitness, the mCherry cells are out-competed. In the neutral control two AAVS1 pgRNAs stay roughly equal, so the labels and cutting alone do not change growth, and the positive control (a pgRNA against the ORF of the essential ribosomal gene RPS5) loses clearly (P=3.8e-4). The pgRNAs for candidate 205 (pgRNA_2, P=0.005) and candidate 509 (pgRNA_3, P=0.004) are out-competed with an effect comparable to RPS5, and with cisplatin the candidate 509 cells decline too (P=0.031), consistent with the screen results (n=3, SD error bars, Student’s t test at the last time point). The assay cannot show whether the effect is caused by loss of the RNA or of a DNA element, and it tests one randomly chosen pgRNA per candidate in one cell line (A549).`,
@@ -193,7 +201,7 @@
         `Candidates 205 (P=0.005) and 509 (P=0.004) are out-competed, and with cisplatin candidate 509 declines too (P=0.031), consistent with the screens`,
         `A limit: it cannot separate RNA from DNA effects, tests one chosen pgRNA per candidate in A549 only, with n=3 and a Student’s t test at the last time point`,
       ] },
-    /* 20 */
+    /* 21 */
     { type: 'mcq', lesson: 'D7', points: 1, source: ['m-qpcr-p1', 'fig3D', 'fig1F'],
       q: `In the qRT-PCR bar charts the vertical axis reads “Relative expression (Normalised to HPRT1)” and the bar for the control ASO is set to about 1.0. What does a bar at 0.5 for an ASO mean?`,
       options: [
@@ -202,7 +210,7 @@
         { t: `The ASO lowered HPRT1 itself by half.`, ok: false, why: `HPRT1 is the reference and is assumed not to change; if the ASO changed it, the normalization would be invalid. The ASO is designed against the lncRNA.` },
         { t: `The ASO is half as potent as the control ASO.`, ok: false, why: `The control ASO is non-targeting, so it has no knockdown to compare with. The bar shows how far the target RNA fell relative to that control.` },
       ] },
-    /* 21 */
+    /* 22 */
     { type: 'mcq', lesson: 'E3', points: 1, source: ['res-multipheno-p6'], derived: ['5.4'],
       q: `Of the 109 positive controls in the library, 37 scored as hits in the A549 dropout screen and 16 in the H460 dropout screen, and 10 scored in both (p = 0.011, hypergeometric test). What does the p-value say?`,
       options: [
@@ -211,18 +219,18 @@
         { t: `The correlation between the two cell lines’ fold changes is 0.011.`, ok: false, why: `Correlation is reported as Pearson’s R (for example in Figure 2H), not with a hypergeometric test. This test compares two lists of hits, not fold changes.` },
         { t: `There is a 98.9% chance that the two cell lines respond identically.`, ok: false, why: `A p-value is not the probability that a hypothesis is true. Also, only 10 controls were shared, so the cell lines clearly do not respond identically.` },
       ] },
-    /* 22 */
-    { type: 'critique', lesson: 'H2', points: 5, source: ['limitations-p1', 'res-validation-p2', 'res-validation-p4', 'res-aso-p1', 'fig3D'],
-      q: `A genomic deletion removes DNA, so a phenotype after CRISPR deletion could come from loss of the RNA or from loss of the DNA itself. Explain why this matters, how the authors used ASOs to deal with it (give the candidate 205 example), and what the 8/12 validation rate implies.`,
-      model: `Deleting a TSS region can also remove DNA regulatory elements (for example an enhancer) or an overlapping gene on the opposite strand, so a phenotype does not prove that the RNA of the lncRNA is responsible. ASOs lower the RNA without cutting any DNA, so a phenotype after ASO treatment points to an RNA-dependent mechanism. Candidate 205 overlaps the TSS of two bidirectional genes, LINC00115 and RP11-206L10.11; two gene-specific ASOs for each showed that LINC00115, but not RP11-206L10.11, drives proliferation through an RNA-dependent mechanism. Overall 8/12 (67%) of the hits tested with ASOs were validated (the 12 were 9 for proliferation/cisplatin and 3 for migration), which the authors read as meaning that around one-third of screen hits may act via DNA-dependent mechanisms; candidates 408 and 316 are likely false positives. In my assessment the 67% is only a rough guide, because the 12 tested were top-ranked hits chosen by the authors, and a failed ASO can also reflect weak knockdown rather than a DNA-dependent mechanism.`,
-      checklist: [
-        `Deletion can also remove DNA regulatory elements (for example enhancers) or an overlapping opposite-strand gene, so a phenotype is not proof of an RNA effect`,
-        `ASOs knock down the RNA without cutting DNA, so an ASO phenotype supports an RNA-dependent mechanism`,
-        `Candidate 205 overlaps LINC00115 and RP11-206L10.11: two ASOs per gene implicated LINC00115, not RP11-206L10.11`,
-        `8/12 (67%) of the hits were validated with ASOs, so about one-third may act via DNA-dependent mechanisms (for example candidates 408/316 are likely false positives)`,
-        `In my assessment type caveat: the 12 tested were selected top hits, so 67% may not apply to all hits, or ASO failure can reflect weak knockdown`,
-      ] },
     /* 23 */
+    { type: 'critique', lesson: 'H2', points: 5, source: ['limitations-p1', 'res-validation-p2', 'res-validation-p4', 'discussion-p6', 'fig3D'],
+      q: `A genomic deletion removes DNA, so a phenotype after CRISPR deletion could come from loss of the RNA or from loss of the DNA itself. Explain why this matters for the paper, how the authors used ASOs to deal with it (use candidate 205 as the example), and what remains uncertain even after the ASO result.`,
+      model: `Deleting a TSS region can also remove DNA regulatory elements (for example an enhancer) or an overlapping gene on the opposite strand, which the Limitations name as a risk of false positives, so a phenotype after deletion does not prove that the RNA of the lncRNA is responsible. ASOs lower the RNA without cutting any DNA, so a phenotype after ASO treatment points to an RNA-dependent mechanism. Candidate 205 overlaps the TSS of two bidirectional genes, LINC00115 and RP11-206L10.11; two gene-specific ASOs for each showed that LINC00115, but not RP11-206L10.11, drives proliferation through an RNA-dependent mechanism. In my assessment some uncertainty remains: an ASO result shows that the RNA is needed, not what it does, and the paper itself says that the genes act via “an RNA transcript or at least the production thereof”. A failed ASO could also reflect poor knockdown rather than a DNA-dependent mechanism, so comparing ASO and deletion phenotypes for the same target, or testing ASOs at several positions of the transcript, would help to separate the two.`,
+      checklist: [
+        `Deletion can also remove DNA regulatory elements (for example enhancers) or an overlapping opposite-strand gene (a false-positive risk), so a phenotype is not proof of an RNA effect`,
+        `ASOs lower the RNA without cutting DNA, so an ASO phenotype supports an RNA-dependent mechanism`,
+        `Candidate 205 overlaps LINC00115 and RP11-206L10.11: two ASOs per gene implicated LINC00115, not RP11-206L10.11`,
+        `Remaining uncertainty (own assessment): the ASO result does not show what the RNA does; the paper says “an RNA transcript or at least the production thereof”`,
+        `A fitting follow-up (own assessment), for example comparing ASO and deletion phenotypes for the same target, or testing ASOs at several positions, to separate DNA from RNA effects`,
+      ] },
+    /* 24 */
     { type: 'short', lesson: 'D6', points: 6, source: ['m-aso-p1', 'res-aso-p1', 'res-aso-p2', 'res-aso-p3', 'fig5A', 'fig5E'],
       q: `Explain how the ASO experiments were designed so that a phenotype could be blamed on loss of the target lncRNA and not on the treatment itself or on off-target effects. Include the controls and the role of the normal lung cells.`,
       model: `Several locked nucleic acid ASOs (3 to 5) were designed for each target, and a candidate was only taken forward if at least two independent ASOs gave ≥40% knockdown. Every experiment included a non-targeting control ASO delivered in the same way, and results are expressed relative to it, so the effect of transfection itself cancels out; MALAT1 (in the summary heat map) and an mTOR ASO (in spheroids) were positive controls whose knockdown is expected to lower viability. Getting the same phenotype with two different ASO sequences argues for on-target activity, because different sequences are unlikely to share the same off-target effects, and knockdown was measured together with the phenotype. The Tier 2 ASOs were also tested in H460 and H441 cells, and in non-transformed lung cells (HBEC3-KT, MRC5-CV1 and CCD-12Lu, as printed) the response was diminished or absent, which suggests low toxicity for normal cells.`,
@@ -234,15 +242,6 @@
         `Knockdown efficiency was measured together with the phenotype, so the effect can be tied to loss of the RNA`,
         `Normal (non-transformed) lung cells showed a diminished or absent response, suggesting selectivity and low toxicity; other KRAS+ lines (H460, H441) were tested for generality`,
       ] },
-    /* 24 */
-    { type: 'mcq', lesson: 'D6', points: 1, source: ['m-aso-p2', 'res-aso-p8', 'fig5G', 'discussion-p7'],
-      q: `In the cocktail experiments the total ASO concentration was kept at 25 nM, so a 50:50 CHiLL1/GCAWKR cocktail contained only half as much of each ASO as a single-ASO treatment. Why does this design matter?`,
-      options: [
-        { t: `It compares the cocktail with an equal dose of a single ASO, so a stronger effect (or any extra toxicity) can be blamed on combining two targets and not on a higher total amount of ASO.`, ok: true, why: `Right. The Results report a greater effect on viability than “an equal dose of either ASO alone” and no additional toxicity for non-cancerous cells, and the Discussion repeats the point (“equal doses of single ASOs”).` },
-        { t: `It shows that higher ASO concentrations are more toxic to normal cells.`, ok: false, why: `The concentration was held constant, so this design cannot show a dose-toxicity relationship.` },
-        { t: `It guarantees that both ASOs enter every cell.`, ok: false, why: `An equal total concentration says nothing about uptake. Uptake was checked separately with a labeled control ASO.` },
-        { t: `It makes the non-targeting control ASO unnecessary.`, ok: false, why: `The non-targeting ASO control stays in the experiment (Figure 5G). Every single ASO and every cocktail is compared with it.` },
-      ] },
     /* 25 */
     { type: 'mcq', lesson: 'C5', points: 1, source: ['m-pdx-p1', 'res-aso-p7', 'res-aso-p6', 'res-aso-p3'],
       q: `The authors tested CHiLL1 ASOs in organoids called BE874. How were these organoids made and checked?`,
@@ -253,34 +252,35 @@
         { t: `The tumor cells were grown directly in culture and assumed to be KRAS-mutant from the clinical file.`, ok: false, why: `The mutation was tested: KRAS was sequenced in both the organoids and the primary cancer.` },
       ] },
     /* 26 */
-    { type: 'mcq', lesson: 'G-res-aso', points: 1, source: ['res-aso-p9', 'fig5H', 'res-aso-p10'],
-      q: `Figure 5H reports that 78% of KRAS-mutant lung adenocarcinomas in TCGA (n=101) express at least one of CHiLL1 and GCAWKR, and 92% express at least one Tier 2 lncRNA. What does the 78% measure?`,
-      options: [
-        { t: `The share of tumors whose RNA-seq shows at least one of the two lncRNAs above the expression cutoff (more than 0.5 FPKM): the share of patients who have a target, not the share who would respond.`, ok: true, why: `Right. The legend defines expression as >0.5 FPKM, and the Results say these patients “might be treated by the Tier 3 cocktail”. No patient was treated in the paper, so this is a prediction about who has the target.` },
-        { t: `The share of patients whose tumors shrank after CHiLL1/GCAWKR ASO treatment.`, ok: false, why: `No patients were treated. All the ASO work was done in cells, spheroids and organoids.` },
-        { t: `The average drop in cell viability caused by the Tier 3 cocktail.`, ok: false, why: `Viability effects are shown in other panels (for example Figure 5G). Figure 5H is based on RNA-seq data from tumors.` },
-        { t: `The knockdown efficiency of the cocktail in the 101 tumors.`, ok: false, why: `Knockdown was measured in cultured cells. In the 101 TCGA tumors only expression was read out and nothing was knocked down.` },
-      ] },
-    /* 27 */
     { type: 'short', lesson: 'D8', points: 6, source: ['m-viability-2d-p1', 'm-viability-3d-p1', 'm-apoptosis-p1', 'm-cellcycle-p1', 'm-migration-assay-p1', 'res-mechanism-p5', 'res-mechanism-p6'],
-      q: `After ASO knockdown the authors measured viability, apoptosis, the cell cycle and migration. For each assay, say what is read out and how, and what the comparison was; then name the main result for CHiLL1 or GCAWKR.`,
-      model: `Viability: CellTiter-Glo luminescence, which reports the number of viable cells, was read over several days (CellTiter-Glo 3D for spheroids and organoids), and each ASO was compared with a non-targeting control ASO. Apoptosis: cells 24 h after transfection were stained with Annexin V (marks early apoptotic cells) and a viability dye (marks dead cells) and read by flow cytometry, with unstained cells as a staining control. Cell cycle: cells fixed 24 h after transfection were stained with Ki-67 and DAPI (DNA content) for flow cytometry, and the phases were assigned with the Dean-Jett-Fox model. Migration: cells were put in the upper part of a Boyden chamber in serum-free medium with 10% FBS below as the attractant; after 24 h the migrated cells were stained with crystal violet, dissolved, and read as absorbance at 595 nm, relative to the non-targeting ASO. Main results: CHiLL1 knockdown, but not GCAWKR, increased early apoptotic cells; GCAWKR knockdown, but not CHiLL1, increased cells in G2 and impaired migration.`,
+      q: `After ASO knockdown the authors measured viability, apoptosis, the cell cycle and migration. For each assay, say what is read out and how, and what it is compared with. Then explain why using several assays makes the conclusions stronger.`,
+      model: `Viability: CellTiter-Glo luminescence, which reports the number of viable cells, was read over several days (CellTiter-Glo 3D for spheroids and organoids), and each ASO was compared with a non-targeting control ASO. Apoptosis: cells 24 h after transfection were stained with Annexin V (marks early apoptotic cells) and a viability dye (marks dead cells) and read by flow cytometry, with unstained cells as a staining control. Cell cycle: cells fixed 24 h after transfection were stained with Ki-67 and DAPI (DNA content) for flow cytometry, and the phases were assigned with the Dean-Jett-Fox model. Migration: cells were put in the upper part of a Boyden chamber in serum-free medium with 10% FBS below as the attractant; after 24 h the migrated cells were stained with crystal violet, dissolved, and read as absorbance at 595 nm, relative to the non-targeting ASO. Several assays strengthen the conclusions because fewer viable cells alone cannot tell death from slower growth, and because the RNA-seq enrichment predicted what to test (the apoptosis term led to the Annexin V assay and the G2-M checkpoint term to the cell-cycle assay), so molecular and cellular data can be checked against each other.`,
       checklist: [
-        `Viability: CellTiter-Glo (the 3D version for spheroids and organoids) luminescence reports the number of viable cells, compared with a non-targeting ASO`,
-        `Apoptosis: Annexin V (early apoptotic) plus a viability dye (dead cells) by flow cytometry 24 h after transfection, with unstained cells as control`,
+        `Viability: CellTiter-Glo (the 3D version for spheroids and organoids) luminescence reports the number of viable cells; compared with a non-targeting ASO`,
+        `Apoptosis: Annexin V (early apoptotic) plus a viability dye (dead cells) by flow cytometry 24 h after transfection; unstained cells as the staining control`,
         `Cell cycle: Ki-67 and DAPI flow cytometry, with the phases assigned by the Dean-Jett-Fox model`,
         `Migration: Boyden chamber, serum-free medium above and 10% FBS below, crystal violet absorbance (595 nm) relative to the non-targeting ASO`,
-        `Result: CHiLL1 (not GCAWKR) knockdown increased early apoptotic cells`,
-        `Result: GCAWKR (not CHiLL1) knockdown increased cells in G2 and impaired migration`,
+        `Why several assays: fewer viable cells alone cannot distinguish cell death from slower growth, so apoptosis and cell-cycle assays are needed`,
+        `Why several assays: the RNA-seq enrichment predicted what to test (apoptosis term, G2-M checkpoint term), so molecular and cellular results can be cross-checked`,
+      ] },
+    /* 27 */
+    { type: 'figure', img: 'fig6G', lesson: 'D8', points: 4, source: ['fig6G', 'm-apoptosis-p1', 'res-mechanism-p5'],
+      q: `Figure 6G shows the Annexin V apoptosis assay 24 h after ASO transfection. (a) What do the four colors mean, and what is the reference for comparison? (b) What does the CHiLL1 panel show compared with the GCAWKR panel? (c) The Results call the CHiLL1 effect “significant”. What does the panel itself, and its legend, not tell you?`,
+      model: `Annexin V marks cells in early apoptosis and a viability dye marks dead cells, so flow cytometry sorts the cells into alive, early-apoptotic, late-apoptotic and necrotic fractions (the colors of the stacked bars); the non-targeting ASO control bars are the reference, and unstained cells served as the staining control. With both CHiLL1 ASOs the early-apoptotic fraction rises, most strongly in H460 cells, whereas the GCAWKR ASOs change it much less. The panel prints n=2 but shows no error bars, P values or test, and the legend names none, so the “significant increase” in the text cannot be checked from the figure. In my assessment two replicates give weak statistical power, and the size of the H460 effect and the agreement of two ASOs in two cell lines are more convincing than a missing P value would be.`,
+      checklist: [
+        `Colors: alive, early-apoptotic (Annexin V positive), late-apoptotic and necrotic cells, read by flow cytometry 24 h after transfection; the non-targeting ASO control is the reference`,
+        `Both CHiLL1 ASOs raise the early-apoptotic fraction in A549 and H460 cells (strongest in H460); the GCAWKR ASOs change it much less`,
+        `Missing statistics: n=2 is printed, but no error bars, P values or test are shown or named in the legend, although the text says “significant”`,
+        `Own assessment: with only two replicates the evidence is weak; the large H460 effect and the agreement of two ASOs in two cell lines carry more weight than a missing P value`,
       ] },
     /* 28 */
-    { type: 'figure', img: 'fig6C', lesson: 'D9', points: 1, source: ['fig6C', 'res-mechanism-p1'],
-      q: `Figure 6C shows RNA measured by qRT-PCR in nuclear and cytoplasmic fractions of A549 cells. The axis is the log2 nuclear/cytoplasmic ratio and it runs backwards (3 on the left, −2 on the right). What are MALAT1 and GAPDH doing in this experiment, and what do the data show?`,
+    { type: 'figure', img: 'fig5F', lesson: 'C5', points: 1, source: ['fig5F', 'res-aso-p7'],
+      q: `The Results say that CHiLL1 ASOs gave “a significant reduction in cell viability” of BE874 organoids (Figure 5F). How well does the panel support this statement?`,
       options: [
-        { t: `They are controls for the fractionation (MALAT1 nuclear, GAPDH cytoplasmic). Because they behave as expected, the plot supports GCAWKR being mainly nuclear and CHiLL1 mainly cytoplasmic.`, ok: true, why: `Right. The legend calls them the nuclear and cytosolic controls. On this reversed axis positive values (left) mean nuclear: MALAT1 and GCAWKR point left, GAPDH and CHiLL1 point right. The FISH images gave the same pattern. The panel prints n=2 and no P values.` },
-        { t: `They are housekeeping genes used to normalize the CHiLL1 and GCAWKR values.`, ok: false, why: `Normalization uses a housekeeping gene within each sample. Here MALAT1 and GAPDH are measured to show that the fractions were separated properly, and they are expected to land on opposite sides of zero.` },
-        { t: `They are the positive and negative controls for ASO knockdown.`, ok: false, why: `No ASO treatment is involved in this panel. It only compares where RNAs sit in untreated cells.` },
-        { t: `The bars show that CHiLL1 is nuclear and GCAWKR is cytoplasmic.`, ok: false, why: `This reads the reversed axis the wrong way round. Nuclear is on the left (positive values), so GCAWKR is nuclear and CHiLL1 is cytoplasmic, as in the FISH images.` },
+        { t: `Mostly: three of the four independent replicates show a significant drop and one is “ns”, but all the organoids come from a single patient-derived tumor and the error bars show only technical variability within each replicate.`, ok: true, why: `Right. The legend says the organoids were “grown from a single KRAS+ patient-derived xenograft”, the error bars show the variability of technical replicates, and the biological replicates are listed below the panel (n = 4). Replicate 1 is labeled ns, while replicates 2, 3 and 4 give P=0.008, P<1.0e-04 and P=0.026.` },
+        { t: `All four replicates are significant, so the effect is proven in patients.`, ok: false, why: `Replicate 1 is labeled ns, and the organoids come from one patient’s tumor, so nothing is shown across patients.` },
+        { t: `The panel shows no effect, because the bars of the ASO control and the CHiLL1 ASO overlap in every replicate.`, ok: false, why: `In replicates 2 to 4 the CHiLL1 ASO bars lie clearly below the control and the P values are significant. Only replicate 1 overlaps (ns).` },
+        { t: `The vertical axis is linear, so the drop in luminescence is small.`, ok: false, why: `The axis is logarithmic (ticks at 10^0, 10^2, 10^4 and 10^6), so bars that look close together can hide a large fold change.` },
       ] },
     /* 29 */
     { type: 'short', lesson: 'D10', points: 5, source: ['m-rnaseq-p1', 'm-rnaseq-p2', 'res-mechanism-p2', 'res-mechanism-p3', 'res-mechanism-p4', 'res-mechanism-p5', 'res-mechanism-p6', 'fig6E', 'discussion-p6'],
@@ -294,16 +294,15 @@
         `Limit, as opinion: enrichment shows association, not direct regulation; secondary effects are likely; GCAWKR was analyzed with a single ASO`,
       ] },
     /* 30 */
-    { type: 'critique', lesson: 'H2', points: 6, source: ['res-aso-p3', 'discussion-p5', 'res-mechanism-p2', 'res-mechanism-p6', 'm-rescue-p1', 'fig6E'],
-      q: `ASOs can have off-target effects. (a) List the evidence the authors give that the CHiLL1 and GCAWKR ASO effects are on-target. (b) What would a successful rescue experiment have shown, and what does the failed rescue mean? (c) What is the weakest part of the on-target argument?`,
-      model: `The authors give four lines of evidence: two independent ASO sequences per gene gave the same phenotypes; CRISPR deletion with multiple pgRNAs, a different method with different off-targets, replicated them; for CHiLL1 the RNA-seq changes caused by the two ASOs were highly correlated (R=0.75); and non-transformed cells showed diminished or absent responses, so the effect is not simply general toxicity of the treatment. A successful rescue (overexpressing the lncRNA from a plasmid and finding that the ASO phenotype is reversed) would have been strong proof of on-target action, but overexpression of neither CHiLL1 nor GCAWKR rescued the ASO-induced phenotypes; the authors suggest cis-regulatory mechanisms (although no such effect was seen for CHiLL1’s nearest neighbor TNFRSF10B) or functional isoforms that are unannotated and were not tested. In my assessment the weakest point is that the on-target claim rests on indirect evidence (“strongly suggested”, not proven), and that for GCAWKR the RNA-seq analysis used a single ASO; a plasmid-made RNA may also fail to restore the RNA in the right place, amount or isoform, so the failed rescue does not prove an off-target effect.`,
+    { type: 'critique', lesson: 'H2', points: 5, source: ['res-integration-p3', 'fig4E', 'intro-p5', 'intro-p6', 'res-aso-p2', 'res-aso-p3', 'discussion-p5', 'limitations-p2', 'fig2I', 'm-screen-cisplatin-p1', 'm-screen-migration-p1'],
+      q: `The authors say that their pan-hallmark hits are “background independent”. (a) What does that mean, and what evidence do they give? (b) Which parts of the design limit how far the claim can be generalized? (c) Name one experiment that would test it further.`,
+      model: `Background independent means that a lncRNA is active in more than one cell type, not only in the cell line in which it was discovered. Conventional dropout hits from A549 and H460 showed a low degree of concordance (lncRNAs tend to be active only where they were found), whereas the pan-hallmark hits were active in both cell types (Figure 4E); the ASOs also worked in H460 and H441 cells and in other KRAS+ and EGFR-mutant cell lines. In my assessment the claim is still limited: only two monolayer, KRAS-mutant lines were screened (the cisplatin and migration screens only in A549), and the pan-hallmark ranking itself integrates the H460 screens, so activity in both lines is partly built in; the independent support comes from the ASO tests in other lines. A fuller test would screen or test ASOs in further cell lines and 3D models, for example in several patient-derived organoids, as the authors propose with a wider panel of matched 2D and 3D models.`,
       checklist: [
-        `Two independent ASOs per gene give the same phenotype (different sequences, different off-targets)`,
-        `CRISPR deletion with multiple pgRNAs replicates the phenotypes (a different perturbation method)`,
-        `RNA-seq: the two CHiLL1 ASOs give highly correlated changes (R=0.75)`,
-        `Normal cells show a diminished or absent response, arguing against generic toxicity`,
-        `Rescue logic: restoring the RNA should reverse the phenotype; overexpression of neither lncRNA rescued, and the authors suggest cis-regulatory mechanisms or unannotated isoforms`,
-        `Opinion: the weakest point is that on-target action is only indirectly supported (failed rescue; a single ASO for GCAWKR RNA-seq), so “strongly suggested” rather than proven`,
+        `Meaning: a hit is active in more than one cell background, not only in the line where it was found (the opposite of cell-line-specific hits)`,
+        `Evidence: dropout hits from A549 and H460 show low concordance, whereas pan-hallmark hits are active in both cell types (Figure 4E); ASOs also worked in H441 and other KRAS+ and EGFR-mutant lines`,
+        `Limit: the screens used only two monolayer KRAS-mutant lines (and the cisplatin and migration screens only A549)`,
+        `Limit (own assessment): the pan-hallmark ranking integrates the H460 screens, so activity in both lines is partly built in; independent support comes from the ASO tests in other lines`,
+        `A fitting experiment: more cell lines and 3D models, or several patient-derived organoids (the authors propose a wider panel of matched 2D and 3D models)`,
       ] },
     /* 31 */
     { type: 'short', lesson: 'F4', points: 6, source: ['fig2F', 'fig3C', 'fig4H', 'fig5G', 'fig3D', 'fig3F', 'fig5E', 'fig5F', 'fig6L', 'fig6K', 'fig6G', 'fig1F', 'res-mechanism-p5', 'm-quant-p3'],

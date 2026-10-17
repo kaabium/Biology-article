@@ -13,6 +13,8 @@
     { k: 'bgnd', html:
       `<p>Annotations are shared as plain-text tables called <b>GTF files</b> (Gene Transfer Format). Each row describes one feature (a gene, a transcript or an exon) with its chromosome, start, end, strand and a few notes. Programs read them to draw gene maps or count RNA by gene.</p>` +
       `<p>Every gene also gets an <b>Ensembl gene ID</b>: the letters <b>ENSG</b> plus a number (for transcripts, <b>ENST</b>). A name such as "MALAT1" is a nickname, and a gene can have several. The ID is the stable address that says exactly which gene is meant.</p>` },
+    { k: 'plain', source: ['res-aso-p3', 'm-eztracks-p2'], html:
+      `<p><b>IDs in the paper.</b> CHiLL1 is ENSG00000253616 (res-aso-p3). For the GCAWKR locus the Methods list two IDs, ENSG00000272808 and ENSG00000232386, while the Results give only the first (res-aso-p3). So one locus can carry more than one ID.</p>` },
     { k: 'h', text: 'Four catalogs, four maps' },
     { k: 'bgnd', html:
       `<p>Several groups publish human gene catalogs. Each is built from different data and rules, so each contains lncRNAs that the others miss. The paper used four sources:</p>` +
