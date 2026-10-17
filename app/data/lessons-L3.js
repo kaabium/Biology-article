@@ -219,3 +219,102 @@
       ], source: ['res-validation-p4'] },
   ],
 });
+
+/* ============================================================================================== C1 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'C1',
+  defines: ['chemoresistance', 'invasion', 'migration'],
+  body: [
+    { k: 'h', text: 'What goes wrong in cancer' },
+    { k: 'bgnd', html:
+      `<p>A healthy cell divides only when told to, stops when told to, and self-destructs (apoptosis) if it is badly damaged (lesson B1). <b>Cancer</b> is a group of diseases in which cells escape these controls. They keep dividing, ignore "stop" and "die" signals, and can push into nearby tissue and travel to other organs. The cause is damage that builds up in the cell’s DNA, in genes that manage growth, repair and cell death. A tumor’s cells are all descendants of one changed cell, so they inherit its changes.</p>` +
+      `<p>A <b>tumor</b> is a lump of cells that has grown more than it should. Not every tumor is cancer: a benign tumor stays put, a malignant one invades its surroundings. (Some cancers, such as leukemia, form no lump at all.)</p>` },
+    { k: 'h', text: 'Hallmarks and phenotypes' },
+    { k: 'bgnd', html:
+      `<p>There are many kinds of cancer, but in 2000 Douglas Hanahan and Robert Weinberg argued that nearly all of them acquire the same few abilities. These are the <b>hallmarks of cancer</b>. The original list, in plain words: grow without being told to, ignore stop signals, resist cell death, divide without limit, build their own blood supply, and invade and spread. Later versions added more, such as changed energy use and hiding from the immune system. A hallmark is an ability, not a gene, and many genes can feed into one hallmark.</p>` +
+      `<p>A <b>phenotype</b> is any trait of a cell that you can observe or measure: how fast it divides, whether it survives a drug, how well it moves. (The DNA is the genotype.) Each hallmark shows up as a measurable phenotype, which is how hallmarks can be tested in lab dishes.</p>` +
+      `<p><b>Pleiotropic</b> means "one cause, several effects". A pleiotropic gene influences several traits at once. In this paper a pleiotropic lncRNA is one that matters for more than one hallmark, and "multi-hallmark" means tested against several hallmarks instead of one.</p>` },
+    { k: 'h', text: 'Accelerators and brakes: oncogenes and tumor suppressors' },
+    { k: 'bgnd', html:
+      `<p>Genes that control growth fall into two families, and a car is a good picture for both.</p>` +
+      `<p>An <b>oncogene</b> is an accelerator pedal stuck down. The normal version of the gene helps cells grow when a signal arrives. If it becomes overactive (stuck "on", or present in too many copies), the cell gets a constant "grow!" order. One overactive copy is usually enough.</p>` +
+      `<p>A <b>tumor suppressor</b> is the brake. Its job is to slow division, repair DNA, or trigger cell death. If it is lost or broken, nothing holds the cell back. Because one working copy is often enough, both copies usually have to fail.</p>` },
+    { k: 'svg', caption: 'Accelerator and brake: cancer needs a stuck accelerator (oncogene) and/or a failed brake (tumor suppressor).',
+      svg: `<svg viewBox="0 0 480 272" role="img" aria-label="A two by two grid. Row one, oncogene as an accelerator: pressed only when told to grow in a healthy cell, stuck down so the cell grows nonstop in a cancer cell. Row two, tumor suppressor as a brake: slows growth when needed in a healthy cell, broken so nothing holds growth back in a cancer cell">` +
+        `<text x="210" y="24" class="mid b">Healthy cell</text><text x="390" y="24" class="mid b">Cancer cell</text>` +
+        `<text x="62" y="84" class="mid b">Oncogene</text><text x="62" y="102" class="mid s m">(accelerator)</text>` +
+        `<text x="62" y="196" class="mid b">Tumor</text><text x="62" y="214" class="mid b">suppressor</text><text x="62" y="232" class="mid s m">(brake)</text>` +
+        `<rect x="125" y="40" width="170" height="104" rx="10" class="f-green"/>` +
+        `<rect x="182" y="52" width="56" height="28" rx="6" class="f-none"/><text x="210" y="71" class="mid s">gas</text>` +
+        `<text x="210" y="108" class="mid s">pressed only when</text><text x="210" y="126" class="mid s">told to grow</text>` +
+        `<rect x="305" y="40" width="170" height="104" rx="10" class="f-red"/>` +
+        `<path d="M350 52 V80" class="arrow s-red"/>` +
+        `<rect x="362" y="60" width="56" height="28" rx="6" class="f-none"/><text x="390" y="79" class="mid s">gas</text>` +
+        `<text x="390" y="108" class="mid s">stuck down:</text><text x="390" y="126" class="mid s">grows nonstop</text>` +
+        `<rect x="125" y="156" width="170" height="104" rx="10" class="f-green"/>` +
+        `<rect x="182" y="168" width="56" height="28" rx="6" class="f-none"/><text x="210" y="187" class="mid s">brake</text>` +
+        `<text x="210" y="224" class="mid s">slows growth</text><text x="210" y="242" class="mid s">when needed</text>` +
+        `<rect x="305" y="156" width="170" height="104" rx="10" class="f-red"/>` +
+        `<rect x="362" y="168" width="56" height="28" rx="6" class="f-none"/><text x="390" y="187" class="mid s">brake</text>` +
+        `<path d="M358 164 L422 200 M422 164 L358 200" class="ln thick s-red"/>` +
+        `<text x="390" y="224" class="mid s">broken: nothing</text><text x="390" y="242" class="mid s">holds growth back</text></svg>` },
+    { k: 'bgnd', html:
+      `<p><b>Where the car picture breaks down.</b> (1) A cell has many accelerators and brakes wired into networks, and cancer usually needs several changes, not one stuck pedal. (2) A gene is not fixed in one role: the same gene can act as an oncogene in one cell type and as a tumor suppressor in another. (3) Not every "accelerator" is a protein-coding gene. RNAs can act like one too, and some press down on brake genes. (4) The normal version of an oncogene is not bad: cells need it. It is the stuck-on or over-copied version that causes trouble.</p>` },
+    { k: 'memory', html:
+      `<p><b>Memory aid:</b> <b>O</b>ncogene = <b>O</b>n and stuck (accelerator). <b>T</b>umor suppressor = <b>T</b>he brake that must stay working. Hallmarks = the skills every cancer needs, whichever genes got it there.</p>` },
+    { k: 'h', text: 'How this paper uses these ideas' },
+    { k: 'paper', ref: 'res-multipheno-p1',
+      quote: 'Cancers thrive via a variety of phenotypic hallmarks, or biological capabilities acquired by cells during tumor progression.' },
+    { k: 'plain', source: ['res-multipheno-p1', 'intro-p6', 'fig1A'], html:
+      `<p>Hallmarks are abilities cells acquire, and each shows up as a measurable phenotype. The paper tests three hallmarks: proliferation (growth), chemoresistance (surviving a cancer drug) and invasion. Figure 1A’s wheel names the three phenotypes Proliferation, Cisplatin and Migration, so the invasion hallmark is measured as cell movement (migration). You will meet both words in lesson C2, and cisplatin in C3.</p>` },
+    { k: 'flag', source: ['intro-p6', 'res-multipheno-p7', 'fig1A'], html:
+      `<p>The third hallmark has two names. The Introduction says “invasion” (intro-p6), Figure 1A labels the wheel “Migration”, and the Results call migration “a key hallmark underlying the invasion and metastasis of tumor cells”. What the experiment actually measures is how cells move.</p>` },
+    { k: 'paper', ref: 'intro-p5',
+      quote: 'an ideal screen should prioritize lncRNA targets that are both pleiotropic (impact multiple disease hallmarks) and background independent (effective regardless of cell model)' },
+    { k: 'plain', source: ['intro-p5'], html:
+      `<p>This is the paper’s design goal. A good target should affect several hallmarks (pleiotropic) and should work in different cell models (“background independent”, lesson C4). The authors argue that single-hallmark, single-cell-model designs tend to find effects that do not carry over to the disease.</p>` },
+    { k: 'paper', ref: 'intro-p3',
+      quote: 'LINC00511, which promotes NSCLC by binding chromatin-modifying enzyme EZH2 and repressing tumor-suppressor genes, including p57 and LATS2' },
+    { k: 'plain', source: ['intro-p3', 'summary-p1'], html:
+      `<p>This is the "brake" story: LINC00511 helps a common lung cancer by pressing down on tumor-suppressor genes (p57, LATS2). Following that idea, the paper calls lncRNAs that help cancer cells “oncogenic”. Its summary says that 80 high-confidence oncogenic lncRNAs are active in NSCLC.</p>` },
+    { k: 'plain', source: ['res-mechanism-p4'], html:
+      `<p><b>A real case of "both".</b> The paper notes that ZBTB7A “has been reported as both an oncogene and tumor suppressor”, so a gene’s role can depend on context.</p>` },
+  ],
+  appears: [
+    { ref: 'intro-p2', note: 'Hallmarks “as defined by Hanahan and Weinberg”.' },
+    { ref: 'intro-p5', note: 'The ideal target is both pleiotropic and background independent.' },
+    { ref: 'res-multipheno-p1', note: 'Cancers rely on “phenotypic hallmarks”; earlier screens covered one hallmark only.' },
+    { ref: 'intro-p3', note: 'LINC00511 represses the tumor-suppressor genes p57 and LATS2.' },
+    { ref: 'summary-p1', note: 'The summary: 80 high-confidence oncogenic lncRNAs; “pleiotropic” roles.' },
+  ],
+  checks: [
+    { q: 'A gene that is stuck "on" and keeps telling cells to grow is best described as a(n):',
+      options: [
+        { t: 'Oncogene', ok: true, why: 'Right: an overactive growth gene is the stuck accelerator.' },
+        { t: 'Tumor suppressor', ok: false, why: 'A tumor suppressor is the brake. It causes trouble when it is lost or broken, not when it is stuck on.' },
+        { t: 'Hallmark', ok: false, why: 'A hallmark is an ability of cancer cells (for example, unlimited growth), not a gene.' },
+        { t: 'Phenotype', ok: false, why: 'A phenotype is an observable trait of a cell, such as growth speed. It is not a type of gene.' },
+      ], bg: true },
+    { q: 'The authors want targets that are "pleiotropic". What does that mean in the paper?',
+      options: [
+        { t: 'The lncRNA affects multiple cancer hallmarks', ok: true, why: 'Right (intro-p5): pleiotropic means “impact multiple disease hallmarks”.' },
+        { t: 'The lncRNA works in every cell model', ok: false, why: 'That is “background independent”, the second goal in the same sentence.' },
+        { t: 'The lncRNA has several isoforms', ok: false, why: 'Isoforms are different versions of a transcript. They have nothing to do with how many hallmarks are affected.' },
+        { t: 'The lncRNA makes many different proteins', ok: false, why: 'lncRNAs are noncoding and, by definition, do not make proteins.' },
+      ], source: ['intro-p5'] },
+    { q: 'Which three cancer hallmarks did the paper test?',
+      options: [
+        { t: 'Proliferation, chemoresistance and invasion (measured as migration)', ok: true, why: 'Right (intro-p6, with Figure 1A): growth, survival under a cancer drug, and movement.' },
+        { t: 'Blood-vessel growth, immune escape and changed energy use', ok: false, why: 'These are real hallmarks in Hanahan and Weinberg’s lists, but the paper did not test them.' },
+        { t: 'Proliferation, apoptosis and DNA repair', ok: false, why: 'Apoptosis and DNA repair are related ideas but are not the three hallmarks the paper tested.' },
+        { t: 'Oncogene, tumor suppressor and phenotype', ok: false, why: 'These are concepts from this lesson, not hallmarks.' },
+      ], source: ['intro-p6', 'fig1A'] },
+    { q: 'Which statement shows where the "accelerator and brake" picture is too simple?',
+      options: [
+        { t: 'Many genes interact, and the same gene can act as an oncogene or as a tumor suppressor depending on context', ok: true, why: 'Right: cells run on networks, and the paper itself notes ZBTB7A “as both an oncogene and tumor suppressor”.' },
+        { t: 'Oncogenes never exist in healthy cells', ok: false, why: 'Healthy cells carry the normal versions of these genes and need them. Only the overactive version is the problem.' },
+        { t: 'Tumor suppressors speed up cell division', ok: false, why: 'That is reversed: tumor suppressors are the brakes.' },
+        { t: 'Only protein-coding genes can promote cancer', ok: false, why: 'The paper calls lncRNAs, which do not code for protein, “oncogenic”.' },
+      ], source: ['res-mechanism-p4', 'summary-p1'] },
+  ],
+});
