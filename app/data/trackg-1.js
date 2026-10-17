@@ -250,8 +250,8 @@ Object.assign(window.TRACKG.paras, {
   'res-pipeline-p5': {
     plain: `<p>To find hits of general relevance to NSCLC, the authors ran parallel experiments in two widely used KRAS+ NSCLC models: the cell lines A549 and H460. They made non-clonal cell lines (mixed populations, not grown from one single cell) that stably express high levels of the Cas9 protein. The evidence is blue fluorescent protein (BFP), a glowing marker. <b>Figure 1D</b> shows cells being sorted by their blue glow; the box marks the Cas9/BFP-positive cells kept for the screens (Figure S1E is supplementary).</p>
 <p>Because the ability of pgRNAs to make the intended deletion efficiently has been called into question, the authors first did extensive validation of the library pgRNAs.</p>
-<p><b>Test 1, one known gene.</b> They targeted DNMBP-AS1 (candidate 331), a known NSCLC-promoting lncRNA. Its promoter region was deleted and its expression was lost, which the authors say supports the CRISPR-del strategy (Figures 1E and 1F; Figure S1G is supplementary). <b>In Figure 1E</b>, the top draws the DNMBP-AS1 locus and the ten library pgRNAs; in the gel below, the control lane has one long “wild-type” band, while the pgRNA lane also has a shorter “deletion” band. <b>In Figure 1F</b>, each bar is the DNMBP-AS1 RNA level with one pgRNA, compared with the control bar. Most bars are lower, but two are marked “ns” (not significant).</p>
-<p><b>Test 2, twelve more guides.</b> To assess the strategy more generally, they randomly cloned another 12 pgRNAs targeting 12 candidates. The expected deletion at the target site was seen in 10 of 12 cases. For the effect on target RNA levels, the expected decrease was seen in 7 of 12; three targets showed no change and two showed an increase (Figure S3A is supplementary). The authors say this is in line with previous observations from Shkumatava’s group.</p>`,
+<p><b>First test, one known gene.</b> They targeted DNMBP-AS1 (candidate 331), a known NSCLC-promoting lncRNA. Its promoter region was deleted and its expression was lost, which the authors say supports the CRISPR-del strategy (Figures 1E and 1F; Figure S1G is supplementary). <b>In Figure 1E</b>, the top draws the DNMBP-AS1 locus and the ten library pgRNAs; in the gel below, the control lane has one long “wild-type” band, while the pgRNA lane also has a shorter “deletion” band. <b>In Figure 1F</b>, each bar is the DNMBP-AS1 RNA level with one pgRNA, compared with the control bar. Most bars are lower, but two are marked “ns” (not significant).</p>
+<p><b>Second test, twelve more guides.</b> To assess the strategy more generally, they randomly cloned another 12 pgRNAs targeting 12 candidates. The expected deletion at the target site was seen in 10 of 12 cases. For the effect on target RNA levels, the expected decrease was seen in 7 of 12; three targets showed no change and two showed an increase (Figure S3A is supplementary). The authors say this is in line with previous observations from Shkumatava’s group.</p>`,
     why: `It sets up the two cell models and checks that the deletion tool works before the screens are trusted. The answer is “usually, not always”, which fits the design of 10 guide pairs per target and the lower sensitivity admitted in res-multipheno-p3.`,
     flags: [
       `Typo: the paragraph prints “A549 and H460, Non-clonal cell lines were generated…”, with a comma and a capital N where a full stop would be expected.`,
@@ -281,5 +281,209 @@ Object.assign(window.TRACKG.units, {
   'res-pipeline': {
     intro: `<p>This first Results section explains how the experiment is built: the cutting method (delete each lncRNA’s start site with paired guides), the list of 831 targets and the controls added to it, the library of 12,000 guide pairs, the two cell lines, and the first checks of whether the deletion tool really works.</p><p>The question it answers: <i>can hundreds of lncRNAs be switched off in one experiment, and can we trust the tool?</i></p>`,
     recap: `<p>The authors adapted DECKO to delete transcription start sites in a pooled format and built a library of 12,000 pgRNAs (10 per target) for 831 lncRNAs (998 TSSs) plus neutral and positive controls. They made Cas9-expressing A549 and H460 cells and tested the tool: it worked for DNMBP-AS1, and in a random test of 12 extra pgRNAs the expected deletion was seen in 10 and the expected RNA decrease in 7. So the method usually works, but some guides fail.</p>`,
+  },
+});
+
+/* ------------------------------------------------------------------------------------------ RES-MULTIPHENO */
+Object.assign(window.TRACKG.paras, {
+  'res-multipheno-p1': {
+    plain: `<p>Cancers succeed by using a variety of “phenotypic hallmarks”. These are biological capabilities that cells acquire as a tumor progresses.</p>
+<p>Earlier CRISPR screens were limited to a single hallmark, either proliferation (growth) or drug resistance. They were also usually “dropout” screens (a negative format). In a dropout screen, the pgRNAs for genes of interest are depleted: they become rarer in the cell population, because cells that carry them do worse (for example, they grow more slowly).</p>`,
+    why: `It states the gap the Results fill: earlier screens covered one hallmark and mostly one format. The next paragraph explains how this study widens both.`,
+    flags: [`Note the qualifier “usually”: the paragraph does not say that all earlier screens were dropout screens.`],
+    prereqs: ['C1', 'D3', 'D4'],
+    checks: [
+      { q: 'In a dropout screen, what does it mean that pgRNAs for genes of interest are “depleted”?',
+        options: [
+          { t: 'They become less common in the cell population over time', ok: true, why: 'Right: when a needed gene is lost, the cell does worse, so its guide becomes rarer.' },
+          { t: 'They become more common because their cells grow faster', ok: false, why: 'That would be enrichment, the opposite of depletion.' },
+          { t: 'They are removed from the library before the experiment starts', ok: false, why: 'All guides are present at the start; depletion happens during the experiment.' },
+          { t: 'They are destroyed by the Cas9 enzyme', ok: false, why: 'Cas9 uses the guide to find its DNA target; it does not destroy the guide pairs.' },
+        ], source: ['res-multipheno-p1'] },
+    ],
+  },
+
+  'res-multipheno-p2': {
+    plain: `<p>The authors wanted a fuller and more medically relevant picture of NSCLC lncRNAs. So they adapted pooled screening to identify genes that cause effects across several hallmarks of cancer progression: proliferation (growth), chemoresistance (surviving chemotherapy) and invasion. Figures 2A–2C are cartoons of the three kinds of screen.</p>
+<p>To make the screens more sensitive, they added complementary “positive” screens, in which the pgRNAs of interest become enriched (more common) instead of depleted. For proliferation they combined two formats:</p>
+<ul><li>a classical negative selection screen (“dropout”): the pgRNAs of growth-promoting targets become depleted;</li>
+<li>a positive selection screen that uses a dye called CFSE: cells are sorted by how fast they divided, and the pgRNAs of growth-promoting lncRNAs show up enriched in the slow-growing cells. <b>Figure 2A</b> draws both formats.</li></ul>
+<p>The complementary screens gave a modest but consistent gain in accuracy over pure dropout screens. Accuracy is measured as the area under the curve (AUC) of a receiver-operator (ROC) curve: 0.7 versus 0.67 for A549 proliferation, and 0.77 versus 0.73 for A549 cisplatin (complementary first, dropout alone second, as the sentence reads). So the authors decided to include the complementary screens in the later analyses.</p>`,
+    why: `It explains the paper’s core design idea: measure each hallmark in two complementary ways, so a real effect shows up from both sides. It justifies the extra work with a small but consistent gain in accuracy.`,
+    memory: `Two witnesses to the same event: the dropout screen notices which guides go missing, and the CFSE screen notices which guides pile up in the slow lane. Two witnesses who agree are more convincing than one.`,
+    flags: [
+      `The third hallmark is called “invasion” here but “migration” in the Summary and in Figure 2C (a migration assay). <a href="#/g/res-multipheno/res-multipheno-p7">res-multipheno-p7</a> is where the paper links the two.`,
+      `The sentence does not label the AUC pairs, and does not say what the AUC is measured against. In the Methods (m-hits-p5), ROC curves treat positive-control genes as “true positives” and neutral controls as “false positives”, so these AUCs most likely measure how well each design ranks positive controls above neutral ones, not how well it finds true lncRNA hits.`,
+    ],
+    prereqs: ['C1', 'D4', 'D5', 'E4'],
+    checks: [
+      { q: 'Why did the authors keep the complementary (positive) screens in their later analyses?',
+        options: [
+          { t: 'They gave a modest but consistent gain in accuracy (AUC) over pure dropout screens, for example 0.77 versus 0.73 for A549 cisplatin', ok: true, why: 'Right: the gain is small, but it appears for both proliferation and cisplatin.' },
+          { t: 'Dropout screens cannot be run for cisplatin', ok: false, why: 'The paragraph compares the two formats for cisplatin, so dropout screens can be run there.' },
+          { t: 'The AUC rose to 1.0, meaning a perfect screen', ok: false, why: 'The values are 0.7 and 0.77. An AUC of 1.0 would be perfect, and none of these values is close.' },
+          { t: 'Positive screens are cheaper and faster than dropout screens', ok: false, why: 'Cost and speed are not mentioned. The stated reason is accuracy.' },
+        ], source: ['res-multipheno-p2'] },
+    ],
+  },
+
+  'res-multipheno-p3': {
+    plain: `<p><b>Do the repeats agree?</b> The authors saw a high correlation between biologically independent replicates (separate repeats of the whole experiment) at several levels of the data: from the raw pgRNA read counts (Figure 2D), to the pgRNA fold changes, to the target-level fold changes (Figure 2E and the supplementary Figures S2A–S2F). The correlations hold even when only the lncRNA candidates are considered and the positive-control targets are left out. They say their dropout correlations were comparable with an earlier CRISPR-del dropout screen (supplementary Figure S2F).</p>
+<p><b>Do the controls behave?</b> As expected, the pgRNAs of positive-control genes were significantly depleted in the dropout screens, while those of the neutral controls were not (Figure 2F).</p>
+<p><b>How well does promoter deletion work?</b> To gauge the loss-of-function efficiency of promoter deletion, the positive-control protein-coding genes (PCGs) had been split between two modes: (1) the conventional way, mutating the open reading frame (ORF), which should give the strongest loss of function, and (2) promoter deletion, as for the lncRNAs. The promoter-deletion pgRNAs had a detectable but lower effect on the phenotype. The authors conclude that CRISPR-del screens for lncRNAs have intrinsically lower sensitivity than ORF-targeting screens for PCGs (Figure 2F).</p>
+<p><b>What to look at.</b> <i>Figure 2D</i>: a grid of small scatter plots, each comparing two samples (two replicates at the start, T0, and at three weeks, T3); the R value in the upper half is the correlation. <i>Figure 2E</i>: one dot per lncRNA candidate, replicate 1 against replicate 2; a cloud rising from lower left to upper right means the repeats agree. <i>Figure 2F</i>: four groups of P values (small P = strongly depleted): lncRNAs, neutral controls, positive controls cut in the ORF, and positive controls with the promoter deleted. The ORF group sits lowest, the promoter group in between, the neutral group high.</p>`,
+    why: `This is the quality control of the first screen: do replicates agree, do the controls behave, and how sensitive is promoter deletion compared with the standard way to disable a protein-coding gene? The answers (reproducible, controls work, but promoter deletion is less sensitive) set the expectations for every screen that follows.`,
+    memory: `Two judges scoring the same contest: if their scores rise and fall together, the scores mean something. That is what agreement between replicates tells you.`,
+    flags: [
+      `“High correlation” is the authors’ wording. Figure 2E (target-level fold changes of the lncRNA candidates) prints R=0.66: a clear but weaker agreement than the raw read counts in Figure 2D (lesson E2 shows how to read such values).`,
+      `Supplementary: not in your PDF — Figures S2A–S2F, including the comparison with the earlier CRISPR-del screen.`,
+      `lncRNAs have no protein-coding ORF to mutate, so this comparison can only be made with protein-coding positive controls. “Intrinsically lower sensitivity” for lncRNAs is therefore an inference from those controls.`,
+    ],
+    prereqs: ['E1', 'E2', 'D5', 'F1'],
+    checks: [
+      { q: 'What do the authors conclude from comparing ORF-targeting with promoter-deletion pgRNAs on the same kind of positive-control genes?',
+        options: [
+          { t: 'Promoter deletion has a detectable but weaker effect, so CRISPR-del screens for lncRNAs are intrinsically less sensitive', ok: true, why: 'Right: ORF mutation is expected to give the maximal loss of function, and promoter deletion falls short of it.' },
+          { t: 'Promoter deletion is just as strong as ORF mutation, so lncRNA screens lose nothing', ok: false, why: 'The paragraph says promoter-deletion pgRNAs displayed a lower phenotypic impact.' },
+          { t: 'Promoter deletion has no detectable effect at all', ok: false, why: 'The effect was detectable, just lower.' },
+          { t: 'ORF mutation cannot be used in pooled screens', ok: false, why: 'ORF-targeting pgRNAs were used in the same screen as the comparison.' },
+        ], source: ['res-multipheno-p3'] },
+      { q: 'What outcome for the controls did the authors call “as expected”?',
+        options: [
+          { t: 'pgRNAs of positive controls were significantly depleted in dropout screens, while neutral controls were not', ok: true, why: 'Right: real growth genes drop out; neutral places should not.' },
+          { t: 'Neutral controls were depleted more than positive controls', ok: false, why: 'Reversed: neutral controls should show no effect.' },
+          { t: 'Both groups were depleted equally', ok: false, why: 'Then the screen could not tell real effects from none.' },
+          { t: 'Neither group was depleted', ok: false, why: 'Positive controls were significantly depleted; that is what shows the screen works.' },
+        ], source: ['res-multipheno-p3'] },
+    ],
+    sources: ['fig2E'],
+    derived: ['0.66'],
+  },
+
+  'res-multipheno-p4': {
+    plain: `<p>In the dropout screens, run with biological replicates, 77 lncRNAs were identified as necessary for the proliferation of A549 cells: cells lacking them did worse. These include lncRNAs already known in NSCLC, such as PVT1, SBF2-AS1 and LINC00511, which were also found in H460. In addition, lncRNAs identified in other cancer types appear, for example LINC00680 and LINC00910 (Figure 2G).</p>
+<p><b>What to look at in Figure 2G</b> (the A549 dropout screen, a volcano-style plot):</p>
+<ul><li>Each dot is one target. On the x axis (log2 fold change), left of the vertical dashed line means depleted: the guides dropped out. On the y axis (−log10 FDR), the higher the dot, the stronger the statistical evidence.</li>
+<li>The horizontal dashed line is the cutoff for hits (FDR &lt;0.2).</li>
+<li>Black dots are lncRNA candidates and red dots are positive controls. Green labels mark lncRNAs published before in NSCLC; blue labels mark lncRNAs published in other cancers.</li>
+<li>Find LINC00115 near the top left: one of the strongest hits. The paper returns to it in the validation section (candidate 205).</li></ul>`,
+    why: `This is the first concrete result of the screens: 77 growth-needed lncRNAs in A549, including several already known in cancer, which suggests the screen finds real biology. The next paragraphs check how robust such lists are.`,
+    flags: [
+      `Text and figure disagree on PVT1: the paragraph lists it among the “known NSCLC lncRNAs”, but in Figure 2G its label is blue, the legend’s color for lncRNAs published in other cancers (green marks NSCLC). The paper does not comment.`,
+      `The 77 are hits at FDR &lt;0.2 (Figure 2G legend), a fairly lenient cutoff. “Necessary for proliferation” is the screen’s result for each one, not something proven individually. Some names appear twice in the plot (LINC00511 and SBF2-AS1); the figure does not say why.`,
+    ],
+    prereqs: ['B6', 'D4', 'E4', 'F2'],
+    checks: [
+      { q: 'What does this paragraph report for the A549 dropout screens?',
+        options: [
+          { t: '77 lncRNAs necessary for proliferation, including known NSCLC lncRNAs such as PVT1, SBF2-AS1 and LINC00511', ok: true, why: 'Right: the known lncRNAs among the hits suggest the screen finds real biology.' },
+          { t: '77 lncRNAs that promote migration', ok: false, why: 'Migration comes later (the migration screen yields 65). Dropout screens measure proliferation.' },
+          { t: '77 positive-control genes', ok: false, why: 'Controls are marked separately (red dots); the 77 are lncRNAs.' },
+          { t: '77 lncRNAs that had never been described before', ok: false, why: 'The paragraph names known NSCLC lncRNAs among them.' },
+        ], source: ['res-multipheno-p4', 'res-multipheno-p7'] },
+    ],
+    sources: ['fig2G', 'res-validation-p1'],
+  },
+
+  'res-multipheno-p5': {
+    plain: `<p>What decides how well a pgRNA deletes its target is poorly understood. The authors used the growth effect (phenotype) as a stand-in (a “proxy”) for how efficient the deletion was. With that proxy they report three things (all three figures are supplementary):</p>
+<ul><li>The observed effects correlated with the guide efficiency predicted by computer (the RuleSet2 algorithm, which scores single guides, sgRNAs). That is the expected result (Figure S1H).</li>
+<li>There was no relationship with the orientation of the pgRNA (Figure S1I).</li>
+<li>There was only a weak tendency for larger deletions to give stronger phenotypes, possibly because they have a greater impact on lncRNA expression (Figure S1J).</li></ul>`,
+    why: `A short technical aside on what makes a guide pair work. It admits that deletion efficiency is poorly understood, which matters when you read a weak or missing effect in the screens.`,
+    flags: [
+      `Supplementary: not in your PDF — Figures S1H, S1I and S1J, so none of the three findings can be checked in the main figures. “pgRNA orientation” is not defined in the main text.`,
+      `A caution about the “proxy”: a weak growth effect could mean a poorly working guide pair, or a target that simply does not matter for growth. The paragraph does not say how the authors tell these apart. Also, “larger deletions give stronger phenotypes” sits oddly beside res-pipeline-p1 (“shorter deletions … are more efficient”); the two compare different things (whole gene versus TSS there, deletion sizes within this library here) and the paper does not discuss the tension.`,
+    ],
+    prereqs: ['D1', 'E2'],
+    checks: [
+      { q: 'What did the authors use as a stand-in (proxy) for pgRNA deletion efficiency?',
+        options: [
+          { t: 'The growth phenotype that the pgRNA produced', ok: true, why: 'Right: “using growth phenotype as a proxy for deletion efficiency”.' },
+          { t: 'The brightness of BFP in the cells', ok: false, why: 'BFP marks Cas9-positive cells; it is not a measure of deletion efficiency.' },
+          { t: 'The number of guide pairs per target', ok: false, why: 'That is the library design (depth), the same for every target.' },
+          { t: 'The length of the deletion band on a gel', ok: false, why: 'A gel was used for one validation example (Figure 1E), not for this analysis.' },
+        ], source: ['res-multipheno-p5'] },
+    ],
+  },
+
+  'res-multipheno-p6': {
+    plain: `<p>Next the authors compared equivalent dropout screens in the two NSCLC backgrounds (A549 and H460). The targets they identified agreed significantly (“a significant concordance”), even after the positive controls were left out (Figure 2H).</p>
+<p>They also looked at the positive controls on their own. Of the 109 positive controls in the library, 37 scored (were hits) in the A549 dropout screen and 16 in the H460 dropout screen. Ten of them are common to both. The p value is 0.011 (hypergeometric test): it asks how likely an overlap this large would be by chance alone.</p>
+<p>To strengthen these data, they also ran complementary CFSE screens in the same cells. As expected, these positive selection screens showed anti-correlation with the dropout results in H460 cells: targets that drop out in the dropout screen tend to be enriched in the slow-growing cells. This was not seen in A549 cells, possibly for technical reasons (Figure S2B is supplementary).</p>
+<p><b>What to look at in Figure 2H.</b> Each dot is a target: its A549 Z-score is on the x axis and its H460 Z-score on the y axis. If the two cell lines agreed perfectly, the dots would line up on a rising diagonal. Two fitted lines are drawn, a red one and a black one, each with its own R and P value printed in the corner.</p>`,
+    why: `It tests whether the two cell lines tell the same story, which is the basis of the paper’s idea of background-independent hits. The answer given is a significant agreement, with the CFSE cross-check working in one cell line only.`,
+    flags: [
+      `“Significant” is not “strong”. Figure 2H prints two correlations: R=0.4 (P=2e-05) in red and R=0.092 (P=0.0035) in black. The legend does not explain them; judging by the dot colors, red belongs to the positive controls and black to the lncRNA candidates. For lncRNAs alone the agreement between the cell lines is then weak, even though its P value is small. Compare <a href="#/g/res-integration/res-integration-p3">res-integration-p3</a>, which says the same two dropout screens show “a low degree of concordance”.`,
+      `Fewer than half of the 109 positive controls scored in A549 (37) and far fewer in H460 (16); that fits the lower sensitivity of promoter deletion (res-multipheno-p3), but the paragraph does not discuss it. Also, in A549 the CFSE screen did not mirror the dropout screen, yet res-multipheno-p2 says adding CFSE improved A549 proliferation accuracy (0.7 versus 0.67); “possibly for technical reasons” is not backed by evidence here, and Figure S2B is not in your PDF.`,
+    ],
+    prereqs: ['C4', 'E2', 'E3', 'F1'],
+    checks: [
+      { q: 'What does the hypergeometric test (p = 0.011) ask about the positive controls?',
+        options: [
+          { t: 'Whether 10 shared hits is more than expected by chance if the two dropout screens picked hits independently', ok: true, why: 'Right. With 37 hits in A549 and 16 in H460 out of 109, you would expect about 5.4 in common by chance (37 × 16 ÷ 109, our own arithmetic). Seeing 10 is more, and p = 0.011 says how unlikely that is by chance.' },
+          { t: 'Whether A549 grows faster than H460', ok: false, why: 'Growth speed is not compared in this test.' },
+          { t: 'Whether the replicates correlate', ok: false, why: 'Replicate correlation was shown with Pearson correlations (Figures 2D and 2E); the hypergeometric test is about overlap.' },
+          { t: 'Whether all positive controls were depleted', ok: false, why: 'Only 37 and 16 of the 109 scored; the test is about the overlap between the two lists.' },
+        ], source: ['res-multipheno-p6'], derived: ['5.4'] },
+    ],
+    sources: ['fig2H', 'res-integration-p3', 'res-multipheno-p2'],
+    derived: ['0.4', '2e-05', '0.092', '0.0035'],
+  },
+
+  'res-multipheno-p7': {
+    plain: `<p>Patients with KRAS+ tumors are usually treated with cytotoxic (cell-killing) platinum-based chemotherapy, but tumors often evolve resistance. To find lncRNAs that promote chemoresistance, the authors again used complementary screens (Figure 2B) at carefully chosen cisplatin concentrations (Figure S2C is supplementary). As before, the replicates gave correlated results (Figures S2D and S2F, supplementary).</p>
+<p>Next, migration, which the paper calls a key hallmark underlying the invasion and metastasis of tumor cells. The authors isolated cells that migrate quickly and cells that migrate slowly through a porous membrane for 48 h (Figure 2C; Figures S2E and S2G are supplementary), and screened for migration-promoting lncRNAs. This yielded 65 lncRNAs. Ten of them were already associated with migration and invasion in numerous cancer types, including SNHG6 and SNHG12.</p>
+<p><b>What to look at.</b> <i>Figure 2B</i> draws the two cisplatin screens. In the “survival” screen, cells are exposed to high doses (IC30 and IC80) and the pgRNAs of resistance-promoting lncRNAs are depleted in the survivors. In the “death” screen, cells that die at a low dose (IC20) are collected and the same pgRNAs are enriched. <i>Figure 2C</i> draws the migration screen: cells that can and cannot cross a porous membrane are collected separately, and migration-promoting lncRNAs show up as pgRNAs enriched in the migration-impaired cells.</p>`,
+    why: `It extends the same two-sided design from growth to the other two hallmarks: chemoresistance, which matters because KRAS+ patients get platinum drugs, and migration, which underlies spread. With the growth hits, these results are summarized in Figure 2I (next paragraph).`,
+    flags: [
+      `Which cell line? The paragraph does not name it for the cisplatin and migration screens. In Figure 2I these screens are all labeled A549 (H460 is listed only for the dropout and CFSE screens), and the Methods also describe them for A549 cells.`,
+      `Supplementary: not in your PDF — Figures S2C–S2G, so “carefully chosen” concentrations and the replicate correlations rest on the authors’ statement. The paper calls the hallmark “invasion” elsewhere and “migration” here; this sentence is where it links them.`,
+      `The reference printed after SNHG6 is, by its title, a paper about LINC00115 rather than SNHG6 (the one after SNHG12 does match); the paper does not comment.`,
+    ],
+    prereqs: ['C2', 'C3', 'D5'],
+    checks: [
+      { q: 'How do the two complementary cisplatin screens differ?',
+        options: [
+          { t: 'Survival: high doses, guides of resistance-promoting lncRNAs depleted in survivors. Death: low dose, the same guides enriched in dying cells', ok: true, why: 'Right: the two screens read the same biology from opposite sides.' },
+          { t: 'Survival uses a low dose and death uses a high dose', ok: false, why: 'Reversed: the survival screen uses IC30 and IC80 (high), the death screen IC20 (low).' },
+          { t: 'Survival uses cisplatin and death uses no drug', ok: false, why: 'Both screens use cisplatin, at different doses.' },
+          { t: 'In both, guides of resistance-promoting lncRNAs are enriched', ok: false, why: 'In the survival screen they are depleted in survivors; only in the death screen are they enriched.' },
+        ], source: ['res-multipheno-p7', 'fig2B'] },
+    ],
+  },
+
+  'res-multipheno-p8': {
+    plain: `<p>These data are summarized in Figure 2I and in Data S1 (supplementary: not in your PDF). The authors present them as a resource: a list of functional lncRNAs for the hallmarks of NSCLC.</p>
+<p><b>What to look at in Figure 2I.</b> It is an UpSet plot (lesson F2). The horizontal bars on the left count the hits in each individual screen; the eight rows are the eight screens, each labeled with its cell line and assay. The tall bars at the top count the hits shared by each combination of screens, marked by the dots and lines below. The light blue part of a bar marks previously known “cancer lncRNAs”.</p>`,
+    why: `This one-sentence paragraph closes the section by offering the single-screen hit lists as a resource. The next sections test some of these hits (validation) and combine the screens into one ranking (integration).`,
+    flags: [
+      `“Functional lncRNAs” is the authors’ label for single-screen hits at FDR &lt;0.2 (Figure 2I legend): candidates, not proven functional lncRNAs. Typo in that legend: “The light blue bat indicates…” (printed “bat”; “bar” is meant). Data S1 is not in your PDF.`,
+    ],
+    prereqs: ['D4', 'F2'],
+    checks: [
+      { q: 'Which statement best describes the hit lists summarized in Figure 2I?',
+        options: [
+          { t: 'Hits from individual screens at FDR <0.2: candidates that still need validation', ok: true, why: 'Right: Figure 2I counts the hits of each single screen and how they overlap.' },
+          { t: 'The final 80 high-confidence lncRNAs from the integrated ranking', ok: false, why: 'The 80 come from integrating all screens (res-integration-p2), not from the single-screen counts in Figure 2I.' },
+          { t: 'lncRNAs confirmed by ASO knockdown in organoids', ok: false, why: 'ASO and organoid experiments come later in the paper.' },
+          { t: 'Only the positive-control genes', ok: false, why: 'Figure 2I counts lncRNA hits; the positive controls are protein-coding genes.' },
+        ], source: ['res-multipheno-p8', 'fig2I', 'res-integration-p2'] },
+    ],
+    sources: ['fig2I'],
+  },
+});
+Object.assign(window.TRACKG.units, {
+  'summary': {
+    intro: `<p>The Summary is the authors’ own short version of the whole paper: the problem (lncRNAs are altered in cancer, but what they do is unclear), the approach (CRISPR deletion screens in lung cancer cells, then a follow-up with ASOs) and the main results. Read it first as a map; each later section is the evidence for one of its sentences.</p>`,
+    recap: `<p>The Summary promises three things: a multi-hallmark map of functional lncRNAs in NSCLC (831 tested, 80 high-confidence hits), two shortlisted candidates (CHiLL1 and GCAWKR) whose knockdown weakens cancer hallmarks in two- and three-dimensional models, and evidence that the two act through distinct transcriptional networks. The Results provide the proof for each claim.</p>`,
+  },
+  'intro': {
+    intro: `<p>The Introduction builds the case in four steps. First, the need: lung cancer still lacks good treatments. Second, the opportunity: lncRNAs are a huge, mostly unexplored source of drug targets. Third, the gap: CRISPR screens can test lncRNAs at scale, but earlier screens used one cell background and one hallmark, so their hits may not generalize. Fourth, the plan: screen three hallmarks in two cell backgrounds.</p><p>The question it answers: <i>why do this study, and why design it this way?</i></p>`,
+    recap: `<p>NSCLC is the leading cause of cancer deaths, and the common KRAS+ type still has limited treatment options. lncRNAs are numerous, mostly uncharacterized, and include examples that ASOs can target, but earlier CRISPR screens used a single background and a single hallmark. This study therefore runs 8 CRISPR screens for three hallmarks in two cell lines (A549 and H460), aiming for lncRNAs that are pleiotropic and background independent.</p>`,
+  },
+  'res-multipheno': {
+    intro: `<p>This section shows how the screens were run for three hallmarks (proliferation, chemoresistance and invasion, also called migration) and how well they worked. Each hallmark gets complementary screens, one where guides drop out and one where they are enriched. The authors then check quality (do replicates and controls behave?), report the first lists of hits, and compare the two cell lines.</p><p>The question it answers: <i>does the screen design work, and what does it find?</i></p>`,
+    recap: `<p>The replicates agree and the controls behave, but promoter deletion is less sensitive than mutating the protein-coding region. The A549 growth screen gave 77 hits, including known lncRNAs. The two cell lines agree significantly but weakly, and the cisplatin and migration screens add more hits (65 for migration). Figure 2I summarizes the hits of every screen; the next sections validate some of them and combine the screens.</p>`,
   },
 });
