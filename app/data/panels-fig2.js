@@ -156,3 +156,125 @@ Object.assign((window.PANELS = window.PANELS || {}), {
     },
   },
 });
+
+/* ======================================================================== Figure 2F */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig2F: {
+    short: 'Do the controls behave as expected?',
+    question: 'Does the A549 dropout screen detect known growth genes (positive controls) but not neutral controls, and how does ORF targeting compare with TSS deletion?',
+    howToRead: `<p>Each dot is one target, placed by its <b>P-value</b> in the A549 dropout screen (0 at the bottom, 1 at the top); a small P-value means the target's pgRNAs were significantly depleted. Groups: <b>LncRNAs</b> (n=1003); <b>Neutral controls</b> (n=35; pgRNAs aimed at places that should not matter); <b>Positive ORF</b> (n=51) and <b>Positive TSS</b> (n=58), protein-coding genes known to be needed for growth. For "ORF" the pgRNAs cut inside the coding sequence (the standard way to knock a gene out); for "TSS" they delete the start site, exactly as for lncRNAs (see the two small drawings). In each box the thick line is the median and the box holds the middle half of the dots. The bracket numbers are Wilcoxon P-values (neutral controls versus each positive group); "Kruskal−Wallis, P=4.2e−12" tests whether the four groups differ at all.</p>
+<p>A good result: neutral controls stay high (no effect) and positive controls sit low (strong dropout).</p>`,
+    shows: `<p>The screen works as designed. Neutral controls are mostly high, while positive controls sit lower: strongly for "Positive ORF" (median near zero; P=4.95e−05 against neutral controls) and less so for "Positive TSS" (P=0.004). The groups differ overall (Kruskal−Wallis P=4.2e−12). The text: "pgRNAs for positive-control genes were significantly depleted in dropout screens, while neutral controls were not". The gap between ORF and TSS is the paper's point about the method: promoter deletion "displayed a detectable but lower phenotypic impact, indicating that CRISPR-del screens for lncRNAs face intrinsically lower sensitivity compared with ORF-targeting screens for PCGs". The lncRNA group looks like the neutral group with a second bulge near zero: most lncRNAs do nothing to growth, a minority do.</p>`,
+    keyNumbers: [
+      { value: 'n=1003 · 35 · 51 · 58', meaning: 'targets in the lncRNA, neutral-control, Positive ORF and Positive TSS groups', source: ['fig2F'] },
+      { value: 'P=4.2e−12', meaning: 'Kruskal−Wallis test: the four groups differ overall', source: ['fig2F'] },
+      { value: 'P=4.95e−05', meaning: 'Wilcoxon test: neutral controls versus Positive ORF', source: ['fig2F'] },
+      { value: 'P=0.004', meaning: 'Wilcoxon test: neutral controls versus Positive TSS (a weaker difference than for ORF)', source: ['fig2F'] },
+      { value: '51 + 58 = 109', meaning: 'the two positive groups add up to the "109 positive controls" of the text', source: ['fig2F', 'res-multipheno-p6'] },
+    ],
+    background: `<p>Wilcoxon and Kruskal−Wallis tests compare groups by ranking the values, so they do not assume a bell-shaped distribution.</p>`,
+    memory: 'A smoke-alarm test: real smoke (positive controls) must make it ring, no smoke (neutral controls) must leave it silent. Only then can you trust it in rooms where you do not know (the lncRNAs).',
+    flags: [
+      `n=1003 differs from the "831 expressed lncRNAs, corresponding to 998 high-confidence TSSs" in the text (<a href="#/read/res-pipeline/res-pipeline-p2">res-pipeline</a>); Figure 1C also shows 1003. The 35 neutral controls are fewer than the neutral regions described in the Methods and in Figure 1C. The two positive groups add up to 109 (51 + 58), which matches the text. The paper explains none of these differences.`,
+      `The legend does not say how each P-value was obtained (the Methods: the screen software CASPR gives FDR-corrected P values at target level), whether the Wilcoxon P values are corrected for several comparisons, or what the whiskers show. No bracket compares lncRNAs with neutral controls.`,
+      `Neutral controls and lncRNAs both lie mostly near 1 rather than spread evenly from 0 to 1, which is what a plain test gives when nothing happens. The legend does not explain this.`,
+    ],
+    derived: ['831', '998', '109'],
+    chartTypes: ['F1', 'F4'],
+    examQ: {
+      q: 'What are the "Positive ORF" and "Positive TSS" groups in Figure 2F, and what does the difference between them tell you about CRISPR-del screens for lncRNAs?',
+      a: 'Both are protein-coding genes needed for growth. ORF: the pgRNAs cut inside the coding sequence (maximal loss of function). TSS: the pgRNAs delete the start site, as is done for lncRNAs. Both are depleted compared with neutral controls (P=4.95e−05 and P=0.004), but ORF much more strongly (median near zero). So promoter deletion has a detectable but lower impact: CRISPR-del screens for lncRNAs are intrinsically less sensitive than ORF-targeting screens.',
+    },
+  },
+});
+
+/* ======================================================================== Figure 2G */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig2G: {
+    short: 'Which lncRNAs drop out in A549?',
+    question: 'Which lncRNAs, positive controls and known cancer lncRNAs are significantly depleted in the A549 dropout screen?',
+    howToRead: `<p>A volcano-style plot: each dot is one target. <b>x ("Log2 FC"):</b> log2 fold change of pgRNA counts; left of the dashed vertical line (zero) means depleted (−1 is half as many, −2 a quarter), right means enriched. <b>y ("-Log10 FDR"):</b> how sure the screen is; higher is more certain (each unit up is ten times smaller FDR). <b>Dashed horizontal line:</b> the hit cutoff, FDR &lt; 0.2, which sits at about 0.7 because −log10 of 0.2 is about 0.7 (computed here). <b>Colors:</b> black = lncRNA candidates; red = positive controls (protein-coding genes needed for growth); green and blue = lncRNAs that earlier papers linked to NSCLC (green) or to other cancers (blue), named next to their dots.</p>
+<p>A dropout hit lies in the <b>upper left</b>: left of zero and above the line. (The <a href="#/read/m-hits/m-hits-p3">Methods</a> require a negative fold change for dropout hits, so dots high up on the right are not hits.)</p>`,
+    shows: `<p>The most significant dots are red positive controls in the upper left, as expected. Many black lncRNA dots pass the cutoff too: the text reports 77 lncRNAs necessary for A549 proliferation. The labeled names show that the screen rediscovers lncRNAs already linked to cancer; LINC00115 (blue, top left) is the most significant of them (numbers below). PVT1 and LINC00680 sit close to the cutoff line. Most dots form a mound near zero: no significant effect.</p>`,
+    keyNumbers: [
+      { value: '77 lncRNAs', meaning: 'identified as necessary for proliferation of A549 cells (the hits of this screen)', source: ['res-multipheno-p4'] },
+      { value: 'FDR < 0.2', meaning: 'the cutoff for hits: the dashed horizontal line, about 0.7 on the −log10 axis (computed here)', source: ['fig2G'] },
+      { value: 'log2 FC −1.81; FDR 1.2 × 10<sup>−7</sup>', meaning: 'LINC00115 (candidate 205) in A549 dropout, from the text; its dot is the blue one at the top left (x close to −1.81, y close to −log10 of the FDR, about 6.9, computed here)', source: ['res-validation-p1'] },
+    ],
+    background: `<p>FDR (false discovery rate) is the expected share of false alarms among the hits. At FDR 0.2 about one hit in five could be a false alarm: a loose cutoff that misses fewer real hits but lets in more false ones. The paper does not say why 0.2 was chosen.</p>`,
+    memory: 'A volcano seen from the side: the lava (the strongest, most reliable drop-outs) shoots up the left slope; only the upper-left corner sets off the alarm.',
+    flags: [
+      `PVT1 is written in blue ("other cancer types"), although the text lists PVT1 among "known NSCLC lncRNAs" (<a href="#/read/res-multipheno/res-multipheno-p4">res-multipheno</a>): text and color disagree.`,
+      `LINC00511 and SBF2-AS1 are each labeled twice, unexplained. The Figure 1C legend notes that some lncRNA loci have more than one targeted start site, which may be the reason; the paper does not say so here.`,
+      `The Limitations section cites Figure 2H for PVT1, LINC00680 and PCAT7 (<a href="#/read/limitations/limitations-p2">limitations</a>), but these names are labeled here, in panel 2G.`,
+      `A few red dots lie right of zero (enriched, not depleted), unexplained; the Methods say the control genes include genes that promote cell growth and genes that oppose it (<a href="#/read/m-library-design/m-library-design-p3">library design</a>).`,
+      `The legend does not say how log2 FC and FDR were calculated (the Methods: target level, with CASPR) or which time points are compared (panel E: T3 over T0). The number 77 is not printed on the panel, and dots overlap near the cutoff, so you cannot count it from the picture.`,
+    ],
+    derived: ['0.7', '6.9'],
+    chartTypes: ['F2'],
+    examQ: {
+      q: 'In Figure 2G, how do you decide whether a lncRNA is a hit in the A549 dropout screen, and what do the label colors mean?',
+      a: 'A hit lies left of zero (negative log2 FC: pgRNAs depleted) and above the dashed line at FDR 0.2 (about 0.7 on the −log10 FDR axis). Colors: black = lncRNA candidate, red = positive control, green = previously published in NSCLC, blue = previously published in other cancers. The screen found 77 lncRNAs, including known ones such as LINC00115 and SBF2-AS1.',
+    },
+  },
+});
+
+/* ======================================================================== Figure 2H */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig2H: {
+    short: 'Do A549 and H460 agree?',
+    question: 'Do the two cell lines, A549 and H460, agree on which lncRNAs and positive controls drop out in the dropout screen?',
+    howToRead: `<p>Each dot is one target: x is its Z-score in the A549 dropout screen, y its Z-score in the H460 screen. Negative means depleted, so the lower-left corner is depleted in <b>both</b> cell lines. Black dots are lncRNA candidates; red dots are positive controls (the red gene names, such as the ribosomal protein genes RPL3, RPL13, RPL23A and RPS6, dropped out strongly). The black numbers are candidate numbers: the paper's names for its lncRNA targets.</p>
+<p>Two lines are fitted, each with its own R and P: <b>red</b> (R=0.4, P=2e−05) and <b>black</b> (R=0.092, P=0.0035). The panel does not say which dots each uses. By color, red should be the positive controls and black the lncRNA candidates (an inference; the P values fit about a hundred and about a thousand dots). Perfect agreement would be a steep line from lower left to upper right.</p>`,
+    shows: `<p>Positive controls agree reasonably (R=0.4): the strongly depleted ones at the lower left are depleted in both cell lines. For lncRNA candidates the agreement is small but not zero (R=0.092, P=0.0035); the text calls it "a significant concordance among identified targets, even after omitting positive controls". <b>Significant is not the same as strong:</b> with a thousand or so dots, even a very weak correlation gets a small P value. Later the paper calls the overlap of the two cell lines' dropout hits "a low degree of concordance". For the positive controls the text adds: of 109 in the library, 37 scored in A549 dropout and 16 in H460, and 10 in both (p = 0.011, hypergeometric test); by chance about 5 would overlap (16 × 37 ÷ 109 ≈ 5.4, computed here).</p>`,
+    keyNumbers: [
+      { value: 'R=0.4, P=2e−05', meaning: 'red line: probably the positive controls (inference); they agree best between the cell lines', source: ['fig2H'] },
+      { value: 'R=0.092, P=0.0035', meaning: 'black line: probably the lncRNA candidates (inference); significant but weak agreement', source: ['fig2H'] },
+      { value: '109 → 37 · 16 · 10', meaning: 'positive controls in the library → scoring in A549 dropout, scoring in H460 dropout, scoring in both (hypergeometric p = 0.011)', source: ['res-multipheno-p6'] },
+      { value: 'four points removed', meaning: 'left out of the picture for clarity but included in the statistics', source: ['fig2H'] },
+    ],
+    background: `<p>The P value says whether a correlation is likely to be real; R says how strong it is. With many points, even a tiny R can be significant.</p>`,
+    flags: [
+      `The legend does not say which dots each R and line belong to (see the inference above). The text says the concordance holds "even after omitting positive controls".`,
+      `The black numbers are not explained. They are candidate numbers; four of the nine (205, 448, 507, 508) appear in the text (for example candidate 205 is LINC00115 and candidate 507 is LINC00910), but the paper does not say why these were labeled. "TSSCELF1" is printed as one word and never explained.`,
+      `Four points were removed "for clearer visualization"; the statistics use all points. Which points were removed is not said.`,
+      `The Limitations section cites Figure 2H for PVT1, LINC00680 and PCAT7 (<a href="#/read/limitations/limitations-p2">limitations</a>); those names are labeled in panel 2G, not here.`,
+    ],
+    derived: ['5.4'],
+    chartTypes: ['F1', 'F4'],
+    examQ: {
+      q: 'Figure 2H reports R=0.092 with P=0.0035 for the lncRNA candidates. Is the agreement between A549 and H460 strong? Explain.',
+      a: 'No. It is statistically significant (P=0.0035) but weak (R=0.092): with about a thousand points even a tiny correlation is significant. The positive controls agree better (R=0.4). The authors call the concordance significant, even after omitting positive controls, but later describe the overlap of lncRNA hits between the two cell lines as low, which is why they combine several screens and both cell lines.',
+    },
+  },
+});
+
+/* ======================================================================== Figure 2I */
+Object.assign((window.PANELS = window.PANELS || {}), {
+  fig2I: {
+    short: 'Hits across all eight screens',
+    question: 'How many lncRNA hits does each of the eight screens find, and how much do the hit lists overlap?',
+    howToRead: `<p>An <b>UpSet plot</b> (a Venn diagram for many sets, turned into a table). A hit is a lncRNA with FDR &lt; 0.2 in that screen (<a href="#/read/m-hits/m-hits-p3">Methods</a>: depleted for dropout and cisplatin survival, enriched for CFSE, death and migration). <b>Rows:</b> the eight screens (cell line + assay; Cis = cisplatin; "Cis 6.5µM" and "Cis 25µM" are the two survival doses). <b>Left bars:</b> total hits per screen. <b>Grid:</b> each column is one combination of screens; a single dot means a hit in that screen only; dots joined by a line mean a hit in all of those screens and in no other. <b>Top bars:</b> how many lncRNAs have exactly that combination (number printed above). Dark = "Novel lncRNAs", teal = "Cancer lncRNAs" (already in the CLC2 database of cancer lncRNAs). Columns are sorted: single-screen columns first, then pairs, triples, and the one group of four.</p>`,
+    shows: `<p><b>Hit lists differ in size:</b> A549 Dropout 77, A549 Migration 65, H460 Dropout 63, Cis 6.5µM 60, Cis 25µM 39, Death 15, and only 7 (A549) and 6 (H460) for the CFSE screens. <b>Most hits belong to one screen only:</b> the tallest bars are single-screen columns (47 only in Migration, 46 only in H460 Dropout, 42 only in A549 Dropout, 26 and 22 for the two cisplatin doses). The biggest overlap of two screens is 16 hits shared by A549 Dropout and Cis 6.5µM. Only five lncRNAs are hits in both Dropout screens (2 + 1 + 2 from three columns). Adding all 32 bars gives 257 different hits (computed here), more than the shorter integrated "pan-hallmark" list (80) that the paper builds later (<a href="#/read/res-integration/res-integration-p2">res-integration</a>). Teal is the minority: most hits are "novel". The text calls these data "a resource of functional lncRNAs in NSCLC hallmarks".</p>`,
+    keyNumbers: [
+      { value: '77 · 65 · 63 · 60 · 39 · 15 · 7 · 6', meaning: 'hits per screen: A549 Dropout, A549 Migration, H460 Dropout, Cis 6.5µM, Cis 25µM, Death, A549 CFSE, H460 CFSE', source: ['fig2I'] },
+      { value: '77 and 65', meaning: 'the only two totals also given in the text: lncRNAs necessary for A549 proliferation, and migration-promoting lncRNAs', source: ['res-multipheno-p4', 'res-multipheno-p7'] },
+      { value: '47 · 46 · 42', meaning: 'the tallest bars: hits found only in A549 Migration, only in H460 Dropout, only in A549 Dropout', source: ['fig2I'] },
+      { value: '16', meaning: 'the biggest overlap of two screens: A549 Dropout and A549 Cis 6.5µM', source: ['fig2I'] },
+      { value: '8 screens', meaning: '"We perform 8 disease-specific CRISPR screens" in two cell lines for three hallmarks', source: ['intro-p6'] },
+    ],
+    background: `<p>An UpSet plot is the tidy alternative to a Venn diagram once there are more than three or four sets: each column is one possible membership pattern and its bar counts the items with exactly that pattern.</p>`,
+    memory: 'Eight clubs and a list of pupils. Each column of the grid is one membership pattern (for example "chess only" or "chess and drama") and its bar counts the pupils with exactly that pattern; the left bars are the club sizes.',
+    flags: [
+      `The legend says "light blue bat" (printed "bat", meaning "bar"); the image shows teal and the figure key says "Cancer lncRNAs". It speaks of a "fraction", but the bars show counts: read the fraction as the teal share of each bar. The teal counts are not printed, and "novel" is not defined (from the key: not in the CLC2 list).`,
+      `The legend does not explain the row labels or the hit rule. The Methods link Cis 6.5µM and Cis 25µM to IC30 and IC80 in A549; "Death" is shown without a dose.`,
+      `Only two of the eight totals appear in the text: 77 and 65. These are per-screen lists, not the final integrated lists. In this panel H460 appears only with Dropout and CFSE.`,
+    ],
+    derived: ['257'],
+    chartTypes: ['F2'],
+    examQ: {
+      q: 'In Figure 2I, which two screens share the most hits, how many hits are found only in the A549 Dropout screen, and what does the overall pattern suggest?',
+      a: 'A549 Dropout and A549 Cis 6.5µM share the most hits (16). 42 of the 77 A549 Dropout hits appear in no other screen. Most hits are specific to one screen (the single-dot columns are the tallest bars) and overlaps are small, for example only five hits are shared by the A549 and H460 Dropout screens. That is why the authors combine several hallmarks and cell lines in an integrated analysis instead of relying on one screen.',
+    },
+  },
+});
