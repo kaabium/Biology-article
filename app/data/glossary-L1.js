@@ -44,7 +44,7 @@
 {
   id: 'candidate-number',
   short: 'The ID the paper gives each screened target: “candidate 1”, “candidate 205” and so on.',
-  long: `<p>Every target in the screening library has a number, and the paper refers to the targets as “candidate 1” and so on. Think of it as a label for a target spot where the guides cut. Some candidates also have a gene name (candidate 331 is DNMBP-AS1), and one candidate can cover two lncRNAs that start from the same spot (candidate 205 covers LINC00115 and RP11-206L10.11).</p>`,
+  long: `<p>Every target in the screening library has a number, and the paper refers to the targets as “candidate 1” and so on. Think of it as a label for a target spot where the guides cut. Some targets also have a gene name (candidate 331 is DNMBP-AS1), and one target can cover two lncRNAs that start from the same spot (candidate 205 covers LINC00115 and RP11-206L10.11).</p>`,
   analogy: 'A jersey number: it identifies the player in the lineup, and the player may also have a name.',
   see: ['dnmbp-as1', 'linc00115', 'chill1'],
   source: ['res-pipeline-p2', 'res-pipeline-p5', 'res-validation-p2'],
