@@ -7,11 +7,11 @@
   body: [
     { k: 'h', text: 'Who writes the list of genes?' },
     { k: 'bgnd', html:
-      `<p>The genome is a huge string of DNA letters with no labels on it. Somebody has to work out where the genes are and write it down. That list is a <b>gene annotation</b>: for every gene, and for every RNA copy (transcript) it can make, it records the chromosome, start, end, strand and exons, plus a name and an ID. To "annotate" a genome means to add these labels.</p>` +
-      `<p>An annotation is a set of educated claims built from evidence (sequenced RNA, expert curation, computer predictions). It is useful but never final: a stretch of DNA with no label is not proof that nothing is there. Annotations are also published in numbered <i>releases</i>, so you must always say which one you used.</p>` },
+      `<p>The genome is a huge string of DNA letters with no labels on it. Somebody has to work out where the genes are and write it down. That list is a <b>gene annotation</b>: for every gene, and for every RNA copy (transcript) it can make, it records the chromosome, start, end, strand and exons, plus a name and an ID.</p>` +
+      `<p>An annotation is a set of educated claims built from evidence (sequenced RNA, expert curation, computer predictions). It is useful but never final: a stretch of DNA with no label is not proof that nothing is there.</p>` },
     { k: 'h', text: 'Files and IDs: GTF and ENSG' },
     { k: 'bgnd', html:
-      `<p>Annotations are shared as plain-text tables called <b>GTF files</b> (Gene Transfer Format). Each row describes one feature, a gene, a transcript or an exon, with its chromosome, start, end, strand and a few notes. Programs read GTF files to draw gene maps or to count RNA gene by gene.</p>` +
+      `<p>Annotations are shared as plain-text tables called <b>GTF files</b> (Gene Transfer Format). Each row describes one feature (a gene, a transcript or an exon) with its chromosome, start, end, strand and a few notes. Programs read them to draw gene maps or count RNA by gene.</p>` +
       `<p>Every gene also gets an <b>Ensembl gene ID</b>: the letters <b>ENSG</b> plus a number (for transcripts, <b>ENST</b>). A name such as "MALAT1" is a nickname, and a gene can have several. The ID is the stable address that says exactly which gene is meant.</p>` },
     { k: 'h', text: 'Four catalogs, four maps' },
     { k: 'bgnd', html:
@@ -19,7 +19,7 @@
       `<ul><li><b>GENCODE</b>: the standard human annotation. It mixes expert curation with computer pipelines and lists protein-coding genes and noncoding RNAs. It comes in numbered versions (the paper uses release 19 and v36).</li>` +
       `<li><b>FANTOM CAT</b>: a lncRNA catalog from the FANTOM consortium that relies on a method for finding where RNAs begin (lesson B8).</li>` +
       `<li><b>BIGTranscriptome</b>: another published list of human lncRNAs.</li>` +
-      `<li>A <b>new transcriptome assembly</b>: the authors read out the RNA made by their own lung cancer cells (a method called RNA-seq, lesson D10) and let a program, <b>StringTie</b>, stitch the short sequenced pieces into whole transcripts, like rebuilding a shredded page by matching the torn edges. This can reveal RNAs that no catalog lists yet.</li></ul>` },
+      `<li>A <b>new transcriptome assembly</b>: the authors read out the RNA of their own lung cancer cells (RNA-seq, lesson D10) and let a program, <b>StringTie</b>, stitch the short pieces into whole transcripts, like rebuilding a shredded page by matching torn edges. It can reveal RNAs that no catalog lists yet.</li></ul>` },
     { k: 'svg', caption: 'How the paper built its target list: four catalogs are merged and filtered, ending with 831 lncRNAs and 998 start sites.',
       svg: `<svg viewBox="0 0 480 358" role="img" aria-label="Flow chart: four gene catalogs (GENCODE, BIGTranscriptome, FANTOM CAT, a new assembly) are merged, then start sites near protein-coding exons and lowly expressed transcripts are dropped, start sites within 300 bp are clustered, clusters with extra evidence are kept, leaving 831 lncRNAs and 998 start sites">` +
         `<rect x="10" y="6" width="224" height="44" rx="8" class="f-blue"/><text x="122" y="25" class="mid b">GENCODE</text><text x="122" y="43" class="mid s m">release 19</text>` +
@@ -42,22 +42,17 @@
     { k: 'paper', ref: 'res-pipeline-p2',
       quote: 'We integrated and filtered published and in-house gene annotations … for a final target set of 831 expressed lncRNAs, corresponding to 998 high-confidence TSSs' },
     { k: 'plain', source: ['m-library-design-p1', 'm-library-design-p2', 'res-pipeline-p2'], html:
-      `<p>The authors downloaded GTF files from GENCODE (release 19), BIGTranscriptome and FANTOM CAT, and made their own new assembly from RNA-seq of A549 cells (the lung cancer cells they work with; lesson C4). All 4 were merged into one annotation with StringTie’s merge option. Then they filtered the lncRNAs:</p>` +
-      `<ul><li>they removed any whose start site overlapped, or lay less than 2 kb up or downstream of, a protein-coding exon in GENCODE;</li>` +
-      `<li>they measured expression in A549 cells and removed transcripts below 0.1 FPKM (FPKM is a unit for how much RNA a gene makes; lesson D10);</li>` +
-      `<li>they grouped start sites within 300 bp of each other into one cluster;</li>` +
-      `<li>they kept clusters backed by extra evidence (next lesson).</li></ul>` +
-      `<p>The result: 831 expressed lncRNAs with 998 high-confidence TSSs.</p>` },
+      `<p>The authors downloaded GTF files from GENCODE (release 19), BIGTranscriptome and FANTOM CAT, made a new assembly from RNA-seq of A549 cells (the lung cancer cells they work with; lesson C4), and merged all 4 with StringTie’s merge option. They then dropped lncRNAs whose start site overlapped, or lay less than 2 kb up or downstream of, a protein-coding exon in GENCODE; dropped transcripts below 0.1 FPKM in A549 cells (FPKM is a unit for how much RNA a gene makes; lesson D10); grouped start sites within 300 bp into one cluster; and kept clusters backed by extra evidence (next lesson). The result: 831 expressed lncRNAs with 998 high-confidence TSSs.</p>` },
     { k: 'bgnd', html:
-      `<p><b>Why merge?</b> The paper does not say. A common reason is that every catalog is incomplete, so the union catches more lncRNAs, and the filters then remove entries that would make risky targets.</p>` },
+      `<p><b>Why merge?</b> The paper does not say. A common reason is that every catalog is incomplete, so merging catches more lncRNAs.</p>` },
     { k: 'why', source: ['limitations-p2', 'res-aso-p1'], html:
-      `<p>The list sets the limits of the study: a lncRNA that is on no list cannot be tested. The authors admit that annotation is still incomplete (limitations-p2), and the follow-up shows that the extra catalogs mattered: of the nine lncRNAs they picked for ASO work, seven are annotated by GENCODE and two by either FANTOM CAT or BIGTranscriptome (res-aso-p1).</p>` },
+      `<p>A lncRNA on no list cannot be tested, so the list sets the study’s limits. The authors admit that annotation is still incomplete (limitations-p2). The extra catalogs did matter: of the nine lncRNAs picked for ASO work, seven are annotated by GENCODE and two by either FANTOM CAT or BIGTranscriptome (res-aso-p1).</p>` },
     { k: 'flag', source: ['m-library-design-p1', 'm-eztracks-p2', 'fig1B'], html:
-      `<p>Three small things when you read the Methods. (1) The first Methods sentence is printed as “We alsma, lo generated a novel transcriptome assembly”; this is most likely a typo for “We also generated”. (2) Two GENCODE versions appear: release 19 for building the target list, and v36 for the gene models drawn in the figures. (3) Figure 1B labels one box “FANTOM5” while the text says FANTOM CAT.</p>` },
+      `<p>Heads-up for the Methods. (1) The sentence is printed as “We alsma, lo generated a novel transcriptome assembly”, most likely a typo for “We also generated”. (2) Two GENCODE versions appear: release 19 for the target list, v36 for the gene models in the figures. (3) Figure 1B labels one box “FANTOM5”; the text says FANTOM CAT.</p>` },
     { k: 'h', text: 'Two more words from gene maps: EST and ortholog' },
     { k: 'bgnd', html:
-      `<p><b>ESTs</b> (expressed sequence tags) are short pieces of sequence read from RNA that cells really made. They are an older, cheap kind of evidence that "this stretch of DNA gets transcribed", and gene maps often show them as little bars. An EST that stretched from one gene into its neighbor would suggest that one long RNA runs through both (readthrough transcription, lesson B4).</p>` +
-      `<p>An <b>ortholog</b> is the "same" gene in another species: two genes that descend from one gene in a shared ancestor. Orthologs often (not always) do similar jobs, so a mouse ortholog lets scientists study a human gene in mice. lncRNAs are usually less conserved than protein-coding genes, which makes true orthologs harder to spot, so they are often called "likely" orthologs.</p>` },
+      `<p><b>ESTs</b> (expressed sequence tags) are short pieces of sequence read from RNA that cells really made: an older, cheap kind of evidence that "this stretch of DNA gets transcribed". An EST that stretched from one gene into its neighbor would suggest that one long RNA runs through both (readthrough transcription, lesson B4).</p>` +
+      `<p>An <b>ortholog</b> is the "same" gene in another species: two genes that descend from one gene in a shared ancestor. Orthologs often (not always) do similar jobs, so a mouse ortholog lets scientists study a human gene in mice. lncRNAs are usually less conserved than protein-coding genes, so their orthologs are hard to spot and often called "likely".</p>` },
     { k: 'paper', ref: 'res-aso-p4',
       quote: 'we find no evidence for readthrough transcription between the two loci as shown by annotated expressed sequence tags (ESTs)' },
     { k: 'plain', source: ['res-aso-p4'], html:
@@ -71,9 +66,9 @@
       `<p>Expression is always compared with something. <b>Upregulation</b> means more RNA than in the comparison (treated versus untreated cells, or diseased versus healthy tissue). <b>Downregulation</b> means less. "Overexpressed" is used the same way. These words describe a change in RNA amount, not its cause, and not a change in the DNA.</p>` +
       `<p>The <b>transcriptome</b> is all the RNA in a cell or sample, with how much of each. The genome is the same everywhere, but the transcriptome changes with cell type and conditions.</p>` },
     { k: 'memory', html:
-      `<p><b>Analogy:</b> the genome is a cookbook that every kitchen owns. The annotation is its index (which recipe is on which page, under which name). The transcriptome is the list of recipes being cooked right now, and "upregulated" means more portions than yesterday. <i>Where it breaks:</i> a cookbook index is written by the author, while an annotation is pieced together by outsiders from evidence, so it can be wrong; and the amount of RNA present also depends on how fast it is thrown away, not only on how fast it is made.</p>` },
+      `<p><b>Analogy:</b> the genome is a cookbook that every kitchen owns. The annotation is its index. The transcriptome is the list of recipes being cooked right now, and "upregulated" means more portions than yesterday. <i>Where it breaks:</i> an annotation is pieced together by outsiders from evidence, so it can be wrong; and the amount of RNA present also depends on how fast it is thrown away, not only on how fast it is made.</p>` },
     { k: 'plain', source: ['res-pipeline-p5', 'res-pipeline-p2', 'res-mechanism-p2'], html:
-      `<p><b>Up and down in the paper.</b> After deleting the start site of 12 randomly chosen targets, the authors saw the RNA go down as expected for 7, stay unchanged for 3 and go <i>up</i> for 2. So even a deliberate change can push expression either way; “up” and “down” just report what was measured. The word transcriptome is used in two ways: the catalog of lncRNAs in these lung cancer cells (“the NSCLC lncRNA transcriptome”), and the full set of RNAs measured in a sample (“to quantify the transcriptome of A549 cells”).</p>` },
+      `<p><b>Up and down in the paper.</b> After deleting the start site of 12 randomly chosen targets, the authors saw the RNA go down as expected for 7, stay unchanged for 3 and go <i>up</i> for 2. “Transcriptome” is used in two ways: the catalog of lncRNAs in these lung cancer cells (“the NSCLC lncRNA transcriptome”) and all the RNAs measured in a sample (“to quantify the transcriptome of A549 cells”).</p>` },
   ],
   appears: [
     { ref: 'm-library-design-p1', note: 'The four sources (GENCODE release 19, BIGTranscriptome, FANTOM CAT, a new StringTie assembly) are downloaded as GTF files and merged.' },
@@ -134,7 +129,7 @@
       `<p>In the nucleus, DNA is not bare. It is wound around spool-like proteins (histones) and folded into a compact package called <b>chromatin</b>. The packing is uneven. Tightly packed regions hide the DNA from TFs and are usually silent. Open regions can be reached, and they are where regulatory elements are usually active. Chemical tags on the spool proteins help set the packing and act as clues about what a region is doing. (EZH2, from lesson B6, adds a tag that tends to switch nearby genes off.)</p>` },
     { k: 'h', text: 'Finding where a gene really starts: three clues from ENCODE' },
     { k: 'bgnd', html:
-      `<p>A gene catalog says where a start site is, but catalogs can be off by a bit, and a deletion has to hit the <i>real</i> start. So the authors looked for independent evidence. <b>ENCODE</b> (Encyclopedia of DNA Elements) is a large public project that measured, in many human cell types, where RNA starts, which DNA is open, and which chemical marks sit on chromatin. Anyone can reuse its data. Three kinds matter here:</p>` +
+      `<p>A gene catalog says where a start site is, but catalogs can be off by a bit, and the stretch of DNA that is cut out has to include the <i>real</i> start. So the authors looked for independent evidence. <b>ENCODE</b> (Encyclopedia of DNA Elements) is a large public project that measured, in many human cell types, where RNA starts, which DNA is open, and which chemical marks sit on chromatin. Anyone can reuse its data. Three kinds matter here:</p>` +
       `<ul><li><b>CAGE</b> (Cap Analysis of Gene Expression) catches the very first end of RNAs, which carries a special "cap". Short tags from that end are sequenced and placed on the genome. Where many tags pile up, RNAs really begin, so CAGE pinpoints the TSS.</li>` +
       `<li><b>DNase I hypersensitivity</b>: DNase I is an enzyme that cuts DNA, but only where chromatin is open. Places where it cuts easily mark open DNA, often a promoter or enhancer with TFs bound.</li>` +
       `<li><b>ChromHMM</b> is a computer program that reads many chromatin marks and labels each stretch of the genome with a "state", such as Active TSS or Active Enhancer. The states are predictions, not direct measurements.</li></ul>` +
@@ -201,7 +196,7 @@
         { t: 'DNase I cuts only where DNA is open, and promoters and enhancers with bound TFs are open', ok: true, why: 'Right: easy cutting marks open chromatin, a typical sign of active regulatory DNA. It shows where, not what it does.' },
         { t: 'DNase I measures how much RNA a gene makes', ok: false, why: 'DNase I does not read RNA. Amounts of RNA come from expression measurements.' },
         { t: 'DNase I reads the first letter of each RNA', ok: false, why: 'That is CAGE. DNase I tells you about DNA being open or packed.' },
-        { t: 'DNase I deletes the gene so its effect can be seen', ok: false, why: 'Here it is only a probe for open chromatin; nothing is being deleted.' },
+        { t: 'DNase I deletes the gene so its effect can be seen', ok: false, why: 'Here it is only a tool for finding open chromatin; nothing is being deleted.' },
       ], bg: true },
     { q: 'Which three kinds of ENCODE evidence did the authors use to support start-site clusters?',
       options: [
@@ -212,7 +207,7 @@
       ], source: ['m-library-design-p2', 'fig1B'] },
     { q: 'Why can deleting a stretch of DNA alone not prove that a lncRNA causes an effect?',
       options: [
-        { t: 'The removed DNA might also contain a regulatory element, such as an enhancer, so the effect could be DNA-dependent', ok: true, why: 'Right (res-validation-p4): a deletion cannot tell RNA-dependent from DNA-dependent mechanisms.' },
+        { t: 'The removed DNA might also contain a regulatory element, such as an enhancer, so the effect could be DNA-dependent', ok: true, why: 'Right (res-validation-p4): deleting DNA cannot tell RNA-dependent from DNA-dependent mechanisms.' },
         { t: 'Because a deletion can never be detected', ok: false, why: 'Deletions can be checked. The problem is interpreting the effect, not seeing the deletion.' },
         { t: 'Because enhancers are made of RNA', ok: false, why: 'Enhancers are stretches of DNA, not RNA molecules.' },
         { t: 'Because deleting DNA always kills the cell', ok: false, why: 'Many deletions leave cells alive. The point is about which part (DNA or RNA) causes the effect.' },
@@ -322,7 +317,7 @@
 /* ============================================================================================== C2 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'C2',
-  defines: ['h460', 'h441', 'be874'],
+  defines: ['h460', 'h441', 'be874', 'tumor-subtype', 'toxicity', 'depletion'],
   body: [
     { k: 'h', text: 'Mutations: typos in the DNA' },
     { k: 'bgnd', html:
@@ -330,8 +325,7 @@
       `<p>An <b>activating mutation</b> makes a protein more active, or active all the time. That is the typical way an oncogene is created. A mutation that breaks a protein is the typical way a tumor suppressor is lost.</p>` },
     { k: 'h', text: 'Copy-number changes: too many or too few copies' },
     { k: 'bgnd', html:
-      `<p>Most genes come in two copies, one from each parent. In tumors, pieces of chromosomes can be copied extra times or lost. These <b>copy-number alterations (CNAs)</b> go in two directions. <b>Amplification</b>: a region is present in many extra copies, so its genes make more RNA and protein. <b>Deletion</b>: a region is lost, so its genes make less or nothing. An amplified oncogene or a deleted tumor suppressor pushes the same way, toward cancer. Amplification is a change in the DNA; upregulation is a change in RNA level (amplification is one possible cause).</p>` +
-      `<p>Heads-up: "deletion" has two meanings in this paper. Here it means DNA lost in a tumor. Elsewhere it means DNA that the authors cut out on purpose in the lab (lesson D1).</p>` },
+      `<p>Most genes come in two copies, one from each parent. In tumors, pieces of chromosomes can be copied extra times or lost. These <b>copy-number alterations (CNAs)</b> go in two directions. <b>Amplification</b>: a region is present in many extra copies, so its genes make more RNA and protein. <b>Deletion</b>: a region is lost, so its genes make less or nothing. An amplified oncogene or a deleted tumor suppressor pushes the same way, toward cancer. Amplification is a change in the DNA; upregulation is a change in RNA level (amplification is one possible cause). Heads-up: in this paper "deletion" also means DNA that the authors cut out on purpose in the lab (lesson D1).</p>` },
     { k: 'svg', caption: 'Ways a gene can go wrong in a tumor. Each blue box is one copy of the gene.',
       svg: `<svg viewBox="0 0 480 266" role="img" aria-label="Four rows of gene copies: normal has two copies, mutation has two copies with one marked by a red typo, amplification has six copies, deletion has one copy and one lost copy drawn as a dashed empty box">` +
         `<text x="6" y="30" class="b">Normal</text><text x="6" y="48" class="s m">two copies of the gene</text>` +
@@ -345,8 +339,8 @@
         `<text x="240" y="256" class="mid s m">red mark = a changed letter</text></svg>` },
     { k: 'h', text: 'Lung cancer and its types' },
     { k: 'bgnd', html:
-      `<p>Lung cancer is sorted into small cell and <b>non-small cell lung cancer (NSCLC)</b> by how the cells look under a microscope. NSCLC is the larger group. Its main types include <b>lung adenocarcinoma (LUAD)</b>, which starts in gland-like cells that make mucus; squamous cell carcinoma; and <b>large cell carcinoma</b>, whose large, abnormal-looking cells fit none of the others. ("Carcinoma" means a cancer that starts in cells lining surfaces.)</p>` +
-      `<p>There is a second way to sort lung cancers: by <i>which gene is changed</i>, such as KRAS-mutant or EGFR-mutant. The two ways cross: a tumor can be an adenocarcinoma <i>and</i> KRAS-mutant. The paper uses both.</p>` },
+      `<p>Lung cancer is divided into small cell and <b>non-small cell lung cancer (NSCLC)</b> by how the cells look under a microscope. NSCLC is the larger group. Its main types include <b>lung adenocarcinoma (LUAD)</b>, which starts in gland-like cells that make mucus; squamous cell carcinoma; and <b>large cell carcinoma</b>, whose large, abnormal-looking cells fit none of the others. ("Carcinoma" means a cancer that starts in cells lining surfaces.)</p>` +
+      `<p>There is a second way to divide lung cancers: by <i>which gene is changed</i>, such as KRAS-mutant or EGFR-mutant. The two ways cross: a tumor can be an adenocarcinoma <i>and</i> KRAS-mutant. The paper uses both.</p>` },
     { k: 'h', text: 'Spreading: migration, invasion, metastasis' },
     { k: 'bgnd', html:
       `<p><b>Cell migration</b> is a cell crawling from one place to another. Healthy cells do it too (healing a wound, patrolling immune cells). <b>Invasion</b> is cancer cells pushing into and through neighboring tissue. <b>Metastasis</b> is cancer cells travelling, usually through blood or lymph vessels, to distant organs and starting new tumors there. Migration is the crawl, invasion is the break-in, metastasis is setting up a colony far away. Metastasis is what makes many cancers so dangerous.</p>` },
@@ -371,12 +365,12 @@
     { k: 'bgnd', html:
       `<p>A <b>targeted therapy</b> is a drug built to block one specific molecule that the cancer depends on, such as a mutant EGFR, instead of hitting every dividing cell. KRAS was long called "undruggable" because no drug could grip it. The first drugs for it aim at one particular change, <b>G12C</b>. The name works like a street address: protein building blocks (amino acids) have one-letter codes, so G12C means that the amino acid at position 12 of the protein, glycine (G), has been swapped for cysteine (C).</p>` },
     { k: 'memory', html:
-      `<p><b>Analogy:</b> KRAS is a light switch that should click back off by itself. An activating mutation tapes it in the "on" position. A targeted therapy is a key cut for one particular lock, instead of a battering ram that damages every door. <i>Where it breaks:</i> a mutant KRAS is not a simple light switch. It is only mostly stuck on, and cancer cells usually also carry other changes that help them.</p>` },
+      `<p><b>Analogy:</b> KRAS is a light switch that should click back off by itself; an activating mutation tapes it "on". A targeted therapy is a key cut for one lock, not a battering ram. <i>Where it breaks:</i> mutant KRAS is only mostly stuck on, and tumors usually carry other helpful changes too.</p>` },
     { k: 'h', text: 'How this paper uses these ideas' },
     { k: 'paper', ref: 'intro-p1',
       quote: 'The most common NSCLC subtype, carrying activating KRAS mutations (KRAS+), … newly approved targeted therapies only extend life by a few months.' },
     { k: 'plain', source: ['intro-p1'], html:
-      `<p>The paper studies a genetic family of lung cancer that it calls KRAS+: tumors whose KRAS gene carries an activating mutation. It names this the most common NSCLC subtype. Current treatment, it says, faces three challenges: undruggable mutations, toxicity and therapy resistance, and newly approved targeted therapies add only a few months of life. That is the gap the paper aims at.</p>` },
+      `<p>The paper studies a genetic family of lung cancer that it calls KRAS+: tumors whose KRAS gene carries an activating mutation. It names this the most common NSCLC subtype (a subtype is a sub-group of a cancer type). Current treatment, it says, faces three challenges: undruggable mutations, toxicity (harm to healthy cells) and therapy resistance, and newly approved targeted therapies add only a few months of life.</p>` },
     { k: 'paper', ref: 'm-pdx-p1',
       quote: 'KRAS c.34G>T (p.Gly12Cys) mutation was detected in both BE874 organoids and the corresponding primary cancer' },
     { k: 'plain', source: ['m-pdx-p1'], html:

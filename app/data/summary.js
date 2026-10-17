@@ -40,11 +40,8 @@ window.SUMMARY = {
 `,
 
   cheat: `
-<div class="cs-box tiny"><h3>The paper in 2 lines</h3>
-<p><b>Q:</b> Which lncRNAs drive KRAS+ NSCLC across hallmarks <i>and</i> cell lines, and can ASOs hit them?<br>
-<b>Answer:</b> CRISPR-deletion screens → one ranking (TPP) → 80 hits → 9 → 5 → 2: <b>CHiLL1</b>, <b>GCAWKR</b>.</p></div>
-
-<div class="cs-box tiny"><h3>Pipeline</h3>
+<div class="cs-box tiny"><h3>Question and pipeline</h3>
+<p><b>Q:</b> Which lncRNAs drive KRAS+ NSCLC across hallmarks <i>and</i> cell lines, and can ASOs hit them?</p>
 <div class="cs-flow"><span>831 lncRNAs / 998 TSSs</span><i>→</i><span>10 pgRNAs each</span><i>→</i><span>A549 + H460 (Cas9)</span><i>→</i><span>3 screens</span><i>→</i><span>TPP</span><i>→</i><span>ASOs</span><i>→</i><span>RNA-seq, FISH</span></div>
 <ul>
 <li><b>Proliferation:</b> dropout (hit guides depleted) + CFSE (slow cells enriched).</li>
@@ -69,8 +66,9 @@ window.SUMMARY = {
 <tr><td>8/12 (67%)</td><td>hits confirmed by ASO</td></tr>
 <tr><td>78% · 92%</td><td>tumors with ≥ 1 target: Tier 3 · Tier 2</td></tr>
 </tbody></table>
-<p class="srcline">Computed here: 80 ÷ 998 = 8.0%; 134 ÷ 998 = 13.4% (paper: ~8%, ~13%).</p>
-<p><b>⚠ Numbers differ between text and figures</b> (e.g. 12,000 vs 1,200; 998 vs 1003) — see the <a href="#/numbers">Key numbers page</a>. This sheet uses the Results text.</p></div>
+<p class="srcline">Computed here: 80 ÷ 998 = 8.0%; 134 ÷ 998 = 13.4% (paper: ~8%, ~13%).</p></div>
+
+<div class="cs-box tiny"><p><b>⚠ Numbers differ between text and figures</b> (e.g. 12,000 vs 1,200; 998 vs 1003) — see the <a href="#/numbers">Key numbers page</a>. This sheet uses the Results text.</p></div>
 
 <div class="cs-box tiny"><h3>Controls and why</h3>
 <ul>
@@ -82,13 +80,17 @@ window.SUMMARY = {
 <li><b>Normal lung cells</b> (HBEC3-KT, MRC5-CV1, CCD-12Lu): toxicity check.</li>
 </ul></div>
 
-<div class="cs-box tiny"><h3>10 key definitions</h3>
+<div class="cs-box tiny"><h3>10 key definitions (1–5)</h3>
 <ol>
 <li><b>NSCLC / KRAS+:</b> non-small cell lung cancer / activating KRAS mutation.</li>
 <li><b>lncRNA:</b> long RNA not made into protein.</li>
 <li><b>TSS:</b> where copying into RNA starts; delete it → gene off.</li>
 <li><b>pgRNA / CRISPR-del:</b> paired guides make Cas9 cut twice, deleting the DNA between.</li>
 <li><b>Pooled screen:</b> one guide per cell; hit guides are depleted (dropout) or enriched (positive).</li>
+</ol></div>
+
+<div class="cs-box tiny"><h3>10 key definitions (6–10)</h3>
+<ol start="6">
 <li><b>Hallmark:</b> cancer capability, e.g. proliferation.</li>
 <li><b>Pleiotropic / background independent:</b> several hallmarks / both cell lines.</li>
 <li><b>TPP:</b> one ranking from all screens (effect size + p-values).</li>

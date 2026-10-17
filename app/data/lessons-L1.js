@@ -137,3 +137,73 @@
       ], source: ['res-integration-p1', 'res-integration-p2'] },
   ],
 });
+
+/* ============================================================================================== A3 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'A3',
+  defines: ['toxicity', 'glycolysis'],
+  body: [
+    { k: 'h', text: 'Why this study matters' },
+    { k: 'plain', source: ['intro-p1', 'intro-p2'], html:
+      `<p><b>Lung cancer needs better options.</b> NSCLC is the leading cause of cancer deaths worldwide. Its most common kind, with the changed KRAS gene, is routinely treated with cell-killing platinum drugs, and newly approved targeted medicines extend life by only a few months. <b>lncRNAs are a huge unexplored hunting ground.</b> There are probably more than 100,000 of them and over 98% are uncharacterised, which the authors call “a fertile source” of new targets. In two other cancers, melanoma and glioma, tumor cells were strongly and specifically sensitive to ASOs against certain lncRNAs.</p>` },
+    { k: 'plain', source: ['intro-p6', 'discussion-p5', 'res-aso-p9'], html:
+      `<p><b>ASOs could become low-harm medicines.</b> The authors say the lncRNAs they found can be targeted by “potent” ASOs of low <b>toxicity</b> (toxicity means harm to healthy cells), because the ASO effects were weaker in normal lung cells. They hope this allows higher doses and mixes of drugs. They also find that 78% of the tumors in a public patient dataset make at least one of CHiLL1 and GCAWKR, and 92% at least one of the Tier 2 lncRNAs, so most patients might eventually benefit.</p>` },
+    { k: 'flag', source: ['discussion-p5', 'res-aso-p9'], html:
+      `<p>Keep it in proportion. The tests are in cells and organoids, and the ASOs still need refining and a way to reach tumors in a living body. The 78% and 92% count tumors that contain the RNA; the paper says these patients “might be treated”, not that anyone was.</p>` },
+
+    { k: 'h', text: 'The cast of names' },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a sports team. The numbers are jersey numbers: every target in the library has one. Some players also have a name. A few players do one special job, and two become the stars.</p>` },
+    { k: 'svg', caption: 'Where each name appears in the story. The numbers are the paper’s candidate numbers.',
+      svg: `<svg viewBox="0 0 480 356" role="img" aria-label="Six rows showing where each name appears in the story: the method test, two checked hits, the migration hits, the two finalists, and clues about CHiLL1"><rect x="8" y="8" width="128" height="50" rx="10" class="f-blue"/><text x="72" y="38" class="mid b s">Method test</text><path d="M138 33 H152" class="ln thin m"/><text x="158" y="29" class="b">DNMBP-AS1</text><text x="158" y="48" class="s m">candidate 331 · known lung-cancer lncRNA</text><rect x="8" y="66" width="128" height="50" rx="10" class="f-green"/><text x="72" y="96" class="mid b s">Checked hit 1</text><path d="M138 91 H152" class="ln thin m"/><text x="158" y="87" class="b">LINC00115 + RP11-206L10.11</text><text x="158" y="106" class="s m">candidate 205 · one shared start region</text><rect x="8" y="124" width="128" height="50" rx="10" class="f-teal"/><text x="72" y="154" class="mid b s">Checked hit 2</text><path d="M138 149 H152" class="ln thin m"/><text x="158" y="145" class="b">LINC00910 (candidate 507)</text><text x="158" y="164" class="s m">next to top hit 509 and to candidate 508</text><rect x="8" y="182" width="128" height="50" rx="10" class="f-orange"/><text x="72" y="212" class="mid b s">Migration hits</text><path d="M138 207 H152" class="ln thin m"/><text x="158" y="203" class="b">AC104024.3 · CECR7 · MIR23AHG</text><text x="158" y="222" class="s m">candidates 215 · 448 · 489</text><rect x="8" y="240" width="128" height="50" rx="10" class="f-red"/><text x="72" y="270" class="mid b s">Two finalists</text><path d="M138 265 H152" class="ln thin m"/><text x="158" y="261" class="b">CHiLL1 · GCAWKR</text><text x="158" y="280" class="s m">candidates 42 and 240</text><rect x="8" y="298" width="128" height="50" rx="10" class="f-purple"/><text x="72" y="328" class="mid b s">CHiLL1 clues</text><path d="M138 323 H152" class="ln thin m"/><text x="158" y="319" class="b">TNFRSF10B · ZBTB7A</text><text x="158" y="338" class="s m">its neighbor · a gene-control protein</text></svg>` },
+    { k: 'plain', source: ['res-pipeline-p2', 'res-pipeline-p5', 'res-validation-p2'], html:
+      `<p><b>Candidate numbers.</b> The paper calls the library targets “candidate 1” and so on. A target that is a known lncRNA gene also has a name, like candidate 331, DNMBP-AS1. One number can even cover two lncRNAs that start from the same spot, as for candidate 205.</p>` },
+    { k: 'plain', source: ['res-pipeline-p5'], html:
+      `<p><b>DNMBP-AS1 (candidate 331), the test case.</b> This lncRNA was already known to promote NSCLC. The authors used it to check the method before the big screens: their guides removed its starting region, and its RNA level fell.</p>` },
+    { k: 'plain', source: ['res-validation-p1', 'res-validation-p2', 'res-validation-p4'], html:
+      `<p><b>LINC00115 and RP11-206L10.11 (candidate 205).</b> Two lncRNA genes start side by side here and face opposite ways, so one deletion hits both. Candidate 205 was a top hit in the growth screens. To tell the two genes apart, the authors used separate ASOs: only LINC00115’s ASOs slowed cell growth, so LINC00115, not RP11-206L10.11, drives growth through its RNA. Earlier reports already link LINC00115 to lung cancer growth and movement and to other cancers.</p>` },
+    { k: 'plain', source: ['res-validation-p1', 'res-validation-p2', 'res-validation-p3', 'res-multipheno-p4'], html:
+      `<p><b>Candidate 509 and LINC00910 (candidate 507).</b> Candidate 509 sits at a starting region shared by several lncRNAs and was a top hit in both the growth and cisplatin screens. In a head-to-head test, cells with the 205 or 509 guides lost out to control cells, and the 509 guides also made cells more sensitive to cisplatin. The same region holds two more hits, candidate 507 (LINC00910) and candidate 508, which the authors say supports its importance. The paper also lists LINC00910 among lncRNAs identified in other cancer types.</p>` },
+    { k: 'plain', source: ['res-validation-p5', 'fig5B', 'res-aso-p2'], html:
+      `<p><b>AC104024.3, CECR7 and MIR23AHG (candidates 215, 448, 489).</b> These are hits from the migration screen. ASOs against each of them caused a dramatic impairment of migration in A549 cells. Figure 5B’s legend lists four Tier 2 lncRNAs and adds that no data were available for candidate 215, the fifth, so AC104024.3 is a Tier 2 lncRNA too.</p>` },
+    { k: 'plain', source: ['res-aso-p3', 'res-aso-p4'], html:
+      `<p><b>TNFRSF10B, CHiLL1’s neighbor.</b> TNFRSF10B is a gene that carries a protein recipe and sits right next to CHiLL1; it had been linked to NSCLC before. The authors found no evidence that the two are copied together into one long RNA. They also raise the possibility of a local effect of CHiLL1 on neighboring genes, but say they did not see such an effect for TNFRSF10B.</p>` },
+    { k: 'plain', source: ['res-mechanism-p4'], html:
+      `<p><b>ZBTB7A, a clue about CHiLL1.</b> After CHiLL1 was switched down, many genes changed. Among them, the places where certain gene-controlling proteins attach were over-represented, including those of ZBTB7A (in both A549 and H460 cells). ZBTB7A has been reported to both promote and restrain cancer and to affect <b>apoptosis</b> and <b>glycolysis</b> (a way cells break down sugar for energy). It is a hint about how CHiLL1 works, not a proof.</p>` },
+    { k: 'flag', source: ['res-validation-p2', 'res-validation-p4', 'limitations-p1', 'fig5B'], html:
+      `<p>The paper often writes “candidate 205 (LINC00115)” as if one number meant one gene. But candidate 205 covers two genes, and only the ASO tests singled out LINC00115. The authors say so themselves in the limitations: the deletion alone cannot tell which of two overlapping genes matters.</p>` },
+  ],
+  appears: [
+    { ref: 'res-validation-p2', note: 'Candidate 205 (LINC00115 and RP11-206L10.11) and candidate 509 (with 507 = LINC00910).' },
+    { ref: 'res-validation-p5', note: 'The three migration hits tested with ASOs: AC104024.3, CECR7 and MIR23AHG.' },
+    { ref: 'res-pipeline-p5', note: 'DNMBP-AS1 (candidate 331) is the test case for the deletion method.' },
+    { ref: 'fig3A', note: 'Gene maps of the candidate 205 and candidate 509 regions.' },
+    { ref: 'fig5B', note: 'The legend names four of the five Tier 2 lncRNAs by candidate number.' },
+  ],
+  checks: [
+    { q: 'Candidate 205 covers two lncRNA genes that start from the same spot. How did the authors find out which one drives cell growth?',
+      options: [
+        { t: 'They used separate ASOs against each gene; only the LINC00115 ASOs slowed cell growth', ok: true, why: 'Right: a deletion at the shared start hits both genes, but gene-specific ASOs can single one out.' },
+        { t: 'They made a new deletion that removed only LINC00115', ok: false, why: 'The two genes share their start region, so a deletion there cannot remove one without the other. That is why ASOs were needed.' },
+        { t: 'They compared growth in A549 and H460 cells', ok: false, why: 'Comparing two cell types tests whether a result holds in both, not which of two overlapping genes is responsible.' },
+      ], source: ['res-validation-p2', 'res-validation-p4'] },
+    { q: 'Why was DNMBP-AS1 (candidate 331) used early in the paper?',
+      options: [
+        { t: 'It is a known NSCLC-promoting lncRNA, so it could show that the deletion method really removes its target region and lowers its RNA', ok: true, why: 'Right: it served as a test case for the CRISPR-deletion strategy.' },
+        { t: 'It was the top hit of the migration screen', ok: false, why: 'The paper uses it to test the method. The migration hits it validated with ASOs are candidates 215, 448 and 489.' },
+        { t: 'It is one of the two final lncRNAs', ok: false, why: 'The two final lncRNAs are CHiLL1 (candidate 42) and GCAWKR (candidate 240).' },
+      ], source: ['res-pipeline-p5', 'res-validation-p5', 'res-aso-p3'] },
+    { q: 'Which three names are the migration hits tested with ASOs?',
+      options: [
+        { t: 'AC104024.3, CECR7 and MIR23AHG', ok: true, why: 'Right: candidates 215, 448 and 489, whose ASOs caused a dramatic impairment of A549 migration.' },
+        { t: 'LINC00115, LINC00910 and RP11-206L10.11', ok: false, why: 'These come from the growth and cisplatin follow-up: LINC00115 and RP11-206L10.11 are the two genes of candidate 205, and LINC00910 is candidate 507.' },
+        { t: 'TNFRSF10B, ZBTB7A and DNMBP-AS1', ok: false, why: 'TNFRSF10B and ZBTB7A come up around CHiLL1, and DNMBP-AS1 is the test case for the method.' },
+      ], source: ['res-validation-p5', 'res-validation-p2'] },
+    { q: 'What does the paper say about how ready ASO medicines against CHiLL1 or GCAWKR are?',
+      options: [
+        { t: 'They are promising targets from lab work; refining the ASOs and delivering them in a living body still need work', ok: true, why: 'Right: the authors say future efforts must refine ASO sequences and chemistry and deliver them in vivo.' },
+        { t: 'They have already been tested in patients with NSCLC', ok: false, why: 'No patients were treated. The tests were in cells and organoids, and tumor data only showed that the RNAs are present.' },
+        { t: 'They are approved and ready for use', ok: false, why: 'The paper calls them a promising foundation for future therapeutics, not an approved treatment.' },
+      ], source: ['discussion-p1', 'discussion-p5'] },
+  ],
+});

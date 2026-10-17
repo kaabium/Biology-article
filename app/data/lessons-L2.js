@@ -39,12 +39,12 @@
     { k: 'svg', caption: 'Gene A is on the plus strand and gene B on the minus strand. Up- and downstream flip for B. Overlapping genes on opposite strands are antisense.',
       svg: `<svg viewBox="0 0 480 215" role="img" aria-label="Two DNA strands: gene A on the plus strand points right and an overlapping gene B on the minus strand points left, with upstream and downstream reversed for gene B">` +
         `<text x="4" y="64" class="b">+ strand</text>` +
-        `<path d="M84 60 H470" class="arrow"/>` +
+        `<path d="M84 60 H130" class="ln"/><path d="M290 60 H470" class="arrow"/>` +
         `<text x="90" y="84" class="mid s m">5′</text><text x="466" y="84" class="end s m">3′</text>` +
         `<polygon points="130,46 270,46 290,60 270,74 130,74" class="f-orange"/><text x="205" y="65" class="mid b">gene A</text>` +
         `<text x="88" y="34" class="mid s b t-orange">upstream of A</text><text x="345" y="34" class="mid s b t-orange">downstream of A</text>` +
         `<text x="4" y="144" class="b">− strand</text>` +
-        `<path d="M470 140 H84" class="arrow"/>` +
+        `<path d="M470 140 H380" class="ln"/><path d="M220 140 H84" class="arrow"/>` +
         `<text x="90" y="126" class="mid s m">3′</text><text x="466" y="126" class="end s m">5′</text>` +
         `<polygon points="380,126 240,126 220,140 240,154 380,154" class="f-teal"/><text x="300" y="145" class="mid b">gene B</text>` +
         `<text x="150" y="176" class="mid s b t-teal">downstream of B</text><text x="425" y="176" class="mid s b t-teal">upstream of B</text>` +
@@ -122,7 +122,7 @@
     { k: 'svg', caption: 'A gene is copied from the TSS; the first copy is spliced (introns out, exons joined). Different edits of the same gene are isoforms.',
       svg: `<svg viewBox="0 0 480 305" role="img" aria-label="A gene on DNA with a promoter, a TSS arrow and three exons separated by introns; the first RNA copy has the same pieces; splicing cuts out the introns and joins the exons, giving isoform 1 with all three exons and isoform 2 with exon 2 skipped">` +
         `<text x="4" y="63" class="b">DNA</text>` +
-        `<line x1="50" y1="58" x2="474" y2="58" class="ln thick s-blue"/>` +
+        `<path d="M50 58 H56 M122 58 H132 M182 58 H252 M302 58 H372 M422 58 H474" class="ln thick s-blue"/>` +
         `<rect x="56" y="44" width="66" height="28" rx="6" class="f-green"/><text x="89" y="63" class="mid s b">promoter</text>` +
         `<path d="M132 20 V44" class="arrow s-red"/><text x="142" y="28" class="s b t-red">TSS: copying starts</text>` +
         `<rect x="132" y="44" width="50" height="28" rx="4" class="f-orange"/><text x="157" y="63" class="mid s">exon 1</text>` +
@@ -131,7 +131,7 @@
         `<text x="217" y="90" class="mid s m">intron</text><text x="337" y="90" class="mid s m">intron</text>` +
         `<path d="M277 98 V128" class="arrow s-purple"/><text x="286" y="118" class="s t-purple b">transcription</text>` +
         `<text x="4" y="155" class="b">RNA copy</text>` +
-        `<line x1="132" y1="150" x2="422" y2="150" class="ln thick s-orange"/>` +
+        `<path d="M182 150 H252 M302 150 H372" class="ln thick s-orange"/>` +
         `<rect x="132" y="136" width="50" height="28" rx="4" class="f-orange"/><text x="157" y="155" class="mid s">exon 1</text>` +
         `<rect x="252" y="136" width="50" height="28" rx="4" class="f-orange"/><text x="277" y="155" class="mid s">exon 2</text>` +
         `<rect x="372" y="136" width="50" height="28" rx="4" class="f-orange"/><text x="397" y="155" class="mid s">exon 3</text>` +
@@ -317,13 +317,13 @@
       `<p><b>Cis</b> and <b>trans</b> are Latin for "on this side" and "across". A <b>cis-acting</b> lncRNA works on genes right next to where it is made, on the same stretch of DNA. A <b>trans-acting</b> one is made in one place and works somewhere else, even on another chromosome. This matters in experiments: if you remove a trans-acting RNA, extra copies supplied from elsewhere in the cell can put it back. For a cis-acting RNA that usually fails, because it only works at home.</p>` },
     { k: 'svg', caption: 'Cis: the RNA acts next door. Trans: it travels and acts elsewhere.',
       svg: `<svg viewBox="0 0 480 250" role="img" aria-label="A lncRNA gene on one chromosome: a cis arrow reaches a neighboring gene on the same chromosome, while a trans arrow travels to a gene on a different chromosome">` +
-        `<line x1="20" y1="72" x2="460" y2="72" class="ln thick s-blue"/>` +
+        `<path d="M20 72 H130 M220 72 H290 M370 72 H460" class="ln thick s-blue"/>` +
         `<text x="20" y="104" class="s m">chromosome A</text>` +
         `<rect x="130" y="58" width="90" height="28" rx="6" class="f-orange"/><text x="175" y="77" class="mid s b">lncRNA gene</text>` +
         `<rect x="290" y="58" width="80" height="28" rx="6" class="f-blue"/><text x="330" y="77" class="mid s b">neighbor</text>` +
         `<path d="M200 56 C215 14 285 14 300 56" class="arrow s-orange"/>` +
         `<text x="250" y="14" class="mid s b t-orange">cis: acts on its neighbor</text>` +
-        `<line x1="20" y1="212" x2="460" y2="212" class="ln thick s-blue"/>` +
+        `<path d="M20 212 H330 M410 212 H460" class="ln thick s-blue"/>` +
         `<text x="20" y="240" class="s m">chromosome B</text>` +
         `<rect x="330" y="198" width="80" height="28" rx="6" class="f-purple"/><text x="370" y="217" class="mid s b">far gene</text>` +
         `<path d="M175 88 C175 150 250 190 328 204" class="arrow s-purple"/>` +
@@ -332,15 +332,14 @@
     { k: 'bgnd', html:
       `<p>Where an RNA is found is its <b>subcellular localization</b>. It is a clue to function, not a proof. RNAs found mostly in the <b>nucleus</b> often work on DNA and gene control, or help organize nuclear structures. RNAs found mostly in the <b>cytoplasm</b> meet mRNAs and ribosomes, and may affect how long an mRNA lasts or how well it is translated. Scientists find out by making the RNA glow under a microscope, or by splitting cells into nuclear and cytoplasmic parts and measuring each (lesson D9).</p>` },
     { k: 'svg', caption: 'Location is a hint about job, not a proof.',
-      svg: `<svg viewBox="0 0 480 228" role="img" aria-label="A cell with a nucleus: an RNA in the nucleus hints at gene control, an RNA in the cytoplasm hints at work with mRNAs and ribosomes">` +
+      svg: `<svg viewBox="0 0 480 214" role="img" aria-label="A cell with a nucleus: an RNA in the nucleus hints at gene control, an RNA in the cytoplasm hints at work with mRNAs and ribosomes">` +
         `<ellipse cx="240" cy="108" rx="228" ry="100" class="f-gray"/>` +
         `<ellipse cx="150" cy="108" rx="96" ry="72" class="f-blue"/>` +
         `<text x="150" y="62" class="mid b">nucleus</text><text x="365" y="52" class="mid b">cytoplasm</text>` +
         `<path d="M100 96 C112 76 124 116 136 96 S160 76 172 96 S196 116 204 100" class="ln thick s-orange"/>` +
         `<text x="150" y="134" class="mid s">clue: gene control,</text><text x="150" y="152" class="mid s">nuclear structures</text>` +
         `<path d="M300 96 C312 76 324 116 336 96 S360 76 372 96 S396 116 410 100" class="ln thick s-purple"/>` +
-        `<text x="360" y="134" class="mid s">clue: meets mRNAs,</text><text x="360" y="152" class="mid s">ribosomes, proteins</text>` +
-        `<text x="240" y="222" class="mid s m">a clue to function, not a proof</text></svg>` },
+        `<text x="360" y="134" class="mid s">clue: meets mRNAs,</text><text x="360" y="152" class="mid s">ribosomes, proteins</text></svg>` },
     { k: 'memory', html:
       `<p><b>Analogy:</b> a <b>cis</b>-acting lncRNA is a note taped to the door of the room where it was written: it only reaches that room. A <b>trans</b>-acting one is an email: it can be read anywhere. An RNA's <b>location</b> is like where a person works: someone found in the design office (nucleus) is probably handling plans, someone on the kitchen floor (cytoplasm) is probably handling production. <i>It breaks down</i> because a cis effect can come from the DNA or from the act of copying, not only from the finished RNA, and because many RNAs are found in both rooms.</p>` },
     { k: 'h', text: 'What the paper says about named lncRNAs' },
