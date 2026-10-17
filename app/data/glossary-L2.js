@@ -295,8 +295,8 @@
 },
 {
   id: 'linc00511',
-  short: `A lncRNA the introduction says promotes lung cancer by binding EZH2 and repressing p57 and LATS2; the paper's experiment also found it.`,
-  long: `<p>According to the introduction, LINC00511 promotes lung cancer by binding EZH2, an enzyme that modifies how DNA is packaged, and by repressing tumor-suppressor genes (genes that normally hold cell growth in check), including p57 and LATS2. The Results list it among known lung-cancer lncRNAs found necessary for growth, and also found in the second cell type.</p>`,
+  short: `A lncRNA the introduction says promotes NSCLC by binding EZH2 and repressing p57 and LATS2; the paper's experiment also found it.`,
+  long: `<p>According to the introduction, LINC00511 promotes NSCLC (a kind of lung cancer) by binding EZH2, an enzyme that modifies how DNA is packaged, and by repressing tumor-suppressor genes (genes that normally hold cell growth in check), including p57 and LATS2. The Results list it among known lung-cancer lncRNAs found necessary for growth, and also found in the second cell type.</p>`,
   analogy: `A handler holding one tool (EZH2): with it in hand, two genes (p57 and LATS2) get turned down.`,
   see: ['ezh2', 'gata6-lats2-p57', 'linc00680'],
   source: ['intro-p3', 'res-multipheno-p4'],
@@ -305,7 +305,7 @@
 {
   id: 'ezh2',
   short: `An enzyme that modifies how DNA is packaged; named once in the introduction, as the partner that LINC00511 binds.`,
-  long: `<p>The introduction describes EZH2 as an enzyme that modifies how DNA is packaged. It is named as the partner of LINC00511: by binding EZH2 and repressing tumor-suppressor genes, including p57 and LATS2, LINC00511 is said to promote lung cancer. The introduction is the only place where the text mentions EZH2, and it gives no further detail.</p>`,
+  long: `<p>The introduction describes EZH2 as an enzyme that modifies how DNA is packaged. It is named as the partner of LINC00511: by binding EZH2 and repressing tumor-suppressor genes, including p57 and LATS2, LINC00511 is said to promote NSCLC. The introduction is the only place where the text mentions EZH2, and it gives no further detail.</p>`,
   analogy: `A dimmer switch that an RNA can grab in order to turn genes down.`,
   see: ['linc00511', 'gata6-lats2-p57', 'lncrna'],
   source: ['intro-p3'],

@@ -508,3 +508,210 @@
       ], source: ['res-integration-p2', 'fig4D'], derived: ['7'] },
   ],
 });
+
+/* ============================================================================================== F3 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'F3',
+  body: [
+    { k: 'h', text: 'Genome-browser tracks' },
+    { k: 'bgnd', html:
+      `<p>A <b>genome-browser track</b> figure is a map of a stretch of DNA. The ruler on top gives the position on one chromosome and, as in lesson B3, the genome version (hg19 or hg38). Below it, every row, called a <i>track</i>, shows one kind of annotation drawn at its position: a gene's exons (boxes), its introns (thin lines), its TSS (a bent arrow), and so on. All rows share the same ruler, so you can read straight down a column and ask "what else sits under this exon?"</p>` },
+    { k: 'svg', caption: 'A made-up gene and four evidence tracks on one ruler. The shaded column shows how to read straight down.',
+      svg: `<svg viewBox="0 0 480 232" role="img" aria-label="A made-up genome-browser view: a ruler with a chromosome and genome version, a gene with three exons and a bent TSS arrow, and tracks for conservation, repeats and a CpG island, with one exon highlighted by a shaded column running down through all tracks">` +
+        `<rect x="215" y="48" width="30" height="134" class="f-orange"/>` +
+        `<text x="6" y="34" class="s b">chr8 · hg19</text><path d="M118 30 H470" class="ln thin"/><path d="M140 26 V34 M260 26 V34 M380 26 V34" class="ln thin"/>` +
+        `<text x="140" y="18" class="mid s">10,000</text><text x="260" y="18" class="mid s">20,000</text><text x="380" y="18" class="mid s">30,000</text>` +
+        `<text x="6" y="68" class="s b">Gene</text>` +
+        `<path d="M130 58 V50 H146" class="arrow s-red"/><text x="152" y="54" class="s t-red b">TSS</text>` +
+        `<rect x="130" y="58" width="22" height="14" class="f-green"/><path d="M152 65 H215 M245 65 H330" class="ln thin"/><rect x="215" y="58" width="30" height="14" class="f-green"/><rect x="330" y="58" width="70" height="14" class="f-green"/>` +
+        `<text x="185" y="69" class="s mid m">›</text><text x="287" y="69" class="s mid m">›</text><text x="365" y="54" class="mid s">exon</text><text x="287" y="54" class="mid s">intron</text>` +
+        `<text x="6" y="104" class="s b">Conservation</text><path d="M118 108 H470" class="ln thin m"/>` +
+        `<rect x="132" y="94" width="4" height="14" class="solid-teal"/><rect x="140" y="98" width="4" height="10" class="solid-teal"/><rect x="146" y="92" width="4" height="16" class="solid-teal"/>` +
+        `<rect x="218" y="90" width="5" height="18" class="solid-teal"/><rect x="226" y="94" width="5" height="14" class="solid-teal"/><rect x="234" y="88" width="5" height="20" class="solid-teal"/>` +
+        `<rect x="334" y="100" width="4" height="8" class="solid-teal"/><rect x="360" y="96" width="5" height="12" class="solid-teal"/><rect x="388" y="102" width="4" height="6" class="solid-teal"/>` +
+        `<rect x="180" y="105" width="3" height="3" class="solid-teal"/><rect x="270" y="104" width="3" height="4" class="solid-teal"/><rect x="300" y="106" width="3" height="2" class="solid-teal"/>` +
+        `<text x="6" y="144" class="s b">Repeats</text><path d="M118 140 H470" class="ln thin m"/>` +
+        `<rect x="168" y="134" width="26" height="12" class="f-red"/><text x="181" y="131" class="mid s">LINE</text>` +
+        `<rect x="272" y="134" width="12" height="12" class="f-red"/><text x="278" y="131" class="mid s">SINE</text>` +
+        `<rect x="352" y="134" width="22" height="12" class="f-red"/><text x="363" y="131" class="mid s">LTR</text>` +
+        `<text x="6" y="176" class="s b">CpG island</text><path d="M118 172 H470" class="ln thin m"/><rect x="124" y="166" width="34" height="12" class="f-purple"/>` +
+        `<text x="240" y="204" class="mid s m">each row = one kind of annotation, all on the same ruler</text>` +
+        `<text x="240" y="222" class="mid s m">shaded column: what else lies under this exon?</text></svg>` },
+    { k: 'bgnd', html:
+      `<ul><li><b>Conservation (phastCons).</b> A score for how similar a stretch of DNA is across many species. DNA that evolution has kept unchanged is more likely to matter. "N-way" names how many genomes were lined up.</li>` +
+      `<li><b>Repeat elements.</b> A large part of the human genome is repeated sequence; much of it is copies of old "jumping" DNA (transposable elements). Families include LINE, SINE and LTR; "simple repeat" and "low complexity" regions are short repeated patterns.</li>` +
+      `<li><b>CpG island.</b> A stretch rich in the letter pair C-then-G, often found at the start of genes.</li>` +
+      `<li><b>RIDLs.</b> Pieces of repeat DNA predicted to have taken on a new function inside a lncRNA.</li>` +
+      `<li><b>Conserved RNA structures (CRS).</b> RNA fold shapes (stems and loops) that stay the same across vertebrates.</li></ul>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a genome browser is a street map with transparent layers: roads (genes), historic districts (conserved DNA), branches of the same chain store (repeats). You look straight down through the layers.</p>` },
+    { k: 'paper', ref: 'm-eztracks-p1', quote: 'predicted neo-functionalized fragments of transposable elements, also known as RIDLs (repeat insertion domains of lncRNA), RNA structures conserved in vertebrates (CRS), and ENCODE candidate cis-regulatory elements.' },
+    { k: 'plain', source: ['m-eztracks-p1', 'm-eztracks-p2', 'res-mechanism-p1'], html:
+      `<p>The authors collected tracks for these features and drew them with a program called <b>ezTracks</b>. They merged all exons of a locus into one "meta-transcript" (using BEDTools), so the picture covers every place that is an exon in any isoform. Their reading, for GCAWKR: it "contains numerous conserved sequences and structures (Figure 6A), hinting at potential functional elements". CHiLL1's exons, by contrast, "lack obvious functional elements" (Figure S5E, which is not in the PDF).</p>` },
+    { k: 'flag', source: ['m-eztracks-p1', 'fig5D', 'fig6A'], html:
+      `<p>Heads-up on coordinates: the Methods say the tracks use the hg38 assembly and Figure 6A is labelled GENCODE v36, whereas Figure 5D prints hg19 and GENCODE Version 19 for the same GCAWKR locus. Different genome versions give different coordinates for one gene (lesson B3).</p>` },
+    { k: 'panel', id: 'fig6A', html:
+      `<p>GCAWKR drawn with <b>ezTracks</b>. Top: the gene's exons (grey boxes) with the TSS arrow; pale orange columns run down from each exon through all the tracks. Rows below: RIDLs, phastCons conservation, conserved RNA structures (CRSs), repeats split by class (DNA, LINE, low complexity, LTR, simple repeat, SINE), a masked CpG island, and ENCODE candidate regulatory elements. The legend says strand is shown by the direction of each element. No scale bar or colour key is printed.</p>` },
+
+    { k: 'h', text: 'DNA gels' },
+    { k: 'bgnd', html:
+      `<p>A DNA gel (lesson D7) sorts pieces of DNA by size. Each lane is one sample, loaded at the top; a current pulls the pieces down, and smaller pieces travel farther. A <b>ladder</b> lane of pieces of known size acts as a ruler. Read it in four steps: (1) what is in each lane; (2) use the ladder to read sizes; (3) compare bands between lanes; (4) check the controls: a water lane must be empty, and the control sample shows the unedited band.</p>` +
+      `<p>Trap: a band's brightness is only a rough guide to how much DNA there is, and a faint extra band can simply be a few unedited copies.</p>` },
+    { k: 'h', text: 'Flow-cytometry plots' },
+    { k: 'bgnd', html:
+      `<p>In flow cytometry (lesson D3) each dot is one cell. <b>FSC-A</b> (forward scatter) measures how much light a cell scatters forward as it passes the laser; it roughly tracks cell size. The other axis is usually a fluorescence channel on a log scale; "Pacific Blue" is a blue-light channel, here used to detect a blue fluorescent protein. Colours show how crowded the dots are. A <b>gate</b> is a box around the cells you want, and the percentage is the share of all measured cells inside it. Trap: authors draw the gate, so a trustworthy figure shows a negative control that justifies where it starts.</p>` },
+    { k: 'svg', caption: 'Made-up data. Left: a gel with a ladder, a control, an edited sample and a water lane. Right: a flow plot with a gate.',
+      svg: `<svg viewBox="0 0 480 262" role="img" aria-label="Left: a made-up DNA gel with four lanes, a size ladder, a control with one long band, an edited sample with a faint long band and a stronger short band, and an empty water lane. Right: a made-up flow plot with a grey cluster of cells on the left, a blue cluster on the right inside a red gate">` +
+        `<text x="140" y="20" class="mid b">DNA gel</text><text x="362" y="20" class="mid b">Flow plot</text>` +
+        `<rect x="52" y="54" width="176" height="146" class="f-gray"/>` +
+        `<text x="74" y="46" class="mid s">ladder</text><text x="118" y="46" class="mid s">control</text><text x="162" y="46" class="mid s">edited</text><text x="206" y="46" class="mid s">water</text>` +
+        `<rect x="62" y="57" width="24" height="4" class="solid-text"/><rect x="106" y="57" width="24" height="4" class="solid-text"/><rect x="150" y="57" width="24" height="4" class="solid-text"/><rect x="194" y="57" width="24" height="4" class="solid-text"/>` +
+        `<rect x="60" y="74" width="28" height="3" class="solid-text"/><rect x="60" y="88" width="28" height="3" class="solid-text"/><rect x="60" y="130" width="28" height="3" class="solid-text"/><rect x="60" y="152" width="28" height="3" class="solid-text"/><rect x="60" y="172" width="28" height="3" class="solid-text"/>` +
+        `<rect x="104" y="86" width="28" height="7" class="solid-text"/>` +
+        `<rect x="148" y="87" width="28" height="4" class="solid-text" opacity="0.4"/><rect x="148" y="150" width="28" height="7" class="solid-text"/>` +
+        `<text x="48" y="92" class="s end">3 kb</text><text x="48" y="134" class="s end">1 kb</text><text x="48" y="176" class="s end">250 bp</text>` +
+        `<text x="140" y="220" class="mid s m">smaller pieces run farther down</text><text x="140" y="238" class="mid s m">water lane: no band = clean PCR</text>` +
+        `<path d="M290 190 H460 M290 190 V54" class="ln"/><text x="268" y="122" class="mid s" transform="rotate(-90 268 122)">FSC-A</text>` +
+        `<text x="290" y="206" class="s">low</text><text x="460" y="206" class="s end">high</text><text x="375" y="206" class="mid s">blue light</text>` +
+        `<circle cx="318" cy="144" r="3" class="solid-gray"/><circle cx="328" cy="136" r="3" class="solid-gray"/><circle cx="336" cy="150" r="3" class="solid-gray"/><circle cx="324" cy="154" r="3" class="solid-gray"/>` +
+        `<circle cx="340" cy="138" r="3" class="solid-gray"/><circle cx="312" cy="136" r="3" class="solid-gray"/><circle cx="332" cy="162" r="3" class="solid-gray"/><circle cx="346" cy="152" r="3" class="solid-gray"/>` +
+        `<circle cx="414" cy="108" r="3" class="solid-blue"/><circle cx="422" cy="116" r="3" class="solid-blue"/><circle cx="430" cy="104" r="3" class="solid-blue"/><circle cx="420" cy="124" r="3" class="solid-blue"/>` +
+        `<circle cx="408" cy="120" r="3" class="solid-blue"/><circle cx="436" cy="116" r="3" class="solid-blue"/><circle cx="426" cy="132" r="3" class="solid-blue"/><circle cx="416" cy="98" r="3" class="solid-blue"/>` +
+        `<circle cx="402" cy="110" r="3" class="solid-blue"/><circle cx="440" cy="128" r="3" class="solid-blue"/><circle cx="428" cy="94" r="3" class="solid-blue"/><circle cx="412" cy="134" r="3" class="solid-blue"/>` +
+        `<rect x="392" y="84" width="62" height="62" class="ln s-red"/><text x="423" y="78" class="mid s t-red b">gate: 70%</text>` +
+        `<text x="375" y="238" class="mid s m">each dot = one cell;</text><text x="375" y="254" class="mid s m">% = share of cells in the gate</text></svg>` },
+    { k: 'panel', id: 'fig1E', html:
+      `<p>Top: a genome-browser view of DNMBP-AS1 with the PCR primers (F and R), the TSS target region and the ten library pgRNAs (red bars). Bottom: the gel. The legend says the PCR used DNA from cells given a non-targeting pgRNA (control) or pgRNA_9 (KO), and that the expected lengths of the wild-type and deletion products are marked. Read it: the control lane has one long band (wild type); the pgRNA_9 lane has a shorter band (the deletion) plus a faint long one (copies that were not cut); the water lane is empty.</p>` },
+    { k: 'panel', id: 'fig1D', html:
+      `<p>Each dot is one A549 cell that carries Cas9 and a blue fluorescent protein (BFP); more blue light puts a cell further right. The black box is the gate around the BFP-positive cells, and the legend says the boxed cells are the populations sorted and used in the screens. The number beside the box is the share of cells inside it. This panel does not show a negative control; the text also cites Figure S1E, which is not in the PDF.</p>` },
+
+    { k: 'h', text: 'Microscopy and FISH images' },
+    { k: 'bgnd', html:
+      `<p>A microscope picture is evidence only if you can tell what is in it. Look for a <b>scale bar</b> (how big is this?), labels for each colour, and arrows (what the authors want you to see). "Representative" means one picture chosen from many, so the number beside it, from counting many cells, is the real result. In RNA-FISH (lesson D9), glowing probes stick to one RNA, and each bright spot is usually one RNA molecule. Counting spots in the cytoplasm versus the nucleus gives a ratio.</p>` },
+    { k: 'panel', id: 'fig6B', html:
+      `<p>Confocal pictures of RNA-FISH in A549 cells. Arrows mark selected lncRNA foci (spots). The bar chart counts spots in the cytoplasm versus the nucleus, and the text reads it so: CHiLL1 is located principally in the cytoplasm and GCAWKR in the nucleus. Mind the small print: the legend says "N/C" but the axis reads "Cytoplasmic/Nuclear ratio"; the bar chart carries a single n; and no scale bar is printed on the images (the spheroid photos in Figure 5E do carry one).</p>` },
+  ],
+  appears: [
+    { ref: 'm-eztracks-p1', note: 'The feature tracks behind Figure 6A: RIDLs, CRSs, phastCons, repeats, CpG islands, ENCODE elements.' },
+    { ref: 'fig1E', note: 'A genome-browser view and a DNA gel proving the TSS deletion.' },
+    { ref: 'fig1D', note: 'A flow plot (FSC-A against a blue channel) with a gate around BFP-positive cells.' },
+    { ref: 'res-mechanism-p1', note: 'FISH shows CHiLL1 mainly in the cytoplasm and GCAWKR in the nucleus; GCAWKR has conserved sequences and structures.' },
+  ],
+  checks: [
+    { q: 'In the gel of Figure 1E, the pgRNA_9 lane shows a shorter band that the control lane lacks. What does that band show?',
+      options: [
+        { t: 'In some copies of the DNA, the stretch between the two cuts was deleted, so the PCR product is shorter', ok: true, why: 'Right: the primers flank the deleted region (m-pcr-gdna-p1), so edited copies give a shorter product, and smaller pieces run farther down the gel.' },
+        { t: 'It is the piece of DNA that was cut out, floating free', ok: false, why: 'The PCR only copies DNA between the two primers. The band is a product that spans the deletion, not the removed piece.' },
+        { t: 'It shows that DNMBP-AS1 RNA is lower', ok: false, why: 'This gel is a PCR on genomic DNA. RNA levels were measured separately by qRT-PCR (Figure 1F).' },
+      ], source: ['fig1E', 'm-pcr-gdna-p1'] },
+    { q: 'In the flow plot of Figure 1D, what does the black box around the cells on the right stand for?',
+      options: [
+        { t: 'A gate around the BFP-positive cells that were sorted and used in the screens', ok: true, why: 'Right (fig1D legend): "Boxes indicated the sorted cell populations used in screens". The percentage is the share of all measured cells inside the gate.' },
+        { t: 'The cells that died during sorting', ok: false, why: 'The plot has no death marker. Position shows blue fluorescence (x) and forward scatter (y).' },
+        { t: 'A P value for the effect of Cas9', ok: false, why: 'A gate is a region of the plot, not a statistical result.' },
+      ], source: ['fig1D'] },
+    { q: 'What does the paper conclude from the tracks of GCAWKR in Figure 6A?',
+      options: [
+        { t: 'GCAWKR contains numerous conserved sequences and structures, hinting at potential functional elements', ok: true, why: 'Right (res-mechanism-p1). CHiLL1, by contrast, lacks obvious functional elements.' },
+        { t: 'GCAWKR contains no conserved sequences', ok: false, why: 'The opposite: the paper says it contains "numerous conserved sequences and structures".' },
+        { t: 'GCAWKR is a protein-coding gene', ok: false, why: 'Tracks of conservation and RNA structure do not show that. The paper treats GCAWKR as a lncRNA.' },
+      ], source: ['res-mechanism-p1', 'fig6A'] },
+    { q: 'What do the FISH images and their counting in Figure 6B show?',
+      options: [
+        { t: 'CHiLL1 is located principally in the cytoplasm and GCAWKR in the nucleus', ok: true, why: 'Right (res-mechanism-p1): "contrasting localization patterns", later backed up by cell fractionation.' },
+        { t: 'CHiLL1 is in the nucleus and GCAWKR in the cytoplasm', ok: false, why: 'Reversed. Check the ratio in the bar chart: above the line means cytoplasm.' },
+        { t: 'Both lncRNAs sit in the nucleus', ok: false, why: 'The paper stresses that despite similar oncogenic roles they show contrasting localization.' },
+      ], source: ['res-mechanism-p1', 'fig6B'] },
+  ],
+});
+
+/* ============================================================================================== F4 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'F4',
+  body: [
+    { k: 'h', text: 'A panel is a claim; the legend is the small print' },
+    { k: 'bgnd', html:
+      `<p>A panel says "this treatment lowered growth". Whether you should believe it depends on small print: how many repeats, what the error bars mean, which test produced the P label. Good legends state all of it. Many legends, including some in this paper, leave parts out. This lesson is a checklist you can run on any panel.</p>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a legend is the ingredients label on food. The picture is the appetising photo on the front; the label says what is really inside. A label with missing lines does not prove the food is bad, but you cannot check it.</p>` },
+    { k: 'svg', caption: 'A made-up panel and the six questions to ask of it.',
+      svg: `<svg viewBox="0 0 480 300" role="img" aria-label="A made-up bar chart with a control bar set to 1.0, two treated bars with error bars, an n label, a P label bracket and an ns bracket, with six numbered callouts matched to a checklist of six questions on the right">` +
+        `<text x="130" y="20" class="mid b">A made-up panel</text><text x="376" y="20" class="mid b">Ask six questions</text>` +
+        `<path d="M50 50 V230 H250" class="ln"/><path d="M50 110 H250" class="ln thin dash m"/>` +
+        `<text x="44" y="234" class="s end">0</text><text x="44" y="174" class="s end">0.5</text><text x="44" y="114" class="s end">1.0</text>` +
+        `<text transform="rotate(-90 12 140)" x="12" y="140" class="mid s">relative growth</text>` +
+        `<rect x="70" y="110" width="30" height="120" class="f-gray"/><path d="M85 98 V122 M79 98 H91 M79 122 H91" class="ln thin"/>` +
+        `<rect x="118" y="170" width="30" height="60" class="f-blue"/><path d="M133 156 V184 M127 156 H139 M127 184 H139" class="ln thin"/>` +
+        `<rect x="166" y="122" width="30" height="108" class="f-blue"/><path d="M181 106 V138 M175 106 H187 M175 138 H187" class="ln thin"/>` +
+        `<text x="85" y="248" class="mid s">control</text><text x="133" y="248" class="mid s">ASO 1</text><text x="181" y="248" class="mid s">ASO 2</text>` +
+        `<text x="58" y="44" class="s">n = 3</text>` +
+        `<path d="M85 92 V84 H133 V92" class="ln thin"/><text x="109" y="78" class="mid s">P = 0.02</text>` +
+        `<path d="M85 60 V52 H181 V60" class="ln thin"/><text x="133" y="46" class="mid s">ns</text>` +
+        `<circle cx="104" cy="38" r="9" class="f-orange"/><text x="104" y="43" class="mid s b">1</text>` +
+        `<circle cx="153" cy="158" r="9" class="f-orange"/><text x="153" y="163" class="mid s b">2</text>` +
+        `<circle cx="151" cy="72" r="9" class="f-orange"/><text x="151" y="77" class="mid s b">3</text>` +
+        `<circle cx="156" cy="42" r="9" class="f-orange"/><text x="156" y="47" class="mid s b">4</text>` +
+        `<circle cx="85" cy="152" r="9" class="f-orange"/><text x="85" y="157" class="mid s b">5</text>` +
+        `<circle cx="28" cy="150" r="9" class="f-orange"/><text x="28" y="155" class="mid s b">6</text>` +
+        `<circle cx="272" cy="44" r="9" class="f-orange"/><text x="272" y="49" class="mid s b">1</text><text x="288" y="42" class="s">n: how many, and of what?</text><text x="288" y="58" class="s">Legend and plot agree?</text>` +
+        `<circle cx="272" cy="90" r="9" class="f-orange"/><text x="272" y="95" class="mid s b">2</text><text x="288" y="88" class="s">Error bars: SD, SEM or range?</text><text x="288" y="104" class="s">Only the legend can say.</text>` +
+        `<circle cx="272" cy="136" r="9" class="f-orange"/><text x="272" y="141" class="mid s b">3</text><text x="288" y="134" class="s">P label: which two bars?</text><text x="288" y="150" class="s">Which test? One or two tails?</text>` +
+        `<circle cx="272" cy="182" r="9" class="f-orange"/><text x="272" y="187" class="mid s b">4</text><text x="288" y="180" class="s">ns = not significant,</text><text x="288" y="196" class="s">not "no effect"</text>` +
+        `<circle cx="272" cy="228" r="9" class="f-orange"/><text x="272" y="233" class="mid s b">5</text><text x="288" y="226" class="s">Reference: what equals 1.0?</text><text x="288" y="242" class="s">(here the control bar)</text>` +
+        `<circle cx="272" cy="274" r="9" class="f-orange"/><text x="272" y="279" class="mid s b">6</text><text x="288" y="272" class="s">Axis: zero start? log scale?</text><text x="288" y="288" class="s">Units? Same scale throughout?</text></svg>` },
+    { k: 'h', text: 'The six questions' },
+    { k: 'bgnd', html:
+      `<ul><li><b>1. n.</b> How many repeats, and of what: independent experiments (biological replicates), repeat measurements of one sample (technical replicates), cells, genes, patients? Does the n printed inside the plot match the legend?</li>` +
+      `<li><b>2. Error bars.</b> SD, SEM or range? With a very small n the SD is itself very uncertain: with n = 2 it rests on two numbers.</li>` +
+      `<li><b>3. P label.</b> Which two groups does it compare? Which test, one-tailed or two-tailed? Was anything done about running many comparisons (lesson E4)?</li>` +
+      `<li><b>4. "ns" and asterisks.</b> "ns" means the result did not pass the significance threshold: the data could not rule out chance. It does not mean "no effect". More asterisks mean a smaller P, but each paper defines its own steps, so look for a key.</li>` +
+      `<li><b>5. Reference.</b> What is the control, and what value is it set to?</li>` +
+      `<li><b>6. Images.</b> A "representative" picture is one chosen from many. The measurement beside it is the evidence.</li></ul>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up).</b> The same data give a two-tailed P = 0.06: not significant at 0.05. If the authors had chosen a one-tailed test <i>and</i> the effect went in the predicted direction, the one-tailed P is half of that, 0.03, which passes. That is why a one-tailed test needs a reason fixed before the data are seen, and why you should look for it in the legend.</p>` },
+
+    { k: 'h', text: 'The paper promises the details' },
+    { k: 'paper', ref: 'm-quant-p3', quote: 'Specific details concerning statistical tests for individual experiments are noted in the relevant Figure legends.' },
+    { k: 'plain', source: ['m-quant-p3', 'm-hits-p4'], html:
+      `<p>The Methods set the default bar at p ≤ 0.05 (the screens use FDR &lt; 0.2 instead) and promise that each legend holds its test details. Here is that promise checked on three real panels.</p>` },
+    { k: 'panel', id: 'fig1F', html:
+      `<p>The legend is one sentence about what was measured. It gives no n, no definition of the error bars and no test. The picture itself prints an n and P labels, with "ns" over two of the guides; the error bars stay undefined. Everything else has to be read off the picture.</p>` },
+    { k: 'panel', id: 'fig3D', html:
+      `<p>The legend gives "n = 4; error bars indicate SD" and a one-tailed Student's t test for the whole panel. But each small plot prints its own n, and the bar charts on the right print a smaller n than the curves on the left. P labels appear only on the curves. Which n applies where? The legend does not say.</p>` },
+    { k: 'panel', id: 'fig6K', html:
+      `<p>The legend says "n = 2 biological replicates, error bars: SD" with a two-tailed Student's t test. An SD computed from two numbers is very rough, and a t test with two repeats per group has little power. The plot shows P labels for some pairs and "ns" for others, but not the two values behind each bar.</p>` },
+
+    { k: 'h', text: 'What the legends leave unsaid' },
+    { k: 'plain', source: ['fig3D', 'fig3F', 'fig5E', 'fig5F', 'fig5G', 'fig6L', 'fig4H', 'fig5C', 'fig3C', 'fig5B', 'm-hits-p4'], html:
+      `<ul><li><b>Why one-tailed?</b> Many legends name a one-tailed test (Figures 3D, 3F, 5E, 5F, 6L; a one-tailed Mann–Whitney test in 5G; a one-sided Fisher test in 4H). None says why.</li>` +
+      `<li><b>Many comparisons.</b> Several bars are tested against one control (Figures 3F and 5E, for example). I found no mention of a correction for this in the legends or the Methods; the only correction named is Benjamini–Hochberg, for the screens.</li>` +
+      `<li><b>Which n.</b> The legend of Figure 3F says the data come from "three independent biological replicates", but its qRT-PCR plot prints a smaller n than its migration plot.</li>` +
+      `<li><b>Which time point, which stars.</b> Figure 5C prints asterisks and coloured P values on its curves, but its legend does not say which time point was tested; Figure 3C's legend does ("the last time point"). Only Figure 5B defines its asterisks ("****p &lt; 0.0001").</li></ul>` },
+  ],
+  appears: [
+    { ref: 'm-quant-p3', note: 'The default threshold (p ≤ 0.05) and the promise that legends give the test details.' },
+    { ref: 'fig1F', note: 'A legend with no n, error-bar definition or test.' },
+    { ref: 'fig3D', note: 'One n in the legend, different n values printed inside the plots.' },
+    { ref: 'fig6K', note: 'n = 2 biological replicates with SD error bars and t tests.' },
+  ],
+  checks: [
+    { q: 'The legend of Figure 6K says "n = 2 biological replicates, error bars: SD" and names a two-tailed Student\'s t test. What is the main caution?',
+      options: [
+        { t: 'With only two repeats per group, the SD and the P values are very uncertain, and the plot hides the two values behind each bar', ok: true, why: 'Right: an SD from two numbers is very rough, and a t test on two repeats has little power.' },
+        { t: 'Error bars cannot be drawn when n = 2', ok: false, why: 'They can; the point is that an SD from two numbers carries little information.' },
+        { t: 'A two-tailed test is not allowed when n = 2', ok: false, why: 'A two-tailed test can be run. The concern is the tiny n, not the tails.' },
+      ], source: ['fig6K'] },
+    { q: 'The Methods say test details are given in the legends. What does the legend of Figure 1F contain?',
+      options: [
+        { t: 'Only what was measured (qRT-PCR of DNMBP-AS1 RNA after CRISPR-del): no n, no error-bar definition and no test', ok: true, why: 'Right (fig1F): the n, the P labels and "ns" appear only inside the picture, and the error bars are never defined.' },
+        { t: 'The n, the meaning of the error bars and a one-tailed t test', ok: false, why: 'That is closer to the legends of Figures 3D, 5E or 5F, not 1F.' },
+        { t: 'The test name but not the n', ok: false, why: 'The legend of Figure 1F names no test at all.' },
+      ], source: ['fig1F', 'm-quant-p3'] },
+    { q: 'Two bars in a panel are joined by "ns". Which reading is right?',
+      options: [
+        { t: 'The difference did not pass the significance threshold (p ≤ 0.05 by default in this paper); that does not prove the bars are equal', ok: true, why: 'Right: "ns" says the data could not rule out chance, which is weaker than "no difference". With a small n, real effects often come out "ns".' },
+        { t: 'The two bars are equal', ok: false, why: '"ns" is about evidence, not equality. The bars can differ and still be "ns".' },
+        { t: 'The test was not run', ok: false, why: 'The test was run; its result was above the threshold.' },
+      ], source: ['m-quant-p3'] },
+  ],
+});

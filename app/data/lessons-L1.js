@@ -207,3 +207,171 @@
       ], source: ['discussion-p1', 'discussion-p5'] },
   ],
 });
+
+/* ============================================================================================== B1 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'B1',
+  defines: ['dna', 'rna', 'knockdown'],
+  body: [
+    { k: 'h', text: 'Cells and their two main rooms' },
+    { k: 'bgnd', html:
+      `<p>A <b>cell</b> is the smallest unit of life: a tiny package, wrapped in a thin skin, that takes in food, uses energy and can copy itself. Your body has many kinds of cells (lung, skin, nerve …). A group of similar cells that do one job together is a <b>tissue</b>, for example lung tissue.</p>` +
+      `<p>Inside a human cell there are two main regions. The <b>nucleus</b> is the control room: it holds the cell’s <b>DNA</b>, its long instruction book (you meet DNA properly in the next lesson). Everything else inside the skin is the <b>cytoplasm</b>, the workshop floor where most of the work happens. Copies of single instructions, called <b>RNA</b>, are made in the nucleus and sent out into the cytoplasm.</p>` },
+    { k: 'svg', caption: 'A cell: the nucleus holds the DNA, the cytoplasm is the rest of the inside, and RNA copies travel from one to the other.',
+      svg: `<svg viewBox="0 0 480 240" role="img" aria-label="A cell drawn as a large oval. Inside it a smaller oval is the nucleus, which holds the DNA. The rest of the inside is the cytoplasm, where small machines sit. An arrow shows RNA copies leaving the nucleus into the cytoplasm"><ellipse cx="240" cy="124" rx="228" ry="104" class="f-gray"/><text x="8" y="16" class="s m">outer skin (membrane)</text><path d="M44 22 L54 66" class="ln thin m"/><ellipse cx="156" cy="124" rx="96" ry="72" class="f-blue"/><text x="156" y="88" class="mid b">Nucleus</text><text x="156" y="106" class="mid s m">holds the DNA</text><path d="M100 136 C118 118 134 154 152 136 S188 118 206 136" class="ln thick s-blue"/><text x="156" y="166" class="mid s">DNA</text><text x="376" y="76" class="mid b">Cytoplasm</text><text x="376" y="94" class="mid s m">the rest of the inside:</text><text x="376" y="110" class="mid s m">most of the work</text><text x="376" y="126" class="mid s m">happens here</text><circle cx="352" cy="206" r="8" class="f-orange"/><circle cx="420" cy="176" r="8" class="f-orange"/><circle cx="440" cy="138" r="8" class="f-orange"/><path d="M230 112 C258 102 290 114 312 146" class="arrow s-orange"/><text x="318" y="176" class="mid s t-orange b">RNA copies travel out</text></svg>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a small factory. The nucleus is the office with the master blueprints; the cytoplasm is the workshop floor where the machines run. Copies of single blueprints are carried out to the floor, while the master set stays in the office. (Where it breaks down: the cytoplasm is a crowded, jelly-like fluid, not an empty floor.)</p>` },
+
+    { k: 'h', text: 'The cell cycle: how one cell becomes two' },
+    { k: 'bgnd', html:
+      `<p>To <b>proliferate</b> (increase in number), a cell has to copy its DNA and then split in two. It does this in a repeating series of steps called the <b>cell cycle</b>:</p>` +
+      `<ul><li><b>G1 phase</b>: the cell grows and does its normal work.</li><li><b>S phase</b>: it copies all of its DNA (S stands for synthesis).</li><li><b>G2 phase</b>: it checks the copy and gets ready to divide.</li><li><b>M phase</b> (<b>mitosis</b>): the copied DNA is pulled into two equal sets and the cell splits into two cells.</li></ul>` +
+      `<p>(G stands for “gap”.) Between the steps are <b>checkpoints</b>: quality-control stops where the cell is checked and can be halted. For example, the G2–M checkpoint makes sure the DNA copy is complete and undamaged before the cell may divide. A cell in G2 holds twice as much DNA as a cell in G1, so a dye that stains DNA can sort cells into phases (lesson D8).</p>` },
+    { k: 'svg', caption: 'The cell cycle is a loop. One lap turns one cell into two. Not to scale: the real lengths of the phases differ between cell types.',
+      svg: `<svg viewBox="0 0 480 300" role="img" aria-label="The cell cycle drawn as a ring with four parts in clockwise order: G1 growth, S copying the DNA, G2 checking the copy, and M dividing into two cells. A checkpoint gate sits between G2 and M"><path d="M150 64 A100 100 0 0 1 200 250.6 L177 210.8 A54 54 0 0 0 150 110 Z" class="f-blue"/><text x="224.4" y="149.1" class="mid b">G1</text><path d="M200 250.6 A100 100 0 0 1 53.4 189.9 L97.8 178 A54 54 0 0 0 177 210.8 Z" class="f-green"/><text x="120.5" y="240.1" class="mid b">S</text><path d="M53.4 189.9 A100 100 0 0 1 92.6 82.1 L119 119.8 A54 54 0 0 0 97.8 178 Z" class="f-orange"/><text x="77.6" y="142.7" class="mid b">G2</text><path d="M92.6 82.1 A100 100 0 0 1 150 64 L150 110 A54 54 0 0 0 119 119.8 Z" class="f-red"/><text x="126.8" y="95.6" class="mid b">M</text><path d="M123.6 126.3 L86.9 73.9" class="ln thick s-red"/><text x="8" y="40" class="s b t-red">checkpoint</text><path d="M62 44 L84.9 70.9" class="ln thin m"/><path d="M189 56.9 A114 114 0 0 1 248.7 107" class="arrow"/><text x="150" y="160" class="mid s">one lap</text><text x="150" y="177" class="mid s">1 → 2 cells</text><rect x="290" y="30" width="22" height="22" rx="5" class="f-blue"/><text x="322" y="42" class="b">G1 · grow</text><text x="322" y="60" class="s m">does its normal work</text><rect x="290" y="80" width="22" height="22" rx="5" class="f-green"/><text x="322" y="92" class="b">S · copy</text><text x="322" y="110" class="s m">copies all its DNA</text><rect x="290" y="130" width="22" height="22" rx="5" class="f-orange"/><text x="322" y="142" class="b">G2 · check</text><text x="322" y="160" class="s m">proofreads the copy</text><rect x="290" y="180" width="22" height="22" rx="5" class="f-red"/><text x="322" y="192" class="b">M · divide</text><text x="322" y="210" class="s m">splits into two cells</text><path d="M301 236 V256" class="ln thick s-red" /><text x="322" y="246" class="b t-red">checkpoint</text><text x="322" y="264" class="s m">a quality-control stop;</text><text x="322" y="280" class="s m">this one is just before M</text></svg>` },
+    { k: 'memory', html:
+      `<p><b>Memory aid:</b> G1 = <b>G</b>row · S = <b>S</b>elf-copy · G2 = <b>G</b>et ready · M = <b>M</b>ake two. A checkpoint is the security check before boarding: no pass, no flight.</p>` },
+
+    { k: 'h', text: 'Doubling time: how fast a population grows' },
+    { k: 'bgnd', html:
+      `<p>When cells keep dividing steadily, their number doubles after a fixed time, the <b>doubling time</b>. A shorter doubling time means faster growth. If every cell divides once per lap of the cycle, one lap takes about one doubling time. In a real dish some cells stall or die, so it is a measured average, used for example to choose how much drug to add.</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up numbers).</b> Start with 1,000 cells and a doubling time of 24 hours. After 24 h there are 2,000 cells, after 48 h 4,000, after 72 h 8,000. After ten doublings (10 days) you would have about a million cells (1,000 × 1,024).</p>` },
+
+    { k: 'h', text: 'Two ways a cell can die' },
+    { k: 'bgnd', html:
+      `<p><b>Apoptosis</b> is programmed cell death: a tidy, built-in self-destruct program. The cell shrinks and packs itself up, and its neighbors clean up the pieces, usually without inflammation. The body uses it to remove cells that are damaged, dangerous or no longer needed, and cancer cells often switch it off. A cell that has just started the program is called <i>early apoptotic</i>.</p>` +
+      `<p><b>Necrosis</b> is the messy kind of death. After a serious injury, such as a poison or a lack of oxygen, the cell loses control of its skin, swells and bursts, and the spilled contents can inflame the neighborhood. Apoptosis is planned; necrosis is an accident.</p>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> apoptosis is a controlled demolition: the building comes down in an orderly way and the debris is hauled away. Necrosis is a building collapsing in an earthquake: sudden, messy, and damaging to the neighbors.</p>` },
+
+    { k: 'h', text: 'How this paper uses these ideas' },
+    { k: 'paper', ref: 'res-mechanism-p1', quote: 'CHiLL1 is located principally in the cytoplasm, and GCAWKR in the nucleus' },
+    { k: 'plain', source: ['res-mechanism-p1'], html:
+      `<p>With a microscope technique that makes single RNAs glow, the authors saw CHiLL1 mainly in the cytoplasm and GCAWKR mainly in the nucleus. A second test, which separates a cell’s nuclear and cytoplasmic parts, agreed. Where an RNA sits is a clue to what it does.</p>` },
+    { k: 'paper', ref: 'res-mechanism-p6', quote: 'knockdown of GCAWKR, but not CHiLL1, led to an increase of cells in the G2 phase' },
+    { k: 'plain', source: ['res-mechanism-p6'], html:
+      `<p>GCAWKR and CHiLL1 are the two finalist lncRNAs from lesson A2. A <b>knockdown</b> lowers the amount of one RNA, here with an ASO. After the GCAWKR knockdown, more cells were found in the G2 phase, after DNA copying and before division. The authors had first noticed that genes tied to the “G2-M checkpoint” changed. The CHiLL1 knockdown did not do this.</p>` },
+    { k: 'paper', ref: 'res-mechanism-p5', quote: 'knockdown of CHiLL1, but not GCAWKR, resulted in a significant increase of early apoptotic cells' },
+    { k: 'plain', source: ['res-mechanism-p5'], html:
+      `<p>The opposite pattern appears for cell death: the CHiLL1 knockdown, but not the GCAWKR knockdown, raised the number of early apoptotic cells, cells that had just started the self-destruct program.</p>` },
+    { k: 'paper', ref: 'm-screen-cisplatin-p1', quote: 'Optimal cisplatin working concentrations were established via dose-response and cell doubling time' },
+    { k: 'plain', source: ['m-screen-cisplatin-p1'], html:
+      `<p>To choose how much of the drug cisplatin to use, the authors measured how fast the cells double and how the cells respond to different amounts of the drug.</p>` },
+    { k: 'flag', source: ['m-apoptosis-p1'], html:
+      `<p>The paper never uses the word necrosis. Its cell-death test is described as detecting “early apoptotic and dead cells”, so you will meet “apoptotic” and “dead” in the paper, not “necrotic”.</p>` },
+  ],
+  appears: [
+    { ref: 'res-mechanism-p1', note: 'CHiLL1 sits mainly in the cytoplasm and GCAWKR in the nucleus.' },
+    { ref: 'res-mechanism-p5', note: 'CHiLL1 knockdown, but not GCAWKR knockdown, raises early apoptotic cells.' },
+    { ref: 'res-mechanism-p6', note: 'GCAWKR knockdown raises the number of cells in the G2 phase; “G2-M checkpoint” genes change.' },
+    { ref: 'm-screen-cisplatin-p1', note: 'Cell doubling time is used to choose the cisplatin concentrations.' },
+    { ref: 'fig6B', note: 'Microscope images showing where CHiLL1 and GCAWKR sit in the cell.' },
+  ],
+  checks: [
+    { q: 'In which phase of the cell cycle does a cell copy its DNA?',
+      options: [
+        { t: 'S phase', ok: true, why: 'Right: S stands for synthesis, the making of a second copy of all the DNA.' },
+        { t: 'G1 phase', ok: false, why: 'In G1 the cell grows and does its normal work. Its DNA has not been copied yet.' },
+        { t: 'G2 phase', ok: false, why: 'In G2 the copy is already finished; the cell checks it and gets ready to divide.' },
+        { t: 'M phase', ok: false, why: 'In M phase (mitosis) the finished copies are pulled apart into two sets and the cell splits.' },
+      ], bg: true },
+    { q: 'Which statement describes apoptosis rather than necrosis?',
+      options: [
+        { t: 'A planned, orderly self-destruct program that usually does not inflame the neighborhood', ok: true, why: 'Right: apoptosis is programmed and tidy; the leftovers are packed away and cleaned up.' },
+        { t: 'The cell swells and bursts after a poison and spills its contents', ok: false, why: 'That is necrosis: an accidental, messy death after injury.' },
+        { t: 'The cell is stopped at a checkpoint so that it can repair its DNA', ok: false, why: 'A checkpoint pause is not death. The cell can resume dividing after repair, although a cell that cannot be repaired may be sent into apoptosis.' },
+      ], bg: true },
+    { q: 'A population of 1,000 cells has a doubling time of 24 hours. If all the cells keep dividing, about how many cells are there after 48 hours?',
+      options: [
+        { t: '4,000', ok: true, why: 'Right: 48 hours is two doublings, so 1,000 becomes 2,000 and then 4,000.' },
+        { t: '2,000', ok: false, why: 'That is only one doubling (24 hours).' },
+        { t: '3,000', ok: false, why: 'That adds 1,000 per day. Doubling multiplies the number each time instead of adding a fixed amount.' },
+        { t: '48,000', ok: false, why: 'That multiplies by 48, the number of hours. The number of doublings is what counts.' },
+      ], bg: true },
+    { q: 'After the GCAWKR knockdown, more cells were found in the G2 phase. What does that mean?',
+      options: [
+        { t: 'More cells had copied their DNA but had not yet divided', ok: true, why: 'Right: G2 is the stage after DNA copying (S) and before division (M).' },
+        { t: 'More cells were busy copying their DNA', ok: false, why: 'Copying happens earlier, in S phase.' },
+        { t: 'More cells had started apoptosis', ok: false, why: 'The paper links an increase in early apoptotic cells to the CHiLL1 knockdown, not the GCAWKR knockdown.' },
+      ], source: ['res-mechanism-p5', 'res-mechanism-p6'] },
+  ],
+});
+
+/* ============================================================================================== B2 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'B2',
+  defines: ['rna', 'strand', 'kilobase', 'neutral-control'],
+  body: [
+    { k: 'h', text: 'DNA: an instruction book in four letters' },
+    { k: 'bgnd', html:
+      `<p><b>DNA</b> is the long molecule in the nucleus that stores a cell’s instructions. It is a chain of small building blocks called <b>nucleotides</b>, usually just called <b>bases</b>. There are four kinds, written with the letters <b>A, C, G and T</b>. The information is in the order of the letters, like the order of letters in a book.</p>` },
+
+    { k: 'h', text: 'Two strands and the pairing rule' },
+    { k: 'bgnd', html:
+      `<p>DNA is made of two chains, called <b>strands</b>, twisted around each other. The strands are held together by matching letters: <b>A pairs with T</b>, and <b>C pairs with G</b>. This is <b>complementary base pairing</b>. One matched couple is a <b>base pair (bp)</b>, which is also the unit for measuring DNA length: 1,000 bp make one <b>kilobase (kb)</b>.</p>` +
+      `<p>Because of the rule, one strand predicts the other: wherever one has A, the partner has T. Cells use this to copy their DNA. Lab tools such as ASOs use the same rule to find their target <b>RNA</b>, a single-stranded working copy of a gene (it uses U where DNA uses T; lesson B4).</p>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a zipper. Each tooth fits only its partner, so the two sides close only where the letters match. (Where it breaks down: a zipper’s teeth are all alike, while DNA’s letters differ, and their order is the information.)</p>` },
+    { k: 'svg', caption: 'Two DNA strands. Each letter on top is joined to its partner below (A with T, C with G), and the strands run in opposite directions.',
+      svg: `<svg viewBox="0 0 480 244" role="img" aria-label="Two strands of DNA drawn as rows of letters. Each letter on the top strand is joined to its partner below: A with T and C with G. The top strand runs from its 5 prime end on the left to its 3 prime end on the right; the bottom strand runs the opposite way"><path d="M30 30 H430" class="arrow"/><text x="230" y="22" class="mid s">this strand is read from its 5′ end to its 3′ end</text><rect x="40" y="62" width="32" height="32" rx="6" class="f-teal"/><text x="56" y="84" class="mid b">A</text><path d="M56 98 V146" class="ln thin dash m"/><rect x="40" y="150" width="32" height="32" rx="6" class="f-teal"/><text x="56" y="172" class="mid b">T</text><rect x="84" y="62" width="32" height="32" rx="6" class="f-teal"/><text x="100" y="84" class="mid b">T</text><path d="M100 98 V146" class="ln thin dash m"/><rect x="84" y="150" width="32" height="32" rx="6" class="f-teal"/><text x="100" y="172" class="mid b">A</text><rect x="128" y="62" width="32" height="32" rx="6" class="f-orange"/><text x="144" y="84" class="mid b">G</text><path d="M144 98 V146" class="ln thin dash m"/><rect x="128" y="150" width="32" height="32" rx="6" class="f-orange"/><text x="144" y="172" class="mid b">C</text><rect x="172" y="62" width="32" height="32" rx="6" class="f-orange"/><text x="188" y="84" class="mid b">C</text><path d="M188 98 V146" class="ln thin dash m"/><rect x="172" y="150" width="32" height="32" rx="6" class="f-orange"/><text x="188" y="172" class="mid b">G</text><rect x="216" y="62" width="32" height="32" rx="6" class="f-teal"/><text x="232" y="84" class="mid b">T</text><path d="M232 98 V146" class="ln thin dash m"/><rect x="216" y="150" width="32" height="32" rx="6" class="f-teal"/><text x="232" y="172" class="mid b">A</text><rect x="260" y="62" width="32" height="32" rx="6" class="f-teal"/><text x="276" y="84" class="mid b">A</text><path d="M276 98 V146" class="ln thin dash m"/><rect x="260" y="150" width="32" height="32" rx="6" class="f-teal"/><text x="276" y="172" class="mid b">T</text><rect x="304" y="62" width="32" height="32" rx="6" class="f-orange"/><text x="320" y="84" class="mid b">C</text><path d="M320 98 V146" class="ln thin dash m"/><rect x="304" y="150" width="32" height="32" rx="6" class="f-orange"/><text x="320" y="172" class="mid b">G</text><rect x="348" y="62" width="32" height="32" rx="6" class="f-orange"/><text x="364" y="84" class="mid b">G</text><path d="M364 98 V146" class="ln thin dash m"/><rect x="348" y="150" width="32" height="32" rx="6" class="f-orange"/><text x="364" y="172" class="mid b">C</text><text x="8" y="84" class="b t-blue">5′</text><text x="392" y="84" class="b t-blue">3′</text><text x="8" y="172" class="b t-blue">3′</text><text x="392" y="172" class="b t-blue">5′</text><text x="392" y="128" class="s m">one base</text><text x="392" y="144" class="s m">pair</text><path d="M388 130 L372 118" class="arrow thin"/><path d="M430 214 H30" class="arrow"/><text x="230" y="238" class="mid s">the partner strand runs the opposite way</text></svg>` },
+
+    { k: 'h', text: 'Direction: 5′ and 3′' },
+    { k: 'bgnd', html:
+      `<p>Each strand has a direction, like a one-way street. Its two ends are named <b>5′</b> (“five prime”) and <b>3′</b> (“three prime”). Cells read and build strands from the 5′ end toward the 3′ end. In the double helix the two strands run in opposite directions: where one goes 5′→3′, its partner goes 3′→5′. So when you write down a partner strand, you must flip it.</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example.</b> The strand 5′-AACG-3′ pairs letter by letter with 3′-TTGC-5′ (A–T, A–T, C–G, G–C). Read in the usual 5′→3′ direction, the partner is 5′-CGTT-3′.</p>` },
+
+    { k: 'h', text: 'Chromosomes, genes, the genome and loci' },
+    { k: 'bgnd', html:
+      `<p>A human cell’s DNA is cut into separate pieces called <b>chromosomes</b>: most cells have 46, in 23 pairs. Each is one very long DNA molecule, named by number (Chr1, Chr8, Chr15 …). A <b>gene</b> is a stretch of DNA that the cell can copy into RNA. For many genes the RNA carries a recipe for a protein; for a lncRNA gene, the RNA itself is the finished product. The <b>genome</b> is the complete set of DNA, all chromosomes together; one full human set is about three billion base pairs long. A <b>locus</b> (plural <i>loci</i>) is a place on a chromosome: the “address” of a gene or of any other stretch of DNA.</p>` },
+    { k: 'svg', caption: 'From big to small: the genome holds the chromosomes, a chromosome holds genes, and a locus is the address of one stretch.',
+      svg: `<svg viewBox="0 0 480 262" role="img" aria-label="Nested boxes: the genome is all the chromosomes together; one chromosome is a long piece of DNA; a gene is a stretch on the chromosome; the locus is the address of that stretch"><rect x="6" y="6" width="468" height="250" rx="14" class="f-gray"/><text x="20" y="30" class="b">Genome: all the chromosomes of a cell</text><rect x="22" y="44" width="436" height="92" rx="12" class="f-blue"/><text x="36" y="66" class="b s">One chromosome: a very long piece of DNA</text><rect x="40" y="82" width="84" height="30" rx="6" class="f-orange"/><text x="82" y="102" class="mid b">gene</text><rect x="190" y="82" width="64" height="30" rx="6" class="f-orange"/><text x="222" y="102" class="mid b">gene</text><rect x="330" y="82" width="104" height="30" rx="6" class="f-orange"/><text x="382" y="102" class="mid b">gene</text><path d="M40 124 H124" class="ln thick s-red"/><text x="132" y="129" class="s b t-red">← its locus (its address)</text><rect x="22" y="150" width="436" height="30" rx="10" class="f-blue"/><text x="36" y="170" class="s m">another chromosome (humans have 23 pairs in most cells)</text><rect x="22" y="192" width="436" height="30" rx="10" class="f-blue"/><text x="36" y="212" class="s m">and another …</text><text x="240" y="246" class="mid s m">Chromosomes are named by number: Chr1, Chr8, Chr15 …</text></svg>` },
+
+    { k: 'h', text: 'How this paper uses these ideas' },
+    { k: 'paper', ref: 'res-aso-p4', quote: 'It is located on Chromosome 8' },
+    { k: 'plain', source: ['res-aso-p4', 'res-aso-p5'], html:
+      `<p>The paper tells you where each finalist lives: CHiLL1’s gene is on chromosome 8, GCAWKR’s on chromosome 15 (written “Chr15”). They sit on different chromosomes, so they are not neighbors.</p>`, derived: ['15'] },
+    { k: 'paper', ref: 'res-pipeline-p3', quote: 'neutral control loci (not expected to influence cell phenotype)' },
+    { k: 'plain', source: ['res-pipeline-p3'], html:
+      `<p>“Locus” is the paper’s word for a place in the genome. A neutral control is a baseline that should do nothing: neutral control loci are places where cutting is not expected to change how the cells behave, so they give something to compare the lncRNA targets with.</p>` },
+    { k: 'paper', ref: 'res-pipeline-p1', quote: 'deleting target genes’ transcription start sites (TSS) via paired guide RNAs (pgRNAs)' },
+    { k: 'plain', source: ['res-pipeline-p1'], html:
+      `<p>To switch a gene off, the authors cut a short stretch of DNA out of it: the spot where the cell begins copying the gene (lesson B4). Pairs of guide molecules steer the scissors to the two cutting points (lesson D1).</p>` },
+    { k: 'panel', id: 'fig1E', derived: ['2500', '2000'], html:
+      `<p>The gel at the bottom measures DNA pieces in base pairs. The normal (wild-type) piece is about 2.5 kb long (2,500 bp). After the cut-out the piece is about 500 bp, so roughly 2,000 bp were removed (my own subtraction).</p>` },
+  ],
+  appears: [
+    { ref: 'fig1E', note: 'A gel and a gene map: DNA pieces measured in kb and bp, with the cut-out region marked.' },
+    { ref: 'res-aso-p4', note: 'CHiLL1 is located on Chromosome 8.' },
+    { ref: 'res-aso-p5', note: 'GCAWKR is on Chr15.' },
+    { ref: 'res-pipeline-p3', note: '“Neutral control loci”: places in the genome chosen as a baseline.' },
+    { ref: 'm-library-design-p5', note: 'Each library sequence is 165 or 166 bp long.' },
+  ],
+  checks: [
+    { q: 'A short DNA strand reads 5′-AACG-3′. Which strand can pair with it?',
+      options: [
+        { t: '3′-TTGC-5′', ok: true, why: 'Right: A pairs with T and C with G, and the partner runs the opposite way (3′ to 5′).' },
+        { t: '5′-TTGC-3′', ok: false, why: 'The letters are right but the direction is wrong: the two strands of a double helix run in opposite directions.' },
+        { t: '3′-CCAT-5′', ok: false, why: 'The letters do not follow the rule. A needs T and C needs G, so the partner of AACG begins TTG…' },
+      ], bg: true },
+    { q: 'What is a locus?',
+      options: [
+        { t: 'A position on a chromosome, such as the place where a gene sits', ok: true, why: 'Right: a locus is an address in the genome.' },
+        { t: 'The RNA copy of a gene', ok: false, why: 'That is the gene’s product, not a place. A locus is a location on the DNA.' },
+        { t: 'The complete set of a cell’s DNA', ok: false, why: 'That is the genome. A locus is one place within it.' },
+      ], bg: true },
+    { q: 'Which list runs from the biggest to the smallest unit?',
+      options: [
+        { t: 'Genome, chromosome, gene, base pair', ok: true, why: 'Right: the genome holds the chromosomes, a chromosome holds genes, and a gene is built from base pairs.' },
+        { t: 'Chromosome, genome, gene, base pair', ok: false, why: 'The first two are swapped: the genome is all the chromosomes together.' },
+        { t: 'Genome, gene, chromosome, base pair', ok: false, why: 'A gene is a stretch on a chromosome, so a chromosome is bigger than a gene.' },
+      ], bg: true },
+    { q: 'In Figure 1E the DNA piece on the gel is about 2.5 kb long in normal cells and about 500 bp after the guides cut out a stretch. Roughly how much DNA was removed?',
+      options: [
+        { t: 'About 2,000 base pairs (2.5 kb minus 500 bp)', ok: true, why: 'Right: 2.5 kb is 2,500 bp, and 2,500 minus 500 leaves 2,000 bp removed.' },
+        { t: 'About 500 base pairs', ok: false, why: 'That is the length of the piece that is left, not the part that was removed.' },
+        { t: 'About 3,000 base pairs', ok: false, why: 'That adds the two lengths instead of subtracting them.' },
+      ], source: ['fig1E'], derived: ['2000', '2500'] },
+  ],
+});

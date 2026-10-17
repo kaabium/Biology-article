@@ -57,7 +57,7 @@
   id: 'non-targeting-control',
   full: 'non-targeting control ASO',
   short: 'An ASO (or guide) whose sequence matches no intended target, treated exactly like the real one, as the baseline.',
-  long: '<p>A non-targeting control is designed to pair with no RNA the experimenters care about. It is delivered with the same reagent, dose and timing as the real ASO, so whatever it does reflects the delivery and the presence of an ASO, not the loss of the target. Every real result is therefore reported relative to it (control = 1.0, or 100%). A <i>positive</i> control is different: a real target already known to change the readout.</p>',
+  long: '<p>A non-targeting control is designed to pair with no RNA in the cells. It is delivered with the same reagent, dose and timing as the real ASO, so whatever it does reflects the delivery and the presence of an ASO, not the loss of the target. Every real result is therefore reported relative to it (control = 1.0, or 100%). A <i>positive</i> control is different: a real target already known to change the readout.</p>',
   analogy: 'A placebo pill: same look, same swallowing, no active ingredient.',
   see: ['aso', 'negative-control', 'positive-control'],
   paperUse: { ref: 'fig5C', quote: 'Results are normalized to non-targeting control ASO' },
@@ -283,8 +283,8 @@
 },
 {
   id: 'cellprofiler',
-  short: 'Free image-analysis software; the authors adapted a CellProfiler pipeline, named SpeckleCounting, to count FISH dots automatically.',
-  long: '<p>CellProfiler lets researchers chain steps ("modules") into a pipeline that analyzes many microscope images in exactly the same way: find each nucleus, outline each cell, count small bright spots. The Methods say the pipeline for the FISH images was adapted from CellProfiler and named "SpeckleCounting". Its counts give the cytoplasm-to-nucleus ratio drawn in Figure 6B ("C/N ratio via spots count").</p>',
+  short: 'Free image-analysis software; the authors adapted a CellProfiler pipeline, named SpeckleCounting, to count the spots in their FISH images.',
+  long: '<p>CellProfiler lets researchers chain steps ("modules") into a pipeline that analyzes many microscope images in exactly the same way: find each nucleus, outline each cell, count small bright spots. The Methods say the analysis pipeline was adapted from CellProfiler and named "SpeckleCounting"; spot counts give the cytoplasm-to-nucleus ratio drawn in Figure 6B ("C/N ratio via spots count").</p>',
   analogy: 'A robot that counts the freckles on every photo by the same rules, so nobody has to count by eye.',
   source: ['m-fish-p2', 'fig6B'],
   see: ['fish', 'confocal-microscopy', 'dapi'],
@@ -367,7 +367,6 @@
   long: '<p>If a sample has 20 million reads and a gene received 400 of them, its CPM is 400 ÷ 20 = 20. CPM removes the effect of sequencing depth, so the same gene can be compared between samples. It does not correct for gene length, so it suits comparing one gene across samples, or items of similar length such as CRISPR guides, rather than comparing different genes.</p>',
   analogy: 'Converting "goals scored" to "goals per 100 minutes played", so a team that played more minutes is not favored.',
   see: ['tpm', 'fpkm', 'normalization'],
-  paperUse: { ref: 'm-hits-p1', quote: 'the obtained counts per million (cpm) for each pgRNA were filtered to remove sequences with 3 > cpm>666' },
 },
 {
   id: 'tpm',

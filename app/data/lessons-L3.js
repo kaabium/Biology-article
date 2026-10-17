@@ -19,7 +19,7 @@
       `<ul><li><b>GENCODE</b>: the standard human annotation. It mixes expert curation with computer pipelines and lists protein-coding genes and noncoding RNAs. It comes in numbered versions (the paper uses release 19 and v36).</li>` +
       `<li><b>FANTOM CAT</b>: a lncRNA catalog from the FANTOM consortium that relies on a method for finding where RNAs begin (lesson B8).</li>` +
       `<li><b>BIGTranscriptome</b>: another published list of human lncRNAs.</li>` +
-      `<li>A <b>new transcriptome assembly</b>: the authors read out the RNA of their own lung cancer cells (RNA-seq, lesson D10) and let a program, <b>StringTie</b>, stitch the short pieces into whole transcripts, like rebuilding a shredded page by matching torn edges. It can reveal RNAs that no catalog lists yet.</li></ul>` },
+      `<li>A <b>new transcriptome assembly</b>: starting from RNA read out of lung cancer cells (RNA-seq, lesson D10), a program called <b>StringTie</b> stitches the short pieces into whole transcripts, like rebuilding a shredded page by matching torn edges. It can reveal RNAs that no catalog lists yet.</li></ul>` },
     { k: 'svg', caption: 'How the paper built its target list: four catalogs are merged and filtered, ending with 831 lncRNAs and 998 start sites.',
       svg: `<svg viewBox="0 0 480 358" role="img" aria-label="Flow chart: four gene catalogs (GENCODE, BIGTranscriptome, FANTOM CAT, a new assembly) are merged, then start sites near protein-coding exons and lowly expressed transcripts are dropped, start sites within 300 bp are clustered, clusters with extra evidence are kept, leaving 831 lncRNAs and 998 start sites">` +
         `<rect x="10" y="6" width="224" height="44" rx="8" class="f-blue"/><text x="122" y="25" class="mid b">GENCODE</text><text x="122" y="43" class="mid s m">release 19</text>` +
@@ -59,7 +59,7 @@
       `<p>CHiLL1 lies upstream of a protein-coding neighbor, TNFRSF10B, on the same strand. The authors checked the annotated ESTs for any sign that one RNA runs from CHiLL1 into TNFRSF10B, and found none. (They add that a second test agrees.) So there is no sign that CHiLL1 is just the front end of its neighbor\u2019s transcript.</p>` },
     { k: 'paper', ref: 'res-aso-p5', quote: 'It has a likely ortholog in mouse, the uncharacterized Gm44753' },
     { k: 'plain', source: ['res-aso-p5'], html:
-      `<p>For GCAWKR the authors note a probable counterpart in mouse. It is called Gm44753 and nobody has yet worked out what it does (“uncharacterized”).</p>` },
+      `<p>For GCAWKR the authors note a probable counterpart in mouse. It is called Gm44753, and its function has not been characterized (the paper’s word is “uncharacterized”).</p>` },
     { k: 'h', text: 'Gene expression: up, down and the transcriptome' },
     { k: 'bgnd', html:
       `<p>Every cell holds the same genome, but it uses only some genes at any moment. <b>Gene expression</b> means a gene is being used: its DNA is copied into RNA (and for a protein-coding gene that RNA later makes protein). A gene is <b>expressed</b> if its RNA is present, and its <b>expression level</b> is how much RNA there is.</p>` +
@@ -68,7 +68,7 @@
     { k: 'memory', html:
       `<p><b>Analogy:</b> the genome is a cookbook that every kitchen owns. The annotation is its index. The transcriptome is the list of recipes being cooked right now, and "upregulated" means more portions than yesterday. <i>Where it breaks:</i> an annotation is pieced together by outsiders from evidence, so it can be wrong; and the amount of RNA present also depends on how fast it is thrown away, not only on how fast it is made.</p>` },
     { k: 'plain', source: ['res-pipeline-p5', 'res-pipeline-p2', 'res-mechanism-p2'], html:
-      `<p><b>Up and down in the paper.</b> After deleting the start site of 12 randomly chosen targets, the authors saw the RNA go down as expected for 7, stay unchanged for 3 and go <i>up</i> for 2. “Transcriptome” is used in two ways: the catalog of lncRNAs in these lung cancer cells (“the NSCLC lncRNA transcriptome”) and all the RNAs measured in a sample (“to quantify the transcriptome of A549 cells”).</p>` },
+      `<p><b>Up and down in the paper.</b> In 12 randomly chosen targets whose start site the authors tried to delete, the RNA level went down as expected for 7, stayed unchanged for 3 and went <i>up</i> for 2. “Transcriptome” is used in two ways: the catalog of lncRNAs in these lung cancer cells (“the NSCLC lncRNA transcriptome”) and all the RNAs measured in a sample (“to quantify the transcriptome of A549 cells”).</p>` },
   ],
   appears: [
     { ref: 'm-library-design-p1', note: 'The four sources (GENCODE release 19, BIGTranscriptome, FANTOM CAT, a new StringTie assembly) are downloaded as GTF files and merged.' },
@@ -136,27 +136,27 @@
       `<p>Each clue is imperfect, so a start site backed by several clues is more believable than one backed by a single clue.</p>` },
     { k: 'svg', caption: 'A gene’s neighborhood and three clues to its real start. CAGE tags pile up at the TSS, DNase I cuts where DNA is open, and ChromHMM labels the region.',
       svg: `<svg viewBox="0 0 480 336" role="img" aria-label="A stretch of DNA with an enhancer bound by a transcription factor, a loop to a promoter and a gene. Below, three tracks line up at the transcription start site: CAGE tags piling up, DNase I open-DNA humps over the enhancer and promoter, and ChromHMM state labels enhancer and Active TSS">` +
-        `<path d="M10 77 H470" class="ln thick s-blue"/>` +
-        `<rect x="40" y="62" width="60" height="30" rx="6" class="f-green"/><text x="70" y="82" class="mid s">enhancer</text>` +
+        `<path d="M10 94 H470" class="ln thick s-blue"/>` +
+        `<rect x="36" y="62" width="68" height="30" rx="6" class="f-green"/><text x="70" y="82" class="mid s">enhancer</text>` +
         `<circle cx="70" cy="49" r="11" class="f-purple"/><text x="70" y="54" class="mid s b">TF</text>` +
-        `<path d="M104 64 C150 14 240 14 270 58" class="arrow s-green"/>` +
+        `<path d="M108 62 C154 12 240 12 270 58" class="arrow s-green"/>` +
         `<text x="190" y="12" class="mid s m">DNA loops: enhancer meets promoter</text>` +
         `<rect x="238" y="62" width="62" height="30" rx="6" class="f-orange"/><text x="269" y="82" class="mid s">promoter</text>` +
-        `<rect x="300" y="66" width="164" height="22" rx="6" class="f-blue"/><text x="382" y="82" class="mid s">gene</text>` +
+        `<rect x="300" y="68" width="164" height="24" rx="6" class="f-blue"/><text x="382" y="85" class="mid s">gene</text>` +
         `<path d="M300 60 V44 H326" class="arrow s-red"/><text x="332" y="49" class="s t-red b">TSS</text>` +
-        `<path d="M300 94 V302" class="ln dash m"/>` +
+        `<path d="M300 98 V302" class="ln dash m"/>` +
         `<text x="10" y="126" class="b">CAGE</text>` +
         `<path d="M10 166 H470" class="ln thin m"/>` +
         `<path d="M288 166 V158 M294 166 V142 M300 166 V124 M306 166 V144 M312 166 V160 M126 166 V160 M412 166 V161" class="ln s-red"/>` +
         `<text x="332" y="140" class="s">RNA starts pile up</text><text x="332" y="156" class="s">at the TSS</text>` +
         `<text x="10" y="194" class="b">DNase I</text>` +
         `<path d="M10 236 H470" class="ln thin m"/>` +
-        `<path d="M40 236 C52 236 56 200 70 200 C84 200 88 236 100 236 Z" class="f-teal"/>` +
+        `<path d="M38 236 C52 236 56 200 70 200 C84 200 88 236 102 236 Z" class="f-teal"/>` +
         `<path d="M236 236 C250 236 256 196 270 196 C284 196 290 236 304 236 Z" class="f-teal"/>` +
         `<text x="332" y="212" class="s">open DNA: DNase I</text><text x="332" y="228" class="s">cuts easily here</text>` +
         `<text x="10" y="264" class="b">ChromHMM</text>` +
-        `<rect x="10" y="272" width="30" height="26" class="f-gray"/><rect x="40" y="272" width="60" height="26" class="f-green"/><rect x="100" y="272" width="132" height="26" class="f-gray"/><rect x="232" y="272" width="78" height="26" class="f-orange"/><rect x="310" y="272" width="160" height="26" class="f-gray"/>` +
-        `<text x="70" y="290" class="mid s">enhancer</text><text x="271" y="290" class="mid s">Active TSS</text><text x="390" y="290" class="mid s m">other states</text>` +
+        `<rect x="10" y="272" width="26" height="26" class="f-gray"/><rect x="36" y="272" width="68" height="26" class="f-green"/><rect x="104" y="272" width="118" height="26" class="f-gray"/><rect x="222" y="272" width="90" height="26" class="f-orange"/><rect x="312" y="272" width="158" height="26" class="f-gray"/>` +
+        `<text x="70" y="290" class="mid s">enhancer</text><text x="257" y="290" class="mid s">Active TSS</text><text x="391" y="290" class="mid s m">other states</text>` +
         `<text x="240" y="324" class="mid s m">Clues that agree make a start site more believable</text></svg>` },
     { k: 'h', text: 'How this paper uses it' },
     { k: 'paper', ref: 'm-library-design-p2',
@@ -222,7 +222,7 @@
   body: [
     { k: 'h', text: 'What goes wrong in cancer' },
     { k: 'bgnd', html:
-      `<p>A healthy cell divides only when told to, stops when told to, and self-destructs (apoptosis) if it is badly damaged (lesson B1). <b>Cancer</b> is a group of diseases in which cells escape these controls. They keep dividing, ignore "stop" and "die" signals, and can push into nearby tissue and travel to other organs. The cause is damage that builds up in the cell’s DNA, in genes that manage growth, repair and cell death. A tumor’s cells are all descendants of one changed cell, so they inherit its changes.</p>` +
+      `<p>A healthy cell divides only when told to, stops when told to, and self-destructs (apoptosis) if it is badly damaged (lesson B1). <b>Cancer</b> is a group of diseases in which cells escape these controls. They keep dividing, ignore "stop" and "die" signals, and can push into nearby tissue and travel to other organs. The cause is damage that builds up in the cell’s DNA, in genes that manage growth, repair and cell death. A tumor usually starts from one changed cell, so its cells inherit that cell’s changes.</p>` +
       `<p>A <b>tumor</b> is a lump of cells that has grown more than it should. Not every tumor is cancer: a benign tumor stays put, a malignant one invades its surroundings. (Some cancers, such as leukemia, form no lump at all.)</p>` },
     { k: 'h', text: 'Hallmarks and phenotypes' },
     { k: 'bgnd', html:
@@ -251,7 +251,7 @@
         `<text x="210" y="224" class="mid s">slows growth</text><text x="210" y="242" class="mid s">when needed</text>` +
         `<rect x="305" y="156" width="170" height="104" rx="10" class="f-red"/>` +
         `<rect x="362" y="168" width="56" height="28" rx="6" class="f-none"/><text x="390" y="187" class="mid s">brake</text>` +
-        `<path d="M358 164 L422 200 M422 164 L358 200" class="ln thick s-red"/>` +
+        `<path d="M358 164 L422 200 M422 164 L358 200" class="ln s-red"/>` +
         `<text x="390" y="224" class="mid s">broken: nothing</text><text x="390" y="242" class="mid s">holds growth back</text></svg>` },
     { k: 'bgnd', html:
       `<p><b>Where the car picture breaks down.</b> (1) A cell has many accelerators and brakes wired into networks, and cancer usually needs several changes, not one stuck pedal. (2) A gene is not fixed in one role: the same gene can act as an oncogene in one cell type and as a tumor suppressor in another. (3) Not every "accelerator" is a protein-coding gene. RNAs can act like one too, and some press down on brake genes. (4) The normal version of an oncogene is not bad: cells need it. It is the stuck-on or over-copied version that causes trouble.</p>` },
@@ -374,10 +374,10 @@
     { k: 'paper', ref: 'm-pdx-p1',
       quote: 'KRAS c.34G>T (p.Gly12Cys) mutation was detected in both BE874 organoids and the corresponding primary cancer' },
     { k: 'plain', source: ['m-pdx-p1'], derived: ['12', '34'], html:
-      `<p>In one patient-derived model of lung cancer (named BE874; lesson C5) the authors found the KRAS G12C change, and also in the patient’s original tumor. Two notations appear: <b>c.34G>T</b> is the DNA change (the letter G at position 34 of the gene’s coding DNA is now T), and <b>p.Gly12Cys</b> is the protein change (the 12th amino acid, glycine, is now cysteine). They describe the same event.</p>` },
+      `<p>In one patient-derived model of lung cancer (named BE874; lesson C5) the authors found the KRAS G12C change, both in the model and in the patient’s original tumor. Two notations appear: <b>c.34G>T</b> is the DNA change (the letter G at position 34 of the gene’s coding DNA is now T), and <b>p.Gly12Cys</b> is the protein change (the 12th amino acid, glycine, is now cysteine). They describe the same event.</p>` },
     { k: 'paper', ref: 'res-aso-p5', quote: 'the locus of GCAWKR is frequently amplified in cancer genomes' },
     { k: 'plain', source: ['res-aso-p5', 'res-integration-p4', 'm-cnv-p3'], html:
-      `<p>Tumors often carry extra copies of the DNA region that contains GCAWKR, unlike CHiLL1. More broadly, the authors report that their screen hits tend to be amplified, “but not depleted”, in tumor DNA. The Methods speak of regions that are “amplified or deleted”, so “depleted” (reduced or lost) appears to mean deleted here; the paper does not say so explicitly.</p>` },
+      `<p>Tumors often carry extra copies of the DNA region that contains GCAWKR, unlike CHiLL1. More broadly, the lncRNAs that the authors found to matter tend to be amplified, “but not depleted”, in tumor DNA. The Methods speak of regions that are “amplified or deleted”, so “depleted” (reduced or lost) appears to mean deleted here; the paper does not say so explicitly.</p>` },
     { k: 'plain', source: ['fig5A', 'res-aso-p2', 'res-aso-p3', 'm-public-rnaseq-p1'], html:
       `<p><b>Lung cancer types in the paper.</b> Figure 5A labels the lab-grown cell type A549 as lung adenocarcinoma, H460 as large cell lung cancer and H441 as metastatic adenocarcinoma (the text says H441 comes from a pericardial effusion metastasis). H460 and H441 are lung cancer cell types that you meet in lesson C4. For human tumor data the authors picked 101 samples that are both adenocarcinoma and KRAS-mutated, and they report that their RNA-targeting agents also worked in EGFR-mutant cells: two genetic subtypes, one result.</p>` },
   ],
@@ -402,7 +402,7 @@
         { t: 'Invasion is pushing into neighboring tissue; metastasis is traveling to distant organs and founding new tumors', ok: true, why: 'Right: invasion is local, metastasis is the distant spread. Migration (cell movement) underlies both.' },
         { t: 'They mean the same thing', ok: false, why: 'They are two stages: invasion usually comes first and makes metastasis possible.' },
         { t: 'Invasion is cells dividing; metastasis is cells moving', ok: false, why: 'Dividing is proliferation. Both invasion and metastasis involve moving.' },
-        { t: 'Invasion happens only in the lab; metastasis only in patients', ok: false, why: 'Both are real processes in patients. In the lab, only the cell movement part is measured.' },
+        { t: 'Invasion means spreading to other organs; metastasis means growing at the original site', ok: false, why: 'That is reversed: invasion is local spread into neighboring tissue, metastasis is the distant spread.' },
       ], bg: true },
     { q: 'What does "G12C" in KRAS G12C mean?',
       options: [
@@ -474,7 +474,7 @@
       `<p><b>Step 2, two higher doses.</b> In the “survival” experiment (one of their large pooled experiments, called screens; lesson D3) they treated A549 cells with 6.5 and 25 µM, which correspond to IC30 and IC80. Their stated reason for two doses: to increase the dynamic range (a wider spread of effects to detect) and to account for the different effects of different doses. </p>` +
       `<p><b>Step 3, one low dose.</b> In the “death” experiment they used IC20 (the Methods list 2 and 1 µM for A549 cells) and collected the floating, dead cells every 24 h for five days. The Figure 2B legend calls this a “low cisplatin concentration (IC20)”.</p>` },
     { k: 'bgnd', html:
-      `<p><b>Why a low dose for the death experiment?</b> The paper does not explain the choice, so this is general reasoning, not a paper claim. At a high dose nearly every cell dies, so the dead cells are a random sample of everybody. At a low dose only some die, so the dead cells are a <i>selected</i> group, the ones that coped worst. A lncRNA that protects against cisplatin should then be missing more often than expected among the dead.</p>` },
+      `<p><b>Why a low dose for the death experiment?</b> The paper does not explain the choice, so this is general reasoning, not a paper claim. At a high dose nearly every cell dies, so the dead cells are a random sample of everybody. At a low dose only some die, so the dead cells are a <i>selected</i> group, the ones that coped worst. Cells that lack a lncRNA that protects them should then be over-represented among the dead.</p>` },
     { k: 'flag', source: ['m-screen-cisplatin-p1', 'fig2B'], html:
       `<p>Two wrinkles. (1) The Figure 2B legend lists IC30 and IC80 together as “high cisplatin doses”, while the Methods call IC30 “a mild concentration”: “mild” and “high” are relative, so trust the IC number. (2) The Methods give the death-experiment doses as “2 and 1 µM (IC20)”, so it is unclear which number is the IC20.</p>` },
     { k: 'h', text: 'Combination therapy' },
@@ -503,7 +503,7 @@
         { t: 'The drug concentration that lowers growth by 30% compared with untreated cells', ok: true, why: 'Right: the number after IC is the percentage drop in the measured response. IC30 is a mild dose.' },
         { t: 'A concentration of 30 micromolar', ok: false, why: 'The 30 is a percentage, not a concentration. In the paper, 6.5 µM is the IC30 for A549 cells.' },
         { t: 'The dose at which 30% of the cells have become resistant', ok: false, why: 'IC values describe how much the drug reduces growth, not how many cells are resistant.' },
-        { t: 'The dose that kills 30% of cells within the first hour', ok: false, why: 'IC30 is not tied to one hour. It is read from a dose–response curve measured over a set time (72 h in the paper).' },
+        { t: 'The dose that kills 30% of the cells', ok: false, why: 'IC30 is defined by a 30% drop in the measured response compared with untreated cells. At this mild dose the paper describes slower proliferation, not mass death.' },
       ], source: ['m-screen-cisplatin-p1'] },
     { q: 'Cells become resistant to a drug. How does their dose–response curve change?',
       options: [

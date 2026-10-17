@@ -33,7 +33,7 @@
         `<text x="240" y="204" class="mid s b t-purple">liftOver converts one set of numbers into the other</text></svg>` },
     { k: 'h', text: 'Two strands, antisense, and "upstream"' },
     { k: 'bgnd', html:
-      `<p>DNA has two strands that run in opposite directions (lesson B2). By convention the strand written out in the reference, with numbers growing left to right, is the <b>plus (+) strand</b>; its partner is the <b>minus (−) strand</b>. To use a gene, the cell makes a working copy of it called an <b>RNA</b> (lesson B4), reading along one strand. The gene is "on" that strand and points in its 5′→3′ direction: left to right for a plus-strand gene, right to left for a minus-strand gene. About half of all genes are on each strand.</p>` +
+      `<p>DNA has two strands that run in opposite directions (lesson B2). By convention the strand written out in the reference, with numbers growing left to right, is the <b>plus (+) strand</b>; its partner is the <b>minus (−) strand</b>. To use a gene, the cell makes a working copy of it called an <b>RNA</b> (lesson B4), whose letters match one of the two strands. The gene is "on" that strand and points in its 5′→3′ direction: left to right for a plus-strand gene, right to left for a minus-strand gene. About half of all genes are on each strand.</p>` +
       `<p>The two strands share the same stretch of DNA, so two genes can sit in the same place, one on each strand. A gene that overlaps another but lies on the opposite strand is <b>antisense</b> to it. (Gene names ending in <b>-AS1</b> usually mean "antisense to the gene named before the dash".)</p>` +
       `<p>Genes have a direction, so the DNA around them is described by it. <b>Downstream</b> is further along the direction the gene points; <b>upstream</b> is back the way you came. For a plus-strand gene, upstream means smaller numbers. For a minus-strand gene it is <i>the other way round</i>: upstream means larger numbers.</p>` },
     { k: 'svg', caption: 'Gene A is on the plus strand and gene B on the minus strand. Up- and downstream flip for B. Overlapping genes on opposite strands are antisense.',
@@ -57,7 +57,7 @@
       `<p>To avoid false alarms from accidentally hitting the wrong DNA, the authors left out any target closer than <b>2 kb</b> to the nearest part of a gene that carries the recipe for a protein (a protein is one of the cell's tiny working machines; lesson B5). The Methods put it as "<2kb up or downstream" of such a gene.</p>` },
     { k: 'paper', ref: 'm-cnv-p2', quote: 'converted to hg19 coordinates using liftOver' },
     { k: 'plain', source: ['m-cnv-p1', 'm-cnv-p2'], html:
-      `<p>The Methods compare the positions of the authors' targets with public data on how many copies of each DNA region patient samples and cultured cells carry. The comparison is made in <b>hg19</b>: they "intersected the hg19 coordinates" of their targets with the hg19 coordinates of one dataset, and a second dataset first had to be "converted to hg19 coordinates using liftOver".</p>` },
+      `<p>The Methods compare the positions of the authors' targets with public data on how many copies of each DNA region patient samples and cultured cells carry. The comparison is made in <b>hg19</b>: they "intersected the hg19 coordinates" of their targets with the hg19 coordinates of one dataset, and a second dataset was first "converted to hg19 coordinates using liftOver".</p>` },
     { k: 'paper', ref: 'res-aso-p4', quote: 'It is localized upstream and on the same strand of the PCG TNFRSF10B' },
     { k: 'plain', source: ['res-aso-p4', 'res-aso-p3'], html:
       `<p>"It" is CHiLL1, which sits on chromosome 8. Its neighbor TNFRSF10B (a gene that makes a protein, and CHiLL1's "nearest neighbor" in the paper's words) points the same way along the DNA, and CHiLL1 comes first.</p>` },
@@ -93,7 +93,7 @@
         { t: 'Both genes point the same way along the DNA, and CHiLL1 comes before TNFRSF10B in that direction', ok: true, why: '"Same strand" means the same direction; "upstream" means CHiLL1 lies before TNFRSF10B along that direction.' },
         { t: 'The two genes overlap on opposite strands, so CHiLL1 is antisense to TNFRSF10B', ok: false, why: '"Same strand" is the opposite of that. Overlapping genes on opposite strands are the antisense case.' },
         { t: 'CHiLL1 and TNFRSF10B are two names for the same gene', ok: false, why: 'The paper treats them as two neighboring genes: it calls TNFRSF10B the nearest neighbor of CHiLL1.' },
-        { t: 'CHiLL1 comes after TNFRSF10B in the direction the genes point', ok: false, why: 'Upstream means before: CHiLL1 lies on the side the genes point away from, so it comes first.' },
+        { t: 'CHiLL1 comes after TNFRSF10B in the direction the genes point', ok: false, why: 'Upstream means before: CHiLL1 lies back along the direction the genes point, so it comes first.' },
       ], source: ['res-aso-p4', 'res-aso-p3'] },
   ],
 });
@@ -106,7 +106,7 @@
     { k: 'h', text: 'The problem: the DNA never leaves home' },
     { k: 'bgnd', html:
       `<p>Your DNA stays inside the <b>nucleus</b>. Most of the cell's work is done outside it, in the <b>cytoplasm</b>, mainly by <b>proteins</b> (tiny working machines that the cell builds; lesson B5 explains them). So the cell makes a temporary copy of <i>one gene at a time</i> and sends the copy out. That copy is <b>RNA</b>. Making it is called <b>transcription</b>, and the finished copy is a <b>transcript</b>.</p>` +
-      `<p>RNA is a single strand of nucleotides, written with the same alphabet as DNA except that it uses <b>U</b> where DNA uses T. It is short-lived, so the cell can make many copies and later throw them away while the master DNA stays untouched.</p>` },
+      `<p>RNA is a single strand of nucleotides, written with the same alphabet as DNA except that it uses <b>U</b> where DNA uses T. Many RNAs are short-lived, so the cell can make lots of copies and later throw them away while the master DNA stays untouched.</p>` },
     { k: 'h', text: 'Copying a gene: RNA polymerase' },
     { k: 'bgnd', html:
       `<p>The copying machine is <b>RNA polymerase</b>. It attaches to the DNA, opens the two strands a little, and slides along one strand, adding one RNA letter at a time by base pairing (lesson B2). The new RNA is the partner of the strand it reads, so it has the same letters as the <i>other</i> strand, with U for T. That other strand is the one the gene is "on" (lesson B3).</p>` },
@@ -300,12 +300,12 @@
 /* ============================================================================================== B6 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'B6',
-  defines: ['cancer', 'tumor', 'tumor-suppressor', 'aso', 'fish'],
+  defines: ['cancer', 'tumor', 'nsclc', 'tumor-suppressor', 'aso', 'fish'],
   body: [
     { k: 'h', text: 'What is a lncRNA?' },
     { k: 'bgnd', html:
       `<p>Everything so far leads to one kind of RNA. A <b>long noncoding RNA (lncRNA)</b> is a noncoding RNA longer than about 200 letters (a convention that separates it from small ones such as microRNAs). Many are made just like mRNAs, copied from DNA and spliced, but they are not translated. They are usually less abundant than mRNAs and more specific to certain cell types. In names, <b>LINC</b> marks a lncRNA gene lying between other genes and <b>-AS1</b> an antisense one (lesson B3).</p>` +
-      `<p>Many lncRNAs are linked to <b>cancer</b> (cells that keep dividing when they should stop; a lump of them is a <b>tumor</b>), which makes them interesting as possible drug targets.</p>` },
+      `<p>Many lncRNAs are linked to <b>cancer</b> (cells that keep dividing when they should stop; a lump of them is a <b>tumor</b>), which makes them interesting as possible drug targets. A common group of lung cancers is called <b>NSCLC</b> (non-small cell lung cancer).</p>` },
     { k: 'h', text: 'How might a lncRNA work?' },
     { k: 'bgnd', html:
       `<p>For most lncRNAs nobody knows. Ideas that have been shown for some of them:</p>` +
@@ -349,7 +349,7 @@
     { k: 'paper', ref: 'intro-p3', quote: 'PVT1 and MALAT1 are recurrently overexpressed or amplified in lung tumors, and their manipulation alters cell growth and invasiveness both in vitro and in vivo' },
     { k: 'paper', ref: 'intro-p3', quote: 'LINC00680, which acts via binding to GATA6, and LINC00511, which promotes NSCLC by binding chromatin-modifying enzyme EZH2 and repressing tumor-suppressor genes, including p57 and LATS2' },
     { k: 'plain', source: ['intro-p3'], html:
-      `<p>These are the introduction's examples. <b>PVT1</b> and <b>MALAT1</b> are again and again found at unusually high levels or in extra DNA copies in lung tumors, and changing them alters how cells grow and how readily they spread into surrounding tissue, in dishes and in living animals. <b>LINC00680</b> acts by binding <b>GATA6</b>. <b>LINC00511</b> promotes lung cancer by binding <b>EZH2</b>, an enzyme that modifies how DNA is packaged, and by repressing <b>tumor-suppressor</b> genes (genes that normally keep cell growth in check), including <b>p57</b> and <b>LATS2</b>. The introduction gives no further detail on how any of them work.</p>` },
+      `<p>These are the introduction's examples. <b>PVT1</b> and <b>MALAT1</b> are again and again found at unusually high levels or in extra DNA copies in lung tumors, and changing them alters how cells grow and how readily they spread into surrounding tissue, in dishes and in living animals. <b>LINC00680</b> acts by binding <b>GATA6</b>. <b>LINC00511</b> promotes NSCLC by binding <b>EZH2</b>, an enzyme that modifies how DNA is packaged, and by repressing <b>tumor-suppressor</b> genes (genes that normally keep cell growth in check), including <b>p57</b> and <b>LATS2</b>. The introduction gives no further detail on how any of them work.</p>` },
     { k: 'flag', source: ['intro-p2', 'intro-p3', 'res-multipheno-p4', 'limitations-p2', 'fig2G'], html:
       `<p>The paper groups some names inconsistently. LINC00680 is cited in the introduction as lung-cancer evidence and in the limitations as "known to be involved in lung cancer pathogenesis", yet the Results list it among "lncRNAs identified in other cancer types". And SAMMSON (melanoma) and lncGRS-1 (glioma) are not lung-cancer examples. Treat the green and blue labels in Figure 2G as the authors' groupings.</p>` },
     { k: 'paper', ref: 'res-aso-p3', quote: 'overexpression of neither CHiLL1 nor GCAWKR could rescue ASO-induced phenotypes … This may be the result of cis-regulatory mechanisms' },
@@ -387,7 +387,7 @@
         { t: 'CHiLL1 is mainly in the nucleus and GCAWKR in the cytoplasm', ok: false, why: 'Reversed: CHiLL1 is principally cytoplasmic and GCAWKR nuclear.' },
         { t: 'Both are in the cytoplasm, so neither can affect genes', ok: false, why: 'The paper reports different locations, and no location rules out an effect on genes.' },
       ], source: ['res-mechanism-p1', 'discussion-p6'] },
-    { q: 'According to the introduction, how does LINC00511 promote lung cancer?',
+    { q: 'According to the introduction, how does LINC00511 promote NSCLC?',
       options: [
         { t: 'By binding EZH2 and repressing tumor-suppressor genes, including p57 and LATS2', ok: true, why: 'Right: this is the introduction\'s description of LINC00511.' },
         { t: 'By binding GATA6', ok: false, why: 'The introduction says LINC00680, not LINC00511, acts via binding to GATA6.' },
