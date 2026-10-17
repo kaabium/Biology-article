@@ -174,14 +174,14 @@
         <path d="M92 58 V84" class="ln dash s-red"/><path d="M148 58 V84" class="ln dash s-red"/>
         <path d="M120 76 V95" class="arrow s-red"/>
         <rect x="92" y="98" width="56" height="26" rx="5" class="f-red"/><text x="120" y="116" class="mid s">deleted</text>
-        <text x="120" y="144" class="mid s m">no start site, no RNA</text>
+        <text x="120" y="148" class="mid s m">no start site, no RNA</text>
         <path d="M252 70 H468" class="ln thick s-blue"/>
         <text x="360" y="50" class="mid s m">DNA stays intact</text>
-        <path d="M290 76 V108" class="arrow s-orange"/>
-        <path d="M284 112 H436" class="ln thick s-orange"/>
-        <rect x="322" y="100" width="64" height="24" rx="5" class="f-purple"/><text x="354" y="117" class="mid s b">ASO</text>
-        <path d="M404 102 L424 122 M424 102 L404 122" class="ln thick s-red"/>
-        <text x="360" y="144" class="mid s m">only the RNA is destroyed</text>
+        <path d="M290 76 V94" class="arrow s-orange"/>
+        <path d="M284 100 H436" class="ln thick s-orange"/>
+        <rect x="322" y="108" width="64" height="22" rx="5" class="f-purple"/><text x="354" y="124" class="mid s b">ASO</text>
+        <path d="M404 90 L424 110 M424 90 L404 110" class="ln thick s-red"/>
+        <text x="360" y="148" class="mid s m">only the RNA is destroyed</text>
         <rect x="6" y="158" width="228" height="70" rx="8" class="f-orange"/>
         <text x="120" y="178" class="mid s">The deleted piece may also</text><text x="120" y="196" class="mid s">hold an enhancer, or the start</text><text x="120" y="214" class="mid s">of a gene on the other strand</text>
         <rect x="246" y="158" width="228" height="70" rx="8" class="f-green"/>
