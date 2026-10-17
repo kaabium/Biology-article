@@ -6,8 +6,8 @@
   body: [
     { k: 'h', text: 'The problem: many tests, many flukes' },
     { k: 'bgnd', html:
-      `<p>In lesson E2 you met the <b>p-value</b>. A p-value below 0.05 is usually called "significant": if nothing were going on, a result this strong would turn up by luck about 1 time in 20.</p>` +
-      `<p>Now think of a screen. It asks the same question for hundreds of targets: "does switching this one off change growth?" Each answer comes with its own p-value. Even if <i>no</i> target mattered, about 1 test in 20 would still pass p &lt; 0.05. Running many tests at once is called <b>multiple testing</b>, and it needs a correction.</p>` },
+      `<p>From lesson E2: a p-value below 0.05 is usually called "significant", meaning that if nothing were going on, a result this strong would turn up by luck about 1 time in 20.</p>` +
+      `<p>A screen asks one question per target ("does switching this one off change growth?") and gets one p-value each. Even if <i>no</i> target mattered, about 1 test in 20 would still pass p &lt; 0.05. Running many tests at once is called <b>multiple testing</b>, and it needs a correction.</p>` },
     { k: 'worked', html:
       `<p><b>Worked example (made-up numbers).</b> Test 1,000 genes when none has any real effect. Each test has a 5% chance of a lucky p &lt; 0.05, so you expect 1,000 × 0.05 = <b>50</b> "significant" genes, all of them flukes. Even with only 20 tests, the chance of at least one fluke is 1 − 0.95<sup>20</sup> ≈ 64%.</p>` },
     { k: 'memory', html:
@@ -30,20 +30,19 @@
         `<text x="6" y="270" class="b t-green">True-positive rate = 32 ÷ 50 = 64%</text><text x="290" y="270" class="s m">(top row)</text>` +
         `<text x="6" y="292" class="b">False-positive rate = 8 ÷ 950 ≈ 0.8%</text><text x="314" y="292" class="s m">(bottom row)</text></svg>` },
     { k: 'bgnd', html:
-      `<p>Three rates come out of the grid:</p>` +
       `<ul><li><b>False discovery rate (FDR)</b>: flukes ÷ all the hits you called. "What share of my hit list is junk?"</li>` +
-      `<li><b>True-positive rate</b>: real effects you caught ÷ all real effects. "How much of the truth did I find?"</li>` +
-      `<li><b>False-positive rate</b>: no-effect genes you wrongly called ÷ all no-effect genes. (The ones you correctly left alone are the <b>true negatives</b>.) "How often does a dud fool me?"</li></ul>` +
-      `<p>Mixing up the first and the last is the classic mistake: here the FDR is 20%, but the false-positive rate is under 1%.</p>` },
+      `<li><b>True-positive rate</b>: real effects caught ÷ all real effects.</li>` +
+      `<li><b>False-positive rate</b>: no-effect genes wrongly called ÷ all no-effect genes. (The ones correctly left alone are the <b>true negatives</b>.)</li></ul>` +
+      `<p>The classic mistake is to mix up the FDR and the false-positive rate: here 20% versus under 1%.</p>` },
 
     { k: 'h', text: 'FDR, the Benjamini–Hochberg recipe, and q-values' },
     { k: 'bgnd', html:
-      `<p>Instead of asking "how rare is this one result?", FDR control asks "how many flukes am I willing to accept in my hit list?" If you accept an FDR of 0.2, you accept that on average about 1 hit in 5 may be a fluke. The standard recipe is the <b>Benjamini–Hochberg procedure</b> (BH):</p>` +
+      `<p>Instead of asking "how rare is this one result?", FDR control asks "how many flukes will I accept in my hit list?" At an FDR of 0.2, on average about 1 hit in 5 may be a fluke. The standard recipe is the <b>Benjamini–Hochberg procedure</b> (BH):</p>` +
       `<ul><li><b>1.</b> Sort the p-values from smallest to largest and number them: rank 1, 2, 3 … Call the number of tests m.</li>` +
       `<li><b>2.</b> The p-value allowed at each rank is (rank ÷ m) × q, where q is the FDR you accept.</li>` +
       `<li><b>3.</b> Find the <i>largest</i> rank whose p-value is at or below its allowed value.</li>` +
       `<li><b>4.</b> That item, and every item with a smaller p-value, is a hit.</li></ul>` +
-      `<p>Each item also gets a <b>q-value</b> (adjusted p-value): the smallest FDR at which that item would still make the list. For rank i it is (m ÷ i) × p, tidied so that a larger p-value never gets a smaller q. Then you simply keep every item whose q-value is below your FDR cut-off. Papers also say "FDR-corrected p-value" for the same idea.</p>` },
+      `<p>Each item also gets a <b>q-value</b> (adjusted p-value): the smallest FDR at which that item would still make the list. For rank i it is (m ÷ i) × p, tidied so that a larger p never gets a smaller q. Keep every item whose q-value is below your cut-off. Papers also call this an "FDR-corrected p-value".</p>` },
     { k: 'svg', caption: 'BH on ten made-up p-values: dots under the red line are hits (FDR 0.2).',
       svg: `<svg viewBox="0 0 480 300" role="img" aria-label="Ten p-values plotted against their rank from smallest to largest, with a rising red line showing the p-value allowed at each rank for an FDR of 0.2; the first six dots are under the line and count as hits, rank 7 is above it">` +
         `<path d="M60 240 H452" class="ln"/><path d="M60 240 V40" class="ln"/>` +
@@ -73,16 +72,14 @@
     { k: 'plain', source: ['m-hits-p4', 'm-hits-p3', 'res-integration-p2'], derived: ['16'], html:
       `<p>Every target's p-value is corrected with the BH method, and a target counts as a hit when its FDR is below 0.2. Single screens use the same cut-off plus a direction: FDR &lt; 0.2 and a log2 fold change above zero for the positive screens (CFSE, death, migration), or below zero for the dropout and cisplatin screens. The pan-hallmark ranking gave 80 hits (about 8% of the lncRNAs screened) at FDR &lt; 0.2. If the procedure works as designed, up to about 16 of those 80 (0.2 × 80, my own arithmetic, not a number from the paper) could be flukes.</p>` },
     { k: 'flag', source: ['m-hits-p3', 'm-hits-p4', 'm-quant-p3'], html:
-      `<p>The paper states this cut-off but never says why it chose 0.2 instead of the more familiar 0.05 that it uses elsewhere ("p ≤ 0.05 is considered statistically significant unless otherwise specified"). The reasoning in the next paragraph is background, not the authors' words.</p>` },
+      `<p>The paper states this cut-off but never says why it chose 0.2 rather than the familiar 0.05 (its default: "p ≤ 0.05 is considered statistically significant unless otherwise specified"). The next paragraph is background, not the authors' words.</p>` },
     { k: 'bgnd', html:
-      `<p>A common reason for a lenient cut-off in a discovery screen is that the hit list is only a list of <i>candidates</i> that later experiments will re-test. A strict cut-off would throw away real hits (false negatives) before anyone could confirm them; a lenient one lets in some flukes, which the follow-up experiments are meant to remove.</p>` },
-    { k: 'plain', source: ['res-validation-p1'], html:
-      `<p>The two hits the authors chose for follow-up came from the top of the list, not from its edge: their FDRs were 1.2 × 10<sup>−7</sup> and 9.78 × 10<sup>−7</sup>, far below 0.2.</p>` },
+      `<p>A common reason for a lenient cut-off in a discovery screen: the hit list is only a list of <i>candidates</i> that later experiments will re-test. A strict cut-off would throw away real hits (false negatives) before anyone could confirm them; a lenient one lets in some flukes, which the follow-up experiments are meant to remove.</p>` },
 
     { k: 'h', text: 'ROC curves and AUC: grading a ranking with an answer key' },
     { k: 'bgnd', html:
-      `<p>Sometimes you want to know how <i>good</i> a ranking is at separating real effects from non-effects, not just where to cut it. You need an answer key: items you already know are real (<b>positive controls</b>) and items you know are not (<b>neutral controls</b>). Rank everything by score, then slide the cut-off from strict to lenient. At each position, note the true-positive rate and the false-positive rate, and plot them: false-positive rate across, true-positive rate up. That line is the <b>ROC curve</b>.</p>` +
-      `<p>A perfect ranking shoots straight up the left edge and across the top. A random ranking follows the diagonal. The <b>area under the curve (AUC)</b> turns the whole curve into one number: 1.0 is perfect, 0.5 is a coin flip. It also has a plain meaning: pick one positive and one negative at random; the AUC is the chance that the positive was ranked higher.</p>` },
+      `<p>To judge how <i>good</i> a ranking is at separating real effects from non-effects, you need an answer key: items known to be real (<b>positive controls</b>) and items known not to be (<b>neutral controls</b>). Rank everything by score and slide the cut-off from strict to lenient. At each position note the true-positive rate and the false-positive rate, and plot them (false-positive rate across, true-positive rate up). That line is the <b>ROC curve</b>.</p>` +
+      `<p>A perfect ranking shoots up the left edge and across the top; a random one follows the diagonal. The <b>area under the curve (AUC)</b> squeezes the curve into one number: 1.0 is perfect, 0.5 is a coin flip. Plainly: pick one positive and one negative at random; the AUC is the chance that the positive ranks higher.</p>` },
     { k: 'worked', html:
       `<p><b>Worked example (made-up).</b> Four positive controls (P) and four neutral controls (N), ranked best first: P P N P N P N N. Walk down the list: each P moves the curve up by 1/4, each N moves it right by 1/4. For each P, count the N's ranked below it: 4, 4, 3, 2, which is 13 out of 16 pairs. So AUC = 13 ÷ 16 ≈ <b>0.81</b>.</p>` },
     { k: 'svg', caption: 'The ROC staircase for that ranking. The blue area is the AUC.',
@@ -110,8 +107,6 @@
       `<p>The paper uses the answer-key idea. Its positive controls (genes known to matter) play the "P" role and its neutral controls (loci that should do nothing) play the "N" role. The legend of Figure 4B says performance is measured as the AUC "based on correctly recalling/rejecting library controls". In the text, adding the complementary screens raised the AUC a little: 0.7 versus 0.67 for A549 proliferation, and 0.77 versus 0.73 for A549 cisplatin.</p>` },
     { k: 'plain', source: ['fig4D', 'fig4B', 'res-multipheno-p6'], derived: ['0.42', '0.09'], html:
       `<p><b>A real point on the plot (my arithmetic).</b> Figure 4D counts 46 positive and 3 neutral controls inside the pan-hallmark hit list. The library holds 109 positive and 35 neutral controls. So at the paper's cut-off the true-positive rate is 46 ÷ 109 ≈ 0.42 and the false-positive rate is 3 ÷ 35 ≈ 0.09: one point on a ROC picture. The paper does not report these two rates itself.</p>` },
-    { k: 'bgnd', html:
-      `<p><b>Caution (background):</b> an AUC built from controls tells you how well the ranking separates <i>those controls</i>. It says less directly about how many of the unknown lncRNAs are real.</p>` },
   ],
   appears: [
     { ref: 'm-hits-p4', note: 'Benjamini–Hochberg correction and the FDR < 0.2 cut-off for the integrated ranking.' },
@@ -139,7 +134,7 @@
         { t: 'Yes: 0.15 is below 0.2', ok: true, why: 'Right (m-hits-p4): "a cutoff of FDR<0.2 was used to define hits". The 0.05 rule applies to other analyses, not to the screens.' },
         { t: 'No: a hit needs a q-value below 0.05', ok: false, why: 'The paper says p ≤ 0.05 is the default "unless otherwise specified", and for hit calling it specifies FDR < 0.2.' },
         { t: 'No: the raw p-value must also be below 0.05', ok: false, why: 'The rule is on the corrected value. As the worked example showed, a raw p of 0.09 can still make the list at FDR < 0.2.' },
-      ], source: ['m-hits-p4', 'm-quant-p3'], derived: ['0.15'] },
+      ], source: ['m-hits-p4', 'm-quant-p3'], derived: ['0.15', '0.09'] },
     { q: 'How does the paper decide which genes count as "true positives" and "true negatives" when it draws ROC curves?',
       options: [
         { t: 'Positive controls are the positives and neutral controls are the negatives', ok: true, why: 'Right (m-hits-p5): known growth-promoting genes and neutral loci form the answer key.' },
@@ -258,5 +253,124 @@
         { t: 'What the error bars show', ok: false, why: 'The legend says: SD (standard deviation).' },
         { t: 'Whether the t test was one-tailed or two-tailed', ok: false, why: 'It says one-tailed. What it does not say is why.' },
       ], source: ['fig5F'] },
+  ],
+});
+
+/* ============================================================================================== F1 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'F1',
+  body: [
+    { k: 'h', text: 'A chart is a sentence in disguise' },
+    { k: 'bgnd', html:
+      `<p>"This bar is shorter than that one." "These two move together." "This curve bends after day 2." Every chart hides a sentence like that. Reading a chart means turning it back into a sentence and then checking the small print. Five questions work for almost every chart in this paper:</p>` +
+      `<ul><li><b>1. Axes.</b> What is measured, in which units? Is the scale logarithmic? Does it start at zero?</li>` +
+      `<li><b>2. Reference.</b> What is the control, and what value is it set to (often 1.0)?</li>` +
+      `<li><b>3. Marks.</b> What does one bar, dot, box or line stand for: one cell, one gene, one experiment, an average?</li>` +
+      `<li><b>4. Spread.</b> What do the error bars or boxes show, and what is n?</li>` +
+      `<li><b>5. P labels.</b> Only now: which two things does each P compare?</li></ul>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> a chart is a weather report. The bar or line is the headline ("30% chance of rain"), the error bar or box is the "give or take", and n is how many weather stations reported. A headline without its stations is just a claim.</p>` },
+
+    { k: 'h', text: 'Bar charts with error bars' },
+    { k: 'bgnd', html:
+      `<p>A <b>bar chart</b> shows one summary number per group, usually the mean of n repeats (lesson E1). The whisker is the <b>error bar</b>: usually the standard deviation (SD) or the standard error of the mean (SEM), and only the legend says which. When one bar is the control and is set to 1.0, every other bar reads as "times the control".</p>` +
+      `<p>Traps: bars hide the individual dots (a bar from n = 2 looks as solid as one from n = 20); error bars are often drawn only upward but are really symmetrical; and a bar chart should start at zero.</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up).</b> Four repeats: 8, 10, 12, 10. The mean is 10 and the SD is about 1.6. Some papers plot the SEM instead (SD ÷ √n = 1.6 ÷ 2 ≈ 0.8). Same data, an error bar half as tall, so always read the legend.</p>` },
+
+    { k: 'h', text: 'Box plots and violin plots' },
+    { k: 'bgnd', html:
+      `<p>When each group has many values, show the shape, not just the average. A <b>box plot</b> draws a box from the 25th to the 75th percentile (the middle half of the values), a line at the median, whiskers for the rest of the usual range, and dots for outliers. A <b>violin plot</b> mirrors a smoothed outline of the values: wide where many values sit, narrow where few do, often with a small box inside.</p>` +
+      `<p>Traps: the middle line is the median, not the mean; neither plot shows n unless a label or the legend does; and a violin's smoothed tails can reach past the real data.</p>` },
+    { k: 'svg', caption: 'Made-up data. Left: bars with error bars. Middle: a box plot. Right: a violin plot with a small box inside.',
+      svg: `<svg viewBox="0 0 480 266" role="img" aria-label="Three chart anatomies drawn with made-up data: a bar chart with a control bar set to 1.0 and a shorter bar with error bars, a box plot with median, whiskers and outlier dots, and a violin plot whose width shows how many values sit at each height">` +
+        `<text x="84" y="22" class="mid b">Bar chart</text><text x="256" y="22" class="mid b">Box plot</text><text x="405" y="22" class="mid b">Violin plot</text>` +
+        `<path d="M32 40 V210 H156" class="ln"/><path d="M32 110 H156" class="ln thin dash m"/>` +
+        `<text x="28" y="214" class="s end">0</text><text x="28" y="114" class="s end">1.0</text>` +
+        `<rect x="46" y="110" width="32" height="100" class="f-gray"/><path d="M62 96 V124 M55 96 H69 M55 124 H69" class="ln thin"/>` +
+        `<rect x="100" y="160" width="32" height="50" class="f-blue"/><path d="M116 146 V174 M109 146 H123 M109 174 H123" class="ln thin"/>` +
+        `<text x="116" y="138" class="mid s">error bar</text>` +
+        `<text x="62" y="228" class="mid s">control</text><text x="116" y="228" class="mid s">ASO</text>` +
+        `<path d="M186 40 V210" class="ln"/>` +
+        `<rect x="213" y="100" width="44" height="52" class="f-green"/><path d="M213 124 H257" class="ln thick"/>` +
+        `<path d="M235 100 V70 M225 70 H245 M235 152 V184 M225 184 H245" class="ln"/>` +
+        `<circle cx="235" cy="52" r="3.5" class="solid-text"/><circle cx="235" cy="203" r="3.5" class="solid-text"/>` +
+        `<text x="268" y="56" class="s">outlier</text><text x="268" y="74" class="s">whisker</text><text x="268" y="128" class="s">median</text><text x="268" y="207" class="s">outlier</text>` +
+        `<path d="M346 40 V210" class="ln"/>` +
+        `<path d="M405 56 C430 76 444 108 444 132 C444 156 430 186 405 204 C380 186 366 156 366 132 C366 108 380 76 405 56 Z" class="f-purple"/>` +
+        `<rect x="398" y="112" width="14" height="40" class="f-none"/><path d="M398 130 H412" class="ln thick"/>` +
+        `<text x="10" y="242" class="s m">bar = mean of n repeats</text><text x="10" y="258" class="s m">whisker = SD or SEM?</text>` +
+        `<text x="176" y="242" class="s m">box = middle half</text><text x="176" y="258" class="s m">line = median</text>` +
+        `<text x="340" y="242" class="s m">width = how many</text><text x="340" y="258" class="s m">values at that height</text></svg>` },
+
+    { k: 'h', text: 'Scatter plots and the regression line' },
+    { k: 'bgnd', html:
+      `<p>In a <b>scatter plot</b> each dot is one item with two numbers: x and y. A rising cloud means the two go together (positive correlation, lesson E2). The straight <b>regression line</b> is the best-fit line through the cloud, and R says how tightly the dots follow it.</p>` +
+      `<p>Traps: a tiny P says the relationship is unlikely to be exactly zero, not that it is strong; a few outliers can drag the line; thousands of overlapping dots melt into one blob; and a pattern is not a cause.</p>` },
+
+    { k: 'h', text: 'Time courses' },
+    { k: 'bgnd', html:
+      `<p>A <b>time course</b> (or growth curve) follows the same samples over time: x is time, y is the measurement, and a line joins the points. Nothing was measured between the points, so the line is a guide, not data. Compare the <i>shapes</i> of the curves; after rescaling they usually start together at 1.0 or 100%.</p>` +
+      `<p>Trap: a P label at the end of a curve compares the groups at one time point only. Check which one.</p>` },
+    { k: 'svg', caption: 'Made-up data. Left: a scatter plot with a best-fit line. Right: a time course with error bars.',
+      svg: `<svg viewBox="0 0 480 272" role="img" aria-label="A scatter plot with a rising cloud of dots and a best-fit line, and a time course in which a control line stays at 1.0 while a treated line falls over 72 hours, with error bars and a P bracket at the last time point">` +
+        `<text x="128" y="22" class="mid b">Scatter + regression line</text><text x="378" y="22" class="mid b">Time course</text>` +
+        `<path d="M34 40 V196 H228" class="ln"/>` +
+        `<circle cx="52" cy="172" r="4" class="solid-blue"/><circle cx="64" cy="166" r="4" class="solid-blue"/><circle cx="72" cy="178" r="4" class="solid-blue"/><circle cx="84" cy="150" r="4" class="solid-blue"/>` +
+        `<circle cx="94" cy="160" r="4" class="solid-blue"/><circle cx="104" cy="136" r="4" class="solid-blue"/><circle cx="112" cy="148" r="4" class="solid-blue"/><circle cx="122" cy="122" r="4" class="solid-blue"/>` +
+        `<circle cx="132" cy="132" r="4" class="solid-blue"/><circle cx="142" cy="108" r="4" class="solid-blue"/><circle cx="152" cy="120" r="4" class="solid-blue"/><circle cx="162" cy="96" r="4" class="solid-blue"/>` +
+        `<circle cx="172" cy="106" r="4" class="solid-blue"/><circle cx="184" cy="84" r="4" class="solid-blue"/><circle cx="194" cy="94" r="4" class="solid-blue"/><circle cx="88" cy="126" r="4" class="solid-blue"/>` +
+        `<circle cx="148" cy="144" r="4" class="solid-blue"/><circle cx="60" cy="152" r="4" class="solid-blue"/><circle cx="176" cy="130" r="4" class="solid-blue"/>` +
+        `<path d="M44 176 L208 76" class="ln thick s-red"/><text x="226" y="64" class="s end t-red b">best-fit line</text>` +
+        `<text x="40" y="56" class="s">R = 0.9 (made up)</text>` +
+        `<text x="130" y="216" class="mid s">x (e.g. replicate 1)</text><text transform="rotate(-90 14 118)" x="14" y="118" class="mid s">y (e.g. replicate 2)</text>` +
+        `<path d="M290 40 V196 H470" class="ln"/>` +
+        `<text x="286" y="200" class="s end">0</text><text x="286" y="140" class="s end">0.5</text><text x="286" y="80" class="s end">1.0</text>` +
+        `<text transform="rotate(-90 250 118)" x="250" y="118" class="mid s">relative growth</text>` +
+        `<path d="M300 76 H450" class="ln"/><circle cx="300" cy="76" r="3.5" class="solid-text"/><circle cx="350" cy="76" r="3.5" class="solid-text"/><circle cx="400" cy="76" r="3.5" class="solid-text"/><circle cx="450" cy="76" r="3.5" class="solid-text"/>` +
+        `<path d="M350 70 V82 M400 70 V82 M450 70 V82" class="ln thin"/>` +
+        `<path d="M300 76 L350 100 L400 122 L450 130" class="ln thick s-blue"/>` +
+        `<path d="M350 90 V110 M345 90 H355 M345 110 H355 M400 112 V132 M395 112 H405 M395 132 H405 M450 118 V142 M445 118 H455 M445 142 H455" class="ln thin s-blue"/>` +
+        `<circle cx="300" cy="76" r="4" class="solid-blue"/><circle cx="350" cy="100" r="4" class="solid-blue"/><circle cx="400" cy="122" r="4" class="solid-blue"/><circle cx="450" cy="130" r="4" class="solid-blue"/>` +
+        `<text x="304" y="64" class="s">control (1.0)</text><text x="372" y="158" class="s t-blue b">treated</text>` +
+        `<path d="M460 76 H468 V130 H460" class="ln thin"/><text x="471" y="106" class="s">P</text>` +
+        `<text x="300" y="212" class="mid s">0</text><text x="350" y="212" class="mid s">24</text><text x="400" y="212" class="mid s">48</text><text x="450" y="212" class="mid s">72</text>` +
+        `<text x="378" y="230" class="mid s">time (h)</text>` +
+        `<text x="128" y="250" class="s m mid">each dot = one item;</text><text x="128" y="266" class="s m mid">R = how tightly they follow the line</text>` +
+        `<text x="378" y="250" class="s m mid">points joined by lines;</text><text x="378" y="266" class="s m mid">P compares the lines at one time</text></svg>` },
+
+    { k: 'h', text: 'See them in the paper' },
+    { k: 'panel', id: 'fig3D', html:
+      `<p>Left: <b>time courses</b>, one line per ASO, with growth followed over hours. Right: <b>bar charts</b> of RNA levels at 72 h. The legend gives n, says the error bars are SD, and names a one-tailed Student's t test. Coloured P labels or "ns" sit at the end of some curves. Compare the n printed inside each small plot with the legend (lesson F4 shows why).</p>` },
+    { k: 'panel', id: 'fig4F', html:
+      `<p>Two <b>violin plots</b> with a small box inside each: the RNA made by screen hits versus all other screened lncRNAs in KRAS+ tumors (n = 101). The vertical axis is a log scale: each major tick is a hundred times the one below. Compare the middles (the line in each box is the median), then read the P label.</p>` },
+    { k: 'panel', id: 'fig2E', html:
+      `<p>A <b>scatter plot</b> with a regression line. Each dot is one lncRNA candidate; x and y are the two biological replicates of the dropout screen in A549 cells, as z-scores of log2 fold change (T3/T0). A tight cloud around a rising line means the replicates agree. R and P come from the Pearson correlation named in the legend.</p>` },
+  ],
+  appears: [
+    { ref: 'fig3D', note: 'Time courses and bar charts with error bars (ASO experiments).' },
+    { ref: 'fig4F', note: 'Violin plots with inner boxes: expression of hits versus non-hits.' },
+    { ref: 'fig2E', note: 'Scatter plot with a regression line: agreement between screen replicates.' },
+    { ref: 'fig6D', note: 'Box plots drawn from RNA-seq replicates (the legend says they show the variance of inference using bootstraps).' },
+  ],
+  checks: [
+    { q: 'Four repeats (8, 10, 12 and 10) are drawn as a bar with an error bar. Why should you read the legend before judging that error bar?',
+      options: [
+        { t: 'It could show the SD (about 1.6) or the SEM (about 0.8), so the same data give error bars of different heights', ok: true, why: 'Right: SEM = SD ÷ √n is always smaller than the SD. The legend must say which one is drawn.' },
+        { t: 'Error bars always show the range from the smallest to the largest value', ok: false, why: 'That is only one possible choice (the range). Most papers use SD or SEM.' },
+        { t: 'Error bars are only drawn when P is below 0.05', ok: false, why: 'Error bars show spread and exist whatever the P value is.' },
+      ], bg: true },
+    { q: 'What do the two violins in Figure 4F compare?',
+      options: [
+        { t: 'RNA made by pan-hallmark hits versus all other screened lncRNAs, in KRAS+ tumors', ok: true, why: 'Right (fig4F legend): "pan-hallmark hits compared with all other screened lncRNAs (non-hits)" in the KRAS+ samples.' },
+        { t: 'Tumor versus normal tissue', ok: false, why: 'That comparison is in Figure 4G, which has four violins (tumor and non-tumor, hits and non-hits).' },
+        { t: 'A549 cells versus H460 cells', ok: false, why: 'Figure 4F uses patient tumor data from TCGA, not cell lines.' },
+      ], source: ['fig4F', 'fig4G'] },
+    { q: 'In Figure 2E the dots form a tight cloud around a rising regression line. What does this tell you?',
+      options: [
+        { t: 'The two biological replicates of the dropout screen agree, so the screen is reproducible', ok: true, why: 'Right (res-multipheno-p3): the authors report "a high correlation between biologically independent replicates", and Figure 2E shows it for the lncRNA candidates.' },
+        { t: 'Every lncRNA in the cloud is a hit', ok: false, why: 'Agreement between replicates says nothing about which lncRNAs are hits; most dots sit near zero.' },
+        { t: 'R tells you the share of dots that sit exactly on the line', ok: false, why: 'R measures how tightly the dots follow a straight line, not how many lie on it.' },
+      ], source: ['fig2E', 'res-multipheno-p3'] },
   ],
 });

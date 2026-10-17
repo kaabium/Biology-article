@@ -175,7 +175,7 @@
     'Phenotypes: CHiLL1 knockdown gives early apoptosis; GCAWKR knockdown gives more G2 cells and less migration',
     'Non-overlapping target genes; GCAWKR knockdown raises CHiLL1 (not vice versa); the cocktail is additive',
   ],
-  source: ['res-aso-p3', 'res-aso-p4', 'res-aso-p5', 'res-aso-p6', 'res-aso-p7', 'res-aso-p8', 'res-mechanism-p1', 'res-mechanism-p2', 'res-mechanism-p5', 'res-mechanism-p6', 'res-mechanism-p7', 'res-mechanism-p8'],
+  source: ['res-aso-p3', 'res-aso-p4', 'res-aso-p5', 'res-aso-p6', 'res-aso-p7', 'res-aso-p8', 'res-mechanism-p1', 'res-mechanism-p2', 'res-mechanism-p5', 'res-mechanism-p6', 'res-mechanism-p7', 'res-mechanism-p8', 'fig5D'],
 },
 
 {

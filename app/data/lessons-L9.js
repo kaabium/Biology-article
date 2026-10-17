@@ -40,7 +40,7 @@
       <i>Where:</i> fig4B, fig4C, fig4D · res-integration-p1, res-integration-p2</p>` },
     { k: 'plain', source: ['res-integration-p3', 'res-integration-p4', 'fig4E', 'fig4F', 'fig4G', 'fig4H'], html: `
       <p><b>D · Claim: the hits are not a one-cell-line quirk, and they look like cancer genes in patient data.</b><br>
-      <i>Evidence:</i> dropout hits barely overlap between A549 (n=72) and H460 (n=58): only n=5 are shared. The 80 pan-hallmark hits are active in both. They are expressed higher than non-hits in KRAS+ tumors, are upregulated in tumors compared with non-tumor tissue, and are amplified more often (P=0.0011).<br>
+      <i>Evidence:</i> dropout hits tend to be active only in the cell type where they were found (the key of fig4E lists A549 dropout hits n=72, H460 dropout hits n=58 and hits in both n=5). The 80 pan-hallmark hits are active in both. They are expressed higher than non-hits in KRAS+ tumors, are upregulated in tumors compared with non-tumor tissue, and are amplified more often (P=0.0011).<br>
       <i>Where:</i> fig4E, fig4F, fig4G, fig4H · res-integration-p3, res-integration-p4</p>` },
     { k: 'plain', source: ['res-aso-p1', 'res-aso-p2', 'res-aso-p3', 'fig5A'], html: `
       <p><b>E · Claim: ASOs confirm a subset: nine, then five, then two.</b><br>
@@ -81,7 +81,7 @@
     { k: 'h', text: 'Controls on single-gene checks' },
     { k: 'plain', source: ['fig1E', 'fig1F', 'fig3C', 'fig3D', 'm-qpcr-p1', 'm-competition-p1', 'res-validation-p3'], html: `
       <ul>
-        <li><b>Non-targeting guide pair</b>: in the DNMBP-AS1 gel the control lane (non-targeting pgRNA) sits beside the pgRNA_9 lane, and the control bar in the RNA chart is set to 1.0.</li>
+        <li><b>Non-targeting guide pair</b>: in the DNMBP-AS1 gel the control lane (non-targeting pgRNA) sits beside the pgRNA_9 lane, and the control bar in the RNA chart sits at about 1.0.</li>
         <li><b>Housekeeping genes</b>: RNA levels are given relative to GAPDH (DNMBP-AS1 chart) or HPRT1 (the ASO qPCR charts).</li>
         <li><b>AAVS1 guides in the competition assay</b>: control cells (GFP, AAVS1 guides) are mixed 1:1 with cells (mCherry) carrying the guide of interest. One panel pairs two AAVS1 guides, one in each color. RPS5, an essential ribosomal gene, is the positive control.</li>
       </ul>` },
@@ -194,7 +194,7 @@
     { k: 'plain', source: ['res-validation-p2', 'res-validation-p4', 'fig3A', 'fig3D'], html: `
       <p>Candidate 205 sits where two genes on opposite strands, LINC00115 and RP11-206L10.11, share a start region (fig3A). The authors used two ASOs per gene in A549 cells. Both LINC00115 ASOs slowed growth (P=0.034 and P=0.018 at 72 h), but the RP11-206L10.11 ASOs had no significant effect (ns). Each growth curve has a qPCR panel beside it showing the RNA level at 72 h (fig3D). The authors conclude that LINC00115, not RP11-206L10.11, drives proliferation, through an RNA-dependent mechanism.</p>` },
     { k: 'bgnd', html: `
-      <p>A "no effect" result only counts if the ASO really lowered its RNA. That is why the qPCR panel matters: it shows each ASO did its job, so the silence of the other gene is a real answer.</p>` },
+      <p>A "no effect" result only counts if the ASO really lowered its RNA. That is why the qPCR panel matters: it lets you check that each ASO did its job, so the silence of the other gene is a real answer.</p>` },
     { k: 'plain', source: ['limitations-p1'], html: `
       <p>Across their ASO tests the authors report that 8/12 (67%) of the hits they tested were confirmed, and they say this suggests that around one-third of screen hits may act via DNA-dependent mechanisms. Lesson <a href="#/lesson/H3">H3</a> reads that sentence closely.</p>` },
     { k: 'h', text: 'Off-target effects: what they are, and how the paper guards against them' },
@@ -211,7 +211,7 @@
       </ul>` },
     { k: 'paper', ref: 'res-aso-p3', quote: `overexpression of neither CHiLL1 nor GCAWKR could rescue ASO-induced phenotypes` },
     { k: 'plain', source: ['res-aso-p3', 'm-rescue-p1'], html: `
-      <p>The classic extra test, putting the RNA back, did not work here. The authors offer two possible reasons: a cis-regulatory mechanism (although they saw no such effect on CHiLL1's nearest neighbor, TNFRSF10B), or unannotated transcript isoforms that the overexpressed copy did not include. They do not say which is right.</p>` },
+      <p>The classic extra test, putting the RNA back, did not work here. The authors offer two possible reasons: a cis-regulatory mechanism (although they saw no such effect on CHiLL1's nearest neighbor, TNFRSF10B), or the loci may act via functional transcript isoforms that remain unannotated and were not tested. They do not say which is right.</p>` },
     { k: 'paper', ref: 'discussion-p5', quote: `strongly suggested that observed phenotypic and molecular effects occur on target (via the intended lncRNA)` },
     { k: 'bgnd', html: `
       <p><b>What this does and does not prove (my evaluation).</b> Several independent lines agree, so a purely off-target explanation would need the same accident to happen with different ASO sequences and with a DNA deletion. That is unlikely. But no single experiment excludes it, and the missing rescue is a real gap (see <a href="#/lesson/H4">H4</a>). Notice the authors' own verb: "strongly suggested", not "proved". Copy that caution in exam answers.</p>` },
@@ -220,11 +220,11 @@
       <p>Each cell line is a different cancer with its own mutations and quirks, its <b>cell background</b>. A gene that matters in one line may matter only because of that line's quirks. A hit that works in <b>different backgrounds</b> is more likely to be a general weak spot. That is what "background independent" means: the same effect in more than one background. It is a step toward generality, not proof of it.</p>` },
     { k: 'paper', ref: 'intro-p5', quote: `Highly focused single background/single hallmark screen designs, including those above, are vulnerable to discovering lncRNAs promoting cell-line-specific phenotypes that do not generalize to the disease in question.` },
     { k: 'plain', source: ['res-integration-p3', 'res-multipheno-p6', 'fig4E'], html: `
-      <p>The authors tested this worry on their own data. Hits from ordinary dropout screens agree poorly between A549 (n=72) and H460 (n=58); only n=5 are shared (fig4E, left). The pan-hallmark hits (n=80) are active in both cell types (fig4E, right). Even the positive controls overlapped only partly: of the 109 in the library, 37 scored in A549 and 16 in H460, and 10 in both (p=0.011, hypergeometric test).</p>` },
+      <p>The authors tested this worry on their own data. Hits from ordinary dropout screens tend to be active only in the cell type where they were discovered (fig4E, left: the key lists A549 dropout hits n=72, H460 dropout hits n=58 and hits in both n=5). The pan-hallmark hits (n=80) are active in both cell types (fig4E, right). Even the positive controls overlapped only partly: of the 109 in the library, 37 scored in A549 and 16 in H460, and 10 in both (p=0.011, hypergeometric test).</p>` },
     { k: 'flag', source: ['res-multipheno-p6', 'res-integration-p3'], html: `
       <p>The paper words the A549 vs H460 comparison in two ways: "a significant concordance among identified targets" (res-multipheno-p6) and "a low degree of concordance" (res-integration-p3). They probably measure different things (the scores of all targets, and the lists of called hits). A significant correlation can still be weak, so read "low" as "weak overlap of hits", not "none".</p>` },
     { k: 'plain', source: ['res-aso-p2', 'res-aso-p3', 'res-aso-p6', 'res-aso-p7', 'res-mechanism-p2', 'fig6I'], html: `
-      <p>They then went beyond A549 and H460. ASOs were retested in H460 and H441 with similar results, and were active in additional KRAS+ and EGFR-mutant cell lines, in H441 spheroids and in a patient-derived organoid. The gene changes after CHiLL1 knockdown correlated between A549 and H460, and so did those after GCAWKR knockdown (R=0.8). In normal lung cells the response was diminished or absent.</p>` },
+      <p>They then tested more models. ASOs were retested in H460 and H441 with similar results, and were active in additional KRAS+ and EGFR-mutant cell lines, in H441 spheroids and in a patient-derived organoid. The gene changes after CHiLL1 knockdown correlated between A549 and H460, and so did those after GCAWKR knockdown (R=0.8). In normal lung cells the response was diminished or absent.</p>` },
     { k: 'flag', source: ['res-aso-p3', 'fig5A', 'm-expmodel-p1'], html: `
       <p>One of the normal lines is printed "CCD-12Lu" in the text of res-aso-p3, but CCD-16Lu in Figure 5A and in the Methods. It is probably one cell line with a typo in one place.</p>` },
     { k: 'plain', source: ['limitations-p2'], html: `
@@ -259,8 +259,8 @@
       ], source: ['res-validation-p4'] },
     { q: 'Which observation shows that ordinary dropout hits are more cell-line-specific than the pan-hallmark hits?',
       options: [
-        { t: 'A549 and H460 dropout hits (n=72 and n=58) shared only n=5, while the 80 pan-hallmark hits were active in both cell types', ok: true, why: 'Right (res-integration-p3, fig4E): single-screen hits tend to work only where they were found.' },
-        { t: 'Most dropout hits were shared by A549 and H460', ok: false, why: 'Reversed: only n=5 were shared.' },
+        { t: 'Dropout hits tended to work only in the cell line where they were found (n=72 and n=58 against n=5 in both), while the 80 pan-hallmark hits were active in both cell types', ok: true, why: 'Right (res-integration-p3, fig4E): single-screen hits tend to be active only in the cell type where they were discovered.' },
+        { t: 'Most dropout hits were shared by A549 and H460', ok: false, why: 'Reversed: hits tend to be active only where they were discovered, and the key of fig4E lists just n=5 hits in both.' },
         { t: 'The pan-hallmark hits were found only in A549', ok: false, why: 'They were active in both cell types (fig4E, right).' },
         { t: 'All 109 positive controls scored in both cell lines', ok: false, why: 'No: 37 scored in A549 and 16 in H460, and only 10 in both (res-multipheno-p6).' },
       ], source: ['res-integration-p3', 'fig4E', 'res-multipheno-p6'] },
@@ -308,7 +308,7 @@
     { k: 'paper', ref: 'limitations-p1', quote: `A similar strategy could also narrow down LINC00115 as the functional lncRNA in the bidirectional locus candidate 205 (Figure 3A).` },
     { k: 'plain', source: ['limitations-p1', 'res-validation-p4', 'fig3D'], html: `<p>The same ASO strategy can pick LINC00115 as the working gene at candidate 205, where two genes share one start region. (The Results already do this with two ASOs per gene: fig3D.)</p>` },
     { k: 'paper', ref: 'limitations-p1', quote: `Overall, we could validate 8/12 (67%) lncRNA hits using ASOs (9 for proliferation/cisplatin, 3 for migration), suggesting that around one-third of screen hits may act via DNA-dependent mechanisms.` },
-    { k: 'plain', source: ['limitations-p1', 'res-aso-p1'], html: `<p>Overall, ASOs confirmed 8 of 12 hits (67%): 9 were tested for proliferation/cisplatin and 3 for migration. The authors read this as: around one-third of screen hits may act through DNA rather than RNA. The nine proliferation/cisplatin hits were chosen manually from top-ranked hits for novelty and lack of protein-coding evidence.</p>` },
+    { k: 'plain', source: ['limitations-p1', 'res-aso-p1'], html: `<p>Overall, ASOs confirmed 8 of 12 hits (67%): 9 were tested for proliferation/cisplatin and 3 for migration. The authors read this as: around one-third of screen hits may act through DNA rather than RNA. The nine lncRNAs tested for proliferation and cisplatin sensitivity (Tier 1) were chosen manually from top-ranked hits for novelty and lack of protein-coding evidence.</p>` },
     { k: 'flag', source: ['limitations-p1', 'fig5B', 'res-validation-p5', 'res-aso-p2'], html: `<p><b>Counting note (my reading).</b> Candidate 215 is named among the five Tier 2 lncRNAs (the legend of fig5B lists the other four and says data were not available for 215) and also among the three migration validations. So "12" probably counts 215 once for each phenotype. The paper does not explain its counting: quote its numbers as printed.</p>` },
     { k: 'bgnd', html: `<p><b>Why the last three sentences matter.</b> Reporting your own failures is a mark of honest work. But 8/12 comes from a small set that the authors chose, so "one-third" is a rough estimate, not a measured rate for all hits. An ASO can also fail for technical reasons, so "not confirmed" does not prove a DNA-dependent mechanism.</p>` },
 
@@ -317,8 +317,8 @@
     { k: 'plain', source: ['limitations-p2'], html: `<p>Several issues remain. The study found known and new lncRNAs that promote NSCLC, but it cannot rule out that other lncRNAs matter too. The hit list is not a complete census.</p>` },
     { k: 'bgnd', html: `<p><b>Why it matters.</b> A hit list is a floor, not a ceiling. "Not a hit" does not mean "no role". In an exam, never write that the paper showed other lncRNAs are unimportant.</p>` },
     { k: 'paper', ref: 'limitations-p2', quote: `Despite targeting an extensive catalog comprising 831 lncRNAs detected at a permissive expression cutoff in A549 cells, it is likely that we overlooked many valuable targets due to the relative inefficiency of CRISPR-del as a perturbation compared with ORF mutation and also due to ongoing annotation incompleteness, resulting in lncRNAs that were either not screened or whose TSS was incorrectly targeted.` },
-    { k: 'plain', source: ['limitations-p2', 'res-multipheno-p3', 'fig2F'], html: `<p>Even with 831 lncRNAs detected in A549 cells (at a permissive, low cutoff), many valuable targets were probably missed, for two reasons. Deleting a start site is less efficient than breaking the protein-coding sequence directly (ORF mutation). And the catalogs are still incomplete, so some lncRNAs were never screened, or the wrong start site was cut. (The Results show the first gap: promoter-deleting guides had a detectable but lower impact than ORF-targeting guides, fig2F.)</p>` },
-    { k: 'bgnd', html: `<p><b>Why it matters.</b> Three gaps hide in this sentence: which lncRNAs were in the library at all (the catalog was built from A549 cells), how well the tool switches genes off, and whether the start site is where the catalog says it is. Each gap lowers the number of true hits you can find.</p>` },
+    { k: 'plain', source: ['limitations-p2', 'res-multipheno-p3', 'fig2F'], html: `<p>Even with 831 lncRNAs detected in A549 cells (at a permissive expression cutoff), many valuable targets were probably missed, for two reasons. Deleting a start site is less efficient than breaking the protein-coding sequence directly (ORF mutation). And the catalogs are still incomplete, so some lncRNAs were never screened, or the wrong start site was cut. (The Results show the first gap: promoter-deleting guides had a detectable but lower impact than ORF-targeting guides, fig2F.)</p>` },
+    { k: 'bgnd', html: `<p><b>Why it matters.</b> Three gaps hide in this sentence: which lncRNAs were in the library at all (the catalog came from one cell line's expression data), how well the tool switches genes off, and whether the start site is where the catalog says it is. Each gap lowers the number of true hits you can find.</p>` },
     { k: 'paper', ref: 'limitations-p2', quote: `For example, we could correctly identify some lncRNAs known to be involved in lung cancer pathogenesis like PVT1, LINC00680, and PCAT7 (Figure 2H) but, surprisingly, not MALAT1 or MIAT.` },
     { k: 'plain', source: ['limitations-p2'], html: `<p>As a check, the screen did find known lung-cancer lncRNAs (PVT1, LINC00680, PCAT7) but, surprisingly, missed MALAT1 and MIAT.</p>` },
     { k: 'flag', source: ['limitations-p2', 'fig2G', 'fig2H'], html: `<p>The sentence cites Figure 2H, but PVT1, LINC00680 and PCAT7 are labelled in fig2G (the A549 dropout plot), not in fig2H. It is probably a panel-letter slip: look in fig2G.</p>` },
@@ -380,6 +380,115 @@
         { t: 'Ignore it: declarations are only required when fraud is suspected', ok: false, why: 'Journals ask for declarations so that readers can weigh possible influence. Fraud is a separate matter.' },
         { t: 'Conclude that the patent proves the targets work', ok: false, why: 'The paragraph says a patent application was filed. That is a request, not a result, and it is not evidence that the targets work.' },
       ], source: ['decl-p1'] },
+  ],
+}
+);
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+/* ============================================================================================== H4 */
+{
+  id: 'H4',
+  body: [
+    { k: 'h', text: 'Claim → Check → Gap → Fix' },
+    { k: 'bgnd', html: `
+      <p>A good critique is not "is it good or bad?". It has four steps: the <b>Claim</b>; the <b>Checks</b> that support it (H1); the <b>Gap</b> that remains (H3); and the <b>Fix</b>, the experiment that would close the gap. A fix is only useful if you also say what each possible result would mean.</p>
+      <p>Everything under "Fix" in this lesson is <b>my reasoning</b>, not the paper's. What the paper itself says stays in the blue boxes, with sources.</p>` },
+    { k: 'svg', caption: 'One worked example of the four-step habit, using this paper. The Gap and Fix boxes are my evaluation; the Claim and Check boxes restate what the paper reports.',
+      svg: `<svg viewBox="0 0 480 304" role="img" aria-label="Four stacked boxes joined by arrows: Claim, knocking down CHiLL1 or GCAWKR slows lung cancer cells; Check, two ASOs, a control ASO, CRISPR-del agrees, flat cultures, spheroids and one organoid line; Gap, no rescue, no animal test, one organoid line, small n in some panels; Fix, a working rescue, a mouse test with RNA level measured, more organoid lines, more replicates.">
+        <rect x="6" y="6" width="96" height="58" rx="8" class="f-blue"/><text x="54" y="41" class="mid b l">CLAIM</text>
+        <rect x="112" y="6" width="362" height="58" rx="8" class="f-blue"/><text x="124" y="30" class="s">Knocking down CHiLL1 or GCAWKR slows lung</text><text x="124" y="49" class="s">cancer cells, and less so normal lung cells</text>
+        <path d="M54 64 V83" class="arrow"/>
+        <rect x="6" y="84" width="96" height="58" rx="8" class="f-green"/><text x="54" y="119" class="mid b l">CHECK</text>
+        <rect x="112" y="84" width="362" height="58" rx="8" class="f-green"/><text x="124" y="108" class="s">Two ASOs, a control ASO, CRISPR-del agrees,</text><text x="124" y="127" class="s">flat cultures, spheroids, one organoid line</text>
+        <path d="M54 142 V161" class="arrow"/>
+        <rect x="6" y="162" width="96" height="58" rx="8" class="f-orange"/><text x="54" y="197" class="mid b l">GAP</text>
+        <rect x="112" y="162" width="362" height="58" rx="8" class="f-orange"/><text x="124" y="186" class="s">No rescue, no animal test, one organoid line,</text><text x="124" y="205" class="s">small n in some mechanism panels</text>
+        <path d="M54 220 V239" class="arrow"/>
+        <rect x="6" y="240" width="96" height="58" rx="8" class="f-purple"/><text x="54" y="275" class="mid b l">FIX</text>
+        <rect x="112" y="240" width="362" height="58" rx="8" class="f-purple"/><text x="124" y="264" class="s">A rescue that works, a mouse test with RNA</text><text x="124" y="283" class="s">level measured, more organoid lines, more n</text>
+      </svg>` },
+
+    { k: 'h', text: 'Open points, from the paper' },
+    { k: 'plain', source: ['limitations-p1', 'res-aso-p1', 'res-aso-p3', 'res-aso-p7', 'discussion-p5', 'limitations-p2', 'fig5A', 'fig5F', 'fig6B', 'fig6K', 'fig3D', 'fig5E', 'fig6L', 'm-aso-p1'], html: `
+      <ul>
+        <li><b>DNA-dependent hits.</b> The authors say around one-third of screen hits may act via DNA-dependent mechanisms, based on 8/12 hits confirmed by ASOs. The nine proliferation/cisplatin hits were chosen manually (limitations-p1, res-aso-p1).</li>
+        <li><b>No rescue.</b> Overexpression of neither CHiLL1 nor GCAWKR could rescue ASO-induced phenotypes (res-aso-p3).</li>
+        <li><b>No in vivo delivery yet.</b> The Discussion says future efforts will be required to refine ASO sequences and chemistry and to deliver them in vivo (discussion-p5). The ASO tests in the main text are in cultured cells, spheroids and organoids.</li>
+        <li><b>One organoid line.</b> The organoid test used BE874, grown from a single KRAS+ patient-derived xenograft, and the main text describes CHiLL1 ASOs only (fig5F, res-aso-p7).</li>
+        <li><b>Two screening backgrounds</b> (limitations-p2).</li>
+        <li><b>Small n.</b> The cell-cycle assay has n = 2 biological replicates (fig6K), and the FISH ratio panel prints n=1 (fig6B).</li>
+        <li><b>One-tailed tests.</b> Several legends report one-tailed t tests (fig3D, fig5E, fig5F, fig6L).</li>
+        <li><b>Different doses.</b> The Methods give 25 nM ASO for A549, H460, NCI-H441 and MRC5-CV1 but 10 nM for HBEC3-KT and CCD-16LU, and do not say why (m-aso-p1). For the normal cells, fig5A reports the change in viability; the main text does not report the knockdown level there.</li>
+      </ul>` },
+    { k: 'bgnd', html: `
+      <p><b>How I weigh them (my evaluation).</b> None of these is an error. Each is a place where the evidence is thinner than a bigger claim would need. The paper's claim is smaller than "this is a drug": it says promising <i>targets</i>, with delivery still to be solved. So judge each weakness against the claim actually made.</p>
+      <p>Two points deserve a question. The dose difference: a lower dose may have been chosen to limit transfection toxicity (the Methods do not say), but it means a smaller response in those two lines cannot yet be read as pure cancer selectivity. And one-tailed tests only ask "is it lower?", an easier bar than a two-tailed test; they are fair when the direction was fixed in advance, but a skeptic would prefer two-tailed.</p>` },
+
+    { k: 'h', text: 'Experiments that would strengthen the work' },
+    { k: 'bgnd', label: '📚 Background · my suggestions, not from the paper', html: `
+      <p><b>1. A rescue that can work.</b><br><i>Weak spot:</i> overexpression did not rescue the ASO phenotype, so "on-target" rests on indirect evidence.<br><i>Experiment:</i> put the RNA back from a construct the ASO cannot recognize (for example with the ASO's target site altered), then treat with the ASO.<br><i>If growth returns:</i> strong proof that the RNA is the cause. <i>If not:</i> either the effect is off-target, or the lncRNA works only when made at its own locus (the cis idea the authors raise). Those two options then need separate tests.</p>
+      <p><b>2. A second, ASO-independent knockdown.</b><br><i>Weak spot:</i> the on-target case leans on ASOs, and CRISPR-del acts on DNA.<br><i>Experiment:</i> remove the two RNAs by a method that works differently, such as Cas13 (which the authors suggest for another purpose).<br><i>Same phenotypes:</i> an ASO-specific artifact becomes very unlikely. <i>Different phenotypes:</i> look for something particular to the ASOs.</p>
+      <p><b>3. A matched-dose comparison with normal cells.</b><br><i>Weak spot:</i> two normal lines got a lower dose than the cancer lines, and the knockdown in normal cells is not reported in the main text.<br><i>Experiment:</i> for the same ASOs, measure RNA knockdown and a dose-response curve (several concentrations) in cancer and normal lines.<br><i>Equal knockdown but normal cells barely react:</i> a real safety window. <i>Weaker knockdown, or reactions only at higher doses:</i> the "low toxicity" claim is weaker than it looks.</p>
+      <p><b>4. More models.</b><br><i>Weak spot:</i> two screening backgrounds, and organoid data from one patient-derived line.<br><i>Experiment:</i> test both ASOs in organoids from several patients, KRAS+ and others, and ask whether the response follows the lncRNA's expression level.<br><i>Most respond:</i> good generality. <i>Only some respond:</i> you learn which tumors might benefit, which is useful in itself.</p>
+      <p><b>5. An animal test with a delivery readout.</b><br><i>Weak spot:</i> no in vivo delivery is shown.<br><i>Experiment:</i> treat mice carrying human tumors with the ASO or a non-targeting control ASO, and measure the RNA level in the tumor, tumor growth and signs of toxicity (such as body weight).<br><i>Tumors shrink, RNA is down, no toxicity:</i> the strongest support so far. <i>No shrinkage:</i> the tumor RNA level tells you why. RNA not lowered means a delivery problem. RNA lowered but no effect means the dependence seen in dishes does not hold in a tumor.</p>
+      <p><b>6. A bigger, unbiased ASO test of screen hits.</b><br><i>Weak spot:</i> the confirmation rate comes from a small set the authors chose, yet it is used to say how many hits may be DNA-dependent.<br><i>Experiment:</i> pick hits at random, including weaker ones, test each with two ASOs, and report the confirmation rate with a confidence interval.<br><i>Stays near two-thirds:</i> the estimate stands. <i>Much lower:</i> the screen has more DNA-dependent false positives than the paper says. <i>Higher:</i> fewer.</p>
+      <p><b>7. (Cheap) More replicates.</b> Repeat the n = 2 and n=1 mechanism panels with more replicates and a two-tailed test fixed in advance. If the pattern holds, the mechanism details are solid. If not, drop the detail.</p>` },
+
+    { k: 'h', text: 'Strengths and weaknesses, side by side' },
+    { k: 'plain', source: ['res-integration-p3', 'res-multipheno-p3', 'res-aso-p3', 'res-aso-p6', 'res-aso-p7', 'limitations-p1', 'limitations-p2', 'discussion-p2', 'discussion-p4', 'fig4B', 'fig4E', 'fig2F', 'fig6E', 'fig5C', 'fig5E', 'fig5F'], html: `
+      <p><b>Strengths the paper shows:</b></p>
+      <ul>
+        <li><b>Two backgrounds, three hallmarks, one ranking.</b> Parallel screens in A549 and H460, and a combined ranking that classified controls better than single dropout screens (fig4B). Pan-hallmark hits were active in both cell types (fig4E).</li>
+        <li><b>Controls behaved.</b> Positive-control guides were depleted and neutral ones were not (fig2F).</li>
+        <li><b>Independent confirmation.</b> Two ASOs per gene plus CRISPR-del for the final two, and highly correlated RNA-seq changes between two CHiLL1 ASOs (res-aso-p3, fig6E).</li>
+        <li><b>Escalating models.</b> Flat cultures, spheroids and a patient-derived organoid line (fig5C, fig5E, fig5F).</li>
+        <li><b>A diminished or absent response in normal lung cells</b> (res-aso-p3).</li>
+        <li><b>Open about limits.</b> The Limitations name likely false positives and known lncRNAs that were missed (limitations-p1, limitations-p2).</li>
+        <li><b>A resource.</b> The library and the maps are offered for future discovery (discussion-p2, discussion-p4).</li>
+      </ul>` },
+    { k: 'bgnd', html: `<p><b>Weaknesses, in one line each (from the open points above).</b> On-target proof is indirect (no rescue). Everything is in cultured cells, with delivery unsolved. Generality rests on two screening backgrounds and one organoid line. The normal-cell comparison used different doses. A few mechanism panels have n = 2 or n=1. Notice the pattern: most weaknesses are <i>what a first paper cannot yet do</i>, not mistakes in what it did.</p>` },
+    { k: 'h', text: 'A sample essay answer' },
+    { k: 'bgnd', label: '📚 Background · a sample answer, in my words', html: `
+      <p><b>Question:</b> <i>"Critically evaluate the evidence that CHiLL1 and GCAWKR are promising therapeutic targets in lung cancer."</i></p>
+      <p><b>1. Position.</b> The evidence makes them credible <i>candidate</i> targets. It does not yet show that they are validated drug targets.</p>
+      <p><b>2. Strengths.</b> They emerged from a systematic screen across three hallmarks and two cell lines, ranked by a method that classified control genes better than single dropout screens (AUC 0.82 against 0.73 and 0.54). Their phenotypes were reproduced with two independent ASOs per gene and with CRISPR deletion, and gene changes after two CHiLL1 ASOs were highly correlated (R=0.75). The effect held in spheroids and in one organoid line, and was diminished or absent in three non-transformed lung cell lines.</p>
+      <p><b>3. Weaknesses.</b> Overexpression did not rescue the ASO phenotype, so the on-target case is indirect. No in vivo delivery is shown, and the authors say it is still needed. The organoid data come from one patient-derived line, with CHiLL1 ASOs only in the main text. The normal-cell comparison used a lower dose in two of the three lines, and some mechanism panels have n = 2 or n=1.</p>
+      <p><b>4. What would help.</b> A rescue with an ASO-resistant construct, a matched-dose comparison in normal cells, and a mouse study that measures knockdown in the tumor.</p>
+      <p><b>5. Verdict.</b> Careful, well-controlled discovery work with an honest limitations section. The therapeutic claim is framed as "potential", which fits the evidence; the next step is in vivo evidence.</p>` },
+    { k: 'memory', html: `
+      <p><b>Memory aid: Claim, Check, Gap, Fix.</b> Think of a bridge inspector's report. <b>Claim:</b> the bridge holds forty tons. <b>Check:</b> the load tests already done. <b>Gap:</b> the part not yet tested. <b>Fix:</b> the extra test that would settle it, and what each result would mean.</p>
+      <p>Where the analogy breaks: nobody can test everything in biology either, so the skill is to say which gap matters most for the claim actually made.</p>` },
+  ],
+  appears: [
+    { ref: 'discussion-p5', note: 'What makes CHiLL1 and GCAWKR promising, and what future work (in vivo delivery) must do.' },
+    { ref: 'limitations-p1', note: 'The 8/12 confirmation rate and the "around one-third" estimate.' },
+    { ref: 'limitations-p2', note: 'Two monolayer cell lines, missed lncRNAs, and Cas13 as a future tool.' },
+    { ref: 'res-aso-p3', note: 'Normal cells, two independent ASOs, and the overexpression that could not rescue.' },
+    { ref: 'res-aso-p7', note: 'The organoid test: CHiLL1 ASOs in one patient-derived line.' },
+    { ref: 'm-aso-p1', note: 'Final ASO doses: 25 nM for most lines, 10 nM for two of the normal lines.' },
+  ],
+  checks: [
+    { q: 'The overexpression rescue did not work. Which new experiment would best strengthen the claim that the RNA itself causes the ASO phenotype?',
+      options: [
+        { t: 'Re-express the lncRNA from a construct the ASO cannot bind, then add the ASO and see whether growth returns', ok: true, why: 'Right: if growth returns, the RNA is the cause. If it does not, you must ask whether the effect is off-target or needs the RNA to be made at its own locus (res-aso-p3).' },
+        { t: 'Test the same ASOs in more cell lines', ok: false, why: 'More cell lines test generality. They do not show that the RNA causes the effect.' },
+        { t: 'Count how many TCGA tumors express the lncRNA', ok: false, why: 'Expression in tumors shows relevance, not cause.' },
+        { t: 'Give the normal cells a higher ASO dose', ok: false, why: 'That addresses safety, not whether the cancer-cell effect is on-target.' },
+      ], source: ['res-aso-p3'] },
+    { q: 'A mouse tumor treated with a CHiLL1 ASO does not shrink. Which extra measurement best tells you whether delivery or biology is the problem?',
+      options: [
+        { t: 'The CHiLL1 RNA level in the treated tumor', ok: true, why: 'Right: if the RNA is not lowered, the ASO did not reach or act in the tumor (the delivery problem the authors say is still to be solved, discussion-p5). If it is lowered but the tumor still grows, the dependence seen in culture does not hold in vivo.' },
+        { t: 'The body weight of the mice', ok: false, why: 'Body weight is a toxicity readout. It does not tell you whether the ASO reached the tumor.' },
+        { t: 'The A549 growth curve in a dish', ok: false, why: 'That repeats the culture result. It says nothing about what happened inside the mouse.' },
+        { t: 'The share of patient tumors that express CHiLL1', ok: false, why: 'This is a population statistic. It is unrelated to what happened in one mouse tumor.' },
+      ], source: ['discussion-p5'] },
+    { q: 'The authors infer "around one-third of screen hits may act via DNA-dependent mechanisms" from 8/12 hits confirmed by ASOs. What is the fairest caution?',
+      options: [
+        { t: 'Only 12 hits were tested, the authors chose them, and an ASO that fails may fail for technical reasons, so "one-third" is a rough estimate', ok: true, why: 'Right (limitations-p1, res-aso-p1): the set was small and chosen, and "not confirmed" is not proof of a DNA-dependent mechanism.' },
+        { t: '8/12 is under 50%, so most hits are false positives', ok: false, why: '8/12 is 67%, which is more than half. The authors infer that roughly the remaining one-third may act via DNA.' },
+        { t: 'ASO validation cannot say anything about DNA versus RNA mechanisms', ok: false, why: 'It can: an ASO acts on the RNA only, which is how the paper separates the two (res-validation-p4).' },
+        { t: 'The estimate is invalid because no control ASO was used', ok: false, why: 'A non-targeting control ASO was used: ASO results are normalized to it (fig5A).' },
+      ], source: ['limitations-p1', 'res-aso-p1', 'res-validation-p4', 'fig5A'] },
   ],
 }
 );

@@ -175,3 +175,163 @@
   ],
 },
 );
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+
+/* ============================================================================================== D8 */
+{
+  id: 'D8',
+  body: [
+    { k: 'h', text: 'One question per assay' },
+    { k: 'bgnd', html: `<p>After an RNA is switched off, what changes in the cells? The authors ask four everyday questions, and each has a simple assay: <b>How many cells are alive? Are they dying? Are they dividing less? Do they move less?</b> Each assay gives one number, always compared with a control (the non-targeting ASO).</p>` },
+    { k: 'h', text: 'How many cells are alive? Viability and CellTiter-Glo' },
+    { k: 'bgnd', html: `<p><b>Cell viability</b> means how many cells in a dish are alive and healthy. A low number can mean slower growth, more death, or both, so viability alone cannot say which. In this paper it is the main readout of "growth" after an ASO or a deletion.</p>
+<p><b>CellTiter-Glo</b> measures viability with light. Living cells make <b>ATP</b>, the cell's energy currency; dead cells stop making it within minutes. The reagent opens the cells and supplies luciferase, the enzyme that makes fireflies glow, which uses ATP to produce light (<b>luminescence</b>). A plate reader reports <b>RLU</b>, relative light units: more living cells, more ATP, more light. A separate "3D" version exists for spheroids and organoids because it opens compact clumps more strongly.</p>` },
+    { k: 'h', text: 'Dying, or dividing less? Annexin V and the cell-cycle stain' },
+    { k: 'bgnd', html: `<p><b>Annexin V.</b> A healthy cell keeps a fatty molecule called phosphatidylserine on the inner face of its outer membrane. In early apoptosis the molecule flips to the outside, and Annexin V, a protein carrying a fluorescent tag, sticks to it. A second dye (a "viability dye") only enters cells with leaky membranes, which are dead or nearly so. Flow cytometry then sorts cells into four groups: alive (neither stain), <b>early apoptotic</b> (Annexin V only), late apoptotic (both) and necrotic (dye only).</p>
+<p><b>Cell-cycle assay.</b> A cell copies its DNA before dividing, so its DNA amount shows where it is in the cell cycle. <b>DAPI</b> is a blue dye that sticks to DNA, so its brightness per cell tracks DNA amount: G1 cells have 1×, G2 and mitotic cells 2×, S-phase cells are in between. Flow cytometry draws a histogram with two peaks and a low plateau. The peaks overlap, so software fits curves to the histogram, the <b>Dean-Jett-Fox (DJF) model</b>, to estimate the share of cells in each phase. A treatment that stalls cells at a checkpoint makes the matching phase grow. <b>Ki-67</b> is a protein found in cells that are actively cycling and missing from resting cells, so a tagged Ki-67 antibody tells cycling cells from resting ones. (DNA amount alone cannot separate G2 from mitosis.)</p>` },
+    { k: 'svg', caption: 'A DNA-content histogram: peaks for G1 (1× DNA) and G2/M (2× DNA); a treatment that stalls cells in G2 raises the second peak.',
+      svg: '<svg viewBox="0 0 480 300" role="img" aria-label="A histogram of DNA amount per cell with a tall G1 peak, a lower plateau for S phase and a G2 and M peak. A dashed curve shows a treated sample with a lower G1 peak and a higher G2 and M peak">' +
+        '<text x="8" y="20" class="b">DNA amount per cell (DAPI brightness)</text>' +
+        '<path d="M40 40 V230 H450" class="ln thin"/><text x="50" y="52" class="s">number of cells</text>' +
+        '<path d="M60 230 C90 230 100 90 140 90 C180 90 190 190 210 190 C240 190 255 150 290 150 C325 150 330 230 360 230" class="ln thick"/>' +
+        '<path d="M60 230 C90 230 100 120 140 120 C180 120 190 190 210 190 C240 190 255 100 290 100 C325 100 330 230 360 230" class="ln thick dash s-orange"/>' +
+        '<text x="140" y="252" class="mid s b">G1 (1× DNA)</text><text x="215" y="252" class="mid s b">S</text><text x="300" y="252" class="mid s b">G2/M (2× DNA)</text>' +
+        '<text x="245" y="276" class="mid s">DAPI brightness = DNA amount</text>' +
+        '<path d="M300 40 H328" class="ln thick"/><text x="334" y="45" class="s">control</text>' +
+        '<path d="M300 62 H328" class="ln thick dash s-orange"/><text x="334" y="67" class="s">stalled in G2/M</text></svg>' },
+    { k: 'h', text: 'Do they move less? Crystal violet and OD' },
+    { k: 'bgnd', html: `<p>In a transwell assay (lesson D5), cells in the upper chamber crawl through tiny pores toward a serum-rich lower chamber. To count those that made it, the cells are stained with <b>crystal violet</b>, a purple dye that sticks to cells. The cells left on top of the membrane are wiped off, and the dye on the underside is dissolved. A plate reader then measures the <b>optical density (OD)</b>, also called absorbance: how much light of one colour the purple liquid soaks up. Over the working range, more dye gives a higher OD, so a higher OD means more cells crossed.</p>
+<p>One caution: crystal violet counts cells, so a treatment that simply leaves fewer cells alive can lower the OD even if each cell moves normally. That is why such assays are kept short and read against a control.</p>` },
+    { k: 'memory', html: `<p><b>Memory aid:</b> four assays, four "senses". CellTiter-Glo = <i>light</i> from living cells (a glow-stick). Annexin V = a <i>flag</i> on a dying cell. DAPI = a <i>DNA ruler</i>, and Ki-67 = an "I'm in the race" badge. Crystal violet = a <i>purple stain</i>, read like the darkness of paint.</p>` },
+    { k: 'h', text: 'How this paper uses them' },
+    { k: 'plain', source: ['m-viability-2d-p1', 'm-viability-3d-p1', 'res-aso-p6', 'fig5E'], html: `<p><b>Viability.</b> In flat (2D) cultures the number of viable cells was estimated with CellTiter-Glo 2.0 at 24, 48, 72, 96 and/or 144 h. For spheroids and organoids the 3D version was read at T0 (after 4 h) and again after one week. In Figure 5E (H441 spheroids, 7 days after ASO transfection) the CHiLL1 and GCAWKR ASOs lowered viability, approaching the positive-control ASO.</p>` },
+    { k: 'paper', ref: 'res-mechanism-p5', quote: 'knockdown of CHiLL1, but not GCAWKR, resulted in a significant increase of early apoptotic cells' },
+    { k: 'plain', source: ['res-mechanism-p5', 'm-apoptosis-p1', 'fig6G'], html: `<p>24 h after ASO transfection, cells were stained with PE-labelled Annexin V and a viability dye (unstained cells served as the control for the gates) and read by flow cytometry. Figure 6G (n = 2) shows the shares of alive, early-apoptotic, late-apoptotic and necrotic cells. CHiLL1 knockdown, but not GCAWKR knockdown, raised the early-apoptotic share.</p>` },
+    { k: 'paper', ref: 'res-mechanism-p6', quote: 'knockdown of GCAWKR, but not CHiLL1, led to an increase of cells in the G2 phase' },
+    { k: 'plain', source: ['res-mechanism-p6', 'm-cellcycle-p1', 'fig6K'], html: `<p>After 24 h the cells were fixed, stained with a Ki-67 antibody and DAPI, read on a flow cytometer, and the phases were assigned with the DJF model. Figure 6K (n = 2 biological replicates) gives the share of cells in G1, S and G2: GCAWKR ASO2 lowers G1 (P = 0.036) and raises G2 (P = 0.009); CHiLL1 ASO1 does not.</p>` },
+    { k: 'paper', ref: 'res-mechanism-p6', quote: 'GCAWKR targets are also enriched for migration genes, and knockdown led to impaired cell migratory capability' },
+    { k: 'plain', source: ['res-mechanism-p6', 'm-migration-assay-p1', 'fig6L', 'res-validation-p5'], html: `<p>A549 cells were seeded 24 h after ASO transfection (35,000 per transwell) in the upper chamber without serum, with 10% FBS below as the attractant. After 24 h the crossed cells were stained, the dye was dissolved and read at 595 nm. In Figure 6L the GCAWKR ASO2 bar is at about 0.4 of the control, which is set to 1.0 (P = 0.002, n = 4; the 0.4 is read off the bar). ASOs against three screen hits (candidates 215, 448 and 489) also impaired A549 migration (Figures 3E and 3F).</p>` },
+    { k: 'flag', source: ['m-cellcycle-p1', 'fig6K', 'fig6G', 'fig3F'], html: `<p>Heads-up: the Methods list both Ki-67 and DAPI, but the text and Figure 6K report only the share of cells in G1, S and G2. Figures 6G and 6K each rest on n = 2 replicates. Figure 3F prints "Cristal violet OD" on its axis (the dye is crystal violet).</p>` },
+  ],
+  appears: [
+    { ref: 'm-viability-3d-p1', note: 'CellTiter-Glo 3D for H441 spheroids: a reading at T0 and another after one week.' },
+    { ref: 'm-apoptosis-p1', note: 'Annexin V plus a viability dye detect early apoptotic and dead cells by flow cytometry.' },
+    { ref: 'm-cellcycle-p1', note: 'Ki-67 and DAPI staining; phases assigned with the DJF model.' },
+    { ref: 'm-migration-assay-p1', note: 'Transwell migration read as crystal violet absorbance at 595 nm.' },
+  ],
+  checks: [
+    { q: 'A CellTiter-Glo well gives more light than a control well. What is the best reading?',
+      options: [
+        { t: 'There are more living cells: living cells make ATP, and the reagent turns ATP into light', ok: true, why: 'Right: light tracks ATP, and ATP tracks the number of living cells.' },
+        { t: 'There are more dead cells, because dead cells give off light', ok: false, why: 'Dead cells stop making ATP quickly, so they add little or no light.' },
+        { t: 'The cells are dividing faster, because viability measures only division', ok: false, why: 'Viability counts living cells. It cannot tell faster growth from better survival, which is why other assays are added.' },
+      ], bg: true },
+    { q: 'In an Annexin V test, a cell stained by Annexin V but not by the viability dye is…',
+      options: [
+        { t: 'in early apoptosis: its membrane lipid has flipped outward but the membrane is still intact', ok: true, why: 'Right: Annexin V reports the flipped lipid; the dye only enters cells with leaky membranes.' },
+        { t: 'alive and healthy', ok: false, why: 'A healthy cell keeps the lipid on the inside, so Annexin V does not stick to it.' },
+        { t: 'dead, with a leaky membrane', ok: false, why: 'A leaky membrane would let the viability dye in. This cell is not stained by the dye.' },
+      ], bg: true },
+    { q: 'What did the cell-cycle assay show after GCAWKR knockdown (Figure 6K)?',
+      options: [
+        { t: 'More cells in G2 and fewer in G1', ok: true, why: 'Right (res-mechanism-p6): GCAWKR knockdown, but not CHiLL1 knockdown, increased cells in G2.' },
+        { t: 'More cells in early apoptosis', ok: false, why: 'That is the CHiLL1 result, seen in the Annexin V assay of Figure 6G.' },
+        { t: 'No change in any phase', ok: false, why: 'Figure 6K prints P = 0.036 for G1 and P = 0.009 for G2 for GCAWKR ASO2, so the shares did change.' },
+      ], source: ['res-mechanism-p6', 'fig6K'] },
+    { q: 'In Figure 6L the control bar is 1.0 and the GCAWKR ASO2 bar is lower. What does a lower crystal violet OD mean?',
+      options: [
+        { t: 'Less dye was recovered from the underside of the membrane, so fewer cells crossed', ok: true, why: 'Right: OD tracks dye, and dye tracks the number of cells that crossed.' },
+        { t: 'The cells that crossed were smaller', ok: false, why: 'OD does not measure cell size; it measures how much dye the solution absorbs.' },
+        { t: 'The cells travelled a shorter distance', ok: false, why: 'The assay counts cells that crossed the membrane. It does not measure distance.' },
+      ], source: ['fig6L', 'res-mechanism-p6'] },
+  ],
+},
+);
+
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push(
+
+/* ============================================================================================== D9 */
+{
+  id: 'D9',
+  body: [
+    { k: 'h', text: 'Why location matters' },
+    { k: 'bgnd', html: `<p>Where an RNA sits in the cell is a clue to what it does. A lncRNA that stays in the nucleus may help control genes, while one in the cytoplasm may influence messenger RNAs or proteins (lesson B6). Location is a clue, not proof. Two methods find the location; a third asks whether the RNA really causes the effect you saw.</p>` },
+    { k: 'h', text: 'RNA-FISH: seeing single RNAs' },
+    { k: 'bgnd', html: `<p><b>FISH</b> (fluorescence in situ hybridization; "in situ" means in its original place) makes RNA molecules glow where they sit. The cells are fixed (preserved) so that nothing moves. Short, single-stranded DNA <b>probes</b> are then added, each designed to base-pair with the target RNA and each carrying a fluorescent dye. Many probes (a <b>probe set</b>) bind along one RNA, so one RNA molecule lights up as a bright dot, while a probe stuck somewhere by accident gives only a faint glow. The nucleus is stained with DAPI (lesson D8), so you can see whether a dot sits inside or outside it.</p>
+<p>Two things make FISH believable. Lowering the target RNA (for example with an ASO) should make the dots disappear. And counting the dots tells you how many RNA molecules a cell holds, often only a few for a lncRNA.</p>` },
+    { k: 'svg', caption: 'RNA-FISH: each dot is one RNA molecule covered with dye-carrying probes; the nucleus stain shows where the dot sits.',
+      svg: '<svg viewBox="0 0 480 290" role="img" aria-label="Left: a cell with a nucleus; green dots for CHiLL1 lie in the cytoplasm and orange dots for GCAWKR lie in the nucleus. Right: a zoom on one RNA strand with five short probes attached, each carrying a dye, so that one RNA shows as one bright dot">' +
+        '<ellipse cx="125" cy="118" rx="112" ry="92" class="f-gray"/><ellipse cx="125" cy="118" rx="50" ry="44" class="f-blue"/>' +
+        '<text x="125" y="154" class="mid s b">nucleus</text><text x="125" y="202" class="mid s b">cytoplasm</text>' +
+        '<circle cx="108" cy="98" r="4" class="solid-orange"/><circle cx="142" cy="106" r="4" class="solid-orange"/><circle cx="116" cy="130" r="4" class="solid-orange"/><circle cx="140" cy="128" r="4" class="solid-orange"/>' +
+        '<circle cx="46" cy="100" r="4" class="solid-green"/><circle cx="52" cy="150" r="4" class="solid-green"/><circle cx="200" cy="96" r="4" class="solid-green"/><circle cx="206" cy="146" r="4" class="solid-green"/><circle cx="150" cy="186" r="4" class="solid-green"/><circle cx="80" cy="182" r="4" class="solid-green"/>' +
+        '<circle cx="24" cy="244" r="5" class="solid-green"/><text x="36" y="249" class="s">CHiLL1: mostly cytoplasm</text>' +
+        '<circle cx="24" cy="268" r="5" class="solid-orange"/><text x="36" y="273" class="s">GCAWKR: mostly nucleus</text>' +
+        '<path d="M222 112 H258" class="arrow"/>' +
+        '<rect x="266" y="34" width="208" height="206" rx="10" class="f-none"/>' +
+        '<text x="370" y="58" class="mid s b">zoom: one RNA molecule</text>' +
+        '<path d="M282 112 C298 92 314 132 330 112 S362 92 378 112 S410 132 426 112 S450 100 458 112" class="ln thick s-orange"/>' +
+        '<path d="M300 118 V142 M330 118 V142 M360 118 V142 M390 118 V142 M420 118 V142" class="ln thin s-blue"/>' +
+        '<circle cx="300" cy="150" r="6" class="solid-yellow"/><circle cx="330" cy="150" r="6" class="solid-yellow"/><circle cx="360" cy="150" r="6" class="solid-yellow"/><circle cx="390" cy="150" r="6" class="solid-yellow"/><circle cx="420" cy="150" r="6" class="solid-yellow"/>' +
+        '<text x="370" y="184" class="mid s">probes, each with a dye</text>' +
+        '<text x="370" y="212" class="mid s b">many probes on one RNA</text><text x="370" y="230" class="mid s b">= one bright dot</text></svg>' },
+    { k: 'h', text: 'Microscope and software: confocal and CellProfiler' },
+    { k: 'bgnd', html: `<p>A <b>confocal microscope</b> scans a laser over the sample and lets only light from one thin plane reach the detector, which cuts out the blur from above and below. That sharpness helps decide whether a dot is inside the nucleus or in the cytoplasm. <b>CellProfiler</b> is free software that analyzes microscope images automatically, with the same rules for every image: it finds each nucleus (from the DAPI stain), outlines each cell and counts the dots in each compartment, so nobody has to count by eye.</p>` },
+    { k: 'h', text: 'Fractionation: splitting the cell' },
+    { k: 'bgnd', html: `<p><b>Cell fractionation</b> reaches the same question another way. The cells are gently opened and spun so that the nuclei separate from the rest (the cytoplasm). RNA is extracted from each fraction and measured by qRT-PCR (lesson D7), which gives a nucleus-to-cytoplasm ratio for each RNA. Two marker RNAs check that the split worked: one known to live in the nucleus and one known to live in the cytoplasm.</p>
+<p>Why use both methods? FISH shows single cells, but counting dots needs care; fractionation is quantitative, but the fractions can contaminate each other. Two methods with different weaknesses that agree are an example of <b>orthogonal validation</b> (lesson D6).</p>` },
+    { k: 'h', text: 'Overexpression and rescue: does the RNA really matter?' },
+    { k: 'bgnd', html: `<p>Knockdown removes an RNA; an <b>overexpression experiment</b> does the opposite. A plasmid (lesson D2) that carries the RNA's sequence is transfected into cells so they make extra copies. A plasmid with no insert, the <b>empty vector</b>, is the control, because the plasmid itself can affect cells.</p>
+<p>Combine the two and you get a <b>rescue experiment</b>: first lower the cell's own RNA with an ASO (the phenotype appears), then add the RNA back from a plasmid. If the phenotype goes away, the loss of that RNA caused it, which is strong evidence for an on-target effect. For this to work, the added copy must escape the ASO (for example by having a different sequence), and the RNA must work when made from a plasmid. That can fail for RNAs that act next to their own gene (cis-acting, lesson B6) or when the right isoform is missing, so a failed rescue does not prove an off-target effect.</p>` },
+    { k: 'svg', caption: 'The logic of a rescue experiment (schematic bars, not data).',
+      svg: '<svg viewBox="0 0 480 236" role="img" aria-label="Four bars of cell growth: control cells grow well, ASO-treated cells grow less, ASO plus the RNA added back would grow well again if the effect were on-target, and ASO plus the RNA added back is what the paper saw: growth stays low">' +
+        '<text x="8" y="40" class="s b">Control cells</text><rect x="220" y="24" width="240" height="22" rx="4" class="f-green"/>' +
+        '<text x="8" y="90" class="s b">ASO lowers the RNA</text><rect x="220" y="74" width="100" height="22" rx="4" class="f-red"/>' +
+        '<text x="8" y="132" class="s b">ASO + RNA added back</text><text x="8" y="150" class="s m">expected if on-target</text><rect x="220" y="124" width="230" height="22" rx="4" class="f-teal"/><text x="456" y="141" class="s t-teal b">rescue</text>' +
+        '<text x="8" y="182" class="s b">ASO + RNA added back</text><text x="8" y="200" class="s m">what the paper saw</text><rect x="220" y="174" width="100" height="22" rx="4" class="f-red"/><text x="330" y="191" class="s b">no rescue</text>' +
+        '<text x="240" y="228" class="mid s m">bar length = how well the cells grow (schematic)</text></svg>' },
+    { k: 'memory', html: `<p><b>Analogy:</b> FISH is a night photo in which every copy of one particular word in a book has a tiny torch taped to it. Fractionation is counting the people in the house and in the garden separately, using one person known to stay in each as a check. A rescue is the "undo" test: remove a worker, watch the factory slow down, bring in a stand-in, and see whether it speeds up again. If it does not, the stand-in may simply be unable to do the job.</p>` },
+    { k: 'h', text: 'How this paper uses them' },
+    { k: 'paper', ref: 'res-mechanism-p1', quote: 'fluorescence in situ hybridization (FISH) revealed contrasting localization patterns: CHiLL1 is located principally in the cytoplasm, and GCAWKR in the nucleus' },
+    { k: 'plain', source: ['res-mechanism-p1', 'm-fish-p1', 'm-fish-p2', 'fig6B', 'fig6C', 'res-mechanism-p2', 'res-mechanism-p6'], html: `<p>In A549 cells, probe sets of 25 probes (CHiLL1) and 48 probes (GCAWKR) were used, nuclei were counterstained with DAPI, and the dots were counted with a CellProfiler-based pipeline called SpeckleCounting. CHiLL1 dots sit mainly in the cytoplasm and GCAWKR dots in the nucleus (Figure 6B plots a cytoplasm-to-nucleus ratio of dot counts; the printed n is 1). Cell fractionation agreed (Figure 6C), with MALAT1 as the nuclear control and GAPDH as the cytosolic control. Counting from the sequencing data (lesson D10) put the copy number low: about 4 molecules per cell for CHiLL1, "consistent with FISH", and about 1 copy per cell for GCAWKR.</p>` },
+    { k: 'panel', id: 'fig6B', html: `<p>Look for the arrowed dots (light green for CHiLL1, light orange for GCAWKR) and for the bar chart at the right, which has a line at 1.0.</p>` },
+    { k: 'paper', ref: 'res-aso-p3', quote: 'overexpression of neither CHiLL1 nor GCAWKR could rescue ASO-induced phenotypes (Figure S5C). This may be the result of cis-regulatory mechanisms' },
+    { k: 'plain', source: ['res-aso-p3', 'm-rescue-p1', 'res-mechanism-p2'], html: `<p>The full-length sequences were cloned into the pcDNA3.1 plasmid (empty pcDNA3.1 as the control), transfected into A549 cells, selected with puromycin for 96 h, and the extra RNA was confirmed by RT-qPCR. Adding back CHiLL1 or GCAWKR did <b>not</b> rescue the ASO effects. The authors suggest cis-regulatory mechanisms (though they saw no such effect on CHiLL1's nearest neighbor, TNFRSF10B) or functional isoforms that are not annotated. So the case for on-target effects rests on other evidence: two independent ASOs per gene, the CRISPR deletion, and gene-expression changes that agree between the two CHiLL1 ASOs (lesson D10).</p>` },
+    { k: 'flag', source: ['fig6B', 'm-fish-p1', 'm-rescue-p1', 'res-aso-p3'], html: `<p>Heads-up: the Figure 6B legend says "confocal", while the Methods name only a "DeltaVision microscope". The panel title is printed "Fluoscence in-situ hybridisation (FISH)" (typo as printed). Neither the Results nor the Methods say how the added RNA escaped the ASO, and the rescue data are in supplementary Figure S5C, which is not in your PDF.</p>` },
+  ],
+  appears: [
+    { ref: 'res-mechanism-p1', note: 'FISH puts CHiLL1 mainly in the cytoplasm and GCAWKR in the nucleus; cell fractionation agrees.' },
+    { ref: 'm-fish-p1', note: 'Stellaris probe sets of 25 (CHiLL1) and 48 (GCAWKR) probes; DAPI counterstain.' },
+    { ref: 'm-fish-p2', note: 'Fractionation, and the CellProfiler-based SpeckleCounting pipeline.' },
+    { ref: 'res-aso-p3', note: 'Overexpression of neither CHiLL1 nor GCAWKR rescued the ASO phenotypes.' },
+    { ref: 'm-rescue-p1', note: 'Full-length sequences in pcDNA3.1; empty vector as control; puromycin selection.' },
+  ],
+  checks: [
+    { q: 'In RNA-FISH, why do many probes bind along one RNA molecule?',
+      options: [
+        { t: 'Together they make one RNA bright enough to see as a dot, while a single stray probe gives only a faint glow', ok: true, why: 'Right: many dyes on one molecule give a clear dot; accidental binding of one probe stays dim.' },
+        { t: 'Each probe cuts the RNA once, so more probes means more cutting', ok: false, why: 'That describes an ASO plus RNase H. Probes only carry a label and do not cut.' },
+        { t: 'The probes hold the RNA inside the nucleus', ok: false, why: 'Probes report where the RNA already is; they do not move it.' },
+      ], bg: true },
+    { q: 'In the fractionation experiment, what are MALAT1 and GAPDH for?',
+      options: [
+        { t: 'They are marker RNAs: MALAT1 is the nuclear control and GAPDH the cytosolic control, showing the split worked', ok: true, why: 'Right (Figure 6C legend): if each marker lands in its expected fraction, the nuclei and cytoplasm were separated well.' },
+        { t: 'They are the two lncRNAs whose location is being tested', ok: false, why: 'The lncRNAs being tested are CHiLL1 and GCAWKR.' },
+        { t: 'They are the ASO controls', ok: false, why: 'ASO controls are non-targeting ASOs. MALAT1 and GAPDH are RNAs measured in the fractions.' },
+      ], source: ['fig6C'] },
+    { q: 'What happened when CHiLL1 or GCAWKR was overexpressed after ASO knockdown?',
+      options: [
+        { t: 'It did not rescue the ASO-induced phenotypes', ok: true, why: 'Right (res-aso-p3): the authors suggest cis-regulatory mechanisms or unannotated isoforms as possible reasons.' },
+        { t: 'It fully rescued them, proving the ASOs were on-target', ok: false, why: 'The paper reports no rescue. Its on-target case rests on two independent ASOs, the CRISPR deletion and agreeing expression changes.' },
+        { t: 'It killed the cells', ok: false, why: 'No such result is reported; the added RNA simply did not reverse the ASO effects.' },
+      ], source: ['res-aso-p3'] },
+    { q: 'FISH and fractionation both put GCAWKR in the nucleus. This is an example of…',
+      options: [
+        { t: 'orthogonal validation: two independent methods giving the same answer', ok: true, why: 'Right: the authors say FISH results were "further corroborated by cell fractionation".' },
+        { t: 'a rescue experiment', ok: false, why: 'A rescue adds the RNA back after knockdown. Neither FISH nor fractionation does that.' },
+        { t: 'a non-targeting control', ok: false, why: 'A non-targeting control is a baseline reagent, not a second method.' },
+      ], source: ['res-mechanism-p1'] },
+  ],
+},
+);

@@ -221,7 +221,7 @@
     { k: 'h', text: 'Cleaning the counts' },
     { k: 'bgnd', html: `<p>Raw counts need cleaning. A <b>batch effect</b> is a difference between samples caused by <i>when or how</i> they were handled (another day, reagent lot or run), not by biology. If every T0 sample ran on Monday and every T3 sample on Friday, you could mistake that gap for a real effect, so a correction removes the shared offset.</p>` +
       `<p>In a library where each construct holds two guides, pieces of different constructs can get shuffled during copying, giving reads whose guides were never paired by design: <b>recombination events</b> (the paper does not define the term; this is the usual meaning). <b>Sanger sequencing</b> is the older method that reads one fragment at a time very accurately, ideal for checking a single bacterial colony; NGS reads the whole pool.</p>` },
-    { k: 'plain', source: ['m-hits-p1'], html: `<p>The raw reads were analyzed with <b>CASPR</b>, a pipeline that also monitored quality: overall 36% of the reads were usable, and recombination events affected typically less than 3% of reads. Low-scoring guides were removed with <b>GuideScan</b>, a batch effect correction was applied with MageckFlute (a companion of the <b>MAGeCK</b> toolkit for CRISPR screens), and CASPR then calculated log2 fold changes and significance scores for each target.</p>` },
+    { k: 'plain', source: ['m-hits-p1'], html: `<p>The raw reads were analyzed with <b>CASPR</b>, a pipeline that also monitored quality: overall 36% of the reads were usable, and recombination events affected typically less than 3% of reads. Low-scoring guides were removed with <b>GuideScan</b>, a batch effect correction was applied with MageckFlute (a companion of the <b>MAGeCK</b> toolkit for CRISPR screens), and CASPR then calculated log2 fold changes and confidence scores for each target.</p>` },
     { k: 'plain', source: ['m-pcr-gdna-p1', 'fig1E', 'm-library-cloning-p3'], html: `<p>PCR is also used to check a deletion. Primers flanking the deleted region copy a long fragment from intact DNA and a short one if the region is gone: in Figure 1E the control shows a 2.5kb band (WT) and the pgRNA_9 sample a 500bp band (KO). Single clones of the library were checked by colony PCR and Sanger sequencing, the whole pool by NGS.</p>` },
 
     { k: 'h', text: 'Dropout versus positive selection' },
@@ -277,6 +277,95 @@
         { t: 'Because dropout screens cannot be run in A549 cells', ok: false, why: 'The paper runs dropout screens in A549 and H460 cells; positive screens were added as a complement.' },
         { t: 'Because positive screens are cheaper and faster', ok: false, why: 'The Discussion says the benefit should be weighed against the extra resources required, so they are not cheaper.' },
         { t: 'Because positive screens are the only way to measure cisplatin resistance', ok: false, why: 'Cisplatin resistance was also measured in a dropout-type (survival) format; the positive format was added as a complement.' },
-      ], source: ['res-multipheno-p2', 'discussion-p3', 'res-multipheno-p7'] },
+      ], source: ['res-multipheno-p2', 'discussion-p3', 'res-multipheno-p7', 'fig2B'] },
+  ],
+});
+
+/* ============================================================================================== D5 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'D5',
+  defines: ['p-value'],
+  body: [
+    { k: 'h', text: 'Three hallmarks, eight screens' },
+    { k: 'plain', source: ['intro-p6', 'res-multipheno-p2', 'res-multipheno-p7'], html: `<p>The paper runs 8 CRISPR screens for three hallmarks (proliferation, chemoresistance and invasion, the last tested as migration) in two lung cancer cell lines. Each is a different way of reading guide counts, always asking: which guides are depleted, which enriched?</p>` },
+    { k: 'svg', caption: 'The five kinds of screen at a glance: which cells are read out, and which way a hit\'s guides move.',
+      svg: `<svg viewBox="0 0 480 272" role="img" aria-label="Table of five screens: proliferation dropout, proliferation CFSE, cisplatin survival, cisplatin death and migration transwell, with the cells read out and whether a hit's guides are depleted or enriched">` +
+        `<text x="14" y="20" class="b">Screen</text><text x="172" y="20" class="b">Cells read out</text><text x="356" y="20" class="b">A hit's guides are</text>` +
+        `<rect x="6" y="32" width="468" height="38" rx="8" class="f-yellow"/><text x="14" y="56" class="s b">Proliferation · dropout</text><text x="172" y="56" class="s">all cells, 14 and 21 days</text><rect x="356" y="39" width="108" height="24" rx="6" class="f-red"/><text x="410" y="56" class="mid s">depleted</text>` +
+        `<rect x="6" y="76" width="468" height="38" rx="8" class="f-yellow"/><text x="14" y="100" class="s b">Proliferation · CFSE</text><text x="172" y="100" class="s">slowest 20% (dye-bright)</text><rect x="356" y="83" width="108" height="24" rx="6" class="f-green"/><text x="410" y="100" class="mid s">enriched</text>` +
+        `<rect x="6" y="120" width="468" height="38" rx="8" class="f-teal"/><text x="14" y="144" class="s b">Cisplatin · survival</text><text x="172" y="144" class="s">survivors of IC30 and IC80</text><rect x="356" y="127" width="108" height="24" rx="6" class="f-red"/><text x="410" y="144" class="mid s">depleted</text>` +
+        `<rect x="6" y="164" width="468" height="38" rx="8" class="f-teal"/><text x="14" y="188" class="s b">Cisplatin · death</text><text x="172" y="188" class="s">dead cells at a low dose</text><rect x="356" y="171" width="108" height="24" rx="6" class="f-green"/><text x="410" y="188" class="mid s">enriched</text>` +
+        `<rect x="6" y="208" width="468" height="38" rx="8" class="f-purple"/><text x="14" y="232" class="s b">Migration · transwell</text><text x="172" y="232" class="s">cells that did not cross</text><rect x="356" y="215" width="108" height="24" rx="6" class="f-green"/><text x="410" y="232" class="mid s">enriched</text>` +
+        `<text x="6" y="266" class="s m">depleted = fewer reads than the reference; enriched = more</text></svg>` },
+
+    { k: 'h', text: 'Proliferation: dropout and CFSE' },
+    { k: 'bgnd', html: `<p><b>CFSE</b> is a dye that stains every cell. At each division the dye is shared between the two daughters, so fast dividers turn dim and slow dividers stay bright. After staining, a FACS machine collects the brightest and the dimmest groups. Guides enriched among the bright (slow) cells point to growth-promoting targets: a positive selection screen.</p>` },
+    { k: 'plain', source: ['m-screen-prolif-p1'], html: `<p>Dropout screens: 16M cells at T0, passaged to keep coverage above 1,000X, harvested at 14 and 21 days. CFSE screens: stained cells grew for five days, then the 20% brightest (slow-growing) and the 20% least bright (fast-growing) were sorted; both groups were replated and, five days later, stained and sorted again.</p>` },
+    { k: 'flag', source: ['m-screen-prolif-p1'], html: `<p>The CFSE paragraph labels its steps T7, T5 and T10, which do not line up with T0, T2 and T3. Just keep the order of events.</p>` },
+
+    { k: 'h', text: 'Cisplatin: survival and death' },
+    { k: 'bgnd', html: `<p>Cisplatin damages DNA (lesson C3); IC30 and IC80 are doses that cut growth by about 30% and 80%. In the <b>cisplatin survival screen</b> the cells stay in the drug, and guides of resistance-promoting lncRNAs are depleted among the survivors (a dropout format). In the <b>cisplatin death screen</b> a low dose is used and the <i>dead</i>, floating cells are collected: guides enriched among the dead point to resistance-promoting lncRNAs (positive selection).</p>` },
+    { k: 'paper', ref: 'm-screen-cisplatin-p1', quote: 'Two different cisplatin concentrations were used to increase the dynamic range of the screens and account for diverging effects of different doses' },
+    { k: 'plain', source: ['m-screen-cisplatin-p1'], html: `<p>Survival screen: 48M and 96M A549 cells were treated with 6.5 and 25 µM cisplatin (IC30 and IC80), and cell pellets collected after 14 and 21 days. Death screen: 144M cells at a low dose (IC20); every 24 hours for five days the floating (dead) cells were collected and pooled.</p>` },
+    { k: 'flag', source: ['m-screen-cisplatin-p1'], html: `<p>The death-screen dose is printed as "2 and 1 µM (IC20) for A549": two numbers for one IC20. The paper does not say what they refer to.</p>` },
+
+    { k: 'h', text: 'Migration: the transwell' },
+    { k: 'bgnd', html: `<p>A <b>transwell</b> (Boyden chamber) is a cup with a porous floor. Cells go in without serum; the chamber below holds serum, which attracts them. Cells that can move squeeze through; those that cannot stay above. In the <b>migration screen</b>, a migration-promoting target is enriched among the cells that stayed above, because removing it left them impaired.</p>` },
+    { k: 'plain', source: ['m-screen-migration-p1', 'res-multipheno-p7'], html: `<p>A pilot chose 48 hours as the assay length. About 16M infected cells were split over 32 transwell inserts (0.5M each), serum-free medium above and 10% FBS below. After 48 hours the cells above (impaired migration) and below (accelerated migration) were collected separately, regrown for 48 hours and counted before DNA extraction; untreated cells were the reference. The screen found 65 migration-promoting lncRNAs.</p>` },
+
+    { k: 'h', text: 'The controls: what "no effect" and "a real effect" look like' },
+    { k: 'bgnd', html: `<p>A screen is only believable if it passes its own tests, so the library holds targets whose outcome you already know. <b>Neutral controls</b> aim at DNA where cutting should do nothing: a "safe harbor" such as <b>AAVS1</b>, <b>intergenic regions</b> (DNA between genes) and long introns. Cut like every other target, they show what <i>no effect</i> looks like and absorb the stress that cutting DNA puts on cells. <b>Positive controls</b> should show an effect, such as an <b>essential gene</b> (cells cannot live without it, like the ribosomal gene <b>RPS5</b>): their guides should be depleted in a dropout screen. Beware of the word <b>negative</b>: usually it means a do-nothing control, but this paper uses it differently (below).</p>` },
+    { k: 'plain', source: ['m-library-design-p3', 'res-pipeline-p3', 'fig4C'], html: `<p>Neutral controls: pgRNAs in 10 AAVS1 regions, 65 random intergenic regions (more than 10 kb from any gene) and 25 intronic regions (in introns longer than 5 kb). Positive controls: protein-coding genes with known roles in cell growth and cisplatin resistance, 53 "positive" (promoting growth) and 50 "negative" (opposing growth), picked from the literature. So here "negative" does not mean "does nothing". On the plots, such genes are labeled by name, for example XPA, ATR, BRCA2, ERCC1, PLK1, EIF5B and SNRNP200.</p>` },
+    { k: 'flag', source: ['fig1C', 'fig2F', 'res-multipheno-p6'], html: `<p>The control counts differ between places: Figure 1C shows 62 intergenic regions, 25 introns and 1 AAVS1 region; Figure 2F plots n=35 neutral controls; the Results mention 109 positive controls. Learn what each control is for, not one printed count.</p>` },
+
+    { k: 'h', text: 'ORF versus TSS: how much weaker is promoter deletion?' },
+    { k: 'bgnd', html: `<p>A protein-coding gene is normally broken by cutting inside its coding sequence (<b>ORF targeting</b>), which should give the maximal loss of function. A lncRNA has no protein to break, so the paper deletes its TSS. To measure the cost of that, positive-control genes were targeted both ways.</p>` },
+    { k: 'paper', ref: 'res-multipheno-p3', quote: 'Promoter-deletion pgRNAs displayed a detectable but lower phenotypic impact, indicating that CRISPR-del screens for lncRNAs face intrinsically lower sensitivity compared with ORF-targeting screens for PCGs' },
+    { k: 'panel', id: 'fig2F', html: `<p>Each dot is one target's score in the A549 dropout screen (a P value, lesson E2: small means a stronger effect). Neutral controls sit high (no effect). Both kinds of positive control sit lower, and the ORF-targeting ones differ from the neutral controls more clearly (4.95e-05) than the TSS-targeting ones (0.004).</p>` },
+    { k: 'plain', source: ['res-multipheno-p3', 'limitations-p2', 'fig3C', 'res-validation-p3'], html: `<p>Positive-control genes were clearly depleted in dropout screens; neutral controls were not. The Limitations section adds that many valuable targets were probably overlooked because CRISPR-del is less efficient than ORF mutation; it names MALAT1 and MIAT as surprising misses, for unclear reasons. In the mixing test of Figure 3C (lesson D7), AAVS1 guides mark the control cells and RPS5 guides are the positive control (P=3.8e-4); the paper says its two validated candidates lost to the control cells with an effect comparable to inactivating RPS5.</p>` },
+    { k: 'memory', html: `<p><b>Analogy:</b> calibrating a kitchen scale. A <b>neutral control</b> is the empty tray: it should read zero, and if it does not, the scale is off. A <b>positive control</b> is a known 1 kg weight: it shows the scale can detect something. ORF versus TSS is weighing that same weight with a clumsy method to see how much it under-reads.</p>` },
+  ],
+  appears: [
+    { ref: 'res-multipheno-p3', note: 'Positive controls depleted, neutral controls not; ORF targeting versus promoter deletion (Figure 2F).' },
+    { ref: 'm-library-design-p3', note: 'The neutral controls (AAVS1, intergenic, intronic) and the positive and negative protein-coding controls.' },
+    { ref: 'fig3C', note: 'Mixing test: AAVS1 as neutral control and RPS5 as positive control.' },
+    { ref: 'm-screen-cisplatin-p1', note: 'Cisplatin doses for the survival (IC30, IC80) and death (IC20) screens.' },
+    { ref: 'm-screen-migration-p1', note: 'The 48-hour transwell migration screen and its serum gradient (none above, 10% FBS below).' },
+  ],
+  checks: [
+    { q: 'In the CFSE screen, which cells were collected as the slow-growing ones?',
+      options: [
+        { t: 'The 20% brightest cells, because they kept most of their dye', ok: true, why: 'Right. Each division halves the dye, so cells that divided least stay bright (the paper: 20% brightest = slow-growing).' },
+        { t: 'The 20% least bright cells', ok: false, why: 'Those divided most and diluted the dye; the paper calls them fast-growing.' },
+        { t: 'The cells that died', ok: false, why: 'Dead cells are collected in the cisplatin death screen, not in the CFSE screen.' },
+        { t: 'The cells that did not take up the dye', ok: false, why: 'All cells are stained; they are separated afterwards by how bright they are.' },
+      ], source: ['m-screen-prolif-p1'] },
+    { q: 'In the cisplatin death screen, where do the guides of a resistance-promoting lncRNA end up?',
+      options: [
+        { t: 'Enriched among the collected dead cells, because cells lacking that lncRNA die more easily', ok: true, why: 'Right (Figure 2B): in the positive "death" screen, enriched pgRNAs identify resistance-promoting lncRNAs.' },
+        { t: 'Depleted among the dead cells', ok: false, why: 'That would mean cells lacking the lncRNA die less, the opposite of a resistance-promoting lncRNA.' },
+        { t: 'Only among the survivors', ok: false, why: 'Cells lacking a resistance-promoting lncRNA are more vulnerable, so their guides are expected among the dead.' },
+        { t: 'Unchanged, because every cell carries the same guide', ok: false, why: 'Cells carry different guides; the screen compares guide counts in the dead cells with a reference.' },
+      ], source: ['fig2B', 'm-screen-cisplatin-p1'] },
+    { q: 'Why does the cisplatin survival screen use two doses, IC30 and IC80?',
+      options: [
+        { t: 'To widen the dynamic range and capture the different effects of a mild and a high dose', ok: true, why: 'Right: a mild dose slows proliferation by about 30%, while high doses cause arrest or death.' },
+        { t: 'One dose for each cell line', ok: false, why: 'Both doses (6.5 and 25 µM) were used on A549 cells.' },
+        { t: 'To repeat the same experiment twice', ok: false, why: 'The doses have different effects, so they are not replicates of each other.' },
+      ], source: ['m-screen-cisplatin-p1'] },
+    { q: 'Why were the positive-control genes targeted both in the ORF and at the TSS?',
+      options: [
+        { t: 'To measure how much less effective TSS deletion (the lncRNA strategy) is than conventional ORF mutation', ok: true, why: 'Right: promoter deletion showed a detectable but lower impact, so lncRNA screens are expected to be less sensitive.' },
+        { t: 'Because TSS deletion cannot be done on protein-coding genes', ok: false, why: 'It can: the paper did exactly that and found a lower effect than ORF targeting.' },
+        { t: 'To double the number of neutral controls', ok: false, why: 'These are positive controls; the aim was to compare two ways of disrupting the same kind of gene.' },
+        { t: 'Because ORF guides were expected to have no effect', ok: false, why: 'ORF mutation is expected to give the maximal loss of function.' },
+      ], source: ['res-multipheno-p3'] },
+    { q: 'What is the job of neutral controls such as AAVS1 guides?',
+      options: [
+        { t: 'To show what "no effect" looks like (including the stress of cutting), so real hits stand out', ok: true, why: 'Right: neutral controls were not depleted in the dropout screen, which is what a fair screen should show.' },
+        { t: 'To kill the cells that were not infected', ok: false, why: 'That is the job of the antibiotic (puromycin), not of a control.' },
+        { t: 'To prove that the screen can detect a strong effect', ok: false, why: 'That is the job of positive controls such as essential genes.' },
+        { t: 'To serve as the starting reference sample of the screen', ok: false, why: 'The starting sample (T0) is a sample of cells; neutral controls are guides inside the library.' },
+      ], source: ['res-pipeline-p3', 'res-multipheno-p3'] },
   ],
 });

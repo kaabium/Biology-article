@@ -40,10 +40,9 @@ window.SUMMARY = {
 `,
 
   cheat: `
-<div class="cs-box"><h3>The paper in 3 lines</h3>
+<div class="cs-box"><h3>The paper in 2 lines</h3>
 <p><b>Q:</b> Which lncRNAs drive KRAS+ NSCLC across hallmarks <i>and</i> cell lines, and can ASOs hit them?<br>
-<b>How:</b> CRISPR-deletion screens → one ranking (TPP) → ASOs.<br>
-<b>Answer:</b> 80 hits → 9 → 5 → 2: <b>CHiLL1</b>, <b>GCAWKR</b>.</p></div>
+<b>Answer:</b> CRISPR-deletion screens → one ranking (TPP) → 80 hits → 9 → 5 → 2: <b>CHiLL1</b>, <b>GCAWKR</b>.</p></div>
 
 <div class="cs-box"><h3>Pipeline</h3>
 <div class="cs-flow"><span>831 lncRNAs / 998 TSSs</span><i>→</i><span>10 pgRNAs each</span><i>→</i><span>A549 + H460 (Cas9)</span><i>→</i><span>3 screens</span><i>→</i><span>TPP</span><i>→</i><span>ASOs</span><i>→</i><span>RNA-seq, FISH</span></div>
@@ -57,27 +56,27 @@ window.SUMMARY = {
 <div class="cs-flow"><span><b>831</b> lncRNAs</span><i>→</i><span><b>80</b> hits</span><i>→</i><span><b>9</b> Tier 1</span><i>→</i><span><b>5</b> Tier 2</span><i>→</i><span><b>2</b> Tier 3</span></div>
 <ul>
 <li><b>80:</b> pan-hallmark, FDR &lt; 0.2 (~8%; 73 new). By hallmark: 134 (~13%); 19 in two, 0 in three.</li>
-<li><b>Tier 1:</b> novel; at least 2 ASOs with ≥ 40% knockdown. <b>Tier 2:</b> 2 ASOs cut growth (A549, H460, H441). <b>Tier 3:</b> weak in normal cells: CHiLL1 (candidate 42), GCAWKR (candidate 240).</li>
+<li><b>Tier 1:</b> novel; ≥ 2 ASOs with ≥ 40% knockdown. <b>Tier 2:</b> 2 ASOs cut growth. <b>Tier 3:</b> weak in normal cells: CHiLL1 (candidate 42), GCAWKR (candidate 240).</li>
 </ul></div>
 
 <div class="cs-box"><h3>Key numbers</h3>
 <table class="cs">
 <tr><td>831 · 998</td><td>lncRNAs · TSSs targeted</td></tr>
 <tr><td>10 · 12,000</td><td>pgRNAs per target · total</td></tr>
-<tr><td>0.3 · &gt;1,000x</td><td>MOI · coverage (cells ÷ library sequences)</td></tr>
-<tr><td>77 · 65</td><td>hits: A549 proliferation · migration</td></tr>
-<tr><td>0.7 vs 0.67</td><td>AUC with vs without positive screens</td></tr>
+<tr><td>0.3 · &gt;1,000x</td><td>MOI · coverage</td></tr>
+<tr><td>77 · 65</td><td>hits: proliferation · migration</td></tr>
 <tr><td>8/12 (67%)</td><td>hits confirmed by ASO</td></tr>
-<tr><td>78% · 92%</td><td>tumors expressing at least 1 target: Tier 3 · Tier 2</td></tr>
+<tr><td>78% · 92%</td><td>tumors with ≥ 1 target: Tier 3 · Tier 2</td></tr>
 </table>
-<p class="srcline">Computed here: 80 ÷ 998 = 8.0%, 134 ÷ 998 = 13.4% (paper: ~8%, ~13%).</p></div>
+<p class="srcline">Computed here: 80 ÷ 998 = 8.0%; 134 ÷ 998 = 13.4%.</p>
+<p><b>⚠ Numbers differ between text and figures</b> (e.g. 12,000 vs 1,200) — see the <a href="#/numbers">Key numbers page</a>. This sheet uses the Results text.</p></div>
 
 <div class="cs-box"><h3>Controls and why</h3>
 <ul>
-<li><b>Neutral regions</b> (AAVS1, intergenic, intronic): no effect expected → baseline, z-score scale, AUC negatives.</li>
-<li><b>Positive-control genes:</b> known effects → the screen can find real hits. ORF vs promoter guides: promoter deletion is weaker → lncRNA screens are less sensitive. RPS5 (essential gene) benchmarks the competition assay.</li>
-<li><b>Replicates, day-0 reference, two cell lines:</b> reproducibility; change vs start; general vs cell-line-specific.</li>
-<li><b>ASOs:</b> non-targeting ASO baseline; 2 independent ASOs → on-target; MALAT1, mTOR ASOs = positive controls.</li>
+<li><b>Neutral regions</b> (AAVS1, intergenic, intronic): baseline, z-score scale, AUC negatives.</li>
+<li><b>Positive-control genes:</b> the screen can find real hits. ORF vs promoter guides: promoter deletion is weaker → lncRNA screens are less sensitive.</li>
+<li><b>Replicates, day-0 reference, two cell lines:</b> reproducible; change vs start; general vs cell-line-specific.</li>
+<li><b>ASOs:</b> non-targeting baseline; 2 independent ASOs → on-target; MALAT1, mTOR ASOs = positive controls.</li>
 <li><b>Normal lung cells</b> (HBEC3-KT, MRC5-CV1, CCD-12Lu): toxicity check.</li>
 </ul></div>
 
@@ -86,11 +85,11 @@ window.SUMMARY = {
 <li><b>NSCLC / KRAS+:</b> non-small cell lung cancer / activating KRAS mutation.</li>
 <li><b>lncRNA:</b> long RNA not made into protein.</li>
 <li><b>TSS:</b> where copying into RNA starts; delete it → gene off.</li>
-<li><b>pgRNA / CRISPR-del (DECKO):</b> paired guides make Cas9 cut twice, deleting the DNA between.</li>
-<li><b>Pooled screen:</b> one guide per cell; hit guides get depleted (dropout) or enriched (positive).</li>
-<li><b>Hallmark:</b> cancer capability, e.g. proliferation, chemoresistance, migration.</li>
+<li><b>pgRNA / CRISPR-del:</b> paired guides make Cas9 cut twice, deleting the DNA between.</li>
+<li><b>Pooled screen:</b> one guide per cell; hit guides are depleted (dropout) or enriched (positive).</li>
+<li><b>Hallmark:</b> cancer capability, e.g. proliferation.</li>
 <li><b>Pleiotropic / background independent:</b> several hallmarks / both cell lines.</li>
-<li><b>TPP:</b> one ranking from all screens: effect size (RRA) + p-values (EBM).</li>
+<li><b>TPP:</b> one ranking from all screens (effect size + p-values).</li>
 <li><b>ASO:</b> synthetic strand pairing with an RNA to lower it (knockdown).</li>
 <li><b>On-target:</b> caused by the intended RNA; independent ASOs agree.</li>
 </ol></div>
@@ -99,7 +98,7 @@ window.SUMMARY = {
 <table class="cs">
 <tr><td><b>p, ns</b></td><td>chance of a result this extreme if nothing is going on; p ≤ 0.05 = significant; ns = not</td></tr>
 <tr><td><b>FDR</b></td><td>expected share of false hits; &lt; 0.2 = up to 20% may be false</td></tr>
-<tr><td><b>log2FC</b></td><td>0 = no change, −1 = half, +1 = double; dropout hits are negative (candidate 205: −1.81, FDR 1.2 × 10<sup>−7</sup>)</td></tr>
+<tr><td><b>log2FC</b></td><td>0 = no change, −1 = half, +1 = double; dropout hits are negative (e.g. −1.81, FDR 1.2 × 10<sup>−7</sup>)</td></tr>
 <tr><td><b>z-score, AUC</b></td><td>SDs from neutral controls; AUC 0.5 = chance, 1 = perfect</td></tr>
 <tr><td><b>Bars, n, tests</b></td><td>SD where the legend says (Fig 1F’s does not); n = 3–4; Pearson, t, Mann–Whitney, Fisher</td></tr>
 </table>
@@ -107,27 +106,25 @@ window.SUMMARY = {
 
 <div class="cs-box"><h3>CHiLL1 vs GCAWKR</h3>
 <table class="cs"><tr><th></th><th>CHiLL1</th><th>GCAWKR</th></tr>
-<tr><td>Locus</td><td>Chr 8, 2 isoforms</td><td>Chr 15, 4 isoforms</td></tr>
-<tr><td>Where</td><td>cytoplasm, 8.3 TPM (~4 per cell)</td><td>nucleus, 2.5 TPM (~1 per cell)</td></tr>
-<tr><td>Patients</td><td>high level ↔ poor survival</td><td>locus often amplified; up in PI subtype</td></tr>
+<tr><td>Where</td><td>cytoplasm</td><td>nucleus</td></tr>
+<tr><td>Amount</td><td>8.3 TPM (~4 per cell)</td><td>2.5 TPM (~1 per cell)</td></tr>
+<tr><td>Patients</td><td>high level ↔ poor survival</td><td>locus often amplified</td></tr>
 <tr><td>Knockdown</td><td>more early apoptosis</td><td>more G2 cells; impaired migration</td></tr>
 <tr><td>Pathways</td><td>MAPK, PI3K-Akt</td><td>G2-M checkpoint</td></tr>
 <tr><td>Cross-talk</td><td>no rise in GCAWKR</td><td>raises CHiLL1</td></tr>
 </table>
-<p><b>Shared:</b> low protein-coding potential; 2 ASOs each; weak in normal cells; active in 3D; no rescue by overexpression.</p></div>
+<p><b>Shared:</b> low protein-coding potential; 2 ASOs each; weak in normal cells; active in 3D.</p></div>
 
 <div class="cs-box"><h3>Limitations, one line each</h3>
 <ul>
-<li>CRISPR-del can hit overlapping DNA elements or opposite-strand genes → false positives.</li>
-<li>Only 8/12 (67%) hits confirmed by ASO; about one-third may act through DNA.</li>
-<li>Less sensitive than ORF mutation; annotation incomplete (MALAT1, MIAT missed).</li>
+<li>Overlapping DNA elements or opposite-strand genes → false positives.</li>
+<li>Only 8/12 (67%) hits ASO-confirmed; about one-third may act via DNA.</li>
+<li>Less sensitive than ORF mutation; annotation gaps (MALAT1, MIAT missed).</li>
 <li>Two monolayer cell lines; many hits not followed up.</li>
 <li>No rescue by overexpression; ASO delivery in vivo not done.</li>
-<li>Declared: patent application; one author consults for NextRNA.</li>
-</ul></div>
-
-<div class="cs-box"><p><b>⚠ Numbers differ between text and figures</b> (library 12,000 vs 1,200; 998 vs 1003 targets; control counts) — see the <a href="#/numbers">Key numbers page</a>. This sheet uses the Results text.</p>
-<p class="srcline">Deeper: <a href="#/glossary">Glossary</a> · <a href="#/lesson/A2">A2</a> funnel · <a href="#/lesson/H1">H1</a> controls · <a href="#/lesson/H3">H3</a> limitations</p></div>
+<li>Declared: patent application; consultancy (NextRNA).</li>
+</ul>
+<p class="srcline">Deeper: <a href="#/glossary">Glossary</a> · <a href="#/lesson/A2">A2</a> · <a href="#/lesson/H1">H1</a> · <a href="#/lesson/H3">H3</a></p></div>
 `,
 
   // numbers computed by me (not printed in the paper): 80/998, 134/998 and FDR 0.2 = 20%

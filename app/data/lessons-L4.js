@@ -68,7 +68,7 @@
         { t: 'To make the delivery particles that carry the DNA tools', ok: false, why: 'That is the job of HEK293T, not of these three lines.' },
         { t: 'Because they carry a KRAS mutation just like A549', ok: false, why: 'They are described as non-transformed (normal-type) cells; the KRAS+ lines are A549, H460 and H441.' },
         { t: 'To provide extra cancer cells for the main experiments', ok: false, why: 'They are not cancer cells. Their role is the healthy comparison.' },
-      ], source: ['res-aso-p3', 'discussion-p5'] },
+      ], source: ['res-aso-p3', 'discussion-p5', 'm-expmodel-p1'] },
     { q: 'What is the difference between primary cells and immortalized cells?',
       options: [
         { t: 'Primary cells come straight from a body and divide only a limited number of times; immortalized cells can divide without that limit', ok: true, why: 'Right. Cancer cells are naturally immortal, and normal cells can also be made immortal on purpose.' },

@@ -223,7 +223,7 @@
 /* ============================================================================================== C1 */
 (window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
   id: 'C1',
-  defines: ['chemoresistance', 'invasion', 'migration'],
+  defines: ['chemoresistance', 'invasion', 'migration', 'metastasis', 'cell-background', 'cisplatin'],
   body: [
     { k: 'h', text: 'What goes wrong in cancer' },
     { k: 'bgnd', html:
@@ -231,7 +231,7 @@
       `<p>A <b>tumor</b> is a lump of cells that has grown more than it should. Not every tumor is cancer: a benign tumor stays put, a malignant one invades its surroundings. (Some cancers, such as leukemia, form no lump at all.)</p>` },
     { k: 'h', text: 'Hallmarks and phenotypes' },
     { k: 'bgnd', html:
-      `<p>There are many kinds of cancer, but in 2000 Douglas Hanahan and Robert Weinberg argued that nearly all of them acquire the same few abilities. These are the <b>hallmarks of cancer</b>. The original list, in plain words: grow without being told to, ignore stop signals, resist cell death, divide without limit, build their own blood supply, and invade and spread. Later versions added more, such as changed energy use and hiding from the immune system. A hallmark is an ability, not a gene, and many genes can feed into one hallmark.</p>` +
+      `<p>There are many kinds of cancer, but in 2000 Douglas Hanahan and Robert Weinberg argued that nearly all of them acquire the same few abilities. These are the <b>hallmarks of cancer</b>. The original list, in plain words: grow without being told to, ignore stop signals, resist cell death, divide without limit, build their own blood supply, and invade nearby tissue and spread to distant organs (that spread is called metastasis, lesson C2). Later versions added more, such as changed energy use and hiding from the immune system. A hallmark is an ability, not a gene, and many genes can feed into one hallmark.</p>` +
       `<p>A <b>phenotype</b> is any trait of a cell that you can observe or measure: how fast it divides, whether it survives a drug, how well it moves. (The DNA is the genotype.) Each hallmark shows up as a measurable phenotype, which is how hallmarks can be tested in lab dishes.</p>` +
       `<p><b>Pleiotropic</b> means "one cause, several effects". A pleiotropic gene influences several traits at once. In this paper a pleiotropic lncRNA is one that matters for more than one hallmark, and "multi-hallmark" means tested against several hallmarks instead of one.</p>` },
     { k: 'h', text: 'Accelerators and brakes: oncogenes and tumor suppressors' },
@@ -261,7 +261,7 @@
     { k: 'bgnd', html:
       `<p><b>Where the car picture breaks down.</b> (1) A cell has many accelerators and brakes wired into networks, and cancer usually needs several changes, not one stuck pedal. (2) A gene is not fixed in one role: the same gene can act as an oncogene in one cell type and as a tumor suppressor in another. (3) Not every "accelerator" is a protein-coding gene. RNAs can act like one too, and some press down on brake genes. (4) The normal version of an oncogene is not bad: cells need it. It is the stuck-on or over-copied version that causes trouble.</p>` },
     { k: 'memory', html:
-      `<p><b>Memory aid:</b> <b>O</b>ncogene = <b>O</b>n and stuck (accelerator). <b>T</b>umor suppressor = <b>T</b>he brake that must stay working. Hallmarks = the skills every cancer needs, whichever genes got it there.</p>` },
+      `<p><b>Memory aid:</b> an <b>onco</b>gene is stuck <b>on</b> (accelerator). A tumor <b>suppressor</b> <b>suppresses</b> growth (brake). Hallmarks are the skills every cancer needs, whichever genes got it there.</p>` },
     { k: 'h', text: 'How this paper uses these ideas' },
     { k: 'paper', ref: 'res-multipheno-p1',
       quote: 'Cancers thrive via a variety of phenotypic hallmarks, or biological capabilities acquired by cells during tumor progression.' },
@@ -276,7 +276,7 @@
     { k: 'paper', ref: 'intro-p3',
       quote: 'LINC00511, which promotes NSCLC by binding chromatin-modifying enzyme EZH2 and repressing tumor-suppressor genes, including p57 and LATS2' },
     { k: 'plain', source: ['intro-p3', 'summary-p1'], html:
-      `<p>This is the "brake" story: LINC00511 helps a common lung cancer by pressing down on tumor-suppressor genes (p57, LATS2). Following that idea, the paper calls lncRNAs that help cancer cells “oncogenic”. Its summary says that 80 high-confidence oncogenic lncRNAs are active in NSCLC.</p>` },
+      `<p>This is the "brake" story: LINC00511 helps a common lung cancer by pressing down on tumor-suppressor genes (p57, LATS2). Following that idea, the paper calls lncRNAs that help cancer cells “oncogenic”. Its summary says that 80 high-confidence oncogenic lncRNAs are active in this kind of lung cancer.</p>` },
     { k: 'plain', source: ['res-mechanism-p4'], html:
       `<p><b>A real case of "both".</b> The paper notes that ZBTB7A “has been reported as both an oncogene and tumor suppressor”, so a gene’s role can depend on context.</p>` },
   ],
@@ -316,5 +316,221 @@
         { t: 'Tumor suppressors speed up cell division', ok: false, why: 'That is reversed: tumor suppressors are the brakes.' },
         { t: 'Only protein-coding genes can promote cancer', ok: false, why: 'The paper calls lncRNAs, which do not code for protein, “oncogenic”.' },
       ], source: ['res-mechanism-p4', 'summary-p1'] },
+  ],
+});
+
+/* ============================================================================================== C2 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'C2',
+  defines: ['h460', 'h441', 'be874'],
+  body: [
+    { k: 'h', text: 'Mutations: typos in the DNA' },
+    { k: 'bgnd', html:
+      `<p>When a cell copies its DNA, or when DNA is damaged (by tobacco smoke or UV light, for example), letters can change. A lasting change in the DNA sequence is a <b>mutation</b>: one letter swapped for another, letters added or lost, or bigger pieces rearranged. Most mutations do nothing. A few hit genes that control growth, repair or cell death, and those can push a cell toward cancer by switching an oncogene on or breaking a tumor suppressor. All the cell’s descendants inherit the mutation.</p>` +
+      `<p>An <b>activating mutation</b> makes a protein more active, or active all the time. That is the typical way an oncogene is created. A mutation that breaks a protein is the typical way a tumor suppressor is lost.</p>` },
+    { k: 'h', text: 'Copy-number changes: too many or too few copies' },
+    { k: 'bgnd', html:
+      `<p>Most genes come in two copies, one from each parent. In tumors, pieces of chromosomes can be copied extra times or lost. These <b>copy-number alterations (CNAs)</b> go in two directions. <b>Amplification</b>: a region is present in many extra copies, so its genes make more RNA and protein. <b>Deletion</b>: a region is lost, so its genes make less or nothing. An amplified oncogene or a deleted tumor suppressor pushes the same way, toward cancer. Amplification is a change in the DNA; upregulation is a change in RNA level (amplification is one possible cause).</p>` +
+      `<p>Heads-up: "deletion" has two meanings in this paper. Here it means DNA lost in a tumor. Elsewhere it means DNA that the authors cut out on purpose in the lab (lesson D1).</p>` },
+    { k: 'svg', caption: 'Ways a gene can go wrong in a tumor. Each blue box is one copy of the gene.',
+      svg: `<svg viewBox="0 0 480 266" role="img" aria-label="Four rows of gene copies: normal has two copies, mutation has two copies with one marked by a red typo, amplification has six copies, deletion has one copy and one lost copy drawn as a dashed empty box">` +
+        `<text x="6" y="30" class="b">Normal</text><text x="6" y="48" class="s m">two copies of the gene</text>` +
+        `<rect x="214" y="17" width="36" height="30" rx="6" class="f-blue"/><rect x="258" y="17" width="36" height="30" rx="6" class="f-blue"/>` +
+        `<text x="6" y="90" class="b">Mutation</text><text x="6" y="108" class="s m">same number, one has a typo</text>` +
+        `<rect x="214" y="77" width="36" height="30" rx="6" class="f-blue"/><rect x="258" y="77" width="36" height="30" rx="6" class="f-blue"/><rect x="269" y="83" width="14" height="9" class="solid-red"/>` +
+        `<text x="6" y="150" class="b">Amplification</text><text x="6" y="168" class="s m">many extra copies</text>` +
+        `<rect x="214" y="137" width="36" height="30" rx="6" class="f-blue"/><rect x="258" y="137" width="36" height="30" rx="6" class="f-blue"/><rect x="302" y="137" width="36" height="30" rx="6" class="f-blue"/><rect x="346" y="137" width="36" height="30" rx="6" class="f-blue"/><rect x="390" y="137" width="36" height="30" rx="6" class="f-blue"/><rect x="434" y="137" width="36" height="30" rx="6" class="f-blue"/>` +
+        `<text x="6" y="210" class="b">Deletion</text><text x="6" y="228" class="s m">a copy is lost</text>` +
+        `<rect x="214" y="197" width="36" height="30" rx="6" class="f-blue"/><rect x="258" y="197" width="36" height="30" rx="6" class="ln dash m"/><text x="276" y="217" class="mid s m">lost</text>` +
+        `<text x="240" y="256" class="mid s m">red mark = a changed letter</text></svg>` },
+    { k: 'h', text: 'Lung cancer and its types' },
+    { k: 'bgnd', html:
+      `<p>Lung cancer is sorted into small cell and <b>non-small cell lung cancer (NSCLC)</b> by how the cells look under a microscope. NSCLC is the larger group. Its main types include <b>lung adenocarcinoma (LUAD)</b>, which starts in gland-like cells that make mucus; squamous cell carcinoma; and <b>large cell carcinoma</b>, whose large, abnormal-looking cells fit none of the others. ("Carcinoma" means a cancer that starts in cells lining surfaces.)</p>` +
+      `<p>There is a second way to sort lung cancers: by <i>which gene is changed</i>, such as KRAS-mutant or EGFR-mutant. The two ways cross: a tumor can be an adenocarcinoma <i>and</i> KRAS-mutant. The paper uses both.</p>` },
+    { k: 'h', text: 'Spreading: migration, invasion, metastasis' },
+    { k: 'bgnd', html:
+      `<p><b>Cell migration</b> is a cell crawling from one place to another. Healthy cells do it too (healing a wound, patrolling immune cells). <b>Invasion</b> is cancer cells pushing into and through neighboring tissue. <b>Metastasis</b> is cancer cells travelling, usually through blood or lymph vessels, to distant organs and starting new tumors there. Migration is the crawl, invasion is the break-in, metastasis is setting up a colony far away. Metastasis is what makes many cancers so dangerous.</p>` },
+    { k: 'h', text: 'KRAS, EGFR and targeted therapy' },
+    { k: 'bgnd', html:
+      `<p>Cells grow when a growth signal arrives. <b>EGFR</b> is a protein in the cell’s outer membrane that works like an antenna: when a growth signal binds outside, it passes a message inward. A later link in the chain is <b>KRAS</b>, a small protein that works as an on/off switch. It is on while it passes the message, then switches itself off. Both are oncogenes. An activating mutation in either one can lock the chain "on", so the cell hears "grow!" with no signal. A lung tumor usually has one of them changed, not both.</p>` },
+    { k: 'svg', caption: 'The growth-signal chain. An activating mutation in EGFR or KRAS keeps it stuck on; a targeted therapy blocks one protein in the chain.',
+      svg: `<svg viewBox="0 0 480 252" role="img" aria-label="Chain: a growth signal outside the cell reaches the EGFR protein in the membrane, which passes a message to the KRAS on/off switch, which makes the cell grow and divide. A red note says an activating mutation in EGFR or KRAS leaves the switch stuck on. A yellow box says a targeted therapy blocks one protein in the chain">` +
+        `<text x="240" y="16" class="mid s">growth signal arrives outside the cell</text>` +
+        `<path d="M240 22 V38" class="arrow"/>` +
+        `<rect x="10" y="50" width="460" height="22" rx="4" class="f-gray"/><text x="464" y="66" class="end s m">cell membrane</text>` +
+        `<rect x="196" y="40" width="88" height="42" rx="8" class="f-orange"/><text x="240" y="66" class="mid b">EGFR</text>` +
+        `<path d="M240 82 V106" class="arrow"/>` +
+        `<rect x="190" y="108" width="100" height="36" rx="18" class="f-purple"/><text x="240" y="132" class="mid b">KRAS</text>` +
+        `<text x="240" y="162" class="mid s m">an on/off switch</text>` +
+        `<path d="M240 168 V196" class="arrow"/>` +
+        `<rect x="150" y="198" width="180" height="36" rx="10" class="f-green"/><text x="240" y="221" class="mid">cell grows and divides</text>` +
+        `<rect x="10" y="104" width="136" height="64" rx="10" class="f-yellow"/><text x="78" y="126" class="mid s b">targeted therapy</text><text x="78" y="143" class="mid s">blocks one protein</text><text x="78" y="160" class="mid s">in the chain</text>` +
+        `<path d="M146 126 H176" class="ln thick s-orange"/><path d="M180 114 V138" class="ln thick s-orange"/>` +
+        `<text x="398" y="112" class="mid s b t-red">activating mutation</text><text x="398" y="130" class="mid s t-red">in EGFR or KRAS:</text><text x="398" y="148" class="mid s t-red">switch stuck ON,</text><text x="398" y="166" class="mid s t-red">"grow!" is sent</text><text x="398" y="184" class="mid s t-red">all the time</text>` +
+        `<path d="M332 128 H296" class="arrow s-red"/></svg>` },
+    { k: 'bgnd', html:
+      `<p>A <b>targeted therapy</b> is a drug built to block one specific molecule that the cancer depends on, such as a mutant EGFR, instead of hitting every dividing cell. KRAS was long called "undruggable" because no drug could grip it. The first drugs for it aim at one particular change, <b>G12C</b>. The name works like a street address: protein building blocks (amino acids) have one-letter codes, so G12C means that the amino acid at position 12 of the protein, glycine (G), has been swapped for cysteine (C).</p>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> KRAS is a light switch that should click back off by itself. An activating mutation tapes it in the "on" position. A targeted therapy is a key cut for one particular lock, instead of a battering ram that damages every door. <i>Where it breaks:</i> a mutant KRAS is not a simple light switch. It is only mostly stuck on, and cancer cells usually also carry other changes that help them.</p>` },
+    { k: 'h', text: 'How this paper uses these ideas' },
+    { k: 'paper', ref: 'intro-p1',
+      quote: 'The most common NSCLC subtype, carrying activating KRAS mutations (KRAS+), … newly approved targeted therapies only extend life by a few months.' },
+    { k: 'plain', source: ['intro-p1'], html:
+      `<p>The paper studies a genetic family of lung cancer that it calls KRAS+: tumors whose KRAS gene carries an activating mutation. It names this the most common NSCLC subtype. Current treatment, it says, faces three challenges: undruggable mutations, toxicity and therapy resistance, and newly approved targeted therapies add only a few months of life. That is the gap the paper aims at.</p>` },
+    { k: 'paper', ref: 'm-pdx-p1',
+      quote: 'KRAS c.34G>T (p.Gly12Cys) mutation was detected in both BE874 organoids and the corresponding primary cancer' },
+    { k: 'plain', source: ['m-pdx-p1'], html:
+      `<p>In one patient-derived model of lung cancer (named BE874; lesson C5) the authors found the KRAS G12C change, and also in the patient’s original tumor. Two notations appear: <b>c.34G>T</b> is the DNA change (the letter G at position 34 of the gene’s coding DNA is now T), and <b>p.Gly12Cys</b> is the protein change (the 12th amino acid, glycine, is now cysteine). They describe the same event.</p>` },
+    { k: 'paper', ref: 'res-aso-p5', quote: 'the locus of GCAWKR is frequently amplified in cancer genomes' },
+    { k: 'plain', source: ['res-aso-p5', 'res-integration-p4', 'm-cnv-p3'], html:
+      `<p>Tumors often carry extra copies of the DNA region that contains GCAWKR, unlike CHiLL1. More broadly, the authors report that their screen hits tend to be amplified, “but not depleted”, in tumor DNA. The Methods speak of regions that are “amplified or deleted”, so “depleted” appears to mean lost here (the paper does not say so explicitly).</p>` },
+    { k: 'plain', source: ['fig5A', 'res-aso-p2', 'res-aso-p3', 'm-public-rnaseq-p1'], html:
+      `<p><b>Lung cancer types in the paper.</b> Figure 5A labels the lab-grown cell type A549 as lung adenocarcinoma, H460 as large cell lung cancer and H441 as metastatic adenocarcinoma. The text says H441 comes from a pericardial effusion metastasis (spread cells in the fluid around the heart). H460 and H441 are names of lung cancer cell types that you meet in lesson C4. For human tumor data the authors picked 101 samples that are both adenocarcinoma and KRAS-mutated, and they report that their RNA-targeting agents also worked in EGFR-mutant cells: two genetic subtypes, one result.</p>` },
+  ],
+  appears: [
+    { ref: 'intro-p1', note: 'NSCLC, the KRAS+ subtype with activating KRAS mutations, and the limits of targeted therapies.' },
+    { ref: 'm-pdx-p1', note: 'The patient-derived model carries KRAS c.34G>T (p.Gly12Cys), that is KRAS G12C.' },
+    { ref: 'res-aso-p5', note: 'The GCAWKR locus is frequently amplified in cancer genomes.' },
+    { ref: 'res-integration-p4', note: 'Screen hits tend to be amplified, not depleted, in tumor DNA.' },
+    { ref: 'm-public-rnaseq-p1', note: 'Human tumor data: KRAS-mutated lung adenocarcinoma (LUAD) samples.' },
+    { ref: 'res-aso-p3', note: 'The RNA-targeting agents also act in EGFR-mutant cells.' },
+  ],
+  checks: [
+    { q: 'A tumor has far more copies of one region of its DNA than a normal cell does. What is this called?',
+      options: [
+        { t: 'Amplification', ok: true, why: 'Right: a copy-number gain. More copies usually mean more RNA and protein from the genes inside.' },
+        { t: 'Deletion', ok: false, why: 'Deletion is the opposite: copies are lost.' },
+        { t: 'An activating mutation', ok: false, why: 'A mutation changes the letters of the DNA but not how many copies there are.' },
+        { t: 'Metastasis', ok: false, why: 'Metastasis is the spread of cancer cells to other organs. It is not a DNA change.' },
+      ], bg: true },
+    { q: 'What is the difference between invasion and metastasis?',
+      options: [
+        { t: 'Invasion is pushing into neighboring tissue; metastasis is travelling to distant organs and founding new tumors', ok: true, why: 'Right: invasion is local, metastasis is the distant spread. Migration (cell movement) underlies both.' },
+        { t: 'They mean the same thing', ok: false, why: 'They are two stages: invasion usually comes first and makes metastasis possible.' },
+        { t: 'Invasion is cells dividing; metastasis is cells moving', ok: false, why: 'Dividing is proliferation. Both invasion and metastasis involve moving.' },
+        { t: 'Invasion happens only in the lab; metastasis only in patients', ok: false, why: 'Both are real processes in patients. In the lab, only the cell movement part is measured.' },
+      ], bg: true },
+    { q: 'What does "G12C" in KRAS G12C mean?',
+      options: [
+        { t: 'At position 12 of the KRAS protein, glycine (G) is replaced by cysteine (C)', ok: true, why: 'Right (m-pdx-p1): G and C are one-letter codes for amino acids. The DNA change behind it is written c.34G>T.' },
+        { t: 'The DNA letter at position 12 changes from G to C', ok: false, why: 'G and C here are amino acids, not DNA letters. The paper writes the DNA change separately as c.34G>T.' },
+        { t: 'The KRAS gene is present in 12 copies', ok: false, why: 'That would be an amplification. G12C names a single amino-acid swap.' },
+        { t: 'A piece of chromosome 12 is deleted', ok: false, why: 'The 12 is a position in the protein, not a chromosome number, and nothing is deleted.' },
+      ], source: ['m-pdx-p1'] },
+    { q: 'In the paper, what does "KRAS+" mean?',
+      options: [
+        { t: 'The tumor or cells carry an activating KRAS mutation', ok: true, why: 'Right (intro-p1): “carrying activating KRAS mutations (KRAS+)”.' },
+        { t: 'The cells carry extra copies of the KRAS gene', ok: false, why: 'The "+" is not about copy number. It marks a mutation.' },
+        { t: 'The cells make more KRAS RNA than normal cells do', ok: false, why: 'That would be upregulation. KRAS+ is defined by a change in the gene itself.' },
+        { t: 'The KRAS gene is deleted', ok: false, why: 'If the gene were lost it could not be stuck "on". KRAS+ cells have a changed, overactive KRAS.' },
+      ], source: ['intro-p1'] },
+    { q: 'The paper says the GCAWKR locus is "frequently amplified in cancer genomes". What does that mean?',
+      options: [
+        { t: 'Tumors often carry extra copies of the DNA region that contains GCAWKR', ok: true, why: 'Right: amplification is a gain of copies of a DNA region (res-aso-p5).' },
+        { t: 'GCAWKR RNA is often more abundant in tumors than in healthy tissue', ok: false, why: 'That would be a statement about expression. Amplification is about DNA copies, although it can cause higher expression.' },
+        { t: 'The GCAWKR gene often carries the G12C change', ok: false, why: 'G12C is a KRAS change and is not mentioned for GCAWKR.' },
+        { t: 'The GCAWKR region is often lost from tumor DNA', ok: false, why: 'Lost regions are deletions. The paper says amplified, the opposite.' },
+      ], source: ['res-aso-p5'] },
+  ],
+});
+
+/* ============================================================================================== C3 */
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []).push({
+  id: 'C3',
+  defines: ['toxicity', 'screen', 'aso', 'aso-cocktail'],
+  body: [
+    { k: 'h', text: 'Chemotherapy and cisplatin' },
+    { k: 'bgnd', html:
+      `<p>Not every cancer drug aims at one molecule. <b>Chemotherapy</b> means drugs that kill cells, or stop them dividing, and "cytotoxic" means poisonous to cells. Cancer cells divide fast, so they are hit hard. But healthy cells that divide fast (hair roots, the gut lining, blood-forming cells) are hit too, and that harm to healthy tissue is called <b>toxicity</b> (side effects).</p>` +
+      `<p><b>Cisplatin</b> is a classic chemotherapy drug built around the metal platinum. Inside a cell it sticks to DNA and ties neighboring letters together. The kinked DNA cannot be copied or read properly, so the cell stops dividing, and if it cannot repair the damage it usually self-destructs by apoptosis (lesson B1).</p>` },
+    { k: 'h', text: 'When a drug stops working: chemoresistance' },
+    { k: 'bgnd', html:
+      `<p>A tumor is a mix of cells that are not identical. A drug may kill most of them, but a cell that happens to tolerate it survives, regrows, and passes the tolerance on. That is natural selection inside the body. Cells can also become resistant by pumping the drug out, repairing its damage faster, or avoiding apoptosis. This is <b>chemoresistance</b> (also "drug resistance"). It is a major reason treatments stop working, and a main reason to look for new targets.</p>` },
+    { k: 'h', text: 'Dose–response curves and the IC numbers' },
+    { k: 'bgnd', html:
+      `<p>How much drug is needed? A <b>dose–response</b> experiment answers it. You give identical cells a series of doses, measure the response (for example how many cells are still alive or growing), and plot dose against response. The curve is usually S-shaped: almost no effect at tiny doses, a steep fall in the middle, a flat floor at high doses.</p>` +
+      `<p>The <b>inhibitory concentration (IC)</b> is the dose that lowers the response by a given percentage compared with untreated cells. <b>IC50</b> halves it, <b>IC30</b> lowers it by 30%, <b>IC20</b> by 20% and <b>IC80</b> by 80%. Think of them as dial settings: IC20 is gentle, IC80 is harsh. An IC value belongs to one cell type and one measurement; a dose that is IC30 for one kind of cell may do much less to another.</p>` },
+    { k: 'worked', html:
+      `<p><b>Worked example (made-up numbers).</b> You test doses 0, 1, 2, 4, 8 and 16 (arbitrary units) and find the share of cells still growing: 100%, 95%, 80%, 50%, 20% and 5%. Dose 2 leaves 80%, a 20% drop, so it is the IC20. Dose 4 is the IC50 and dose 8 is the IC80. The IC30 lies between 2 and 4.</p>` },
+    { k: 'svg', caption: 'A dose–response curve. IC20, IC30 and IC80 are the doses that cut growth by 20%, 30% and 80%. Resistant cells need a higher dose for the same effect: their curve shifts to the right.',
+      svg: `<svg viewBox="0 0 480 292" role="img" aria-label="Dose-response curves: growth falls in an S shape as drug dose rises. Dashed lines mark the doses where growth has dropped to 80, 70 and 20 percent of untreated, labelled IC20, IC30 and IC80. A second dashed curve for resistant cells sits further to the right">` +
+        `<path d="M60 24 V240 H462" class="ln"/>` +
+        `<text x="64" y="14" class="s m">cells still growing (compared with no drug)</text>` +
+        `<text x="54" y="34" class="end s">100%</text><text x="54" y="76" class="end s">80%</text><text x="54" y="97" class="end s">70%</text><text x="54" y="202" class="end s">20%</text><text x="54" y="244" class="end s">0%</text>` +
+        `<path d="M60 72 H185 M60 93 H204.5 M60 198 H285" class="ln thin dash m"/>` +
+        `<path d="M185 72 V240 M204.5 93 V240 M285 198 V240" class="ln thin dash m"/>` +
+        `<path d="M62 30.2 L74 30.2 L86 30.3 L98 30.4 L110 30.6 L122 30.9 L134 31.2 L146 31.7 L158 32.3 L170 33.2 L182 34.4 L194 36.2 L206 38.5 L218 41.7 L230 45.9 L242 51.6 L254 58.9 L266 68.3 L278 79.9 L290 93.6 L302 109.3 L314 126.3 L326 143.7 L338 160.7 L350 176.4 L362 190.1 L374 201.7 L386 211.1 L398 218.4 L410 224.1 L422 228.3 L434 231.5 L446 233.8" class="ln thick dash s-orange"/>` +
+        `<path d="M62 31.7 L74 32.4 L86 33.3 L98 34.6 L110 36.3 L122 38.7 L134 42.0 L146 46.3 L158 52.1 L170 59.6 L182 69.2 L194 80.9 L206 94.9 L218 110.7 L230 127.7 L242 145.2 L254 162.1 L266 177.6 L278 191.2 L290 202.6 L302 211.7 L314 218.9 L326 224.5 L338 228.6 L350 231.7 L362 234.0 L374 235.7 L386 236.9 L398 237.8 L410 238.4 L422 238.8 L434 239.2 L446 239.4" class="ln thick s-blue"/>` +
+        `<circle cx="185" cy="72" r="4" class="solid-blue"/><circle cx="204.5" cy="93" r="4" class="solid-blue"/><circle cx="285" cy="198" r="4" class="solid-blue"/>` +
+        `<text x="192" y="258" class="end s b">IC20</text><text x="200" y="258" class="s b">IC30</text><text x="285" y="258" class="mid s b">IC80</text>` +
+        `<text x="260" y="282" class="mid s m">drug dose (low to high)</text>` +
+        `<path d="M330 40 H358" class="ln thick s-blue"/><text x="366" y="45" class="s">sensitive cells</text>` +
+        `<path d="M330 62 H358" class="ln thick dash s-orange"/><text x="366" y="67" class="s">resistant cells</text>` +
+        `<path d="M244 135 H312" class="arrow s-orange"/>` +
+        `<text x="400" y="112" class="mid s t-orange">same effect needs</text><text x="400" y="130" class="mid s t-orange">a higher dose</text></svg>` },
+    { k: 'h', text: 'How the paper used cisplatin' },
+    { k: 'paper', ref: 'res-multipheno-p7',
+      quote: 'Patients with KRAS+ tumors are usually treated with cytotoxic platinum-based chemotherapeutics, but tumors frequently evolve resistance.' },
+    { k: 'plain', source: ['res-multipheno-p7', 'intro-p1'], html:
+      `<p>Cisplatin stands in for the standard drug treatment of KRAS+ lung tumors. The paper names therapy resistance as one of three challenges (intro-p1) and looks for lncRNAs that help cells resist the drug, that is, lncRNAs that promote chemoresistance. Cisplatin was used at “carefully chosen” concentrations.</p>` },
+    { k: 'paper', ref: 'm-screen-cisplatin-p1',
+      quote: 'a mild concentration (IC30) treatment decreases cell proliferation by about 30%. On the other hand, high concentration treatments induce proliferative arrest or cell death.' },
+    { k: 'plain', source: ['m-screen-cisplatin-p1', 'fig2B'], html:
+      `<p><b>Step 1, the dose–response.</b> To choose doses, the authors exposed lung cancer cells to cisplatin at a range of concentrations from 0.5 to 50 µM and, after 72 hours, measured how many cells were alive.</p>` +
+      `<p><b>Step 2, two higher doses.</b> In the “survival” experiment (one of their large pooled experiments, called screens; lesson D3) they treated A549 cells with 6.5 and 25 µM, which correspond to IC30 and IC80. Their stated reason for two doses: to increase the dynamic range (a wider spread of effects to detect) and to account for the different effects of different doses. A mild dose (IC30) lowers growth by about 30%; high doses cause growth arrest or cell death.</p>` +
+      `<p><b>Step 3, one low dose.</b> In the “death” experiment they used a low dose, IC20 (the Methods list 2 and 1 µM for A549 cells), and collected the floating, dead cells every 24 h for five days. The Figure 2B legend describes this as collecting “cells that die in response to low cisplatin concentration (IC20)”.</p>` },
+    { k: 'bgnd', html:
+      `<p><b>Why a low dose for the death experiment?</b> The paper does not explain the choice, so this is general reasoning, not a paper claim. At a high dose nearly every cell dies, so the dead cells are a random sample of everybody. At a low dose only some die, so the dead cells are a <i>selected</i> group, the ones that coped worst. A lncRNA that protects against cisplatin should then be missing more often than expected among the dead.</p>` },
+    { k: 'flag', source: ['m-screen-cisplatin-p1', 'fig2B'], html:
+      `<p>Two wrinkles. (1) The Figure 2B legend lists IC30 and IC80 together as “high cisplatin doses”, while the Methods call IC30 “a mild concentration”. “Mild” and “high” are relative words, so trust the IC number. (2) The Methods give the death-experiment doses as “2 and 1 µM (IC20)”, so it is not clear which of the two numbers is the IC20.</p>` },
+    { k: 'h', text: 'Combination therapy' },
+    { k: 'bgnd', html:
+      `<p><b>Combination therapy</b> means giving two or more treatments together. The usual reasons: a cell that escapes one drug is less likely to escape two that attack in different ways; the mix may work better than either alone; and sometimes each drug can be used at a lower dose. A simple benchmark is to add the single effects. If drug A alone cuts growth by 20% and drug B by 30%, adding predicts 50%. A result of 70% would be <i>synergy</i> (more than the sum). The catch is that harm can add up too, so combinations work best when the drugs spare healthy cells.</p>` },
+    { k: 'paper', ref: 'res-aso-p8',
+      quote: 'a 50:50 cocktail of CHiLL1/GCAWKR ASOs (Tier 3 cocktail) displayed a greater effect on cell viability compared with an equal dose of either ASO alone' },
+    { k: 'plain', source: ['res-aso-p8', 'discussion-p5'], html:
+      `<p>The paper’s own combination is a mix of two RNA-targeting agents (ASOs, short strands that destroy one chosen RNA; lesson D6), called a cocktail. An equal-sized 50:50 mix of the CHiLL1 and GCAWKR ASOs had a greater effect on cell viability than an equal dose of either one alone. The authors also hope that low toxicity in healthy cells would allow “not only higher doses but also combination therapies to suppress therapy resistance”.</p>` },
+    { k: 'flag', source: ['res-aso-p8', 'res-mechanism-p7', 'discussion-p6'], html:
+      `<p>How to describe the cocktail effect varies. Results call it a “greater effect” and a possible “synergistic” benefit (res-aso-p8), a later paragraph calls it “the additive effect” (res-mechanism-p7), and the Discussion says mixing the ASOs “yielded greater than additive effects” (discussion-p6). Additive and greater-than-additive are different claims, so read the figure rather than the adjective.</p>` },
+    { k: 'memory', html:
+      `<p><b>Analogy:</b> volume knob and two locks. A dose–response curve is a volume knob: tiny turns do nothing, middle turns change a lot, and past a point it is simply "loud". IC20 to IC80 are marks on the dial. Combination therapy is two different locks on one door: a thief who can pick one still has to beat the other. <i>Where it breaks:</i> cells are not thieves; resistance often builds up through many small changes, and the second "lock" can fail for different reasons than the first.</p>` },
+  ],
+  appears: [
+    { ref: 'intro-p1', note: 'Platinum chemotherapy is routine for KRAS+ NSCLC; therapy resistance is one of three challenges.' },
+    { ref: 'res-multipheno-p7', note: 'Tumors frequently evolve resistance; the paper looks for lncRNAs promoting chemoresistance at carefully chosen cisplatin concentrations.' },
+    { ref: 'm-screen-cisplatin-p1', note: 'Dose–response from 0.5 to 50 µM; IC30 and IC80 (6.5 and 25 µM) for the survival experiment; IC20 for the death experiment.' },
+    { ref: 'fig2B', note: 'Survival uses IC30 and IC80; death uses the low dose IC20.' },
+    { ref: 'res-aso-p8', note: 'A 50:50 ASO cocktail beats either ASO alone at an equal dose.' },
+    { ref: 'discussion-p5', note: 'Low toxicity could allow higher doses or combination therapies.' },
+  ],
+  checks: [
+    { q: 'What does "IC30" mean?',
+      options: [
+        { t: 'The drug concentration that lowers growth by 30% compared with untreated cells', ok: true, why: 'Right: the number after IC is the percentage drop in the measured response. IC30 is a mild dose.' },
+        { t: 'A concentration of 30 micromolar', ok: false, why: 'The 30 is a percentage, not a concentration. In the paper, 6.5 µM is the IC30 for A549 cells.' },
+        { t: 'The dose at which 30% of the cells have become resistant', ok: false, why: 'IC values describe how much the drug reduces growth, not how many cells are resistant.' },
+        { t: 'The dose that kills 30% of cells within the first hour', ok: false, why: 'IC30 is not tied to one hour. It is read from a dose–response curve measured over a set time (72 h in the paper).' },
+      ], source: ['m-screen-cisplatin-p1'] },
+    { q: 'Cells become resistant to a drug. How does their dose–response curve change?',
+      options: [
+        { t: 'It shifts to higher doses: the same effect needs more drug', ok: true, why: 'Right: IC values go up, so the curve slides to the right.' },
+        { t: 'It shifts to lower doses: less drug gives the same effect', ok: false, why: 'That would mean the cells became more sensitive, not resistant.' },
+        { t: 'It becomes a flat line at 0%', ok: false, why: 'A curve at 0% means every cell is gone at every dose. Resistant cells are the ones that keep growing.' },
+        { t: 'It does not change, only the drug label does', ok: false, why: 'Resistance changes how the cells respond, which is exactly what the curve shows.' },
+      ], bg: true },
+    { q: 'Why did the authors use two cisplatin doses (IC30 and IC80) in the survival experiment?',
+      options: [
+        { t: 'To widen the range of effects they could detect and to account for the different effects of mild and high doses', ok: true, why: 'Right (m-screen-cisplatin-p1): a mild dose lowers growth by about 30%, while high doses cause growth arrest or cell death.' },
+        { t: 'Because IC30 was for A549 cells and IC80 for H460 cells', ok: false, why: 'Both doses (6.5 and 25 µM) are given for A549 cells.' },
+        { t: 'Because the lower dose killed every cell', ok: false, why: 'The lower dose is the mild one: it lowers growth by only about 30%.' },
+        { t: 'To test whether cisplatin works better when combined with another drug', ok: false, why: 'Both doses are cisplatin alone. Combinations are tested with ASO mixes.' },
+      ], source: ['m-screen-cisplatin-p1'] },
+    { q: 'What did the authors find when they mixed the CHiLL1 and GCAWKR ASOs?',
+      options: [
+        { t: 'A greater effect than an equal dose of either ASO alone', ok: true, why: 'Right (res-aso-p8): a 50:50 cocktail beat an equal dose of either one alone.' },
+        { t: 'The same effect as one ASO alone', ok: false, why: 'The point of the experiment is that the cocktail did better than either ASO alone.' },
+        { t: 'A weaker effect, because the ASOs got in each other’s way', ok: false, why: 'The paper reports a greater effect, not interference between the ASOs.' },
+        { t: 'Extra harm to non-cancerous cells', ok: false, why: 'The authors report no additional toxicity for non-cancerous cells (res-aso-p8).' },
+      ], source: ['res-aso-p8'] },
   ],
 });

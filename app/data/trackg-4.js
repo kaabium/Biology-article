@@ -166,3 +166,370 @@ Object.assign(window.TRACKG.paras, {
     ],
   },
 });
+
+Object.assign(window.TRACKG.paras, {
+
+  /* ------------------------------------------------------------------ Lentivirus and stable cell line production */
+  'm-lentivirus-p1': {
+    plain: `<p>All plasmids used in the paper are listed in Data S3 (not in your PDF).</p><p>To produce lentivirus, HEK293T cells were given three plasmids at the same time (co-transfection, using the transfection reagent Lipofectamine2000): 12.5 µg of the Cas9 plasmid, which also carries blasticidin resistance, 7.5 µg of the psPAX2 plasmid, and 4 µg of the packaging plasmid pVsVg (catalog details omitted — see the PAPER box). One day (24 h) before the transfection, 2.5 × 10<sup>6</sup> HEK293T cells had been seeded in a 10 cm dish coated with Poly-L-Lysine (diluted 1:5 in 1X PBS).</p><p>The liquid above the cells, which contained the virus particles, was collected 24, 48 and 72 h after transfection. The particles were then concentrated 100-fold: 1 volume of cold PEG-it Virus Precipitation Solution was added for every four volumes of liquid. After 12 h at 4 °C, the mixture was spun in a centrifuge (1,500 × g for 30 min at 4 °C), the material was resuspended in 1X PBS, and it was stored at −80 °C until use.</p>`,
+    why: `This step builds the virus that will carry Cas9 into the cancer cells (next paragraph). In general, lentivirus is made in "producer" cells: HEK293T cells are given the cargo plasmid (here Cas9) plus plasmids that supply the virus's building parts (here psPAX2 and pVsVg, called packaging plasmids). The result is virus particles that can enter a target cell once but cannot multiply, which is safer to handle. Collecting the liquid at 24, 48 and 72 h gathers more virus, concentrating it 100-fold gives a stronger stock (useful when many cells must be infected), and storage at −80 °C keeps it usable until needed. The coating of the dish helps the loosely attached HEK293T cells stay on the plastic (a common trick, not explained in the paragraph).`,
+    memory: `A toy factory given three blueprints: one for the cargo (Cas9) and two for the delivery truck. The finished trucks can drop off the cargo once, but cannot build more trucks.`,
+    flags: [
+      `"2.5 × 106" is printed without its superscript; it is read here as 2.5 × 10<sup>6</sup> cells.`,
+      `The paragraph says the virus was "concentrated 100-fold" but gives only the PEG-it ratio (1 volume to every four volumes of supernatant), not the volume in which the virus was finally resuspended, which is what would set the degree of concentration.`,
+      `This paragraph calls the Cas9 plasmid "Cas9 plasmid with blasticidin resistance (Addgene #52962)" (the key resources table lists #52962 as "LentiCas9-Blast"), but the next paragraph names the virus "pLentiCas9-T2A-BFP". Neither paragraph says whether these are the same plasmid.`,
+    ],
+    prereqs: ['D1', 'D2'],
+    checks: [
+      { q: `Why are three different plasmids put into the HEK293T cells to make the virus?`,
+        options: [
+          { t: `One carries the cargo to be delivered (here Cas9) and the others supply virus parts, so the cells assemble virus particles that can deliver the cargo`, ok: true, why: `Right: the Cas9 plasmid is the cargo, and the other two are packaging plasmids that supply the virus's parts (the paragraph uses the word "packaging").` },
+          { t: `Each plasmid is a different guide RNA that will cut a gene in the HEK293T cells`, ok: false, why: `No guides are involved at this stage, and the HEK293T cells only serve as a virus factory. The pooled guide library is made later (library cloning).` },
+          { t: `The three plasmids are three versions of Cas9 that are compared in the experiment`, ok: false, why: `Only one of the three carries Cas9; the other two supply virus parts. Nothing is being compared here.` },
+        ],
+        source: ['m-lentivirus-p1'] },
+    ],
+  },
+
+  'm-lentivirus-p2': {
+    plain: `<p>To make cell lines that keep expressing Cas9 (stable Cas9-expressing cell lines), A549 and H460 cells were incubated for 24 h in culture medium containing the concentrated virus carrying pLentiCas9-T2A-BFP, together with 8 µg/mL polybrene. The infected cells were then selected for at least five days with blasticidin (8 µg/mL) and afterwards FACS-sorted two times, so that at least 60% of the cells were BFP-positive (BFP is a blue fluorescent protein).</p>`,
+    why: `Cas9 has to be in every cell before the guide library arrives, because guides alone cut nothing. In general, a lentivirus inserts its cargo into the cell's own DNA, so the cells keep making Cas9 and pass it on when they divide (a "stable" line). Polybrene helps virus stick to cells, blasticidin kills cells that did not receive the resistance gene carried by the plasmid, and the blue color marker BFP lets FACS pick out cells that carry the construct; sorting twice raises the share of marked cells (here to at least 60% BFP-positive).`,
+    flags: [
+      `The 60% refers to BFP, a color marker. The paragraph does not describe any direct test of Cas9 cutting activity, and does not say why both blasticidin selection and sorting were needed.`,
+    ],
+    prereqs: ['D2', 'D3'],
+    checks: [
+      { q: `Why were the cells FACS-sorted after the blasticidin selection?`,
+        options: [
+          { t: `To raise the share of cells that show the BFP marker (at least 60%), so more of the cells carry the Cas9 construct`, ok: true, why: `Right: the paragraph says the cells were sorted two times "to have at least 60% BFP-positive cells".` },
+          { t: `To kill the cells that did not receive the resistance gene`, ok: false, why: `That is what the blasticidin selection did (at least five days). FACS sorting separates cells by their color marker.` },
+          { t: `To make the cells express guide RNAs`, ok: false, why: `Guides are delivered later, with the pDECKO library. This step only makes the Cas9 cell lines.` },
+        ],
+        source: ['m-lentivirus-p2'] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ DECKO and lentiviral production */
+  'm-decko-p1': {
+    plain: `<p>For designing and cloning the DECKO plasmids, the authors followed a protocol they had described before. They give a web address (crispeta.crg.eu), whose name matches the guide-design software CRISPETa that appears in the library-design section.</p>`,
+    why: `This paragraph is a pointer, not a description. In general, Methods sections refer to an earlier protocol to save space, but then the reader has to look up that earlier work to see exactly how the plasmids that hold each guide pair were designed and cloned.`,
+    flags: [
+      `The paragraph says "our previously-described protocol" but prints no citation, only a web address. The reference list contains the original DECKO paper (ref-30) and the CRISPETa paper (ref-92; the key resources table also gives 92 for CRISPETa), but the paragraph does not say which one is meant.`,
+    ],
+    sources: ['krt-41'],
+    prereqs: ['D1', 'D3'],
+    checks: [
+      { q: `Why does this paragraph give so little detail about how the DECKO plasmids were designed and cloned?`,
+        options: [
+          { t: `Because it refers to a protocol the authors had already described, so the details are found there`, ok: true, why: `Right: "we used our previously-described protocol", plus a web address.` },
+          { t: `Because the DECKO plasmids were bought ready-made`, ok: false, why: `The paragraph says the authors designed and cloned them ("For the design and cloning of DECKO plasmids, we used...").` },
+          { t: `Because the plasmids were not designed by the authors`, ok: false, why: `The protocol is described as "our" protocol, so it is the authors' own earlier work.` },
+        ],
+        source: ['m-decko-p1'] },
+    ],
+  },
+
+  'm-decko-p2': {
+    plain: `<p>The paragraph says that all the pgRNA guides used for the CRISPR-del validations are reported in Data S4 (not in your PDF).</p>`,
+    why: `In general, listing the exact guide sequences lets other labs repeat the validation experiments. In the Results, "validation" means follow-up tests of individual candidates (for example deleting one TSS and checking the effect), as opposed to the pooled screen itself.`,
+    flags: [],
+    prereqs: ['D1', 'D7'],
+    checks: [
+      { q: `Why does a paper list the exact pgRNA sequences used for its validation experiments?`,
+        options: [
+          { t: `So that other labs can order the same guides and repeat the experiments`, ok: true, why: `Right: without the sequences, nobody could repeat the deletions exactly.` },
+          { t: `Because the guides are what the ASOs bind to`, ok: false, why: `ASOs bind RNA and guides steer Cas9 to DNA. They are two different tools used for two different experiments.` },
+          { t: `Because the list of sequences proves that the deletions worked`, ok: false, why: `A list of sequences proves nothing about an outcome. Whether a deletion happened is checked experimentally (for example by PCR and a gel).` },
+        ],
+        source: ['m-decko-p2'] },
+    ],
+  },
+
+  'm-decko-p3': {
+    plain: `<p>To make lentivirus that carries the pDECKO plasmid, the authors followed "the same protocol". After cells were infected with these pDECKO viruses, they were selected with puromycin (2 µg/mL) for at least three days.</p>`,
+    why: `The infected cells are kept alive by puromycin and the rest die. In general, puromycin kills any cell that does not carry a puromycin-resistance gene, so selection is needed because infection never reaches every cell, and cells without a guide pair would only add noise. (The paragraph implies, but does not state, that the plasmid carries the resistance gene.)`,
+    flags: [
+      `"The same protocol" could mean the previously described protocol (m-decko-p1) or the lentivirus production in m-lentivirus-p1; the paragraph does not say which.`,
+      `The paragraph does not say which experiments it covers. For the pooled screens, the titer paragraph says puromycin selection (2 µg/mL) was kept for six days (m-titer-p1).`,
+    ],
+    prereqs: ['D2'],
+    checks: [
+      { q: `Why were the infected cells treated with puromycin for at least three days?`,
+        options: [
+          { t: `To kill the cells that did not take up the plasmid (and its resistance gene), so that only cells carrying the guides remain`, ok: true, why: `Right: puromycin selection leaves only the cells that were infected and carry resistance.` },
+          { t: `To make the guides cut the DNA`, ok: false, why: `Cutting is done by Cas9 steered by the guides. Puromycin only kills cells that lack the resistance gene.` },
+          { t: `To make the cells divide faster`, ok: false, why: `Puromycin is toxic to cells without resistance; it does not speed up growth.` },
+        ],
+        source: ['m-decko-p3'] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ Library design */
+  'm-library-design-p1': {
+    plain: `<p>The authors downloaded gene annotations (lists of genes and where they sit on the genome) in GTF format from three sources: (i) GENCODE annotation release 19 (genome version GRCh37), (ii) the BIGTranscriptome annotation, and (iii) FANTOM CAT. They also generated a novel transcriptome assembly from A549 RNA-seq data with the program StringTie (version 1.3). All 4 annotations were then merged into one final annotation using StringTie's "-merge" option.</p>`,
+    why: `The goal is a target list that is as complete as possible. In general, no single catalog lists every lncRNA and different catalogs include different ones, so merging three public catalogs plus a new assembly from the authors' own A549 RNA-seq data adds lncRNAs that may be missing from public lists, including ones expressed in this cell line. The Limitations section still admits that incomplete annotation means some lncRNAs were not screened.`,
+    flags: [
+      `The printed text reads "We alsma, lo generated a novel transcriptome assembly", which looks like a typesetting slip for "We also generated".`,
+      `Only GENCODE is given a genome version (release 19, GRCh37). The paragraph does not say whether the other annotations use the same version or how they were matched before merging.`,
+    ],
+    prereqs: ['B7', 'D3'],
+    checks: [
+      { q: `Why did the authors merge several annotations, including one built from their own A549 RNA-seq data, into a single list?`,
+        options: [
+          { t: `No single annotation is complete, and an A549-specific assembly can add lncRNAs missing from the public lists, so the target list is more comprehensive`, ok: true, why: `Right: merging adds candidates. The Limitations section also says that incomplete annotation means some lncRNAs were not screened.` },
+          { t: `To make the list shorter so that the library would be smaller`, ok: false, why: `Merging adds candidates; it is the filtering steps in the next paragraph that shrink the list.` },
+          { t: `Because GENCODE contains no lncRNAs`, ok: false, why: `GENCODE does annotate lncRNAs (the Results call LINC00115 a "GENCODE-annotated" gene); the point of merging is completeness, not a gap in one source.` },
+        ],
+        source: ['m-library-design-p1', 'limitations-p2', 'res-validation-p2'] },
+    ],
+  },
+
+  'm-library-design-p2': {
+    plain: `<p>The merged list of lncRNAs was filtered in steps.</p><ul><li><b>First filter:</b> lncRNAs whose TSS overlaps a protein-coding gene exon, or lies less than 2 kb upstream or downstream of one (using the exons in the GENCODE annotation), were removed.</li><li><b>Second filter:</b> expression was calculated with RSEM v1.3, using the same A549 RNA-seq data that built the new assembly. Transcripts with FPKM below 0.1 were removed.</li><li><b>Clustering:</b> the remaining TSSs that were within 300 bp of each other were grouped into one "TSS cluster".</li><li><b>Evidence:</b> the TSS clusters were intersected with ENCODE evidence specific to A549 cells: CAGE, DNase I hypersensitivity sites, and ChromHMM marks (chromatin states named Active TSS, Flanking TSS, Promoter Downstream TSS, Flanking TSS Downstream, Genic enhancer 1, Genic enhancer 2, Active Enhancer 1, Active Enhancer 2, Weak Enhancer and Bivalent-Poised TSS).</li></ul><p>Candidate TSS clusters were then ranked by the number of evidence sources.</p>`,
+    why: `The filters serve the paper's goal: a library of expressed lncRNAs whose start sites can be deleted cleanly. The paper says the 2 kb rule avoids false positives from unintended off-targeting (Results): a deletion close to a protein-coding exon could disturb that gene and make an lncRNA look important when it is not. In general, the expression filter removes lncRNAs that are barely active in A549 cells, because a screen can only detect the loss of something that was there; clustering nearby TSSs avoids targeting the same region twice; and CAGE, DNase I hypersensitivity and ChromHMM are three independent hints that a real start site or regulatory region is present, so ranking by the number of evidence sources puts the best-supported TSSs first.`,
+    flags: [
+      `The paragraph says candidates were "prioritised by the number of evidence sources" but not how many sources a cluster needed, nor how the list was cut down to the 998 TSSs reported in the Results (res-pipeline-p2). The Figure 1B legend speaks of selection "based on three evidence sources".`,
+    ],
+    sources: ['res-pipeline-p2'],
+    prereqs: ['B4', 'B8', 'D10'],
+    checks: [
+      { q: `Why were lncRNAs with a TSS less than 2 kb from a protein-coding exon removed from the target list?`,
+        options: [
+          { t: `So that deleting the lncRNA's TSS is less likely to disturb a neighboring protein-coding gene and create a false hit`, ok: true, why: `Right: the Results say the 2 kb rule was used "to avoid the known issues of false-positive results that may occur via unintended off targeting".` },
+          { t: `Because lncRNAs close to protein-coding genes are never expressed`, ok: false, why: `Expression is handled by a separate filter (FPKM), and nothing says that nearness to a gene means no expression.` },
+          { t: `Because guides cannot be designed within 2 kb of an exon`, ok: false, why: `The stated reason is avoiding false positives from unintended targeting, not a technical limit on guide design.` },
+        ],
+        source: ['m-library-design-p2', 'res-pipeline-p2'] },
+    ],
+  },
+
+  'm-library-design-p3': {
+    plain: `<p>The authors designed <b>neutral control</b> pgRNAs aimed at genomic regions not expected to change cell behavior. They took 10 regions in the AAVS1 gene locus from a publication by Zhu and colleagues, and added 65 randomly chosen intergenic regions (more than 10 kb away from the nearest annotated gene) and 25 intronic regions (inside introns longer than 5 kb).</p><p>They also added protein-coding gene (PCG) controls with known roles in promoting or opposing cancer-cell growth and cisplatin resistance: 53 positive controls (genes that promote cell growth) and 50 negative controls (genes that oppose cell growth). These genes were picked by hand from the literature and taken from the Zhu paper. The complete list of genes in the library is in Table S1 (not in your PDF).</p>`,
+    why: `A screen is only interpretable if you know what "no effect" and "a real effect" look like. In general, neutral controls (cuts in places expected to do nothing) show the background, and because cutting DNA can itself stress cells a little, they reveal how much of an effect comes from cutting alone. Positive controls (known growth-promoting genes) should drop out in a dropout screen, which shows that the screen can detect a real effect. The paper later uses the neutral controls to turn fold changes into Z scores (m-hits-p2) and uses the positive and neutral controls to judge the quality of the ranking (m-hits-p5).`,
+    flags: [
+      `The Results (res-multipheno-p6) speak of "the 109 positive controls included in the library", while this paragraph lists 53 positive and 50 negative protein-coding gene controls. The paper does not say how these counts relate.`,
+      `The paragraph does not say how many pgRNAs were designed for each control region. No reference number is printed for "Zhu and colleagues"; the reference list contains Zhu et al. (2016), "Genome-scale deletion screening of human long non-coding RNAs using a paired-guide RNA CRISPR–Cas9 library" (ref-49), which is presumably the paper meant.`,
+    ],
+    sources: ['res-multipheno-p6', 'ref-49'],
+    prereqs: ['D3', 'D5'],
+    checks: [
+      { q: `What is the purpose of the neutral control pgRNAs (in AAVS1, intergenic and intronic regions)?`,
+        options: [
+          { t: `They show what "no effect" looks like when DNA is cut in places not expected to matter, giving a baseline for the lncRNA targets`, ok: true, why: `Right: neutral controls are placed in "genomic regions not expected to affect cell phenotype".` },
+          { t: `They are guides expected to kill the cells, so they prove the screen works`, ok: false, why: `That describes positive controls (known growth-promoting genes), not neutral ones.` },
+          { t: `They target lncRNAs already known to promote lung cancer`, ok: false, why: `Neutral controls target regions that are not expected to affect the phenotype, not known cancer lncRNAs.` },
+        ],
+        source: ['m-library-design-p3'] },
+    ],
+  },
+
+  'm-library-design-p4': {
+    plain: `<p>For each candidate TSS cluster region, 10 unique pgRNAs were designed with the software CRISPETa, run with a list of settings (printed in the paper, for example "-du 1000 -dd 1000", but not explained there). The software's off-target filters were used during the design.</p><p>The design was repeated with less and less strict rules until 10 pgRNAs had been found for each target. In the first run, only pgRNAs without mismatches were allowed. If fewer than 10 pgRNAs per candidate were found, the settings were relaxed: in the second round, one off-target with 2 mismatches was allowed, and in the third round, the region searched for guides was made bigger, repeatedly. A summary is in Data S4 (not in your PDF).</p>`,
+    why: `In general, a pooled screen wants several independent guide pairs per target, so that one weak or off-target pair cannot decide the result; here that "depth" is 10. Off-target cuts at look-alike sites can create false hits, so the designer starts strict and relaxes the rules only for targets where it cannot find 10 acceptable pairs. This keeps the library as clean as possible while giving every target the same number of pgRNAs.`,
+    flags: [
+      `The software settings (for example "-du 1000 -dd 1000" and "-v 0.4") are printed but not explained.`,
+      `"Only pgRNAs without mismatches were allowed" is not spelled out; it presumably concerns look-alike (off-target) sites elsewhere in the genome, but the paragraph does not say.`,
+      `The paragraph does not say how many targets needed the second or third round, or whether any ended with fewer than 10 pgRNAs; it points to Data S4 (not in your PDF) for a summary.`,
+    ],
+    prereqs: ['D1', 'D3'],
+    checks: [
+      { q: `Why did the authors repeat the guide design with "decreasing stringency"?`,
+        options: [
+          { t: `Some targets had fewer than 10 acceptable pgRNAs under the strictest rules, so the rules were relaxed step by step until every target had 10`, ok: true, why: `Right: the paragraph says the designs were repeated "until 10 pgRNAs for each target were identified".` },
+          { t: `To make every guide cut the DNA more than once`, ok: false, why: `The relaxing concerns how many look-alike (off-target) sites are tolerated and how large the search region is, not how often a guide cuts.` },
+          { t: `To get more than 10 pgRNAs for the easy targets`, ok: false, why: `The aim was exactly 10 per target; the repetition stopped once each target had 10.` },
+        ],
+        source: ['m-library-design-p4'] },
+    ],
+  },
+
+  'm-library-design-p5': {
+    plain: `<p>The final library design had 12,000 unique sequences, each 165 or 166 bp long, with overhangs (short end sequences) that are compatible with cloning into the pDECKO plasmid. The paragraph says the median distance between the pgRNAs is shown in Figure S1D (not in your PDF).</p>`,
+    why: `This paragraph fixes the library size, 12,000 unique sequences, and later numbers depend on it: the library coverage in bacteria (66.7X) and in the screens (&gt;1,000x) is calculated against it. In general, each sequence is one pgRNA, i.e. one synthetic DNA piece that holds both guides of a pair (the Results also speak of 12,000 pgRNAs), and the matching overhangs are what allow the pool to be cloned into the plasmid.`,
+    flags: [
+      `Figure 1A prints "1,200 targets" with "Depth: 10 pgRNAs" (1,200 × 10 would give 12,000), but Figure 1B prints "1200 pgRNAs library including controls". The text here and the Results say 12,000 pgRNAs. The Figure 1B label is likely a slip, but the paper does not say so.`,
+      `Figure S1D is cited here for the median distance between the pgRNAs, but the Results cite Figure S1D for the share of target regions with one, two or three promoters (res-pipeline-p2). The supplement is not in your PDF, so the labels cannot be checked.`,
+    ],
+    sources: ['m-library-cloning-p2', 'm-screens-p1', 'res-pipeline-p4', 'fig1A', 'fig1B'],
+    derived: ['1200'],
+    prereqs: ['D1', 'D3'],
+    checks: [
+      { q: `Why do the 165/166 bp library sequences carry "overhangs compatible with cloning into the pDECKO plasmid"?`,
+        options: [
+          { t: `So that each synthesized sequence can be joined into the cut pDECKO plasmid`, ok: true, why: `Right: the overhangs are matching ends that let the pool be cloned into the plasmid.` },
+          { t: `So that the sequences can bind to the target lncRNA`, ok: false, why: `The guide part of each sequence finds its DNA target; the overhangs are only for joining the piece into the plasmid.` },
+          { t: `So that Cas9 can recognize the sequence as a guide`, ok: false, why: `Cas9 works with the guide RNAs made from the plasmid; the overhangs have nothing to do with that.` },
+        ],
+        source: ['m-library-design-p5'] },
+    ],
+  },
+});
+
+Object.assign(window.TRACKG.paras, {
+
+  /* ------------------------------------------------------------------ Library cloning */
+  'm-library-cloning-p1': {
+    plain: `<p>The library was synthesized by a commercial supplier as single-stranded DNA pieces (oligonucleotides). When they arrived, they were dissolved in a low-salt buffer (nuclease-free low Tris-EDTA, or TE) to a final concentration of 10 ng/µL.</p><p>The pieces were then copied by PCR with two primers, Oligo-Fw and Oligo-Rev (sequences printed in the paper; the paragraph refers to Data S4 for the reaction that turns single-stranded into double-stranded DNA). The program used 10 cycles of copying, with an initial step at 95 °C and a final step at 72 °C (the other temperatures and times are printed in the paragraph). The product was purified with a PCR purification kit (catalog details omitted — see the PAPER box). The correct size of the product (the amplicon) was checked on a 2% agarose gel.</p>`,
+    why: `The library arrives as a tiny amount of single-stranded DNA: a mixed pool of 12,000 different sequences. In general, oligo pools share the same end sequences, so one primer pair can copy every member at once; PCR also makes the DNA double-stranded, which cloning needs, and produces enough material. Keeping the number of cycles low (10) limits the chance that some sequences are copied better than others, which would make the pool uneven (the paper does not state this reason). Checking the product size on a gel confirms that it has the expected length before it is used.`,
+    flags: [],
+    sources: ['m-library-design-p5'],
+    prereqs: ['D3', 'D4'],
+    checks: [
+      { q: `What is the main job of the PCR step applied to the synthesized oligonucleotide library?`,
+        options: [
+          { t: `To turn the small amount of single-stranded synthetic DNA into enough double-stranded DNA for cloning`, ok: true, why: `Right: the paragraph says the library arrived as single-stranded oligonucleotides, was PCR amplified, and the "ssDNA to dsDNA" reaction is detailed in Data S4.` },
+          { t: `To insert the guides into the genome of the cancer cells`, ok: false, why: `That happens later, when the lentivirus infects the cells. The PCR here is a test-tube copying step.` },
+          { t: `To remove the sequences that have off-targets`, ok: false, why: `Off-target filtering was done earlier, at the design stage. PCR copies whatever it is given.` },
+        ],
+        source: ['m-library-cloning-p1'] },
+    ],
+  },
+
+  'm-library-cloning-p2': {
+    plain: `<p>Cloning follows "the low-throughput protocol described in" (the printed sentence stops there; the citation is missing).</p><p>In the first step, the pDECKO_mCherry plasmid was cut open (digested) using the conditions listed in Data S4. The amplified library was inserted into the cut plasmid with a Gibson Assembly mix (50 °C for 1 h; the amounts are printed in the paragraph). A small part of this reaction (1 µL) was put into 25 µL of electrocompetent bacteria (Endura cells) by electroporation, a brief electric pulse that lets DNA enter the bacteria (catalog details omitted — see the PAPER box).</p><p>The library coverage was 66.7X. It was estimated by counting the bacterial colonies obtained and dividing by the total number of different sequences in the designed library (12,000).</p><p>The intermediate plasmid made in this step contains the variable pgRNA sequences but still lacks the constant part of the first sgRNA and the H1 promoter (Figure S1B, not in your PDF).</p>`,
+    why: `Cloning is done in two steps, which explains the last sentence: first the variable guide sequences go into the cut plasmid, and the constant parts are added in the second step (next paragraph). The bacteria step is also a bottleneck test. In general, each colony comes from one bacterium that took up one plasmid, so colonies divided by 12,000 sequences tells you how many times, on average, each sequence was captured; a value below one would mean that some sequences never entered the pool and could not be screened. Here 66.7X means roughly 800,000 colonies (my arithmetic: 66.7 × 12,000, not printed in the paragraph). The same idea (copies per sequence) is applied later to cells in the screens (m-screens-p1).`,
+    flags: [
+      `The first sentence ends in mid-thought: "follow the low-throughput protocol described in." The citation is missing from the printed text.`,
+      `The reaction amounts are printed in a muddled way ("H2O up to 10 µL, 10 µL of Gibson mix 10 µL"), so the exact volumes cannot be read with certainty.`,
+    ],
+    derived: ['800000'],
+    prereqs: ['D3', 'D4'],
+    memory: `Like counting how many visitors each room of a museum received: if the average is high, almost no room was missed.`,
+    checks: [
+      { q: `What does the "library coverage of 66.7X" in this paragraph measure?`,
+        options: [
+          { t: `The number of bacterial colonies obtained divided by the 12,000 different sequences in the designed library: how many times, on average, each sequence was captured when the library was cloned`, ok: true, why: `Right: that is how the paragraph says the coverage was estimated.` },
+          { t: `The number of cells per sequence that is kept during the screens`, ok: false, why: `That is the screen coverage (more than 1,000x), which counts cells, not bacterial colonies (see the screens section).` },
+          { t: `The percentage of cloned sequences that are error-free`, ok: false, why: `Coverage counts colonies per designed sequence; it does not say whether the sequences are correct. Quality was checked by sequencing, described in the next paragraph.` },
+        ],
+        source: ['m-library-cloning-p2', 'm-screens-p1'] },
+    ],
+  },
+
+  'm-library-cloning-p3': {
+    plain: `<p>In the second cloning step, the intermediate plasmid was cut with an enzyme (printed as "BmsbI"). After purification, the constant insert was assembled by ligation (joining DNA pieces) using long synthetic oligos, as explained in Pulido-Quetglas C. et al. (the oligos are listed in Data S4). The ligation product was then put into electrocompetent Endura bacteria by electroporation as described above (catalog details omitted — see the PAPER box).</p><p>Clones (single bacterial colonies) were tested by colony PCR and by Sanger sequencing (primers and conditions in Data S4).</p><p>The overall library quality was evaluated by NGS. The plasmid pool containing the pgRNAs was PCR-amplified with primers for NGS sequencing (listed in Table S3) and purified. The purified product was sequenced by Illumina at a depth of 20M PE125 reads (20 million paired-end reads). The reads were aligned to the pgRNA library, and the read distribution of each pgRNA was determined with the Ineq package in R (version 3.5.3) to calculate the Lorenz curve and the Gini coefficient (Figure S1C).</p>`,
+    why: `This paragraph finishes the cloning and then tests the result. In the second step the parts that are the same in every pgRNA (the constant part of the first sgRNA and the H1 promoter, missing after step one) are added. Individual clones are checked by colony PCR and Sanger sequencing, and the whole pool is checked by NGS. In general, a pooled screen needs a library that contains all the sequences in roughly even amounts: if a few guides dominate and many are rare, the rare ones cannot be measured well and the screen loses power. The Lorenz curve and the Gini coefficient summarize how uneven a pool is (a Gini coefficient of zero means perfectly even; values near one mean very uneven).`,
+    flags: [
+      `Figure labels do not line up. The Lorenz curve and Gini coefficient are cited here as Figure S1C, but the Results cite Figure S1C for the cloning scheme and Figure S1F for sequence quality (res-pipeline-p4), and the previous cloning paragraph cites Figure S1B for the scheme. The supplement is not in your PDF.`,
+      `The Results report the library quality as "60.8% perfect match across both spacers" and 90th to 10th percentile count ratios of "4.6-fold" (res-pipeline-p4). This paragraph names the Lorenz curve and Gini coefficient instead and gives no Gini value in the text.`,
+      `NGS primers are said to be in Table S3 here, but the key resources table says "NGS sequencing primers (see Table S2 for sequences)". The enzyme name is printed "BmsbI" (the letters look transposed). The supplement is not in your PDF, so the table labels cannot be checked.`,
+    ],
+    sources: ['res-pipeline-p4', 'krt-39'],
+    prereqs: ['D3', 'D4'],
+    checks: [
+      { q: `Why was the finished plasmid library sequenced by NGS and summarized with a Lorenz curve and a Gini coefficient?`,
+        options: [
+          { t: `To check that all the pgRNAs are present in fairly even amounts, because a very uneven pool would make some guides hard to measure in the screen`, ok: true, why: `Right: the paragraph says the "overall library quality was evaluated by NGS" and the read distribution of each pgRNA was used to calculate the Lorenz curve and Gini coefficient.` },
+          { t: `To measure how many cells survive cisplatin`, ok: false, why: `Cisplatin comes later, in the screens. Here only the plasmid pool is sequenced.` },
+          { t: `To confirm that the lncRNAs are expressed in A549 cells`, ok: false, why: `Expression was assessed from RNA-seq during the library design (the FPKM filter). Sequencing the plasmids only counts guide sequences.` },
+        ],
+        source: ['m-library-cloning-p3'] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ Lentiviral titer calculation and infection */
+  'm-titer-p1': {
+    plain: `<p>The aim was an MOI (multiplicity of infection) of 0.3–0.4, so the authors first ran a titration experiment in A549 and H460 cells. They plated 2 × 10<sup>6</sup> cells in each well of a 12-well plate with 8 µg/mL polybrene, added different amounts of virus to the wells (from 2.5 to 50 µL), and infected the cells by spin-infection (spinning the plate in a centrifuge), as described before. After the spin, the medium was replaced with fresh complete medium without polybrene and the cells were left overnight.</p><p>The next day the cells were counted and each well was split into two equal parts; one part was treated with 2 µg/mL puromycin. After 72 h, the MOI was calculated by dividing the number of surviving cells in the puromycin well by the number of cells in the puromycin-free well. An MOI of 0.3 was used for all the screening experiments.</p><p>For the large-scale screens, 120M (120 million) cells were seeded in 12-well plates at a density of 2M per well for spin-infection. The next day the cells were pooled and fresh medium containing puromycin (2 µg/mL) was added. Puromycin selection was kept up for six days until the phenotypic screens began.</p>`,
+    why: `In general, every batch of virus has a different strength, so it is titrated: several amounts are tried and the infected fraction is measured, to find the amount that gives the wanted MOI. A low MOI means most cells get no virus and the infected ones mostly get just one, so each infected cell carries a single pgRNA and its phenotype can be linked to one target (the paper does not spell this reason out here). The puromycin-free half gives the total cell number and the puromycin half shows how many cells were infected, so their ratio is the infected fraction. Many cells are needed because most are not infected: by the paper's own calculation an MOI of 0.3 means about 30% survive, so 120M cells give about 36M infected cells (my arithmetic), or about 3,000 per library sequence out of 12,000, well above the &gt;1,000x coverage kept later.`,
+    flags: [
+      `The "MOI" here is the fraction of cells that survive puromycin (survivors divided by cells without puromycin). Strictly, that is the fraction of cells that received at least one virus, which is not exactly the average number of viruses per cell; the two are close when the fraction is small. The paragraph does not discuss this.`,
+      `"2 × 106" is printed without its superscript; it is read as 2 × 10<sup>6</sup> cells per well, which matches the "2M per well" used for the large-scale screens.`,
+      `The paragraph gives a target range of 0.3–0.4 but says that 0.3 was used for all the screens.`,
+    ],
+    sources: ['m-library-design-p5', 'm-screens-p1'],
+    derived: ['30', '36', '3000'],
+    prereqs: ['D2', 'D3'],
+    memory: `Dosing a classroom with a few drops of ink: add so little that most pupils stay clean and the stained ones carry just one drop.`,
+    checks: [
+      { q: `Why is the MOI kept low (0.3) in a pooled screen?`,
+        options: [
+          { t: `So that most infected cells receive only one pgRNA, letting each cell's phenotype be linked to a single target`, ok: true, why: `Right in general: at a low MOI most cells get no virus (puromycin removes them) and the infected ones mostly get one.` },
+          { t: `So that every cell receives at least one virus`, ok: false, why: `At an MOI of 0.3 most cells receive none. The uninfected cells are killed by puromycin; the aim is one pgRNA per infected cell.` },
+          { t: `So that the cells survive puromycin better`, ok: false, why: `Survival under puromycin depends on the resistance gene, not on the MOI.` },
+        ],
+        source: ['m-titer-p1'] },
+    ],
+  },
+
+  /* ------------------------------------------------------------------ CRISPR screens */
+  'm-screens-p1': {
+    plain: `<p>One week after infection is called time point 0 (T0). At T0 the cells were counted and the reference sample was collected: 16M (16 million) cells, which corresponds to a library coverage of more than 1,000x. For all screens, cells were grown in 150 mm culture-treated dishes and passed every 2–3 days.</p>`,
+    why: `T0 is the "before" photograph. In general, a screen reads out how the abundance of each guide changes, so it needs a starting count to compare against (some screens also use other reference samples, described in the next paragraphs). Coverage above 1,000x means that, on average, every one of the 12,000 sequences was present in more than 1,000 cells (16M divided by 12,000 is about 1,300: my arithmetic), so the random loss of a few cells does not make a guide appear or vanish by chance.`,
+    memory: `The "before" photo in a before-and-after comparison.`,
+    flags: [],
+    sources: ['m-library-design-p5'],
+    derived: ['1300'],
+    prereqs: ['D3', 'D4'],
+    checks: [
+      { q: `What does a "library coverage of more than 1,000x" mean for the 16M cells collected at T0?`,
+        options: [
+          { t: `On average, each unique library sequence is represented by more than 1,000 cells`, ok: true, why: `Right: the next paragraph defines coverage as the number of cells divided by the number of unique library sequences.` },
+          { t: `Each cell carries more than 1,000 different guides`, ok: false, why: `Most infected cells carry a single pgRNA (that is what the low MOI is for). Coverage counts cells per sequence, not guides per cell.` },
+          { t: `The T0 sample was sequenced more than 1,000 times`, ok: false, why: `That would describe sequencing depth (reads). Coverage here counts cells per library sequence.` },
+        ],
+        source: ['m-screens-p1', 'm-screen-prolif-p1'] },
+    ],
+  },
+
+  'm-screen-prolif-p1': {
+    plain: `<p><b>Dropout screens.</b> At T0, 16M cells were plated and passaged (split regularly) so that coverage stayed above 1,000X. Here coverage is defined as the number of cells divided by the number of unique library sequences. Cells were harvested at 14 and 21 days to extract genomic DNA (gDNA).</p><p><b>CFSE screens.</b> At T7, 16M cells were seeded and "starved" for 24 h in medium without FBS. They were then stained with the CFSE dye (catalog details omitted — see the PAPER box). One part of the stained cells was analyzed straight away by flow cytometry; the rest were plated in normal medium. Five days later (T5), the cells were sorted into two populations: the 20% brightest cells (slow-growing) and the 20% least bright cells (fast-growing). The two populations were plated separately and, five days later (T10), went through another round of staining and sorting.</p>`,
+    why: `These are the two formats of the proliferation screen. In the dropout screen, cells whose guides delete a growth-promoting lncRNA grow slower, so their guides become rarer between T0 and the later samples; keeping coverage above 1,000X keeps counting noise low. In the CFSE screen (positive selection), in general the dye is shared out among daughter cells at each division, so fast dividers get dimmer and slow dividers stay bright; sorting the brightest and the least bright 20% reads growth directly from the dye. The Results say the two formats complement each other: adding the CFSE screens gave a modest but consistent gain in accuracy (A549 proliferation AUC 0.7 versus 0.67). The paragraph does not say why the cells were starved first; in general, serum starvation brings cells to a similar resting state so that they restart dividing together.`,
+    memory: `A drop of ink shared between daughters at every division: the more a cell divides, the paler it gets.`,
+    flags: [
+      `T7, T5 and T10 are not defined here (T0 is defined in m-screens-p1 as one week after infection). "Five days later (T5)" suggests that T5 and T10 count days from the staining, but the paragraph does not say so. It also does not say what the 14 and 21 days of the dropout screen are counted from (presumably T0).`,
+      `The paragraph does not say what the sorted CFSE populations were compared with (each other, or an unsorted reference), or how many replicates were done.`,
+    ],
+    sources: ['res-multipheno-p2'],
+    prereqs: ['D3', 'D4', 'D5'],
+    checks: [
+      { q: `In the CFSE screens, why are the 20% brightest cells called "slow-growing" and the 20% least bright cells "fast-growing"?`,
+        options: [
+          { t: `Because the dye is diluted each time a cell divides, so cells that still look bright have divided less`, ok: true, why: `Right in general: CFSE is shared out between daughter cells at every division, so brightness falls with the number of divisions.` },
+          { t: `Because bright cells are alive and dim cells are dead`, ok: false, why: `CFSE brightness tracks how often cells have divided, not whether they are dead. Dead cells are not what is being sorted here.` },
+          { t: `Because the dye is made by the cells in response to the pgRNA`, ok: false, why: `The dye is added from outside (cells are stained with a kit); the cells do not make it.` },
+        ],
+        source: ['m-screen-prolif-p1'] },
+    ],
+  },
+
+  'm-screen-cisplatin-p1': {
+    plain: `<p><b>Choosing the doses.</b> The working cisplatin concentrations were chosen with a dose-response experiment and cell doubling times (Figure S2C, not in your PDF). For the dose-response, 3,000 A549 and H460 cells were plated in 96-well plates and treated with a range of cisplatin concentrations (0.5, 1, 2, 2.5, 5, 6.5, 8, 12.5, 25 and 50 µM). After 72 h, CellTiter-Glo 2.0 was added to the medium (1:1) and luminescence was recorded (a read-out of how many cells are alive; catalog details omitted — see the PAPER box). For the doubling time, 1M cells were plated in 10 cm plates, cisplatin was added at different concentrations, and living cells were counted every 2–3 days for up to 14 days.</p><p><b>Survival screen.</b> 48 and 96M cells were plated at T0 and treated with 6.5 and 25 µM cisplatin for A549 cells; these doses correspond to IC30 and IC80. Two doses were used to widen the dynamic range of the screens and to account for the diverging effects of different doses: a mild dose (IC30) decreases cell proliferation by about 30%, whereas high doses cause proliferative arrest or cell death. Cell pellets were collected after 14 and 21 days.</p><p><b>Death screen.</b> 144M cells were seeded and treated with cisplatin at 2 and 1 µM (IC20) for A549 (Figure S2C). Every 24 h, for five days, floating (dead) cells were collected and pooled for gDNA extraction.</p>`,
+    why: `Cisplatin screens need doses that give a usable signal, so the doses are measured first (dose-response and doubling time with the drug) rather than guessed. The two screens read the response in opposite directions (Figure 2B legend). In the survival screen (dropout format), cells exposed to high doses (IC30 and IC80) are collected after 14 and 21 days, and the guides of resistance-promoting lncRNAs are depleted in the survivors. In the death screen (positive format), the floating dead cells from a low dose (IC20) are collected, and the enriched guides identify resistance-promoting lncRNAs. The paper's stated reason for two doses in the survival screen is to widen the dynamic range of the screens and to account for the different effects of mild and high doses.`,
+    flags: [
+      `The death screen gives two concentrations ("2 and 1 µM") but only one label, "(IC20)"; the Figure 2B legend speaks of one low concentration (IC20). The paragraph does not say which of the two is the IC20, or whether both were used.`,
+      `Doses are given for A549 only. The dose-response was done in A549 and H460, but the paragraph gives no doses for H460.`,
+      `"48 and 96M cells were plated at T0 and treated with 6.5 and 25 µM" does not say which cell number goes with which dose. The paragraph also does not say what the cisplatin-treated cells were compared with (for example untreated cells at the same time point, or the T0 sample).`,
+    ],
+    sources: ['fig2B'],
+    prereqs: ['C3', 'D5', 'D8'],
+    checks: [
+      { q: `Why did the authors use two cisplatin doses (IC30 and IC80) in the survival screen?`,
+        options: [
+          { t: `To widen the dynamic range of the screen and to cover the different effects of a mild dose (slower growth) and a high dose (arrest or death)`, ok: true, why: `Right: the paragraph says two concentrations were used "to increase the dynamic range of the screens and account for diverging effects of different doses".` },
+          { t: `Because IC30 is for A549 cells and IC80 is for H460 cells`, ok: false, why: `Both doses are given for A549 cells (6.5 and 25 µM); the paragraph does not assign them to different cell lines.` },
+          { t: `To check that the cisplatin stock was active`, ok: false, why: `Nothing like that is stated; the paragraph gives the reason as widening the dynamic range and covering diverging dose effects.` },
+        ],
+        source: ['m-screen-cisplatin-p1'] },
+    ],
+  },
+
+  'm-screen-migration-p1': {
+    plain: `<p><b>Set-up.</b> To find the best conditions, a test experiment was done first: 0.5 M (half a million) A549 cells per well were seeded in 5 Boyden chambers (chambers whose two compartments are separated by a porous membrane; catalog details omitted — see the PAPER box). Each migration assay was stopped at a different time, from 5 h up to 48 h (Figure S2G, not in your PDF). 48 h was chosen for the real experiment.</p><p><b>Screen.</b> At T0, the infected cells (about 16M) were divided and seeded into the upper part of 32 transwell inserts (0.5 M cells per insert). The upper part was filled with medium without FBS and the lower part with medium containing 10% FBS. After 48 h, the cells in the upper part of the chamber (impaired migration) and in the lower part (accelerated migration) (Figure 2C) were detached with trypsin and plated separately for 48 h. After that, the cells were counted and collected for gDNA extraction. Control cells that did not go through the migration assay were harvested at the same time as a reference population.</p>`,
+    why: `Migration is one of the cancer hallmarks the paper screens for. The design puts serum-free medium above a porous membrane and serum-containing medium (10% FBS) below, so that cells able to migrate move toward the serum. In general, collecting the cells that crossed and the cells that did not lets you ask which guides are enriched in each group. A migration-promoting lncRNA, when lost, makes cells less able to migrate, so its guides pile up in the impaired group: the Figure 2C legend says migration-promoting lncRNAs are identified through pgRNA enrichment in migration-impaired cells. The set-up test over several time points (5 h up to 48 h) was run to choose the duration, and 48 h was selected. The 16M infected cells match the 16M of the T0 sample (coverage above 1,000x, see the first screens paragraph). Control cells that skipped the assay serve as the reference, harvested at the same time so that the comparison is not distorted by culture time.`,
+    flags: [
+      `Two different 48 h periods appear: 48 h in the transwell, and then another 48 h of re-plating before counting and DNA extraction. The Results mention only the first (res-multipheno-p7), and the paragraph does not say why the cells were re-plated.`,
+      `The upper cells are called "impaired migration" and the lower cells "accelerated migration". Hits in this screen are guides enriched in the impaired (upper) cells (Figure 2C legend), which can feel backward.`,
+    ],
+    sources: ['fig2C', 'res-multipheno-p7', 'm-screens-p1'],
+    prereqs: ['C2', 'D5'],
+    checks: [
+      { q: `A pgRNA that deletes a migration-promoting lncRNA would be expected to be enriched in which group of cells?`,
+        options: [
+          { t: `The migration-impaired cells that stayed in the upper part of the transwell`, ok: true, why: `Right: losing a migration-promoting lncRNA makes cells less able to move, and the Figure 2C legend says migration-promoting lncRNAs are identified through pgRNA enrichment in migration-impaired cells.` },
+          { t: `The accelerated-migration cells that reached the lower part`, ok: false, why: `That is the intuitive guess, but cells that lost a migration-promoting gene would be less, not more, likely to cross.` },
+          { t: `The control cells that did not undergo the migration assay`, ok: false, why: `The control cells are the reference population used for comparison; they are not a selected group.` },
+        ],
+        source: ['m-screen-migration-p1', 'fig2C'] },
+    ],
+  },
+});
