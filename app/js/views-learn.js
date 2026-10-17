@@ -65,6 +65,18 @@
     }
   };
 
+  /* consecutive blocks of the same kind share one label (the coloured bar stays) */
+  V.renderLessonBody = (blocks) => {
+    let prev = null;
+    return blocks.map((b) => {
+      let html = V.renderLessonBlock(b);
+      const same = prev && prev === b.k && ['plain', 'bgnd', 'memory', 'why', 'flag', 'worked'].includes(b.k) && !b.label;
+      if (same) html = html.replace(/<div class="klabel">.*?<\/div>/, '');
+      prev = b.k;
+      return html;
+    }).join('');
+  };
+
   V.lesson = (root, [id]) => {
     const l = window.LESSON_INDEX[id];
     if (!l || l.track === 'G') { if (l) location.hash = l.href; else root.innerHTML = '<p>Lesson not found.</p>'; return {}; }
@@ -82,7 +94,7 @@
       ${l.goal ? `<p class="lead">${l.goal}</p>` : ''}
       ${pre ? `<div class="small" style="margin:.4rem 0"><b>Before this:</b> <span class="prereq-links">${pre}</span></div>` : ''}
       ${V.kindLegend}
-      <div class="lesson-body">${(l.body || []).map(V.renderLessonBlock).join('')}</div>
+      <div class="lesson-body">${(l.body || []).length ? V.renderLessonBody(l.body) : '<div class="card"><p class="muted">This lesson is still being written.</p></div>'}</div>
       ${teaches.length ? `<div class="card"><b>New words in this lesson</b><div class="chips" style="margin-top:.4rem">${teaches.map((g) => `<a class="chip" href="#/term/${g.id}">${U.esc(g.term)}</a>`).join('')}</div></div>` : ''}
       ${(l.appears || []).length ? `<div class="card"><h3>📍 Where this appears in the paper</h3><div class="appears">${l.appears.map((a) => { const S = U.sources()[a.ref]; return S ? `<a href="${S.href}"><b>${U.esc(S.label)}</b> — ${a.note}</a>` : ''; }).join('')}</div></div>` : ''}
       ${(l.checks || []).length ? `<h2>Check yourself</h2><p class="small muted">Explanations appear for the right answer <i>and</i> the wrong ones.</p>${l.checks.map((q, k) => V.checkHtml(q, `l:${id}:${k}`)).join('')}` : ''}
@@ -92,7 +104,8 @@
       <div class="section-nav">${prevId ? `<a class="btn" href="${V.stepHref(prevId)}">← ${U.esc(window.LESSON_INDEX[prevId].title)}</a>` : '<span></span>'}${nextId ? `<a class="btn" href="${V.stepHref(nextId)}">${U.esc(window.LESSON_INDEX[nextId].title)} →</a>` : ''}</div>
       <div class="row no-print"><button class="btn small ghost" data-asklesson>🤖 Ask Claude to explain this lesson another way</button></div>`;
     PP.mountZooms(root);
-    U.$$('.lesson-body .kind:not(.k-paper), .lesson-body .kind.k-paper', root).forEach((k) => PP.linkTerms(k));
+    const seenTerms = new Set();
+    U.$$('.lesson-body .kind', root).forEach((k) => PP.linkTerms(k, { once: true, seen: seenTerms }));
     let right = 0;
     let answered = 0;
     V.wireChecks(root, () => [id]);

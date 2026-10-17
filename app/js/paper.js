@@ -85,7 +85,7 @@
   P.linkTerms = (root, opts) => {
     const { re } = P.termIndex();
     if (!re || !root) return;
-    const once = opts && opts.once ? new Set() : null;
+    const once = opts && opts.once ? (opts.seen || new Set()) : null;
     const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
       acceptNode(n) {
         let p = n.parentNode;
@@ -128,6 +128,19 @@
         node.parentNode.replaceChild(frag, node);
       }
     });
+  };
+
+  /* lessons whose terms occur in a text (for automatic "basics you need" links) */
+  P.autoPrereqs = (text, max) => {
+    const { re } = P.termIndex();
+    if (!re || !text) return [];
+    const counts = {};
+    for (const m of text.matchAll(re)) {
+      const g = P.lookupTerm(m[2]);
+      if (g && g.taughtIn && window.LESSON_INDEX && window.LESSON_INDEX[g.taughtIn]) counts[g.taughtIn] = (counts[g.taughtIn] || 0) + 1;
+    }
+    const pos = (id) => (window.V.path || []).indexOf(id);
+    return Object.keys(counts).sort((a, b) => counts[b] - counts[a] || pos(a) - pos(b)).slice(0, max || 5);
   };
 
   /* ---------- verbatim block rendering ---------- */

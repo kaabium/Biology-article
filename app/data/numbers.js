@@ -1,1 +1,1 @@
-window.NUMBERS = window.NUMBERS || [];
+(window.NUMBERS = window.NUMBERS || []);

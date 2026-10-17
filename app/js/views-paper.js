@@ -72,7 +72,7 @@
       <div class="paper-body">${unitBody(u, { studyLink: true })}</div>
       ${prevNext(u, 'read')}${citeBox()}`;
     PP.mountZooms(root);
-    PP.linkTerms(U.$('.paper-body', root));
+    U.$$('.paper-body .para .ptext', root).forEach((el) => PP.linkTerms(el, { once: true }));
     if (para) {
       const el = document.getElementById('b-' + para) || document.getElementById(para);
       if (el) {
@@ -219,20 +219,25 @@
 
   /* ---------- Track G: the paper, section by section ---------- */
   V.gIndex = (root) => {
-    const units = PP.units().filter((u) => !['cover', 'refs'].includes(u.id));
     const tg = TG();
-    const rows = (us) => us.map((u) => {
-      const paras = u.blocks.filter((b) => !/^h\d$/.test(b.type) && b.type !== 'figure');
-      const seen = paras.filter((b) => S.seen(b.id)).length;
-      const has = tg.units && tg.units[u.id];
-      return `<a class="lesson-row ${paras.length && seen === paras.length ? 'done' : ''}" href="#/g/${u.id}"><span class="num">${paras.length && seen === paras.length ? '✓' : paras.length}</span>
-        <span class="grow"><b>${U.esc(u.title)}</b><br><span class="meta">${seen}/${paras.length} paragraphs studied${has ? '' : ' · plain-English layer coming'}</span></span></a>`;
-    }).join('');
+    const groups = [['main', 'Main text'], ['back', 'Declaration of interests, contributions, acknowledgments'], ['methods', 'STAR★Methods (every section has a plain-English layer)']];
+    const row = (st) => {
+      const seen = st.paras.filter((id) => S.seen(id)).length;
+      const written = tg.units && tg.units[st.unit] && st.paras.every((id) => tg.paras[id] && tg.paras[id].plain);
+      const done = st.paras.length && seen === st.paras.length;
+      return `<a class="lesson-row ${done ? 'done' : ''}" href="#/g/${st.unit}"><span class="num">${done ? '✓' : st.paras.length}</span>
+        <span class="grow"><b>${U.esc(st.title)}</b><br><span class="meta">${seen}/${st.paras.length} paragraphs studied${written ? '' : ' · study layer being written'}</span></span></a>`;
+    };
     root.innerHTML = `<div class="crumbs"><a href="#/learn">Learn</a> › Track G</div>
       <h1 class="page-title">🎓 Track G · The paper, section by section</h1>
-      <p class="lead">Each paragraph: the PAPER text, then a Plain-English translation, why it matters, links to the basics you need, and 1–2 check questions.</p>
+      <p class="lead">Each paragraph: the PAPER text, then a Plain-English translation, why it matters, links to the basics you need, and 1–2 check questions. Every figure panel has its own guide.</p>
       ${kindLegend}
-      ${GROUPS.map(([g, f]) => { const us = units.filter(f); return us.length ? `<div class="card" style="margin-top:1rem"><h2>${g}</h2>${rows(us)}</div>` : ''; }).join('')}`;
+      ${groups.map(([g, name]) => { const sts = V.gSteps.filter((x) => x.group === g); return sts.length ? `<div class="card" style="margin-top:1rem"><h2>${name}</h2>${sts.map(row).join('')}</div>` : ''; }).join('')}
+      <div class="card" style="margin-top:1rem"><h2>Also in the paper</h2><p class="small muted">These parts need no extra explanation, but you can read them verbatim.</p>
+      <a class="lesson-row" href="#/g/front"><span class="grow">Title, authors and affiliations</span></a>
+      <a class="lesson-row" href="#/g/starmethods-toc"><span class="grow">STAR★Methods contents list</span></a>
+      <a class="lesson-row" href="#/g/m-krt"><span class="grow">Key resources table</span></a>
+      <a class="lesson-row" href="#/read/refs"><span class="grow">References</span></a></div>`;
     return { title: 'Track G · Paper section by section' };
   };
 
@@ -278,10 +283,11 @@
       if (/^h\d$/.test(b.type) || b.type === 'title') { html += PP.renderBlock(b); return; }
       if (b.type === 'figure') { html += PP.renderFigureBlock(b.fig) + figurePanelLinks(b.fig); return; }
       const L = tg.paras[b.id] || {};
-      const pre = (L.prereqs || []).map((lid) => { const l = window.LESSON_INDEX && window.LESSON_INDEX[lid]; return l ? `<a class="chip" href="#/lesson/${lid}">${U.esc(l.title)}</a>` : ''; }).join('');
+      const preIds = [...new Set((L.prereqs || []).concat(PP.autoPrereqs(b.text, 5)))];
+      const pre = preIds.map((lid) => { const l = window.LESSON_INDEX && window.LESSON_INDEX[lid]; return l && l.track !== 'G' ? `<a class="chip" href="#/lesson/${lid}">${U.esc(l.id)} · ${U.esc(l.title)}</a>` : ''; }).join('');
       html += `<section class="card g-para" id="g-${b.id}" data-id="${b.id}">
         ${PP.renderBlock(b, { kindLabel: true })}
-        ${L.plain ? U.kind('plain', L.plain) : '<p class="muted small">Plain-English layer for this paragraph is being written.</p>'}
+        ${L.plain ? U.kind('plain', L.plain, { source: [b.id] }) : (tg.units && tg.units[u.id] ? '' : '<p class="muted small">No separate plain-English layer: this part is administrative or already plain.</p>')}
         ${(L.flags || []).map((x) => U.kind('flag', `<p>${x}</p>`)).join('')}
         ${L.why ? U.kind('why', `<p>${L.why}</p>`) : ''}
         ${L.memory ? U.kind('memory', `<p>${L.memory}</p>`) : ''}
@@ -299,8 +305,9 @@
       <div class="row no-print" style="margin-top:1rem"><button class="btn good" data-markall>✓ Mark this section as studied</button></div>
       ${prevNext(u, 'g')}${citeBox()}`;
     PP.mountZooms(root);
-    U.$$('.g-para .kind, .kind.k-plain', root).forEach((k) => PP.linkTerms(k));
-    V.wireChecks(root, (qid) => ['paper', u.id]);
+    U.$$('.g-para .kind.k-paper .ptext', root).forEach((el) => PP.linkTerms(el, { once: true }));
+    U.$$('.g-para .kind:not(.k-paper), .kind.k-plain', root).forEach((k) => PP.linkTerms(k, { once: true }));
+    V.wireChecks(root, () => ['G-' + u.id]);
     root.querySelector('[data-markall]').addEventListener('click', () => {
       u.blocks.forEach((b) => S.markSeen(b.id));
       S.activity();

@@ -1,1 +1,0 @@
-window.LESSONS = window.LESSONS || [];

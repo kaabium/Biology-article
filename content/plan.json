@@ -1,0 +1,6983 @@
+{
+ "tracks": [
+  {
+   "id": "A",
+   "title": "The paper in 5 minutes",
+   "desc": "The whole study as a simple story, in plain words only, with a one-page map and the 831 → 80 → 9 → 5 → 2 funnel."
+  },
+  {
+   "id": "B",
+   "title": "Biology from zero",
+   "desc": "Cells, DNA, genes, RNA, proteins, and long noncoding RNAs — everything you need before the paper makes sense."
+  },
+  {
+   "id": "C",
+   "title": "Cancer from zero",
+   "desc": "What cancer is, lung cancer, KRAS, cisplatin, cell lines vs normal cells, 3D models, mice, and patient datasets."
+  },
+  {
+   "id": "D",
+   "title": "Lab tools from zero",
+   "desc": "CRISPR, viruses, pooled screens, ASOs and every validation assay in the paper, plus RNA-seq and pathways."
+  },
+  {
+   "id": "E",
+   "title": "Numbers & statistics from zero",
+   "desc": "CPM/TPM/FPKM, fold change and log2, replicates, correlation, p-values, FDR, ROC/AUC and the paper's TPP pipeline."
+  },
+  {
+   "id": "F",
+   "title": "How to read figures",
+   "desc": "One mini-lesson per chart type in the paper, each practised on a real panel."
+  },
+  {
+   "id": "G",
+   "title": "The paper, section by section",
+   "desc": "The core: every paragraph (verbatim) with Plain English, why it matters, prerequisites and check questions, plus a guide to every figure panel."
+  },
+  {
+   "id": "H",
+   "title": "Critical thinking",
+   "desc": "Claims and evidence, controls, alternative explanations, limitations, the patent, strengthening experiments, strengths vs weaknesses."
+  }
+ ],
+ "lessons": [
+  {
+   "id": "A1",
+   "track": "A",
+   "title": "The whole study as a simple story",
+   "minutes": 5,
+   "prereqs": [],
+   "goal": "Follow the whole paper from question to answer in plain words: what the authors wanted to know, what they did, what they found, and what they did next.",
+   "notes": "Plain words only. Every word that is a technical term in the glossary must either be avoided or explained in one plain sentence right where it is first used (list those in `defines`).",
+   "teaches": []
+  },
+  {
+   "id": "A2",
+   "track": "A",
+   "title": "One-page map of the pipeline",
+   "minutes": 6,
+   "prereqs": [
+    "A1"
+   ],
+   "goal": "See the whole pipeline as one picture: library of snips → three screens → combine the evidence → test with ASOs → find out how the two winners work.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "A3",
+   "track": "A",
+   "title": "The funnel: 831 → 80 → 9 → 5 → 2",
+   "minutes": 6,
+   "prereqs": [
+    "A2"
+   ],
+   "goal": "Understand how 831 lncRNAs were narrowed to 80 hits, nine candidates, five reproducible ones, and the final two (CHiLL1 and GCAWKR), and what each narrowing step asked.",
+   "notes": "",
+   "teaches": [
+    "tier",
+    "pan-hallmark",
+    "chill1",
+    "gcawkr"
+   ]
+  },
+  {
+   "id": "A4",
+   "track": "A",
+   "title": "Why it matters",
+   "minutes": 5,
+   "prereqs": [
+    "A1"
+   ],
+   "goal": "Say in your own words why lung cancer, long noncoding RNAs and ASO medicines make this a worthwhile study, and what it does and does not prove.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "A5",
+   "track": "A",
+   "title": "Cast of characters: the names you will see",
+   "minutes": 8,
+   "prereqs": [
+    "A3"
+   ],
+   "goal": "Meet the named lncRNAs and genes that keep reappearing (LINC00115, DNMBP-AS1, candidate numbers…) so no name is a surprise later.",
+   "notes": "",
+   "teaches": [
+    "candidate-number",
+    "linc00115",
+    "rp11-206l10-11",
+    "dnmbp-as1",
+    "ac104024-3",
+    "cecr7",
+    "mir23ahg",
+    "linc00910",
+    "tnfrsf10b",
+    "zbtb7a"
+   ]
+  },
+  {
+   "id": "B1",
+   "track": "B",
+   "title": "Cells: the tiny rooms of life (nucleus vs cytoplasm)",
+   "minutes": 6,
+   "prereqs": [],
+   "goal": "Know what a cell is, what the nucleus and cytoplasm are, and why \"where in the cell\" matters later in the paper.",
+   "notes": "",
+   "teaches": [
+    "cell",
+    "nucleus",
+    "cytoplasm",
+    "tissue"
+   ]
+  },
+  {
+   "id": "B2",
+   "track": "B",
+   "title": "How cells grow and divide: the cell cycle",
+   "minutes": 8,
+   "prereqs": [
+    "B1"
+   ],
+   "goal": "Describe the four phases G1, S, G2 and M, what a checkpoint is, and what \"proliferation\" means.",
+   "notes": "",
+   "teaches": [
+    "proliferation",
+    "cell-cycle",
+    "g1-phase",
+    "s-phase",
+    "g2-phase",
+    "mitosis",
+    "cell-cycle-checkpoint",
+    "doubling-time"
+   ]
+  },
+  {
+   "id": "B3",
+   "track": "B",
+   "title": "How cells die: apoptosis (and necrosis)",
+   "minutes": 6,
+   "prereqs": [
+    "B2"
+   ],
+   "goal": "Explain apoptosis as an orderly cell suicide, contrast it with necrosis, and name the early/late stages the paper counts.",
+   "notes": "",
+   "teaches": [
+    "apoptosis",
+    "necrosis"
+   ]
+  },
+  {
+   "id": "B4",
+   "track": "B",
+   "title": "DNA: the instruction book",
+   "minutes": 8,
+   "prereqs": [
+    "B1"
+   ],
+   "goal": "Describe DNA as a double-stranded chain of four letters, explain base pairing, and read \"5′ end / 3′ end\" and \"bp\".",
+   "notes": "",
+   "teaches": [
+    "dna",
+    "nucleotide",
+    "base-pair",
+    "complementary-base-pairing",
+    "five-prime-three-prime"
+   ]
+  },
+  {
+   "id": "B5",
+   "track": "B",
+   "title": "Chromosomes, genes and the genome",
+   "minutes": 7,
+   "prereqs": [
+    "B4"
+   ],
+   "goal": "Explain chromosomes, genes, \"locus\" and the genome, and why a gene is a stretch of DNA you can point to.",
+   "notes": "",
+   "teaches": [
+    "chromosome",
+    "gene",
+    "genome",
+    "locus"
+   ]
+  },
+  {
+   "id": "B6",
+   "track": "B",
+   "title": "Genome coordinates, genome versions (hg19/hg38) and strands",
+   "minutes": 8,
+   "prereqs": [
+    "B5"
+   ],
+   "goal": "Read an address like \"Chr1: 765,000\", know why genome versions (hg19, hg38) exist, and understand the two DNA strands, \"same strand\", \"opposite strand\" and \"antisense\".",
+   "notes": "",
+   "teaches": [
+    "genome-assembly",
+    "hg19",
+    "hg38",
+    "genome-coordinates",
+    "kilobase",
+    "strand",
+    "antisense",
+    "upstream-downstream",
+    "liftover"
+   ]
+  },
+  {
+   "id": "B7",
+   "track": "B",
+   "title": "From DNA to RNA: transcription, promoters and the TSS",
+   "minutes": 8,
+   "prereqs": [
+    "B5"
+   ],
+   "goal": "Explain transcription, RNA, the promoter and the transcription start site (TSS), and why \"bidirectional promoters\" matter.",
+   "notes": "",
+   "teaches": [
+    "transcription",
+    "rna",
+    "rna-polymerase",
+    "transcript",
+    "promoter",
+    "tss",
+    "bidirectional-promoter"
+   ]
+  },
+  {
+   "id": "B8",
+   "track": "B",
+   "title": "Exons, introns, splicing and isoforms",
+   "minutes": 8,
+   "prereqs": [
+    "B7"
+   ],
+   "goal": "Describe how a transcript is cut and rejoined (splicing), what exons and introns are, and why one gene can have several isoforms.",
+   "notes": "",
+   "teaches": [
+    "exon",
+    "intron",
+    "splicing",
+    "isoform",
+    "readthrough-transcription"
+   ]
+  },
+  {
+   "id": "B9",
+   "track": "B",
+   "title": "Proteins, ORFs and protein-coding genes",
+   "minutes": 8,
+   "prereqs": [
+    "B8"
+   ],
+   "goal": "Explain how a protein-coding gene is read to make a protein, what an ORF is, and what \"protein-coding potential\" means.",
+   "notes": "",
+   "teaches": [
+    "protein",
+    "mrna",
+    "translation",
+    "ribosome",
+    "orf",
+    "protein-coding-gene",
+    "protein-coding-potential"
+   ]
+  },
+  {
+   "id": "B10",
+   "track": "B",
+   "title": "Coding vs noncoding RNA",
+   "minutes": 6,
+   "prereqs": [
+    "B9"
+   ],
+   "goal": "Sort RNAs into \"makes a protein\" and \"does something else\", and meet the main noncoding kinds (ribosomal, microRNA, long noncoding).",
+   "notes": "",
+   "teaches": [
+    "noncoding-rna",
+    "mirna"
+   ]
+  },
+  {
+   "id": "B11",
+   "track": "B",
+   "title": "Long noncoding RNAs (lncRNAs): what they are and how they might work",
+   "minutes": 9,
+   "prereqs": [
+    "B10"
+   ],
+   "goal": "Define lncRNAs, explain the three big ideas for how they might act (guide, scaffold, decoy), cis vs trans, and meet the lung-cancer lncRNAs named in the Introduction.",
+   "notes": "",
+   "teaches": [
+    "lncrna",
+    "cis-trans",
+    "malat1",
+    "pvt1",
+    "linc00680",
+    "linc00511",
+    "ezh2",
+    "gata6-lats2-p57",
+    "known-cancer-lncrnas"
+   ]
+  },
+  {
+   "id": "B12",
+   "track": "B",
+   "title": "Where RNAs live: nuclear vs cytoplasmic",
+   "minutes": 6,
+   "prereqs": [
+    "B11",
+    "B1"
+   ],
+   "goal": "Explain why an RNA's position in the cell (nucleus or cytoplasm) is a clue to its job.",
+   "notes": "",
+   "teaches": [
+    "subcellular-localization"
+   ]
+  },
+  {
+   "id": "B13",
+   "track": "B",
+   "title": "Gene catalogs: GENCODE, FANTOM CAT and BIGTranscriptome",
+   "minutes": 7,
+   "prereqs": [
+    "B11"
+   ],
+   "goal": "Explain what an annotation (a gene catalog) is, why different catalogs disagree on lncRNAs, and how the authors merged four of them.",
+   "notes": "",
+   "teaches": [
+    "gene-annotation",
+    "gencode",
+    "fantom-cat",
+    "bigtranscriptome",
+    "transcriptome-assembly",
+    "ensembl-id",
+    "gtf",
+    "est",
+    "ortholog"
+   ]
+  },
+  {
+   "id": "B14",
+   "track": "B",
+   "title": "Gene expression: genes turned up and down",
+   "minutes": 7,
+   "prereqs": [
+    "B7"
+   ],
+   "goal": "Explain \"expression\", \"upregulated\" and \"downregulated\", and the idea that every cell has the same DNA but uses different genes.",
+   "notes": "",
+   "teaches": [
+    "gene-expression",
+    "upregulation",
+    "downregulation",
+    "transcriptome"
+   ]
+  },
+  {
+   "id": "B15",
+   "track": "B",
+   "title": "Switches on the DNA: enhancers, transcription factors and chromatin",
+   "minutes": 8,
+   "prereqs": [
+    "B14"
+   ],
+   "goal": "Explain enhancers, transcription factors and TFBS, chromatin, and the paper's phrase \"DNA regulatory elements\".",
+   "notes": "",
+   "teaches": [
+    "enhancer",
+    "transcription-factor",
+    "tfbs",
+    "chromatin",
+    "cis-regulatory-element",
+    "encode"
+   ]
+  },
+  {
+   "id": "B16",
+   "track": "B",
+   "title": "How to tell where a gene starts: CAGE, DNase I and ChromHMM",
+   "minutes": 8,
+   "prereqs": [
+    "B15",
+    "B13"
+   ],
+   "goal": "Explain the three kinds of evidence the authors used to pick real lncRNA start sites: CAGE, DNase I hypersensitivity and ChromHMM marks.",
+   "notes": "",
+   "teaches": [
+    "cage",
+    "dnase-i-hypersensitivity",
+    "chromhmm"
+   ]
+  },
+  {
+   "id": "C1",
+   "track": "C",
+   "title": "What is cancer?",
+   "minutes": 6,
+   "prereqs": [
+    "B2"
+   ],
+   "goal": "Explain cancer as cells that keep dividing when they should not, what a tumor is, and why it is dangerous.",
+   "notes": "",
+   "teaches": [
+    "cancer",
+    "tumor"
+   ]
+  },
+  {
+   "id": "C2",
+   "track": "C",
+   "title": "The hallmarks of cancer",
+   "minutes": 7,
+   "prereqs": [
+    "C1"
+   ],
+   "goal": "Describe the idea of \"hallmarks\" (abilities cancers acquire), meet the three the paper tests, and explain \"phenotype\" and \"pleiotropic\".",
+   "notes": "",
+   "teaches": [
+    "hallmark",
+    "phenotype",
+    "pleiotropic"
+   ]
+  },
+  {
+   "id": "C3",
+   "track": "C",
+   "title": "Oncogenes and tumor suppressors",
+   "minutes": 7,
+   "prereqs": [
+    "C2",
+    "B5"
+   ],
+   "goal": "Use the gas-pedal and brake picture for oncogenes and tumor suppressors, and say what an \"oncogenic lncRNA\" is.",
+   "notes": "",
+   "teaches": [
+    "oncogene",
+    "tumor-suppressor"
+   ]
+  },
+  {
+   "id": "C4",
+   "track": "C",
+   "title": "Mutations, copy-number gains (amplification) and losses (deletion)",
+   "minutes": 8,
+   "prereqs": [
+    "C3",
+    "B4"
+   ],
+   "goal": "Explain point mutations, extra copies of DNA (amplification) and lost DNA (deletion), and what \"recurrently amplified\" means.",
+   "notes": "",
+   "teaches": [
+    "mutation",
+    "copy-number-alteration",
+    "amplification",
+    "deletion"
+   ]
+  },
+  {
+   "id": "C5",
+   "track": "C",
+   "title": "Lung cancer: NSCLC, adenocarcinoma, large cell carcinoma and metastasis",
+   "minutes": 8,
+   "prereqs": [
+    "C1"
+   ],
+   "goal": "Know the lung-cancer subtypes in the paper, what \"metastasis\", \"invasion\" and \"migration\" mean, and why NSCLC is a problem.",
+   "notes": "",
+   "teaches": [
+    "nsclc",
+    "lung-adenocarcinoma",
+    "large-cell-carcinoma",
+    "metastasis",
+    "invasion",
+    "migration"
+   ]
+  },
+  {
+   "id": "C6",
+   "track": "C",
+   "title": "KRAS and EGFR mutations",
+   "minutes": 7,
+   "prereqs": [
+    "C3",
+    "C4",
+    "C5"
+   ],
+   "goal": "Explain what KRAS and EGFR do, what \"KRAS+\" means in the paper, and what targeted therapy is.",
+   "notes": "",
+   "teaches": [
+    "kras",
+    "egfr",
+    "activating-mutation",
+    "targeted-therapy",
+    "kras-g12c"
+   ]
+  },
+  {
+   "id": "C7",
+   "track": "C",
+   "title": "Chemotherapy, cisplatin, drug resistance and IC20 / IC30 / IC80",
+   "minutes": 9,
+   "prereqs": [
+    "C5"
+   ],
+   "goal": "Explain what cisplatin does, why cancers become resistant, and how IC20, IC30 and IC80 describe doses by their effect.",
+   "notes": "",
+   "teaches": [
+    "chemotherapy",
+    "cisplatin",
+    "chemoresistance",
+    "inhibitory-concentration",
+    "dose-response",
+    "combination-therapy"
+   ]
+  },
+  {
+   "id": "C8",
+   "track": "C",
+   "title": "Cell lines vs normal lung cells (A549, H460, H441 and others)",
+   "minutes": 9,
+   "prereqs": [
+    "C5"
+   ],
+   "goal": "Explain what a cell line is, meet the lines used (A549, H460, H441, HEK293T) and the normal-cell controls (HBEC3-KT, MRC-5, CCD-16Lu), and the idea of \"cell background\".",
+   "notes": "",
+   "teaches": [
+    "cell-line",
+    "a549",
+    "h460",
+    "h441",
+    "hek293t",
+    "hbec3-kt",
+    "mrc5",
+    "ccd-16lu",
+    "immortalized-cells",
+    "primary-cells",
+    "non-transformed-cells",
+    "cell-background",
+    "str-profiling",
+    "mycoplasma",
+    "generalizability",
+    "fbs",
+    "culture-medium",
+    "pbs",
+    "trypsinization"
+   ]
+  },
+  {
+   "id": "C9",
+   "track": "C",
+   "title": "Growing cells in 2D, 3D spheroids and organoids",
+   "minutes": 7,
+   "prereqs": [
+    "C8"
+   ],
+   "goal": "Contrast flat 2D cultures, 3D spheroids and organoids, and explain why 3D models are considered more faithful.",
+   "notes": "",
+   "teaches": [
+    "monolayer-culture",
+    "three-d-culture",
+    "spheroid",
+    "organoid",
+    "matrigel",
+    "in-vitro-in-vivo"
+   ]
+  },
+  {
+   "id": "C10",
+   "track": "C",
+   "title": "Patient-derived xenografts and immunodeficient mice",
+   "minutes": 7,
+   "prereqs": [
+    "C9"
+   ],
+   "goal": "Explain what a PDX is, why \"immunodeficient\" mice are needed, and how the BE874 organoids were made.",
+   "notes": "",
+   "teaches": [
+    "pdx",
+    "xenograft",
+    "immunodeficient-mouse",
+    "be874"
+   ]
+  },
+  {
+   "id": "C11",
+   "track": "C",
+   "title": "Patient data collections: TCGA, TANRIC, PCAWG, CCLE and GEO",
+   "minutes": 8,
+   "prereqs": [
+    "C5",
+    "B14"
+   ],
+   "goal": "Explain what each public data collection contains and which question the paper asks of each one.",
+   "notes": "",
+   "teaches": [
+    "tcga",
+    "tanric",
+    "pcawg",
+    "ccle",
+    "cohort",
+    "geo",
+    "zenodo"
+   ]
+  },
+  {
+   "id": "C12",
+   "track": "C",
+   "title": "Tumor vs normal tissue, survival and tumor subtypes",
+   "minutes": 7,
+   "prereqs": [
+    "C11"
+   ],
+   "goal": "Explain \"tumor versus adjacent normal\", \"survival analysis\" and \"tumor subtype\", including the PI / PP / TRU labels.",
+   "notes": "",
+   "teaches": [
+    "adjacent-normal-tissue",
+    "survival-analysis",
+    "tumor-subtype"
+   ]
+  },
+  {
+   "id": "D1",
+   "track": "D",
+   "title": "CRISPR-Cas9 and guide RNAs",
+   "minutes": 8,
+   "prereqs": [
+    "B4",
+    "B5"
+   ],
+   "goal": "Explain CRISPR-Cas9 as scissors steered by a guide RNA, and \"loss of function\".",
+   "notes": "",
+   "teaches": [
+    "crispr",
+    "cas9",
+    "guide-rna",
+    "loss-of-function",
+    "knockout"
+   ]
+  },
+  {
+   "id": "D2",
+   "track": "D",
+   "title": "CRISPR deletion with paired guides (DECKO): why delete the TSS?",
+   "minutes": 9,
+   "prereqs": [
+    "D1",
+    "B7",
+    "C4"
+   ],
+   "goal": "Explain CRISPR-del, paired guides (pgRNAs), DECKO, and the paper's reasons for deleting the TSS instead of the whole gene.",
+   "notes": "",
+   "teaches": [
+    "crispr-del",
+    "paired-guide-rna",
+    "decko",
+    "guide-efficiency",
+    "off-target-effect"
+   ]
+  },
+  {
+   "id": "D3",
+   "track": "D",
+   "title": "CRISPRi and Cas13 (only as far as the paper needs them)",
+   "minutes": 6,
+   "prereqs": [
+    "D1",
+    "B14"
+   ],
+   "goal": "Say what CRISPRi and Cas13 are in one sentence each and why the paper mentions them.",
+   "notes": "",
+   "teaches": [
+    "crispri",
+    "cas13"
+   ]
+  },
+  {
+   "id": "D4",
+   "track": "D",
+   "title": "Plasmids and lentivirus: delivering instructions into cells",
+   "minutes": 8,
+   "prereqs": [
+    "B4",
+    "C8"
+   ],
+   "goal": "Explain plasmids and lentivirus as delivery trucks, and how HEK293T cells are used to make the virus (conceptually).",
+   "notes": "",
+   "teaches": [
+    "plasmid",
+    "lentivirus",
+    "viral-titer"
+   ]
+  },
+  {
+   "id": "D5",
+   "track": "D",
+   "title": "Transduction, MOI and antibiotic selection",
+   "minutes": 8,
+   "prereqs": [
+    "D4"
+   ],
+   "goal": "Explain transduction vs transfection, why a low MOI (0.3) means mostly one guide per cell, and how puromycin / blasticidin select cells.",
+   "notes": "",
+   "teaches": [
+    "transduction",
+    "transfection",
+    "moi",
+    "antibiotic-selection",
+    "puromycin",
+    "blasticidin",
+    "polybrene",
+    "stable-cell-line"
+   ]
+  },
+  {
+   "id": "D6",
+   "track": "D",
+   "title": "Fluorescent proteins: GFP, mCherry and BFP",
+   "minutes": 6,
+   "prereqs": [
+    "D5"
+   ],
+   "goal": "Explain fluorescent proteins as glowing name-tags and how GFP, mCherry and BFP are used here.",
+   "notes": "",
+   "teaches": [
+    "fluorescent-protein",
+    "gfp",
+    "mcherry",
+    "bfp"
+   ]
+  },
+  {
+   "id": "D7",
+   "track": "D",
+   "title": "Flow cytometry and FACS: counting and sorting cells one by one",
+   "minutes": 8,
+   "prereqs": [
+    "D6",
+    "B1"
+   ],
+   "goal": "Explain how a flow cytometer reads each cell's light signal and how FACS sorts cells into tubes.",
+   "notes": "",
+   "teaches": [
+    "flow-cytometry",
+    "facs",
+    "gating",
+    "flowjo"
+   ]
+  },
+  {
+   "id": "D8",
+   "track": "D",
+   "title": "Pooled screens: testing thousands of suspects in one dish",
+   "minutes": 9,
+   "prereqs": [
+    "D2",
+    "D5",
+    "D7",
+    "E3"
+   ],
+   "goal": "Explain the logic of a pooled CRISPR screen: a library, one perturbation per cell, a selection, and counting.",
+   "notes": "",
+   "teaches": [
+    "pooled-screen",
+    "arrayed-screen",
+    "crispr-library",
+    "screen",
+    "hit",
+    "candidate"
+   ]
+  },
+  {
+   "id": "D9",
+   "track": "D",
+   "title": "Libraries, guides per target and coverage",
+   "minutes": 8,
+   "prereqs": [
+    "D8"
+   ],
+   "goal": "Explain \"depth\" (10 guides per target), \"coverage\" (cells per guide), and how libDECKO-NSCLC1 was designed and cloned (conceptually).",
+   "notes": "",
+   "teaches": [
+    "libdecko-nsclc1",
+    "library-depth",
+    "coverage",
+    "cloning",
+    "crispeta",
+    "gini-coefficient"
+   ]
+  },
+  {
+   "id": "D10",
+   "track": "D",
+   "title": "From cells to counts: PCR, sequencing and read counts",
+   "minutes": 9,
+   "prereqs": [
+    "D9",
+    "B4"
+   ],
+   "goal": "Follow a screen sample from cells to a table of guide counts: DNA, PCR, sequencing reads, time points.",
+   "notes": "",
+   "teaches": [
+    "genomic-dna",
+    "pcr",
+    "primer",
+    "ngs",
+    "sequencing-read",
+    "time-point",
+    "caspr",
+    "mageck",
+    "guidescan",
+    "sanger-sequencing",
+    "batch-effect",
+    "recombination-events"
+   ]
+  },
+  {
+   "id": "D11",
+   "track": "D",
+   "title": "Dropout vs positive selection screens",
+   "minutes": 8,
+   "prereqs": [
+    "D8",
+    "E2"
+   ],
+   "goal": "Explain how a \"dropout\" screen and a \"positive selection\" screen are read, and what \"depleted\" and \"enriched\" mean for guides.",
+   "notes": "",
+   "teaches": [
+    "dropout-screen",
+    "positive-selection-screen",
+    "depletion"
+   ]
+  },
+  {
+   "id": "D12",
+   "track": "D",
+   "title": "The proliferation screens: dropout and CFSE",
+   "minutes": 8,
+   "prereqs": [
+    "D11",
+    "D7",
+    "B2"
+   ],
+   "goal": "Explain how dropout and CFSE screens both measure growth, and what \"fast-growing\" and \"slow-growing\" cells look like under CFSE.",
+   "notes": "",
+   "teaches": [
+    "cfse"
+   ]
+  },
+  {
+   "id": "D13",
+   "track": "D",
+   "title": "The cisplatin screens: survival and death",
+   "minutes": 8,
+   "prereqs": [
+    "D11",
+    "C7"
+   ],
+   "goal": "Explain the two complementary cisplatin screens: \"survival\" at IC30 / IC80 and \"death\" at IC20.",
+   "notes": "",
+   "teaches": [
+    "cisplatin-survival-screen",
+    "cisplatin-death-screen"
+   ]
+  },
+  {
+   "id": "D14",
+   "track": "D",
+   "title": "The migration screen and the transwell assay",
+   "minutes": 7,
+   "prereqs": [
+    "D11",
+    "C5"
+   ],
+   "goal": "Explain how a transwell (Boyden chamber) separates fast and slow migrators, and how that becomes a screen.",
+   "notes": "",
+   "teaches": [
+    "transwell-assay",
+    "migration-screen"
+   ]
+  },
+  {
+   "id": "D15",
+   "track": "D",
+   "title": "Controls in the screen: neutral, positive, and ORF vs TSS targeting",
+   "minutes": 9,
+   "prereqs": [
+    "D8",
+    "D2"
+   ],
+   "goal": "Explain neutral and positive controls, why AAVS1 and RPS5 were used, and why controls were targeted two ways (ORF and promoter).",
+   "notes": "",
+   "teaches": [
+    "neutral-control",
+    "positive-control",
+    "negative-control",
+    "aavs1",
+    "rps5",
+    "named-control-genes",
+    "essential-gene",
+    "intergenic-region",
+    "orf-targeting"
+   ]
+  },
+  {
+   "id": "D16",
+   "track": "D",
+   "title": "ASOs: how a short strand can switch a gene off",
+   "minutes": 9,
+   "prereqs": [
+    "B4",
+    "B7"
+   ],
+   "goal": "Explain how an ASO pairs with an RNA and gets it destroyed, what LNA chemistry adds, and what \"knockdown\" means.",
+   "notes": "",
+   "teaches": [
+    "aso",
+    "knockdown",
+    "rnase-h",
+    "lna",
+    "rna-therapeutics",
+    "shrna"
+   ]
+  },
+  {
+   "id": "D17",
+   "track": "D",
+   "title": "Using ASOs well: two ASOs per target, controls, knockdown % and cocktails",
+   "minutes": 9,
+   "prereqs": [
+    "D16",
+    "D5"
+   ],
+   "goal": "Explain why each lncRNA needs two ASOs, the non-targeting control, \"knockdown %\", on-target vs off-target, and ASO cocktails.",
+   "notes": "",
+   "teaches": [
+    "non-targeting-control",
+    "knockdown-efficiency",
+    "aso-cocktail",
+    "orthogonal-validation",
+    "on-target-effect",
+    "toxicity"
+   ]
+  },
+  {
+   "id": "D18",
+   "track": "D",
+   "title": "DNA gels and genotyping PCR: did the deletion happen?",
+   "minutes": 7,
+   "prereqs": [
+    "D10",
+    "D2"
+   ],
+   "goal": "Read a DNA gel: bands, ladder, wild-type vs deleted bands, and what the genotyping PCR in Figure 1E shows.",
+   "notes": "",
+   "teaches": [
+    "gel-electrophoresis",
+    "amplicon"
+   ]
+  },
+  {
+   "id": "D19",
+   "track": "D",
+   "title": "qRT-PCR: measuring how much RNA is left",
+   "minutes": 9,
+   "prereqs": [
+    "D18",
+    "B14",
+    "E2"
+   ],
+   "goal": "Explain reverse transcription, qPCR, normalisation to a housekeeping gene, and \"relative expression\".",
+   "notes": "",
+   "teaches": [
+    "rt-qpcr",
+    "cdna",
+    "housekeeping-gene",
+    "gapdh",
+    "hprt1"
+   ]
+  },
+  {
+   "id": "D20",
+   "track": "D",
+   "title": "The competition assay",
+   "minutes": 7,
+   "prereqs": [
+    "D6",
+    "D7",
+    "D11"
+   ],
+   "goal": "Explain how mixing green and red cells 1:1 and tracking the ratio over days measures fitness.",
+   "notes": "",
+   "teaches": [
+    "competition-assay"
+   ]
+  },
+  {
+   "id": "D21",
+   "track": "D",
+   "title": "Luminescence viability assays (CellTiter-Glo)",
+   "minutes": 7,
+   "prereqs": [
+    "C8",
+    "B3"
+   ],
+   "goal": "Explain how an ATP-based glow reading estimates living cells and how \"relative growth\" is built from it.",
+   "notes": "",
+   "teaches": [
+    "cell-viability",
+    "celltiter-glo"
+   ]
+  },
+  {
+   "id": "D22",
+   "track": "D",
+   "title": "Annexin V: catching cells in the act of dying",
+   "minutes": 6,
+   "prereqs": [
+    "B3",
+    "D7"
+   ],
+   "goal": "Explain how Annexin V plus a viability dye separate alive, early-apoptotic, late-apoptotic and necrotic cells by flow cytometry.",
+   "notes": "",
+   "teaches": [
+    "annexin-v"
+   ]
+  },
+  {
+   "id": "D23",
+   "track": "D",
+   "title": "Cell-cycle staining: DAPI and Ki-67",
+   "minutes": 7,
+   "prereqs": [
+    "B2",
+    "D7"
+   ],
+   "goal": "Explain how DNA content (DAPI) and Ki-67 sort cells into G1, S and G2/M.",
+   "notes": "",
+   "teaches": [
+    "dapi",
+    "ki-67",
+    "cell-cycle-assay",
+    "djf-model"
+   ]
+  },
+  {
+   "id": "D24",
+   "track": "D",
+   "title": "Crystal violet migration assay",
+   "minutes": 6,
+   "prereqs": [
+    "D14"
+   ],
+   "goal": "Explain the low-throughput migration assay: stain the cells that crossed, dissolve the dye, read absorbance.",
+   "notes": "",
+   "teaches": [
+    "crystal-violet",
+    "optical-density"
+   ]
+  },
+  {
+   "id": "D25",
+   "track": "D",
+   "title": "RNA-FISH and microscopy",
+   "minutes": 7,
+   "prereqs": [
+    "B12",
+    "D6"
+   ],
+   "goal": "Explain how fluorescent probes make single RNA molecules visible in a cell and how a cytoplasmic/nuclear ratio is derived.",
+   "notes": "",
+   "teaches": [
+    "fish",
+    "probe",
+    "confocal-microscopy",
+    "cellprofiler"
+   ]
+  },
+  {
+   "id": "D26",
+   "track": "D",
+   "title": "Cell fractionation: nuclear vs cytoplasmic RNA",
+   "minutes": 6,
+   "prereqs": [
+    "B12",
+    "D19"
+   ],
+   "goal": "Explain how cells are split into nucleus and cytoplasm and how MALAT1 and GAPDH serve as markers.",
+   "notes": "",
+   "teaches": [
+    "cell-fractionation"
+   ]
+  },
+  {
+   "id": "D27",
+   "track": "D",
+   "title": "Overexpression and rescue experiments",
+   "minutes": 7,
+   "prereqs": [
+    "D17",
+    "B14"
+   ],
+   "goal": "Explain what a rescue experiment tests, why it can fail even when the biology is real, and the paper's possible explanations.",
+   "notes": "",
+   "teaches": [
+    "overexpression-experiment",
+    "rescue-experiment"
+   ]
+  },
+  {
+   "id": "D28",
+   "track": "D",
+   "title": "RNA-seq and differentially expressed genes (DEGs)",
+   "minutes": 9,
+   "prereqs": [
+    "E1",
+    "B14",
+    "D10"
+   ],
+   "goal": "Explain RNA-seq as counting every RNA at once, what a DEG is, and what the two ASOs agreeing means.",
+   "notes": "",
+   "teaches": [
+    "rna-seq",
+    "deg",
+    "transcript-quantification",
+    "rsem"
+   ]
+  },
+  {
+   "id": "D29",
+   "track": "D",
+   "title": "Pathway enrichment: KEGG, MSigDB and transcription-factor sites",
+   "minutes": 9,
+   "prereqs": [
+    "D28",
+    "E10",
+    "E9"
+   ],
+   "goal": "Explain how a list of changed genes is tested against \"pathway\" lists (KEGG, MSigDB, TFBS) and how to read the result.",
+   "notes": "",
+   "teaches": [
+    "pathway-enrichment",
+    "kegg",
+    "msigdb",
+    "gsea",
+    "enrichr"
+   ]
+  },
+  {
+   "id": "D30",
+   "track": "D",
+   "title": "What the named pathways roughly do (p53, MAPK, PI3K–Akt, mTORC1 …)",
+   "minutes": 10,
+   "prereqs": [
+    "D29",
+    "C3",
+    "B3",
+    "B2"
+   ],
+   "goal": "Give a one-line job description for every pathway the paper names (p53, MAPK, PI3K–Akt, VEGF, mTORC1, glycolysis, EMT, G2-M checkpoint …).",
+   "notes": "",
+   "teaches": [
+    "signaling-pathway",
+    "p53-pathway",
+    "mapk-pathway",
+    "pi3k-akt-pathway",
+    "mtorc1",
+    "vegf-pathway",
+    "glycolysis",
+    "emt",
+    "nfkb-tnf",
+    "interferon-response",
+    "hypoxia",
+    "estrogen-response",
+    "cholesterol-homeostasis",
+    "mitotic-spindle",
+    "apical-junction",
+    "proteoglycans-in-cancer"
+   ]
+  },
+  {
+   "id": "E1",
+   "track": "E",
+   "title": "Counting RNA fairly: CPM, TPM and FPKM",
+   "minutes": 8,
+   "prereqs": [
+    "D10",
+    "B14"
+   ],
+   "goal": "Explain why raw counts must be normalised and what CPM, TPM and FPKM each correct for.",
+   "notes": "",
+   "teaches": [
+    "normalization",
+    "cpm",
+    "tpm",
+    "fpkm"
+   ]
+  },
+  {
+   "id": "E2",
+   "track": "E",
+   "title": "Fold change and log2",
+   "minutes": 8,
+   "prereqs": [
+    "A1"
+   ],
+   "goal": "Compute and interpret fold change and log2 fold change, and see why log2 makes up and down changes symmetrical.",
+   "notes": "",
+   "teaches": [
+    "fold-change",
+    "log2"
+   ]
+  },
+  {
+   "id": "E3",
+   "track": "E",
+   "title": "Replicates, mean, SD and error bars",
+   "minutes": 8,
+   "prereqs": [
+    "E2"
+   ],
+   "goal": "Distinguish biological from technical replicates, read mean ± SD error bars, understand n, medians and percentiles.",
+   "notes": "",
+   "teaches": [
+    "replicate",
+    "mean",
+    "median",
+    "standard-deviation",
+    "error-bars",
+    "sample-size",
+    "percentile",
+    "graphpad-prism"
+   ]
+  },
+  {
+   "id": "E4",
+   "track": "E",
+   "title": "Correlation and regression lines",
+   "minutes": 8,
+   "prereqs": [
+    "E2",
+    "E3"
+   ],
+   "goal": "Read Pearson R, the trendline, and what \"R = 0.66\" says (and does not say).",
+   "notes": "",
+   "teaches": [
+    "correlation",
+    "pearson-correlation",
+    "regression-line",
+    "anti-correlation"
+   ]
+  },
+  {
+   "id": "E5",
+   "track": "E",
+   "title": "Z-scores",
+   "minutes": 6,
+   "prereqs": [
+    "E3"
+   ],
+   "goal": "Explain a Z-score as \"how many SDs from typical\" and how the paper scales screen results against neutral controls.",
+   "notes": "",
+   "teaches": [
+    "z-score"
+   ]
+  },
+  {
+   "id": "E6",
+   "track": "E",
+   "title": "p-values, \"significant\", \"ns\" and scientific notation",
+   "minutes": 9,
+   "prereqs": [
+    "E3"
+   ],
+   "goal": "Say what a p-value is (and is not), what \"ns\" and asterisks mean, and read numbers like 2.2e-16.",
+   "notes": "",
+   "teaches": [
+    "p-value",
+    "null-hypothesis",
+    "statistical-significance",
+    "ns",
+    "scientific-notation"
+   ]
+  },
+  {
+   "id": "E7",
+   "track": "E",
+   "title": "One- vs two-tailed tests and t-tests (including Welch's)",
+   "minutes": 8,
+   "prereqs": [
+    "E6"
+   ],
+   "goal": "Explain one-tailed vs two-tailed, what a t-test compares, and when Welch's version is used.",
+   "notes": "",
+   "teaches": [
+    "one-tailed-test",
+    "two-tailed-test",
+    "t-test",
+    "welch-t-test"
+   ]
+  },
+  {
+   "id": "E8",
+   "track": "E",
+   "title": "Rank-based tests: Wilcoxon, Mann–Whitney and Kruskal–Wallis",
+   "minutes": 7,
+   "prereqs": [
+    "E7"
+   ],
+   "goal": "Explain why rank-based (non-parametric) tests are used and what Wilcoxon, Mann–Whitney and Kruskal–Wallis compare.",
+   "notes": "",
+   "teaches": [
+    "non-parametric-test",
+    "wilcoxon-test",
+    "mann-whitney-test",
+    "kruskal-wallis-test"
+   ]
+  },
+  {
+   "id": "E9",
+   "track": "E",
+   "title": "Overlap and enrichment tests: Fisher's exact and hypergeometric",
+   "minutes": 8,
+   "prereqs": [
+    "E6"
+   ],
+   "goal": "Explain the \"overlap by chance\" question and how Fisher's exact and the hypergeometric test answer it.",
+   "notes": "",
+   "teaches": [
+    "fishers-exact-test",
+    "hypergeometric-test"
+   ]
+  },
+  {
+   "id": "E10",
+   "track": "E",
+   "title": "Many tests at once: multiple testing and FDR (why FDR < 0.2)",
+   "minutes": 9,
+   "prereqs": [
+    "E6",
+    "E9"
+   ],
+   "goal": "Explain the multiple-testing problem, the false discovery rate, Benjamini–Hochberg, q-values, and the reasoning for a lenient FDR < 0.2 cutoff.",
+   "notes": "",
+   "teaches": [
+    "multiple-testing",
+    "fdr",
+    "benjamini-hochberg",
+    "false-positive",
+    "false-negative",
+    "q-value"
+   ]
+  },
+  {
+   "id": "E11",
+   "track": "E",
+   "title": "ROC curves and AUC",
+   "minutes": 8,
+   "prereqs": [
+    "E10"
+   ],
+   "goal": "Read a ROC curve and AUC: true-positive rate, false-positive rate, and what AUC 0.82 vs 0.54 mean.",
+   "notes": "",
+   "teaches": [
+    "roc-curve",
+    "auc",
+    "true-positive-rate",
+    "false-positive-rate"
+   ]
+  },
+  {
+   "id": "E12",
+   "track": "E",
+   "title": "Combining screens: rank aggregation, Brown's method and the harmonic-mean p-value (TPP)",
+   "minutes": 10,
+   "prereqs": [
+    "E10",
+    "E11",
+    "D11"
+   ],
+   "goal": "Explain, with minimal math, how TPP combines effect size and significance across screens into one FDR-controlled ranking.",
+   "notes": "",
+   "teaches": [
+    "tpp",
+    "robust-rank-aggregation",
+    "empirical-browns-method",
+    "harmonic-mean-p-value",
+    "effect-size"
+   ]
+  },
+  {
+   "id": "E13",
+   "track": "E",
+   "title": "Practice: decoding the statistics in the figure legends",
+   "minutes": 9,
+   "prereqs": [
+    "E3",
+    "E4",
+    "E5",
+    "E6",
+    "E7",
+    "E8",
+    "E9",
+    "E10",
+    "E11",
+    "E12"
+   ],
+   "goal": "Apply everything: decode five real legends (what test, what n, what the error bars are, what the stars mean).",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "F1",
+   "track": "F",
+   "title": "Bar charts with error bars",
+   "minutes": 6,
+   "prereqs": [
+    "E3"
+   ],
+   "goal": "Read bars, error bars, labels and the control bar; practised on Figures 1F, 3F and 5E.",
+   "notes": "",
+   "teaches": [
+    "bar-chart"
+   ]
+  },
+  {
+   "id": "F2",
+   "track": "F",
+   "title": "Box plots and violin plots",
+   "minutes": 7,
+   "prereqs": [
+    "E3",
+    "E8"
+   ],
+   "goal": "Read median, box, whiskers and the violin outline; practised on Figures 2F and 4F.",
+   "notes": "",
+   "teaches": [
+    "box-plot",
+    "violin-plot"
+   ]
+  },
+  {
+   "id": "F3",
+   "track": "F",
+   "title": "Scatter plots with a regression line",
+   "minutes": 7,
+   "prereqs": [
+    "E4"
+   ],
+   "goal": "Read axes, points, the trendline and R; practised on Figures 2E, 2H and 6E.",
+   "notes": "",
+   "teaches": [
+    "scatter-plot"
+   ]
+  },
+  {
+   "id": "F4",
+   "track": "F",
+   "title": "Contour (density) plots",
+   "minutes": 6,
+   "prereqs": [
+    "F3"
+   ],
+   "goal": "Read contour lines as \"crowding\" of points; practised on Figure 4E.",
+   "notes": "",
+   "teaches": [
+    "contour-plot"
+   ]
+  },
+  {
+   "id": "F5",
+   "track": "F",
+   "title": "Volcano-style plots",
+   "minutes": 7,
+   "prereqs": [
+    "E10",
+    "E2",
+    "F3"
+   ],
+   "goal": "Read the two axes (fold change on x, significance on y) and the cutoff line; practised on Figure 2G.",
+   "notes": "",
+   "teaches": [
+    "volcano-plot"
+   ]
+  },
+  {
+   "id": "F6",
+   "track": "F",
+   "title": "Heatmaps",
+   "minutes": 7,
+   "prereqs": [
+    "E2",
+    "E5"
+   ],
+   "goal": "Read color scales, rows and columns, and patterns; practised on Figures 5A and 5H.",
+   "notes": "",
+   "teaches": [
+    "heatmap"
+   ]
+  },
+  {
+   "id": "F7",
+   "track": "F",
+   "title": "Time courses and line plots",
+   "minutes": 7,
+   "prereqs": [
+    "E3",
+    "D17"
+   ],
+   "goal": "Read growth curves, error bars and p-labels over time; practised on Figures 3B, 3D, 5C and 5G.",
+   "notes": "",
+   "teaches": [
+    "time-course"
+   ]
+  },
+  {
+   "id": "F8",
+   "track": "F",
+   "title": "ROC curves in a figure",
+   "minutes": 6,
+   "prereqs": [
+    "E11"
+   ],
+   "goal": "Read the curve, the diagonal and the AUC table; practised on Figure 4B.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "F9",
+   "track": "F",
+   "title": "Ternary and petal plots",
+   "minutes": 8,
+   "prereqs": [
+    "E12"
+   ],
+   "goal": "Read a triangle plot (three hallmarks at three corners) and a petal plot; practised on Figure 4C.",
+   "notes": "",
+   "teaches": [
+    "ternary-plot",
+    "petal-plot"
+   ]
+  },
+  {
+   "id": "F10",
+   "track": "F",
+   "title": "UpSet plots",
+   "minutes": 6,
+   "prereqs": [
+    "D11"
+   ],
+   "goal": "Read a UpSet plot (overlaps of many sets); practised on Figure 2I.",
+   "notes": "",
+   "teaches": [
+    "upset-plot"
+   ]
+  },
+  {
+   "id": "F11",
+   "track": "F",
+   "title": "Stacked bars and composition charts",
+   "minutes": 6,
+   "prereqs": [
+    "F1"
+   ],
+   "goal": "Read stacked percentage bars and counts; practised on Figures 1C, 4D, 4H and 6G.",
+   "notes": "",
+   "teaches": [
+    "stacked-bar"
+   ]
+  },
+  {
+   "id": "F12",
+   "track": "F",
+   "title": "Genome-browser tracks",
+   "minutes": 9,
+   "prereqs": [
+    "B8",
+    "B6",
+    "B16"
+   ],
+   "goal": "Read a gene-locus picture: scale, strands, exons, TSS arrow, primers, ASOs and guides; practised on Figures 1E, 3A, 5D and 6A.",
+   "notes": "",
+   "teaches": [
+    "genome-browser-track",
+    "conservation-track",
+    "ridl",
+    "conserved-rna-structure",
+    "repeat-element",
+    "cpg-island",
+    "eztracks"
+   ]
+  },
+  {
+   "id": "F13",
+   "track": "F",
+   "title": "DNA gels in a figure",
+   "minutes": 5,
+   "prereqs": [
+    "D18"
+   ],
+   "goal": "Read the ladder, the wild-type and deletion bands in Figure 1E.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "F14",
+   "track": "F",
+   "title": "Flow cytometry plots",
+   "minutes": 6,
+   "prereqs": [
+    "D7"
+   ],
+   "goal": "Read a dot plot with a sorting gate; practised on Figure 1D.",
+   "notes": "",
+   "teaches": [
+    "fsc-a"
+   ]
+  },
+  {
+   "id": "F15",
+   "track": "F",
+   "title": "Microscopy and FISH images",
+   "minutes": 7,
+   "prereqs": [
+    "D25",
+    "D14",
+    "C9"
+   ],
+   "goal": "Read scale bars, arrows and labels in cell images; practised on Figures 6B, 3E, 5E and 6L.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "F16",
+   "track": "F",
+   "title": "The small print: n, error bars, P labels, asterisks and \"ns\"",
+   "minutes": 7,
+   "prereqs": [
+    "E6",
+    "E7"
+   ],
+   "goal": "Read the details that decide how much a figure proves.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H1",
+   "track": "H",
+   "title": "The paper's logic as a chain: claim → evidence → figure panel",
+   "minutes": 9,
+   "prereqs": [
+    "F16"
+   ],
+   "goal": "Lay out the paper's main claims, the evidence for each, and the exact panel that supports it.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H2",
+   "track": "H",
+   "title": "Every control and why it exists",
+   "minutes": 9,
+   "prereqs": [
+    "H1"
+   ],
+   "goal": "List every control in the paper (neutral, positive, non-targeting, normal cells, markers, vectors) and say what mistake each one rules out.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H3",
+   "track": "H",
+   "title": "DNA vs RNA effects: why ASOs were needed",
+   "minutes": 8,
+   "prereqs": [
+    "H1"
+   ],
+   "goal": "Explain how the authors separated a DNA effect from an RNA effect and the LINC00115 vs RP11-206L10.11 example.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H4",
+   "track": "H",
+   "title": "ASO off-target effects and how the paper handles them",
+   "minutes": 8,
+   "prereqs": [
+    "H1"
+   ],
+   "goal": "Explain the on-target evidence (two ASOs, several cell lines, correlated RNA-seq) and what is not tested (rescue failed).",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H5",
+   "track": "H",
+   "title": "Cell-line-specific effects and background independence",
+   "minutes": 8,
+   "prereqs": [
+    "H1"
+   ],
+   "goal": "Explain why the authors screened two lines, integrated across hallmarks, and added more lines and 3D models.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H6",
+   "track": "H",
+   "title": "The limitations section, line by line",
+   "minutes": 8,
+   "prereqs": [
+    "H1"
+   ],
+   "goal": "List the limitations the authors state and add the ones a skeptical reader would add.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H7",
+   "track": "H",
+   "title": "The declared patent and conflict of interest",
+   "minutes": 6,
+   "prereqs": [
+    "H1"
+   ],
+   "goal": "Read the declaration of interests, explain what a patent application and a conflict of interest are, and how to treat them fairly.",
+   "notes": "",
+   "teaches": [
+    "conflict-of-interest",
+    "patent-application"
+   ]
+  },
+  {
+   "id": "H8",
+   "track": "H",
+   "title": "Experiments that would strengthen the work",
+   "minutes": 8,
+   "prereqs": [
+    "H3",
+    "H4",
+    "H5",
+    "H6"
+   ],
+   "goal": "Propose concrete follow-up experiments and say which weakness each would fix.",
+   "notes": "",
+   "teaches": []
+  },
+  {
+   "id": "H9",
+   "track": "H",
+   "title": "Strengths vs weaknesses: essay-ready summary",
+   "minutes": 9,
+   "prereqs": [
+    "H1",
+    "H2",
+    "H3",
+    "H4",
+    "H5",
+    "H6",
+    "H7",
+    "H8"
+   ],
+   "goal": "Write and judge a balanced strengths-versus-weaknesses essay using evidence from the paper.",
+   "notes": "",
+   "teaches": []
+  }
+ ],
+ "terms": [
+  {
+   "id": "tier",
+   "term": "Tier (Tier 1 / 2 / 3)",
+   "aliases": [
+    "Tier 1",
+    "Tier 2",
+    "Tier 3",
+    "Tier II",
+    "tiers",
+    "Tier"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A3"
+  },
+  {
+   "id": "pan-hallmark",
+   "term": "Pan-hallmark",
+   "aliases": [
+    "pan-hallmark",
+    "pan-hallmarks",
+    "pan-hallmark ranking"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A3"
+  },
+  {
+   "id": "chill1",
+   "term": "CHiLL1",
+   "aliases": [
+    "CHiLL1",
+    "Cancer Hallmark in Lung LncRNA 1",
+    "Cancer Hallmarks in Lung LncRNA 1",
+    "candidate 42",
+    "RP11-875O11.3",
+    "ENSG00000253616"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A3"
+  },
+  {
+   "id": "gcawkr",
+   "term": "GCAWKR",
+   "aliases": [
+    "GCAWKR",
+    "candidate 240",
+    "RP11-66B24.2",
+    "ENSG00000272808"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A3"
+  },
+  {
+   "id": "candidate-number",
+   "term": "candidate number",
+   "aliases": [
+    "candidate 1",
+    "candidate numbers",
+    "candidate number",
+    "candidate 509",
+    "candidate 508",
+    "candidate 311",
+    "candidate 408",
+    "candidate 316"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "linc00115",
+   "term": "LINC00115",
+   "aliases": [
+    "LINC00115",
+    "candidate 205"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "rp11-206l10-11",
+   "term": "RP11-206L10.11",
+   "aliases": [
+    "RP11-206L10.11"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "dnmbp-as1",
+   "term": "DNMBP-AS1",
+   "aliases": [
+    "DNMBP-AS1",
+    "candidate 331",
+    "DNMBP"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "ac104024-3",
+   "term": "AC104024.3",
+   "aliases": [
+    "AC104024.3",
+    "candidate 215"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "cecr7",
+   "term": "CECR7",
+   "aliases": [
+    "CECR7",
+    "candidate 448"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "mir23ahg",
+   "term": "MIR23AHG",
+   "aliases": [
+    "MIR23AHG",
+    "candidate 489"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "linc00910",
+   "term": "LINC00910",
+   "aliases": [
+    "LINC00910",
+    "candidate 507"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "tnfrsf10b",
+   "term": "TNFRSF10B",
+   "aliases": [
+    "TNFRSF10B"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "zbtb7a",
+   "term": "ZBTB7A",
+   "aliases": [
+    "ZBTB7A"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "A5"
+  },
+  {
+   "id": "cell",
+   "term": "cell",
+   "aliases": [
+    "cells",
+    "cell"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B1"
+  },
+  {
+   "id": "nucleus",
+   "term": "nucleus",
+   "aliases": [
+    "nuclei",
+    "nuclear",
+    "nucleus"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B1"
+  },
+  {
+   "id": "cytoplasm",
+   "term": "cytoplasm",
+   "aliases": [
+    "cytoplasmic",
+    "cytosol",
+    "cytosolic",
+    "cytoplasm"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B1"
+  },
+  {
+   "id": "tissue",
+   "term": "tissue",
+   "aliases": [
+    "tissues",
+    "tissue"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B1"
+  },
+  {
+   "id": "proliferation",
+   "term": "proliferation",
+   "aliases": [
+    "cell proliferation",
+    "proliferative",
+    "proliferate",
+    "proliferation"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "cell-cycle",
+   "term": "cell cycle",
+   "aliases": [
+    "cell-cycle",
+    "cell cycle progression",
+    "cell cycle"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "g1-phase",
+   "term": "G1 phase",
+   "aliases": [
+    "G1",
+    "G1 phase"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "s-phase",
+   "term": "S phase",
+   "aliases": [
+    "S phase"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "g2-phase",
+   "term": "G2 phase",
+   "aliases": [
+    "G2",
+    "G2 phase"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "mitosis",
+   "term": "M phase (mitosis)",
+   "aliases": [
+    "mitosis",
+    "M phase"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "cell-cycle-checkpoint",
+   "term": "checkpoint",
+   "aliases": [
+    "G2-M checkpoint",
+    "G2/M checkpoint",
+    "checkpoint"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "doubling-time",
+   "term": "doubling time",
+   "aliases": [
+    "cell doubling time",
+    "doubling time"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B2"
+  },
+  {
+   "id": "apoptosis",
+   "term": "apoptosis",
+   "aliases": [
+    "apoptotic",
+    "early-apoptotic",
+    "late-apoptotic",
+    "early apoptotic",
+    "late apoptotic",
+    "apoptosis"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B3"
+  },
+  {
+   "id": "necrosis",
+   "term": "necrosis",
+   "aliases": [
+    "necrotic",
+    "necrosis"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B3"
+  },
+  {
+   "id": "dna",
+   "term": "DNA",
+   "aliases": [
+    "DNA"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B4"
+  },
+  {
+   "id": "nucleotide",
+   "term": "nucleotide (base)",
+   "aliases": [
+    "nucleotides",
+    "bases",
+    "nucleotide"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B4"
+  },
+  {
+   "id": "base-pair",
+   "term": "base pair (bp)",
+   "aliases": [
+    "base pair",
+    "base pairs",
+    "bp",
+    "bp-long"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B4"
+  },
+  {
+   "id": "complementary-base-pairing",
+   "term": "complementary base pairing",
+   "aliases": [
+    "complementary",
+    "base pairing",
+    "base-pairing",
+    "hybridize",
+    "hybridization",
+    "complementary base pairing"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B4"
+  },
+  {
+   "id": "five-prime-three-prime",
+   "term": "5′ and 3′ ends",
+   "aliases": [
+    "5′ end",
+    "3′ end",
+    "5′ ends",
+    "3′ ends",
+    "5′ and 3′",
+    "5′ and 3′ ends"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B4"
+  },
+  {
+   "id": "chromosome",
+   "term": "chromosome",
+   "aliases": [
+    "chromosomes",
+    "Chr8",
+    "Chr15",
+    "Chr1",
+    "Chr17",
+    "chr",
+    "chromosome"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B5"
+  },
+  {
+   "id": "gene",
+   "term": "gene",
+   "aliases": [
+    "genes",
+    "genic",
+    "gene"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B5"
+  },
+  {
+   "id": "genome",
+   "term": "genome",
+   "aliases": [
+    "genomes",
+    "genomic",
+    "whole genome",
+    "genome"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B5"
+  },
+  {
+   "id": "locus",
+   "term": "locus",
+   "aliases": [
+    "loci",
+    "gene locus",
+    "locus"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B5"
+  },
+  {
+   "id": "genome-assembly",
+   "term": "genome assembly (genome version)",
+   "aliases": [
+    "assembly",
+    "assemblies",
+    "genome build",
+    "GRCh37",
+    "GRCh38",
+    "GRCh37/hg19",
+    "genome assembly"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "hg19",
+   "term": "hg19",
+   "aliases": [
+    "hg19"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "hg38",
+   "term": "hg38",
+   "aliases": [
+    "hg38"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "genome-coordinates",
+   "term": "genome coordinates",
+   "aliases": [
+    "coordinates",
+    "genomic coordinates",
+    "genome coordinates"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "kilobase",
+   "term": "kilobase (kb)",
+   "aliases": [
+    "kb",
+    "Kb",
+    "kbp",
+    "kilobase"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "strand",
+   "term": "DNA strand (plus / minus strand)",
+   "aliases": [
+    "DNA strand",
+    "DNA strands",
+    "same strand",
+    "opposite strand",
+    "opposite-strand",
+    "correct-strand",
+    "plus strand",
+    "minus strand"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "antisense",
+   "term": "antisense",
+   "aliases": [
+    "antisense",
+    "sense strand"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "upstream-downstream",
+   "term": "upstream / downstream",
+   "aliases": [
+    "upstream",
+    "downstream",
+    "upstream / downstream"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "liftover",
+   "term": "liftOver",
+   "aliases": [
+    "liftOver"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B6"
+  },
+  {
+   "id": "transcription",
+   "term": "transcription",
+   "aliases": [
+    "transcribed",
+    "transcriptional",
+    "transcribe",
+    "transcription"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "rna",
+   "term": "RNA",
+   "aliases": [
+    "RNA",
+    "RNAs"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "rna-polymerase",
+   "term": "RNA polymerase",
+   "aliases": [
+    "RNA polymerase"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "transcript",
+   "term": "transcript",
+   "aliases": [
+    "transcripts",
+    "transcript"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "promoter",
+   "term": "promoter",
+   "aliases": [
+    "promoters",
+    "promoter region",
+    "promoter"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "tss",
+   "term": "transcription start site (TSS)",
+   "aliases": [
+    "TSS",
+    "TSSs",
+    "transcription start site",
+    "transcription start sites",
+    "start site"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "bidirectional-promoter",
+   "term": "bidirectional promoter",
+   "aliases": [
+    "bidirectional promoters",
+    "bidirectional",
+    "bidirectional promoter"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B7"
+  },
+  {
+   "id": "exon",
+   "term": "exon",
+   "aliases": [
+    "exons",
+    "exonic",
+    "exon"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B8"
+  },
+  {
+   "id": "intron",
+   "term": "intron",
+   "aliases": [
+    "introns",
+    "intronic",
+    "intron"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B8"
+  },
+  {
+   "id": "splicing",
+   "term": "splicing",
+   "aliases": [
+    "spliced",
+    "splice",
+    "splicing"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B8"
+  },
+  {
+   "id": "isoform",
+   "term": "isoform",
+   "aliases": [
+    "isoforms",
+    "alternative transcripts",
+    "isoform"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B8"
+  },
+  {
+   "id": "readthrough-transcription",
+   "term": "readthrough transcription",
+   "aliases": [
+    "readthrough transcription",
+    "readthrough",
+    "read-through"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B8"
+  },
+  {
+   "id": "protein",
+   "term": "protein",
+   "aliases": [
+    "proteins",
+    "protein"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "mrna",
+   "term": "messenger RNA (mRNA)",
+   "aliases": [
+    "mRNA",
+    "mRNAs",
+    "messenger RNA"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "translation",
+   "term": "translation",
+   "aliases": [
+    "translated",
+    "translation"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "ribosome",
+   "term": "ribosome",
+   "aliases": [
+    "ribosomes",
+    "ribosomal",
+    "ribosome"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "orf",
+   "term": "open reading frame (ORF)",
+   "aliases": [
+    "ORF",
+    "ORFs",
+    "open reading frame"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "protein-coding-gene",
+   "term": "protein-coding gene (PCG)",
+   "aliases": [
+    "PCG",
+    "PCGs",
+    "protein-coding gene",
+    "protein-coding genes",
+    "protein-coding"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "protein-coding-potential",
+   "term": "protein-coding potential",
+   "aliases": [
+    "protein-coding potential",
+    "coding potential",
+    "protein-coding evidence"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B9"
+  },
+  {
+   "id": "noncoding-rna",
+   "term": "noncoding RNA",
+   "aliases": [
+    "noncoding RNA",
+    "non-coding RNA",
+    "noncoding RNAs",
+    "non-coding RNAs",
+    "ncRNA"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B10"
+  },
+  {
+   "id": "mirna",
+   "term": "microRNA (miRNA)",
+   "aliases": [
+    "microRNA",
+    "microRNAs",
+    "miRNA",
+    "miRNAs"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B10"
+  },
+  {
+   "id": "lncrna",
+   "term": "long noncoding RNA (lncRNA)",
+   "aliases": [
+    "lncRNA",
+    "lncRNAs",
+    "long noncoding RNA",
+    "long noncoding RNAs",
+    "long non-coding RNA",
+    "long non-coding RNAs"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "cis-trans",
+   "term": "cis- vs trans-acting",
+   "aliases": [
+    "cis-acting",
+    "trans-acting",
+    "cis-regulatory mechanisms",
+    "cis",
+    "trans",
+    "cis- vs trans-acting"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "malat1",
+   "term": "MALAT1",
+   "aliases": [
+    "MALAT1"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "pvt1",
+   "term": "PVT1",
+   "aliases": [
+    "PVT1"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "linc00680",
+   "term": "LINC00680",
+   "aliases": [
+    "LINC00680"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "linc00511",
+   "term": "LINC00511",
+   "aliases": [
+    "LINC00511"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "ezh2",
+   "term": "EZH2",
+   "aliases": [
+    "EZH2"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "gata6-lats2-p57",
+   "term": "GATA6, LATS2 and p57",
+   "aliases": [
+    "GATA6",
+    "LATS2",
+    "p57",
+    "GATA6, LATS2 and p57"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "known-cancer-lncrnas",
+   "term": "named lung-cancer lncRNAs",
+   "aliases": [
+    "SAMMSON",
+    "lncGRS-1",
+    "MIAT",
+    "PCAT7",
+    "SBF2-AS1",
+    "SNHG6",
+    "SNHG12",
+    "MIR219-2",
+    "named lung-cancer lncRNAs"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "B11"
+  },
+  {
+   "id": "subcellular-localization",
+   "term": "subcellular localization",
+   "aliases": [
+    "subcellular localization",
+    "localization",
+    "localisation",
+    "localized",
+    "localised"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B12"
+  },
+  {
+   "id": "gene-annotation",
+   "term": "gene annotation",
+   "aliases": [
+    "annotation",
+    "annotations",
+    "annotated",
+    "gene annotation"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "gencode",
+   "term": "GENCODE",
+   "aliases": [
+    "GENCODE"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "fantom-cat",
+   "term": "FANTOM CAT",
+   "aliases": [
+    "FANTOM CAT",
+    "FANTOM5",
+    "FANTOM"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "bigtranscriptome",
+   "term": "BIGTranscriptome",
+   "aliases": [
+    "BIGTranscriptome"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "transcriptome-assembly",
+   "term": "transcriptome assembly (StringTie)",
+   "aliases": [
+    "transcriptome assembly",
+    "novel assembly",
+    "StringTie",
+    "assembled"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "ensembl-id",
+   "term": "Ensembl gene ID (ENSG…)",
+   "aliases": [
+    "ENSG",
+    "ENST",
+    "Ensembl",
+    "Ensembl gene ID"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "gtf",
+   "term": "GTF file",
+   "aliases": [
+    "GTF",
+    "Gene Transfer Format",
+    "GTF file"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "est",
+   "term": "expressed sequence tag (EST)",
+   "aliases": [
+    "EST",
+    "ESTs",
+    "expressed sequence tags",
+    "expressed sequence tag"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "ortholog",
+   "term": "ortholog",
+   "aliases": [
+    "ortholog",
+    "orthologs",
+    "likely ortholog",
+    "Gm44753"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B13"
+  },
+  {
+   "id": "gene-expression",
+   "term": "gene expression",
+   "aliases": [
+    "expression",
+    "expressed",
+    "express",
+    "expression level",
+    "expression levels",
+    "expressing",
+    "gene expression"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B14"
+  },
+  {
+   "id": "upregulation",
+   "term": "upregulation",
+   "aliases": [
+    "upregulated",
+    "upregulation",
+    "up-regulated",
+    "overexpressed"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B14"
+  },
+  {
+   "id": "downregulation",
+   "term": "downregulation",
+   "aliases": [
+    "downregulated",
+    "downregulation",
+    "down-regulated"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B14"
+  },
+  {
+   "id": "transcriptome",
+   "term": "transcriptome",
+   "aliases": [
+    "transcriptome",
+    "transcriptomic",
+    "transcriptomes"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B14"
+  },
+  {
+   "id": "enhancer",
+   "term": "enhancer",
+   "aliases": [
+    "enhancers",
+    "enhancer-like",
+    "enhancer"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B15"
+  },
+  {
+   "id": "transcription-factor",
+   "term": "transcription factor",
+   "aliases": [
+    "transcription factors",
+    "transcription factor"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B15"
+  },
+  {
+   "id": "tfbs",
+   "term": "transcription factor binding site (TFBS)",
+   "aliases": [
+    "TFBS",
+    "transcription factor binding sites",
+    "transcription factor binding site"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B15"
+  },
+  {
+   "id": "chromatin",
+   "term": "chromatin",
+   "aliases": [
+    "chromatin"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B15"
+  },
+  {
+   "id": "cis-regulatory-element",
+   "term": "DNA regulatory element",
+   "aliases": [
+    "regulatory element",
+    "regulatory elements",
+    "DNA regulatory elements",
+    "DNA regulatory regions",
+    "cis-regulatory elements",
+    "candidate cis-regulatory elements",
+    "cCRE",
+    "DNA regulatory element"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B15"
+  },
+  {
+   "id": "encode",
+   "term": "ENCODE",
+   "aliases": [
+    "ENCODE"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B15"
+  },
+  {
+   "id": "cage",
+   "term": "CAGE",
+   "aliases": [
+    "CAGE",
+    "Cap Analysis of Gene Expression"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "B16"
+  },
+  {
+   "id": "dnase-i-hypersensitivity",
+   "term": "DNase I hypersensitivity",
+   "aliases": [
+    "DNase I hypersensitivity",
+    "DNAse I hypersensitivity",
+    "DNAse I hypersensitivity sites",
+    "DNAseI hypersensitivity",
+    "DNase I",
+    "DNAse I",
+    "hypersensitivity sites"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B16"
+  },
+  {
+   "id": "chromhmm",
+   "term": "ChromHMM",
+   "aliases": [
+    "ChromHMM"
+   ],
+   "cat": "biology",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "B16"
+  },
+  {
+   "id": "cancer",
+   "term": "cancer",
+   "aliases": [
+    "cancers",
+    "cancerous",
+    "cancer cells",
+    "cancer"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C1"
+  },
+  {
+   "id": "tumor",
+   "term": "tumor",
+   "aliases": [
+    "tumors",
+    "tumour",
+    "tumours",
+    "tumor"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C1"
+  },
+  {
+   "id": "hallmark",
+   "term": "hallmark of cancer",
+   "aliases": [
+    "hallmarks",
+    "hallmarks of cancer",
+    "hallmark-specific",
+    "multi-hallmark",
+    "hallmark of cancer"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C2"
+  },
+  {
+   "id": "phenotype",
+   "term": "phenotype",
+   "aliases": [
+    "phenotypes",
+    "phenotypic",
+    "phenotype"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C2"
+  },
+  {
+   "id": "pleiotropic",
+   "term": "pleiotropic",
+   "aliases": [
+    "pleiotropy",
+    "pleiotropic roles",
+    "pleiotropic"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C2"
+  },
+  {
+   "id": "oncogene",
+   "term": "oncogene",
+   "aliases": [
+    "oncogenes",
+    "oncogenic",
+    "oncogene"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C3"
+  },
+  {
+   "id": "tumor-suppressor",
+   "term": "tumor suppressor",
+   "aliases": [
+    "tumor suppressors",
+    "tumour suppressor",
+    "tumor-suppressor",
+    "tumor suppressor"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C3"
+  },
+  {
+   "id": "mutation",
+   "term": "mutation",
+   "aliases": [
+    "mutations",
+    "mutated",
+    "mutant",
+    "mutational",
+    "mutation"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C4"
+  },
+  {
+   "id": "copy-number-alteration",
+   "term": "copy-number alteration (CNA)",
+   "aliases": [
+    "CNA",
+    "copy number alteration",
+    "copy-number alteration",
+    "copy number",
+    "copy-number"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C4"
+  },
+  {
+   "id": "amplification",
+   "term": "amplification",
+   "aliases": [
+    "amplified",
+    "amplifications",
+    "recurrent amplifications",
+    "recurrently amplified",
+    "amplification"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C4"
+  },
+  {
+   "id": "deletion",
+   "term": "deletion (DNA lost)",
+   "aliases": [
+    "deletion",
+    "deletions",
+    "genomic deletion",
+    "genomic deletions",
+    "recurrent deletions"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C4"
+  },
+  {
+   "id": "nsclc",
+   "term": "non-small cell lung cancer (NSCLC)",
+   "aliases": [
+    "NSCLC",
+    "non-small cell lung cancer",
+    "non-small-cell lung cancer"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C5"
+  },
+  {
+   "id": "lung-adenocarcinoma",
+   "term": "lung adenocarcinoma (LUAD)",
+   "aliases": [
+    "LUAD",
+    "lung adenocarcinoma",
+    "adenocarcinoma"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C5"
+  },
+  {
+   "id": "large-cell-carcinoma",
+   "term": "large cell carcinoma",
+   "aliases": [
+    "large cell lung cancer",
+    "large cell carcinoma",
+    "large cell"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C5"
+  },
+  {
+   "id": "metastasis",
+   "term": "metastasis",
+   "aliases": [
+    "metastatic",
+    "metastases",
+    "metastasize",
+    "metastasis"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C5"
+  },
+  {
+   "id": "invasion",
+   "term": "invasion",
+   "aliases": [
+    "invasive",
+    "invasiveness",
+    "invade",
+    "invasion"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C5"
+  },
+  {
+   "id": "migration",
+   "term": "cell migration",
+   "aliases": [
+    "migrate",
+    "migrated",
+    "migratory",
+    "migrating",
+    "impaired migration",
+    "cell migration"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C5"
+  },
+  {
+   "id": "kras",
+   "term": "KRAS",
+   "aliases": [
+    "KRAS",
+    "KRAS+",
+    "KRAS-mutant",
+    "KRAS mutations",
+    "KRASmut",
+    "KRAS-mut"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C6"
+  },
+  {
+   "id": "egfr",
+   "term": "EGFR",
+   "aliases": [
+    "EGFR",
+    "EGFR-mutant"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C6"
+  },
+  {
+   "id": "activating-mutation",
+   "term": "activating mutation",
+   "aliases": [
+    "activating mutations",
+    "activating KRAS mutations",
+    "activating mutation"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C6"
+  },
+  {
+   "id": "targeted-therapy",
+   "term": "targeted therapy",
+   "aliases": [
+    "targeted therapies",
+    "targeted therapeutics",
+    "targeted therapy"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C6"
+  },
+  {
+   "id": "kras-g12c",
+   "term": "KRAS G12C",
+   "aliases": [
+    "G12C",
+    "Gly12Cys",
+    "c.34G>T",
+    "KRAS G12C"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C6"
+  },
+  {
+   "id": "chemotherapy",
+   "term": "chemotherapy",
+   "aliases": [
+    "chemotherapeutic",
+    "chemotherapeutics",
+    "chemotherapies",
+    "platinum chemotherapy",
+    "platinum-based",
+    "chemotherapy"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C7"
+  },
+  {
+   "id": "cisplatin",
+   "term": "cisplatin",
+   "aliases": [
+    "cisplatin",
+    "Cisplatin"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C7"
+  },
+  {
+   "id": "chemoresistance",
+   "term": "chemoresistance",
+   "aliases": [
+    "chemoresistance",
+    "chemo-resistance",
+    "drug resistance",
+    "therapy resistance",
+    "cisplatin resistance"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C7"
+  },
+  {
+   "id": "inhibitory-concentration",
+   "term": "inhibitory concentration (IC20, IC30, IC80)",
+   "aliases": [
+    "IC20",
+    "IC30",
+    "IC50",
+    "IC80",
+    "inhibitory concentration"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C7"
+  },
+  {
+   "id": "dose-response",
+   "term": "dose–response",
+   "aliases": [
+    "dose-response",
+    "dose–response",
+    "dose response"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C7"
+  },
+  {
+   "id": "combination-therapy",
+   "term": "combination therapy",
+   "aliases": [
+    "combination therapy",
+    "combination therapies"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C7"
+  },
+  {
+   "id": "cell-line",
+   "term": "cell line",
+   "aliases": [
+    "cell lines",
+    "cell-line",
+    "cell-line-specific",
+    "cell-type-specific",
+    "cell line"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "a549",
+   "term": "A549",
+   "aliases": [
+    "A549"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "h460",
+   "term": "H460 (NCI-H460)",
+   "aliases": [
+    "H460",
+    "NCI-H460",
+    "NCI-H460s"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "h441",
+   "term": "H441 (NCI-H441)",
+   "aliases": [
+    "H441",
+    "NCI-H441"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "hek293t",
+   "term": "HEK293T",
+   "aliases": [
+    "HEK293T"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "hbec3-kt",
+   "term": "HBEC3-KT",
+   "aliases": [
+    "HBEC3-KT"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "mrc5",
+   "term": "MRC-5",
+   "aliases": [
+    "MRC-5",
+    "MRC5-CV1",
+    "Mrc5-SV1",
+    "MRC5"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "ccd-16lu",
+   "term": "CCD-16Lu",
+   "aliases": [
+    "CCD-16Lu",
+    "CCD-16LU",
+    "CCD-12Lu"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "immortalized-cells",
+   "term": "immortalized cells",
+   "aliases": [
+    "immortalized",
+    "immortalised",
+    "immortalized cells"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "primary-cells",
+   "term": "primary cells",
+   "aliases": [
+    "primary cells",
+    "primary cell"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "non-transformed-cells",
+   "term": "non-transformed (normal) cells",
+   "aliases": [
+    "non-transformed",
+    "non-transformed cells",
+    "non-cancerous cells",
+    "non-cancerous"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "cell-background",
+   "term": "cell background",
+   "aliases": [
+    "cell background",
+    "cell backgrounds",
+    "backgrounds",
+    "background independent",
+    "background-independent",
+    "background-independence",
+    "cell-type-independent",
+    "cell-type independent"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "str-profiling",
+   "term": "STR profiling",
+   "aliases": [
+    "STR",
+    "Short Tandem Repeat",
+    "STR profiling"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "mycoplasma",
+   "term": "mycoplasma",
+   "aliases": [
+    "mycoplasma"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "generalizability",
+   "term": "generalizability",
+   "aliases": [
+    "generalizability",
+    "generalize",
+    "generalise",
+    "generality",
+    "general utility"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "fbs",
+   "term": "fetal bovine serum (FBS)",
+   "aliases": [
+    "FBS",
+    "Fetal Bovine Serum",
+    "fetal bovine serum"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "culture-medium",
+   "term": "culture medium",
+   "aliases": [
+    "medium",
+    "media",
+    "growth medium",
+    "DMEM",
+    "RPMI-1640",
+    "EMEM",
+    "culture medium",
+    "humid atmosphere"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "pbs",
+   "term": "PBS (phosphate-buffered saline)",
+   "aliases": [
+    "PBS",
+    "1X PBS"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "trypsinization",
+   "term": "trypsinization",
+   "aliases": [
+    "trypsinized",
+    "trypsin",
+    "trypsinization"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C8"
+  },
+  {
+   "id": "monolayer-culture",
+   "term": "2D culture (monolayer)",
+   "aliases": [
+    "2D",
+    "monolayer",
+    "monolayers",
+    "monolayer culture",
+    "monolayer cultures",
+    "monolayer cell backgrounds",
+    "2D culture"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C9"
+  },
+  {
+   "id": "three-d-culture",
+   "term": "3D culture",
+   "aliases": [
+    "3D",
+    "three-dimensional",
+    "3D cultures",
+    "3D in vitro models",
+    "3D models",
+    "3D culture"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C9"
+  },
+  {
+   "id": "spheroid",
+   "term": "spheroid",
+   "aliases": [
+    "spheroids",
+    "spheroid cultures",
+    "spheroid"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C9"
+  },
+  {
+   "id": "organoid",
+   "term": "organoid",
+   "aliases": [
+    "organoids",
+    "lung cancer organoids",
+    "LCO",
+    "organoid"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C9"
+  },
+  {
+   "id": "matrigel",
+   "term": "Matrigel",
+   "aliases": [
+    "Matrigel",
+    "Matrigel domes"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C9"
+  },
+  {
+   "id": "in-vitro-in-vivo",
+   "term": "in vitro / in vivo / ex vivo",
+   "aliases": [
+    "in vitro",
+    "in vivo",
+    "ex vivo",
+    "in vitro / in vivo / ex vivo"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C9"
+  },
+  {
+   "id": "pdx",
+   "term": "patient-derived xenograft (PDX)",
+   "aliases": [
+    "PDX",
+    "PDXs",
+    "patient-derived xenograft",
+    "patient-derived xenografts",
+    "patient-derived xenograft organoids"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C10"
+  },
+  {
+   "id": "xenograft",
+   "term": "xenograft",
+   "aliases": [
+    "xenografts",
+    "xenograft"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C10"
+  },
+  {
+   "id": "immunodeficient-mouse",
+   "term": "immunodeficient mouse (NSG)",
+   "aliases": [
+    "NSG",
+    "NSG mice",
+    "immunodeficient mice",
+    "immunodeficient mouse"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C10"
+  },
+  {
+   "id": "be874",
+   "term": "BE874",
+   "aliases": [
+    "BE874"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "C10"
+  },
+  {
+   "id": "tcga",
+   "term": "TCGA",
+   "aliases": [
+    "TCGA",
+    "The Cancer Genome Atlas",
+    "TCGA-LUAD"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "tanric",
+   "term": "TANRIC",
+   "aliases": [
+    "TANRIC"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "pcawg",
+   "term": "PCAWG",
+   "aliases": [
+    "PCAWG",
+    "Pan-Cancer Analysis of Whole Genomes"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "ccle",
+   "term": "CCLE",
+   "aliases": [
+    "CCLE"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "cohort",
+   "term": "cohort",
+   "aliases": [
+    "cohorts",
+    "cohort"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "geo",
+   "term": "GEO (Gene Expression Omnibus)",
+   "aliases": [
+    "GEO",
+    "Gene Expression Omnibus"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "zenodo",
+   "term": "Zenodo",
+   "aliases": [
+    "Zenodo"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C11"
+  },
+  {
+   "id": "adjacent-normal-tissue",
+   "term": "adjacent normal tissue",
+   "aliases": [
+    "adjacent tissue",
+    "adjacent normal tissue",
+    "adjacent normal",
+    "non-tumour",
+    "non-tumor"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C12"
+  },
+  {
+   "id": "survival-analysis",
+   "term": "survival analysis",
+   "aliases": [
+    "overall survival",
+    "survival analysis",
+    "poor prognosis",
+    "prognosis",
+    "poorer prognosis"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C12"
+  },
+  {
+   "id": "tumor-subtype",
+   "term": "tumor subtype",
+   "aliases": [
+    "tumor subtype",
+    "subtype",
+    "subtypes",
+    "proximal inflammatory",
+    "proximal proliferative",
+    "terminal respiratory unit"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "C12"
+  },
+  {
+   "id": "crispr",
+   "term": "CRISPR",
+   "aliases": [
+    "CRISPR",
+    "CRISPR-Cas9",
+    "CRISPR-Cas",
+    "CRISPR screens",
+    "CRISPR perturbation",
+    "CRISPR perturbations"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D1"
+  },
+  {
+   "id": "cas9",
+   "term": "Cas9",
+   "aliases": [
+    "Cas9"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D1"
+  },
+  {
+   "id": "guide-rna",
+   "term": "guide RNA (gRNA, sgRNA)",
+   "aliases": [
+    "guide RNA",
+    "guide RNAs",
+    "gRNA",
+    "sgRNA",
+    "sgRNAs",
+    "guides"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D1"
+  },
+  {
+   "id": "loss-of-function",
+   "term": "loss of function (LOF)",
+   "aliases": [
+    "loss-of-function",
+    "loss of function",
+    "LOF"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D1"
+  },
+  {
+   "id": "knockout",
+   "term": "knockout (KO)",
+   "aliases": [
+    "knockout",
+    "knock-out",
+    "KO"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D1"
+  },
+  {
+   "id": "crispr-del",
+   "term": "CRISPR-del (CRISPR deletion)",
+   "aliases": [
+    "CRISPR-del",
+    "CRISPR deletion",
+    "CRISPR-deletion",
+    "promoter deletion",
+    "promoter-deletion",
+    "TSS deletion"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D2"
+  },
+  {
+   "id": "paired-guide-rna",
+   "term": "paired guide RNA (pgRNA)",
+   "aliases": [
+    "pgRNA",
+    "pgRNAs",
+    "paired guide RNA",
+    "paired guide RNAs",
+    "paired guide"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D2"
+  },
+  {
+   "id": "decko",
+   "term": "DECKO",
+   "aliases": [
+    "DECKO",
+    "pDECKO",
+    "dual-excision CRISPR knockout",
+    "pDECKO_mCherry"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D2"
+  },
+  {
+   "id": "guide-efficiency",
+   "term": "guide efficiency score",
+   "aliases": [
+    "RuleSet2",
+    "sgRNA efficiency",
+    "predicted sgRNA efficiency",
+    "deletion efficiency",
+    "pgRNA deletion efficiency",
+    "guide efficiency score"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D2"
+  },
+  {
+   "id": "off-target-effect",
+   "term": "off-target effect",
+   "aliases": [
+    "off-target",
+    "off targeting",
+    "off-targeting",
+    "off-targets",
+    "unintended off targeting",
+    "off-target effect"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D2"
+  },
+  {
+   "id": "crispri",
+   "term": "CRISPRi",
+   "aliases": [
+    "CRISPRi",
+    "CRISPR-inhibition",
+    "CRISPR inhibition"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D3"
+  },
+  {
+   "id": "cas13",
+   "term": "Cas13",
+   "aliases": [
+    "Cas13"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D3"
+  },
+  {
+   "id": "plasmid",
+   "term": "plasmid",
+   "aliases": [
+    "plasmids",
+    "plasmid"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D4"
+  },
+  {
+   "id": "lentivirus",
+   "term": "lentivirus",
+   "aliases": [
+    "lentiviral",
+    "lentiviruses",
+    "viral particles",
+    "virus",
+    "viruses",
+    "lentivirus"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D4"
+  },
+  {
+   "id": "viral-titer",
+   "term": "viral titer",
+   "aliases": [
+    "titer",
+    "titre",
+    "titration",
+    "titer calculation",
+    "viral titer"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D4"
+  },
+  {
+   "id": "transduction",
+   "term": "transduction",
+   "aliases": [
+    "transduced",
+    "transduce",
+    "infection",
+    "infected",
+    "spin-infection",
+    "infect",
+    "transduction"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "transfection",
+   "term": "transfection",
+   "aliases": [
+    "transfected",
+    "transfect",
+    "transfecting",
+    "post-transfection",
+    "Lipofectamine",
+    "Lipofectamine2000",
+    "Lipofectamine3000",
+    "transfection"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "moi",
+   "term": "multiplicity of infection (MOI)",
+   "aliases": [
+    "MOI",
+    "multiplicity of infection"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "antibiotic-selection",
+   "term": "antibiotic selection",
+   "aliases": [
+    "antibiotic selection",
+    "selected with puromycin",
+    "selection with puromycin",
+    "puromycin selection"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "puromycin",
+   "term": "puromycin",
+   "aliases": [
+    "puromycin"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "blasticidin",
+   "term": "blasticidin",
+   "aliases": [
+    "blasticidin"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "polybrene",
+   "term": "polybrene",
+   "aliases": [
+    "polybrene"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "stable-cell-line",
+   "term": "stable cell line",
+   "aliases": [
+    "stable cell lines",
+    "stably express",
+    "stably expressing",
+    "stable Cas9-expressing",
+    "stable cell line"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D5"
+  },
+  {
+   "id": "fluorescent-protein",
+   "term": "fluorescent protein",
+   "aliases": [
+    "fluorescent proteins",
+    "fluorescently labeled",
+    "fluorescent protein marker",
+    "fluorescent protein"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D6"
+  },
+  {
+   "id": "gfp",
+   "term": "GFP",
+   "aliases": [
+    "GFP",
+    "green fluorescent protein"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D6"
+  },
+  {
+   "id": "mcherry",
+   "term": "mCherry",
+   "aliases": [
+    "mCherry"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D6"
+  },
+  {
+   "id": "bfp",
+   "term": "BFP",
+   "aliases": [
+    "BFP",
+    "blue fluorescent protein"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D6"
+  },
+  {
+   "id": "flow-cytometry",
+   "term": "flow cytometry",
+   "aliases": [
+    "flow cytometry",
+    "flow cytometer",
+    "flow analysis",
+    "flow cytometric"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D7"
+  },
+  {
+   "id": "facs",
+   "term": "FACS",
+   "aliases": [
+    "FACS",
+    "fluorescence-activated cell sorting",
+    "FACS-sorted",
+    "sorted",
+    "sorting"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D7"
+  },
+  {
+   "id": "gating",
+   "term": "gate (gating)",
+   "aliases": [
+    "gate",
+    "gating",
+    "gated"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D7"
+  },
+  {
+   "id": "flowjo",
+   "term": "FlowJo",
+   "aliases": [
+    "FlowJo"
+   ],
+   "cat": "lab",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D7"
+  },
+  {
+   "id": "pooled-screen",
+   "term": "pooled screen",
+   "aliases": [
+    "pooled screening",
+    "pooled screens",
+    "pooled CRISPR",
+    "pooled CRISPR screening",
+    "pooled screen"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D8"
+  },
+  {
+   "id": "arrayed-screen",
+   "term": "arrayed screen",
+   "aliases": [
+    "arrayed screen",
+    "arrayed screening",
+    "arrayed library",
+    "arrayed"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D8"
+  },
+  {
+   "id": "crispr-library",
+   "term": "CRISPR library",
+   "aliases": [
+    "library",
+    "libraries",
+    "pgRNA library",
+    "library of pgRNAs",
+    "CRISPR library"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D8"
+  },
+  {
+   "id": "screen",
+   "term": "screen",
+   "aliases": [
+    "screens",
+    "screening",
+    "CRISPR screen",
+    "screen"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D8"
+  },
+  {
+   "id": "hit",
+   "term": "hit",
+   "aliases": [
+    "hits",
+    "screen hits",
+    "lncRNA hits",
+    "hit"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D8"
+  },
+  {
+   "id": "candidate",
+   "term": "candidate",
+   "aliases": [
+    "candidates",
+    "candidate lncRNAs",
+    "candidate lncRNA",
+    "candidate"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D8"
+  },
+  {
+   "id": "libdecko-nsclc1",
+   "term": "libDECKO-NSCLC1",
+   "aliases": [
+    "libDECKO-NSCLC1",
+    "libDECKO"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D9"
+  },
+  {
+   "id": "library-depth",
+   "term": "library depth (guides per target)",
+   "aliases": [
+    "depth",
+    "guides per target",
+    "pgRNAs per target",
+    "10 unique pgRNAs",
+    "library depth"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D9"
+  },
+  {
+   "id": "coverage",
+   "term": "coverage",
+   "aliases": [
+    "library coverage",
+    "coverage"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D9"
+  },
+  {
+   "id": "cloning",
+   "term": "cloning",
+   "aliases": [
+    "cloned",
+    "library cloning",
+    "clone",
+    "clones",
+    "cloning"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D9"
+  },
+  {
+   "id": "crispeta",
+   "term": "CRISPETa",
+   "aliases": [
+    "CRISPETa"
+   ],
+   "cat": "screen",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D9"
+  },
+  {
+   "id": "gini-coefficient",
+   "term": "Gini coefficient (library evenness)",
+   "aliases": [
+    "Gini-coefficient",
+    "Gini coefficient",
+    "Lorenz-curve",
+    "Lorenz curve",
+    "count ratios",
+    "perfect match"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D9"
+  },
+  {
+   "id": "genomic-dna",
+   "term": "genomic DNA (gDNA)",
+   "aliases": [
+    "gDNA",
+    "genomic DNA"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "pcr",
+   "term": "PCR",
+   "aliases": [
+    "PCR",
+    "PCR amplification",
+    "PCR amplified",
+    "amplification reaction"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "primer",
+   "term": "primer",
+   "aliases": [
+    "primers",
+    "primer"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "ngs",
+   "term": "next-generation sequencing (NGS)",
+   "aliases": [
+    "NGS",
+    "next-generation sequencing",
+    "Illumina",
+    "HiSeq2000"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "sequencing-read",
+   "term": "sequencing read",
+   "aliases": [
+    "sequencing read",
+    "sequencing reads",
+    "read counts",
+    "read count",
+    "raw reads",
+    "read depth"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "time-point",
+   "term": "time point (T0, T2, T3)",
+   "aliases": [
+    "time point",
+    "time points",
+    "T0",
+    "T2",
+    "T3"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "caspr",
+   "term": "CASPR",
+   "aliases": [
+    "CASPR"
+   ],
+   "cat": "seq",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "mageck",
+   "term": "MAGeCK",
+   "aliases": [
+    "MAGeCK",
+    "MageckFlute"
+   ],
+   "cat": "seq",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "guidescan",
+   "term": "GuideScan",
+   "aliases": [
+    "GuideScan"
+   ],
+   "cat": "seq",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "sanger-sequencing",
+   "term": "Sanger sequencing",
+   "aliases": [
+    "Sanger sequencing",
+    "Sanger",
+    "colony PCR"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "batch-effect",
+   "term": "batch effect",
+   "aliases": [
+    "batch effect",
+    "batch effects",
+    "batch effect correction"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "recombination-events",
+   "term": "recombination events",
+   "aliases": [
+    "recombination events",
+    "recombination event",
+    "recombination"
+   ],
+   "cat": "seq",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D10"
+  },
+  {
+   "id": "dropout-screen",
+   "term": "dropout screen (negative selection)",
+   "aliases": [
+    "dropout",
+    "dropout screen",
+    "dropout screens",
+    "dropout assay",
+    "negative selection",
+    "negative (dropout)",
+    "conventional dropout"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "positive-selection-screen",
+   "term": "positive selection screen",
+   "aliases": [
+    "positive selection",
+    "positive screens",
+    "positive screen",
+    "positive (CFSE dye)",
+    "positive-selection",
+    "positive selection screen"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "depletion",
+   "term": "depleted guides",
+   "aliases": [
+    "depleted",
+    "depletion",
+    "depleted in",
+    "depleted guides"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D11"
+  },
+  {
+   "id": "cfse",
+   "term": "CFSE",
+   "aliases": [
+    "CFSE",
+    "carboxyfluorescein succinimidyl ester",
+    "CellTrace CFSE"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D12"
+  },
+  {
+   "id": "cisplatin-survival-screen",
+   "term": "cisplatin survival screen",
+   "aliases": [
+    "survival screen",
+    "Cisplatin survival screen",
+    "\"survival\" screen"
+   ],
+   "cat": "screen",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D13"
+  },
+  {
+   "id": "cisplatin-death-screen",
+   "term": "cisplatin death screen",
+   "aliases": [
+    "death screen",
+    "Cisplatin death screen",
+    "\"death\" screen",
+    "death assay"
+   ],
+   "cat": "screen",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D13"
+  },
+  {
+   "id": "transwell-assay",
+   "term": "transwell assay",
+   "aliases": [
+    "transwell",
+    "transwells",
+    "Boyden chamber",
+    "Boyden chambers",
+    "transwell supports",
+    "transwell inserts",
+    "porous membrane",
+    "transwell assay"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D14"
+  },
+  {
+   "id": "migration-screen",
+   "term": "migration screen",
+   "aliases": [
+    "migration screen",
+    "migration screens",
+    "migration-promoting"
+   ],
+   "cat": "screen",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D14"
+  },
+  {
+   "id": "neutral-control",
+   "term": "neutral control",
+   "aliases": [
+    "neutral control",
+    "neutral controls",
+    "neutral control loci",
+    "neutral control pgRNAs"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "positive-control",
+   "term": "positive control",
+   "aliases": [
+    "positive control",
+    "positive controls",
+    "positive-control",
+    "positive-control genes"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "negative-control",
+   "term": "negative (non-targeting) control",
+   "aliases": [
+    "negative control",
+    "negative controls",
+    "negative PCG controls"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "aavs1",
+   "term": "AAVS1",
+   "aliases": [
+    "AAVS1",
+    "AAVS1_1",
+    "AAVS1_2",
+    "pgRNAs-AASV1-GFP+"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "rps5",
+   "term": "RPS5",
+   "aliases": [
+    "RPS5"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "named-control-genes",
+   "term": "named positive-control genes",
+   "aliases": [
+    "XPA",
+    "ATR",
+    "BRCA2",
+    "EIF5B",
+    "ERCC1",
+    "PLK1",
+    "NFE2L2",
+    "SNRNP200",
+    "RPL3",
+    "RPL13",
+    "RPL23A",
+    "RPS6",
+    "GLTSCR2",
+    "EHMT2",
+    "TSSCELF1",
+    "positive-control PCGs",
+    "positive control protein-coding genes",
+    "named positive-control genes"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "essential-gene",
+   "term": "essential gene",
+   "aliases": [
+    "essential gene",
+    "essential genes",
+    "essential ribosomal gene",
+    "essential ribosomal protein"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "intergenic-region",
+   "term": "intergenic region",
+   "aliases": [
+    "intergenic",
+    "intergenic regions",
+    "intronic regions",
+    "intergenic region"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "orf-targeting",
+   "term": "ORF targeting",
+   "aliases": [
+    "ORF mutation",
+    "ORF-targeting",
+    "ORF targeting",
+    "ORF-targeting screens"
+   ],
+   "cat": "screen",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D15"
+  },
+  {
+   "id": "aso",
+   "term": "antisense oligonucleotide (ASO)",
+   "aliases": [
+    "ASO",
+    "ASOs",
+    "antisense oligonucleotide",
+    "antisense oligonucleotides"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D16"
+  },
+  {
+   "id": "knockdown",
+   "term": "knockdown",
+   "aliases": [
+    "knock-down",
+    "knocked down",
+    "knockdown"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D16"
+  },
+  {
+   "id": "rnase-h",
+   "term": "RNase H",
+   "aliases": [
+    "RNase H",
+    "RNaseH",
+    "RNase H cleavage"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D16"
+  },
+  {
+   "id": "lna",
+   "term": "locked nucleic acid (LNA)",
+   "aliases": [
+    "LNA",
+    "locked nucleic acid",
+    "locked nucleic acids"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D16"
+  },
+  {
+   "id": "rna-therapeutics",
+   "term": "RNA therapeutics (RNATX)",
+   "aliases": [
+    "RNATX",
+    "RNA therapeutics",
+    "RNA therapeutic"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D16"
+  },
+  {
+   "id": "shrna",
+   "term": "shRNA",
+   "aliases": [
+    "shRNA",
+    "short hairpin RNA"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D16"
+  },
+  {
+   "id": "non-targeting-control",
+   "term": "non-targeting control ASO",
+   "aliases": [
+    "non-targeting ASO",
+    "non-targeting control",
+    "ASO control",
+    "control ASO",
+    "non-targeting pgRNA",
+    "non-targeting",
+    "non-targeting control ASO"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D17"
+  },
+  {
+   "id": "knockdown-efficiency",
+   "term": "knockdown efficiency",
+   "aliases": [
+    "knockdown efficiency",
+    "knockdown potency",
+    "knockdown potency"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D17"
+  },
+  {
+   "id": "aso-cocktail",
+   "term": "ASO cocktail",
+   "aliases": [
+    "cocktail",
+    "cocktails",
+    "ASO cocktail",
+    "ASO cocktails",
+    "Tier 3 cocktail",
+    "Tier 2 cocktail"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D17"
+  },
+  {
+   "id": "orthogonal-validation",
+   "term": "orthogonal validation",
+   "aliases": [
+    "orthogonal validation",
+    "orthogonal approach",
+    "independent methods",
+    "independent ASO sequences"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D17"
+  },
+  {
+   "id": "on-target-effect",
+   "term": "on-target effect",
+   "aliases": [
+    "on-target",
+    "on target",
+    "on-target effects",
+    "on-target activity",
+    "on-target effect"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D17"
+  },
+  {
+   "id": "toxicity",
+   "term": "toxicity (side effects)",
+   "aliases": [
+    "toxicity",
+    "low-toxicity",
+    "non-specific toxicity",
+    "side effects"
+   ],
+   "cat": "aso",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D17"
+  },
+  {
+   "id": "gel-electrophoresis",
+   "term": "gel electrophoresis",
+   "aliases": [
+    "agarose gel",
+    "gel electrophoresis",
+    "DNA gel"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D18"
+  },
+  {
+   "id": "amplicon",
+   "term": "amplicon",
+   "aliases": [
+    "amplicons",
+    "amplicon size",
+    "amplicon"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D18"
+  },
+  {
+   "id": "rt-qpcr",
+   "term": "qRT-PCR (RT-qPCR)",
+   "aliases": [
+    "qRT-PCR",
+    "RT-qPCR",
+    "RT–qPCR",
+    "RT-PCR",
+    "qPCR",
+    "quantitative reverse-transcriptase PCR"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D19"
+  },
+  {
+   "id": "cdna",
+   "term": "cDNA",
+   "aliases": [
+    "cDNA",
+    "cDNAs"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D19"
+  },
+  {
+   "id": "housekeeping-gene",
+   "term": "housekeeping (normalisation) gene",
+   "aliases": [
+    "housekeeping gene",
+    "normalisation gene",
+    "internal control",
+    "normalised to GAPDH",
+    "normalised to HPRT1"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D19"
+  },
+  {
+   "id": "gapdh",
+   "term": "GAPDH",
+   "aliases": [
+    "GAPDH"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D19"
+  },
+  {
+   "id": "hprt1",
+   "term": "HPRT1",
+   "aliases": [
+    "HPRT1"
+   ],
+   "cat": "paper",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D19"
+  },
+  {
+   "id": "competition-assay",
+   "term": "competition assay",
+   "aliases": [
+    "competition assay",
+    "out-competed",
+    "competed",
+    "competition"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D20"
+  },
+  {
+   "id": "cell-viability",
+   "term": "cell viability",
+   "aliases": [
+    "viability",
+    "cell viability",
+    "relative growth",
+    "viable cells"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D21"
+  },
+  {
+   "id": "celltiter-glo",
+   "term": "CellTiter-Glo (luminescence, RLU)",
+   "aliases": [
+    "CellTiter-Glo",
+    "luminescence",
+    "RLU",
+    "relative light units",
+    "CellTiter-Glo 3D"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D21"
+  },
+  {
+   "id": "annexin-v",
+   "term": "Annexin V",
+   "aliases": [
+    "Annexin V",
+    "Annexin-V",
+    "PE Annexin",
+    "Annexin buffer",
+    "viability dye"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D22"
+  },
+  {
+   "id": "dapi",
+   "term": "DAPI",
+   "aliases": [
+    "DAPI"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D23"
+  },
+  {
+   "id": "ki-67",
+   "term": "Ki-67",
+   "aliases": [
+    "Ki-67"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D23"
+  },
+  {
+   "id": "cell-cycle-assay",
+   "term": "cell-cycle assay",
+   "aliases": [
+    "cell-cycle assay",
+    "cell cycle assay",
+    "Cell-cycle assay"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D23"
+  },
+  {
+   "id": "djf-model",
+   "term": "Dean-Jett Fox (DJF) model",
+   "aliases": [
+    "DJF",
+    "Dean-Jett Fox",
+    "Dean-Jett-Fox",
+    "Dean-Jett Fox model"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D23"
+  },
+  {
+   "id": "crystal-violet",
+   "term": "crystal violet",
+   "aliases": [
+    "crystal violet",
+    "Cristal violet"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D24"
+  },
+  {
+   "id": "optical-density",
+   "term": "optical density (OD)",
+   "aliases": [
+    "OD",
+    "optical density",
+    "absorbance"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D24"
+  },
+  {
+   "id": "fish",
+   "term": "RNA-FISH",
+   "aliases": [
+    "FISH",
+    "RNA-FISH",
+    "fluorescence in situ hybridization",
+    "fluorescence in-situ hybridisation",
+    "Fluorescent In-Situ Hybridization"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D25"
+  },
+  {
+   "id": "probe",
+   "term": "probe (probe set)",
+   "aliases": [
+    "probe",
+    "probes",
+    "probe sets",
+    "Stellaris"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D25"
+  },
+  {
+   "id": "confocal-microscopy",
+   "term": "confocal microscopy",
+   "aliases": [
+    "confocal",
+    "confocal microscopy"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D25"
+  },
+  {
+   "id": "cellprofiler",
+   "term": "CellProfiler (SpeckleCounting)",
+   "aliases": [
+    "CellProfiler",
+    "SpeckleCounting",
+    "spots count"
+   ],
+   "cat": "lab",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D25"
+  },
+  {
+   "id": "cell-fractionation",
+   "term": "cell fractionation",
+   "aliases": [
+    "fractionation",
+    "cell fractionation",
+    "nuclear and cytoplasmic fractionation",
+    "fractions"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D26"
+  },
+  {
+   "id": "overexpression-experiment",
+   "term": "overexpression experiment",
+   "aliases": [
+    "overexpress",
+    "overexpression",
+    "overexpressing plasmids",
+    "pcDNA3.1",
+    "empty vector",
+    "overexpression experiment"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D27"
+  },
+  {
+   "id": "rescue-experiment",
+   "term": "rescue experiment",
+   "aliases": [
+    "rescue",
+    "rescue experiments",
+    "rescued",
+    "rescue ASO-induced phenotypes",
+    "rescue experiment"
+   ],
+   "cat": "lab",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D27"
+  },
+  {
+   "id": "rna-seq",
+   "term": "RNA-seq",
+   "aliases": [
+    "RNA-seq",
+    "RNA-sequencing",
+    "RNA sequencing",
+    "RNA-Seq",
+    "RNAseq"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D28"
+  },
+  {
+   "id": "deg",
+   "term": "differentially expressed gene (DEG)",
+   "aliases": [
+    "DEG",
+    "DEGs",
+    "differentially expressed genes",
+    "differential expression",
+    "differentially expressed",
+    "differentially expressed gene"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D28"
+  },
+  {
+   "id": "transcript-quantification",
+   "term": "transcript quantification (Kallisto, Sleuth)",
+   "aliases": [
+    "quantification",
+    "transcript quantification",
+    "Kallisto",
+    "Sleuth",
+    "bootstraps"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D28"
+  },
+  {
+   "id": "rsem",
+   "term": "RSEM",
+   "aliases": [
+    "RSEM"
+   ],
+   "cat": "seq",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "D28"
+  },
+  {
+   "id": "pathway-enrichment",
+   "term": "pathway enrichment",
+   "aliases": [
+    "enrichment analysis",
+    "enrichment",
+    "enriched KEGG terms",
+    "gene enrichment analysis",
+    "enriched terms",
+    "pathway enrichment"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D29"
+  },
+  {
+   "id": "kegg",
+   "term": "KEGG",
+   "aliases": [
+    "KEGG",
+    "KEGG pathways",
+    "KEGG terms"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D29"
+  },
+  {
+   "id": "msigdb",
+   "term": "MSigDB",
+   "aliases": [
+    "MSigDB",
+    "Molecular Signatures Database"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D29"
+  },
+  {
+   "id": "gsea",
+   "term": "GSEA",
+   "aliases": [
+    "GSEA",
+    "gene set enrichment analysis",
+    "enrichment score",
+    "enrichment scores"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D29"
+  },
+  {
+   "id": "enrichr",
+   "term": "Enrichr (enrichR)",
+   "aliases": [
+    "enrichR",
+    "Enrichr"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D29"
+  },
+  {
+   "id": "signaling-pathway",
+   "term": "signaling pathway",
+   "aliases": [
+    "pathway",
+    "pathways",
+    "signaling",
+    "signalling",
+    "signaling pathway"
+   ],
+   "cat": "seq",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "p53-pathway",
+   "term": "p53 pathway",
+   "aliases": [
+    "p53",
+    "p53 pathway",
+    "p53 signaling pathway",
+    "p53 Pathway"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "mapk-pathway",
+   "term": "MAPK pathway",
+   "aliases": [
+    "MAPK",
+    "MAPK signaling pathway",
+    "MAPK pathway"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "pi3k-akt-pathway",
+   "term": "PI3K–Akt pathway",
+   "aliases": [
+    "PI3K-Akt",
+    "PI3K-Akt signaling pathway",
+    "PI3K/AKT/mTOR",
+    "PI3K–Akt pathway"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "mtorc1",
+   "term": "mTORC1 / mTOR",
+   "aliases": [
+    "mTORC1",
+    "mTORC1 Signaling",
+    "mTOR",
+    "mTORC1 / mTOR"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "vegf-pathway",
+   "term": "VEGF signaling",
+   "aliases": [
+    "VEGF",
+    "VEGF signaling pathway",
+    "VEGF signaling"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "glycolysis",
+   "term": "glycolysis",
+   "aliases": [
+    "glycolysis",
+    "Glycolysis"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "emt",
+   "term": "epithelial–mesenchymal transition (EMT)",
+   "aliases": [
+    "EMT",
+    "epithelial to mesenchymal transition",
+    "Epithelial Mesenchymal Transition",
+    "epithelial–mesenchymal transition"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "nfkb-tnf",
+   "term": "TNF-alpha signaling via NF-kB",
+   "aliases": [
+    "TNF-alpha",
+    "TNF-alpha Signaling via NF-kB",
+    "NF-kB"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "interferon-response",
+   "term": "interferon alpha response",
+   "aliases": [
+    "Interferon Alpha Response"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "hypoxia",
+   "term": "hypoxia",
+   "aliases": [
+    "hypoxia",
+    "Hypoxia"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "estrogen-response",
+   "term": "estrogen response",
+   "aliases": [
+    "Estrogen Response Early",
+    "Estrogen Response Late",
+    "estrogen response"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "cholesterol-homeostasis",
+   "term": "cholesterol homeostasis",
+   "aliases": [
+    "Cholesterol Homeostasis",
+    "cholesterol homeostasis"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "mitotic-spindle",
+   "term": "mitotic spindle",
+   "aliases": [
+    "Mitotic Spindle"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "apical-junction",
+   "term": "apical junction",
+   "aliases": [
+    "Apical Junction"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "proteoglycans-in-cancer",
+   "term": "proteoglycans in cancer",
+   "aliases": [
+    "Proteoglycans in cancer"
+   ],
+   "cat": "cancer",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "D30"
+  },
+  {
+   "id": "normalization",
+   "term": "normalization",
+   "aliases": [
+    "normalised",
+    "normalized",
+    "normalizing",
+    "normalization",
+    "normalisation"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "cpm",
+   "term": "CPM (counts per million)",
+   "aliases": [
+    "CPM",
+    "cpm",
+    "counts per million"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "tpm",
+   "term": "TPM (transcripts per million)",
+   "aliases": [
+    "TPM",
+    "transcripts per million"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "fpkm",
+   "term": "FPKM",
+   "aliases": [
+    "FPKM",
+    "log10(FPKM)",
+    "Log2 (FPKM + 1)"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E1"
+  },
+  {
+   "id": "fold-change",
+   "term": "fold change (FC, log2FC)",
+   "aliases": [
+    "fold change",
+    "fold-change",
+    "FC",
+    "log2FC",
+    "LFC",
+    "log2 fold change",
+    "log2-fold change",
+    "log2 fold-change",
+    "log2-transformed fold change",
+    "log2-Fold Change",
+    "log2 fold changes"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E2"
+  },
+  {
+   "id": "log2",
+   "term": "logarithm (log2, log10)",
+   "aliases": [
+    "log2",
+    "log10",
+    "log2-transformed",
+    "log-scale",
+    "logarithmic",
+    "logarithm"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E2"
+  },
+  {
+   "id": "replicate",
+   "term": "replicate (biological vs technical)",
+   "aliases": [
+    "replicate",
+    "replicates",
+    "biological replicate",
+    "biological replicates",
+    "technical replicates",
+    "biologically independent replicates",
+    "independent replicates",
+    "independent biological replicates"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "mean",
+   "term": "mean (average)",
+   "aliases": [
+    "arithmetic mean",
+    "mean ± SD",
+    "mean expression",
+    "mean log2 fold change",
+    "geometric median"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "median",
+   "term": "median",
+   "aliases": [
+    "median",
+    "medians"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "standard-deviation",
+   "term": "standard deviation (SD)",
+   "aliases": [
+    "SD",
+    "standard deviation"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "error-bars",
+   "term": "error bars",
+   "aliases": [
+    "error bar",
+    "error bars"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "sample-size",
+   "term": "sample size (n)",
+   "aliases": [
+    "sample size",
+    "n = 3",
+    "n=3"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "percentile",
+   "term": "percentile",
+   "aliases": [
+    "percentile",
+    "percentiles",
+    "90th to 10th percentile"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "graphpad-prism",
+   "term": "GraphPad Prism and R",
+   "aliases": [
+    "Graphpad Prism",
+    "GraphPad Prism",
+    "R Statistical Software",
+    "ggplot2",
+    "R package",
+    "R packages",
+    "GraphPad Prism and R"
+   ],
+   "cat": "stats",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "E3"
+  },
+  {
+   "id": "correlation",
+   "term": "correlation",
+   "aliases": [
+    "correlation",
+    "correlated",
+    "correlations"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E4"
+  },
+  {
+   "id": "pearson-correlation",
+   "term": "Pearson correlation (R)",
+   "aliases": [
+    "Pearson",
+    "Pearson correlation",
+    "Pearson correlation coefficient"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E4"
+  },
+  {
+   "id": "regression-line",
+   "term": "regression line (trendline)",
+   "aliases": [
+    "regression line",
+    "trendline",
+    "trend line",
+    "linear regression"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E4"
+  },
+  {
+   "id": "anti-correlation",
+   "term": "anti-correlation",
+   "aliases": [
+    "anti-correlation",
+    "anticorrelation",
+    "anti-correlated"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E4"
+  },
+  {
+   "id": "z-score",
+   "term": "Z-score",
+   "aliases": [
+    "Z score",
+    "Z-score",
+    "Z scores",
+    "Z score-transformed",
+    "Z score scaled",
+    "Z-scores"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E5"
+  },
+  {
+   "id": "p-value",
+   "term": "p-value",
+   "aliases": [
+    "p-value",
+    "p-values",
+    "p value",
+    "P-value",
+    "P value",
+    "P values",
+    "nominal p-values",
+    "nominal p-value"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E6"
+  },
+  {
+   "id": "null-hypothesis",
+   "term": "null hypothesis",
+   "aliases": [
+    "null hypothesis"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E6"
+  },
+  {
+   "id": "statistical-significance",
+   "term": "statistical significance",
+   "aliases": [
+    "significant",
+    "significance",
+    "statistically significant",
+    "significantly",
+    "statistical significance"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E6"
+  },
+  {
+   "id": "ns",
+   "term": "ns (not significant)",
+   "aliases": [
+    "ns",
+    "not significant"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E6"
+  },
+  {
+   "id": "scientific-notation",
+   "term": "scientific notation",
+   "aliases": [
+    "scientific notation",
+    "e-16",
+    "2.2e-16",
+    "1.2e-7"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E6"
+  },
+  {
+   "id": "one-tailed-test",
+   "term": "one-tailed test",
+   "aliases": [
+    "one-tailed",
+    "one-sided",
+    "one tailed",
+    "one-tailed test"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E7"
+  },
+  {
+   "id": "two-tailed-test",
+   "term": "two-tailed test",
+   "aliases": [
+    "two-tailed",
+    "two-sided",
+    "two tailed",
+    "two-tailed test"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E7"
+  },
+  {
+   "id": "t-test",
+   "term": "t-test (Student's t test)",
+   "aliases": [
+    "Student's t test",
+    "Student’s t test",
+    "t test",
+    "t-test",
+    "Student t test",
+    "Student's t-test"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E7"
+  },
+  {
+   "id": "welch-t-test",
+   "term": "Welch's t-test",
+   "aliases": [
+    "Welch's t test",
+    "Welch’s t test",
+    "Welch t-test",
+    "Welch",
+    "Welch's t-test"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E7"
+  },
+  {
+   "id": "non-parametric-test",
+   "term": "non-parametric (rank-based) test",
+   "aliases": [
+    "non-parametric",
+    "nonparametric",
+    "rank-based",
+    "non-parametric test"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E8"
+  },
+  {
+   "id": "wilcoxon-test",
+   "term": "Wilcoxon test",
+   "aliases": [
+    "Wilcoxon test",
+    "Wilcoxon",
+    "rank-sum"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E8"
+  },
+  {
+   "id": "mann-whitney-test",
+   "term": "Mann–Whitney test",
+   "aliases": [
+    "Mann-Whitney test",
+    "Mann–Whitney test",
+    "Mann-Whitney",
+    "Mann–Whitney"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E8"
+  },
+  {
+   "id": "kruskal-wallis-test",
+   "term": "Kruskal–Wallis test",
+   "aliases": [
+    "Kruskal-Wallis",
+    "Kruskal–Wallis",
+    "Kruskal-Wallis test",
+    "Kruskal–Wallis test"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E8"
+  },
+  {
+   "id": "fishers-exact-test",
+   "term": "Fisher's exact test",
+   "aliases": [
+    "Fisher's exact test",
+    "Fisher’s exact test",
+    "Fisher's exact tests",
+    "Fisher’s exact tests",
+    "Fisher's exact"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E9"
+  },
+  {
+   "id": "hypergeometric-test",
+   "term": "hypergeometric test",
+   "aliases": [
+    "hypergeometric test",
+    "hypergeometric"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E9"
+  },
+  {
+   "id": "multiple-testing",
+   "term": "multiple testing",
+   "aliases": [
+    "multiple hypothesis testing",
+    "multiple testing",
+    "multiple-testing correction"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E10"
+  },
+  {
+   "id": "fdr",
+   "term": "false discovery rate (FDR)",
+   "aliases": [
+    "FDR",
+    "false discovery rate",
+    "FDR-corrected",
+    "FDR correction",
+    "FDR corrected",
+    "FDR<0.2"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E10"
+  },
+  {
+   "id": "benjamini-hochberg",
+   "term": "Benjamini–Hochberg procedure",
+   "aliases": [
+    "Benjamini & Hochberg",
+    "Benjamini-Hochberg",
+    "Benjamini–Hochberg",
+    "Benjamini–Hochberg procedure"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E10"
+  },
+  {
+   "id": "false-positive",
+   "term": "false positive",
+   "aliases": [
+    "false positive",
+    "false positives",
+    "false-positive",
+    "false-positive hits",
+    "false-positive results"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E10"
+  },
+  {
+   "id": "false-negative",
+   "term": "false negative",
+   "aliases": [
+    "false negative",
+    "false negatives",
+    "false-negative"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E10"
+  },
+  {
+   "id": "q-value",
+   "term": "q-value (adjusted p-value)",
+   "aliases": [
+    "q-value",
+    "q value",
+    "q-values",
+    "adjusted p value",
+    "adjusted P-value",
+    "adjusted p-value",
+    "adjusted p-values"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E10"
+  },
+  {
+   "id": "roc-curve",
+   "term": "ROC curve",
+   "aliases": [
+    "ROC",
+    "receiver-operator",
+    "receiver operating characteristic",
+    "ROC curve",
+    "ROC curves",
+    "Receiver Operating Characteristics"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E11"
+  },
+  {
+   "id": "auc",
+   "term": "area under the curve (AUC)",
+   "aliases": [
+    "AUC",
+    "area under the curve",
+    "area under the ROC curve"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "E11"
+  },
+  {
+   "id": "true-positive-rate",
+   "term": "true-positive rate",
+   "aliases": [
+    "true positive rate",
+    "True positive rate",
+    "true positives",
+    "true positive",
+    "true-positive rate"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E11"
+  },
+  {
+   "id": "false-positive-rate",
+   "term": "false-positive rate",
+   "aliases": [
+    "false positive rate",
+    "False positive rate",
+    "true negatives",
+    "true negative",
+    "false-positive rate"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E11"
+  },
+  {
+   "id": "tpp",
+   "term": "target prioritization pipeline (TPP)",
+   "aliases": [
+    "TPP",
+    "target prioritization pipeline",
+    "target prioritisation pipeline",
+    "Target prioritisation pipeline",
+    "TPP Pan",
+    "TPP pheno"
+   ],
+   "cat": "stats",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "E12"
+  },
+  {
+   "id": "robust-rank-aggregation",
+   "term": "Robust Rank Aggregation (RRA)",
+   "aliases": [
+    "RRA",
+    "Robust Rank Aggregation",
+    "robust rank aggregation",
+    "rank aggregation"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E12"
+  },
+  {
+   "id": "empirical-browns-method",
+   "term": "empirical Brown's method (EBM)",
+   "aliases": [
+    "EBM",
+    "Empirical Brown's Method",
+    "empirical Brown’s method",
+    "Brown's method",
+    "Brown’s method"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E12"
+  },
+  {
+   "id": "harmonic-mean-p-value",
+   "term": "harmonic mean p-value (HMP)",
+   "aliases": [
+    "HMP",
+    "harmonic mean p-value",
+    "Harmonic Mean P-value",
+    "harmonic mean"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E12"
+  },
+  {
+   "id": "effect-size",
+   "term": "effect size",
+   "aliases": [
+    "effect size",
+    "effect sizes"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "E12"
+  },
+  {
+   "id": "bar-chart",
+   "term": "bar chart",
+   "aliases": [
+    "bar chart",
+    "bar charts",
+    "bar plot",
+    "bar graph"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F1"
+  },
+  {
+   "id": "box-plot",
+   "term": "box plot",
+   "aliases": [
+    "box plot",
+    "boxplot",
+    "boxplots",
+    "box plots"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F2"
+  },
+  {
+   "id": "violin-plot",
+   "term": "violin plot",
+   "aliases": [
+    "violin",
+    "violin plot",
+    "violin plots",
+    "violins"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F2"
+  },
+  {
+   "id": "scatter-plot",
+   "term": "scatter plot",
+   "aliases": [
+    "scatter plot",
+    "scatterplot",
+    "scatter plots"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F3"
+  },
+  {
+   "id": "contour-plot",
+   "term": "contour plot",
+   "aliases": [
+    "contour",
+    "contours",
+    "contour plot",
+    "density plot"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F4"
+  },
+  {
+   "id": "volcano-plot",
+   "term": "volcano plot",
+   "aliases": [
+    "volcano",
+    "volcano plot",
+    "volcano-style",
+    "-Log10 FDR"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F5"
+  },
+  {
+   "id": "heatmap",
+   "term": "heatmap",
+   "aliases": [
+    "heatmap",
+    "heat map",
+    "heatmaps"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F6"
+  },
+  {
+   "id": "time-course",
+   "term": "time course",
+   "aliases": [
+    "time course",
+    "time courses",
+    "growth curve",
+    "growth curves"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F7"
+  },
+  {
+   "id": "ternary-plot",
+   "term": "ternary plot",
+   "aliases": [
+    "ternary",
+    "ternary plot"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F9"
+  },
+  {
+   "id": "petal-plot",
+   "term": "petal plot",
+   "aliases": [
+    "petal plot",
+    "petal plots",
+    "Petal Plot"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F9"
+  },
+  {
+   "id": "upset-plot",
+   "term": "UpSet plot",
+   "aliases": [
+    "UpSet",
+    "UpSet plot",
+    "UpSetR"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F10"
+  },
+  {
+   "id": "stacked-bar",
+   "term": "stacked bar chart",
+   "aliases": [
+    "stacked bar",
+    "stacked bars",
+    "stacked bar chart"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F11"
+  },
+  {
+   "id": "genome-browser-track",
+   "term": "genome-browser track",
+   "aliases": [
+    "genome browser",
+    "genomic tracks",
+    "genome browser tracks",
+    "genome browser track",
+    "genome-browser track"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "conservation-track",
+   "term": "conservation (phastCons)",
+   "aliases": [
+    "phastCons",
+    "phastCons-all_ways",
+    "conserved elements",
+    "conserved sequences"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "ridl",
+   "term": "RIDL",
+   "aliases": [
+    "RIDLs",
+    "repeat insertion domains of lncRNA",
+    "RIDL"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "conserved-rna-structure",
+   "term": "conserved RNA structure (CRS)",
+   "aliases": [
+    "CRSs",
+    "CRS",
+    "conserved structures",
+    "RNA structures conserved in vertebrates",
+    "conserved RNA structure"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "repeat-element",
+   "term": "repeat elements (LINE, SINE, LTR)",
+   "aliases": [
+    "simple repeat",
+    "low complexity",
+    "transposable elements",
+    "transposable element",
+    "RepeatMasker",
+    "Repeats_byClass",
+    "repeat elements"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "cpg-island",
+   "term": "CpG island",
+   "aliases": [
+    "CpG island",
+    "Masked CpG Island",
+    "CpG islands"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "eztracks",
+   "term": "ezTracks",
+   "aliases": [
+    "ezTracks",
+    "BEDTools",
+    "bedtools",
+    "meta-transcript"
+   ],
+   "cat": "figures",
+   "kind": "paper",
+   "cs": false,
+   "taughtIn": "F12"
+  },
+  {
+   "id": "fsc-a",
+   "term": "FSC-A (forward scatter)",
+   "aliases": [
+    "FSC-A",
+    "forward scatter",
+    "Pacific Blue"
+   ],
+   "cat": "figures",
+   "kind": "background",
+   "cs": true,
+   "taughtIn": "F14"
+  },
+  {
+   "id": "conflict-of-interest",
+   "term": "conflict of interest",
+   "aliases": [
+    "conflict of interest",
+    "conflicts of interest",
+    "competing interests",
+    "declaration of interests"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "H7"
+  },
+  {
+   "id": "patent-application",
+   "term": "patent application",
+   "aliases": [
+    "patent application",
+    "patent",
+    "patents"
+   ],
+   "cat": "stats",
+   "kind": "background",
+   "cs": false,
+   "taughtIn": "H7"
+  }
+ ],
+ "path": [
+  "A1",
+  "A2",
+  "A3",
+  "A4",
+  "A5",
+  "B1",
+  "B2",
+  "B3",
+  "B4",
+  "B5",
+  "B6",
+  "B7",
+  "B8",
+  "B9",
+  "B10",
+  "B11",
+  "B12",
+  "B13",
+  "B14",
+  "B15",
+  "B16",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7",
+  "C8",
+  "C9",
+  "C10",
+  "C11",
+  "C12",
+  "D1",
+  "D2",
+  "D3",
+  "D4",
+  "D5",
+  "D6",
+  "D7",
+  "E2",
+  "E3",
+  "D8",
+  "D9",
+  "D10",
+  "E1",
+  "D11",
+  "D12",
+  "D13",
+  "D14",
+  "D15",
+  "D16",
+  "D17",
+  "E4",
+  "E5",
+  "D18",
+  "D19",
+  "D20",
+  "D21",
+  "D22",
+  "D23",
+  "D24",
+  "D25",
+  "D26",
+  "D27",
+  "D28",
+  "E6",
+  "E7",
+  "E8",
+  "E9",
+  "E10",
+  "E11",
+  "E12",
+  "E13",
+  "D29",
+  "D30",
+  "F1",
+  "F2",
+  "F3",
+  "F4",
+  "F5",
+  "F6",
+  "F7",
+  "F8",
+  "F9",
+  "F10",
+  "F11",
+  "F12",
+  "F13",
+  "F14",
+  "F15",
+  "F16",
+  "G-main",
+  "G-back",
+  "G-methods",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "H7",
+  "H8",
+  "H9"
+ ],
+ "g": {
+  "main": [
+   "summary",
+   "intro",
+   "res-pipeline",
+   "res-multipheno",
+   "res-validation",
+   "res-integration",
+   "res-aso",
+   "res-mechanism",
+   "discussion",
+   "limitations"
+  ],
+  "back": [
+   "decl",
+   "contrib",
+   "ack"
+  ],
+  "methods": [
+   "m-krt",
+   "m-lead-contact",
+   "m-materials",
+   "m-data",
+   "m-expmodel",
+   "m-lentivirus",
+   "m-decko",
+   "m-library-design",
+   "m-library-cloning",
+   "m-titer",
+   "m-screens",
+   "m-gdna",
+   "m-hits",
+   "m-public-rnaseq",
+   "m-pcr-gdna",
+   "m-competition",
+   "m-pdx",
+   "m-aso",
+   "m-viability-2d",
+   "m-viability-3d",
+   "m-rescue",
+   "m-apoptosis",
+   "m-cellcycle",
+   "m-migration-assay",
+   "m-qpcr",
+   "m-rnaseq",
+   "m-fish",
+   "m-eztracks",
+   "m-cnv",
+   "m-quant"
+  ]
+ }
+}

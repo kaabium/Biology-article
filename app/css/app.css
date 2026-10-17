@@ -29,6 +29,7 @@
   /* tracks */
   --tA: #3d5afe; --tB: #0ea5e9; --tC: #e11d48; --tD: #16a34a;
   --tE: #d97706; --tF: #9333ea; --tG: #0f766e; --tH: #475569;
+  --c-blue: #3d5afe; --c-green: #16a34a; --c-orange: #d97706; --c-purple: #9333ea; --c-red: #e11d48; --c-teal: #0f766e; --c-yellow: #ca8a04; --c-gray: #64748b;
   --radius: 14px;
   --radius-sm: 9px;
   --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 2px 8px rgba(16, 24, 40, .05);
@@ -55,6 +56,7 @@
     --k-memory: #c4a5ff; --k-memory-bg: #261b3d;
     --k-why: #5eead4; --k-why-bg: #10302c;
     --shadow: 0 1px 2px rgba(0, 0, 0, .4); --shadow-lg: 0 10px 30px rgba(0, 0, 0, .6);
+    --c-blue: #8ea2ff; --c-green: #4ade80; --c-orange: #fbbf24; --c-purple: #c4a5ff; --c-red: #fb7185; --c-teal: #5eead4; --c-yellow: #fde047; --c-gray: #94a3b8;
     color-scheme: dark;
   }
 }
@@ -70,6 +72,7 @@
   --k-memory: #c4a5ff; --k-memory-bg: #261b3d;
   --k-why: #5eead4; --k-why-bg: #10302c;
   --shadow: 0 1px 2px rgba(0, 0, 0, .4); --shadow-lg: 0 10px 30px rgba(0, 0, 0, .6);
+    --c-blue: #8ea2ff; --c-green: #4ade80; --c-orange: #fbbf24; --c-purple: #c4a5ff; --c-red: #fb7185; --c-teal: #5eead4; --c-yellow: #fde047; --c-gray: #94a3b8;
   color-scheme: dark;
 }
 
@@ -418,3 +421,49 @@ mark { background: color-mix(in srgb, #ffd54f 70%, transparent); color: inherit;
   .print-cols { columns: 2; column-gap: 1.2rem; }
 }
 .print-cols > * { break-inside: avoid; }
+
+/* ---------- diagram helper classes (inline SVG in lessons; work in light and dark) ---------- */
+.diagram svg { font-family: var(--font); display: block; margin: 0 auto; max-width: 620px; }
+.diagram svg text { fill: var(--text); font-size: 15px; }
+.diagram svg text.s { font-size: 13px; }
+.diagram svg text.l { font-size: 18px; }
+.diagram svg text.xl { font-size: 22px; }
+.diagram svg text.b { font-weight: 700; }
+.diagram svg text.m { fill: var(--muted); }
+.diagram svg text.mid { text-anchor: middle; }
+.diagram svg text.end { text-anchor: end; }
+.diagram svg .ln { stroke: var(--text); stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.diagram svg .ln.thin { stroke-width: 1.2; }
+.diagram svg .ln.thick { stroke-width: 3.5; }
+.diagram svg .ln.dash { stroke-dasharray: 6 4; }
+.diagram svg .ln.m { stroke: var(--muted); }
+.diagram svg .arrow { stroke: var(--text); stroke-width: 2; fill: none; stroke-linecap: round; marker-end: url(#arr); }
+.diagram svg .arrow.start { marker-start: url(#arr); marker-end: none; }
+.diagram svg .arrow.both { marker-start: url(#arr); marker-end: url(#arr); }
+#arr path { fill: var(--text); }
+.diagram svg .fill-text { fill: var(--text); }
+.diagram svg .f-blue, .diagram svg .f-green, .diagram svg .f-orange, .diagram svg .f-purple,
+.diagram svg .f-red, .diagram svg .f-teal, .diagram svg .f-yellow, .diagram svg .f-gray, .diagram svg .f-none { stroke-width: 2; stroke-linejoin: round; }
+.diagram svg .f-blue { fill: var(--c-blue); fill-opacity: .2; stroke: var(--c-blue); }
+.diagram svg .f-green { fill: var(--c-green); fill-opacity: .2; stroke: var(--c-green); }
+.diagram svg .f-orange { fill: var(--c-orange); fill-opacity: .22; stroke: var(--c-orange); }
+.diagram svg .f-purple { fill: var(--c-purple); fill-opacity: .2; stroke: var(--c-purple); }
+.diagram svg .f-red { fill: var(--c-red); fill-opacity: .2; stroke: var(--c-red); }
+.diagram svg .f-teal { fill: var(--c-teal); fill-opacity: .2; stroke: var(--c-teal); }
+.diagram svg .f-yellow { fill: var(--c-yellow); fill-opacity: .25; stroke: var(--c-yellow); }
+.diagram svg .f-gray { fill: var(--c-gray); fill-opacity: .18; stroke: var(--c-gray); }
+.diagram svg .f-none { fill: none; stroke: var(--text); }
+.diagram svg .solid-blue { fill: var(--c-blue); stroke: none; }
+.diagram svg .solid-green { fill: var(--c-green); stroke: none; }
+.diagram svg .solid-orange { fill: var(--c-orange); stroke: none; }
+.diagram svg .solid-purple { fill: var(--c-purple); stroke: none; }
+.diagram svg .solid-red { fill: var(--c-red); stroke: none; }
+.diagram svg .solid-teal { fill: var(--c-teal); stroke: none; }
+.diagram svg .solid-yellow { fill: var(--c-yellow); stroke: none; }
+.diagram svg .solid-gray { fill: var(--c-gray); stroke: none; }
+.diagram svg .solid-text { fill: var(--text); stroke: none; }
+.diagram svg .t-blue { fill: var(--c-blue); } .diagram svg .t-green { fill: var(--c-green); } .diagram svg .t-orange { fill: var(--c-orange); }
+.diagram svg .t-purple { fill: var(--c-purple); } .diagram svg .t-red { fill: var(--c-red); } .diagram svg .t-teal { fill: var(--c-teal); }
+.diagram svg .s-blue { stroke: var(--c-blue); } .diagram svg .s-green { stroke: var(--c-green); } .diagram svg .s-orange { stroke: var(--c-orange); }
+.diagram svg .s-purple { stroke: var(--c-purple); } .diagram svg .s-red { stroke: var(--c-red); } .diagram svg .s-teal { stroke: var(--c-teal); }
+.kind.k-bgnd + .kind.k-bgnd, .kind.k-plain + .kind.k-plain, .kind.k-memory + .kind.k-memory { margin-top: -.35rem; }

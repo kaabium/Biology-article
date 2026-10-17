@@ -1,1 +1,1 @@
-window.EXPLAIN = window.EXPLAIN || [];
+(window.EXPLAIN = window.EXPLAIN || []);

@@ -1,1 +1,1 @@
-window.LESSONS = window.LESSONS || [];
+(window.LESSON_CONTENT = window.LESSON_CONTENT || []);

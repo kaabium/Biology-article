@@ -1,0 +1,1 @@
+window.PANELS = window.PANELS || {};

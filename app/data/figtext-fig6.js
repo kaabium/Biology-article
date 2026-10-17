@@ -1,0 +1,1 @@
+window.FIGTEXT = window.FIGTEXT || {};

@@ -5,28 +5,50 @@
 
   /* ---------- curriculum helpers (shared) ---------- */
   V.init = () => {
-    const L = (window.LESSONS = window.LESSONS || []);
+    const C = (window.CURRICULUM = window.CURRICULUM || { tracks: [], lessons: [], terms: [], path: [] });
+    // 1. glossary = plan metadata (term, aliases, category, home lesson) + authored content
+    const content = {};
+    (window.GLOSSARY_CONTENT || []).forEach((e) => (content[e.id] = e));
+    window.GLOSSARY = (C.terms || []).map((t) => Object.assign({ short: '(definition being written)', long: '', analogy: '' }, t, content[t.id] || {}, { id: t.id, term: t.term, aliases: t.aliases, cat: t.cat, kind: t.kind, cs: t.cs, taughtIn: t.taughtIn }));
+    window.GLOSSARY_INDEX = {};
+    window.GLOSSARY.forEach((g) => (window.GLOSSARY_INDEX[g.id] = g));
+    // 2. lessons = plan metadata + authored content
+    const lc = {};
+    (window.LESSON_CONTENT || []).forEach((l) => (lc[l.id] = l));
+    const L = (window.LESSONS = (C.lessons || []).map((m) => Object.assign({ body: [], appears: [], checks: [], defines: [], written: !!lc[m.id] }, m, lc[m.id] || {})));
     const idx = (window.LESSON_INDEX = {});
     L.forEach((l) => (idx[l.id] = l));
-    // Track G units become steps of the path too
-    const units = window.PP.units().filter((u) => !['cover', 'refs'].includes(u.id));
-    V.gSteps = units.map((u) => {
-      const paras = u.blocks.filter((b) => !/^h\d$/.test(b.type) && b.type !== 'figure');
-      const step = { id: 'G-' + u.id, track: 'G', title: u.title, minutes: Math.max(5, Math.round(paras.length * 2.5)), href: `#/g/${u.id}`, unit: u.id, paras: paras.map((b) => b.id), methods: u.kind === 'methods' };
+    // 3. Track G steps (one per reading unit); exempt units still open from the Track G index
+    const units = window.PP.units();
+    const byUnit = {};
+    units.forEach((u) => (byUnit[u.id] = u));
+    V.gSteps = [];
+    V.gUnitIds = new Set();
+    const addG = (uid, group) => {
+      const u = byUnit[uid];
+      if (!u) return;
+      const paras = u.blocks.filter((b) => !/^h\d$/.test(b.type) && b.type !== 'figure' && b.type !== 'title');
+      const step = { id: 'G-' + u.id, track: 'G', title: u.title, minutes: Math.max(4, Math.round(paras.length * 2.2)), href: `#/g/${u.id}`, unit: u.id, paras: paras.map((b) => b.id), group };
       idx[step.id] = step;
-      return step;
-    });
-    const C = window.CURRICULUM || { tracks: [], path: [] };
-    // recommended path: curriculum order, then any lesson not listed, G steps where the curriculum says "G*"
+      V.gSteps.push(step);
+      V.gUnitIds.add(uid);
+    };
+    (C.gMain || []).forEach((u) => addG(u, 'main'));
+    (C.gBack || []).forEach((u) => addG(u, 'back'));
+    (C.gMethods || []).forEach((u) => addG(u, 'methods'));
+    const gOf = (g) => V.gSteps.filter((s) => s.group === g).map((s) => s.id);
+    // 4. recommended path
     const path = [];
     (C.path || []).forEach((id) => {
-      if (id === 'G-main') V.gSteps.filter((s) => !s.methods && !['G-front', 'G-starmethods-toc', 'G-suppinfo', 'G-ack', 'G-contrib', 'G-decl', 'G-dates'].includes(s.id)).forEach((s) => path.push(s.id));
-      else if (id === 'G-methods') V.gSteps.filter((s) => s.methods).forEach((s) => path.push(s.id));
-      else if (id === 'G-back') V.gSteps.filter((s) => ['G-front', 'G-starmethods-toc', 'G-suppinfo', 'G-ack', 'G-contrib', 'G-decl', 'G-dates'].includes(s.id)).forEach((s) => path.push(s.id));
+      if (id === 'G-main') path.push(...gOf('main'));
+      else if (id === 'G-back') path.push(...gOf('back'));
+      else if (id === 'G-methods') path.push(...gOf('methods'));
       else if (idx[id]) path.push(id);
     });
     L.forEach((l) => { if (!path.includes(l.id)) path.push(l.id); });
     V.path = path;
+    window.CARD_INDEX = {};
+    (window.CARDS || []).forEach((c) => (window.CARD_INDEX[c.id] = c));
   };
   V.stepDone = (id) => {
     const s = window.LESSON_INDEX[id];
