@@ -149,7 +149,7 @@
 {
   id: 'cis-regulatory-element',
   short: `A stretch of DNA that controls when and how strongly a nearby gene is used, rather than being copied into a product itself.`,
-  long: `<p>Regulatory elements are the control panel of the genome. Promoters and enhancers are the best-known kinds; others silence genes or shield them from their neighbors. "Cis" means they act on genes on the same DNA molecule, usually nearby (lesson B6). Because they are ordinary DNA, deleting a stretch of DNA can accidentally remove one. ENCODE publishes maps of candidate regulatory elements, abbreviated cCREs.</p>`,
+  long: `<p>Regulatory elements are the control panel of the genome. Promoters and enhancers are the best-known kinds; others silence genes or shield them from their neighbors. "Cis" means they act on genes on the same DNA molecule, usually nearby (lesson B6). Because they are ordinary DNA, deleting a stretch of DNA can accidentally remove one. ENCODE publishes maps of predicted regulatory elements, abbreviated cCREs.</p>`,
   analogy: `The switches, dials and wiring on a control panel: they do no work themselves but decide which machines run.`,
   see: ['enhancer', 'promoter', 'transcription-factor'],
   paperUse: { ref: 'res-pipeline-p1', quote: 'a reduced chance of false positives arising from deleting overlapping DNA regulatory elements' },
@@ -184,7 +184,7 @@
   id: 'chromhmm',
   short: `A computer program that labels each stretch of the genome with a "state", such as active start site or enhancer, from patterns of chromatin marks.`,
   long: `<p>Researchers measure many kinds of chemical marks on chromatin along the whole genome. ChromHMM, which uses a statistical method called a hidden Markov model, looks for recurring combinations of marks and gives each stretch a state with a readable name, for example Active TSS, Flanking TSS, Active Enhancer or Bivalent-Poised TSS. The states are predictions inferred from marks, not direct measurements of what the DNA does.</p>`,
-  analogy: `A map-colouring program that reads many soil measurements and shades each patch as forest, farmland or marsh.`,
+  analogy: `A map-coloring program that reads many soil measurements and shades each patch as forest, farmland or marsh.`,
   see: ['chromatin', 'enhancer', 'tss'],
   paperUse: { ref: 'm-library-design-p2', quote: 'ChromHMM marks: Active TSS, Flanking TSS' },
 }
@@ -289,7 +289,7 @@
   id: 'nsclc',
   full: 'non-small cell lung cancer',
   short: `The larger group of lung cancers, defined by how the cells look; it includes adenocarcinoma, squamous cell and large cell types.`,
-  long: `<p>Lung cancer is sorted into two broad groups by how the cells look under a microscope: small cell and non-small cell. Non-small cell lung cancer (NSCLC) is the larger group and contains several types, mainly lung adenocarcinoma, squamous cell carcinoma and large cell carcinoma. It can also be sorted by which gene is changed, such as KRAS-mutant or EGFR-mutant NSCLC, which helps guide which drugs are used.</p>`,
+  long: `<p>Lung cancer is divided into two broad groups by how the cells look under a microscope: small cell and non-small cell. Non-small cell lung cancer (NSCLC) is the larger group and contains several types, mainly lung adenocarcinoma, squamous cell carcinoma and large cell carcinoma. It can also be grouped by which gene is changed, such as KRAS-mutant or EGFR-mutant NSCLC, which helps guide which drugs are used.</p>`,
   analogy: `"Non-small" is a negative label, like "non-fiction": it says what the group is not, and you sort inside it.`,
   see: ['lung-adenocarcinoma', 'large-cell-carcinoma', 'kras'],
   paperUse: { ref: 'intro-p1', quote: 'Non-small cell lung cancer (NSCLC) is the leading cause of cancer deaths worldwide' },
@@ -376,6 +376,7 @@
   long: `<p>Proteins are chains of amino acids, and "G12C" is shorthand for "at position 12, glycine (G) is replaced by cysteine (C)". The paper writes the same event in two ways: p.Gly12Cys for the protein change, and c.34G>T for the DNA change (the letter G at position 34 of the coding DNA has become T). It is an activating KRAS mutation. G12C is also the change for which the first KRAS-targeting drugs were developed. The paper reports it in a patient-derived model of lung cancer.</p>`,
   analogy: `Swapping the 12th tile in a long Scrabble word: one tile changes, yet the whole word now reads differently.`,
   source: ['m-pdx-p1'],
+  derived: ['12', '34'],
   see: ['kras', 'activating-mutation', 'targeted-therapy'],
   paperUse: { ref: 'm-pdx-p1', quote: 'KRAS c.34G>T (p.Gly12Cys) mutation was detected in both BE874 organoids and the corresponding primary cancer' },
 }

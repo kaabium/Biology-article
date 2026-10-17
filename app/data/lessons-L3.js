@@ -208,7 +208,7 @@
     { q: 'Why can deleting a stretch of DNA alone not prove that a lncRNA causes an effect?',
       options: [
         { t: 'The removed DNA might also contain a regulatory element, such as an enhancer, so the effect could be DNA-dependent', ok: true, why: 'Right (res-validation-p4): deleting DNA cannot tell RNA-dependent from DNA-dependent mechanisms.' },
-        { t: 'Because a deletion can never be detected', ok: false, why: 'Deletions can be checked. The problem is interpreting the effect, not seeing the deletion.' },
+        { t: 'Because missing DNA can never be detected', ok: false, why: 'A cut-out region can be checked for. The problem is interpreting the effect, not seeing the missing DNA.' },
         { t: 'Because enhancers are made of RNA', ok: false, why: 'Enhancers are stretches of DNA, not RNA molecules.' },
         { t: 'Because deleting DNA always kills the cell', ok: false, why: 'Many deletions leave cells alive. The point is about which part (DNA or RNA) causes the effect.' },
       ], source: ['res-validation-p4'] },
@@ -343,7 +343,7 @@
       `<p>There is a second way to divide lung cancers: by <i>which gene is changed</i>, such as KRAS-mutant or EGFR-mutant. The two ways cross: a tumor can be an adenocarcinoma <i>and</i> KRAS-mutant. The paper uses both.</p>` },
     { k: 'h', text: 'Spreading: migration, invasion, metastasis' },
     { k: 'bgnd', html:
-      `<p><b>Cell migration</b> is a cell crawling from one place to another. Healthy cells do it too (healing a wound, patrolling immune cells). <b>Invasion</b> is cancer cells pushing into and through neighboring tissue. <b>Metastasis</b> is cancer cells travelling, usually through blood or lymph vessels, to distant organs and starting new tumors there. Migration is the crawl, invasion is the break-in, metastasis is setting up a colony far away. Metastasis is what makes many cancers so dangerous.</p>` },
+      `<p><b>Cell migration</b> is a cell crawling from one place to another. Healthy cells do it too (healing a wound, patrolling immune cells). <b>Invasion</b> is cancer cells pushing into and through neighboring tissue. <b>Metastasis</b> is cancer cells traveling, usually through blood or lymph vessels, to distant organs and starting new tumors there. Migration is the crawl, invasion is the break-in, metastasis is setting up a colony far away. Metastasis is what makes many cancers so dangerous.</p>` },
     { k: 'h', text: 'KRAS, EGFR and targeted therapy' },
     { k: 'bgnd', html:
       `<p>Cells grow when a growth signal arrives. <b>EGFR</b> is a protein in the cell’s outer membrane that works like an antenna: when a growth signal binds outside, it passes a message inward. A later link in the chain is <b>KRAS</b>, a small protein that works as an on/off switch. It is on while it passes the message, then switches itself off. Both are oncogenes. An activating mutation in either one can lock the chain "on", so the cell hears "grow!" with no signal. A lung tumor usually has one of them changed, not both.</p>` },
@@ -399,7 +399,7 @@
       ], bg: true },
     { q: 'What is the difference between invasion and metastasis?',
       options: [
-        { t: 'Invasion is pushing into neighboring tissue; metastasis is travelling to distant organs and founding new tumors', ok: true, why: 'Right: invasion is local, metastasis is the distant spread. Migration (cell movement) underlies both.' },
+        { t: 'Invasion is pushing into neighboring tissue; metastasis is traveling to distant organs and founding new tumors', ok: true, why: 'Right: invasion is local, metastasis is the distant spread. Migration (cell movement) underlies both.' },
         { t: 'They mean the same thing', ok: false, why: 'They are two stages: invasion usually comes first and makes metastasis possible.' },
         { t: 'Invasion is cells dividing; metastasis is cells moving', ok: false, why: 'Dividing is proliferation. Both invasion and metastasis involve moving.' },
         { t: 'Invasion happens only in the lab; metastasis only in patients', ok: false, why: 'Both are real processes in patients. In the lab, only the cell movement part is measured.' },
@@ -447,7 +447,7 @@
     { k: 'worked', html:
       `<p><b>Worked example (made-up numbers).</b> You test doses 0, 1, 2, 4, 8 and 16 (arbitrary units) and find the share of cells still growing: 100%, 95%, 80%, 50%, 20% and 5%. Dose 2 leaves 80%, a 20% drop, so it is the IC20. Dose 4 is the IC50 and dose 8 is the IC80. The IC30 lies between 2 and 4.</p>` },
     { k: 'svg', caption: 'A dose–response curve. IC20, IC30 and IC80 are the doses that cut growth by 20%, 30% and 80%. Resistant cells need a higher dose for the same effect: their curve shifts to the right.',
-      svg: `<svg viewBox="0 0 480 292" role="img" aria-label="Dose-response curves: growth falls in an S shape as drug dose rises. Dashed lines mark the doses where growth has dropped to 80, 70 and 20 percent of untreated, labelled IC20, IC30 and IC80. A second dashed curve for resistant cells sits further to the right">` +
+      svg: `<svg viewBox="0 0 480 292" role="img" aria-label="Dose-response curves: growth falls in an S shape as drug dose rises. Dashed lines mark the doses where growth has dropped to 80, 70 and 20 percent of untreated, labeled IC20, IC30 and IC80. A second dashed curve for resistant cells sits further to the right">` +
         `<path d="M60 24 V240 H462" class="ln"/>` +
         `<text x="64" y="14" class="s m">cells still growing (compared with no drug)</text>` +
         `<text x="54" y="34" class="end s">100%</text><text x="54" y="76" class="end s">80%</text><text x="54" y="97" class="end s">70%</text><text x="54" y="202" class="end s">20%</text><text x="54" y="244" class="end s">0%</text>` +

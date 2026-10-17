@@ -426,7 +426,7 @@
   id: 'enrichr',
   full: 'Enrichr (R package enrichR)',
   short: 'A free web tool, and an R package called enrichR, that tests a gene list against many gene-set databases at once.',
-  long: '<p>You send in a list of genes, and Enrichr compares it with dozens of libraries (KEGG, MSigDB Hallmark sets, transcription-factor targets and more) and returns the enriched terms with adjusted p-values. The test is Fisher\'s exact test followed by a multiple-testing correction. The R package enrichR sends the list to the web service from inside an analysis script.</p>',
+  long: '<p>You send in a list of genes, and Enrichr compares it with many libraries (KEGG, MSigDB Hallmark sets, transcription-factor targets and more) and returns the enriched terms with adjusted p-values. The test is Fisher\'s exact test followed by a multiple-testing correction. The R package enrichR sends the list to the web service from inside an analysis script.</p>',
   analogy: 'A search engine for the question "what do these genes have in common?"',
   see: ['pathway-enrichment', 'kegg', 'msigdb'],
   paperUse: { ref: 'm-rnaseq-p3', quote: 'Functional enrichment analysis was performed through the enrichR package v2.1.' },
