@@ -1,0 +1,1826 @@
+[
+ {
+  "left": "hall",
+  "right": "marks",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 2,
+  "ctx": "t their functional roles in cancer hall- | marks remain unclear. We employ pooled C"
+ },
+ {
+  "left": "can",
+  "right": "cer",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 2,
+  "ctx": "cer (NSCLC) is the leading cause of can- | cer deaths worldwide,1 and available the"
+ },
+ {
+  "left": "combina",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 2,
+  "ctx": " and available therapies face a combina- | tion of challenges in undruggable mutati"
+ },
+ {
+  "left": "car",
+  "right": "rying",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 2,
+  "ctx": ".2–4 The most common NSCLC subtype, car- | rying activating KRAS mutations (KRAS+),"
+ },
+ {
+  "left": "tar",
+  "right": "geted",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 2,
+  "ctx": "um chemotherapy, and newly approved tar- | geted therapies only extend life by a fe"
+ },
+ {
+  "left": "mel",
+  "right": "anoma",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 2,
+  "ctx": "sms.13–16 Examples such as SAMMSON (mel- | anoma) and lncGRS-1 (glioma) have attrac"
+ },
+ {
+  "left": "manipula",
+  "right": "tion",
+  "decision": "join",
+  "why": "override",
+  "page": 4,
+  "ctx": "fied in lung tumors, and their manipula- | tion alters cell growth and invasiveness"
+ },
+ {
+  "left": "chromatin",
+  "right": "modifying",
+  "decision": "keep",
+  "why": "override",
+  "page": 4,
+  "ctx": "ich promotes NSCLC by binding chromatin- | modifying enzyme EZH2 and repressing tum"
+ },
+ {
+  "left": "transcriptome",
+  "right": "wide",
+  "decision": "keep",
+  "why": "override",
+  "page": 4,
+  "ctx": "ion and is readily scaled transcriptome- | wide via pooled screening.24 CRISPR scre"
+ },
+ {
+  "left": "prolifera",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 4,
+  "ctx": "ing disease hallmarks of cell prolifera- | tion, pathway activation, and therapy re"
+ },
+ {
+  "left": "dis",
+  "right": "ease",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 4,
+  "ctx": "types that do not generalize to the dis- | ease in question.17 Supporting this, rec"
+ },
+ {
+  "left": "maxi",
+  "right": "mize",
+  "decision": "join",
+  "why": "override",
+  "page": 4,
+  "ctx": "e has not been addressed. Thus, to maxi- | mize the utility of discovered hits, an "
+ },
+ {
+  "left": "priori",
+  "right": "tize",
+  "decision": "join",
+  "why": "override",
+  "page": 4,
+  "ctx": "red hits, an ideal screen should priori- | tize lncRNA targets that are both pleiot"
+ },
+ {
+  "left": "per",
+  "right": "turbations",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 4,
+  "ctx": "ach achieves loss-of-function (LOF) per- | turbations by deleting target genes’ tra"
+ },
+ {
+  "left": "interro",
+  "right": "gate",
+  "decision": "join",
+  "why": "override",
+  "page": 4,
+  "ctx": "ning library to comprehensively interro- | gate the NSCLC lncRNA transcriptome. To "
+ },
+ {
+  "left": "pub",
+  "right": "lished10",
+  "decision": "join",
+  "why": "override",
+  "page": 4,
+  "ctx": "ng exon. We integrated and filtered pub- | lished10,37,38 and in-house gene annotat"
+ },
+ {
+  "left": "corre",
+  "right": "sponding",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 4,
+  "ctx": "get set of 831 expressed lncRNAs, corre- | sponding to 998 high-confidence TSSs, he"
+ },
+ {
+  "left": "pro",
+  "right": "tein",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 4,
+  "ctx": "ell phenotype) and positive control pro- | tein-coding genes (PCGs) (with known rol"
+ },
+ {
+  "left": "exten",
+  "right": "sive",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 4,
+  "ctx": "to question,45 we first performed exten- | sive validation of library pgRNAs. Targe"
+ },
+ {
+  "left": "NSCLC",
+  "right": "promoting",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 4,
+  "ctx": "f library pgRNAs. Targeting known NSCLC- | promoting lncRNA DNMBP-AS1 (candidate 33"
+ },
+ {
+  "left": "obser",
+  "right": "vations",
+  "decision": "join",
+  "why": "override",
+  "page": 4,
+  "ctx": "igure S3A), in line with previous obser- | vations from Shkumatava’s group.47"
+ },
+ {
+  "left": "Previ",
+  "right": "ous",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "cells during tumor progression.11 Previ- | ous CRISPR screens have been limited to "
+ },
+ {
+  "left": "pro",
+  "right": "gression",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "across multiple hallmarks of cancer pro- | gression, namely proliferation, chemores"
+ },
+ {
+  "left": "comple",
+  "right": "mentary",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "oost sensitivity, we implemented comple- | mentary ‘‘positive’’ screens, where pgRN"
+ },
+ {
+  "left": "suc",
+  "right": "cinimidyl",
+  "decision": "join",
+  "why": "override",
+  "page": 6,
+  "ctx": "ion screen using carboxyfluorescein suc- | cinimidyl ester (CFSE) dye to identify g"
+ },
+ {
+  "left": "indepen",
+  "right": "dent",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "orrelation between biologically indepen- | dent replicates at multiple levels of da"
+ },
+ {
+  "left": "con",
+  "right": "trol",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "). As expected, pgRNAs for positive-con- | trol genes were significantly depleted i"
+ },
+ {
+  "left": "effi",
+  "right": "ciency",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": " not (Figure 2F). To gauge the LOF effi- | ciency of promoter deletion, pgRNAs targ"
+ },
+ {
+  "left": "con",
+  "right": "ventional",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "etween two distinct modalities: (1) con- | ventional open reading frame (ORF) mutat"
+ },
+ {
+  "left": "Pro",
+  "right": "moter",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "moter deletion, similar to lncRNAs. Pro- | moter-deletion pgRNAs displayed a detect"
+ },
+ {
+  "left": "pheno",
+  "right": "typic",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": " displayed a detectable but lower pheno- | typic impact, indicating that CRISPR-del"
+ },
+ {
+  "left": "pheno",
+  "right": "types",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "ger deletions to produce stronger pheno- | types, possibly due to a greater impact "
+ },
+ {
+  "left": "corre",
+  "right": "lation",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": " selection screens displayed anti-corre- | lation with dropout results in H460 cell"
+ },
+ {
+  "left": "chemore",
+  "right": "sistance",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "3 To identify lncRNAs promoting chemore- | sistance, we again employed complementar"
+ },
+ {
+  "left": "Fig",
+  "right": "ure",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "ain employed complementary screens (Fig- | ure 2B) at carefully chosen cisplatin co"
+ },
+ {
+  "left": "un",
+  "right": "derlying",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "nd S2F). Migration is a key hallmark un- | derlying the invasion and metastasis of "
+ },
+ {
+  "left": "migration",
+  "right": "promoting",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 6,
+  "ctx": "2E, and S2G), we screened for migration- | promoting lncRNAs. This yielded 65 lncRN"
+ },
+ {
+  "left": "iden",
+  "right": "tified",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 6,
+  "ctx": "the two cell lines: candidate 205, iden- | tified as a top hit in dropout screens ("
+ },
+ {
+  "left": "impor",
+  "right": "tance",
+  "decision": "join",
+  "why": "override",
+  "page": 6,
+  "ctx": "cRNAs (Figure 3A). Supporting the impor- | tance of this locus, it contains two add"
+ },
+ {
+  "left": "pre",
+  "right": "vented",
+  "decision": "join",
+  "why": "override",
+  "page": 8,
+  "ctx": "difficulty in designing PCR primers pre- | vented direct testing of deletion by can"
+ },
+ {
+  "left": "ri",
+  "right": "bosomal",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "parable to inactivation of essential ri- | bosomal gene RPS5 (Figures 3C and S2K). "
+ },
+ {
+  "left": "Further",
+  "right": "more",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "onal growth assay (Figure S2L). Further- | more, the pgRNA for candidate 509 also s"
+ },
+ {
+  "left": "Further",
+  "right": "more",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": " responsible for these effects. Further- | more, genomic deletion cannot distinguis"
+ },
+ {
+  "left": "DNA",
+  "right": "dependent",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 8,
+  "ctx": "deletion cannot distinguish between DNA- | dependent (e.g., enhancer) or RNA-depend"
+ },
+ {
+  "left": "ques",
+  "right": "tions",
+  "decision": "join",
+  "why": "override",
+  "page": 8,
+  "ctx": "ts transcription). To address both ques- | tions, we used two gene-specific ASOs to"
+ },
+ {
+  "left": "three",
+  "right": "dimensional",
+  "decision": "keep",
+  "why": "override",
+  "page": 8,
+  "ctx": "ts were further corroborated in a three- | dimensional (3D) spheroid model (Figure "
+ },
+ {
+  "left": "malig",
+  "right": "nancies",
+  "decision": "join",
+  "why": "override",
+  "page": 8,
+  "ctx": "igration54,57 as well as to other malig- | nancies. For instance, its knockdown sup"
+ },
+ {
+  "left": "prolifera",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "its knockdown suppresses cell prolifera- | tion and invasion in breast cancer58 and"
+ },
+ {
+  "left": "compre",
+  "right": "hensive",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "ese data into a quantitative and compre- | hensive map of lncRNAs driving NSCLC hal"
+ },
+ {
+  "left": "signifi",
+  "right": "cance",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "while balancing effect size and signifi- | cance, we created an integrative target "
+ },
+ {
+  "left": "individ",
+  "right": "ual",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": " common integration methods and individ- | ual screens in correctly classifying pos"
+ },
+ {
+  "left": "Pan",
+  "right": "hallmark",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 8,
+  "ctx": "y pan-hallmark ranking (Figure 4C). Pan- | hallmark analysis alone identified altog"
+ },
+ {
+  "left": "Fig",
+  "right": "ure",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "ependent enrichment score analysis (Fig- | ure S3C). Hallmark-specific integration "
+ },
+ {
+  "left": "activ",
+  "right": "ities",
+  "decision": "join",
+  "why": "override",
+  "page": 8,
+  "ctx": "th have highly cell-type-specific activ- | ities.25 Indeed, comparing lncRNA hits f"
+ },
+ {
+  "left": "activ",
+  "right": "ity",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "ance—lncRNAs tend to only display activ- | ity in the cell type where they were dis"
+ },
+ {
+  "left": "inde",
+  "right": "pendent",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "hits display relatively background-inde- | pendent activity, being active in both c"
+ },
+ {
+  "left": "strat",
+  "right": "egy",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "lness of an integrative screening strat- | egy combining multiple cell lines for di"
+ },
+ {
+  "left": "ex",
+  "right": "pected",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "ncRNAs. Cancer-promoting lncRNAs are ex- | pected to be upregulated in tumors.62,63"
+ },
+ {
+  "left": "non",
+  "right": "hits",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 8,
+  "ctx": "significantly higher expressed than non- | hits in KRAS+ lung tumors (Figure 4F) an"
+ },
+ {
+  "left": "clin",
+  "right": "ical",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "s that are enriched for meaningful clin- | ical features and display cell backgroun"
+ },
+ {
+  "left": "thera",
+  "right": "peutic",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 8,
+  "ctx": "aps are a resource of targets for thera- | peutic ASOs.64–66 We manually selected n"
+ },
+ {
+  "left": "candi",
+  "right": "date",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "ranscriptome (Table S2). For each candi- | date, we designed a series of ASOs and m"
+ },
+ {
+  "left": "prolifer",
+  "right": "ation",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "henotypic effects, in terms of prolifer- | ation and cisplatin sensitivity (Figure "
+ },
+ {
+  "left": "expres",
+  "right": "sion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "reatment (Figure S4B). Using the expres- | sion data from The Cancer Genome Atlas ("
+ },
+ {
+  "left": "Hall",
+  "right": "mark",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "253616), henceforth renamed Cancer Hall- | mark in Lung LncRNA 1 (CHiLL1), and cand"
+ },
+ {
+  "left": "cod",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "8; GCAWKR).68 Both have low protein-cod- | ing potential (Figure S4D). Replication "
+ },
+ {
+  "left": "inde",
+  "right": "pendent",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "ant cell lines, suggesting subtype-inde- | pendent activity (Figure S4F). On the ot"
+ },
+ {
+  "left": "phe",
+  "right": "notypes",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "nor GCAWKR could rescue ASO-induced phe- | notypes (Figure S5C). This may be the re"
+ },
+ {
+  "left": "impli",
+  "right": "cated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": " knowledge, never previously been impli- | cated in cancer. It is located on Chromo"
+ },
+ {
+  "left": "transcrip",
+  "right": "tomic",
+  "decision": "join",
+  "why": "override",
+  "page": 10,
+  "ctx": " TSS, as evidenced by various transcrip- | tomic evidence, but the latter falls wit"
+ },
+ {
+  "left": "ex",
+  "right": "pressed",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "n the two loci as shown by annotated ex- | pressed sequence tags (ESTs) (Figure S5A"
+ },
+ {
+  "left": "Fig",
+  "right": "ure",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "ags (ESTs) (Figure S5A) and RT-PCR (Fig- | ure S5B). Supporting its relevance, high"
+ },
+ {
+  "left": "ev",
+  "right": "idence",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "anel), which is supported by diverse ev- | idence including full-length long-read s"
+ },
+ {
+  "left": "dur",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "or prognosis in colon cancer71 and, dur- | ing the preparation of this paper, was r"
+ },
+ {
+  "left": "onco",
+  "right": "gene",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": " this paper, was reported to be an onco- | gene in gastric cancer.68 It has a likel"
+ },
+ {
+  "left": "upregu",
+  "right": "lated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "GA samples, GCAWKR expression is upregu- | lated in the proximal inflammatory (PI) "
+ },
+ {
+  "left": "De",
+  "right": "livery",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "y response of individual patients.74 De- | livery of CHiLL1 ASOs resulted in a sign"
+ },
+ {
+  "left": "re",
+  "right": "sulted",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "Figure 5G). Interestingly, cocktails re- | sulted in no additional toxicity for non"
+ },
+ {
+  "left": "Fig",
+  "right": "ure",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "l toxicity for non-cancerous cells (Fig- | ure S4L), suggesting that they might rep"
+ },
+ {
+  "left": "tu",
+  "right": "mors",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "A sequencing (RNA-seq) data for TCGA tu- | mors indicates that 78% express at least"
+ },
+ {
+  "left": "hall",
+  "right": "marks",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": " the modes of action linking NSCLC hall- | marks to CHiLL1 and GCAWKR. CHiLL1 exons"
+ },
+ {
+  "left": "hybrid",
+  "right": "ization",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "enic roles, fluorescence in situ hybrid- | ization (FISH) revealed contrasting loca"
+ },
+ {
+  "left": "frac",
+  "right": "tionation",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": " were further corroborated by cell frac- | tionation (Figure 6C)."
+ },
+ {
+  "left": "molecu",
+  "right": "lar",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "ed mechanistic insights, we used molecu- | lar phenotyping by RNA-seq to quantify t"
+ },
+ {
+  "left": "correla",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "f CHiLL1 (Figure 6E). A similar correla- | tion was observed in H460 cells (Figure "
+ },
+ {
+  "left": "intersec",
+  "right": "tion",
+  "decision": "join",
+  "why": "override",
+  "page": 12,
+  "ctx": "e target gene subsets from the intersec- | tion of both ASOs, we identified enriche"
+ },
+ {
+  "left": "sup",
+  "right": "ported",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "ween the two cell backgrounds again sup- | ported the generality of CHiLL1 effects "
+ },
+ {
+  "left": "re",
+  "right": "ported",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "S6F). Interestingly, ZBTB7A has been re- | ported as both an oncogene and tumor sup"
+ },
+ {
+  "left": "regu",
+  "right": "lates",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "oncogene and tumor suppressor that regu- | lates processes including apoptosis and "
+ },
+ {
+  "left": "indepen",
+  "right": "dent",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "fective knockdown and cell-type-indepen- | dent effects using a single ASO (Figures"
+ },
+ {
+  "left": "homeo",
+  "right": "stasis",
+  "decision": "join",
+  "why": "override",
+  "page": 12,
+  "ctx": "ncluding p53 pathway, cholesterol homeo- | stasis, and epithelial to mesenchymal tr"
+ },
+ {
+  "left": "cell",
+  "right": "cycle",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 12,
+  "ctx": "rms, we noticed several related to cell- | cycle progression, including ‘‘G2-M chec"
+ },
+ {
+  "left": "in",
+  "right": "crease",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 12,
+  "ctx": "of GCAWKR, but not CHiLL1, led to an in- | crease of cells in the G2 phase (Figure "
+ },
+ {
+  "left": "Fig",
+  "right": "ure",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "ion of CHiLL1, but not vice versa, (Fig- | ure S6H), explaining the additive effect"
+ },
+ {
+  "left": "foun",
+  "right": "dation",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "c tumors, representing a promising foun- | dation for future RNA therapeutics (RNAT"
+ },
+ {
+  "left": "versa",
+  "right": "tility",
+  "decision": "join",
+  "why": "override",
+  "page": 14,
+  "ctx": "TX thanks to its practicality and versa- | tility.86 It avoids the capital investme"
+ },
+ {
+  "left": "cur",
+  "right": "rent",
+  "decision": "join",
+  "why": "override",
+  "page": 14,
+  "ctx": "d be prohibitively expensive at the cur- | rent market rates and unable to adapt to"
+ },
+ {
+  "left": "perturba",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": " CRISPR also delivers improved perturba- | tion and on-target rates compared with s"
+ },
+ {
+  "left": "repre",
+  "right": "sents",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "via their cell-level function, it repre- | sents a welcome addition to widely used,"
+ },
+ {
+  "left": "None",
+  "right": "theless",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": " these signatures and screen hits. None- | theless, key barriers to entry remain, n"
+ },
+ {
+  "left": "result",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "atched cell backgrounds, and the result- | ing hits could be validated in several a"
+ },
+ {
+  "left": "ef",
+  "right": "fect",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "et robust TPP pipeline that balances ef- | fect size and significance. Overall, the"
+ },
+ {
+  "left": "approxi",
+  "right": "mately",
+  "decision": "join",
+  "why": "override",
+  "page": 14,
+  "ctx": "er. Overall, our data implicate approxi- | mately 8% of lncRNAs with cell-level fun"
+ },
+ {
+  "left": "onco",
+  "right": "genic",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "from which we identified a pair of onco- | genic lncRNAs, CHiLL1 and GCAWKR, with p"
+ },
+ {
+  "left": "prom",
+  "right": "ising",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 14,
+  "ctx": "iLL1 and GCAWKR, with particularly prom- | ising characteristics as therapeutic tar"
+ },
+ {
+  "left": "ther",
+  "right": "apy",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": " combination therapies to suppress ther- | apy resistance.91 Finally, CHiLL1 or GCA"
+ },
+ {
+  "left": "ma",
+  "right": "jority",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": "S+ NSCLC tumors, suggesting that the ma- | jority of patients might benefit from ev"
+ },
+ {
+  "left": "pheno",
+  "right": "types",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": "the concordance of CRISPR and ASO pheno- | types indicates that both genes act via "
+ },
+ {
+  "left": "how",
+  "right": "ever",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": "ifiable predictions. Interestingly, how- | ever, these effects are mediated by very"
+ },
+ {
+  "left": "subcellu",
+  "right": "lar",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": "as evidenced by their distinct subcellu- | lar localization, non-overlapping target"
+ },
+ {
+  "left": "transcrip",
+  "right": "tome",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": "ifically to a patient’s tumor transcrip- | tome, for potent, enduring, low-toxicity"
+ },
+ {
+  "left": "target",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 15,
+  "ctx": " hits arising from unintentional target- | ing of overlapping cis- or trans-acting "
+ },
+ {
+  "left": "Fortu",
+  "right": "nately",
+  "decision": "join",
+  "why": "override",
+  "page": 15,
+  "ctx": " or opposite-strand lncRNA genes. Fortu- | nately, these cases can be resolved by A"
+ },
+ {
+  "left": "over",
+  "right": "looked",
+  "decision": "join",
+  "why": "override",
+  "page": 15,
+  "ctx": "n A549 cells, it is likely that we over- | looked many valuable targets due to the "
+ },
+ {
+  "left": "incor",
+  "right": "rectly",
+  "decision": "join",
+  "why": "override",
+  "page": 15,
+  "ctx": "her not screened or whose TSS was incor- | rectly targeted.70 For example, we could"
+ },
+ {
+  "left": "hope",
+  "right": "fully",
+  "decision": "join",
+  "why": "override",
+  "page": 15,
+  "ctx": " could not be followed up here and hope- | fully will provide a fertile source of n"
+ },
+ {
+  "left": "growth",
+  "right": "promoting",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 5,
+  "ctx": "pleted) and positive (CFSE dye) (growth- | promoting lncRNAs’ pgRNAs are enriched) "
+ },
+ {
+  "left": "priori",
+  "right": "tization",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 10,
+  "ctx": "eens together; TPP pheno, target priori- | tization pipeline that integrates multip"
+ },
+ {
+  "left": "pan",
+  "right": "hallmarks",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 10,
+  "ctx": "is, cisplatin; Mig, migration; Pan, pan- | hallmarks, integration of all the screen"
+ },
+ {
+  "left": "Mann",
+  "right": "Whitney",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 12,
+  "ctx": "atistical significance: one-tailed Mann- | Whitney test)."
+ },
+ {
+  "left": "RNA",
+  "right": "seq",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 12,
+  "ctx": " reflect expression as estimated by RNA- | seq (expression defined as >0.5 FPKM). A"
+ },
+ {
+  "left": "two",
+  "right": "tailed",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 14,
+  "ctx": " bars: SD statistical significance: two- | tailed Student’s t test)."
+ },
+ {
+  "left": "insight",
+  "right": "ful",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "uigó (CRG Barcelona, Spain) for insight- | ful discussions. Thomas Marti and Renwan"
+ },
+ {
+  "left": "com",
+  "right": "putations",
+  "decision": "join",
+  "why": "override",
+  "page": 16,
+  "ctx": " (DMBR) for logistical support. All com- | putations were performed on the Bern Int"
+ },
+ {
+  "left": "Na",
+  "right": "tional",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "ional Science Foundation through the Na- | tional Centre of Competence in Research "
+ },
+ {
+  "left": "func",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "The elements of long noncoding RNA func- | tion’’ (31003A_182337), Sinergia project"
+ },
+ {
+  "left": "Med",
+  "right": "ical",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "ng transcriptome’’ (173738); by the Med- | ical Faculty of the University and Unive"
+ },
+ {
+  "left": "lib",
+  "right": "DECKO",
+  "decision": "join",
+  "why": "override",
+  "page": 16,
+  "ctx": "tics analysis. C.P.-Q. designed the lib- | DECKO-NSCLC1 with the help of S.H. P.C. "
+ },
+ {
+  "left": "pro",
+  "right": "vided",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "for the NGS. S.H., C.R., and A.F.O. pro- | vided key inputs and tools. T.P., R.E., "
+ },
+ {
+  "left": "Je",
+  "right": "mal",
+  "decision": "join",
+  "why": "override",
+  "page": 16,
+  "ctx": ", I., Siegel, R.L., Torre, L.A., and Je- | mal, A. (2018). Global cancer statistics"
+ },
+ {
+  "left": "non",
+  "right": "small",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 16,
+  "ctx": "rapy: KRAS as an emerging target in non- | small cell lung cancer (NSCLC). Cell Rep"
+ },
+ {
+  "left": "resis",
+  "right": "tance",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "017). Understanding and targeting resis- | tance mechanisms in NSCLC. Nat. Rev. Can"
+ },
+ {
+  "left": "non",
+  "right": "coding",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 16,
+  "ctx": "ds a complete map of the human long non- | coding RNA transcriptome. Nat. Rev. Gene"
+ },
+ {
+  "left": "Hana",
+  "right": "han",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "Ouzounis, C.A.C., López-Bigas, N., Hana- | han, D., Weinberg, R.A.R., Vogelstein, B"
+ },
+ {
+  "left": "Bren",
+  "right": "tani",
+  "decision": "join",
+  "why": "override",
+  "page": 16,
+  "ctx": "n, B., Kinzler, K., Friedberg, E., Bren- | tani, H., et al. (2000). The hallmarks o"
+ },
+ {
+  "left": "Regula",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": ".L., and Huarte, M. (2021). Gene Regula- | tion by Long Non-coding RNAs and its Bio"
+ },
+ {
+  "left": "associ",
+  "right": "ated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "MIR31HG regulates the senescence associ- | ated secretory phenotype. Nat. Commun. 1"
+ },
+ {
+  "left": "CRISPRi",
+  "right": "based",
+  "decision": "keep",
+  "why": "override",
+  "page": 16,
+  "ctx": " Horlbeck, M.A., et al. (2020). CRISPRi- | based radiation modifier screen identifi"
+ },
+ {
+  "left": "thera",
+  "right": "peutic",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "en identifies long non-coding RNA thera- | peutic targets in glioma. Genome Biol. 2"
+ },
+ {
+  "left": "noncod",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "., Gross, M., et al. (2013). The noncod- | ing RNA MALAT1 is a critical regulator o"
+ },
+ {
+  "left": "Kawa",
+  "right": "kami",
+  "decision": "join",
+  "why": "override",
+  "page": 16,
+  "ctx": "Gong, W., Akiyama, R., Tiwari, A., Kawa- | kami, H., Ronning, P., Reuland, B., Guen"
+ },
+ {
+  "left": "expres",
+  "right": "sion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 16,
+  "ctx": "A6-mediated suppression of SOX12 expres- | sion. Exp. Cell Res. 405, 112653."
+ },
+ {
+  "left": "therapeuti",
+  "right": "cally",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": "the cancer genome: profiling therapeuti- | cally-actionable long noncoding RNAs usi"
+ },
+ {
+  "left": "At",
+  "right": "tenello",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": ", Birk, H.S., Malatesta, M., He, D., At- | tenello, F.J., Villalta, J.E., Cho, M.Y."
+ },
+ {
+  "left": "CRISPRi",
+  "right": "based",
+  "decision": "keep",
+  "why": "override",
+  "page": 17,
+  "ctx": " M.Y., Chen, Y., et al. (2017). CRISPRi- | based genome-scale identification of fun"
+ },
+ {
+  "left": "in",
+  "right": "tegrated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "e, E., Rinn, J.L., et al. (2018). An in- | tegrated genome-wide CRISPRa approach to"
+ },
+ {
+  "left": "Ge",
+  "right": "nom",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": " including long non-coding RNAs. BMC Ge- | nom. 16, 846."
+ },
+ {
+  "left": "Hal",
+  "right": "dar",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": "athiriya, I.S., Huang, Y., Rao, K., Hal- | dar, S.M., and Bruneau, B.G. (2019). Min"
+ },
+ {
+  "left": "Regula",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "h, M.J., and Ulitsky, I. (2018). Regula- | tion of Neuroregeneration by long noncod"
+ },
+ {
+  "left": "mamma",
+  "right": "lian",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": " (CRISPR)/Cas9 nuclease system in mamma- | lian cells. J. Biol. Chem. 289, 21312–21"
+ },
+ {
+  "left": "Dieder",
+  "right": "ichs",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "enberg, M., Duran Arqué, B., and Dieder- | ichs, S. (2017). Challenges of CRISPR/Ca"
+ },
+ {
+  "left": "non",
+  "right": "coding",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 17,
+  "ctx": "f CRISPR/Cas9 applications for long non- | coding RNA genes. Nucleic Acids Res. 45,"
+ },
+ {
+  "left": "Love",
+  "right": "land",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": ", A.M., Johnson, R., Jungreis, I., Love- | land, J., Mudge, J.M., Sisu, C., Wright,"
+ },
+ {
+  "left": "Nu",
+  "right": "cleic",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "ements (ENCODE): data portal update. Nu- | cleic Acids Res. 46, D794–D801."
+ },
+ {
+  "left": "Da",
+  "right": "vis",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "je, A., Aldred, S.F., Collins, P.J., Da- | vis, C.A., Doyle, F., Epstein, C.B., Fri"
+ },
+ {
+  "left": "Spec",
+  "right": "ificity",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "ergely, F., and Odom, D.T. (2018). Spec- | ificity of RNAi, LNA and CRISPRi as loss"
+ },
+ {
+  "left": "tran",
+  "right": "scriptional",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "PRi as loss-of-function methods in tran- | scriptional analysis. Nucleic Acids Res."
+ },
+ {
+  "left": "Waka",
+  "right": "matsu",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": "tsuki, T., Sugiyama, T., Irie, R., Waka- | matsu, A., Hayashi, K., Sato, H., Nagai,"
+ },
+ {
+  "left": "inacti",
+  "right": "vation",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": ". (2019). Strategies for genetic inacti- | vation of long noncoding RNAs in Zebrafi"
+ },
+ {
+  "left": "engi",
+  "right": "neered",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": "e transcriptional activation by an engi- | neered CRISPR-Cas9 complex. Nature 517, "
+ },
+ {
+  "left": "Sys",
+  "right": "temic",
+  "decision": "join",
+  "why": "override",
+  "page": 17,
+  "ctx": "i, I., Leighl, N.B., et al. (2017). Sys- | temic therapy for stage IV non–small-cel"
+ },
+ {
+  "left": "contrib",
+  "right": "utes",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 17,
+  "ctx": "nd Li, Y. (2017). LncRNA SNHG12 contrib- | utes to multidrug resistance through act"
+ },
+ {
+  "left": "land",
+  "right": "scape",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 18,
+  "ctx": "et al. (2012). The transcriptional land- | scape and mutational profile of lung ade"
+ },
+ {
+  "left": "hu",
+  "right": "man",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 18,
+  "ctx": "ssi, E., Guo, S., et al. (2017). The hu- | man lncRNA LINC-PINT inhibits tumor cell"
+ },
+ {
+  "left": "Pub",
+  "right": "lishing",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": "g Role of lncRNAs in Cancer (Nature Pub- | lishing Group)."
+ },
+ {
+  "left": "Develop",
+  "right": "ments",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": " J., and Wahlestedt, C. (2018). Develop- | ments in lncRNA drug discovery: where ar"
+ },
+ {
+  "left": "Kula",
+  "right": "kovskiy",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": "awal, S., Chang, J.-C., Ciani, Y., Kula- | kovskiy, I.V., Mendez, M., Ooi, J.L.C., "
+ },
+ {
+  "left": "John",
+  "right": "son",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 18,
+  "ctx": "M., Navarro, C., Zoller, T.I., and John- | son, R. (2019). Ancient exapted transpos"
+ },
+ {
+  "left": "knowledge",
+  "right": "based",
+  "decision": "keep",
+  "why": "override",
+  "page": 18,
+  "ctx": "ne set enrichment analysis: a knowledge- | based approach for interpreting genome-w"
+ },
+ {
+  "left": "Lion",
+  "right": "tos",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": ", Evangelou, K., Tsantoulis, P.K., Lion- | tos, M., Kittas, C., Tiniakos, D.G., Kot"
+ },
+ {
+  "left": "can",
+  "right": "cer",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 18,
+  "ctx": "erexpression in non-small cell lung can- | cer. J. Pathol. 213, 294–302."
+ },
+ {
+  "left": "non",
+  "right": "small",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 18,
+  "ctx": "H. (2017). MicroRNA-520e suppresses non- | small-cell lung cancer cell growth by ta"
+ },
+ {
+  "left": "Cordon",
+  "right": "Cardo",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 18,
+  "ctx": "ub, T., Guernah, I., Zelent, A., Cordon- | Cardo, C., Teruya-Feldstein, J., and Pan"
+ },
+ {
+  "left": "depen",
+  "right": "dent",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 18,
+  "ctx": "ncing of pokemon enhances caspase-depen- | dent apoptosis via fas- and mitochondria"
+ },
+ {
+  "left": "hepato",
+  "right": "cellular",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": "itochondria-mediated pathways in hepato- | cellular carcinoma cells. PLoS One 8, e6"
+ },
+ {
+  "left": "Papachatzo",
+  "right": "poulou",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": "hondrou, V., Patrinos, G.P., Papachatzo- | poulou, A., and Sgourou, A. (2019). The "
+ },
+ {
+  "left": "us",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 18,
+  "ctx": "5). A new age in functional genomics us- | ing CRISPR/Cas9 in arrayed library scree"
+ },
+ {
+  "left": "non",
+  "right": "coding",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 18,
+  "ctx": "of THOR , a conserved cancer/Testis non- | coding RNA. Cell 171, 1559–1572.e20."
+ },
+ {
+  "left": "Ku",
+  "right": "mar",
+  "decision": "join",
+  "why": "override",
+  "page": 18,
+  "ctx": ", T.S., Baluch, N., Morgatskaya, E., Ku- | mar, S., Das, B., and Yeger, H. (2017). "
+ },
+ {
+  "left": "chro",
+  "right": "matin",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 19,
+  "ctx": " Discovery and characterization of chro- | matin states for systematic annotation o"
+ },
+ {
+  "left": "Bio",
+  "right": "technol",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 19,
+  "ctx": "nnotation of the human genome. Nat. Bio- | technol. 28, 817–825."
+ },
+ {
+  "left": "identifica",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 19,
+  "ctx": "2014). MAGeCK enables robust identifica- | tion of essential genes from genome-scal"
+ },
+ {
+  "left": "Le",
+  "right": "slie",
+  "decision": "join",
+  "why": "override",
+  "page": 19,
+  "ctx": " J.A., Chhangawala, S., Zamparo, L., Le- | slie, C.S., and Ventura, A. (2017). Guid"
+ },
+ {
+  "left": "sin",
+  "right": "gle",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 19,
+  "ctx": "7). GuideScan software for improved sin- | gle and paired CRISPR guide RNA design. "
+ },
+ {
+  "left": "depen",
+  "right": "dent",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 19,
+  "ctx": "rmonic mean p-value for combining depen- | dent tests. Proc. Natl. Acad. Sci. USA 1"
+ },
+ {
+  "left": "Pauli",
+  "right": "Behn",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 19,
+  "ctx": "rand, E.L., Gorkin, D.U., He, Y., Pauli- | Behn, F., et al. (2020). Expanded encycl"
+ },
+ {
+  "left": "en",
+  "right": "richR",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 19,
+  "ctx": " Interface to ‘‘Enrichr’’ [R Package en- | richR Version 3.0]."
+ },
+ {
+  "left": "Rose",
+  "right": "nbloom",
+  "decision": "join",
+  "why": "override",
+  "page": 19,
+  "ctx": "en, J.S., Hinrichs, A.S., Hou, M., Rose- | nbloom, K., Clawson, H., Spieth, J., Hil"
+ },
+ {
+  "left": "Near",
+  "right": "optimal",
+  "decision": "keep",
+  "why": "override",
+  "page": 19,
+  "ctx": "lsted, P., and Pachter, L. (2016). Near- | optimal probabilistic RNA-seq quantifica"
+ },
+ {
+  "left": "me",
+  "right": "dium",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 21,
+  "ctx": "441 as well as CCD-16Lu in RPMI-1640 me- | dium, all supplemented with 10% Fetal Bo"
+ },
+ {
+  "left": "main",
+  "right": "tained",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 21,
+  "ctx": "-Streptomycin. HBEC3-KT cells were main- | tained in Airway Epithelial Cell Basal M"
+ },
+ {
+  "left": "2018",
+  "right": "01801",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 22,
+  "ctx": " Bern local ethical committee (KEK 2018- | 01801). Written informed consent was col"
+ },
+ {
+  "left": "calcu",
+  "right": "lated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 22,
+  "ctx": "e removed. Second, expression was calcu- | lated with RSEM v1.397, using the A549 R"
+ },
+ {
+  "left": "hyper",
+  "right": "sensitivity",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 22,
+  "ctx": "f Gene Expression (CAGE), DNAse I hyper- | sensitivity sites, and ChromHMM marks: A"
+ },
+ {
+  "left": "di",
+  "right": "gested",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": "step, the pDECKO_mCherry plasmid was di- | gested following the pDECKO_backbone pla"
+ },
+ {
+  "left": "Bar",
+  "right": "celona",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": " Protein Technologies’ Unit at CRG, Bar- | celona) at 50°C for 1 h (200 ng of pDECK"
+ },
+ {
+  "left": "purifica",
+  "right": "tion",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": " (ThermoFisher #ER0451). After purifica- | tion, the constant insert was assembled "
+ },
+ {
+  "left": "col",
+  "right": "ony",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": "cribed above. Clones were tested by col- | ony PCR and by Sanger sequencing using c"
+ },
+ {
+  "left": "correspond",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": "was collected (T0, 16M cells correspond- | ing to a library coverage >1,000x). For "
+ },
+ {
+  "left": "Pro",
+  "right": "liferation",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": "e stained using CellTrace CFSE Cell Pro- | liferation Kit (ThermoFisher #C34570) fo"
+ },
+ {
+  "left": "dose",
+  "right": "response",
+  "decision": "keep",
+  "why": "hyphenated form seen in text",
+  "page": 23,
+  "ctx": "doubling time (Figure S2C). In the dose- | response, 3,000 A549 and H460 cells were"
+ },
+ {
+  "left": "indi",
+  "right": "cated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 23,
+  "ctx": "latin concentrations were added at indi- | cated concentrations, and living cells w"
+ },
+ {
+  "left": "fol",
+  "right": "lows",
+  "decision": "join",
+  "why": "override",
+  "page": 23,
+  "ctx": "The death screen was carried out as fol- | lows: 144M cells were seeded and treated"
+ },
+ {
+  "left": "accel",
+  "right": "erated",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 24,
+  "ctx": "paired migration) and lower part (accel- | erated migration) (Figure 2C) were tryps"
+ },
+ {
+  "left": "con",
+  "right": "ditions",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 24,
+  "ctx": "t 10 µM concentration). PCR cycling con- | ditions: an initial 2 min at 95°C; follo"
+ },
+ {
+  "left": "paired",
+  "right": "end",
+  "decision": "keep",
+  "why": "override",
+  "page": 24,
+  "ctx": "d on a HiSeq2000 (Illumina) with paired- | end 150 bp reads at coverage of 40M read"
+ },
+ {
+  "left": "moni",
+  "right": "tored",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 24,
+  "ctx": "quality of all NGS experiments was moni- | tored across several metrics using the C"
+ },
+ {
+  "left": "repli",
+  "right": "cate",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 24,
+  "ctx": "g normalized read counts for each repli- | cate per sample. Pearson correlation was"
+ },
+ {
+  "left": "indi",
+  "right": "cation",
+  "decision": "join",
+  "why": "override",
+  "page": 24,
+  "ctx": "tral control genes were used as an indi- | cation of the quality of the ranking, as"
+ },
+ {
+  "left": "clus",
+  "right": "terProfiler",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 24,
+  "ctx": "median (1.2.6), GSEABase (1.54.0), clus- | terProfiler (4.0.5), harmonicmeanp (3.0)"
+ },
+ {
+  "left": "Cas9",
+  "right": "expressing",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 25,
+  "ctx": "K0702) from pDECKO-transduced A549-Cas9- | expressing cells. The PCR was done with "
+ },
+ {
+  "left": "pro",
+  "right": "vided",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 25,
+  "ctx": "s (∼1–2 cm3) of lung cancer tissue (pro- | vided by the Institute of Pathology, Uni"
+ },
+ {
+  "left": "trans",
+  "right": "fection",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 25,
+  "ctx": "The media was refreshed 24 h post-trans- | fection and cells were harvested to chec"
+ },
+ {
+  "left": "pro",
+  "right": "vided",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 25,
+  "ctx": "g the 5′-FAM-labelled control ASO A pro- | vided by Qiagen (Figure S4J)."
+ },
+ {
+  "left": "accord",
+  "right": "ing",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 25,
+  "ctx": "9242). The assays were performed accord- | ing to the corresponding manufacturer’s "
+ },
+ {
+  "left": "deliv",
+  "right": "ered",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 25,
+  "ctx": "The ASO-Lipofectamine3000 mix was deliv- | ered to the cells in suspension as descr"
+ },
+ {
+  "left": "LDEV",
+  "right": "free",
+  "decision": "keep",
+  "why": "case/digit",
+  "page": 25,
+  "ctx": "0 µL domes of Matrigel Matrix GFR, LDEV- | free (Corning #356231) and RPMI-1640 gro"
+ },
+ {
+  "left": "incu",
+  "right": "bator",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 25,
+  "ctx": "eroids were allowed to grow in the incu- | bator at 37°C in a humid atmosphere with"
+ },
+ {
+  "left": "instru",
+  "right": "ment",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 26,
+  "ctx": "alysis by using the LSR Fortessa instru- | ment (BD Biosciences). Unstained cells w"
+ },
+ {
+  "left": "har",
+  "right": "vested",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 26,
+  "ctx": "instructions. After 24 h cells were har- | vested and fixed with 100 µL of BD Cytof"
+ },
+ {
+  "left": "re",
+  "right": "corded",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 26,
+  "ctx": "SDS and the absorbance at 595 nm was re- | corded by using the Tecan Infinite 200 P"
+ },
+ {
+  "left": "paired",
+  "right": "end",
+  "decision": "keep",
+  "why": "override",
+  "page": 26,
+  "ctx": "ibrary Prep Kit and sequenced in paired- | end 150 format to a depth of 30M reads/s"
+ },
+ {
+  "left": "over",
+  "right": "night",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 27,
+  "ctx": ", and permeabilized in ethanol 70% over- | night. Hybridization was carried out ove"
+ },
+ {
+  "left": "ver",
+  "right": "tebrates",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 27,
+  "ctx": "RNA),75 RNA structures conserved in ver- | tebrates (CRS),111 and ENCODE candidate "
+ },
+ {
+  "left": "align",
+  "right": "ments",
+  "decision": "join",
+  "why": "override",
+  "page": 27,
+  "ctx": "n 7, 20, 30, and 100-way multiple align- | ments,113 and repeat families from the R"
+ },
+ {
+  "left": "pre",
+  "right": "pared",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 27,
+  "ctx": "iguration files for each locus were pre- | pared to draw the meta-transcript annota"
+ },
+ {
+  "left": "con",
+  "right": "verted",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 27,
+  "ctx": "sing the R package TCGAbiolinks and con- | verted to hg19 coordinates using liftOve"
+ },
+ {
+  "left": "over",
+  "right": "laps",
+  "decision": "join",
+  "why": "joined form seen in text",
+  "page": 27,
+  "ctx": "207.txt.gz). Then, we searched for over- | laps between each candidate and the recu"
+ }
+]

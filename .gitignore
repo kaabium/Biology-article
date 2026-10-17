@@ -1,0 +1,11 @@
+# large or regenerable extraction intermediates (re-create with extraction/scripts)
+extraction/raw/chars.json
+extraction/raw/chars_tmp.json
+extraction/raw/lines.json
+extraction/raw/renders/
+extraction/paper_raw.json
+tools/screens/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store

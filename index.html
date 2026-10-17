@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#3d5afe">
+<title>lncRNA Paper Study App — Esposito et al. 2022</title>
+<link rel="stylesheet" href="app/css/app.css">
+</head>
+<body>
+<div id="boot">
+  <h2>Loading your study app…</h2>
+  <p>If this message does not disappear after a few seconds, the program you opened this file with cannot run JavaScript
+  (for example the iPhone “Files” preview). Open the file in a real browser instead: see <b>README.md → Opening the app on a phone</b>.</p>
+</div>
+<div id="app" class="hidden">
+  <header class="topbar">
+    <a class="brand" href="#/"><span class="logo" aria-hidden="true">✦</span><span class="t">lncRNA Maps · Study</span></a>
+    <span class="spacer"></span>
+    <a class="icon-btn" href="#/search" title="Search everything" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></a>
+    <button class="icon-btn" id="themeBtn" title="Light / dark mode" aria-label="Toggle light or dark mode"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+  </header>
+  <div class="shell">
+    <nav class="sidenav" id="sidenav" aria-label="Main"></nav>
+    <main id="view" tabindex="-1"></main>
+  </div>
+  <nav class="bottomnav" id="bottomnav" aria-label="Main"></nav>
+</div>
+
+<!-- data (generated + authored) -->
+<script src="app/data/paper.js"></script>
+<script src="app/data/figmeta.js"></script>
+<script src="app/data/curriculum.js"></script>
+<script src="app/data/glossary.js"></script>
+<script src="app/data/lessons-A.js"></script>
+<script src="app/data/lessons-B.js"></script>
+<script src="app/data/lessons-C.js"></script>
+<script src="app/data/lessons-D.js"></script>
+<script src="app/data/lessons-E.js"></script>
+<script src="app/data/lessons-F.js"></script>
+<script src="app/data/lessons-H.js"></script>
+<script src="app/data/trackg.js"></script>
+<script src="app/data/panels.js"></script>
+<script src="app/data/figtext.js"></script>
+<script src="app/data/cards.js"></script>
+<script src="app/data/quizzes.js"></script>
+<script src="app/data/exams.js"></script>
+<script src="app/data/explain.js"></script>
+<script src="app/data/numbers.js"></script>
+<script src="app/data/summary.js"></script>
+<!-- app -->
+<script src="app/js/util.js"></script>
+<script src="app/js/state.js"></script>
+<script src="app/js/zoom.js"></script>
+<script src="app/js/paper.js"></script>
+<script src="app/js/views-home.js"></script>
+<script src="app/js/views-paper.js"></script>
+<script src="app/js/views-learn.js"></script>
+<script src="app/js/views-practice.js"></script>
+<script src="app/js/views-tools.js"></script>
+<script src="app/js/app.js"></script>
+</body>
+</html>

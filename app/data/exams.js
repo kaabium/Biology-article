@@ -1,0 +1,1 @@
+window.EXAMS = window.EXAMS || [];

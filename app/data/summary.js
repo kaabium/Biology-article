@@ -1,0 +1,1 @@
+window.SUMMARY = window.SUMMARY || {};

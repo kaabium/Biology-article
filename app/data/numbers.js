@@ -1,0 +1,1 @@
+window.NUMBERS = window.NUMBERS || [];
