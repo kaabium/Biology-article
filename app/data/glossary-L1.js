@@ -24,7 +24,7 @@
   id: 'chill1',
   full: 'Cancer Hallmark in Lung LncRNA 1',
   short: 'One of the two final lncRNAs: ASOs against it slowed lung cancer cells in several test systems, with a weaker effect on normal lung cells.',
-  long: `<p>CHiLL1 began as candidate 42 among the screened lncRNAs and was renamed by the authors after it survived every narrowing step. Switching it down with ASOs slowed lung cancer cell growth, including in ball-shaped cell clusters and in organoids. To the authors’ knowledge it had never before been linked to cancer. It sits mainly in the cytoplasm, and knocking it down raised the number of early apoptotic cells.</p>`,
+  long: `<p>CHiLL1 began as candidate 42 among the screened lncRNAs and was renamed by the authors after it survived every narrowing step. Switching it down with ASOs slowed lung cancer cell growth and, in ball-shaped cell clusters and in organoids, reduced the number of living cells. To the authors’ knowledge it had never before been linked to cancer. It sits mainly in the cytoplasm, and knocking it down raised the number of early apoptotic cells.</p>`,
   analogy: 'A contestant who survives every round of the talent show and earns a stage name.',
   see: ['gcawkr', 'tier', 'lncrna'],
   source: ['res-aso-p3', 'res-aso-p4', 'res-aso-p6', 'res-aso-p7', 'res-mechanism-p1', 'res-mechanism-p5'],
@@ -33,7 +33,7 @@
 {
   id: 'gcawkr',
   short: 'The other final lncRNA (candidate 240): ASOs against it also slowed lung cancer cells; it sits mainly in the nucleus.',
-  long: `<p>GCAWKR was candidate 240 in the library. The paper does not say what its letters stand for. Like CHiLL1 it survived every narrowing step: ASOs against it slowed lung cancer cells in dishes and in ball-shaped clusters, with a weaker effect on normal lung cells. It sits mainly in the nucleus. Knocking it down raised the number of cells in G2 and made cells migrate less.</p>`,
+  long: `<p>GCAWKR was candidate 240 in the library. The paper does not say what its letters stand for. Like CHiLL1 it survived every narrowing step: ASOs against it slowed lung cancer cells in dishes and reduced the number of living cells in ball-shaped clusters, with a weaker effect on normal lung cells. It sits mainly in the nucleus. Knocking it down raised the number of cells in G2 and made cells migrate less.</p>`,
   analogy: 'CHiLL1’s “twin” in the final: the same score on stage, but a very different act behind the curtain.',
   see: ['chill1', 'tier', 'knockdown'],
   source: ['res-aso-p3', 'res-aso-p6', 'res-mechanism-p1', 'res-mechanism-p6'],

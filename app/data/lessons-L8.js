@@ -9,7 +9,7 @@
       `<p>From lesson E2: a p-value below 0.05 is usually called "significant", meaning that if nothing were going on, a result this strong would turn up by luck about 1 time in 20.</p>` +
       `<p>A screen asks one question per target ("does switching this one off change growth?") and gets one p-value each. Even if <i>no</i> target mattered, about 1 test in 20 would still pass p &lt; 0.05. Running many tests at once is called <b>multiple testing</b>, and it needs a correction.</p>` },
     { k: 'worked', html:
-      `<p><b>Worked example (made-up numbers).</b> Test 1,000 genes when none has any real effect. Each test has a 5% chance of a lucky p &lt; 0.05, so you expect 1,000 × 0.05 = <b>50</b> "significant" genes, all of them flukes. Even with only 20 tests, the chance of at least one fluke is 1 − 0.95<sup>20</sup> ≈ 64%.</p>` },
+      `<p><b>Worked example (made-up numbers).</b> Test 1,000 genes when none has any real effect. Each test has a 5% chance of a lucky p &lt; 0.05, so you expect 1,000 × 0.05 = <b>50</b> "significant" genes, all of them flukes. Even with only 20 independent tests, the chance of at least one fluke is 1 − 0.95<sup>20</sup> ≈ 64%.</p>` },
     { k: 'memory', html:
       `<p><b>Analogy:</b> five heads in a row looks special (1 chance in 32). But if 1,000 people each toss a coin five times, about 30 of them will see five heads. They are not gifted; that is what many tries produce by luck. A screen runs hundreds of such tosses at once.</p>` },
 
@@ -37,7 +37,7 @@
 
     { k: 'h', text: 'FDR, the Benjamini–Hochberg recipe, and q-values' },
     { k: 'bgnd', html:
-      `<p>Instead of asking "how rare is this one result?", FDR control asks "how many flukes will I accept in my hit list?" At an FDR of 0.2, on average about 1 hit in 5 may be a fluke. The standard recipe is the <b>Benjamini–Hochberg procedure</b> (BH):</p>` +
+      `<p>Instead of asking "how rare is this one result?", FDR control asks "how many flukes will I accept in my hit list?" At an FDR of 0.2, on average no more than about 1 hit in 5 is expected to be a fluke. The standard recipe is the <b>Benjamini–Hochberg procedure</b> (BH):</p>` +
       `<ul><li><b>1.</b> Sort the p-values from smallest to largest and number them: rank 1, 2, 3 … Call the number of tests m.</li>` +
       `<li><b>2.</b> The p-value allowed at each rank is (rank ÷ m) × q, where q is the FDR you accept.</li>` +
       `<li><b>3.</b> Find the <i>largest</i> rank whose p-value is at or below its allowed value.</li>` +
@@ -70,7 +70,7 @@
     { k: 'h', text: 'What the paper says about FDR < 0.2' },
     { k: 'paper', ref: 'm-hits-p4', quote: 'These p-values were corrected for multiple hypothesis testing using the Benjamini & Hochberg method, and a cutoff of FDR<0.2 was used to define hits.' },
     { k: 'plain', source: ['m-hits-p4', 'm-hits-p3', 'res-integration-p2'], derived: ['16'], html:
-      `<p>Every target's p-value is corrected with the BH method, and a target counts as a hit when its FDR is below 0.2. Single screens use the same cut-off plus a direction: FDR &lt; 0.2 and a log2 fold change above zero for the positive screens (CFSE, death, migration), or below zero for the dropout and cisplatin screens. The pan-hallmark ranking gave 80 hits (about 8% of the lncRNAs screened) at FDR &lt; 0.2. If the procedure works as designed, up to about 16 of those 80 (0.2 × 80, my own arithmetic, not a number from the paper) could be flukes.</p>` },
+      `<p>For the integrated ranking, the combined p-values are corrected with the BH method, and a target counts as a hit when its FDR is below 0.2. Single screens use the same cut-off plus a direction: FDR &lt; 0.2 and a log2 fold change above zero for the positive screens (CFSE, death, migration), or below zero for the dropout and cisplatin screens. The pan-hallmark ranking gave 80 hits (about 8% of the lncRNAs screened) at FDR &lt; 0.2. If the procedure works as designed, up to about 16 of those 80 (0.2 × 80, my own arithmetic, not a number from the paper) could be flukes.</p>` },
     { k: 'flag', source: ['m-hits-p3', 'm-hits-p4', 'm-quant-p3'], html:
       `<p>The paper states this cut-off but never says why it chose 0.2 rather than the familiar 0.05 (its default: "p ≤ 0.05 is considered statistically significant unless otherwise specified"). The next paragraph is background, not the authors' words.</p>` },
     { k: 'bgnd', html:
@@ -91,7 +91,7 @@
         `<text x="56" y="268" class="mid s">0</text><text x="156" y="268" class="mid s">0.5</text><text x="256" y="268" class="mid s">1</text>` +
         `<text x="50" y="254" class="end s">0</text><text x="50" y="154" class="end s">0.5</text><text x="50" y="54" class="end s">1</text>` +
         `<text x="156" y="290" class="mid s">false-positive rate</text><text transform="rotate(-90 14 150)" x="14" y="150" class="mid s">true-positive rate</text>` +
-        `<text x="190" y="214" class="mid s b">AUC = area</text><text x="190" y="232" class="mid s">dashed = random (0.5)</text>` +
+        `<text x="170" y="214" class="mid s b">AUC = area</text><text x="170" y="232" class="mid s">dashed = random (0.5)</text>` +
         `<text x="276" y="70" class="s b">Ranking, best first:</text>` +
         `<circle cx="284" cy="98" r="10" class="f-green"/><text x="284" y="103" class="mid s">P</text><circle cx="308" cy="98" r="10" class="f-green"/><text x="308" y="103" class="mid s">P</text>` +
         `<circle cx="332" cy="98" r="10" class="f-gray"/><text x="332" y="103" class="mid s">N</text><circle cx="356" cy="98" r="10" class="f-green"/><text x="356" y="103" class="mid s">P</text>` +
@@ -186,13 +186,13 @@
     { k: 'bgnd', html:
       `<p><b>Robust Rank Aggregation (RRA)</b> works on ranks, not raw values. Each screen ranks the targets from strongest to weakest effect. RRA asks: how unlikely is it that a target would sit this high in so many lists by chance? A target near the top of every list is convincing; one that tops a single list and is average elsewhere is not. "Robust" means one noisy list cannot ruin a target that does well in the others.</p>` },
     { k: 'worked', html:
-      `<p><b>Worked example (made-up).</b> Three screens each rank 100 genes. By chance, a given gene lands in the top 5 of one list with probability 5/100 = 5%, and in the top 5 of all three with probability 0.05<sup>3</sup> ≈ 1 in 8,000. Gene W has ranks 1, 2 and 4: very unlikely by luck. Gene X has ranks 1, 40 and 77: being top in at least one of three lists happens to about 1 gene in 7 by chance. RRA turns this kind of reasoning into a score.</p>` },
+      `<p><b>Worked example (made-up).</b> Three screens each rank 100 genes. By chance, a given gene lands in the top 5 of one list with probability 5/100 = 5%, and in the top 5 of all three with probability 0.05<sup>3</sup> ≈ 1 in 8,000. Gene W has ranks 1, 2 and 4: very unlikely by luck. Gene X has ranks 1, 40 and 77: being in the top 5 of at least one of the three lists happens to about 1 gene in 7 by chance. RRA turns this kind of reasoning into a score.</p>` },
     { k: 'bgnd', html:
       `<p><b>Empirical Brown's method (EBM)</b> merges several p-values for the same target into one. The simplest merging treats the tests as independent witnesses. Brown's method allows the tests to be related, and "empirical" means the relationship is estimated from the data itself.</p>` },
     { k: 'memory', html:
       `<p><b>Analogy:</b> three witnesses who never spoke are strong evidence. Three witnesses who compared stories first are worth less, even though all three agree. Brown's method discounts the evidence when the "witnesses" (the tests) are related. The analogy breaks down in one way: the discount is a smooth number, not all-or-nothing.</p>` },
     { k: 'bgnd', html:
-      `<p>The <b>harmonic mean p-value (HMP)</b> of two p-values is 2 ÷ (1/p1 + 1/p2). Small p-values make 1/p huge, so the result stays close to the smallest p-value: one strong signal is not watered down by a weak one. (The Methods list an R package called harmonicmeanp, version 3.0.)</p>` },
+      `<p>The <b>harmonic mean p-value (HMP)</b> of two p-values is 2 ÷ (1/p1 + 1/p2). Small p-values make 1/p huge, so the result stays close to the smallest p-value: one strong signal is not watered down by a weak one.</p>` },
     { k: 'worked', html:
       `<p><b>Worked example (made-up).</b> Merge p = 0.001 and p = 0.5. The ordinary average is 0.25, but the harmonic mean is 2 ÷ (1000 + 2) ≈ 0.002. Merge two equal p-values of 0.04 and you get 0.04 back.</p>` },
     { k: 'plain', source: ['res-integration-p1', 'discussion-p3'], html:
@@ -205,7 +205,7 @@
       `<p>A legend is a compressed statistics report. Here are six real ones. For each: what it says in plain words, and what it leaves unsaid. (Lesson F4 turns this into a checklist.)</p>` },
     { k: 'paper', ref: 'fig4F', quote: 'in the KRAS+ samples from The Cancer Genome Atlas (TCGA) LUAD cohort (n = 101). Statistical significance was estimated by one-tailed Welch’s t test.' },
     { k: 'plain', source: ['fig4F'], html:
-      `<p><b>Decoded:</b> screen hits are compared with all other screened lncRNAs on how much RNA they make in lung tumors; 101 is the size of the tumor cohort. Welch's t test compares two averages without assuming equal spread; one-tailed means only "hits higher" counts. <b>Left unsaid:</b> what one data point is (an lncRNA? an lncRNA in one tumor?), so you cannot tell how many values entered the test; and why one-tailed.</p>` },
+      `<p><b>Decoded:</b> screen hits are compared with all other screened lncRNAs on how much RNA they make in lung tumors; 101 is the size of the tumor cohort. Welch's t test compares two averages without assuming equal spread; one-tailed means only one direction of difference counts (the text's claim is that hits are higher). <b>Left unsaid:</b> what one data point is (an lncRNA? an lncRNA in one tumor?), so you cannot tell how many values entered the test; and why one-tailed.</p>` },
     { k: 'paper', ref: 'fig2F', quote: 'Statistical significance: Wilcoxon test (pairwise comparisons) and Kruskal-Wallis (global differences).' },
     { k: 'plain', source: ['fig2F'], html:
       `<p><b>Decoded:</b> rank-based tests (lesson E3). Kruskal–Wallis asks one question about all groups together ("are they all alike?"); the Wilcoxon test compares chosen pairs. <b>Left unsaid:</b> which pairs, one- or two-sided, and whether the pairwise P values were corrected for making several comparisons.</p>` },
@@ -217,7 +217,7 @@
       `<p><b>Decoded:</b> the paper separates technical repeats (the same sample measured again) from biological ones (independent samples, lesson E1). Here the error bars show the technical variation, and there are four independent biological replicates. <b>Left unsaid:</b> whether the P values come from the technical or the biological replicates. Technical repeats are not independent evidence, so it matters.</p>` },
     { k: 'paper', ref: 'fig6I', quote: '(p = 2.2 × 10−16; R = 0.8; statistical significance: Pearson correlation coefficient)' },
     { k: 'plain', source: ['fig6I', 'm-quant-p1'], html:
-      `<p><b>Decoded:</b> R = 0.8 is a strong positive correlation (lesson E2). The paper used R software (m-quant-p1), which prints "2.2e-16" for any p-value too small to show, so read it as "smaller than that", not as an exact value. <b>Left unsaid:</b> how many points were correlated. With thousands of points even a weak correlation gets a tiny p; R, not p, tells you the strength.</p>` },
+      `<p><b>Decoded:</b> R = 0.8 is a strong positive correlation (lesson E2). The paper used R software (m-quant-p1), which prints "&lt; 2.2e-16" for any p-value too small to show, so read it as "smaller than that", not as an exact value. <b>Left unsaid:</b> how many points were correlated. With thousands of points even a weak correlation gets a tiny p; R, not p, tells you the strength.</p>` },
     { k: 'paper', ref: 'm-quant-p3', quote: 'For all analyses, p ≤ 0.05 is considered statistically significant unless otherwise specified. Specific details concerning statistical tests for individual experiments are noted in the relevant Figure legends.' },
     { k: 'plain', source: ['m-quant-p3', 'm-hits-p4'], html:
       `<p><b>Decoded:</b> the default bar is p ≤ 0.05; the screens specify FDR &lt; 0.2 instead (lesson E4); test details are promised in each legend. <b>Left unsaid:</b> I found no mention, in the legends or the Methods, of a correction for the many separate comparisons (apart from Benjamini–Hochberg for the screens), and some legends give no statistics at all (Figure 1F, lesson F4).</p>` },
@@ -297,7 +297,7 @@
         `<circle cx="235" cy="52" r="3.5" class="solid-text"/><circle cx="235" cy="203" r="3.5" class="solid-text"/>` +
         `<text x="268" y="56" class="s">outlier</text><text x="268" y="74" class="s">whisker</text><text x="268" y="128" class="s">median</text><text x="268" y="207" class="s">outlier</text>` +
         `<path d="M346 40 V210" class="ln"/>` +
-        `<path d="M405 56 C430 76 444 108 444 132 C444 156 430 186 405 204 C380 186 366 156 366 132 C366 108 380 76 405 56 Z" class="f-purple"/>` +
+        `<path d="M405 46 C408 66 430 86 440 110 C446 126 444 140 434 158 C424 176 410 190 405 206 C400 190 386 176 376 158 C366 140 364 126 370 110 C380 86 402 66 405 46 Z" class="f-purple"/>` +
         `<rect x="398" y="112" width="14" height="40" class="f-none"/><path d="M398 130 H412" class="ln thick"/>` +
         `<text x="10" y="242" class="s m">bar = mean of n repeats</text><text x="10" y="258" class="s m">whisker = SD or SEM?</text>` +
         `<text x="176" y="242" class="s m">box = middle half</text><text x="176" y="258" class="s m">line = median</text>` +
@@ -413,14 +413,14 @@
         `<circle cx="274" cy="112" r="3.5" class="solid-blue"/><circle cx="280" cy="98" r="3.5" class="solid-blue"/><circle cx="286" cy="84" r="3.5" class="solid-blue"/><circle cx="292" cy="68" r="3.5" class="solid-blue"/>` +
         `<text x="362" y="46" class="mid s">1</text><text x="388" y="46" class="mid s">2</text><text x="414" y="46" class="mid s">3</text><text x="440" y="46" class="mid s">4</text>` +
         `<text x="344" y="69" class="s end">A</text><text x="344" y="95" class="s end">B</text><text x="344" y="121" class="s end">C</text><text x="344" y="147" class="s end">D</text>` +
-        `<rect x="350" y="52" width="24" height="24" class="solid-blue" opacity="0.85"/><rect x="376" y="52" width="24" height="24" class="solid-blue" opacity="0.55"/><rect x="402" y="52" width="24" height="24" class="solid-blue" opacity="0.25"/><rect x="428" y="52" width="24" height="24" class="f-gray"/>` +
-        `<rect x="350" y="78" width="24" height="24" class="solid-blue" opacity="0.6"/><rect x="376" y="78" width="24" height="24" class="solid-blue" opacity="0.3"/><rect x="402" y="78" width="24" height="24" class="f-gray"/><rect x="428" y="78" width="24" height="24" class="solid-orange" opacity="0.3"/>` +
-        `<rect x="350" y="104" width="24" height="24" class="f-gray"/><rect x="376" y="104" width="24" height="24" class="f-gray"/><rect x="402" y="104" width="24" height="24" class="solid-orange" opacity="0.3"/><rect x="428" y="104" width="24" height="24" class="solid-orange" opacity="0.6"/>` +
-        `<rect x="350" y="130" width="24" height="24" class="solid-blue" opacity="0.2"/><rect x="376" y="130" width="24" height="24" class="f-gray"/><rect x="402" y="130" width="24" height="24" class="solid-orange" opacity="0.5"/><rect x="428" y="130" width="24" height="24" class="solid-orange" opacity="0.85"/>` +
+        `<rect x="350" y="52" width="24" height="24" class="solid-blue" opacity="0.85"/><rect x="376" y="52" width="24" height="24" class="solid-blue" opacity="0.55"/><rect x="402" y="52" width="24" height="24" class="solid-blue" opacity="0.25"/><rect x="428" y="52" width="24" height="24" class="solid-gray" opacity="0.25"/>` +
+        `<rect x="350" y="78" width="24" height="24" class="solid-blue" opacity="0.6"/><rect x="376" y="78" width="24" height="24" class="solid-blue" opacity="0.3"/><rect x="402" y="78" width="24" height="24" class="solid-gray" opacity="0.25"/><rect x="428" y="78" width="24" height="24" class="solid-orange" opacity="0.3"/>` +
+        `<rect x="350" y="104" width="24" height="24" class="solid-gray" opacity="0.25"/><rect x="376" y="104" width="24" height="24" class="solid-gray" opacity="0.25"/><rect x="402" y="104" width="24" height="24" class="solid-orange" opacity="0.3"/><rect x="428" y="104" width="24" height="24" class="solid-orange" opacity="0.6"/>` +
+        `<rect x="350" y="130" width="24" height="24" class="solid-blue" opacity="0.2"/><rect x="376" y="130" width="24" height="24" class="solid-gray" opacity="0.25"/><rect x="402" y="130" width="24" height="24" class="solid-orange" opacity="0.5"/><rect x="428" y="130" width="24" height="24" class="solid-orange" opacity="0.85"/>` +
         `<text x="82" y="204" class="mid s m">rings = how crowded;</text><text x="82" y="220" class="mid s m">inner ring = busiest</text>` +
         `<text x="240" y="204" class="mid s m">up = more significant;</text><text x="240" y="220" class="mid s m">sides = bigger change</text>` +
         `<text x="398" y="204" class="mid s m">colour = value; key:</text>` +
-        `<rect x="350" y="210" width="12" height="12" class="solid-blue" opacity="0.85"/><text x="366" y="221" class="s">−</text><rect x="382" y="210" width="12" height="12" class="f-gray"/><text x="398" y="221" class="s">0</text><rect x="414" y="210" width="12" height="12" class="solid-orange" opacity="0.85"/><text x="430" y="221" class="s">+</text></svg>` },
+        `<rect x="350" y="210" width="12" height="12" class="solid-blue" opacity="0.85"/><text x="366" y="221" class="s">−</text><rect x="382" y="210" width="12" height="12" class="solid-gray" opacity="0.25"/><text x="398" y="221" class="s">0</text><rect x="414" y="210" width="12" height="12" class="solid-orange" opacity="0.85"/><text x="430" y="221" class="s">+</text></svg>` },
 
     { k: 'h', text: 'ROC, ternary and petal plots' },
     { k: 'bgnd', html:
@@ -438,7 +438,7 @@
         `<rect x="8" y="30" width="148" height="154" class="ln thin"/><rect x="166" y="30" width="148" height="154" class="ln thin"/><rect x="324" y="30" width="148" height="154" class="ln thin"/>` +
         `<path d="M82 50 L16 164 H148 Z" class="f-gray"/>` +
         `<text x="82" y="44" class="mid b">A</text><text x="14" y="179" class="mid b">B</text><text x="150" y="179" class="mid b">C</text>` +
-        `<circle cx="80" cy="76" r="5" class="solid-orange"/><text x="104" y="80" class="s">mostly A</text>` +
+        `<circle cx="80" cy="76" r="5" class="solid-orange"/><text x="102" y="80" class="s">mostly A</text>` +
         `<circle cx="82" cy="126" r="5" class="solid-blue"/><text x="82" y="146" class="mid s">even mix</text>` +
         `<text x="240" y="54" class="mid s m">= 100%</text><path d="M176 172 H304" class="ln"/>` +
         `<rect x="186" y="117" width="40" height="55" class="f-blue"/><rect x="186" y="84" width="40" height="33" class="f-orange"/><rect x="186" y="62" width="40" height="22" class="f-green"/>` +
@@ -522,7 +522,7 @@
         `<text x="6" y="34" class="s b">chr8 · hg19</text><path d="M118 30 H470" class="ln thin"/><path d="M140 26 V34 M260 26 V34 M380 26 V34" class="ln thin"/>` +
         `<text x="140" y="18" class="mid s">10,000</text><text x="260" y="18" class="mid s">20,000</text><text x="380" y="18" class="mid s">30,000</text>` +
         `<text x="6" y="68" class="s b">Gene</text>` +
-        `<path d="M130 58 V50 H146" class="arrow s-red"/><text x="152" y="54" class="s t-red b">TSS</text>` +
+        `<path d="M130 58 V50 H146" class="arrow s-red"/><text x="158" y="54" class="s t-red b">TSS</text>` +
         `<rect x="130" y="58" width="22" height="14" class="f-green"/><path d="M152 65 H215 M245 65 H330" class="ln thin"/><rect x="215" y="58" width="30" height="14" class="f-green"/><rect x="330" y="58" width="70" height="14" class="f-green"/>` +
         `<text x="185" y="69" class="s mid m">›</text><text x="287" y="69" class="s mid m">›</text><text x="365" y="54" class="mid s">exon</text><text x="287" y="54" class="mid s">intron</text>` +
         `<text x="6" y="104" class="s b">Conservation</text><path d="M118 108 H470" class="ln thin m"/>` +
@@ -562,24 +562,24 @@
       `<p>In flow cytometry (lesson D3) each dot is one cell. <b>FSC-A</b> (forward scatter) measures how much light a cell scatters forward as it passes the laser; it roughly tracks cell size. The other axis is usually a fluorescence channel on a log scale; "Pacific Blue" is a blue-light channel, here used to detect a blue fluorescent protein. Colours show how crowded the dots are. A <b>gate</b> is a box around the cells you want, and the percentage is the share of all measured cells inside it. Trap: authors draw the gate, so a trustworthy figure shows a negative control that justifies where it starts.</p>` },
     { k: 'svg', caption: 'Made-up data. Left: a gel with a ladder, a control, an edited sample and a water lane. Right: a flow plot with a gate.',
       svg: `<svg viewBox="0 0 480 262" role="img" aria-label="Left: a made-up DNA gel with four lanes, a size ladder, a control with one long band, an edited sample with a faint long band and a stronger short band, and an empty water lane. Right: a made-up flow plot with a grey cluster of cells on the left, a blue cluster on the right inside a red gate">` +
-        `<text x="140" y="20" class="mid b">DNA gel</text><text x="362" y="20" class="mid b">Flow plot</text>` +
-        `<rect x="52" y="54" width="176" height="146" class="f-gray"/>` +
-        `<text x="74" y="46" class="mid s">ladder</text><text x="118" y="46" class="mid s">control</text><text x="162" y="46" class="mid s">edited</text><text x="206" y="46" class="mid s">water</text>` +
-        `<rect x="62" y="57" width="24" height="4" class="solid-text"/><rect x="106" y="57" width="24" height="4" class="solid-text"/><rect x="150" y="57" width="24" height="4" class="solid-text"/><rect x="194" y="57" width="24" height="4" class="solid-text"/>` +
-        `<rect x="60" y="74" width="28" height="3" class="solid-text"/><rect x="60" y="88" width="28" height="3" class="solid-text"/><rect x="60" y="130" width="28" height="3" class="solid-text"/><rect x="60" y="152" width="28" height="3" class="solid-text"/><rect x="60" y="172" width="28" height="3" class="solid-text"/>` +
-        `<rect x="104" y="86" width="28" height="7" class="solid-text"/>` +
-        `<rect x="148" y="87" width="28" height="4" class="solid-text" opacity="0.4"/><rect x="148" y="150" width="28" height="7" class="solid-text"/>` +
-        `<text x="48" y="92" class="s end">3 kb</text><text x="48" y="134" class="s end">1 kb</text><text x="48" y="176" class="s end">250 bp</text>` +
-        `<text x="140" y="220" class="mid s m">smaller pieces run farther down</text><text x="140" y="238" class="mid s m">water lane: no band = clean PCR</text>` +
-        `<path d="M290 190 H460 M290 190 V54" class="ln"/><text x="268" y="122" class="mid s" transform="rotate(-90 268 122)">FSC-A</text>` +
-        `<text x="290" y="206" class="s">low</text><text x="460" y="206" class="s end">high</text><text x="375" y="206" class="mid s">blue light</text>` +
-        `<circle cx="318" cy="144" r="3" class="solid-gray"/><circle cx="328" cy="136" r="3" class="solid-gray"/><circle cx="336" cy="150" r="3" class="solid-gray"/><circle cx="324" cy="154" r="3" class="solid-gray"/>` +
-        `<circle cx="340" cy="138" r="3" class="solid-gray"/><circle cx="312" cy="136" r="3" class="solid-gray"/><circle cx="332" cy="162" r="3" class="solid-gray"/><circle cx="346" cy="152" r="3" class="solid-gray"/>` +
-        `<circle cx="414" cy="108" r="3" class="solid-blue"/><circle cx="422" cy="116" r="3" class="solid-blue"/><circle cx="430" cy="104" r="3" class="solid-blue"/><circle cx="420" cy="124" r="3" class="solid-blue"/>` +
-        `<circle cx="408" cy="120" r="3" class="solid-blue"/><circle cx="436" cy="116" r="3" class="solid-blue"/><circle cx="426" cy="132" r="3" class="solid-blue"/><circle cx="416" cy="98" r="3" class="solid-blue"/>` +
-        `<circle cx="402" cy="110" r="3" class="solid-blue"/><circle cx="440" cy="128" r="3" class="solid-blue"/><circle cx="428" cy="94" r="3" class="solid-blue"/><circle cx="412" cy="134" r="3" class="solid-blue"/>` +
-        `<rect x="392" y="84" width="62" height="62" class="ln s-red"/><text x="423" y="78" class="mid s t-red b">gate: 70%</text>` +
-        `<text x="375" y="238" class="mid s m">each dot = one cell;</text><text x="375" y="254" class="mid s m">% = share of cells in the gate</text></svg>` },
+        `<text x="149" y="20" class="mid b">DNA gel</text><text x="387" y="20" class="mid b">Flow plot</text>` +
+        `<rect x="46" y="54" width="206" height="146" class="f-gray"/>` +
+        `<text x="72" y="46" class="mid s">ladder</text><text x="123" y="46" class="mid s">control</text><text x="175" y="46" class="mid s">edited</text><text x="226" y="46" class="mid s">water</text>` +
+        `<rect x="59" y="57" width="26" height="4" class="solid-text"/><rect x="110" y="57" width="26" height="4" class="solid-text"/><rect x="162" y="57" width="26" height="4" class="solid-text"/><rect x="213" y="57" width="26" height="4" class="solid-text"/>` +
+        `<rect x="58" y="74" width="28" height="3" class="solid-text"/><rect x="58" y="88" width="28" height="3" class="solid-text"/><rect x="58" y="130" width="28" height="3" class="solid-text"/><rect x="58" y="152" width="28" height="3" class="solid-text"/><rect x="58" y="172" width="28" height="3" class="solid-text"/>` +
+        `<rect x="109" y="86" width="28" height="7" class="solid-text"/>` +
+        `<rect x="161" y="87" width="28" height="4" class="solid-text" opacity="0.4"/><rect x="161" y="150" width="28" height="7" class="solid-text"/>` +
+        `<text x="44" y="92" class="s end">3 kb</text><text x="44" y="134" class="s end">1 kb</text><text x="44" y="176" class="s end">250 bp</text>` +
+        `<text x="149" y="220" class="mid s m">smaller pieces run farther down</text><text x="149" y="238" class="mid s m">water lane: no band = clean PCR</text>` +
+        `<path d="M308 190 H466 M308 190 V54" class="ln"/><text x="288" y="122" class="mid s" transform="rotate(-90 288 122)">FSC-A</text>` +
+        `<text x="308" y="206" class="s">low</text><text x="466" y="206" class="s end">high</text><text x="387" y="206" class="mid s">blue light</text>` +
+        `<circle cx="336" cy="144" r="3" class="solid-gray"/><circle cx="346" cy="136" r="3" class="solid-gray"/><circle cx="354" cy="150" r="3" class="solid-gray"/><circle cx="342" cy="154" r="3" class="solid-gray"/>` +
+        `<circle cx="358" cy="138" r="3" class="solid-gray"/><circle cx="330" cy="136" r="3" class="solid-gray"/><circle cx="350" cy="162" r="3" class="solid-gray"/><circle cx="364" cy="152" r="3" class="solid-gray"/>` +
+        `<circle cx="432" cy="108" r="3" class="solid-blue"/><circle cx="440" cy="116" r="3" class="solid-blue"/><circle cx="448" cy="104" r="3" class="solid-blue"/><circle cx="438" cy="124" r="3" class="solid-blue"/>` +
+        `<circle cx="426" cy="120" r="3" class="solid-blue"/><circle cx="454" cy="116" r="3" class="solid-blue"/><circle cx="444" cy="132" r="3" class="solid-blue"/><circle cx="434" cy="98" r="3" class="solid-blue"/>` +
+        `<circle cx="420" cy="110" r="3" class="solid-blue"/><circle cx="458" cy="128" r="3" class="solid-blue"/><circle cx="446" cy="94" r="3" class="solid-blue"/><circle cx="430" cy="134" r="3" class="solid-blue"/>` +
+        `<rect x="410" y="84" width="62" height="62" class="ln s-red"/><text x="441" y="78" class="mid s t-red b">gate: 70%</text>` +
+        `<text x="380" y="238" class="mid s m">each dot = one cell;</text><text x="380" y="254" class="mid s m">% = share of cells in the gate</text></svg>` },
     { k: 'panel', id: 'fig1E', html:
       `<p>Top: a genome-browser view of DNMBP-AS1 with the PCR primers (F and R), the TSS target region and the ten library pgRNAs (red bars). Bottom: the gel. The legend says the PCR used DNA from cells given a non-targeting pgRNA (control) or pgRNA_9 (KO), and that the expected lengths of the wild-type and deletion products are marked. Read it: the control lane has one long band (wild type); the pgRNA_9 lane has a shorter band (the deletion) plus a faint long one (copies that were not cut); the water lane is empty.</p>` },
     { k: 'panel', id: 'fig1D', html:
